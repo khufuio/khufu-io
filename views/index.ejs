@@ -6,34 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Khufu</title>
-    <link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="images/favicon/manifest.json">
+    <link rel="icon" href="images/favico.ico">
     <meta name="msapplication-TileColor" content="#f2f2f2">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#f2f2f2">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171825551-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'UA-171825551-1');
-    </script>
 </head>
 
 <body>
@@ -44,9 +22,10 @@
         <header class="site-header header-one ">
             <nav class="navbar navbar-expand-lg navbar-light header-navigation stricky">
                 <div class="container clearfix">
-                    <div class="logo-box clearfix">
+                    <div class="logo-box clearfix">     
                         <a class="navbar-brand" href="#">
-                            KHUFU
+                            <img src="images/preloader.png" alt="khufu" width="50px"/>
+                            Khufu
                         </a>
                         <button class="menu-toggler" data-target=".main-navigation">
                             <span class="fa fa-bars"></span>
@@ -85,7 +64,7 @@
             <span class="banner-one__shape-5"></span>
             <span class="banner-one__shape-6"></span>
 
-            <img src="images/favicon/nlogo.png" class="banner-one__globe" alt="khufu" width="75px"/>
+            <img src="images/preloader.png" class="banner-one__globe" alt="khufu" width="75px"/>
             <img src="images/rocket-1-1.png" class="banner-one__rocket" alt="khufu"/>
             <img src="images/banner-home.svg" class="banner-one__moc" alt="khufu" width="1000px"/>
             <div class="container">
@@ -291,8 +270,9 @@
                     <div class="inner-container">
                         <p class="site-footer__copytext">© copyright 2020 by <a href="#">khufu.io</a></p>
                         <div class="site-footer__social">
-                            <a href="https://twitter.com/khufuio"><i class="fa fa-twitter"></i></a>
-                            <a href="https://www.instagram.com/khufuio/"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/khufuio" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://twitter.com/khufuio" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/khufuio/" target="_blank"><i class="fa fa-instagram"></i></a>
                         </div><!-- /.site-footer__social -->
                     </div><!-- /.inner-container -->
                 </div>
@@ -308,6 +288,35 @@
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/testimonials-owl.carousel.config.js"></script>
     <script src="js/theme.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171825551-1"></script>
+    <script type="text/javascript">
+        var el = document.createElement('script');
+            el.setAttribute('src', 'https://static.axept.io/sdk.js');
+            el.setAttribute('type', 'text/javascript');
+            el.setAttribute('async', true);
+            el.setAttribute('data-id', '5f1dd6acd333121203851190');
+            el.setAttribute('data-cookies-version', 'khufu-base');
+        if (document.body !== null) {
+          document.body.appendChild(el);
+        }
+    </script>
+    <script>
+        function googleAnalytics(){
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            
+            gtag('config', 'UA-171825551-1');
+        }
+
+        void 0 === window._axcb && (window._axcb = []);
+            window._axcb.push(function(axeptio) {
+            axeptio.on("cookies:complete", function(choices) {
+                googleAnalytics()
+            })
+        })
+    </script>
 </body>
 
 </html>

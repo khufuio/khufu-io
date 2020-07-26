@@ -79,3 +79,4 @@ cypress.env.json
 cypress/videos
 
 cypress/screenshots
+.DS_Store
