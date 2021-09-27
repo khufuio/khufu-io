@@ -36,9 +36,9 @@ const articles = [
 ]
 
 const BlogDetails = ({ location }) => {
-  const pathname = location.pathname
+  const pathname = location ? location.pathname : 1
 
-  const articleI = parseInt(pathname.split('article')[1]) - 1
+  const articleI = pathname === 1 ? 1 : parseInt(pathname.split('article')[1]) - 1
 
   return (
     <section className="commonSection blogDetails">
