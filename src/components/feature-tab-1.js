@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import SectionTitle from "@/components/section-title";
-import { FeatureTabData } from "@/data";
+import React, { useState } from 'react'
+import { Col, Container, Row } from 'react-bootstrap'
+import SectionTitle from '@/components/section-title'
+import { FeatureTabData } from '@/data'
 
 const FeatureTabOne = () => {
-  const [active, setActive] = useState(1);
-  const { sectionContent, posts } = FeatureTabData;
+  const [active, setActive] = useState(1)
+  const { sectionContent, posts } = FeatureTabData
   return (
     <section className="commonSection chooseUs">
       <Container>
@@ -21,13 +21,13 @@ const FeatureTabOne = () => {
                 {posts.map(({ title }, index) => (
                   <li
                     key={index}
-                    className={`${active === index ? "active" : " "}`}
+                    className={`${active === index ? 'active' : ' '}`}
                   >
                     <a
                       href="#"
                       onClick={e => {
-                        e.preventDefault();
-                        setActive(index);
+                        e.preventDefault()
+                        setActive(index)
                       }}
                     >
                       {title}
@@ -39,7 +39,8 @@ const FeatureTabOne = () => {
           </Row>
           <div className="tab-content">
             {posts.map((post, index) => {
-              return index === active ? (
+              return index === active
+                ? (
                 <div
                   className="tab-pane fade show active animated fadeIn"
                   id={`tes_tab_${index}`}
@@ -47,7 +48,7 @@ const FeatureTabOne = () => {
                 >
                   <Row
                     className={`${
-                      0 === index % 2 ? " " : "flex-lg-row-reverse"
+                      index % 2 === 0 ? ' ' : 'flex-lg-row-reverse'
                     }`}
                   >
                     <Col lg={7}>
@@ -69,13 +70,14 @@ const FeatureTabOne = () => {
                     </Col>
                   </Row>
                 </div>
-              ) : null;
+                  )
+                : null
             })}
           </div>
         </div>
       </Container>
     </section>
-  );
-};
+  )
+}
 
-export default FeatureTabOne;
+export default FeatureTabOne

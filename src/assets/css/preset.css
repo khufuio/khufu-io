@@ -1,9 +1,9 @@
 /*
-Theme Name: Meipaly
+Theme Name: Khufu
 Theme URI: http://layerdrops.com/
 Author: Layerdrops
 Author URI: http://layerdrops.com/
-Description: Meipaly - Digital Services Agency HTML5 Responsive Template
+Description: Khufu - Digital Services Agency HTML5 Responsive Template
 Version: 1.0
 License:
 License URI:
@@ -89,8 +89,8 @@ ul li{
     border: none;
     font-size: 16px;
     font-weight: 400;
-    background: #000000;
-    color: #fff;
+    background: #fff;
+    color: #eeb60d;
     height: 70px;
     text-transform: uppercase;
     text-align: center;
@@ -117,7 +117,8 @@ ul li{
     position: absolute;
     right: 0;
     top: 0;
-    background: #fff;
+    color: #fff;
+    background: #eeb60d;
     transition: all 0.4s ease-out;
     -moz-transition: all 0.4s ease-out;
     -webkit-transition: all 0.4s ease-out;
@@ -128,13 +129,13 @@ ul li{
     width: 100%;
 }
 .common_btn:hover{
-    color: #000;
+    color: #fff;
 }
 .common_btn.red_bg{
     padding: 28px 40.5px;
 }
 .common_btn.red_bg:after{
-    background: #e62b4a;
+    background: #eeb60d;
 }
 .common_btn.red_bg:hover:after{
     width: 100%;
@@ -170,14 +171,14 @@ ul li{
     font-size: 50px;
     line-height: 60px;
     font-weight: 400;
-    color: #000;
+    color: #a461e5;
     letter-spacing: 2px;
     text-transform: uppercase;
     margin: 0 0 25px;
     white-space: pre-line;
 }
 .red_color{
-    color: #e62b4a;
+    color: #a461e5;
 }
 .white{
     color: #ffffff;

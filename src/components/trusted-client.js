@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "gatsby";
-import { TrustClientData } from "@/data";
+import React from 'react'
+import { Link } from 'gatsby'
+import { TrustClientData } from '@/data'
 
 const TrustedClient = ({ extraClassName }) => {
-  const { image, title, text, url } = TrustClientData;
+  const { image, title, text, url } = TrustClientData
   return (
     <section className={`commonSection trustClient ${extraClassName}`}>
       <div className="container">
@@ -30,7 +30,7 @@ const TrustedClient = ({ extraClassName }) => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default TrustedClient;
+export default TrustedClient

@@ -8,17 +8,16 @@ const BlogCard = ({ data }) => {
       <div className="lbi_thumb">
         <img src={image} alt={title} />
       </div>
-      <div className="lbi_details">
-        <Link className="lbid_date" to={url}>
-          {date}
-        </Link>
-        <h2>
-          <Link to={url}>{title}</Link>
-        </h2>
-        <Link className="learnM" to={url}>
-          Learn More
-        </Link>
-      </div>
+      <Link to={url}>
+        <div className="lbi_details">
+          <span className="lbid_date">
+            {date}
+          </span>
+          <h2>
+            {title}
+          </h2>
+        </div>
+      </Link>
     </div>
   )
 }

@@ -1,22 +1,15 @@
-import React, { Fragment } from "react";
-import AuthorCard from "@/components/author-card";
-import Comments from "@/components/comments";
-import blogDetailsImage from "@/images/blog/7.jpg";
+import React, { Fragment } from 'react'
 
-const SinglePostCard = () => {
+const SinglePostCard = ({ articles, articleI }) => {
   return (
     <Fragment>
       <div className="single_blog">
         <div className="blog_thumb">
-          <img src={blogDetailsImage} alt="" />
+          <img src={articles[articleI].image} alt="" />
         </div>
         <div className="blog_headings">
-          <span className="blog_date">20 nov</span>
-          <h2>Become the best sale marketer</h2>
-          <p className="blog_metas">
-            <a href="#">By layerdrops</a>-<a href="#">30 Likes</a>-
-            <a href="#">2 Comments</a>
-          </p>
+          <span className="blog_date">{articles[articleI].date}</span>
+          <h2>{articles[articleI].title}</h2>
         </div>
         <div className="blog_details">
           <p>
@@ -46,16 +39,9 @@ const SinglePostCard = () => {
             and the like.
           </p>
         </div>
-        <div className="blog_tagitems">
-          <span>Tags:</span>
-          <a href="#">Business</a>, <a href="#">Agency</a>,{" "}
-          <a href="#">Digital</a>, <a href="#">Technology</a>
-        </div>
-        <AuthorCard />
-        <Comments />
       </div>
     </Fragment>
-  );
-};
+  )
+}
 
-export default SinglePostCard;
+export default SinglePostCard

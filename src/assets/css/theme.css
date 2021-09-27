@@ -1,49 +1,5 @@
-/*
-Theme Name: Meipaly
-Theme URI: http://layerdrops.com/
-Author: Layerdrops
-Author URI: http://layerdrops.com/
-Description: Meipaly - Digital Services Agency HTML5 Responsive Template
-Version: 1.0
-License:
-License URI:
-*/
-
-/*=======================================================================
-[Table of contents]
-=========================================================================
-1. Header 01
-2. Revolution Slider
-3. Services Section
-4. About Agency
-5. What We Do Section
-6. Portfolio Section
-7. Fun Fact Section
-8. Trust Client Section
-9. Team Section
-10. Our Clients Section
-11. Testimonail Section
-12. Blog Section
-13. Ready Section
-14. Footer Section
-15. Servieces 2 Section
-16. Featured Section
-17. Tesimonial 02 Section
-18. Why Choose Us Section
-19. What We Do 2 Section
-20. Google Map Section
-21. About Page
-22. Service Page
-23. Portfolio Page
-24. Blog Page
-25. Contct Page
-26. Popup Search
-27. Popup Menu
-28. preloder
-29. Bact To Top
-30. Color Preset
-*/
-
+/* purple: #a461e5; */
+/* yellow: #eeb60d; */
 /*----------------------------------------------------
 / 1. Header 01
 ------------------------------------------------------*/
@@ -60,10 +16,12 @@ License URI:
 .logo {
   text-align: left;
   padding: 0 0 39px;
+  height: 80px;
+  margin-top: -20px;
 }
 .logo img {
   max-width: 100%;
-  height: auto;
+  height: 80px;
 }
 .mainmenu {
   position: relative;
@@ -82,7 +40,7 @@ License URI:
 .mainmenu ul li a {
   display: block;
   color: #fff;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 0.8;
   text-transform: uppercase;
   position: relative;
@@ -177,26 +135,32 @@ License URI:
 }
 .navigator a.active,
 .navigator a:hover {
-  color: #e62b4a;
+  color: #eeb60d;
 }
 .black_color {
-  border-color: #e5e5e5;
+  background-color: #ffffff22;
 }
 .black_color .mainmenu ul li a {
-  color: #000000;
+  color: #fff;
+}
+.black_color.fixedHeader .mainmenu ul li a {
+  color: #000;
 }
 .black_color .mainmenu ul li a:hover {
-  color: #000000;
+  color: #eeb60d;
 }
 .black_color .mainmenu ul li a:after {
-  background: #000000;
+  background: #eeb60d;
 }
 .black_color .navigator a {
-  color: #000000;
+  color: #fff;
+}
+.black_color.fixedHeader .navigator a {
+  color: #000;
 }
 .black_color .navigator a.active,
 .black_color .navigator a:hover {
-  color: #e62b4a;
+  color: #eeb60d;
 }
 .fixedHeader {
   background: #000;
@@ -215,12 +179,18 @@ License URI:
   background: #fff;
 }
 .black_color .mainmenu ul ul.sub-menu {
-  background: #fff;
+  background: #ffffff22;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 .black_color .mainmenu ul ul.sub-menu:before {
+  border-bottom: 5px solid #ffffff22;
+}
+.black_color.fixedHeader .mainmenu ul ul.sub-menu {
+  background: #fff;
+}
+.black_color.fixedHeader .mainmenu ul ul.sub-menu:before {
   border-bottom: 5px solid #fff;
 }
 .black_color .mainmenu ul li:hover ul.sub-menu {
@@ -288,7 +258,8 @@ License URI:
 / 3. Services Section
 ------------------------------------------------------*/
 .service_section {
-  background: url(../images/bg/1.jpg) no-repeat center center / cover;
+  /*background: url(../images/bg/1.jpg) no-repeat center center / cover;*/
+  background-color: #fff;
 }
 .icon_box_1 {
   display: inline-block;
@@ -323,7 +294,7 @@ License URI:
   line-height: 20px;
   font-weight: 400;
   text-transform: uppercase;
-  color: #aaaaaa;
+  color: #fff;
   margin: 0;
   transition: all ease 400ms;
   -moz-transition: all ease 400ms;
@@ -377,7 +348,7 @@ License URI:
   -ms-transform: rotateY(0deg);
   background: transparent;
   z-index: 2;
-  border: 2px solid rgba(27, 27, 27, 1);
+  background-color: #a461e599;
   padding: 48px 45px 45px;
   width: 100%;
 }
@@ -388,7 +359,7 @@ License URI:
   transform: rotateX(180deg);
 }
 .back {
-  background: #e62b4a;
+  background: #eeb60d;
   -webkit-transform: rotateY(-180deg);
   -moz-transform: rotateY(-180deg);
   -o-transform: rotateY(-180deg);
@@ -396,7 +367,6 @@ License URI:
   transform: rotateY(-180deg);
   position: relative;
   padding: 48px 45px 45px;
-  border: 2px solid #e62b4a;
   width: 100%;
 }
 .icon_box_1:hover .front,
@@ -458,7 +428,7 @@ License URI:
   top: -40px;
   left: 40px;
   content: "";
-  border: 10px solid #e62b4a;
+  border: 10px solid #a461e5;
   width: 470px;
   height: 458px;
 }
@@ -510,7 +480,7 @@ License URI:
   height: 115px;
   border-radius: 0;
   position: relative;
-  background: #e62b4a;
+  background: #a461e5;
   color: #fff;
   font-size: 30px;
   line-height: 0.8;
@@ -573,6 +543,7 @@ License URI:
   position: relative;
   overflow: hidden;
   margin: 0 0 30px;
+  padding: 60px;
 }
 .singlefolio img {
   display: block;
@@ -598,7 +569,7 @@ License URI:
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(230, 43, 74, 0.8);
+  background: #a461e599;
   overflow: hidden;
   width: 0;
   height: 100%;
@@ -653,22 +624,20 @@ License URI:
 }
 .singlefolio .folioHover a.cate:hover,
 .singlefolio .folioHover h4 a:hover {
-  color: #000;
+  color: #eeb60d;
 }
 
 /*----------------------------------------------------
 / 7. Fun Fact Section
 ------------------------------------------------------*/
 .funfact {
-  background: url(../images/bg/2.jpg) no-repeat center center / cover;
-  padding: 0 0 330px;
+  background-color: #a461e5;
 }
 .BR {
   border-right: 1px solid #1a1a1a;
 }
 .singlefunfact {
   position: relative;
-  padding-top: 113px;
 }
 .singlefunfact h1 {
   font-size: 60px;
@@ -680,9 +649,9 @@ License URI:
 }
 .singlefunfact h3 {
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 0.8;
-  color: #aaaaaa;
+  color: #fff;
   letter-spacing: 1.6px;
   margin: 0;
 }
@@ -787,7 +756,7 @@ License URI:
   position: absolute;
   bottom: 0;
   right: 0;
-  background: rgba(230, 43, 74, 0.7);
+  background: #a461e599;
   overflow: hidden;
   width: 0;
   height: 100%;
@@ -891,26 +860,8 @@ License URI:
   line-height: 0.8;
   display: inline-block;
 }
-.detail_TM h6:after {
-  width: 0;
-  height: 1px;
-  content: "";
-  background: #818181;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  bottom: -4px;
-  -webkit-transition: all 0.4s ease-out;
-  transition: all 0.4s ease-out;
-  -webkit-transition: all 0.4s ease-out;
-  transition: all 0.4s ease-out;
-}
 .singleTM:hover .detail_TM h5 {
-  color: #e62b4a;
-}
-.singleTM:hover .detail_TM h6:after {
-  width: 100%;
+  color: #a461e5;
 }
 .slick-dots {
   padding: 0;
@@ -1010,7 +961,7 @@ License URI:
   bottom: 0;
   margin: auto 0;
   content: "";
-  background: #e62b4a;
+  background: #a461e5;
   visibility: hidden;
   opacity: 0;
   transition: all ease 500ms;
@@ -1086,7 +1037,7 @@ License URI:
   bottom: 0;
   margin: auto 0;
   content: "";
-  background: #e62b4a;
+  background: #a461e5;
   visibility: hidden;
   opacity: 0;
   transition: all ease 500ms;
@@ -1131,7 +1082,7 @@ License URI:
 .testimonial_content .testi_icon {
   width: 115px;
   height: 115px;
-  background: #e62b4a;
+  background: #a461e5;
   text-align: center;
   display: inline-block;
   font-size: 64px;
@@ -1149,7 +1100,7 @@ License URI:
   margin: 0 0 44px;
 }
 .testimonial_content h2 span {
-  color: #e62b4a;
+  color: #a461e5;
 }
 .testimonial_content p {
   font-size: 20px;
@@ -1184,41 +1135,44 @@ License URI:
   position: relative;
   margin-top: -20px;
   padding: 30px 30px 0;
-  background: #fff;
+  background: #a461e588;
   z-index: 3;
+  padding-bottom: 20px;
+}
+.lbi_details:hover {
+  background: #eeb60d88;
+}
+.lbi_details:hover .lbid_date {
+  color: #eeb60d;
 }
 .lbi_details .lbid_date {
-  font-size: 10px;
+  font-size: 11px;
   line-height: 0.8;
   letter-spacing: 1px;
-  font-weight: 700;
+  font-weight: 600;
   display: block;
   height: 31px;
   width: 65px;
-  background: #000;
-  color: #fff;
+  color: #a461e5;
+  background-color: #fff;
   padding: 11px 0;
   text-align: center;
   text-transform: uppercase;
   margin: 0 0 15px;
-}
-.lbi_details .lbid_date:hover {
-  color: #fff;
-  background: #e62b4a;
 }
 .lbi_details h2 {
   font-size: 26px;
   line-height: 32px;
   letter-spacing: 1.04px;
   text-transform: uppercase;
-  color: #000;
+  color: #fff;
   margin: 0 0 13px;
 }
 .lbi_details h2 a {
-  color: #000;
+  color: #fff;
 }
 .lbi_details h2 a:hover {
-  color: #e62b4a;
+  color: #eeb60d;
 }
 .lbi_details .learnM {
   display: inline-block;
@@ -1226,14 +1180,14 @@ License URI:
   line-height: 0.8;
   letter-spacing: 1.12px;
   text-transform: uppercase;
-  color: #000;
+  color: #fff;
   position: relative;
 }
 .lbi_details .learnM:after {
   width: 0;
   height: 1px;
   content: "";
-  background: #e62b4a;
+  background: #eeb60d;
   position: absolute;
   left: 0;
   right: 0;
@@ -1246,14 +1200,15 @@ License URI:
   width: 100%;
 }
 .lbi_details .learnM:hover {
-  color: #e62b4a;
+  color: #eeb60d;
 }
 
 /*----------------------------------------------------
 / 13. Ready Section
 ------------------------------------------------------*/
 .ready {
-  background: url(../images/bg/4.jpg) no-repeat center center / cover;
+  background: #a461e5;
+  /*background: url(../images/bg/m-contact.jpg) no-repeat center -150px / cover;*/
 }
 .ready .sec_title {
   margin: 0;
@@ -1299,7 +1254,8 @@ License URI:
   margin-top: -8px;
 }
 .footer_1 .aboutwidget img {
-  max-width: 100%;
+  width: 100%;
+  max-width: 200px;
   height: auto;
   margin-bottom: 34px;
 }
@@ -1324,10 +1280,7 @@ License URI:
 }
 .footer_1 .copyright a:hover,
 .footer_1 .contact_widgets p a:hover {
-  color: #e62b4a;
-}
-.footer_1 .contact_widgets p:first-of-type {
-  margin-bottom: 32px;
+  color: #eeb60d;
 }
 .footer_1 .social_widget ul {
   margin: 0;
@@ -1353,7 +1306,7 @@ License URI:
   margin-right: 12px;
 }
 .footer_1 .social_widget ul li a:hover {
-  color: #fff;
+  color: #eeb60d;
 }
 .footer_1 .copyright {
   border-top: 1px solid #1a1a1a;
@@ -1368,6 +1321,7 @@ License URI:
 / 15. Servieces 2 Section
 ------------------------------------------------------*/
 .service_section_2 {
+  padding: 100px 0 0 0;
 }
 .icon_box_2 {
   position: relative;
@@ -1389,7 +1343,7 @@ License URI:
   bottom: 0;
   margin: auto 0;
   content: "";
-  background: #e62b4a;
+  background: #a461e5;
   visibility: hidden;
   opacity: 0;
   z-index: 3;
@@ -1441,7 +1395,7 @@ License URI:
   margin: 0;
 }
 .icon_box_2 a:hover {
-  color: #e62b4a;
+  color: #eeb60d;
 }
 .icon_box_2:hover {
   -webkit-box-shadow: 0px 10px 35px 0px rgba(0, 0, 0, 0.05);
@@ -1512,7 +1466,7 @@ License URI:
   position: relative;
 }
 .img_details {
-  background: #e62b4a;
+  background: #a461e5;
   display: inline-block;
   padding: 43px 103px 45px 50px;
   position: absolute;
@@ -1581,7 +1535,7 @@ License URI:
   right: 0;
   bottom: 0;
   content: "“";
-  background: #e62b4a;
+  background: #a461e5;
   font-size: 30px;
   line-height: 0.8;
   padding: 11px 0;
@@ -1697,7 +1651,7 @@ License URI:
 }
 .chooseUs_title li:hover a,
 .chooseUs_title li.active a {
-  background: #000;
+  background: #eeb60d;
   color: #fff;
 }
 .chose_img {
@@ -1725,7 +1679,7 @@ License URI:
 }
 .wh_choose ul li i {
   font-size: 14px;
-  color: #e62b4a;
+  color: #a461e5;
   line-height: 32px;
   margin-right: 15px;
 }
@@ -1767,7 +1721,7 @@ License URI:
   top: 0;
   left: 0;
   margin: auto;
-  background: rgba(230, 43, 74, 0.7);
+  background: #a461e599;
   overflow: hidden;
   width: 0;
   height: 100%;
@@ -1834,7 +1788,7 @@ License URI:
   font-size: 24px;
   color: #fff;
   letter-spacing: 0.96px;
-  background: #e62b4a;
+  background: #a461e5;
   padding: 61px 0;
 }
 .btn_link a:hover {
@@ -1845,7 +1799,7 @@ License URI:
   background: #000;
 }
 .btn_link.bg_black a:hover {
-  background: #e62b4a;
+  background: #a461e5;
 }
 
 /*----------------------------------------------------
@@ -1854,8 +1808,20 @@ License URI:
 .pageBanner {
   position: relative;
   min-height: 465px;
-  background: url(../images/bg/8.jpg) no-repeat center center / cover;
+  /*background: url(../images/bg/m-contact.jpg) no-repeat center -150px / cover;*/
   padding-top: 224px;
+}
+.pageBanner .image-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: contrast(150%) brightness(70%) blur(6px);
+  filter: contrast(150%) brightness(70%) blur(6px);
 }
 .banner_content {
   position: relative;
@@ -1892,7 +1858,7 @@ License URI:
   position: absolute;
   right: 60px;
   top: 60px;
-  border: 10px solid #e62b4a;
+  border: 10px solid #a461e5;
   height: 464px;
   width: 530px;
   content: "";
@@ -1902,7 +1868,7 @@ License URI:
   position: relative;
   text-align: left;
   z-index: 4;
-  margin-top: -184px;
+  margin-top: -150px;
 }
 .agency_img2 img,
 .agency_img1 img {
@@ -1912,10 +1878,14 @@ License URI:
   -moz-box-shadow: -2px 4px 35px 0px rgba(0, 0, 0, 0.3);
   box-shadow: -2px 4px 35px 0px rgba(0, 0, 0, 0.3);
 }
+.agency_img2 img {
+  max-width: 60%;
+}
 .compay_date {
   position: absolute;
   right: 60px;
   bottom: 3px;
+  margin-top: 20px;
   z-index: 4;
 }
 .compay_date h5 {
@@ -2019,28 +1989,28 @@ License URI:
   font-size: 16px;
 }
 .serviceArea ul li i {
-  color: #e62b4a;
+  color: #a461e5;
   margin-right: 10px;
   line-height: 36px;
 }
-.meipaly_services_help {
+.khufu_services_help {
   position: relative;
   background: url(../images/s3.jpg) no-repeat center center / cover;
   padding: 47px 50px 47px;
 }
-.meipaly_services_help h4 {
+.khufu_services_help h4 {
   font-size: 18px;
   color: #ffffff;
   letter-spacing: 0.72px;
   text-transform: uppercase;
   margin: 0 0 40px;
 }
-.meipaly_services_help p {
+.khufu_services_help p {
   color: #aaaaaa;
   margin: 0 0 25px;
   padding-right: 5px;
 }
-.meipaly_services_help h2 {
+.khufu_services_help h2 {
   font-size: 30px;
   color: #ffffff;
   letter-spacing: 1.2px;
@@ -2150,7 +2120,7 @@ License URI:
   top: -1px;
 }
 .nextprevPagination a:hover {
-  color: #e62b4a;
+  color: #a461e5;
 }
 .singlePortfoio_content {
   position: relative;
@@ -2181,7 +2151,7 @@ License URI:
   color: #818181;
 }
 .singlePortfoio_content p a:hover {
-  color: #e62b4a;
+  color: #a461e5;
 }
 .singlePortfoio_content ul {
   margin: 17px 0 0;
@@ -2206,7 +2176,7 @@ License URI:
   width: 0;
   height: 1px;
   content: "";
-  background: #e62b4a;
+  background: #a461e5;
   position: absolute;
   left: 0;
   right: 0;
@@ -2216,7 +2186,7 @@ License URI:
   transition: all 0.4s ease-out;
 }
 .singlePortfoio_content ul li a:hover {
-  color: #e62b4a;
+  color: #a461e5;
 }
 .singlePortfoio_content ul li a:hover:after {
   width: 100%;
@@ -2228,8 +2198,8 @@ License URI:
 /*----------------------------------------------------
 / 24. Blog Page
 ------------------------------------------------------*/
-.meipaly_paginations a,
-.meipaly_paginations span {
+.khufu_paginations a,
+.khufu_paginations span {
   position: relative;
   display: inline-block;
   height: 46px;
@@ -2245,14 +2215,14 @@ License URI:
   -webkit-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
 }
-.meipaly_paginations a.next,
-.meipaly_paginations a.prev {
+.khufu_paginations a.next,
+.khufu_paginations a.prev {
   font-size: 20px;
   padding: 12px 0;
   margin: 0 2px;
 }
-.meipaly_paginations a:after,
-.meipaly_paginations span:after {
+.khufu_paginations a:after,
+.khufu_paginations span:after {
   width: 4px;
   height: 0;
   position: absolute;
@@ -2261,24 +2231,24 @@ License URI:
   bottom: 0;
   margin: auto 0;
   content: "";
-  background: #e62b4a;
+  background: #a461e5;
   visibility: hidden;
   opacity: 0;
   -webkit-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
 }
-.meipaly_paginations a.prev:after {
+.khufu_paginations a.prev:after {
   right: auto;
   left: 0;
 }
-.meipaly_paginations a:hover:after,
-.meipaly_paginations span.current:after {
+.khufu_paginations a:hover:after,
+.khufu_paginations span.current:after {
   height: 100%;
   visibility: visible;
   opacity: 1;
 }
-.meipaly_paginations a:hover,
-.meipaly_paginations span.current {
+.khufu_paginations a:hover,
+.khufu_paginations span.current {
   color: #fff;
   background: #000;
 }
@@ -2308,7 +2278,7 @@ License URI:
   display: block;
   height: 31px;
   width: 65px;
-  background: #e62b4a;
+  background: #a461e5;
   color: #ffffff;
   padding: 11px 0;
   text-align: center;
@@ -2340,7 +2310,7 @@ License URI:
   margin-left: 0;
 }
 .blog_headings .blog_metas a:hover {
-  color: #e62b4a;
+  color: #a461e5;
 }
 .blog_details {
   padding: 0px 40px 22px;
@@ -2397,14 +2367,14 @@ License URI:
   color: #000;
 }
 .post_author h3 a:hover {
-  color: #e62b4a;
+  color: #a461e5;
 }
 .post_author p {
   line-height: 30px;
   margin: 0 0 16px;
 }
 .post_author > a {
-  color: #e62b4a;
+  color: #a461e5;
   line-height: 0.8;
   display: inline-block;
   position: relative;
@@ -2416,7 +2386,7 @@ License URI:
   width: 100%;
   height: 1px;
   content: "";
-  background: #e62b4a;
+  background: #a461e5;
   position: absolute;
   left: 0;
   right: 0;
@@ -2481,13 +2451,13 @@ License URI:
   color: #000;
 }
 .single-comment .authorDetails h5 a:hover {
-  color: #e62b4a;
+  color: #a461e5;
 }
 .single-comment .authorDetails span {
   display: block;
   font-size: 12px;
   line-height: 30px;
-  color: #e62b4a;
+  color: #a461e5;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   margin: 0 0 27px;
@@ -2538,7 +2508,7 @@ License URI:
   transition: all 0.3s ease-out;
 }
 .input-form.reqError {
-  border: 1px solid #e62b4a;
+  border: 1px solid #a461e5;
 }
 textarea.input-form {
   height: 190px;
@@ -2573,7 +2543,7 @@ textarea.input-form:focus {
   -webkit-box-shadow: 0px 10px 35px 0px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0px 10px 35px 0px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 10px 35px 0px rgba(0, 0, 0, 0.05);
-  border-right: 4px solid #e62b4a;
+  border-right: 4px solid #a461e5;
   background: #fff;
 }
 .sidebar .widget {
@@ -2622,7 +2592,7 @@ textarea.input-form:focus {
   padding: 23px 48px 24px;
   border: 2px solid #f4f4f4;
 }
-.meipaly_post_widget {
+.khufu_post_widget {
   position: relative;
   background: #f4f4f4;
   padding: 50px;
@@ -2657,44 +2627,44 @@ textarea.input-form:focus {
 .mpw_item a:hover {
   color: #000;
 }
-.meipaly_categorie_widget {
+.khufu_categorie_widget {
   position: relative;
   background: #f4f4f4;
   padding: 43px 50px 44px;
 }
-.meipaly_categorie_widget ul {
+.khufu_categorie_widget ul {
   margin: 0;
   padding: 0;
 }
-.meipaly_categorie_widget ul li {
+.khufu_categorie_widget ul li {
   list-style: none;
   display: block;
   margin: 0 0 12px;
 }
-.meipaly_categorie_widget ul li:last-of-type {
+.khufu_categorie_widget ul li:last-of-type {
   margin-bottom: 0;
 }
-.meipaly_categorie_widget ul li a {
+.khufu_categorie_widget ul li a {
   display: inline-block;
   font-size: 16px;
   line-height: 22px;
   color: #818181;
 }
-.meipaly_categorie_widget ul li a:hover {
+.khufu_categorie_widget ul li a:hover {
   color: #000;
 }
-.meipaly_tagcloude_widget {
+.khufu_tagcloude_widget {
   position: relative;
   background: #f4f4f4;
   padding: 43px 50px 44px;
 }
-.meipaly_tagcloude_widget a {
+.khufu_tagcloude_widget a {
   display: inline-block;
   font-size: 16px;
   line-height: 30px;
   color: #818181;
 }
-.meipaly_tagcloude_widget a:hover {
+.khufu_tagcloude_widget a:hover {
   color: #000;
 }
 
@@ -2765,7 +2735,7 @@ textarea.input-form:focus {
   -moz-transition: all ease 400ms;
 }
 .searchForms button[type="submit"]:hover {
-  color: #e62b4a;
+  color: #a461e5;
 }
 .searchForms input {
   width: 100%;
@@ -2853,7 +2823,7 @@ textarea.input-form:focus {
 }
 .sfCloser:hover:after,
 .sfCloser:hover:before {
-  background: #e62b4a;
+  background: #a461e5;
 }
 
 /*------------------------------------------------------------------------------
@@ -2937,7 +2907,7 @@ textarea.input-form:focus {
 }
 .close-popup:hover:after,
 .close-popup:hover:before {
-  background: #e62b4a;
+  background: #eeb60d;
 }
 .logo2 {
   z-index: 99;
@@ -2994,6 +2964,9 @@ textarea.input-form:focus {
   color: #818181;
   line-height: 22px;
   margin: 0 0 7px;
+}
+.footer__contacts li a {
+  color: #818181;
 }
 .footer__contacts li:last-child {
   margin-bottom: 0;
@@ -3065,6 +3038,7 @@ textarea.input-form:focus {
 }
 
 .dl-menu__wrap {
+  color: #fff;
   height: auto;
   position: relative;
   perspective: 600px;
@@ -3096,12 +3070,15 @@ textarea.input-form:focus {
   -webkit-text-decoration-skip: objects;
   transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1);
 }
+.dl-menu__wrap ul li a:hover {
+  color: #eeb60d
+}
 .dl-menu__wrap ul li a::after {
   position: absolute;
   width: 0;
   height: 1px;
   content: "";
-  background: #fff;
+  background: #eeb60d;
   left: 0;
   right: 0;
   bottom: -5px;
@@ -3432,7 +3409,7 @@ textarea.input-form:focus {
 / 29. Bact To Top
 ------------------------------------------------------*/
 .showit {
-  background: #e62b4a;
+  background: #eeb60d;
   bottom: 60px;
   color: #ffffff;
   font-size: 20px;
@@ -3447,8 +3424,8 @@ textarea.input-form:focus {
   cursor: pointer;
 }
 .showit:hover {
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: #eeb60d;
 }
 /*----------------------------------------------------
 / 30. Color Preset
@@ -3512,7 +3489,7 @@ textarea.input-form:focus {
 }
 .color_settings .switch-btn.active,
 .color_settings .switch-btn:hover {
-  color: #e62b4a;
+  color: #a461e5;
 }
 
 /* main slider in react js */
@@ -3563,13 +3540,6 @@ textarea.input-form:focus {
   visibility: hidden;
   -webkit-transform: translateY(90px);
   transform: translateY(90px);
-  -webkit-transition-delay: 1000ms;
-  transition-delay: 1000ms;
-  -webkit-transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
-  transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
-  transition: transform 2000ms ease, opacity 2000ms ease;
-  transition: transform 2000ms ease, opacity 2000ms ease,
-    -webkit-transform 2000ms ease;
 }
 
 @media (min-width: 768px) {
@@ -3592,7 +3562,7 @@ textarea.input-form:focus {
 }
 
 .main-slider__subtext {
-  color: #fff;
+  color: #a461e5;
   font-size: 20px;
   text-transform: uppercase;
   margin: 0;
@@ -3600,34 +3570,19 @@ textarea.input-form:focus {
   opacity: 0;
   -webkit-transform: translateY(-120px);
   transform: translateY(-120px);
-  -webkit-transition-delay: 0;
-  transition-delay: 0;
-  -webkit-transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
-  transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
-  transition: transform 2000ms ease, opacity 2000ms ease;
-  transition: transform 2000ms ease, opacity 2000ms ease,
-    -webkit-transform 2000ms ease;
 }
 
 .main-slider .common_btn {
   opacity: 0;
   -webkit-transform: translateY(100px);
   transform: translateY(100px);
-  -webkit-transition-delay: 2500ms;
-  transition-delay: 2500ms;
-  -webkit-transition: opacity 2000ms ease, color 500ms ease,
-    background 500ms ease, -webkit-transform 2000ms ease;
-  transition: opacity 2000ms ease, color 500ms ease, background 500ms ease,
-    -webkit-transform 2000ms ease;
-  transition: transform 2000ms ease, opacity 2000ms ease, color 500ms ease,
-    background 500ms ease;
-  transition: transform 2000ms ease, opacity 2000ms ease, color 500ms ease,
-    background 500ms ease, -webkit-transform 2000ms ease;
 }
 
 .main-slider .swiper-slide-active .image-layer {
   -webkit-transform: scale(1.15);
   transform: scale(1.15);
+  -webkit-filter: contrast(150%) brightness(70%) blur(6px);
+  filter: contrast(150%) brightness(70%) blur(6px);
 }
 
 .main-slider .swiper-slide-active .common_btn,

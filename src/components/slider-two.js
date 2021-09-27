@@ -1,23 +1,23 @@
-import React from "react";
-import { Link } from "gatsby";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Autoplay, Navigation, EffectFade } from "swiper";
-import { Col, Container, Row } from "react-bootstrap";
-import { SliderTwoData } from "@/data";
-SwiperCore.use([Autoplay, Navigation, EffectFade]);
+import React from 'react'
+import { Link } from 'gatsby'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore, { Autoplay, Navigation, EffectFade } from 'swiper'
+import { Col, Container, Row } from 'react-bootstrap'
+import { SliderTwoData } from '@/data'
+SwiperCore.use([Autoplay, Navigation, EffectFade])
 const SliderTwo = () => {
   const mainSlideOptions = {
     slidesPerView: 1,
     loop: true,
-    effect: "fade",
+    effect: 'fade',
     navigation: {
-      nextEl: "#main-slider-next",
-      prevEl: "#main-slider-prev",
+      nextEl: '#main-slider-next',
+      prevEl: '#main-slider-prev'
     },
     autoplay: {
-      delay: 5000,
-    },
-  };
+      delay: 5000
+    }
+  }
   return (
     <section className="main-slider main-slider__two">
       <Swiper {...mainSlideOptions}>
@@ -32,7 +32,7 @@ const SliderTwo = () => {
                 <Col lg={12} className="text-left">
                   <p className="main-slider__subtext">{subTitle}</p>
                   <h3 className="main-slider__title">{title}</h3>
-                  <Link to={button.url} className={`common_btn red_bg`}>
+                  <Link to={button.url} className={'common_btn red_bg'}>
                     <span>{button.label}</span>
                   </Link>
                 </Col>
@@ -48,7 +48,7 @@ const SliderTwo = () => {
         </div>
       </Swiper>
     </section>
-  );
-};
+  )
+}
 
-export default SliderTwo;
+export default SliderTwo

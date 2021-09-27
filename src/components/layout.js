@@ -1,52 +1,49 @@
-import React, { Fragment, useContext, useState, useEffect } from "react";
-import { Helmet } from "react-helmet";
-import { SearchContext } from "@/context/search-context";
-import { MenuContext } from "@/context/menu-context";
-import SearchPopup from "@/components/search-popup";
-import PopupMenu from "@/components/popup-menu";
-import { Link as ScrollLink } from "react-scroll";
+import React, { Fragment, useContext, useState, useEffect } from 'react'
+import { Helmet } from 'react-helmet'
+import { MenuContext } from '@/context/menu-context'
+import PopupMenu from '@/components/popup-menu'
+import { Link as ScrollLink } from 'react-scroll'
 
-import "typeface-oswald";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "@/css/animate.css";
-import "@/css/font-awesome.min.css";
-import "@/css/icons.css";
-import "@/css/preset.css";
-import "@/css/theme.css";
-import "@/css/responsive.css";
+import 'typeface-oswald'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '@/css/animate.css'
+import '@/css/font-awesome.min.css'
+import '@/css/icons.css'
+import '@/css/preset.css'
+import '@/css/theme.css'
+import '@/css/responsive.css'
 
 const Layout = ({ PageTitle, children }) => {
-  const { searchStatus } = useContext(SearchContext);
-  const { menuStatus } = useContext(MenuContext);
-  const [scrollTop, setScrollTop] = useState(false);
+  const { menuStatus } = useContext(MenuContext)
+  const [scrollTop, setScrollTop] = useState(false)
 
   const handleScrollTop = () => {
     if (window.scrollY > 70) {
-      setScrollTop(true);
+      setScrollTop(true)
     } else if (window.scrollY < 70) {
-      setScrollTop(false);
+      setScrollTop(false)
     }
-  };
+  }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScrollTop);
+    window.addEventListener('scroll', handleScrollTop)
     return () => {
-      window.removeEventListener("scroll", handleScrollTop);
-    };
-  }, [scrollTop]);
+      window.removeEventListener('scroll', handleScrollTop)
+    }
+  }, [scrollTop])
 
   return (
     <Fragment>
       <Helmet>
         <title>
-          {PageTitle} - Meipaly - Fine One Page Parallax NextJS Template
+          Khufu - {PageTitle}
         </title>
       </Helmet>
       <div id="wrapper">{children}</div>
-      {true === searchStatus ? <SearchPopup /> : null}
-      {true === menuStatus ? <PopupMenu /> : null}
+      {menuStatus === true ? <PopupMenu /> : null}
 
-      {scrollTop === true ? (
+      {scrollTop === true
+        ? (
         <ScrollLink
           to="wrapper"
           smooth={true}
@@ -56,9 +53,10 @@ const Layout = ({ PageTitle, children }) => {
         >
           <i className="fa fa-angle-double-up"></i>
         </ScrollLink>
-      ) : null}
+          )
+        : null}
     </Fragment>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

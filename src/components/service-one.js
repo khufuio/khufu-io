@@ -1,7 +1,7 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import ServiceCardOne from "@/components/service-card-one";
-import { ServicePostData } from "@/data";
+import React from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
+import ServiceCardOne from '@/components/service-card-one'
+import { ServicePostData } from '@/data'
 
 const ServiceOne = () => {
   return (
@@ -16,7 +16,7 @@ const ServiceOne = () => {
         </Row>
       </Container>
     </section>
-  );
-};
+  )
+}
 
-export default ServiceOne;
+export default ServiceOne

@@ -1,31 +1,45 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { ServicePostTwoData } from "@/data";
-import ServiceCardTwo from "@/components/service-card-two";
+import React from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
+import ServiceCardTwo from '@/components/service-card-two'
+
+const services = [
+  {
+    title: 'Dedicated Resources',
+    icon: '👨‍💻',
+    url: '/services/dedicated-resources'
+  },
+  {
+    title: 'Full App Development',
+    icon: '💻',
+    url: '/services/full-app-development'
+  },
+  {
+    title: 'DevOps Support',
+    icon: '👨‍🔧',
+    url: '/services/devops-support'
+  }
+]
 
 const ServiceTwo = () => {
-  const { sectionContent, posts } = ServicePostTwoData;
-  const { title, subTitle, text } = sectionContent;
   return (
     <section className="service_section commonSection">
       <Container>
         <Row>
           <Col lg={12} className="text-center">
-            <h4 className="sub_title red_color">{subTitle}</h4>
-            <h2 className="sec_title white">{title}</h2>
-            <p className="sec_desc color_aaa">{text}</p>
+            <h4 className="sub_title">Khufu offers what you need</h4>
+            <h2 className="sec_title">Our services</h2>
           </Col>
         </Row>
         <Row className="custom_column">
-          {posts.map((data, index) => (
-            <Col key={index} lg={3} md={6} sm={12}>
+          {services.map((data, index) => (
+            <Col key={index} lg={4} md={4} sm={12}>
               <ServiceCardTwo data={data} />
             </Col>
           ))}
         </Row>
       </Container>
     </section>
-  );
-};
+  )
+}
 
-export default ServiceTwo;
+export default ServiceTwo

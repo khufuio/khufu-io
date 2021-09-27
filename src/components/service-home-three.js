@@ -1,8 +1,8 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import ServiceCardOne from "@/components/service-card-one";
-import { ServicePostData, ServiceHomeThreeData } from "@/data";
-import SectionTitle from "./section-title";
+import React from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
+import ServiceCardOne from '@/components/service-card-one'
+import { ServicePostData, ServiceHomeThreeData } from '@/data'
+import SectionTitle from './section-title'
 
 const ServiceHomeThree = () => {
   return (
@@ -22,7 +22,7 @@ const ServiceHomeThree = () => {
         </Row>
       </Container>
     </section>
-  );
-};
+  )
+}
 
-export default ServiceHomeThree;
+export default ServiceHomeThree

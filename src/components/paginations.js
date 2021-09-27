@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 
 const Paginations = () => {
   return (
-    <div className="meipaly_paginations text-center">
+    <div className="khufu_paginations text-center">
       <a className="prev" href="#">
         <i className="fa fa-angle-left"></i>
       </a>
@@ -13,7 +13,7 @@ const Paginations = () => {
         <i className="fa fa-angle-right"></i>
       </a>
     </div>
-  );
-};
+  )
+}
 
-export default Paginations;
+export default Paginations

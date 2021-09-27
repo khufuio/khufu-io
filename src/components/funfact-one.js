@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import CountUp from "react-countup";
-import VisibilitySensor from "react-visibility-sensor";
-import { FunfactData } from "@/data";
+import React, { useState } from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
+import CountUp from 'react-countup'
+import VisibilitySensor from 'react-visibility-sensor'
+import { FunfactData } from '@/data'
 
 const FunfactOne = () => {
   const [counter, setCounter] = useState({
-    startCounter: false,
-  });
+    startCounter: false
+  })
   const onVisibilityChange = isVisible => {
     if (isVisible) {
-      setCounter({ startCounter: true });
+      setCounter({ startCounter: true })
     }
-  };
+  }
   return (
     <section className="commonSection funfact">
       <Container>
@@ -36,7 +36,7 @@ const FunfactOne = () => {
         </Row>
       </Container>
     </section>
-  );
-};
+  )
+}
 
-export default FunfactOne;
+export default FunfactOne

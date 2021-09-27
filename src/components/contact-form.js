@@ -1,26 +1,26 @@
-import React from "react";
-import { ContactFormTitle } from "@/data";
+import React from 'react'
 
 const ContactForm = () => {
-  const { subTitle, title, description } = ContactFormTitle;
   return (
     <section className="commonSection ContactPage">
       <div className="container">
         <div className="row">
           <div className="col-lg-12 text-center">
-            <h4 className="sub_title">{subTitle}</h4>
-            <h2 className="sec_title">{title}</h2>
-            <p className="sec_desc">{description}</p>
+            <h4 className="sub_title">Contact With Us</h4>
+            <h2 className="sec_title">Write Us a Message</h2>
+            <p className="sec_desc">We are committed to providing our customers with exceptional service while<br />offering our employees the best training.</p>
           </div>
         </div>
         <div className="row">
           <div className="col-lg-8 offset-lg-2 col-sm-12 col-md-10 offset-md-1">
             <form
-              action="#"
               method="post"
-              className="contactFrom"
-              id="contactForm"
+              netlify-honeypot="bot-field"
+              data-netlify="true"
+              name="contact"
             >
+              <input type="hidden" name="bot-field" />
+              <input type="hidden" name="form-name" value="contact" />
               <div className="row">
                 <div className="col-lg-6 col-sm-6">
                   <input
@@ -28,7 +28,8 @@ const ContactForm = () => {
                     type="text"
                     name="f_name"
                     id="f_name"
-                    placeholder="First Name"
+                    required
+                    placeholder="First Name *"
                   />
                 </div>
                 <div className="col-lg-6 col-sm-6">
@@ -37,7 +38,8 @@ const ContactForm = () => {
                     type="text"
                     name="l_name"
                     id="l_name"
-                    placeholder="Last Name"
+                    required
+                    placeholder="Last Name *"
                   />
                 </div>
                 <div className="col-lg-6 col-sm-6">
@@ -46,7 +48,8 @@ const ContactForm = () => {
                     type="email"
                     name="email"
                     id="email"
-                    placeholder="Email Address"
+                    required
+                    placeholder="Email Address *"
                   />
                 </div>
                 <div className="col-lg-6 col-sm-6">
@@ -63,7 +66,8 @@ const ContactForm = () => {
                     className="input-form required"
                     name="con_message"
                     id="con_message"
-                    placeholder="Write Message"
+                    required
+                    placeholder="Write Message *"
                   ></textarea>
                 </div>
               </div>
@@ -79,7 +83,7 @@ const ContactForm = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ContactForm;
+export default ContactForm

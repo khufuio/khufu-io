@@ -1,42 +1,42 @@
-import React, { useState, useEffect, useContext } from "react";
-import { LogoImage, NavLinks } from "@/data";
-import { Col, Container, Row } from "react-bootstrap";
-import { SearchContext } from "@/context/search-context";
-import { MenuContext } from "@/context/menu-context";
-import { Link } from "gatsby";
+import React, { useState, useEffect, useContext } from 'react'
+import { LogoImage, NavLinks } from '@/data'
+import { Col, Container, Row } from 'react-bootstrap'
+// import { SearchContext } from '@/context/search-context'
+import { MenuContext } from '@/context/menu-context'
+import { Link } from 'gatsby'
 
 const HeaderTwo = () => {
-  const [sticky, setSticky] = useState(false);
-  const { searchStatus, updateSearchStatus } = useContext(SearchContext);
-  const { menuStatus, updateMenuStatus } = useContext(MenuContext);
-  const handleSearchClick = e => {
-    e.preventDefault();
-    updateSearchStatus(!searchStatus);
-  };
+  const [sticky, setSticky] = useState(false)
+  // const { searchStatus, updateSearchStatus } = useContext(SearchContext)
+  const { menuStatus, updateMenuStatus } = useContext(MenuContext)
+  /* const handleSearchClick = e => {
+    e.preventDefault()
+    updateSearchStatus(!searchStatus)
+  } */
   const handleMenuClick = e => {
-    e.preventDefault();
-    updateMenuStatus(!menuStatus);
-  };
+    e.preventDefault()
+    updateMenuStatus(!menuStatus)
+  }
 
   const handleScroll = () => {
     if (window.scrollY > 70) {
-      setSticky(true);
+      setSticky(true)
     } else if (window.scrollY < 70) {
-      setSticky(false);
+      setSticky(false)
     }
-  };
+  }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [sticky]);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [sticky])
 
   return (
     <header
       className={`header_01 black_color ${
-        true === sticky ? "fixedHeader animated flipInX" : null
+        sticky === true ? 'fixedHeader' : null
       }`}
       id="header"
     >
@@ -45,7 +45,7 @@ const HeaderTwo = () => {
           <Col className="col-6" lg={2} md={3} sm={3}>
             <div className="logo">
               <Link to="/">
-                <img src={LogoImage.dark} alt="" />
+                <img src={LogoImage.dark} alt="khufu_logo" />
               </Link>
             </div>
           </Col>
@@ -58,12 +58,13 @@ const HeaderTwo = () => {
                       key={index}
                       className={`${
                         undefined !== links.subItems
-                          ? "menu-item-has-children"
-                          : ""
+                          ? 'menu-item-has-children'
+                          : ''
                       }`}
                     >
                       <Link to={links.url}>{links.name}</Link>
-                      {undefined !== links.subItems ? (
+                      {undefined !== links.subItems
+                        ? (
                         <ul className="sub-menu">
                           {links.subItems.map((subLinks, index) => (
                             <li key={index}>
@@ -71,22 +72,16 @@ const HeaderTwo = () => {
                             </li>
                           ))}
                         </ul>
-                      ) : null}
+                          )
+                        : null}
                     </li>
-                  );
+                  )
                 })}
               </ul>
             </nav>
           </Col>
           <Col lg={2} md={2} sm={4} className="col-6">
             <div className="navigator text-right">
-              <a
-                className="search searchToggler"
-                href="#"
-                onClick={handleSearchClick}
-              >
-                <i className="mei-magnifying-glass"></i>
-              </a>
               <a
                 href="#"
                 className="menu mobilemenu d-none d-md-none d-lg-none"
@@ -106,7 +101,7 @@ const HeaderTwo = () => {
         </Row>
       </Container>
     </header>
-  );
-};
+  )
+}
 
-export default HeaderTwo;
+export default HeaderTwo

@@ -1,25 +1,24 @@
-import React from "react";
-import Footer from "@/components/footer";
-import Layout from "@/components/layout";
-import PageBanner from "@/components/page-banner";
-import BlogOne from "@/components/blog-one";
-import SearchContextProvider from "@/context/search-context";
-import MenuContextProvider from "@/context/menu-context";
-import HeaderOne from "@/components/header-one";
+import React from 'react'
+import Footer from '@/components/footer'
+import Layout from '@/components/layout'
+import PageBanner from '@/components/page-banner'
+import BlogOne from '@/components/blog-one'
+import MenuContextProvider from '@/context/menu-context'
+import HeaderTwo from '@/components/header-two'
+
+import newsBg from '@/images/bg/m-news.jpg'
 
 const BlogPage = () => {
   return (
     <MenuContextProvider>
-      <SearchContextProvider>
-        <Layout PageTitle="Blog 01 Page">
-          <HeaderOne />
-          <PageBanner title="Blog 01" name="Blog" />
-          <BlogOne />
-          <Footer />
-        </Layout>
-      </SearchContextProvider>
+      <Layout PageTitle="Blog">
+        <HeaderTwo />
+        <PageBanner title="Blog" name="Blog" bg={newsBg} />
+        <BlogOne />
+        <Footer />
+      </Layout>
     </MenuContextProvider>
-  );
-};
+  )
+}
 
-export default BlogPage;
+export default BlogPage

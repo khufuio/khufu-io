@@ -1,18 +1,18 @@
-import React from "react";
-import { Link } from "gatsby";
+import React from 'react'
 
 const ServiceCardOne = ({ data }) => {
-  const { title, text, iconName, url } = data;
+  const { title, text, icon } = data
   return (
     <div className="icon_box_2 text-center">
       <h3>{title}</h3>
       <p>{text}</p>
       <div className="iconWrap">
-        <i className={iconName}></i>
+        <i style={{
+          fontStyle: 'inherit'
+        }}>{icon}</i>
       </div>
-      <Link to={url}>discover more</Link>
     </div>
-  );
-};
+  )
+}
 
-export default ServiceCardOne;
+export default ServiceCardOne

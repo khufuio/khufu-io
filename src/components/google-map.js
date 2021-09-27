@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const GoogleMap = ({ extraClass }) => {
   return (
@@ -10,7 +10,7 @@ const GoogleMap = ({ extraClass }) => {
         allowFullScreen
       ></iframe>
     </div>
-  );
-};
+  )
+}
 
-export default GoogleMap;
+export default GoogleMap

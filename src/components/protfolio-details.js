@@ -1,16 +1,14 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { PortfolioDetailsData } from "@/data";
-const ProtfolioDetails = () => {
+import React from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
+
+const ProtfolioDetails = ({ details }) => {
   const {
     gallery,
     title,
     text,
-    client,
-    categories,
     date,
-    socials,
-  } = PortfolioDetailsData;
+    socials
+  } = details
   return (
     <section className="commonSection porfolioDetail">
       <Container>
@@ -28,29 +26,15 @@ const ProtfolioDetails = () => {
               <p>{text}</p>
             </div>
             <div className="singlePortfoio_content">
-              <h4>Clients:</h4>
-              <p>{client}</p>
-            </div>
-            <div className="singlePortfoio_content">
-              <h4>Category:</h4>
-              <p>
-                {categories.map(({ name, url }, index) => (
-                  <a key={index} href={url}>
-                    {name},
-                  </a>
-                ))}
-              </p>
-            </div>
-            <div className="singlePortfoio_content">
-              <h4>Date:</h4>
+              <h4>Date :</h4>
               <p>{date}</p>
             </div>
             <div className="singlePortfoio_content">
-              <h4>Follow:</h4>
+              <h4>Follow :</h4>
               <ul>
                 {socials.map(({ name, url }, index) => (
                   <li key={index}>
-                    <a href={url}>{name}</a>
+                    <a href={url} target="_blank" rel="noreferrer">{name}</a>
                   </li>
                 ))}
               </ul>
@@ -59,7 +43,7 @@ const ProtfolioDetails = () => {
         </Row>
       </Container>
     </section>
-  );
-};
+  )
+}
 
-export default ProtfolioDetails;
+export default ProtfolioDetails

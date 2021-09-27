@@ -1,42 +1,42 @@
-import React, { useState, useEffect, useContext } from "react";
-import { LogoImage, NavLinks } from "@/data";
-import { Col, Container, Row } from "react-bootstrap";
-import { SearchContext } from "@/context/search-context";
-import { MenuContext } from "@/context/menu-context";
-import { Link } from "gatsby";
+import React, { useState, useEffect, useContext } from 'react'
+import { LogoImage, NavLinks } from '@/data'
+import { Col, Container, Row } from 'react-bootstrap'
+import { SearchContext } from '@/context/search-context'
+import { MenuContext } from '@/context/menu-context'
+import { Link } from 'gatsby'
 
 const HeaderOne = () => {
-  const [sticky, setSticky] = useState(false);
-  const { searchStatus, updateSearchStatus } = useContext(SearchContext);
-  const { menuStatus, updateMenuStatus } = useContext(MenuContext);
+  const [sticky, setSticky] = useState(false)
+  const { searchStatus, updateSearchStatus } = useContext(SearchContext)
+  const { menuStatus, updateMenuStatus } = useContext(MenuContext)
   const handleSearchClick = e => {
-    e.preventDefault();
-    updateSearchStatus(!searchStatus);
-  };
+    e.preventDefault()
+    updateSearchStatus(!searchStatus)
+  }
   const handleMenuClick = e => {
-    e.preventDefault();
-    updateMenuStatus(!menuStatus);
-  };
+    e.preventDefault()
+    updateMenuStatus(!menuStatus)
+  }
 
   const handleScroll = () => {
     if (window.scrollY > 70) {
-      setSticky(true);
+      setSticky(true)
     } else if (window.scrollY < 70) {
-      setSticky(false);
+      setSticky(false)
     }
-  };
+  }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [sticky]);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [sticky])
 
   return (
     <header
       className={`header_01 ${
-        true === sticky ? "fixedHeader animated flipInX" : null
+        sticky === true ? 'fixedHeader animated flipInX' : null
       }`}
       id="header"
     >
@@ -58,12 +58,13 @@ const HeaderOne = () => {
                       key={index}
                       className={`${
                         undefined !== links.subItems
-                          ? "menu-item-has-children"
-                          : ""
+                          ? 'menu-item-has-children'
+                          : ''
                       }`}
                     >
                       <Link to={links.url}>{links.name}</Link>
-                      {undefined !== links.subItems ? (
+                      {undefined !== links.subItems
+                        ? (
                         <ul className="sub-menu">
                           {links.subItems.map((subLinks, index) => (
                             <li key={index}>
@@ -71,9 +72,10 @@ const HeaderOne = () => {
                             </li>
                           ))}
                         </ul>
-                      ) : null}
+                          )
+                        : null}
                     </li>
-                  );
+                  )
                 })}
               </ul>
             </nav>
@@ -106,7 +108,7 @@ const HeaderOne = () => {
         </Row>
       </Container>
     </header>
-  );
-};
+  )
+}
 
-export default HeaderOne;
+export default HeaderOne

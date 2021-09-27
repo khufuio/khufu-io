@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
-import { SearchContext } from "@/context/search-context";
+import React, { useContext } from 'react'
+import { SearchContext } from '@/context/search-context'
 
 const SearchPopup = () => {
-  const { searchStatus, updateSearchStatus } = useContext(SearchContext);
+  const { searchStatus, updateSearchStatus } = useContext(SearchContext)
   const handleSearchClick = e => {
-    e.preventDefault();
-    updateSearchStatus(!searchStatus);
-  };
+    e.preventDefault()
+    updateSearchStatus(!searchStatus)
+  }
   return (
     <div className="searchFixed popupBG animated fadeIn d-block">
       <div className="container-fluid">
@@ -37,7 +37,7 @@ const SearchPopup = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SearchPopup;
+export default SearchPopup
