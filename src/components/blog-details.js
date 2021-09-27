@@ -35,18 +35,20 @@ const articles = [
   }
 ]
 
-const BlogDetails = () => {
-  const pathname = window.location.pathname
+const BlogDetails = ({ location }) => {
+  const pathname = location.pathname
+
+  const articleI = parseInt(pathname.split('article')[1]) - 1
 
   return (
     <section className="commonSection blogDetails">
       <Container>
         <Row>
           <Col lg={8}>
-            <SinglePostCard articles={articles} articleI={parseInt(pathname.slice(-1)) - 1} />
+            <SinglePostCard articles={articles} articleI={articleI} />
           </Col>
           <Col lg={4} className="sidebar">
-            <BlogSidebar articles={articles} articleI={parseInt(pathname.slice(-1)) - 1} />
+            <BlogSidebar articles={articles} articleI={articleI} />
           </Col>
         </Row>
       </Container>
