@@ -1,19 +1,17 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import SectionTitle from '@/components/section-title'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import TeamCard from '@/components/team-card'
-import 'swiper/swiper-bundle.min.css'
+
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 import team01 from '@/images/bg/m-team1.jpg'
 import team02 from '@/images/bg/m-team2.jpg'
 import team03 from '@/images/bg/m-team3.jpg'
 import team04 from '@/images/bg/m-team4.jpg'
 import team05 from '@/images/bg/m-team5.jpg'
-
-import SwiperCore, { Pagination } from 'swiper'
-
-SwiperCore.use([Pagination])
 
 const members = [
   {
@@ -62,37 +60,12 @@ const members = [
 ]
 
 const TeamCarousel = () => {
-  const carouselOptions = {
-    spaceBetween: 0,
-    loop: true,
-    slidesPerView: 1,
-    pagination: {
-      el: '#team-carousel-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      0: {
-        spaceBetween: 0,
-        slidesPerView: 1,
-        slidesPerGroup: 1
-      },
-      576: {
-        spaceBetween: 30,
-        slidesPerView: 2,
-        slidesPerGroup: 2
-      },
-      992: {
-        spaceBetween: 30,
-        slidesPerView: 3,
-        slidesPerGroup: 3
-      },
-      1200: {
-        spaceBetween: 30,
-        slidesPerView: 5,
-        slidesPerGroup: 5
-      }
-    }
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 2
   }
 
   return (
@@ -109,14 +82,11 @@ const TeamCarousel = () => {
           </Col>
         </Row>
       </Container>
-      <Swiper className="team_slider" {...carouselOptions}>
+      <Slider {...settings}>
         {members.map((member, index) => (
-          <SwiperSlide key={'m-' + index}>
-            <TeamCard data={member} />
-          </SwiperSlide>
+          <TeamCard key={index} data={member} />
         ))}
-        <div className="swiper-pagination" id="team-carousel-pagination"></div>
-      </Swiper>
+      </Slider>
     </section>
   )
 }

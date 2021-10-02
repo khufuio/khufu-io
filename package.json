@@ -25,7 +25,9 @@
     "react-helmet": "^6.1.0",
     "react-modal-video": "^1.2.6",
     "react-scroll": "^1.8.1",
+    "react-slick": "^0.28.1",
     "react-visibility-sensor": "^5.1.1",
+    "slick-carousel": "^1.8.1",
     "swiper": "^6.4.6",
     "typeface-oswald": "^1.1.13"
   },

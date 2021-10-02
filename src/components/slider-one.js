@@ -4,7 +4,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Autoplay, Navigation, EffectFade } from 'swiper'
 import { Col, Container, Row } from 'react-bootstrap'
 import { SliderOneData } from '@/data'
+
+import 'swiper/swiper-bundle.min.css'
+
 SwiperCore.use([Autoplay, Navigation, EffectFade])
+
 const SliderOne = () => {
   const mainSlideOptions = {
     slidesPerView: 1,

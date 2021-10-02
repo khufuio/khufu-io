@@ -711,6 +711,7 @@
 }
 .singleTM {
   width: 100%;
+  padding: 0 30px;
   height: auto;
   position: relative;
   overflow: hidden;
@@ -885,8 +886,8 @@
 .slick-dots li {
   list-style: none;
   display: inline-block;
-  height: 10px;
-  width: 10px;
+  height: 10px !important;
+  width: 10px !important;
   background: #dbdbdb;
   border: none;
   margin: 0 3px;
@@ -897,6 +898,9 @@
   transition: all ease 400ms;
   -webkit-transition: all ease 400ms;
   -moz-transition: all ease 400ms;
+}
+.slick-dots li button:before {
+  content: '' !important;
 }
 .slick-dots li button[type="button"] {
   border: none;
@@ -919,6 +923,12 @@
 ------------------------------------------------------*/
 .client {
   background: #f4f4f4;
+}
+.slick-prev::before, .slick-next::before {
+  color: #eeb60d !important;
+}
+.singleClientContainer {
+  padding: 0 30px
 }
 .singleClient {
   position: relative;
@@ -946,7 +956,7 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  opacity: 0.4;
+  opacity: 1;
   display: inline-block !important;
   transition: all ease 500ms;
   -moz-transition: all ease 500ms;
@@ -974,7 +984,7 @@
   height: 100%;
 }
 .singleClient:hover a img {
-  opacity: 1;
+  opacity: 0.4;
 }
 .singleClient:hover {
   -webkit-box-shadow: 0px 10px 35px 0px rgba(0, 0, 0, 0.05);
