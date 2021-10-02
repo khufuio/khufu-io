@@ -5,8 +5,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import TeamCard from '@/components/team-card'
 import 'swiper/swiper-bundle.min.css'
 
-// import team01 from '@/images/bg/m-team1.jpg'
-// import team02 from '@/images/bg/m-team2.jpg'
+import team01 from '@/images/bg/m-team1.jpg'
+import team02 from '@/images/bg/m-team2.jpg'
 import team03 from '@/images/bg/m-team3.jpg'
 import team04 from '@/images/bg/m-team4.jpg'
 import team05 from '@/images/bg/m-team5.jpg'
@@ -111,7 +111,7 @@ const TeamCarousel = () => {
       </Container>
       <Swiper className="team_slider" {...carouselOptions}>
         {members.map((member, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={'m-' + index}>
             <TeamCard data={member} />
           </SwiperSlide>
         ))}
