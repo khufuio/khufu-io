@@ -17,7 +17,7 @@ SwiperCore.use([Pagination])
 
 const members = [
   {
-    image: 'https://media-exp1.licdn.com/dms/image/C4D03AQHalFy35fqimQ/profile-displayphoto-shrink_200_200/0/1632125622926?e=1638403200&v=beta&t=ivYu9Q7qFJW26hSD7vNN4Ja8x9GC4bINmQE6G3y1I4o',
+    image: team01,
     name: 'Adrien',
     designation: 'Chief Executive Officer',
     socials: [
@@ -28,7 +28,7 @@ const members = [
     ]
   },
   {
-    image: 'https://media-exp1.licdn.com/dms/image/C4E03AQG32vgpXo90Kg/profile-displayphoto-shrink_200_200/0/1633169095014?e=1638403200&v=beta&t=NGvnHKq1cghgkyGcQ_lURgBITANs9G4YMu_HAcWeqho',
+    image: team02,
     name: 'Clémentine',
     designation: 'Chief Sales Officer',
     socials: [
