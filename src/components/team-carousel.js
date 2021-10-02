@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import TeamCard from '@/components/team-card'
 import 'swiper/swiper-bundle.min.css'
 
-import team01 from '@/images/bg/m-team1.jpg'
 import team02 from '@/images/bg/m-team2.jpg'
 import team03 from '@/images/bg/m-team3.jpg'
 
@@ -15,7 +14,7 @@ SwiperCore.use([Pagination])
 
 const members = [
   {
-    image: team01,
+    image: 'https://media-exp1.licdn.com/dms/image/C4D03AQHalFy35fqimQ/profile-displayphoto-shrink_800_800/0/1632125622926?e=1638403200&v=beta&t=hAjFmDrmXAybjgMrxaCGtEgA4C_ENcfmuGVhds9mzWc',
     name: 'Adrien De Coster',
     designation: 'Chief Executive Officer',
     socials: [
@@ -27,7 +26,7 @@ const members = [
   },
   {
     image: team02,
-    name: 'Clémentine Mailloux',
+    name: 'https://media-exp1.licdn.com/dms/image/C4E03AQG32vgpXo90Kg/profile-displayphoto-shrink_200_200/0/1633169095014?e=1638403200&v=beta&t=NGvnHKq1cghgkyGcQ_lURgBITANs9G4YMu_HAcWeqho',
     designation: 'Chief Sales Offices',
     socials: [
       {
