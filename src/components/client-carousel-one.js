@@ -78,7 +78,7 @@ const ClientCarouselOne = () => {
               {customers.map((customer, index) => (
                 <div key={index} className="singleClientContainer">
                   <div className="singleClient">
-                    <Link to={customer.url}>
+                    <Link to={customer.url} target='_blank' referrerPolicy='no-referrer'>
                       <img src={customer.image} alt="" />
                     </Link>
                   </div>
