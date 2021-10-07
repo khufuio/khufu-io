@@ -13,7 +13,7 @@ const CustomersPage = () => {
     <MenuContextProvider>
       <Layout PageTitle="Customers">
         <HeaderTwo />
-        <PageBanner title="Customers" name="Customers" bg={customersBg} />
+        <PageBanner title="page.customers.header.title" name="page.customers.header.subtitle" bg={customersBg} />
         <PortfolioOne />
         <Footer />
       </Layout>

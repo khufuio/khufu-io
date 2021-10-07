@@ -1,3 +1,5 @@
+import itranslations from './translations'
+
 import logoLight from '@/images/logo.png'
 import logoDark from '@/images/logo2.png'
 
@@ -77,6 +79,8 @@ import aboutTwo02 from '@/images/home_1/1.jpg'
 
 import featureTwo01 from '@/images/home_1/5.jpg'
 
+export const translations = itranslations
+
 export const LogoImage = {
   light: logoLight,
   dark: logoDark
@@ -84,40 +88,40 @@ export const LogoImage = {
 
 export const NavLinks = [
   {
-    name: 'Home',
+    name: 'menu.home',
     url: '/'
   },
   {
-    name: 'About',
+    name: 'menu.about',
     url: '/about'
   },
   {
-    name: 'Services',
+    name: 'menu.services',
     subItems: [
       {
-        name: 'Dedicated Resources',
+        name: 'menu.services.dedicated',
         url: '/services/dedicated-resources'
       },
       {
-        name: 'Full App Development',
+        name: 'menu.services.full_app',
         url: '/services/full-app-development'
       },
       {
-        name: 'DevOps Support',
+        name: 'menu.services.devops',
         url: '/services/devops-support'
       }
     ]
   },
   {
-    name: 'customers',
+    name: 'menu.customers',
     url: '/customers'
   },
   {
-    name: 'Blog',
+    name: 'menu.blog',
     url: '/blog'
   },
   {
-    name: 'Contact',
+    name: 'menu.contact',
     url: '/contact'
   }
 ]
@@ -125,28 +129,28 @@ export const NavLinks = [
 export const SliderOneData = [
   {
     image: sliderOne01,
-    subTitle: 'WELCOME TO KHUFU AGENCY',
-    title: 'Addtional Tech \n resources.',
+    subTitle: 'page.home.header.slide1.subtitle',
+    title: 'page.home.header.slide1.title',
     button: {
-      label: 'DISCOVER MORE',
+      label: 'page.home.header.slide1.action',
       url: '/services/dedicated-resources'
     }
   },
   {
     image: sliderOne02,
-    subTitle: 'WELCOME TO KHUFU AGENCY',
-    title: 'A complete team \n to develop your apps.',
+    subTitle: 'page.home.header.slide2.subtitle',
+    title: 'page.home.header.slide2.title',
     button: {
-      label: 'DISCOVER MORE',
+      label: 'page.home.header.slide2.action',
       url: '/services/full-app-development'
     }
   },
   {
     image: sliderOne03,
-    subTitle: 'WELCOME TO KHUFU AGENCY',
-    title: 'A complete \n DevOps Support.',
+    subTitle: 'page.home.header.slide3.subtitle',
+    title: 'page.home.header.slide3.title',
     button: {
-      label: 'DISCOVER MORE',
+      label: 'page.home.header.slide3.action',
       url: '/services/devops'
     }
   }

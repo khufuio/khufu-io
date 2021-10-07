@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '@/components/layout'
-import CallToActionOne from '@/components/call-to-action-one'
+import FooterContactBanner from '@/components/footer-contact-banner'
 import Footer from '@/components/footer'
 import BlogHome from '@/components/blog-home'
 import ClientCarouselOne from '@/components/client-carousel-one'
@@ -24,7 +24,7 @@ const HomeOne = () => {
         <TeamCarousel />
         <ClientCarouselOne />
         <BlogHome />
-        <CallToActionOne extraClassName="ready" />
+        <FooterContactBanner extraClassName="ready" />
         <Footer />
       </Layout>
     </MenuContextProvider>

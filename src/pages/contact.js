@@ -15,7 +15,7 @@ const ContactPage = () => {
     <MenuContextProvider>
       <Layout PageTitle="Contact">
         <HeaderTwo />
-        <PageBanner title="Contact Us" name="Contact" bg={contactBg} />
+        <PageBanner title="page.contact.header.title" name="page.contact.header.subtitle" bg={contactBg} />
         <ContactForm />
         {/* <GoogleMap extraClass="contact-page" /> */}
         {/* <ContactInfos /> */}

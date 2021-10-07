@@ -4,6 +4,8 @@ import SectionTitle from '@/components/section-title'
 
 import meetingBg from '@/images/bg/m-meeting.jpg'
 
+import { FormattedMessage } from 'react-intl'
+
 const FeatureTabOne = () => {
   return (
     <section className="commonSection chooseUs">
@@ -11,8 +13,8 @@ const FeatureTabOne = () => {
         <Row>
           <Col lg={12} className="text-center">
             <SectionTitle data={{
-              title: 'Why We Created Khufu',
-              subTitle: 'Summary About Us',
+              title: <FormattedMessage id='page.about.story.title' />,
+              subTitle: <FormattedMessage id='page.about.story.subtitle' />,
               text: ''
             }} />
           </Col>
@@ -23,8 +25,8 @@ const FeatureTabOne = () => {
               <Row>
                 <Col lg={7}>
                   <div className="wh_choose">
-                    <p>{"The creation of Khufu came from a simple observation. Companies want to digitize their processes or need to develop projects. But they don't have the time, the inclination or the need to create and manage a complete technical team directly in-house."}</p>
-                    <p>{'Khufu therefore develops your application with you, whether for mobile, internet or desktop. We can also offer you dedicated technical resources, whether for the day or for a longer period.'}</p>
+                    <p><FormattedMessage id='page.about.story.content1' /></p>
+                    <p><FormattedMessage id='page.about.story.content2' /></p>
                   </div>
                 </Col>
                 <Col lg={5}>

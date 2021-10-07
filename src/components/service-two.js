@@ -2,19 +2,21 @@ import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import ServiceCardTwo from '@/components/service-card-two'
 
+import { FormattedMessage } from 'react-intl'
+
 const services = [
   {
-    title: 'Dedicated Resources',
+    title: 'component.services_card.services.dedicated',
     icon: '👨‍💻',
     url: '/services/dedicated-resources'
   },
   {
-    title: 'Full App Development',
+    title: 'component.services_card.services.full_app',
     icon: '💻',
     url: '/services/full-app-development'
   },
   {
-    title: 'DevOps Support',
+    title: 'component.services_card.services.devops',
     icon: '👨‍🔧',
     url: '/services/devops-support'
   }
@@ -26,8 +28,8 @@ const ServiceTwo = () => {
       <Container>
         <Row>
           <Col lg={12} className="text-center">
-            <h4 className="sub_title">Khufu offers what you need</h4>
-            <h2 className="sec_title">Our services</h2>
+            <h4 className="sub_title"><FormattedMessage id='component.services_card.subtitle' /></h4>
+            <h2 className="sec_title"><FormattedMessage id='component.services_card.title' /></h2>
           </Col>
         </Row>
         <Row className="custom_column">

@@ -15,7 +15,7 @@ const BlogSinglePage = () => {
       <SearchContextProvider>
         <Layout PageTitle="Blog Details Page">
           <HeaderTwo />
-          <PageBanner title="Blog Details" name="Blog" bg={blogImage4} />
+          <PageBanner title="page.article.header.title" name="page.article.header.subtitle" bg={blogImage4} />
           <BlogDetails />
           <Footer />
         </Layout>

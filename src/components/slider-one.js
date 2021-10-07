@@ -7,6 +7,8 @@ import { SliderOneData } from '@/data'
 
 import 'swiper/swiper-bundle.min.css'
 
+import { FormattedMessage } from 'react-intl'
+
 SwiperCore.use([Autoplay, Navigation, EffectFade])
 
 const SliderOne = () => {
@@ -34,10 +36,10 @@ const SliderOne = () => {
             <Container>
               <Row>
                 <Col lg={12} className="text-center">
-                  <p className="main-slider__subtext">{subTitle}</p>
-                  <h3 className="main-slider__title">{title}</h3>
+                  <p className="main-slider__subtext"><FormattedMessage id={subTitle} /></p>
+                  <h3 className="main-slider__title"><FormattedMessage id={title} /></h3>
                   <Link to={button.url} className={'common_btn'}>
-                    <span>{button.label}</span>
+                    <span><FormattedMessage id={button.label} /></span>
                   </Link>
                 </Col>
               </Row>

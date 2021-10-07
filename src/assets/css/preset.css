@@ -60,9 +60,6 @@ a:hover, a:focus{
     text-decoration: none;
     outline: 0;
 }
-a:focus{
-    color: #fff;
-}
 ul li{
     margin: 0;
     padding: 0;

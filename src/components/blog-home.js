@@ -8,6 +8,8 @@ import blogImage2 from '@/images/bg/m-blog2.jpg'
 import blogImage3 from '@/images/bg/m-blog3.jpg'
 import blogImage4 from '@/images/bg/m-blog4.jpg'
 
+import { FormattedMessage } from 'react-intl'
+
 const articles = [
   {
     title: 'basic rules of running web agency business',
@@ -42,8 +44,8 @@ const BlogHome = () => {
         <Row>
           <Col lg={12} className="text-center">
             <SectionTitle data={ {
-              subTitle: 'our news & articles',
-              title: 'latest blog posts',
+              subTitle: <FormattedMessage id='component.last_blog.subtitle' />,
+              title: <FormattedMessage id='component.last_blog.title' />,
               text: ''
             }} />
           </Col>

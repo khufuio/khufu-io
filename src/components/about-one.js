@@ -3,14 +3,16 @@ import React from 'react'
 import team1 from '@/images/bg/m-team-2.jpg'
 import team2 from '@/images/bg/m-team-1.jpg'
 
+import { FormattedMessage } from 'react-intl'
+
 const AboutOne = () => {
   return (
     <section className="commonSection">
       <div className="container">
         <div className="row">
           <div className="col-lg-6 col-sm-12 col-md-6">
-            <h4 className="sub_title">Get To Know Us</h4>
-            <h2 className="sec_title">BUILD A BETTER AND COMPLETE APP WITH KHUFU AGENCY</h2>
+            <h4 className="sub_title"><FormattedMessage id='page.about.since.subtitle' /></h4>
+            <h2 className="sec_title"><FormattedMessage id='page.about.since.title' /></h2>
           </div>
           <div className="col-lg-6 col-sm-12 col-md-6">
             <div className="agency_img1">
@@ -22,7 +24,7 @@ const AboutOne = () => {
               <img src={team2} alt="khufu_team_2" />
             </div>
             <div className="compay_date">
-              <h5>Working for customers since</h5>
+              <h5><FormattedMessage id='page.about.since.date' /></h5>
               <h2>2015</h2>
             </div>
           </div>

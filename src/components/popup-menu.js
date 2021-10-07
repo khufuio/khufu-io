@@ -3,6 +3,8 @@ import { Link } from 'gatsby'
 import { MenuContext } from '@/context/menu-context'
 import { LogoImage, NavLinks } from '@/data'
 
+import { FormattedMessage } from 'react-intl'
+
 const PopupMenu = () => {
   const { menuStatus, updateMenuStatus } = useContext(MenuContext)
   const menuEl = useRef(null)
@@ -47,7 +49,7 @@ const PopupMenu = () => {
                               : ''
                           }`}
                         >
-                          <Link to={links.url}>{links.name}</Link>
+                          <Link to={links.url}><FormattedMessage id={links.name} /></Link>
                           {undefined !== links.subItems
                             ? (
                             <Fragment>
@@ -71,7 +73,7 @@ const PopupMenu = () => {
                                 {links.subItems.map((subLinks, index) => (
                                   <li key={index}>
                                     <Link to={subLinks.url}>
-                                      {subLinks.name}
+                                      <FormattedMessage id={subLinks.name} />
                                     </Link>
                                   </li>
                                 ))}

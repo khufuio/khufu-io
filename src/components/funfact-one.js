@@ -2,7 +2,27 @@ import React, { useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import CountUp from 'react-countup'
 import VisibilitySensor from 'react-visibility-sensor'
-import { FunfactData } from '@/data'
+
+import { FormattedMessage } from 'react-intl'
+
+const FunfactData = [
+  {
+    title: 'component.funfact.projects',
+    countNumber: 19
+  },
+  {
+    title: 'component.funfact.line',
+    countNumber: 25632
+  },
+  {
+    title: 'component.funfact.coffee',
+    countNumber: 3625
+  },
+  {
+    title: 'component.funfact.countries',
+    countNumber: 6
+  }
+]
 
 const FunfactOne = () => {
   const [counter, setCounter] = useState({
@@ -29,7 +49,7 @@ const FunfactOne = () => {
                     <CountUp end={counter.startCounter ? countNumber : 0} />
                   </VisibilitySensor>
                 </h1>
-                <h3>{title}</h3>
+                <h3><FormattedMessage id={title} /></h3>
               </div>
             </Col>
           ))}

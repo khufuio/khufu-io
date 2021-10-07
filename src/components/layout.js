@@ -4,6 +4,8 @@ import { MenuContext } from '@/context/menu-context'
 import PopupMenu from '@/components/popup-menu'
 import { Link as ScrollLink } from 'react-scroll'
 
+import { IntlProvider } from 'react-intl'
+
 import 'typeface-oswald'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@/css/animate.css'
@@ -12,6 +14,11 @@ import '@/css/icons.css'
 import '@/css/preset.css'
 import '@/css/theme.css'
 import '@/css/responsive.css'
+
+import { translations } from '@/data'
+
+const nlanguage = navigator.language.split(/[-_]/)[0] || 'en'
+const language = ['en', 'fr', 'es'].includes(nlanguage) ? nlanguage : 'en'
 
 const Layout = ({ PageTitle, children }) => {
   const { menuStatus } = useContext(MenuContext)
@@ -33,7 +40,7 @@ const Layout = ({ PageTitle, children }) => {
   }, [scrollTop])
 
   return (
-    <Fragment>
+    <IntlProvider messages={translations[language]} locale={language} defaultLocale='en'>
       <Helmet>
         <title>
           Khufu - {PageTitle}
@@ -55,7 +62,7 @@ const Layout = ({ PageTitle, children }) => {
         </ScrollLink>
           )
         : null}
-    </Fragment>
+    </IntlProvider>
   )
 }
 

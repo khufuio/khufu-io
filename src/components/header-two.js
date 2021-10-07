@@ -5,6 +5,8 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { MenuContext } from '@/context/menu-context'
 import { Link } from 'gatsby'
 
+import { FormattedMessage } from 'react-intl'
+
 const HeaderTwo = () => {
   const [sticky, setSticky] = useState(false)
   // const { searchStatus, updateSearchStatus } = useContext(SearchContext)
@@ -62,13 +64,13 @@ const HeaderTwo = () => {
                           : ''
                       }`}
                     >
-                      <Link to={links.url}>{links.name}</Link>
+                      <Link to={links.url}><FormattedMessage id={links.name} /></Link>
                       {undefined !== links.subItems
                         ? (
                         <ul className="sub-menu">
                           {links.subItems.map((subLinks, index) => (
                             <li key={index}>
-                              <Link to={subLinks.url}>{subLinks.name}</Link>
+                              <Link to={subLinks.url}><FormattedMessage id={subLinks.name} /></Link>
                             </li>
                           ))}
                         </ul>

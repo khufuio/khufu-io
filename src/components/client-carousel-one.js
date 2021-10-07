@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { Container, Row, Col } from 'react-bootstrap'
-import { ClientCarouselData } from '@/data'
 
 import customer1 from '@/images/bg/m-customer1.png'
 import customer2 from '@/images/bg/m-customer2.png'
@@ -15,6 +14,8 @@ import customer8 from '@/images/bg/m-customer8.png'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+
+import { FormattedMessage } from 'react-intl'
 
 const customers = [
   {
@@ -52,9 +53,6 @@ const customers = [
 ]
 
 const ClientCarouselOne = () => {
-  const { sectionContent } = ClientCarouselData
-  const { title, subTitle } = sectionContent
-
   const settings = {
     dots: false,
     infinite: true,
@@ -68,8 +66,8 @@ const ClientCarouselOne = () => {
       <Container>
         <Row>
           <Col lg={12} className="text-center">
-            <h4 className="sub_title">{subTitle}</h4>
-            <h2 className="sec_title">{title}</h2>
+            <h4 className="sub_title"><FormattedMessage id='component.customers_carousel.subtitle' /></h4>
+            <h2 className="sec_title"><FormattedMessage id='component.customers_carousel.title' /></h2>
           </Col>
         </Row>
         <Row>

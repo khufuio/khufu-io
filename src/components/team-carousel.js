@@ -13,11 +13,13 @@ import team03 from '@/images/bg/m-team3.jpg'
 import team04 from '@/images/bg/m-team4.jpg'
 import team05 from '@/images/bg/m-team5.jpg'
 
+import { FormattedMessage } from 'react-intl'
+
 const members = [
   {
     image: team01,
     name: 'Adrien',
-    designation: 'Chief Executive Officer',
+    designation: <FormattedMessage id='component.team_carousel.job.ceo' />,
     socials: [
       {
         name: 'LinkedIn',
@@ -28,7 +30,7 @@ const members = [
   {
     image: team02,
     name: 'Clémentine',
-    designation: 'Chief Sales Officer',
+    designation: <FormattedMessage id='component.team_carousel.job.cso' />,
     socials: [
       {
         name: 'LinkedIn',
@@ -39,21 +41,21 @@ const members = [
   {
     image: team03,
     name: 'Florent',
-    designation: 'Full Stack Developer',
+    designation: <FormattedMessage id='component.team_carousel.job.fullstack' />,
     socials: [
     ]
   },
   {
     image: team04,
     name: 'Axel',
-    designation: 'Full Stack Developer',
+    designation: <FormattedMessage id='component.team_carousel.job.fullstack' />,
     socials: [
     ]
   },
   {
     image: team05,
     name: 'David',
-    designation: 'Full Stack Developer',
+    designation: <FormattedMessage id='component.team_carousel.job.fullstack' />,
     socials: [
     ]
   }
@@ -74,10 +76,9 @@ const TeamCarousel = () => {
         <Row>
           <Col lg={12} className="text-center">
             <SectionTitle data={{
-              title: 'expert people',
-              subTitle: 'meet the team',
-              text:
-                'We are committed to providing our customers with exceptional service \n while offering our employees the best training.'
+              title: <FormattedMessage id='component.team_carousel.title' />,
+              subTitle: <FormattedMessage id='component.team_carousel.subtitle' />,
+              text: <FormattedMessage id='component.team_carousel.description' />
             }} />
           </Col>
         </Row>

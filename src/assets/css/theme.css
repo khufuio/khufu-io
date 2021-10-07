@@ -3656,3 +3656,9 @@ textarea.input-form:focus {
 .main-slider__two .main-slider__title {
   color: #000000;
 }
+
+
+
+.quotesref:hover {
+  color: #eeb60d;
+}

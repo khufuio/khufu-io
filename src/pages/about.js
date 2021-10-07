@@ -3,7 +3,7 @@ import Footer from '@/components/footer'
 import Layout from '@/components/layout'
 import PageBanner from '@/components/page-banner'
 import AboutOne from '@/components/about-one'
-import CallToActionOne from '@/components/call-to-action-one'
+import FooterContactBanner from '@/components/footer-contact-banner'
 import TeamCarousel from '@/components/team-carousel'
 // import TestimonialsOneCarousel from '@/components/testimonials-carousel'
 // import FeatureTabOne from '@/components/feature-tab-1'
@@ -18,13 +18,13 @@ const AboutPage = () => {
     <MenuContextProvider>
       <Layout PageTitle="About Us">
         <HeaderTwo />
-        <PageBanner title="About Us" name="About" bg={officeBg} />
+        <PageBanner title="page.about.header.title" name="page.about.header.subtitle" bg={officeBg} />
         <AboutOne />
         {/* <TestimonialsOneCarousel /> */}
         <AboutResume />
         <TeamCarousel />
         {/* <FeatureTabOne /> */}
-        <CallToActionOne extraClassName="ready" />
+        <FooterContactBanner extraClassName="ready" />
         <Footer />
       </Layout>
     </MenuContextProvider>

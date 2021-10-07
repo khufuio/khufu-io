@@ -13,7 +13,7 @@ const BlogPage = () => {
     <MenuContextProvider>
       <Layout PageTitle="Blog">
         <HeaderTwo />
-        <PageBanner title="Blog" name="Blog" bg={newsBg} />
+        <PageBanner title="page.blog.header.title" name="page.blog.header.subtitle" bg={newsBg} />
         <BlogOne />
         <Footer />
       </Layout>
