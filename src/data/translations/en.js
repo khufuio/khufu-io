@@ -31,7 +31,7 @@ export default {
   'menu.services': 'Services',
   'menu.services.dedicated': 'Dedicated Resources',
   'menu.services.devops': 'DevOps',
-  'menu.services.full_app': 'Full App Development',
+  'menu.services.full_app': 'Development',
   'page.about.header.subtitle': 'About',
   'page.about.header.title': 'About Us',
   'page.about.since.date': 'Working for customers since',
@@ -147,5 +147,6 @@ export default {
   'page.services.full_app.services.4.title': 'CI/CD',
   'page.services.full_app.services.5.content': 'We put in place the most robust, secure and suitable infrastructure for your product',
   'page.services.full_app.services.5.title': 'DevOps',
-  'page.services.full_app.offers.audit': 'Performance Audit'
+  'page.services.full_app.offers.audit': 'Performance Audit',
+  'page.article.latest': 'Last articles'
 }

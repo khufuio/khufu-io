@@ -18,7 +18,7 @@ import '@/css/responsive.css'
 import { translations } from '@/data'
 
 const nlanguage = typeof window !== 'undefined' ? (window.navigator.language.split(/[-_]/)[0] || 'en') : 'en'
-const language = ['en', 'fr', 'es'].includes(nlanguage) ? nlanguage : 'en'
+const language = Object.keys(translations).includes(nlanguage) ? nlanguage : 'en'
 
 const Layout = ({ PageTitle, children }) => {
   const { menuStatus } = useContext(MenuContext)

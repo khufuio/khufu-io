@@ -31,7 +31,7 @@ export default {
   'menu.services': 'Servicios',
   'menu.services.dedicated': 'Recursos dedicados',
   'menu.services.devops': 'DevOps',
-  'menu.services.full_app': 'Desarrollo completo de aplicaciones',
+  'menu.services.full_app': 'Desarrollo',
   'page.about.header.subtitle': 'Acerca de',
   'page.about.header.title': 'Sobre nosotros',
   'page.about.since.date': 'Trabajando para los clientes desde',
@@ -147,5 +147,6 @@ export default {
   'page.services.full_app.services.4.title': 'CI/CD',
   'page.services.full_app.services.5.content': 'Ponemos en marcha la infraestructura más sólida, segura y adecuada para su producto',
   'page.services.full_app.services.5.title': 'DevOps',
-  'page.services.full_app.offers.audit': 'Auditoría de desempeño'
+  'page.services.full_app.offers.audit': 'Auditoría de desempeño',
+  'page.article.latest': 'Ultimos articulos'
 }
