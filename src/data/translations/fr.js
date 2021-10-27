@@ -16,7 +16,7 @@ export default {
   'component.services_card.title': 'Nos services',
   'component.team_carousel.description': 'Nous nous engageons à fournir à nos clients un service exceptionnel tout en offrant à nos employés la meilleure formation possible.',
   'component.team_carousel.job.ceo': 'Directeur général',
-  'component.team_carousel.job.cso': 'Directeur des ventes',
+  'component.team_carousel.job.cso': 'Directrice des ventes',
   'component.team_carousel.job.fullstack': 'Développeur Fullstack',
   'component.team_carousel.subtitle': "Rencontrez l'équipe",
   'component.team_carousel.title': 'Les experts',
