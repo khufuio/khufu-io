@@ -1,7 +1,13 @@
-const { adapters } = require('gatsby-adapter-netlify')
+let adapter
+try {
+  const { adapters } = require('gatsby-adapter-netlify')
+  adapter = adapters.createAdapter()
+} catch (e) {
+  // adapter not available yet (e.g. during Netlify plugin pre-build)
+}
 
 module.exports = {
-  adapter: adapters.createAdapter(),
+  ...(adapter && { adapter }),
   siteMetadata: {
     title: 'Khufu',
     description: 'Khufu - Site en construction',
