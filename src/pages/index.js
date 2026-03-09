@@ -1,34 +1,70 @@
-import React from 'react'
-import Layout from '@/components/layout'
-import FooterContactBanner from '@/components/footer-contact-banner'
-import Footer from '@/components/footer'
-import BlogHome from '@/components/blog-home'
-import ClientCarouselOne from '@/components/client-carousel-one'
-import TeamCarousel from '@/components/team-carousel'
-import FunfactOne from '@/components/funfact-one'
-import ServiceTwo from '@/components/service-two'
-import AboutTwo from '@/components/about-two'
-import HeaderTwo from '@/components/header-two'
-import MenuContextProvider from '@/context/menu-context'
-import SliderOne from '@/components/slider-one'
+import * as React from "react"
 
-const HomeOne = () => {
+const pageStyles = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: "100vh",
+  margin: 0,
+  fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+  background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+  color: "#ffffff",
+  textAlign: "center",
+  padding: "2rem",
+}
+
+const logoStyles = {
+  width: "120px",
+  height: "120px",
+  marginBottom: "2rem",
+}
+
+const headingStyles = {
+  fontSize: "3rem",
+  fontWeight: 700,
+  marginBottom: "1rem",
+  letterSpacing: "0.1em",
+}
+
+const subtitleStyles = {
+  fontSize: "1.25rem",
+  fontWeight: 300,
+  color: "#a0aec0",
+  marginBottom: "2rem",
+}
+
+const dividerStyles = {
+  width: "60px",
+  height: "3px",
+  background: "linear-gradient(90deg, #667eea, #764ba2)",
+  border: "none",
+  marginBottom: "2rem",
+}
+
+const contactStyles = {
+  fontSize: "1rem",
+  color: "#a0aec0",
+}
+
+const linkStyles = {
+  color: "#667eea",
+  textDecoration: "none",
+}
+
+const IndexPage = () => {
   return (
-    <MenuContextProvider>
-      <Layout PageTitle="Home">
-        <HeaderTwo />
-        <SliderOne />
-        <ServiceTwo />
-        <AboutTwo />
-        <FunfactOne />
-        <TeamCarousel />
-        <ClientCarouselOne />
-        <BlogHome />
-        <FooterContactBanner extraClassName="ready" />
-        <Footer />
-      </Layout>
-    </MenuContextProvider>
+    <main style={pageStyles}>
+      <h1 style={headingStyles}>KHUFU</h1>
+      <hr style={dividerStyles} />
+      <p style={subtitleStyles}>Site en construction</p>
+      <p style={contactStyles}>
+        Contactez-nous : <a style={linkStyles} href="mailto:hello@khufu.io">hello@khufu.io</a>
+      </p>
+    </main>
   )
 }
 
-export default HomeOne
+export default IndexPage
+
+export const Head = () => <title>Khufu - Site en construction</title>
