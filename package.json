@@ -6,6 +6,7 @@
   "author": "Khufu <hello@khufu.io>",
   "dependencies": {
     "gatsby": "^5.13.0",
+    "gatsby-adapter-netlify": "^1.4.0",
     "gatsby-plugin-image": "^3.13.0",
     "gatsby-plugin-manifest": "^5.13.0",
     "gatsby-plugin-sharp": "^5.13.0",

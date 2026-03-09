@@ -1,4 +1,7 @@
+const { adapters } = require('gatsby-adapter-netlify')
+
 module.exports = {
+  adapter: adapters.createAdapter(),
   siteMetadata: {
     title: 'Khufu',
     description: 'Khufu - Site en construction',
