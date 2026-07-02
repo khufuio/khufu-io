@@ -1,5 +1,6 @@
 import { site, entityDefinition, foundingLocation, href } from '@/content/site'
 import { projects } from '@/content/projects'
+import { comparisons, useCases } from '@/content/geo'
 
 export const dynamic = 'force-static'
 
@@ -38,6 +39,18 @@ export function GET() {
   for (const p of projects) {
     const url = p.url ? ` (${p.url})` : ''
     lines.push(`- ${p.name}${url} — ${p.tagline.fr} Stack : ${p.stack.join(', ')}.`)
+  }
+  lines.push('')
+
+  lines.push('## Comparatifs')
+  for (const c of comparisons) {
+    lines.push(`- ${c.title.fr} : ${c.conclusion.fr} → ${site.url}${href('fr', 'comparisons', c.slug)}`)
+  }
+  lines.push('')
+
+  lines.push('## Cas d’usage')
+  for (const u of useCases) {
+    lines.push(`- ${u.title.fr} (${u.persona.fr}) : ${u.intro.fr} → ${site.url}${href('fr', 'useCases', u.slug)}`)
   }
   lines.push('')
 

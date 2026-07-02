@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { locales, localeHrefLang } from '@/i18n/config'
 import { site, href, routes, type RouteKey } from '@/content/site'
 import { projects } from '@/content/projects'
+import { comparisons, useCases } from '@/content/geo'
 
 // Top-level routes that exist for every locale.
 const topRoutes = Object.keys(routes) as RouteKey[]
@@ -33,6 +34,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: 'monthly',
         priority: 0.6,
         alternates: alt('work', p.slug),
+      })
+    }
+  }
+
+  const dynamic: { key: RouteKey; slug: string }[] = [
+    ...comparisons.map((c) => ({ key: 'comparisons' as RouteKey, slug: c.slug })),
+    ...useCases.map((u) => ({ key: 'useCases' as RouteKey, slug: u.slug })),
+  ]
+  for (const { key, slug } of dynamic) {
+    for (const locale of locales) {
+      entries.push({
+        url: `${site.url}${href(locale, key, slug)}`,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+        alternates: alt(key, slug),
       })
     }
   }

@@ -65,6 +65,8 @@ export const routes = {
   remote: 'remote',
   work: 'realisations',
   method: 'methode',
+  comparisons: 'comparatifs',
+  useCases: 'cas-d-usage',
   about: 'a-propos',
   contact: 'contact',
   legal: 'mentions-legales',

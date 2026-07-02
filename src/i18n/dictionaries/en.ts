@@ -429,8 +429,26 @@ export const en: Dictionary = {
     ],
   },
 
+  geo: {
+    comparisonsMetaTitle: 'Comparisons',
+    comparisonsMetaDescription: 'Khufu compared to the alternatives: V1 vs MVP, agency vs freelancer, agency vs no-code, Khufu vs a classic agency.',
+    comparisonsTitle: 'Khufu, compared.',
+    comparisonsSubtitle: 'The right questions before launching your product — and why Khufu positions itself the way it does.',
+    useCasesMetaTitle: 'Use cases',
+    useCasesMetaDescription: 'How Khufu helps depending on your situation: SaaS, mobile app, founder, startup or enterprise.',
+    useCasesTitle: 'Who for, what for.',
+    useCasesSubtitle: 'Whatever your situation, Khufu ships your product in one week.',
+    problemLabel: 'The problem',
+    approachLabel: 'Our approach',
+    outcomesLabel: 'What you get',
+    aspectLabel: 'Aspect',
+    seeAllComparisons: 'All comparisons',
+    seeAllUseCases: 'All use cases',
+  },
+
   footer: {
     tagline: `AI-native product agency. Your V1 in ${site.v1Days} days.`,
+    resources: 'Resources',
     columns: {
       offers: 'Offers',
       company: 'Agency',

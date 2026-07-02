@@ -44,6 +44,8 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
 
         <FooterCol title={f.columns.company}>
           <FooterLink href={href(locale, 'work')}>{nav.work}</FooterLink>
+          <FooterLink href={href(locale, 'comparisons')}>{dict.geo.comparisonsMetaTitle}</FooterLink>
+          <FooterLink href={href(locale, 'useCases')}>{dict.geo.useCasesMetaTitle}</FooterLink>
           <FooterLink href={href(locale, 'about')}>{nav.about}</FooterLink>
           <FooterLink href={href(locale, 'contact')}>{nav.contact}</FooterLink>
         </FooterCol>
