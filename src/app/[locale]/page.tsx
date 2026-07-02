@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import { isLocale, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/getDictionary'
@@ -11,7 +12,7 @@ import { SectionHeading } from '@/components/ui/sectionHeading'
 import { OfferCards } from '@/components/sections/offerCards'
 import { ProjectCard } from '@/components/sections/projectCard'
 import { FaqAccordion } from '@/components/sections/faqAccordion'
-import { FaqJsonLd } from '@/components/seo/jsonLd'
+import { FaqJsonLd, ReviewsJsonLd } from '@/components/seo/jsonLd'
 
 export async function generateMetadata({
   params,
@@ -41,6 +42,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <FaqJsonLd items={dict.faq.items.map((i) => ({ q: i.q, a: i.a }))} />
+      <ReviewsJsonLd reviews={testimonials.map((t) => ({ quote: t.quote, author: t.author, role: t.role }))} />
 
       {/* Hero */}
       <section className="relative overflow-hidden">
@@ -196,6 +198,31 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div className="mt-10">
             <FaqAccordion items={dict.faq.items} />
           </div>
+        </Container>
+      </section>
+
+      {/* Resources — internal links to comparison / use-case content (GEO) */}
+      <section className="bg-[var(--color-paper-2)]">
+        <Container className="grid gap-5 py-16 sm:py-20 sm:grid-cols-2">
+          {[
+            { href: href(locale, 'comparisons'), title: dict.geo.comparisonsTitle, sub: dict.geo.comparisonsSubtitle },
+            { href: href(locale, 'useCases'), title: dict.geo.useCasesTitle, sub: dict.geo.useCasesSubtitle },
+          ].map((r) => (
+            <Link
+              key={r.href}
+              href={r.href}
+              className="group flex flex-col rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-8 transition-colors hover:border-[var(--color-ink)]"
+            >
+              <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold tracking-[-0.01em]">{r.title}</h3>
+              <p className="mt-2 flex-1 text-[var(--color-ink-2)] text-pretty">{r.sub}</p>
+              <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-[var(--color-accent-ink)]">
+                {dict.common.learnMore}
+                <span className="transition-transform group-hover:translate-x-0.5" aria-hidden>
+                  →
+                </span>
+              </span>
+            </Link>
+          ))}
         </Container>
       </section>
 

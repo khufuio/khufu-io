@@ -104,6 +104,22 @@ export function FaqJsonLd({ items }: { items: { q: string; a: string }[] }) {
   return <JsonLd data={data} />
 }
 
+/** Real client reviews → Review nodes referencing the organization (no self-serving AggregateRating). */
+export function ReviewsJsonLd({ reviews }: { reviews: { quote: string; author: string; role?: string }[] }) {
+  if (reviews.length === 0) return null
+  const data = {
+    '@context': 'https://schema.org',
+    '@graph': reviews.map((r) => ({
+      '@type': 'Review',
+      itemReviewed: { '@type': 'Organization', name: site.name, '@id': `${site.url}/#organization` },
+      author: { '@type': 'Person', name: r.role ? `${r.author} — ${r.role}` : r.author },
+      reviewRating: { '@type': 'Rating', ratingValue: 5, bestRating: 5, worstRating: 1 },
+      reviewBody: r.quote,
+    })),
+  }
+  return <JsonLd data={data} />
+}
+
 export function BreadcrumbJsonLd({ items }: { items: { name: string; url: string }[] }) {
   const data = {
     '@context': 'https://schema.org',

@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import posthog from 'posthog-js'
 import { site } from '@/content/site'
 import type { Dictionary } from '@/i18n/getDictionary'
 import { cn } from '@/lib/cn'
@@ -63,6 +64,7 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
         body: JSON.stringify({ ...fields, budget }),
       })
       if (res.ok) {
+        if (posthog.__loaded) posthog.capture('contact_form_submitted', { budget })
         setStatus('success')
         return
       }
