@@ -35,7 +35,7 @@ export const projects: Project[] = [
     internal: true,
     url: 'https://onestore.link',
     year: 2025,
-    image: '/images/projects/onestore-link.png',
+    image: '/images/projects/onestore-link.webp',
     logo: '/images/products/onestore-link.svg',
     type: { fr: 'SaaS web', en: 'Web SaaS', es: 'SaaS web' },
     tagline: {
@@ -103,7 +103,7 @@ export const projects: Project[] = [
     internal: false,
     url: 'https://www.peachfarmer.com',
     year: 2024,
-    image: '/images/projects/peach-farmer.png',
+    image: '/images/projects/peach-farmer.webp',
     logo: '/images/products/peach-farmer.png',
     type: { fr: 'App mobile · Jeu', en: 'Mobile app · Game', es: 'App móvil · Juego' },
     tagline: {
@@ -129,8 +129,8 @@ export const projects: Project[] = [
     internal: true,
     url: 'https://onestore.link/labyrinth',
     year: 2025,
-    image: '/images/projects/labyrinth.png',
-    logo: '/images/products/labyrinth.png',
+    image: '/images/projects/labyrinth.webp',
+    logo: '/images/products/labyrinth.webp',
     type: { fr: 'App mobile · Jeu', en: 'Mobile app · Game', es: 'App móvil · Juego' },
     tagline: {
       fr: 'Pirate Treasure — le labyrinthe où chaque chemin cache un trésor.',
@@ -171,7 +171,7 @@ export const projects: Project[] = [
     name: 'Flatchr',
     internal: false,
     url: 'https://www.flatchr.io',
-    image: '/images/projects/flatchr.png',
+    image: '/images/projects/flatchr.webp',
     type: { fr: 'Client · App mobile', en: 'Client · Mobile app', es: 'Cliente · App móvil' },
     tagline: {
       fr: 'Refonte et évolution de l’app mobile Flatchr.',
@@ -190,7 +190,7 @@ export const projects: Project[] = [
     name: 'Mojo',
     internal: false,
     url: 'https://www.mojo.video',
-    image: '/images/projects/mojo.png',
+    image: '/images/projects/mojo.webp',
     type: { fr: 'Client · Plateforme web', en: 'Client · Web platform', es: 'Cliente · Plataforma web' },
     tagline: {
       fr: 'La plateforme web de collaboration créative en équipe.',
