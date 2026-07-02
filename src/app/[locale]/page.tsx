@@ -32,6 +32,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const h = dict.home
   const clients = approvedClients()
 
+  // Featured on the home: a mix of SaaS + mobile.
+  const featuredProjects = ['peach-farmer', 'onestore-link', 'clokizi']
+    .map((slug) => projects.find((p) => p.slug === slug))
+    .filter((p): p is (typeof projects)[number] => Boolean(p))
+
   return (
     <>
       <FaqJsonLd items={dict.faq.items.map((i) => ({ q: i.q, a: i.a }))} />
@@ -119,7 +124,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <Container className="py-20 sm:py-28">
           <SectionHeading kicker={dict.nav.work} title={h.workTitle} subtitle={h.workSubtitle} />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.slice(0, 3).map((p) => (
+            {featuredProjects.map((p) => (
               <ProjectCard key={p.slug} project={p} locale={locale} dict={dict} />
             ))}
           </div>
@@ -146,7 +151,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     key={c.slug}
                     src={c.logo}
                     alt={c.name}
-                    className="h-9 w-auto opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0"
+                    style={{ height: 36 * (c.logoScale ?? 1) }}
+                    className="w-auto opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0"
                   />
                 ) : (
                   <span
