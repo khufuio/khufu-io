@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ *
+ * Khufu design system — light editorial
+ * Off-white paper, near-black ink, one vivid electric-indigo accent.
+ * ------------------------------------------------------------------ */
+@theme {
+  /* Fonts (wired to next/font CSS variables in the root layout) */
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Palette */
+  --color-paper: #fbfbf9;
+  --color-paper-2: #f4f4f0;
+  --color-ink: #0e0e10;
+  --color-ink-2: #3a3a40;
+  --color-muted: #6b6b73;
+  --color-line: #e6e6e0;
+  --color-accent: #4c30ff;
+  --color-accent-ink: #3a1fe0;
+  --color-accent-soft: #edeaff;
+
+  /* Radii */
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  /* Editorial type scale */
+  --text-display: clamp(2.75rem, 6vw, 5.5rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.03em;
+  --text-h2: clamp(1.9rem, 3.6vw, 3rem);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.02em;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* Must live in @layer base so Tailwind text-* utilities (unlayered by default)
+   still override link colors — otherwise every <a> ignores its text color. */
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* Focus visibility for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

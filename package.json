@@ -1,29 +1,32 @@
 {
   "name": "khufu-io",
   "private": true,
-  "description": "Khufu.io website",
-  "version": "1.0.0",
+  "version": "2.0.0",
+  "description": "Khufu.io — agence produit AI-native. Votre V1 en 1 semaine.",
   "author": "Khufu <hello@khufu.io>",
-  "dependencies": {
-    "gatsby": "^5.13.0",
-    "gatsby-adapter-netlify": "^1.4.0",
-    "gatsby-plugin-image": "^3.13.0",
-    "gatsby-plugin-manifest": "^5.13.0",
-    "gatsby-plugin-sharp": "^5.13.0",
-    "gatsby-source-filesystem": "^5.13.0",
-    "gatsby-transformer-sharp": "^5.13.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "keywords": [
-    "gatsby"
-  ],
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "posthog-js": "^1.200.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "resend": "^6.16.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.6.0"
   },
   "engines": {
     "node": ">=22.0.0"
