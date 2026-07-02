@@ -62,10 +62,12 @@ export async function POST(req: NextRequest) {
       text,
     })
     if (error) {
-      return NextResponse.json({ ok: false, reason: 'send_failed' }, { status: 502 })
+      console.error('[contact] Resend error:', error)
+      return NextResponse.json({ ok: false, reason: 'send_failed', detail: error.message ?? String(error) }, { status: 502 })
     }
     return NextResponse.json({ ok: true })
-  } catch {
-    return NextResponse.json({ ok: false, reason: 'send_failed' }, { status: 502 })
+  } catch (e) {
+    console.error('[contact] send threw:', e)
+    return NextResponse.json({ ok: false, reason: 'send_failed', detail: e instanceof Error ? e.message : String(e) }, { status: 502 })
   }
 }

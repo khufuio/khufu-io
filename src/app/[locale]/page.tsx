@@ -181,7 +181,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   <figcaption className="mt-6">
                     <div className="font-medium text-[var(--color-ink)]">{t.author}</div>
                     {t.role && <div className="text-sm text-[var(--color-muted)]">{t.role}</div>}
-                    {t.source && <div className="mt-1 text-xs text-[var(--color-muted)]">via {t.source}</div>}
                   </figcaption>
                 </figure>
               ))}

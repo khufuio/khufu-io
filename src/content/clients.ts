@@ -20,7 +20,7 @@ export const clients: Client[] = [
   { slug: 'flatchr', name: 'Flatchr', approved: true, logo: '/images/clients/flatchr.webp' },
   { slug: 'mojo', name: 'Mojo', approved: true, logo: '/images/clients/mojo.png', logoScale: 2 },
   { slug: 'tim-management', name: 'Tim Management', approved: true, logo: '/images/clients/tim-management.webp' },
-  { slug: 'pandore', name: 'Pandore', approved: true, logo: '/images/clients/pandore.png', logoScale: 3 },
+  { slug: 'pandore', name: 'Pandore', approved: true, logo: '/images/clients/pandore.png', logoScale: 4.5 },
 ]
 
 export const approvedClients = () => clients.filter((c) => c.approved)
