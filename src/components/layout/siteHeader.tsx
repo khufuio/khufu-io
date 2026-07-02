@@ -17,7 +17,6 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
 
   const links = [
     { label: nav.offers, href: href(locale, 'offers') },
-    { label: nav.maintenance, href: href(locale, 'maintenance') },
     { label: nav.work, href: href(locale, 'work') },
     { label: nav.method, href: href(locale, 'method') },
     { label: nav.about, href: href(locale, 'about') },
