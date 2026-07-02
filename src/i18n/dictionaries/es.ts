@@ -53,7 +53,7 @@ export const es: Dictionary = {
       { value: '100 %', label: 'código entregado, alojado, tuyo' },
     ],
 
-    problemTitle: 'Una agencia clásica tarda 3 meses. Tú no tienes 3 meses.',
+    problemTitle: '¿Una agencia clásica tarda 3 meses? Tú no tienes 3 meses.',
     problemBody:
       'Los ciclos interminables, los presupuestos vagos y las idas y venidas matan los proyectos antes de lanzarlos. Khufu hace lo contrario: alcance ajustado, decisiones rápidas y una V1 realmente lanzable al final de la semana.',
 

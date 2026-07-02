@@ -213,6 +213,96 @@ export const comparisons: Comparison[] = [
     },
     cta: 'sprint',
   },
+  {
+    slug: 'khufu-vs-upwork-fiverr',
+    metaTitle: { fr: 'Khufu vs Upwork / Fiverr', en: 'Khufu vs Upwork / Fiverr', es: 'Khufu vs Upwork / Fiverr' },
+    metaDescription: {
+      fr: 'Marketplace de freelances (Upwork, Fiverr) ou agence produit ? Qualité, coordination et résultat : pourquoi Khufu est un choix différent.',
+      en: 'Freelance marketplace (Upwork, Fiverr) or product agency? Quality, coordination and outcome: why Khufu is a different choice.',
+      es: '¿Marketplace de freelancers (Upwork, Fiverr) o agencia de producto? Calidad, coordinación y resultado: por qué Khufu es una opción distinta.',
+    },
+    title: { fr: 'Khufu vs Upwork / Fiverr', en: 'Khufu vs Upwork / Fiverr', es: 'Khufu vs Upwork / Fiverr' },
+    intro: {
+      fr: 'Les marketplaces comme Upwork ou Fiverr donnent accès à beaucoup de freelances, mais la qualité est variable et c’est à vous d’orchestrer, tester et assembler le tout. Khufu vous livre un produit fini, sans avoir à jouer le chef de projet.',
+      en: 'Marketplaces like Upwork or Fiverr give access to many freelancers, but quality varies and it’s on you to orchestrate, test and assemble everything. Khufu delivers a finished product, without you playing project manager.',
+      es: 'Los marketplaces como Upwork o Fiverr dan acceso a muchos freelancers, pero la calidad es variable y te toca orquestar, probar y ensamblar todo. Khufu te entrega un producto terminado, sin que hagas de jefe de proyecto.',
+    },
+    khufuLabel: { fr: 'Khufu', en: 'Khufu', es: 'Khufu' },
+    otherLabel: { fr: 'Upwork / Fiverr', en: 'Upwork / Fiverr', es: 'Upwork / Fiverr' },
+    rows: [
+      {
+        aspect: { fr: 'Qualité', en: 'Quality', es: 'Calidad' },
+        khufu: { fr: 'Constante, une seule équipe', en: 'Consistent, one team', es: 'Constante, un solo equipo' },
+        other: { fr: 'Très variable', en: 'Highly variable', es: 'Muy variable' },
+      },
+      {
+        aspect: { fr: 'Coordination', en: 'Coordination', es: 'Coordinación' },
+        khufu: { fr: 'Prise en charge de A à Z', en: 'Handled end to end', es: 'Gestionada de la A a la Z' },
+        other: { fr: 'À votre charge', en: 'On you', es: 'A tu cargo' },
+      },
+      {
+        aspect: { fr: 'Livrable', en: 'Deliverable', es: 'Entregable' },
+        khufu: { fr: 'Produit fini, en production', en: 'Finished product, in production', es: 'Producto terminado, en producción' },
+        other: { fr: 'Des briques à assembler', en: 'Pieces to assemble', es: 'Piezas por ensamblar' },
+      },
+      {
+        aspect: { fr: 'Prix', en: 'Price', es: 'Precio' },
+        khufu: { fr: 'Forfait clair, 15 000 €', en: 'Clear flat fee, €15,000', es: 'Precio cerrado, 15 000 €' },
+        other: { fr: 'Faible à l’heure, coût total flou', en: 'Cheap hourly, murky total', es: 'Barato por hora, total confuso' },
+      },
+    ],
+    conclusion: {
+      fr: 'Une marketplace pour des tâches ponctuelles, Khufu pour livrer un vrai produit sans en gérer la complexité.',
+      en: 'A marketplace for one-off tasks, Khufu to ship a real product without managing the complexity.',
+      es: 'Un marketplace para tareas puntuales, Khufu para lanzar un producto real sin gestionar la complejidad.',
+    },
+    cta: 'sprint',
+  },
+  {
+    slug: 'equipe-interne-vs-agence',
+    metaTitle: { fr: 'Équipe interne vs agence : lancer un produit', en: 'In-house team vs agency to launch a product', es: 'Equipo interno vs agencia para lanzar un producto' },
+    metaDescription: {
+      fr: 'Monter une équipe tech en interne ou passer par une agence ? Coût, délai et risque : pourquoi Khufu est plus rapide pour lancer une première version.',
+      en: 'Build an in-house tech team or use an agency? Cost, time and risk: why Khufu is faster to launch a first version.',
+      es: '¿Montar un equipo técnico interno o usar una agencia? Coste, plazo y riesgo: por qué Khufu es más rápido para lanzar una primera versión.',
+    },
+    title: { fr: 'Équipe interne vs agence', en: 'In-house team vs agency', es: 'Equipo interno vs agencia' },
+    intro: {
+      fr: 'Monter une équipe tech en interne prend des mois de recrutement et engage des salaires avant même la première ligne de code. Pour lancer une V1, Khufu est opérationnel immédiatement, sans embauche ni engagement long.',
+      en: 'Building an in-house tech team takes months of hiring and commits salaries before the first line of code. To launch a V1, Khufu is operational immediately, with no hiring or long commitment.',
+      es: 'Montar un equipo técnico interno lleva meses de contratación y compromete salarios antes de la primera línea de código. Para lanzar una V1, Khufu está operativo de inmediato, sin contrataciones ni compromisos largos.',
+    },
+    khufuLabel: { fr: 'Khufu', en: 'Khufu', es: 'Khufu' },
+    otherLabel: { fr: 'Équipe interne', en: 'In-house team', es: 'Equipo interno' },
+    rows: [
+      {
+        aspect: { fr: 'Mise en route', en: 'Ramp-up', es: 'Puesta en marcha' },
+        khufu: { fr: 'Immédiate', en: 'Immediate', es: 'Inmediata' },
+        other: { fr: 'Des mois de recrutement', en: 'Months of hiring', es: 'Meses de contratación' },
+      },
+      {
+        aspect: { fr: 'Coût pour une V1', en: 'Cost for a V1', es: 'Coste para una V1' },
+        khufu: { fr: '15 000 € une fois', en: '€15,000 one-off', es: '15 000 € una vez' },
+        other: { fr: 'Plusieurs salaires/mois', en: 'Several salaries/month', es: 'Varios salarios/mes' },
+      },
+      {
+        aspect: { fr: 'Risque', en: 'Risk', es: 'Riesgo' },
+        khufu: { fr: 'Périmètre et prix fixés', en: 'Fixed scope and price', es: 'Alcance y precio fijos' },
+        other: { fr: 'Mauvais recrutement coûteux', en: 'Costly bad hire', es: 'Mala contratación costosa' },
+      },
+      {
+        aspect: { fr: 'Après la V1', en: 'After the V1', es: 'Después de la V1' },
+        khufu: { fr: 'Maintenance ou passage de relais', en: 'Maintenance or handover', es: 'Mantenimiento o traspaso' },
+        other: { fr: 'Équipe à occuper en continu', en: 'Team to keep busy', es: 'Equipo que mantener ocupado' },
+      },
+    ],
+    conclusion: {
+      fr: 'Pour lancer, Khufu évite les mois de recrutement et le risque salarial — vous internalisez plus tard, si besoin.',
+      en: 'To launch, Khufu avoids months of hiring and salary risk — you internalize later, if needed.',
+      es: 'Para lanzar, Khufu evita meses de contratación y el riesgo salarial — internalizas más tarde, si hace falta.',
+    },
+    cta: 'sprint',
+  },
 ]
 
 // ── Use cases (/cas-d-usage/[slug]) ──────────────────────────────────────────
@@ -374,6 +464,70 @@ export const useCases: UseCase[] = [
       { fr: 'Un prototype ou produit en production en 7 jours', en: 'A prototype or product in production in 7 days', es: 'Un prototipo o producto en producción en 7 días' },
       { fr: 'Une idée validée sans mobiliser l’IT', en: 'An idea validated without tying up IT', es: 'Una idea validada sin movilizar a TI' },
       { fr: 'Un passage de relais propre', en: 'A clean handover', es: 'Un traspaso limpio' },
+    ],
+    cta: 'sprint',
+  },
+  {
+    slug: 'combien-coute-un-saas',
+    metaTitle: { fr: 'Combien coûte un SaaS en 2026 ?', en: 'How much does a SaaS cost in 2026?', es: '¿Cuánto cuesta un SaaS en 2026?' },
+    metaDescription: {
+      fr: 'Combien coûte le développement d’un SaaS ? Les fourchettes du marché (freelance, agence, no-code) et l’offre à prix fixe de Khufu : 15 000 € pour une V1 en 7 jours.',
+      en: 'How much does building a SaaS cost? Market ranges (freelance, agency, no-code) and Khufu’s fixed price: €15,000 for a V1 in 7 days.',
+      es: '¿Cuánto cuesta desarrollar un SaaS? Rangos de mercado (freelance, agencia, no-code) y el precio fijo de Khufu: 15 000 € por una V1 en 7 días.',
+    },
+    persona: { fr: 'Coûts & budget', en: 'Costs & budget', es: 'Costes y presupuesto' },
+    title: { fr: 'Combien coûte un SaaS ?', en: 'How much does a SaaS cost?', es: '¿Cuánto cuesta un SaaS?' },
+    intro: {
+      fr: 'Le coût d’un SaaS varie énormément : de quelques milliers d’euros en no-code à 40 000 € et plus en agence classique, sans compter les délais. Khufu propose un repère simple : une V1 de SaaS en production en 7 jours, pour un prix fixe de 15 000 €.',
+      en: 'The cost of a SaaS varies wildly: from a few thousand euros in no-code to €40,000+ with a classic agency, timelines aside. Khufu offers a simple benchmark: a production SaaS V1 in 7 days, for a fixed €15,000.',
+      es: 'El coste de un SaaS varía muchísimo: desde unos pocos miles de euros en no-code hasta 40 000 € o más con una agencia clásica, sin contar los plazos. Khufu ofrece una referencia simple: una V1 de SaaS en producción en 7 días, por un precio fijo de 15 000 €.',
+    },
+    problems: [
+      { fr: 'Des devis d’agence flous et élevés (40k+)', en: 'Vague, high agency quotes (€40k+)', es: 'Presupuestos de agencia vagos y altos (40k+)' },
+      { fr: 'Le no-code semble pas cher mais plafonne', en: 'No-code looks cheap but caps out', es: 'El no-code parece barato pero se estanca' },
+      { fr: 'Difficile d’anticiper le budget total', en: 'Hard to anticipate the total budget', es: 'Difícil anticipar el presupuesto total' },
+    ],
+    approach: {
+      fr: 'Un prix fixe, connu à l’avance : 15 000 € pour concevoir, développer et mettre en production votre SaaS en 7 jours. Pas de dépassement, pas de surprise.',
+      en: 'A fixed price, known upfront: €15,000 to design, build and ship your SaaS in 7 days. No overruns, no surprises.',
+      es: 'Un precio fijo, conocido de antemano: 15 000 € para diseñar, desarrollar y poner en producción tu SaaS en 7 días. Sin sobrecostes, sin sorpresas.',
+    },
+    outcomes: [
+      { fr: 'Un budget clair : 15 000 €', en: 'A clear budget: €15,000', es: 'Un presupuesto claro: 15 000 €' },
+      { fr: 'Un SaaS en production en 7 jours', en: 'A production SaaS in 7 days', es: 'Un SaaS en producción en 7 días' },
+      { fr: 'Code à vous, prêt à scaler', en: 'Code yours, ready to scale', es: 'Código tuyo, listo para escalar' },
+    ],
+    cta: 'sprint',
+  },
+  {
+    slug: 'combien-coute-une-app-mobile',
+    metaTitle: { fr: 'Combien coûte une app mobile ?', en: 'How much does a mobile app cost?', es: '¿Cuánto cuesta una app móvil?' },
+    metaDescription: {
+      fr: 'Combien coûte le développement d’une app mobile iOS et Android ? Les fourchettes du marché et l’offre de Khufu : 15 000 € pour une app prête pour les stores en 7 jours.',
+      en: 'How much does building an iOS and Android mobile app cost? Market ranges and Khufu’s offer: €15,000 for a store-ready app in 7 days.',
+      es: '¿Cuánto cuesta desarrollar una app móvil iOS y Android? Rangos de mercado y la oferta de Khufu: 15 000 € por una app lista para las stores en 7 días.',
+    },
+    persona: { fr: 'Coûts & budget', en: 'Costs & budget', es: 'Costes y presupuesto' },
+    title: { fr: 'Combien coûte une app mobile ?', en: 'How much does a mobile app cost?', es: '¿Cuánto cuesta una app móvil?' },
+    intro: {
+      fr: 'Développer une app iOS et Android coûte souvent cher, surtout avec deux équipes ou deux bases de code. Khufu utilise une seule base React Native / Expo et livre une app prête pour les stores en 7 jours, pour un prix fixe de 15 000 €.',
+      en: 'Building an iOS and Android app is often expensive, especially with two teams or two codebases. Khufu uses a single React Native / Expo codebase and delivers a store-ready app in 7 days, for a fixed €15,000.',
+      es: 'Desarrollar una app iOS y Android suele ser caro, sobre todo con dos equipos o dos bases de código. Khufu usa una sola base React Native / Expo y entrega una app lista para las stores en 7 días, por un precio fijo de 15 000 €.',
+    },
+    problems: [
+      { fr: 'Deux plateformes = coûts qui doublent', en: 'Two platforms = doubling costs', es: 'Dos plataformas = costes que se duplican' },
+      { fr: 'Devis élevés et délais de plusieurs mois', en: 'High quotes and multi-month timelines', es: 'Presupuestos altos y plazos de varios meses' },
+      { fr: 'Budget difficile à cadrer', en: 'Budget hard to pin down', es: 'Presupuesto difícil de acotar' },
+    ],
+    approach: {
+      fr: 'Une seule base de code pour iOS et Android, un prix fixe de 15 000 €, et une app prête à publier sur l’App Store et Google Play en 7 jours (hors délai de validation des stores).',
+      en: 'A single codebase for iOS and Android, a fixed €15,000, and an app ready to publish on the App Store and Google Play in 7 days (excluding store review time).',
+      es: 'Una sola base de código para iOS y Android, un precio fijo de 15 000 €, y una app lista para publicar en la App Store y Google Play en 7 días (sin contar la revisión de las stores).',
+    },
+    outcomes: [
+      { fr: 'Un budget clair : 15 000 €', en: 'A clear budget: €15,000', es: 'Un presupuesto claro: 15 000 €' },
+      { fr: 'iOS + Android en une seule base', en: 'iOS + Android in one codebase', es: 'iOS + Android en una sola base' },
+      { fr: 'Prête pour les stores en 7 jours', en: 'Store-ready in 7 days', es: 'Lista para las stores en 7 días' },
     ],
     cta: 'sprint',
   },

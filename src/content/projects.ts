@@ -75,6 +75,11 @@ export const projects: Project[] = [
       es: 'Clokizi es la plataforma todo-en-uno de gestión de intervenciones de campo: planificar intervenciones (calendario, Gantt, lista), asignar agentes y seguirlo todo en tiempo real — desde la oficina o el terreno. App móvil con fichaje GPS. Diseñada y desarrollada por Khufu.',
     },
     stack: ['Next.js', 'NestJS', 'Prisma', 'PostgreSQL', 'React Native'],
+    results: [
+      { fr: 'Planning calendrier & Gantt', en: 'Calendar & Gantt scheduling', es: 'Planificación calendario y Gantt' },
+      { fr: 'Pointage GPS sur le terrain', en: 'GPS check-in in the field', es: 'Fichaje GPS en el terreno' },
+      { fr: 'Suivi en temps réel', en: 'Real-time tracking', es: 'Seguimiento en tiempo real' },
+    ],
   },
   {
     slug: 'herbacrm',
@@ -96,6 +101,11 @@ export const projects: Project[] = [
       es: 'HerbaCRM es la plataforma todo-en-uno para coaches de bienestar, nutrición y fitness: seguimiento de clientes y participantes, gestión de mediciones y pedidos, y generación de ingresos recurrentes. Diseñado y desarrollado por Khufu.',
     },
     stack: ['Next.js', 'NestJS', 'Prisma', 'PostgreSQL', 'Stripe'],
+    results: [
+      { fr: 'Suivi clients & mesures', en: 'Client & measurement tracking', es: 'Seguimiento de clientes y mediciones' },
+      { fr: 'Gestion des commandes', en: 'Order management', es: 'Gestión de pedidos' },
+      { fr: 'Revenus récurrents intégrés', en: 'Built-in recurring revenue', es: 'Ingresos recurrentes integrados' },
+    ],
   },
   {
     slug: 'peach-farmer',

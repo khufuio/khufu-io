@@ -6,6 +6,7 @@ import { buildMetadata } from '@/lib/metadata'
 import { Container } from '@/components/ui/container'
 import { PageHeader } from '@/components/ui/pageHeader'
 import { CtaBanner } from '@/components/sections/ctaBanner'
+import { HowToJsonLd } from '@/components/seo/jsonLd'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -27,6 +28,11 @@ export default async function MethodPage({ params }: { params: Promise<{ locale:
 
   return (
     <>
+      <HowToJsonLd
+        name={m.metaTitle}
+        description={m.subtitle}
+        steps={m.days.map((d) => ({ name: `${d.day} — ${d.title}`, text: d.body }))}
+      />
       <PageHeader kicker={m.kicker} title={m.title} subtitle={m.subtitle} />
 
       {/* Timeline J1 → J7 */}

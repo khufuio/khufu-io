@@ -57,7 +57,7 @@ export const fr = {
       { value: '100 %', label: 'code livré, hébergé, à vous' },
     ],
 
-    problemTitle: 'Une agence classique met 3 mois. Vous n’avez pas 3 mois.',
+    problemTitle: 'Une agence classique met 3 mois ? Vous n’avez pas 3 mois.',
     problemBody:
       'Les cycles interminables, les devis flous et les allers-retours tuent les projets avant leur lancement. Khufu fait l’inverse : périmètre serré, décisions rapides, et une V1 réellement lançable en fin de semaine.',
 

@@ -53,7 +53,7 @@ export const en: Dictionary = {
       { value: '100%', label: 'code shipped, hosted, yours' },
     ],
 
-    problemTitle: 'A classic agency takes 3 months. You don’t have 3 months.',
+    problemTitle: 'A classic agency takes 3 months? You don’t have 3 months.',
     problemBody:
       'Endless cycles, vague quotes and back-and-forth kill projects before they launch. Khufu does the opposite: tight scope, fast decisions, and a genuinely launchable V1 by the end of the week.',
 

@@ -91,6 +91,26 @@ export function OrganizationJsonLd({ locale }: { locale: Locale }) {
   return <JsonLd data={data} />
 }
 
+export function HowToJsonLd({
+  name,
+  description,
+  steps,
+}: {
+  name: string
+  description: string
+  steps: { name: string; text: string }[]
+}) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name,
+    description,
+    totalTime: 'P7D',
+    step: steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.name, text: s.text })),
+  }
+  return <JsonLd data={data} />
+}
+
 export function FaqJsonLd({ items }: { items: { q: string; a: string }[] }) {
   const data = {
     '@context': 'https://schema.org',
