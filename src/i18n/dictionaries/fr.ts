@@ -313,6 +313,11 @@ export const fr = {
       'Notre secret n’est pas un secret : une stack unique et rodée, un usage intensif de l’IA à chaque étape, et un founder-operator qui a lui-même lancé plusieurs produits (OneStore.link, Clokizi, HerbaCRM, Labyrinth).',
       'On traite votre produit comme le nôtre : orienté résultat, périmètre net, et une obsession pour le time-to-market. Votre V1 en une semaine, ce n’est pas un slogan — c’est notre méthode.',
     ],
+    founderRole: 'Founder & développeur produit',
+    founderBio:
+      'Adrien a lancé et développé plusieurs produits en solo — SaaS, apps mobiles, jeux. C’est cette expérience de founder-operator qui nourrit la méthode de Khufu : construire vite, propre, et orienté résultat.',
+    detailLabels: { founder: 'Fondateur', basedIn: 'Basé à', contact: 'Contact' },
+    followTitle: 'Suivre Adrien',
     ctaButton: 'Travailler avec Khufu',
   },
 

@@ -28,8 +28,16 @@ export function OrganizationJsonLd({ locale }: { locale: Locale }) {
         legalName: site.legalName,
         url: site.url,
         email: site.email,
+        logo: `${site.url}/brand/khufu-k-white-on-indigo.png`,
+        image: `${site.url}/brand/khufu-k-white-on-indigo.png`,
         description: entityDefinition[locale],
-        founder: { '@type': 'Person', name: site.founder },
+        founder: {
+          '@type': 'Person',
+          name: site.founder,
+          jobTitle: 'Founder',
+          image: `${site.url}${site.founderPhoto}`,
+          sameAs: [site.social.linkedin, site.social.x, site.social.instagram, site.social.tiktok],
+        },
         address: {
           '@type': 'PostalAddress',
           streetAddress: 'A2, IFZA Business Park, Dubai Silicon Oasis',
@@ -47,7 +55,6 @@ export function OrganizationJsonLd({ locale }: { locale: Locale }) {
           'React Native',
           'NestJS',
         ],
-        sameAs: [site.social.linkedin, site.social.x, site.social.github],
         makesOffer: [
           {
             '@type': 'Offer',

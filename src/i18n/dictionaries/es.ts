@@ -294,6 +294,11 @@ export const es: Dictionary = {
       'Nuestro secreto no es un secreto: un único stack probado, un uso intensivo de la IA en cada etapa y un founder-operator que ha lanzado varios productos (OneStore.link, Clokizi, HerbaCRM, Labyrinth).',
       'Tratamos tu producto como el nuestro: orientado a resultados, alcance ajustado y una obsesión por el time-to-market. Tu V1 en una semana no es un eslogan — es nuestro método.',
     ],
+    founderRole: 'Founder y desarrollador de producto',
+    founderBio:
+      'Adrien ha lanzado y desarrollado varios productos en solitario — SaaS, apps móviles, juegos. Esa experiencia de founder-operator es la que da forma al método de Khufu: construir rápido, limpio y orientado a resultados.',
+    detailLabels: { founder: 'Fundador', basedIn: 'Con base en', contact: 'Contacto' },
+    followTitle: 'Seguir a Adrien',
     ctaButton: 'Trabaja con Khufu',
   },
 

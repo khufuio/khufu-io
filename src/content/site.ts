@@ -12,6 +12,7 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://khufu.io',
   email: 'hello@khufu.io',
   founder: 'Adrien De Coster',
+  founderPhoto: '/images/adrien-de-coster.png',
   // WhatsApp (international format, no "+" for wa.me links)
   whatsapp: '971503651761',
   whatsappDisplay: '+971 50 365 1761',
@@ -31,11 +32,13 @@ export const site = {
   v1Days: 7,
   v1PriceEUR: 15000,
   dailyRateEUR: 1200,
-  // Social / external
+  // Founder's personal profiles (indie-dev brand). Attached to the founder
+  // (Person) in structured data, not to the Organization.
   social: {
-    linkedin: 'https://www.linkedin.com/company/khufu-io',
-    x: 'https://x.com/khufu_io',
-    github: 'https://github.com/khufu-io',
+    linkedin: 'https://www.linkedin.com/in/adriendecoster/',
+    x: 'https://x.com/adriendecoster_',
+    instagram: 'https://www.instagram.com/adrien_de_coster/',
+    tiktok: 'https://www.tiktok.com/@adrien_de_coster',
   },
 } as const
 
