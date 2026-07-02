@@ -85,6 +85,7 @@ export const fr = {
     workCta: 'Toutes les réalisations',
 
     clientsTitle: 'Ils nous font confiance',
+    testimonialsTitle: 'Ce qu’ils en disent',
 
     finalCtaTitle: 'Votre V1, en production vendredi.',
     finalCtaBody: 'Dites-nous ce que vous voulez lancer. On vous répond sous 24 h avec un périmètre et une date.',

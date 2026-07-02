@@ -4,6 +4,7 @@ import { getDictionary } from '@/i18n/getDictionary'
 import { href, site } from '@/content/site'
 import { projects } from '@/content/projects'
 import { approvedClients } from '@/content/clients'
+import { testimonials } from '@/content/testimonials'
 import { Container } from '@/components/ui/container'
 import { ButtonLink } from '@/components/ui/button'
 import { SectionHeading } from '@/components/ui/sectionHeading'
@@ -163,6 +164,27 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   </span>
                 ),
               )}
+            </div>
+          </Container>
+        </section>
+      )}
+
+      {/* Testimonials — hidden until real reviews are added in content/testimonials.ts */}
+      {testimonials.length > 0 && (
+        <section className="bg-[var(--color-paper-2)]">
+          <Container className="py-20 sm:py-28">
+            <SectionHeading title={h.testimonialsTitle} />
+            <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {testimonials.map((t, i) => (
+                <figure key={i} className="flex flex-col rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-7">
+                  <blockquote className="flex-1 text-[var(--color-ink-2)] text-pretty">“{t.quote}”</blockquote>
+                  <figcaption className="mt-6">
+                    <div className="font-medium text-[var(--color-ink)]">{t.author}</div>
+                    {t.role && <div className="text-sm text-[var(--color-muted)]">{t.role}</div>}
+                    {t.source && <div className="mt-1 text-xs text-[var(--color-muted)]">via {t.source}</div>}
+                  </figcaption>
+                </figure>
+              ))}
             </div>
           </Container>
         </section>

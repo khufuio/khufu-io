@@ -81,6 +81,7 @@ export const es: Dictionary = {
     workCta: 'Todos los proyectos',
 
     clientsTitle: 'Confían en nosotros',
+    testimonialsTitle: 'Lo que dicen',
 
     finalCtaTitle: 'Tu V1, en producción el viernes.',
     finalCtaBody: 'Cuéntanos qué quieres lanzar. Respondemos en 24 h con un alcance y una fecha.',
