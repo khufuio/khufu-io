@@ -96,6 +96,9 @@ export const fr = {
     metaDescription: `Sprint V1 en ${site.v1Days} jours à partir de ${eur(site.v1PriceEUR)} €, Full Maintenance mensuelle, et renfort remote à ${eur(site.dailyRateEUR)} €/jour (200 €/h).`,
     title: 'Des offres nettes, des prix affichés.',
     subtitle: 'Pas de devis à rallonge. Vous savez ce que vous payez et ce que vous recevez.',
+    flagshipBadge: 'Notre offre phare',
+    detailCta: 'En savoir plus',
+    sprintCta: 'Découvrir le Sprint V1',
     items: [
       {
         id: 'sprint',
@@ -153,6 +156,35 @@ export const fr = {
       'Une date de livraison, tenue.',
       'Le code source vous appartient, dès le premier jour.',
     ],
+  },
+
+  sprintPage: {
+    metaTitle: 'Sprint V1 — votre produit en 7 jours',
+    metaDescription:
+      'Le Sprint V1 de Khufu : un SaaS ou une app mobile conçu, développé et mis en production en 7 jours, pour un prix fixe de 15 000 €.',
+    kicker: 'Offre phare',
+    title: 'Votre V1 en 7 jours. Prix fixe.',
+    subtitle:
+      'Notre offre principale : on conçoit, développe et met en production votre SaaS ou votre app mobile en une semaine — périmètre défini à l’avance, 15 000 € tout compris.',
+    includesTitle: 'Ce qui est inclus',
+    processTitle: 'Le déroulé, jour par jour',
+    ctaTitle: 'Prêt à lancer votre V1 ?',
+    ctaBody: 'Dites-nous ce que vous voulez lancer. Réponse sous 24 h avec un périmètre et une date.',
+    ctaButton: 'Réserver un sprint',
+  },
+
+  remotePage: {
+    metaTitle: 'Remote — renfort produit à l’heure',
+    metaDescription:
+      'Un renfort senior 100 % remote pour votre produit : développement, architecture et conseil, facturé 200 €/h en granularité horaire.',
+    kicker: 'Remote',
+    title: 'Un renfort senior, 100 % remote.',
+    subtitle:
+      'Besoin de puissance de dev à la demande ? On intervient en remote sur votre produit : développement, architecture, conseil — facturé à l’heure, sans engagement.',
+    includesTitle: 'Ce que ça couvre',
+    ctaTitle: 'Besoin d’un renfort ?',
+    ctaBody: 'Dites-nous où vous en êtes et ce dont vous avez besoin. On revient vers vous sous 24 h.',
+    ctaButton: 'Parler à Khufu',
   },
 
   maintenance: {

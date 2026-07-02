@@ -35,8 +35,10 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
         </div>
 
         <FooterCol title={f.columns.offers}>
-          <FooterLink href={href(locale, 'offers')}>{nav.offers}</FooterLink>
+          <FooterLink href={href(locale, 'sprint')}>Sprint V1</FooterLink>
           <FooterLink href={href(locale, 'maintenance')}>{nav.maintenance}</FooterLink>
+          <FooterLink href={href(locale, 'remote')}>Remote</FooterLink>
+          <FooterLink href={href(locale, 'offers')}>{nav.offers}</FooterLink>
           <FooterLink href={href(locale, 'method')}>{nav.method}</FooterLink>
         </FooterCol>
 

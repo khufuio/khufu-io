@@ -57,7 +57,9 @@ export const entityDefinition: Record<Locale, string> = {
 export const routes = {
   home: '',
   offers: 'offres',
+  sprint: 'sprint-v1',
   maintenance: 'maintenance',
+  remote: 'remote',
   work: 'realisations',
   method: 'methode',
   about: 'a-propos',

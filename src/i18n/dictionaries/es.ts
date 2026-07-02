@@ -92,6 +92,9 @@ export const es: Dictionary = {
     metaDescription: `Sprint V1 en ${site.v1Days} días por ${eur(site.v1PriceEUR)}, Full Maintenance mensual y refuerzo remoto a ${eur(site.dailyRateEUR)}/día (200 €/h).`,
     title: 'Servicios claros, precios a la vista.',
     subtitle: 'Sin presupuestos interminables. Sabes exactamente qué pagas y qué recibes.',
+    flagshipBadge: 'Nuestra oferta estrella',
+    detailCta: 'Saber más',
+    sprintCta: 'Descubrir el Sprint V1',
     items: [
       {
         id: 'sprint',
@@ -149,6 +152,35 @@ export const es: Dictionary = {
       'Una fecha de entrega, cumplida.',
       'El código fuente es tuyo, desde el primer día.',
     ],
+  },
+
+  sprintPage: {
+    metaTitle: 'Sprint V1 — tu producto en 7 días',
+    metaDescription:
+      'El Sprint V1 de Khufu: un SaaS o app móvil diseñado, desarrollado y puesto en producción en 7 días, por un precio fijo de 15 000 €.',
+    kicker: 'Oferta estrella',
+    title: 'Tu V1 en 7 días. Precio fijo.',
+    subtitle:
+      'Nuestra oferta principal: diseñamos, desarrollamos y ponemos en producción tu SaaS o app móvil en una semana — alcance acordado de antemano, 15 000 € todo incluido.',
+    includesTitle: 'Qué incluye',
+    processTitle: 'El desarrollo, día a día',
+    ctaTitle: '¿Listo para lanzar tu V1?',
+    ctaBody: 'Cuéntanos qué quieres lanzar. Respuesta en 24 h con un alcance y una fecha.',
+    ctaButton: 'Reservar un sprint',
+  },
+
+  remotePage: {
+    metaTitle: 'Remote — refuerzo de producto por horas',
+    metaDescription:
+      'Un refuerzo senior 100 % remoto para tu producto: desarrollo, arquitectura y consultoría, facturado a 200 €/h con granularidad horaria.',
+    kicker: 'Remote',
+    title: 'Un refuerzo senior, 100 % remoto.',
+    subtitle:
+      '¿Necesitas potencia de desarrollo bajo demanda? Intervenimos en remoto sobre tu producto: desarrollo, arquitectura, consultoría — facturado por horas, sin permanencia.',
+    includesTitle: 'Qué cubre',
+    ctaTitle: '¿Necesitas un refuerzo?',
+    ctaBody: 'Cuéntanos en qué punto estás y qué necesitas. Te respondemos en 24 h.',
+    ctaButton: 'Habla con Khufu',
   },
 
   maintenance: {

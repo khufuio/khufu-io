@@ -92,6 +92,9 @@ export const en: Dictionary = {
     metaDescription: `Sprint V1 in ${site.v1Days} days for ${eur(site.v1PriceEUR)}, monthly Full Maintenance, and remote support at ${eur(site.dailyRateEUR)}/day (€200/h).`,
     title: 'Clear offers, prices on display.',
     subtitle: 'No endless quotes. You know exactly what you pay and what you get.',
+    flagshipBadge: 'Our flagship offer',
+    detailCta: 'Learn more',
+    sprintCta: 'Explore the V1 Sprint',
     items: [
       {
         id: 'sprint',
@@ -149,6 +152,35 @@ export const en: Dictionary = {
       'A delivery date, met.',
       'The source code is yours, from day one.',
     ],
+  },
+
+  sprintPage: {
+    metaTitle: 'V1 Sprint — your product in 7 days',
+    metaDescription:
+      'Khufu’s V1 Sprint: a SaaS or mobile app designed, built and shipped to production in 7 days, for a fixed price of €15,000.',
+    kicker: 'Flagship offer',
+    title: 'Your V1 in 7 days. Fixed price.',
+    subtitle:
+      'Our main offer: we design, build and ship your SaaS or mobile app in one week — scope agreed upfront, €15,000 all-in.',
+    includesTitle: 'What’s included',
+    processTitle: 'The day-by-day breakdown',
+    ctaTitle: 'Ready to launch your V1?',
+    ctaBody: 'Tell us what you want to launch. Reply within 24h with a scope and a date.',
+    ctaButton: 'Book a sprint',
+  },
+
+  remotePage: {
+    metaTitle: 'Remote — product engineering by the hour',
+    metaDescription:
+      'A senior, 100% remote reinforcement for your product: development, architecture and consulting, billed at €200/h with hourly granularity.',
+    kicker: 'Remote',
+    title: 'A senior reinforcement, 100% remote.',
+    subtitle:
+      'Need dev firepower on demand? We work remotely on your product: development, architecture, consulting — billed by the hour, no lock-in.',
+    includesTitle: 'What it covers',
+    ctaTitle: 'Need a reinforcement?',
+    ctaBody: 'Tell us where you stand and what you need. We’ll get back to you within 24h.',
+    ctaButton: 'Talk to Khufu',
   },
 
   maintenance: {
