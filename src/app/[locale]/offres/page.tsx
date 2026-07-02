@@ -40,25 +40,6 @@ export default async function OffersPage({ params }: { params: Promise<{ locale:
         </Container>
       </section>
 
-      <section className="bg-[var(--color-paper-2)]">
-        <Container className="py-16 sm:py-20">
-          <SectionHeading title={o.guaranteesTitle} />
-          <ul className="mt-8 grid gap-4 sm:grid-cols-3">
-            {o.guarantees.map((g) => (
-              <li
-                key={g}
-                className="rounded-[var(--radius-lg)] border border-[var(--color-line)] bg-white p-6 text-[var(--color-ink-2)]"
-              >
-                <span className="mb-3 block text-[var(--color-accent-ink)]" aria-hidden>
-                  ✓
-                </span>
-                {g}
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </section>
-
       <section>
         <Container className="py-16 sm:py-20">
           <SectionHeading title={dict.faq.title} />
