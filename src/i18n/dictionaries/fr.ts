@@ -107,7 +107,7 @@ export const fr = {
         price: `${eur(site.v1PriceEUR)} €`,
         priceNote: 'forfait',
         pitch: `Votre première version, conçue et livrée en ${site.v1Days} jours.`,
-        featured: false,
+        featured: true,
         features: [
           'Cadrage et design produit',
           'Développement SaaS ou app mobile',
@@ -123,7 +123,7 @@ export const fr = {
         price: 'dès 1 490 €',
         priceNote: '/ mois',
         pitch: 'On garde votre produit vivant : infra, support et jours de dev inclus.',
-        featured: true,
+        featured: false,
         features: [
           'Infra managée : hébergement, monitoring, backups, sécurité',
           'Support avec SLA (temps de réponse garanti)',

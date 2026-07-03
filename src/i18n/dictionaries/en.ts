@@ -103,7 +103,7 @@ export const en: Dictionary = {
         price: `${eur(site.v1PriceEUR)}`,
         priceNote: 'flat fee',
         pitch: `Your first version, designed and shipped in ${site.v1Days} days.`,
-        featured: false,
+        featured: true,
         features: [
           'Product scoping and design',
           'SaaS or mobile app development',
@@ -119,7 +119,7 @@ export const en: Dictionary = {
         price: 'from €1,490',
         priceNote: '/ month',
         pitch: 'We keep your product alive: infra, support and dev days included.',
-        featured: true,
+        featured: false,
         features: [
           'Managed infra: hosting, monitoring, backups, security',
           'Support with an SLA (guaranteed response time)',

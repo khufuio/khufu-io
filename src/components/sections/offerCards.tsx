@@ -25,8 +25,8 @@ export function OfferCards({ locale, dict }: { locale: Locale; dict: Dictionary 
           <div className="flex items-baseline justify-between gap-3">
             <h3 className="font-[family-name:var(--font-display)] text-xl font-bold">{offer.name}</h3>
             {offer.featured && (
-              <span className="rounded-full bg-[var(--color-accent)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
-                MRR
+              <span className="shrink-0 rounded-full bg-[var(--color-accent)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
+                ★ {dict.offers.flagshipBadge}
               </span>
             )}
           </div>
