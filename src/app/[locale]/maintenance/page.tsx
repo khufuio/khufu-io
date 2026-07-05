@@ -9,6 +9,7 @@ import { PageHeader } from '@/components/ui/pageHeader'
 import { SectionHeading } from '@/components/ui/sectionHeading'
 import { ButtonLink } from '@/components/ui/button'
 import { CtaBanner } from '@/components/sections/ctaBanner'
+import { Price, FirmPriceNote } from '@/components/ui/price'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -69,12 +70,14 @@ export default async function MaintenancePage({ params }: { params: Promise<{ lo
                   <h3 className="font-[family-name:var(--font-display)] text-xl font-bold">{tier.name}</h3>
                   {tier.featured && (
                     <span className="rounded-full bg-[var(--color-accent)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
-                      Populaire
+                      {m.popularBadge}
                     </span>
                   )}
                 </div>
                 <div className="mt-4 flex items-baseline gap-1.5">
-                  <span className="font-[family-name:var(--font-display)] text-3xl font-bold">{tier.price}</span>
+                  <span className="font-[family-name:var(--font-display)] text-3xl font-bold">
+                    {tier.priceEur != null ? <Price eur={tier.priceEur} locale={locale} /> : tier.price}
+                  </span>
                   {tier.priceNote && (
                     <span className={cn('text-sm', tier.featured ? 'text-[var(--color-paper-2)]' : 'text-[var(--color-muted)]')}>
                       {tier.priceNote}
@@ -109,6 +112,7 @@ export default async function MaintenancePage({ params }: { params: Promise<{ lo
           </div>
 
           <p className="mt-8 max-w-3xl text-sm text-[var(--color-muted)]">{m.devNote}</p>
+          <FirmPriceNote className="mt-3 max-w-3xl text-xs text-[var(--color-muted)]">{dict.offers.firmPriceNote}</FirmPriceNote>
         </Container>
       </section>
 

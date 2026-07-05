@@ -13,6 +13,7 @@ import { OfferCards } from '@/components/sections/offerCards'
 import { ProjectCard } from '@/components/sections/projectCard'
 import { FaqAccordion } from '@/components/sections/faqAccordion'
 import { FaqJsonLd, ReviewsJsonLd } from '@/components/seo/jsonLd'
+import { Price } from '@/components/ui/price'
 
 export async function generateMetadata({
   params,
@@ -68,7 +69,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {h.heroFigures.map((fig) => (
               <div key={fig.label} className="border-l-2 border-[var(--color-accent)] pl-4">
                 <p className="font-[family-name:var(--font-display)] text-3xl font-bold tracking-[-0.02em] text-[var(--color-ink)] sm:text-4xl">
-                  {fig.value}
+                  {fig.eur != null ? <Price eur={fig.eur} locale={locale} /> : fig.value}
                 </p>
                 <p className="mt-1 text-sm text-[var(--color-muted)]">{fig.label}</p>
               </div>

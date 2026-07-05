@@ -45,6 +45,18 @@ export function OrganizationJsonLd({ locale }: { locale: Locale }) {
           postalCode: '341041',
           addressCountry: 'AE',
         },
+        telephone: `+${site.whatsapp}`,
+        contactPoint: [
+          {
+            '@type': 'ContactPoint',
+            contactType: 'sales',
+            email: site.email,
+            telephone: `+${site.whatsapp}`,
+            url: `https://wa.me/${site.whatsapp}`,
+            availableLanguage: ['fr', 'en', 'es'],
+            areaServed: 'Worldwide',
+          },
+        ],
         areaServed: ['FR', 'BE', 'CH', 'LU', 'ES', 'AE', 'EU', 'Worldwide'],
         knowsAbout: [
           'SaaS development',

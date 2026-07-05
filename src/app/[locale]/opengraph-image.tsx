@@ -49,7 +49,7 @@ export default async function OgImage({ params }: { params: Promise<{ locale: st
             {dict.home.heroTitle}
           </div>
           <div style={{ marginTop: 28, fontSize: 30, color: '#3a3a40', maxWidth: 900 }}>
-            {dict.home.heroKicker} · {dict.home.heroProof}
+            {`${dict.home.heroKicker} · ${dict.home.heroProof}`}
           </div>
         </div>
       </div>

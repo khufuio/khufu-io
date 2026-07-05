@@ -7,6 +7,12 @@ import { comparisons, useCases } from '@/content/geo'
 // Top-level routes that exist for every locale.
 const topRoutes = Object.keys(routes) as RouteKey[]
 
+// Legal pages are low-value for crawl/ranking — keep them indexable but deprioritized.
+const lowPriorityRoutes = new Set<RouteKey>(['legal', 'privacy'])
+
+// Build-time timestamp shared by every entry; bump happens naturally on redeploy.
+const lastModified = new Date()
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = []
 
@@ -17,11 +23,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   })
 
   for (const key of topRoutes) {
+    const priority = key === 'home' ? 1 : lowPriorityRoutes.has(key) ? 0.3 : 0.7
     for (const locale of locales) {
       entries.push({
         url: `${site.url}${href(locale, key)}`,
+        lastModified,
         changeFrequency: key === 'home' ? 'weekly' : 'monthly',
-        priority: key === 'home' ? 1 : 0.7,
+        priority,
         alternates: alt(key),
       })
     }
@@ -31,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const locale of locales) {
       entries.push({
         url: `${site.url}${href(locale, 'work', p.slug)}`,
+        lastModified,
         changeFrequency: 'monthly',
         priority: 0.6,
         alternates: alt('work', p.slug),
@@ -46,6 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const locale of locales) {
       entries.push({
         url: `${site.url}${href(locale, key, slug)}`,
+        lastModified,
         changeFrequency: 'monthly',
         priority: 0.7,
         alternates: alt(key, slug),

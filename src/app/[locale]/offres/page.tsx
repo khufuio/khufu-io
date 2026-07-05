@@ -10,6 +10,7 @@ import { ButtonLink } from '@/components/ui/button'
 import { FaqAccordion } from '@/components/sections/faqAccordion'
 import { CtaBanner } from '@/components/sections/ctaBanner'
 import { FaqJsonLd } from '@/components/seo/jsonLd'
+import { Price, FirmPriceNote } from '@/components/ui/price'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -37,7 +38,10 @@ export default async function OffersPage({ params }: { params: Promise<{ locale:
     <div className="flex flex-col rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-7">
       <h3 className="font-[family-name:var(--font-display)] text-xl font-bold">{offer.name}</h3>
       <div className="mt-3 flex items-baseline gap-1.5">
-        <span className="font-[family-name:var(--font-display)] text-2xl font-bold">{offer.price}</span>
+        <span className="font-[family-name:var(--font-display)] text-2xl font-bold">
+          {'pricePrefix' in offer ? offer.pricePrefix : null}
+          <Price eur={offer.priceEur} locale={locale} />
+        </span>
         <span className="text-sm text-[var(--color-muted)]">{offer.priceNote}</span>
       </div>
       <p className="mt-3 text-sm text-[var(--color-ink-2)]">{offer.pitch}</p>
@@ -76,7 +80,9 @@ export default async function OffersPage({ params }: { params: Promise<{ locale:
                 </span>
                 <h3 className="font-[family-name:var(--font-display)] text-3xl font-bold">{sprint.name}</h3>
                 <div className="mt-4 flex items-baseline gap-2">
-                  <span className="font-[family-name:var(--font-display)] text-5xl font-bold">{sprint.price}</span>
+                  <span className="font-[family-name:var(--font-display)] text-5xl font-bold">
+                    <Price eur={sprint.priceEur} locale={locale} />
+                  </span>
                   <span className="text-[var(--color-paper-2)]">{sprint.priceNote}</span>
                 </div>
                 <p className="mt-4 text-[var(--color-paper-2)]">{sprint.pitch}</p>
@@ -103,6 +109,7 @@ export default async function OffersPage({ params }: { params: Promise<{ locale:
 
             <div className="lg:order-3">{renderSecondary(remote, 'remote')}</div>
           </div>
+          <FirmPriceNote className="mt-8 text-center text-xs text-[var(--color-muted)]">{o.firmPriceNote}</FirmPriceNote>
         </Container>
       </section>
 

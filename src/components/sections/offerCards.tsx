@@ -3,6 +3,7 @@ import { href } from '@/content/site'
 import type { Dictionary } from '@/i18n/getDictionary'
 import { cn } from '@/lib/cn'
 import { ButtonLink } from '@/components/ui/button'
+import { Price, FirmPriceNote } from '@/components/ui/price'
 
 const ctaHrefFor = (locale: Locale, id: string): string => {
   if (id === 'maintenance') return href(locale, 'maintenance')
@@ -11,6 +12,7 @@ const ctaHrefFor = (locale: Locale, id: string): string => {
 
 export function OfferCards({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
+    <>
     <div className="grid gap-5 lg:grid-cols-3">
       {dict.offers.items.map((offer) => (
         <div
@@ -32,7 +34,10 @@ export function OfferCards({ locale, dict }: { locale: Locale; dict: Dictionary 
           </div>
 
           <div className="mt-4 flex items-baseline gap-1.5">
-            <span className="font-[family-name:var(--font-display)] text-3xl font-bold">{offer.price}</span>
+            <span className="font-[family-name:var(--font-display)] text-3xl font-bold">
+              {'pricePrefix' in offer ? offer.pricePrefix : null}
+              <Price eur={offer.priceEur} locale={locale} />
+            </span>
             <span className={cn('text-sm', offer.featured ? 'text-[var(--color-paper-2)]' : 'text-[var(--color-muted)]')}>
               {offer.priceNote}
             </span>
@@ -73,5 +78,7 @@ export function OfferCards({ locale, dict }: { locale: Locale; dict: Dictionary 
         </div>
       ))}
     </div>
+    <FirmPriceNote className="mt-5 text-xs text-[var(--color-muted)]">{dict.offers.firmPriceNote}</FirmPriceNote>
+    </>
   )
 }

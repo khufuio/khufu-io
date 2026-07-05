@@ -42,7 +42,7 @@ export const es: Dictionary = {
     heroProof: `${site.v1Days} días · precio cerrado ${eur(site.v1PriceEUR)} · código entregado, en producción`,
     heroFigures: [
       { value: `${site.v1Days} días`, label: 'del brief a la producción' },
-      { value: `${eur(site.v1PriceEUR)}`, label: 'precio fijo, todo incluido' },
+      { value: `${eur(site.v1PriceEUR)}`, eur: site.v1PriceEUR, label: 'precio fijo, todo incluido' },
     ],
 
     statsTitle: 'Qué significa “una semana”',
@@ -101,6 +101,7 @@ export const es: Dictionary = {
         id: 'sprint',
         name: 'Sprint V1',
         price: `${eur(site.v1PriceEUR)}`,
+        priceEur: site.v1PriceEUR,
         priceNote: 'precio cerrado',
         pitch: `Tu primera versión, diseñada y entregada en ${site.v1Days} días.`,
         featured: true,
@@ -117,6 +118,8 @@ export const es: Dictionary = {
         id: 'maintenance',
         name: 'Full Maintenance',
         price: 'desde 1 490 €',
+        priceEur: 1490,
+        pricePrefix: 'desde ',
         priceNote: '/ mes',
         pitch: 'Mantenemos tu producto vivo: infra, soporte y días de desarrollo incluidos.',
         featured: false,
@@ -133,6 +136,7 @@ export const es: Dictionary = {
         id: 'regie',
         name: 'Remote',
         price: `${eur(site.dailyRateEUR)}`,
+        priceEur: site.dailyRateEUR,
         priceNote: '/ día',
         pitch: 'Refuerzo senior 100 % remoto, facturado por horas — 200 €/h.',
         featured: false,
@@ -147,6 +151,7 @@ export const es: Dictionary = {
     ],
     remoteNote:
       'Trabajo presencial posible: 1 semana mínimo, +50 % sobre la tarifa, con gastos (desplazamiento, alojamiento) a cargo del cliente.',
+    firmPriceNote: 'Precios firmes en euros. Los importes mostrados en dólares son orientativos, según un tipo de cambio aproximado.',
     guaranteesTitle: 'Lo que garantizamos',
     guarantees: [
       'Un alcance escrito y acordado antes de empezar.',
@@ -207,6 +212,7 @@ export const es: Dictionary = {
         body: 'Un número de días de desarrollo incluidos cada mes para nuevas funcionalidades y mejoras.',
       },
     ],
+    popularBadge: 'Popular',
     tiersTitle: 'Tres planes',
     tiersSubtitle: 'Elige el nivel de compromiso según tus necesidades. Los precios son orientativos.',
     tiers: [
@@ -214,6 +220,7 @@ export const es: Dictionary = {
         id: 'starter',
         name: 'Starter',
         price: '1 490 €',
+        priceEur: 1490,
         priceNote: '/ mes',
         pitch: 'Para mantener un producto estable online.',
         featured: false,
@@ -223,6 +230,7 @@ export const es: Dictionary = {
         id: 'growth',
         name: 'Growth',
         price: '3 900 €',
+        priceEur: 3900,
         priceNote: '/ mes',
         pitch: 'Para un producto que evoluciona de forma continua.',
         featured: true,

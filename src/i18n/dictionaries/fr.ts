@@ -46,7 +46,7 @@ export const fr = {
     heroProof: `${site.v1Days} jours · forfait ${eur(site.v1PriceEUR)} € · code livré, en production`,
     heroFigures: [
       { value: `${site.v1Days} jours`, label: 'du brief à la mise en production' },
-      { value: `${eur(site.v1PriceEUR)} €`, label: 'prix fixe, tout compris' },
+      { value: `${eur(site.v1PriceEUR)} €`, eur: site.v1PriceEUR, label: 'prix fixe, tout compris' },
     ],
 
     statsTitle: 'Ce que “1 semaine” veut dire',
@@ -105,6 +105,7 @@ export const fr = {
         id: 'sprint',
         name: 'Sprint V1',
         price: `${eur(site.v1PriceEUR)} €`,
+        priceEur: site.v1PriceEUR,
         priceNote: 'forfait',
         pitch: `Votre première version, conçue et livrée en ${site.v1Days} jours.`,
         featured: true,
@@ -121,6 +122,8 @@ export const fr = {
         id: 'maintenance',
         name: 'Full Maintenance',
         price: 'dès 1 490 €',
+        priceEur: 1490,
+        pricePrefix: 'dès ',
         priceNote: '/ mois',
         pitch: 'On garde votre produit vivant : infra, support et jours de dev inclus.',
         featured: false,
@@ -137,6 +140,7 @@ export const fr = {
         id: 'regie',
         name: 'Remote',
         price: `${eur(site.dailyRateEUR)} €`,
+        priceEur: site.dailyRateEUR,
         priceNote: '/ jour',
         pitch: 'Un renfort senior 100 % remote, facturé à l’heure — 200 €/h.',
         featured: false,
@@ -151,6 +155,7 @@ export const fr = {
     ],
     remoteNote:
       'Régie sur site possible : 1 semaine minimum, +50 % sur le tarif, avec frais (déplacement, logement) à la charge du client.',
+    firmPriceNote: 'Prix fermes en euros. Les montants affichés en dollars sont indicatifs, sur la base d’un taux approximatif.',
     guaranteesTitle: 'Ce qu’on garantit',
     guarantees: [
       'Un périmètre écrit et validé avant de commencer.',
@@ -211,6 +216,7 @@ export const fr = {
         body: 'Un volume de jours de développement inclus chaque mois pour les nouvelles features et améliorations.',
       },
     ],
+    popularBadge: 'Populaire',
     tiersTitle: 'Trois paliers',
     tiersSubtitle: 'Choisissez le niveau d’engagement selon vos besoins. Les tarifs sont indicatifs.',
     tiers: [
@@ -218,6 +224,7 @@ export const fr = {
         id: 'starter',
         name: 'Starter',
         price: '1 490 €',
+        priceEur: 1490,
         priceNote: '/ mois',
         pitch: 'Pour garder un produit stable et le faire évoluer.',
         featured: false,
@@ -232,6 +239,7 @@ export const fr = {
         id: 'growth',
         name: 'Growth',
         price: '3 900 €',
+        priceEur: 3900,
         priceNote: '/ mois',
         pitch: 'Pour un produit qui évolue en continu.',
         featured: true,

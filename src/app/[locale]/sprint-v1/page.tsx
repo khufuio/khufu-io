@@ -9,6 +9,7 @@ import { SectionHeading } from '@/components/ui/sectionHeading'
 import { FaqAccordion } from '@/components/sections/faqAccordion'
 import { CtaBanner } from '@/components/sections/ctaBanner'
 import { FaqJsonLd } from '@/components/seo/jsonLd'
+import { Price } from '@/components/ui/price'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -42,7 +43,9 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
             <div className="rounded-[var(--radius-xl)] bg-[var(--color-ink)] p-8 text-[var(--color-paper)]">
               <p className="text-sm text-[var(--color-paper-2)]">{offer.name}</p>
               <div className="mt-3 flex items-baseline gap-2">
-                <span className="font-[family-name:var(--font-display)] text-5xl font-bold">{offer.price}</span>
+                <span className="font-[family-name:var(--font-display)] text-5xl font-bold">
+                  <Price eur={offer.priceEur} locale={locale} />
+                </span>
                 <span className="text-[var(--color-paper-2)]">{offer.priceNote}</span>
               </div>
               <p className="mt-4 text-[var(--color-paper-2)]">{offer.pitch}</p>

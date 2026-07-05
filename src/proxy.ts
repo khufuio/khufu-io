@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { locales, defaultLocale } from '@/i18n/config'
+import { COOKIE_NAME, currencyForCountry } from '@/lib/currency'
 
 const PUBLIC_FILE = /\.[^/]+$/
 
@@ -11,6 +12,21 @@ function preferredLocale(req: NextRequest): string {
     if (match) return match
   }
   return defaultLocale
+}
+
+/** Stamp the display currency (EUR/USD) from the visitor's country onto a cookie. */
+function withCurrencyCookie(req: NextRequest, res: NextResponse): NextResponse {
+  // `geo` is populated by Vercel; the header is the portable fallback.
+  const country = req.headers.get('x-vercel-ip-country')
+  const currency = currencyForCountry(country)
+  if (req.cookies.get(COOKIE_NAME)?.value !== currency) {
+    res.cookies.set(COOKIE_NAME, currency, {
+      path: '/',
+      maxAge: 60 * 60 * 24 * 30,
+      sameSite: 'lax',
+    })
+  }
+  return res
 }
 
 export function proxy(req: NextRequest) {
@@ -32,12 +48,12 @@ export function proxy(req: NextRequest) {
   const hasLocale = locales.some(
     (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`),
   )
-  if (hasLocale) return
+  if (hasLocale) return withCurrencyCookie(req, NextResponse.next())
 
   const locale = preferredLocale(req)
   const url = req.nextUrl.clone()
   url.pathname = `/${locale}${pathname === '/' ? '' : pathname}`
-  return NextResponse.redirect(url)
+  return withCurrencyCookie(req, NextResponse.redirect(url))
 }
 
 export const config = {

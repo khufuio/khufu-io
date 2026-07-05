@@ -42,7 +42,7 @@ export const en: Dictionary = {
     heroProof: `${site.v1Days} days · ${eur(site.v1PriceEUR)} flat fee · code shipped, in production`,
     heroFigures: [
       { value: `${site.v1Days} days`, label: 'from brief to production' },
-      { value: `${eur(site.v1PriceEUR)}`, label: 'fixed price, all-in' },
+      { value: `${eur(site.v1PriceEUR)}`, eur: site.v1PriceEUR, label: 'fixed price, all-in' },
     ],
 
     statsTitle: 'What “one week” means',
@@ -101,6 +101,7 @@ export const en: Dictionary = {
         id: 'sprint',
         name: 'Sprint V1',
         price: `${eur(site.v1PriceEUR)}`,
+        priceEur: site.v1PriceEUR,
         priceNote: 'flat fee',
         pitch: `Your first version, designed and shipped in ${site.v1Days} days.`,
         featured: true,
@@ -117,6 +118,8 @@ export const en: Dictionary = {
         id: 'maintenance',
         name: 'Full Maintenance',
         price: 'from €1,490',
+        priceEur: 1490,
+        pricePrefix: 'from ',
         priceNote: '/ month',
         pitch: 'We keep your product alive: infra, support and dev days included.',
         featured: false,
@@ -133,6 +136,7 @@ export const en: Dictionary = {
         id: 'regie',
         name: 'Remote',
         price: `${eur(site.dailyRateEUR)}`,
+        priceEur: site.dailyRateEUR,
         priceNote: '/ day',
         pitch: 'Senior firepower, 100% remote, billed by the hour — €200/h.',
         featured: false,
@@ -147,6 +151,7 @@ export const en: Dictionary = {
     ],
     remoteNote:
       'On-site work is possible: 1 week minimum, +50% on the rate, with expenses (travel, accommodation) covered by the client.',
+    firmPriceNote: 'Prices are firm in euros. Amounts shown in dollars are indicative, based on an approximate rate.',
     guaranteesTitle: 'What we guarantee',
     guarantees: [
       'A written, agreed scope before we start.',
@@ -207,6 +212,7 @@ export const en: Dictionary = {
         body: 'A set number of development days included each month for new features and improvements.',
       },
     ],
+    popularBadge: 'Popular',
     tiersTitle: 'Three tiers',
     tiersSubtitle: 'Pick the level of commitment that fits your needs. Prices are indicative.',
     tiers: [
@@ -214,6 +220,7 @@ export const en: Dictionary = {
         id: 'starter',
         name: 'Starter',
         price: '€1,490',
+        priceEur: 1490,
         priceNote: '/ month',
         pitch: 'To keep a stable product online.',
         featured: false,
@@ -223,6 +230,7 @@ export const en: Dictionary = {
         id: 'growth',
         name: 'Growth',
         price: '€3,900',
+        priceEur: 3900,
         priceNote: '/ month',
         pitch: 'For a product that keeps evolving.',
         featured: true,
