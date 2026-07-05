@@ -3,7 +3,7 @@ import { Inter, Space_Grotesk } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import '../globals.css'
-import { isLocale, locales, localeHrefLang, type Locale } from '@/i18n/config'
+import { isLocale, locales, localeHrefLang, dir, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/getDictionary'
 import { site } from '@/content/site'
 import { PostHogProvider } from '@/components/analytics/posthogProvider'
@@ -80,7 +80,7 @@ export default async function LocaleLayout({
   const dict = getDictionary(locale)
 
   return (
-    <html lang={localeHrefLang[locale]} className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang={localeHrefLang[locale]} dir={dir(locale)} className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body>
         <Suspense fallback={null}>
           <PostHogProvider>

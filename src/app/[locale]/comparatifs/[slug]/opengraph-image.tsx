@@ -14,7 +14,18 @@ export default async function OgImage({ params }: { params: Promise<{ locale: st
   const { locale, slug } = await params
   const loc: Locale = isLocale(locale) ? locale : 'fr'
   const c = getComparison(slug)
-  const labels = { fr: 'Comparatif', en: 'Comparison', es: 'Comparativa' }
+  const labels: Record<Locale, string> = {
+    fr: 'Comparatif',
+    en: 'Comparison',
+    es: 'Comparativa',
+    de: 'Vergleich',
+    it: 'Confronto',
+    pt: 'Comparação',
+    nl: 'Vergelijking',
+    ar: 'مقارنة',
+    pl: 'Porównanie',
+    tr: 'Karşılaştırma',
+  }
   return renderOg({
     eyebrow: labels[loc],
     title: c ? c.title[loc] : 'Khufu',

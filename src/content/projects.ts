@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/config'
+import { fillLocaleDeep, type LocalizedInput } from '@/i18n/localize'
 
 export type LocalizedText = Record<Locale, string>
 
@@ -28,7 +29,15 @@ export type Project = {
   draft?: boolean
 }
 
-export const projects: Project[] = [
+// Authoring variant: base languages required, untranslated locales filled from fr.
+type ProjectInput = Omit<Project, 'type' | 'tagline' | 'description' | 'results'> & {
+  type: LocalizedInput
+  tagline: LocalizedInput
+  description: LocalizedInput
+  results?: LocalizedInput[]
+}
+
+const projectsData: ProjectInput[] = [
   {
     slug: 'onestore-link',
     name: 'OneStore.link',
@@ -237,6 +246,8 @@ export const projects: Project[] = [
     ],
   },
 ]
+
+export const projects = fillLocaleDeep(projectsData) as unknown as Project[]
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug)

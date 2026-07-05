@@ -1,7 +1,11 @@
 import type { Locale } from '@/i18n/config'
+import { fillLocaleDeep, type LocalizedInput } from '@/i18n/localize'
 import type { RouteKey } from './site'
 
+// Consumer-facing localized type: fully populated for every locale.
 export type L = Record<Locale, string>
+// Authoring type: base languages required, untranslated locales filled from fr.
+type LIn = LocalizedInput
 
 export type ComparisonRow = { aspect: L; khufu: L; other: L }
 
@@ -31,8 +35,34 @@ export type UseCase = {
   cta: RouteKey
 }
 
+type ComparisonInput = {
+  slug: string
+  metaTitle: LIn
+  metaDescription: LIn
+  title: LIn
+  intro: LIn
+  khufuLabel: LIn
+  otherLabel: LIn
+  rows: { aspect: LIn; khufu: LIn; other: LIn }[]
+  conclusion: LIn
+  cta: RouteKey
+}
+
+type UseCaseInput = {
+  slug: string
+  metaTitle: LIn
+  metaDescription: LIn
+  persona: LIn
+  title: LIn
+  intro: LIn
+  problems: LIn[]
+  approach: LIn
+  outcomes: LIn[]
+  cta: RouteKey
+}
+
 // ── Comparisons (/comparatifs/[slug]) ────────────────────────────────────────
-export const comparisons: Comparison[] = [
+const comparisonsData: ComparisonInput[] = [
   {
     slug: 'v1-vs-mvp',
     metaTitle: { fr: 'V1 vs MVP : quelle différence ?', en: 'V1 vs MVP: what’s the difference?', es: 'V1 vs MVP: ¿qué diferencia?' },
@@ -305,8 +335,10 @@ export const comparisons: Comparison[] = [
   },
 ]
 
+export const comparisons = fillLocaleDeep(comparisonsData) as unknown as Comparison[]
+
 // ── Use cases (/cas-d-usage/[slug]) ──────────────────────────────────────────
-export const useCases: UseCase[] = [
+const useCasesData: UseCaseInput[] = [
   {
     slug: 'lancer-un-saas',
     metaTitle: { fr: 'Lancer un SaaS en 1 semaine', en: 'Launch a SaaS in one week', es: 'Lanzar un SaaS en una semana' },
@@ -532,6 +564,8 @@ export const useCases: UseCase[] = [
     cta: 'sprint',
   },
 ]
+
+export const useCases = fillLocaleDeep(useCasesData) as unknown as UseCase[]
 
 export const getComparison = (slug: string) => comparisons.find((c) => c.slug === slug)
 export const getUseCase = (slug: string) => useCases.find((u) => u.slug === slug)

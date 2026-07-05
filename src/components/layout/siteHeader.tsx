@@ -8,7 +8,6 @@ import type { Dictionary } from '@/i18n/getDictionary'
 import { Container } from '@/components/ui/container'
 import { ButtonLink } from '@/components/ui/button'
 import { Wordmark } from './wordmark'
-import { LocaleSwitcher } from './localeSwitcher'
 import { cn } from '@/lib/cn'
 
 export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary }) {
@@ -40,7 +39,6 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
-          <LocaleSwitcher current={locale} />
           <ButtonLink href={href(locale, 'contact')} size="md">
             {nav.cta}
           </ButtonLink>
@@ -89,8 +87,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
                 {l.label}
               </Link>
             ))}
-            <div className="mt-3 flex items-center justify-between px-2">
-              <LocaleSwitcher current={locale} />
+            <div className="mt-3 flex items-center justify-end px-2">
               <ButtonLink href={href(locale, 'contact')} onClick={() => setOpen(false)}>
                 {nav.cta}
               </ButtonLink>

@@ -5,12 +5,26 @@ const prefill: Record<Locale, string> = {
   fr: 'Bonjour Khufu, je veux lancer ma V1 !',
   en: 'Hi Khufu, I want to launch my V1!',
   es: '¡Hola Khufu, quiero lanzar mi V1!',
+  de: 'Hallo Khufu, ich möchte meine V1 starten!',
+  it: 'Ciao Khufu, voglio lanciare la mia V1!',
+  pt: 'Olá Khufu, quero lançar a minha V1!',
+  nl: 'Hoi Khufu, ik wil mijn V1 lanceren!',
+  ar: 'مرحباً خوفو، أريد إطلاق نسختي الأولى V1!',
+  pl: 'Cześć Khufu, chcę uruchomić moje V1!',
+  tr: 'Merhaba Khufu, V1’imi başlatmak istiyorum!',
 }
 
 const aria: Record<Locale, string> = {
   fr: 'Nous contacter sur WhatsApp',
   en: 'Contact us on WhatsApp',
   es: 'Contáctanos por WhatsApp',
+  de: 'Kontaktieren Sie uns über WhatsApp',
+  it: 'Contattaci su WhatsApp',
+  pt: 'Contacte-nos no WhatsApp',
+  nl: 'Neem contact met ons op via WhatsApp',
+  ar: 'تواصل معنا عبر واتساب',
+  pl: 'Skontaktuj się z nami przez WhatsApp',
+  tr: 'WhatsApp’tan bize ulaşın',
 }
 
 /** Canonical WhatsApp glyph. */

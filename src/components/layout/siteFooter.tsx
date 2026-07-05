@@ -5,6 +5,7 @@ import type { Dictionary } from '@/i18n/getDictionary'
 import { Container } from '@/components/ui/container'
 import { Wordmark } from './wordmark'
 import { WhatsAppGlyph } from './whatsappButton'
+import { LocaleSwitcher } from './localeSwitcher'
 
 export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const year = 2026 // build-time constant; bump on redeploy
@@ -56,11 +57,14 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
         </FooterCol>
       </Container>
 
-      <Container className="flex flex-col items-start justify-between gap-2 border-t border-[var(--color-line)] py-6 text-xs text-[var(--color-muted)] sm:flex-row sm:items-center">
+      <Container className="flex flex-col items-start justify-between gap-4 border-t border-[var(--color-line)] py-6 text-xs text-[var(--color-muted)] sm:flex-row sm:items-center">
         <p>
           © {year} {site.name}. {f.rights}
         </p>
-        <p>{site.domain}</p>
+        <div className="flex items-center gap-4">
+          <LocaleSwitcher current={locale} />
+          <p>{site.domain}</p>
+        </div>
       </Container>
     </footer>
   )
