@@ -47,3 +47,31 @@ export function FirmPriceNote({ children, className }: { children: React.ReactNo
   if (useCurrency() !== 'USD') return null
   return <p className={className}>{children}</p>
 }
+
+/**
+ * Renders a string of prose where prices are written as `[[<eurAmount>]]` tokens
+ * (e.g. "Fixed price: [[15000]].") — each token becomes a geo-aware <Price>. Lets
+ * copy stay currency-consistent with the headline prices.
+ */
+export function PricedText({ text, locale = 'en' }: { text: string; locale?: string }) {
+  const nodes: React.ReactNode[] = []
+  let last = 0
+  let key = 0
+  for (const m of text.matchAll(/\[\[(\d+)\]\]/g)) {
+    const idx = m.index ?? 0
+    if (idx > last) nodes.push(text.slice(last, idx))
+    nodes.push(<Price key={key++} eur={Number(m[1])} locale={locale} />)
+    last = idx + m[0].length
+  }
+  if (last < text.length) nodes.push(text.slice(last))
+  return <>{nodes}</>
+}
+
+/**
+ * Resolve `[[<eurAmount>]]` tokens to a plain string in the visitor's currency —
+ * for places that can't hold a component (e.g. <option> labels).
+ */
+export function useResolvePrice(): (text: string, locale?: string) => string {
+  const currency = useCurrency()
+  return (text, locale = 'en') => text.replace(/\[\[(\d+)\]\]/g, (_, n) => formatMoney(Number(n), currency, locale))
+}

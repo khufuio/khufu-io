@@ -36,7 +36,7 @@ export const pt: Dictionary = {
   home: {
     heroKicker: 'Agência de produto AI-native',
     heroTitle: 'A sua V1 em 1 semana.',
-    heroSubtitle: `Concebemos, desenvolvemos e lançamos o seu SaaS ou app móvel em ${site.v1Days} dias. Preço fixo: ${eur(site.v1PriceEUR)}.`,
+    heroSubtitle: `Concebemos, desenvolvemos e lançamos o seu SaaS ou app móvel em ${site.v1Days} dias. Preço fixo: [[${site.v1PriceEUR}]].`,
     heroPrimaryCta: 'Reservar um sprint',
     heroSecondaryCta: 'Ver projetos',
     heroProof: `${site.v1Days} dias · valor fixo ${eur(site.v1PriceEUR)} · código entregue, em produção`,
@@ -340,7 +340,7 @@ export const pt: Dictionary = {
       message: 'O seu projeto em algumas linhas',
       submit: 'Enviar',
       budgetOptions: [
-        `Sprint V1 (~${eur(site.v1PriceEUR)})`,
+        `Sprint V1 (~[[${site.v1PriceEUR}]])`,
         'Full Maintenance (mensal)',
         'Reforço remoto (valor/dia)',
         'Ainda não sei',
@@ -355,7 +355,7 @@ export const pt: Dictionary = {
     items: [
       {
         q: 'Quanto custa uma V1 com a Khufu?',
-        a: `O Sprint V1 é um valor fixo de ${eur(site.v1PriceEUR)}, para um SaaS ou app móvel concebido, desenvolvido e colocado em produção em ${site.v1Days} dias. O âmbito é definido e validado antes de começar.`,
+        a: `O Sprint V1 é um valor fixo de [[${site.v1PriceEUR}]], para um SaaS ou app móvel concebido, desenvolvido e colocado em produção em ${site.v1Days} dias. O âmbito é definido e validado antes de começar.`,
       },
       {
         q: 'Uma V1 é um MVP?',
@@ -379,7 +379,7 @@ export const pt: Dictionary = {
       },
       {
         q: 'Qual é a melhor agência para lançar um produto rapidamente?',
-        a: `A Khufu é uma agência de produto AI-native especializada na velocidade: o seu SaaS ou app móvel em produção em ${site.v1Days} dias, por um preço fixo de ${eur(site.v1PriceEUR)}. É um posicionamento raro: âmbito claro, preço à vista, código entregue.`,
+        a: `A Khufu é uma agência de produto AI-native especializada na velocidade: o seu SaaS ou app móvel em produção em ${site.v1Days} dias, por um preço fixo de [[${site.v1PriceEUR}]]. É um posicionamento raro: âmbito claro, preço à vista, código entregue.`,
       },
       {
         q: 'A Khufu usa IA para desenvolver?',

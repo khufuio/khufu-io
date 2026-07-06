@@ -11,6 +11,7 @@ import { SiteHeader } from '@/components/layout/siteHeader'
 import { SiteFooter } from '@/components/layout/siteFooter'
 import { WhatsAppButton } from '@/components/layout/whatsappButton'
 import { OrganizationJsonLd } from '@/components/seo/jsonLd'
+import { stripPriceTokens } from '@/lib/currency'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -36,6 +37,7 @@ export async function generateMetadata({
   const { locale } = await params
   const loc: Locale = isLocale(locale) ? locale : 'fr'
   const dict = getDictionary(loc)
+  const heroDesc = stripPriceTokens(dict.home.heroSubtitle, loc)
 
   const languages = Object.fromEntries(
     locales.map((l) => [localeHrefLang[l], `${site.url}/${l}`]),
@@ -47,7 +49,7 @@ export async function generateMetadata({
       default: dict.meta.brandSuffix,
       template: `%s · ${site.name}`,
     },
-    description: dict.home.heroSubtitle,
+    description: heroDesc,
     alternates: {
       canonical: `${site.url}/${loc}`,
       languages: { ...languages, 'x-default': `${site.url}/fr` },
@@ -57,12 +59,12 @@ export async function generateMetadata({
       siteName: site.name,
       url: `${site.url}/${loc}`,
       title: dict.meta.brandSuffix,
-      description: dict.home.heroSubtitle,
+      description: heroDesc,
     },
     twitter: {
       card: 'summary_large_image',
       title: dict.meta.brandSuffix,
-      description: dict.home.heroSubtitle,
+      description: heroDesc,
     },
     robots: { index: true, follow: true },
   }

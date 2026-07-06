@@ -10,6 +10,7 @@ import { FaqAccordion } from '@/components/sections/faqAccordion'
 import { CtaBanner } from '@/components/sections/ctaBanner'
 import { FaqJsonLd } from '@/components/seo/jsonLd'
 import { Price } from '@/components/ui/price'
+import { stripPriceTokens } from '@/lib/currency'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -33,7 +34,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
 
   return (
     <>
-      <FaqJsonLd items={dict.faq.items.map((i) => ({ q: i.q, a: i.a }))} />
+      <FaqJsonLd items={dict.faq.items.map((i) => ({ q: i.q, a: stripPriceTokens(i.a, locale) }))} />
       <PageHeader kicker={s.kicker} title={s.title} subtitle={s.subtitle} />
 
       {/* Price + includes */}
@@ -92,7 +93,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
         <Container className="py-16 sm:py-20">
           <SectionHeading title={dict.faq.title} />
           <div className="mt-10">
-            <FaqAccordion items={dict.faq.items} />
+            <FaqAccordion items={dict.faq.items} locale={locale} />
           </div>
         </Container>
       </section>

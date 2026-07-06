@@ -11,6 +11,7 @@ import { FaqAccordion } from '@/components/sections/faqAccordion'
 import { CtaBanner } from '@/components/sections/ctaBanner'
 import { FaqJsonLd, ServiceJsonLd } from '@/components/seo/jsonLd'
 import { Price, FirmPriceNote } from '@/components/ui/price'
+import { stripPriceTokens } from '@/lib/currency'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -63,7 +64,7 @@ export default async function OffersPage({ params }: { params: Promise<{ locale:
 
   return (
     <>
-      <FaqJsonLd items={dict.faq.items.map((i) => ({ q: i.q, a: i.a }))} />
+      <FaqJsonLd items={dict.faq.items.map((i) => ({ q: i.q, a: stripPriceTokens(i.a, locale) }))} />
       <ServiceJsonLd name={sprint.name} description={sprint.pitch} priceEUR={sprint.priceEur} />
       <ServiceJsonLd name={maintenance.name} description={maintenance.pitch} priceEUR={maintenance.priceEur} />
       <ServiceJsonLd name={remote.name} description={remote.pitch} priceEUR={remote.priceEur} />
@@ -138,7 +139,7 @@ export default async function OffersPage({ params }: { params: Promise<{ locale:
         <Container className="py-16 sm:py-20">
           <SectionHeading title={dict.faq.title} />
           <div className="mt-10">
-            <FaqAccordion items={dict.faq.items} />
+            <FaqAccordion items={dict.faq.items} locale={locale} />
           </div>
         </Container>
       </section>

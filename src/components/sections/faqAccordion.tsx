@@ -2,8 +2,15 @@
 
 import { useState } from 'react'
 import { cn } from '@/lib/cn'
+import { PricedText } from '@/components/ui/price'
 
-export function FaqAccordion({ items }: { items: readonly { q: string; a: string }[] }) {
+export function FaqAccordion({
+  items,
+  locale = 'en',
+}: {
+  items: readonly { q: string; a: string }[]
+  locale?: string
+}) {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
@@ -35,7 +42,9 @@ export function FaqAccordion({ items }: { items: readonly { q: string; a: string
             </h3>
             <div className={cn('grid transition-all', isOpen ? 'grid-rows-[1fr] pb-5' : 'grid-rows-[0fr]')}>
               <div className="overflow-hidden">
-                <p className="max-w-2xl text-[var(--color-ink-2)]">{item.a}</p>
+                <p className="max-w-2xl text-[var(--color-ink-2)]">
+                  <PricedText text={item.a} locale={locale} />
+                </p>
               </div>
             </div>
           </div>

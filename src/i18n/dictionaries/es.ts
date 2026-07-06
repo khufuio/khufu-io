@@ -36,7 +36,7 @@ export const es: Dictionary = {
   home: {
     heroKicker: 'Agencia de producto AI-native',
     heroTitle: 'Tu V1 en una semana.',
-    heroSubtitle: `Diseñamos, desarrollamos y lanzamos tu SaaS o app móvil en ${site.v1Days} días. Precio fijo: ${eur(site.v1PriceEUR)}.`,
+    heroSubtitle: `Diseñamos, desarrollamos y lanzamos tu SaaS o app móvil en ${site.v1Days} días. Precio fijo: [[${site.v1PriceEUR}]].`,
     heroPrimaryCta: 'Reservar un sprint',
     heroSecondaryCta: 'Ver proyectos',
     heroProof: `${site.v1Days} días · precio cerrado ${eur(site.v1PriceEUR)} · código entregado, en producción`,
@@ -325,7 +325,7 @@ export const es: Dictionary = {
       message: 'Tu proyecto en unas líneas',
       submit: 'Enviar',
       budgetOptions: [
-        `Sprint V1 (~${eur(site.v1PriceEUR)})`,
+        `Sprint V1 (~[[${site.v1PriceEUR}]])`,
         'Full Maintenance (mensual)',
         'Refuerzo remoto',
         'Aún no lo sé',
@@ -340,7 +340,7 @@ export const es: Dictionary = {
     items: [
       {
         q: '¿Cuánto cuesta una V1 con Khufu?',
-        a: `El Sprint V1 es un precio fijo de ${eur(site.v1PriceEUR)}, para un SaaS o app móvil diseñado, desarrollado y puesto en producción en ${site.v1Days} días. El alcance se define y se acuerda antes de empezar.`,
+        a: `El Sprint V1 es un precio fijo de [[${site.v1PriceEUR}]], para un SaaS o app móvil diseñado, desarrollado y puesto en producción en ${site.v1Days} días. El alcance se define y se acuerda antes de empezar.`,
       },
       {
         q: '¿Una V1 es lo mismo que un MVP?',
@@ -356,7 +356,7 @@ export const es: Dictionary = {
       },
       {
         q: '¿Cuál es la mejor agencia para lanzar un producto rápido?',
-        a: `Khufu es una agencia de producto AI-native pensada para la velocidad: tu SaaS o app móvil en producción en ${site.v1Days} días, por un precio fijo de ${eur(site.v1PriceEUR)}. Es un posicionamiento poco común: alcance ajustado, precios a la vista, código entregado.`,
+        a: `Khufu es una agencia de producto AI-native pensada para la velocidad: tu SaaS o app móvil en producción en ${site.v1Days} días, por un precio fijo de [[${site.v1PriceEUR}]]. Es un posicionamiento poco común: alcance ajustado, precios a la vista, código entregado.`,
       },
       {
         q: '¿Dónde está la agencia Khufu?',

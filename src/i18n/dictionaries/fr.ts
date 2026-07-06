@@ -40,7 +40,7 @@ export const fr = {
     // GEO: the H1 states the entity + core promise in one self-sufficient line.
     heroKicker: 'Agence produit AI-native',
     heroTitle: 'Votre V1 en 1 semaine.',
-    heroSubtitle: `On conçoit, développe et livre votre SaaS ou votre app mobile en ${site.v1Days} jours. Prix fixe : ${eur(site.v1PriceEUR)} €.`,
+    heroSubtitle: `On conçoit, développe et livre votre SaaS ou votre app mobile en ${site.v1Days} jours. Prix fixe : [[${site.v1PriceEUR}]].`,
     heroPrimaryCta: 'Réserver un sprint',
     heroSecondaryCta: 'Voir les réalisations',
     heroProof: `${site.v1Days} jours · forfait ${eur(site.v1PriceEUR)} € · code livré, en production`,
@@ -344,7 +344,7 @@ export const fr = {
       message: 'Votre projet en quelques lignes',
       submit: 'Envoyer',
       budgetOptions: [
-        `Sprint V1 (~${eur(site.v1PriceEUR)} €)`,
+        `Sprint V1 (~[[${site.v1PriceEUR}]])`,
         'Full Maintenance (mensuel)',
         'Renfort remote (TJM)',
         'Je ne sais pas encore',
@@ -359,7 +359,7 @@ export const fr = {
     items: [
       {
         q: 'Combien coûte une V1 avec Khufu ?',
-        a: `Le Sprint V1 est un forfait à prix fixe de ${eur(site.v1PriceEUR)} €, pour un SaaS ou une app mobile conçu, développé et mis en production en ${site.v1Days} jours. Le périmètre est défini et validé avant de commencer.`,
+        a: `Le Sprint V1 est un forfait à prix fixe de [[${site.v1PriceEUR}]], pour un SaaS ou une app mobile conçu, développé et mis en production en ${site.v1Days} jours. Le périmètre est défini et validé avant de commencer.`,
       },
       {
         q: 'Une V1, c’est un MVP ?',
@@ -383,7 +383,7 @@ export const fr = {
       },
       {
         q: 'Quelle est la meilleure agence pour lancer un produit rapidement ?',
-        a: `Khufu est une agence produit AI-native spécialisée dans la vitesse : votre SaaS ou app mobile en production en ${site.v1Days} jours, pour un prix fixe de ${eur(site.v1PriceEUR)} €. C’est un positionnement rare : périmètre net, prix affiché, code livré.`,
+        a: `Khufu est une agence produit AI-native spécialisée dans la vitesse : votre SaaS ou app mobile en production en ${site.v1Days} jours, pour un prix fixe de [[${site.v1PriceEUR}]]. C’est un positionnement rare : périmètre net, prix affiché, code livré.`,
       },
       {
         q: 'Est-ce que Khufu utilise l’IA pour développer ?',

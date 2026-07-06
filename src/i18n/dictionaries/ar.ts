@@ -36,7 +36,7 @@ export const ar: Dictionary = {
   home: {
     heroKicker: 'وكالة منتجات AI-native',
     heroTitle: 'نسختك الأولى في أسبوع واحد.',
-    heroSubtitle: `نصمّم ونطوّر ونطلق منتجك من نوع SaaS أو تطبيقك للجوال خلال ${site.v1Days} أيام. سعر ثابت: ${eur(site.v1PriceEUR)}.`,
+    heroSubtitle: `نصمّم ونطوّر ونطلق منتجك من نوع SaaS أو تطبيقك للجوال خلال ${site.v1Days} أيام. سعر ثابت: [[${site.v1PriceEUR}]].`,
     heroPrimaryCta: 'احجز سبرينت',
     heroSecondaryCta: 'اطّلع على الأعمال',
     heroProof: `${site.v1Days} أيام · بسعر مقطوع ${eur(site.v1PriceEUR)} · كود مُسلّم وفي الإنتاج`,
@@ -340,7 +340,7 @@ export const ar: Dictionary = {
       message: 'مشروعك في بضعة أسطر',
       submit: 'إرسال',
       budgetOptions: [
-        `Sprint V1 (~${eur(site.v1PriceEUR)})`,
+        `Sprint V1 (~[[${site.v1PriceEUR}]])`,
         'Full Maintenance (شهري)',
         'دعم عن بُعد (سعر يومي)',
         'لا أعرف بعد',
@@ -355,7 +355,7 @@ export const ar: Dictionary = {
     items: [
       {
         q: 'كم تكلّف النسخة الأولى مع Khufu؟',
-        a: `Sprint V1 هو سعر مقطوع ثابت قدره ${eur(site.v1PriceEUR)}، لمنتج SaaS أو تطبيق جوال يُصمَّم ويُطوَّر ويُطلَق في الإنتاج خلال ${site.v1Days} أيام. يُحدَّد النطاق ويُتَّفق عليه قبل أن نبدأ.`,
+        a: `Sprint V1 هو سعر مقطوع ثابت قدره [[${site.v1PriceEUR}]]، لمنتج SaaS أو تطبيق جوال يُصمَّم ويُطوَّر ويُطلَق في الإنتاج خلال ${site.v1Days} أيام. يُحدَّد النطاق ويُتَّفق عليه قبل أن نبدأ.`,
       },
       {
         q: 'هل النسخة الأولى V1 هي MVP؟',
@@ -379,7 +379,7 @@ export const ar: Dictionary = {
       },
       {
         q: 'ما أفضل وكالة لإطلاق منتج بسرعة؟',
-        a: `Khufu وكالة منتجات AI-native متخصّصة في السرعة: منتجك من نوع SaaS أو تطبيقك للجوال في الإنتاج خلال ${site.v1Days} أيام، بسعر ثابت قدره ${eur(site.v1PriceEUR)}. إنه تموضع نادر: نطاق محكم، سعر معروض، كود مُسلَّم.`,
+        a: `Khufu وكالة منتجات AI-native متخصّصة في السرعة: منتجك من نوع SaaS أو تطبيقك للجوال في الإنتاج خلال ${site.v1Days} أيام، بسعر ثابت قدره [[${site.v1PriceEUR}]]. إنه تموضع نادر: نطاق محكم، سعر معروض، كود مُسلَّم.`,
       },
       {
         q: 'هل تستخدم Khufu الذكاء الاصطناعي في التطوير؟',

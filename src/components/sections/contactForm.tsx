@@ -6,6 +6,7 @@ import { site } from '@/content/site'
 import type { Dictionary } from '@/i18n/getDictionary'
 import { cn } from '@/lib/cn'
 import { WhatsAppGlyph } from '@/components/layout/whatsappButton'
+import { PricedText, useResolvePrice } from '@/components/ui/price'
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
@@ -14,6 +15,9 @@ type Status = 'idle' | 'sending' | 'success' | 'error'
 export function ContactForm({ dict }: { dict: Dictionary }) {
   const f = dict.contact.form
   const [budget, setBudget] = useState<string>(f.budgetOptions[0])
+  // `budget` keeps the raw option (with any [[price]] token) as a stable key;
+  // `resolvedBudget` is what we actually send (token → visitor's currency).
+  const resolvedBudget = useResolvePrice()(budget, dict.meta.locale)
   const [status, setStatus] = useState<Status>('idle')
   const formRef = useRef<HTMLFormElement>(null)
 
@@ -23,7 +27,7 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
     const name = form ? String(new FormData(form).get('name') ?? '') : ''
     const message = form ? String(new FormData(form).get('message') ?? '') : ''
     const text = [
-      name ? `${name} — ${budget}` : budget,
+      name ? `${name} — ${resolvedBudget}` : resolvedBudget,
       message,
     ]
       .filter(Boolean)
@@ -32,12 +36,12 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
   }
 
   function mailtoFallback(fields: { name: string; email: string; company: string; message: string }) {
-    const subject = `[khufu.io] ${fields.name} — ${budget}`
+    const subject = `[khufu.io] ${fields.name} — ${resolvedBudget}`
     const body = [
       `Nom: ${fields.name}`,
       `Email: ${fields.email}`,
       fields.company && `Entreprise: ${fields.company}`,
-      `Budget: ${budget}`,
+      `Budget: ${resolvedBudget}`,
       '',
       fields.message,
     ]
@@ -61,10 +65,10 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ ...fields, budget }),
+        body: JSON.stringify({ ...fields, budget: resolvedBudget }),
       })
       if (res.ok) {
-        if (posthog.__loaded) posthog.capture('contact_form_submitted', { budget })
+        if (posthog.__loaded) posthog.capture('contact_form_submitted', { budget: resolvedBudget })
         setStatus('success')
         return
       }
@@ -129,7 +133,7 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
                   : 'border-[var(--color-line)] text-[var(--color-ink-2)] hover:border-[var(--color-ink)]',
               )}
             >
-              {opt}
+              <PricedText text={opt} locale={dict.meta.locale} />
             </button>
           ))}
         </div>

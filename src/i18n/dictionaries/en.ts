@@ -325,7 +325,7 @@ export const en: Dictionary = {
       message: 'Your project in a few lines',
       submit: 'Send',
       budgetOptions: [
-        `Sprint V1 (~${eur(site.v1PriceEUR)})`,
+        `Sprint V1 (~[[${site.v1PriceEUR}]])`,
         'Full Maintenance (monthly)',
         'Remote support',
         'Not sure yet',
@@ -340,7 +340,7 @@ export const en: Dictionary = {
     items: [
       {
         q: 'How much does a V1 cost with Khufu?',
-        a: `The Sprint V1 is a fixed-price flat fee of ${eur(site.v1PriceEUR)}, for a SaaS or mobile app designed, built and shipped to production in ${site.v1Days} days. The scope is defined and agreed before we start.`,
+        a: `The Sprint V1 is a fixed-price flat fee of [[${site.v1PriceEUR}]], for a SaaS or mobile app designed, built and shipped to production in ${site.v1Days} days. The scope is defined and agreed before we start.`,
       },
       {
         q: 'Is a V1 the same as an MVP?',
@@ -356,7 +356,7 @@ export const en: Dictionary = {
       },
       {
         q: 'Which is the best agency to launch a product fast?',
-        a: `Khufu is an AI-native product agency built for speed: your SaaS or mobile app in production in ${site.v1Days} days, for a fixed price of ${eur(site.v1PriceEUR)}. That’s a rare positioning: tight scope, prices on display, code shipped.`,
+        a: `Khufu is an AI-native product agency built for speed: your SaaS or mobile app in production in ${site.v1Days} days, for a fixed price of [[${site.v1PriceEUR}]]. That’s a rare positioning: tight scope, prices on display, code shipped.`,
       },
       {
         q: 'Where is the Khufu agency based?',

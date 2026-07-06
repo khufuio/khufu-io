@@ -13,7 +13,8 @@ import { OfferCards } from '@/components/sections/offerCards'
 import { ProjectCard } from '@/components/sections/projectCard'
 import { FaqAccordion } from '@/components/sections/faqAccordion'
 import { FaqJsonLd, ReviewsJsonLd } from '@/components/seo/jsonLd'
-import { Price } from '@/components/ui/price'
+import { Price, PricedText } from '@/components/ui/price'
+import { stripPriceTokens } from '@/lib/currency'
 
 export async function generateMetadata({
   params,
@@ -21,10 +22,11 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
-  const dict = getDictionary(isLocale(locale) ? locale : 'fr')
+  const loc = isLocale(locale) ? locale : 'fr'
+  const dict = getDictionary(loc)
   return {
     title: dict.meta.brandSuffix,
-    description: dict.home.heroSubtitle,
+    description: stripPriceTokens(dict.home.heroSubtitle, loc),
   }
 }
 
@@ -42,7 +44,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
-      <FaqJsonLd items={dict.faq.items.map((i) => ({ q: i.q, a: i.a }))} />
+      <FaqJsonLd items={dict.faq.items.map((i) => ({ q: i.q, a: stripPriceTokens(i.a, locale) }))} />
       <ReviewsJsonLd reviews={testimonials.map((t) => ({ quote: t.quote[locale], author: t.author, role: t.role }))} />
 
       {/* Hero */}
@@ -54,7 +56,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <h1 className="max-w-4xl font-[family-name:var(--font-display)] text-[length:var(--text-display)]/[0.98] font-bold tracking-[-0.03em] text-balance">
             {h.heroTitle}
           </h1>
-          <p className="mt-6 max-w-2xl text-xl text-[var(--color-ink-2)] text-pretty">{h.heroSubtitle}</p>
+          <p className="mt-6 max-w-2xl text-xl text-[var(--color-ink-2)] text-pretty">
+            <PricedText text={h.heroSubtitle} locale={locale} />
+          </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <ButtonLink href={href(locale, 'contact')} size="lg">
@@ -197,7 +201,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <Container className="py-20 sm:py-28">
           <SectionHeading title={dict.faq.title} />
           <div className="mt-10">
-            <FaqAccordion items={dict.faq.items} />
+            <FaqAccordion items={dict.faq.items} locale={locale} />
           </div>
         </Container>
       </section>

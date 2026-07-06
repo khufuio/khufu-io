@@ -36,7 +36,7 @@ export const tr: Dictionary = {
   home: {
     heroKicker: 'AI-native ürün ajansı',
     heroTitle: 'V1’iniz 1 haftada.',
-    heroSubtitle: `SaaS’ınızı veya mobil uygulamanızı ${site.v1Days} günde tasarlar, geliştirir ve yayına alırız. Sabit fiyat: ${eur(site.v1PriceEUR)}.`,
+    heroSubtitle: `SaaS’ınızı veya mobil uygulamanızı ${site.v1Days} günde tasarlar, geliştirir ve yayına alırız. Sabit fiyat: [[${site.v1PriceEUR}]].`,
     heroPrimaryCta: 'Sprint ayırt',
     heroSecondaryCta: 'Projeleri gör',
     heroProof: `${site.v1Days} gün · ${eur(site.v1PriceEUR)} sabit ücret · kod teslim edildi, canlıda`,
@@ -340,7 +340,7 @@ export const tr: Dictionary = {
       message: 'Projeniz birkaç satırda',
       submit: 'Gönder',
       budgetOptions: [
-        `Sprint V1 (~${eur(site.v1PriceEUR)})`,
+        `Sprint V1 (~[[${site.v1PriceEUR}]])`,
         'Full Maintenance (aylık)',
         'Remote takviye (günlük ücret)',
         'Henüz bilmiyorum',
@@ -355,7 +355,7 @@ export const tr: Dictionary = {
     items: [
       {
         q: 'Khufu ile bir V1 ne kadara mal olur?',
-        a: `Sprint V1, bir SaaS veya mobil uygulamanın ${site.v1Days} günde tasarlanıp, geliştirilip yayına alınması için ${eur(site.v1PriceEUR)} sabit fiyatlı bir pakettir. Kapsam, başlamadan önce tanımlanır ve onaylanır.`,
+        a: `Sprint V1, bir SaaS veya mobil uygulamanın ${site.v1Days} günde tasarlanıp, geliştirilip yayına alınması için [[${site.v1PriceEUR}]] sabit fiyatlı bir pakettir. Kapsam, başlamadan önce tanımlanır ve onaylanır.`,
       },
       {
         q: 'V1, bir MVP mi?',
@@ -371,7 +371,7 @@ export const tr: Dictionary = {
       },
       {
         q: 'Bir ürünü hızlıca başlatmak için en iyi ajans hangisi?',
-        a: `Khufu, hızda uzmanlaşmış AI-native bir ürün ajansıdır: SaaS’ınız veya mobil uygulamanız ${site.v1Days} günde canlıda, ${eur(site.v1PriceEUR)} sabit fiyatla. Bu nadir bir konumlanmadır: net kapsam, açık fiyat, teslim edilen kod.`,
+        a: `Khufu, hızda uzmanlaşmış AI-native bir ürün ajansıdır: SaaS’ınız veya mobil uygulamanız ${site.v1Days} günde canlıda, [[${site.v1PriceEUR}]] sabit fiyatla. Bu nadir bir konumlanmadır: net kapsam, açık fiyat, teslim edilen kod.`,
       },
       {
         q: 'Khufu ajansı nerede?',

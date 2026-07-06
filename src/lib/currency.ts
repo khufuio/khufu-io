@@ -54,3 +54,12 @@ export function formatMoney(eurAmount: number, currency: Currency, locale = 'en'
   }
   return money(roundUsd(eurAmount * EUR_TO_USD), 'USD', locale)
 }
+
+/**
+ * Replace `[[<eurAmount>]]` price tokens with the plain EUR-formatted price.
+ * Server-safe (no hook) — for metadata, JSON-LD and other non-JSX contexts where
+ * the geo-aware <Price>/<PricedText> can't run and EUR is the right anchor.
+ */
+export function stripPriceTokens(text: string, locale = 'en'): string {
+  return text.replace(/\[\[(\d+)\]\]/g, (_, n) => formatMoney(Number(n), 'EUR', locale))
+}

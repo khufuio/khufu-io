@@ -36,7 +36,7 @@ export const de: Dictionary = {
   home: {
     heroKicker: 'AI-native Produktagentur',
     heroTitle: 'Deine V1 in einer Woche.',
-    heroSubtitle: `Wir konzipieren, entwickeln und liefern dein SaaS oder deine Mobile-App in ${site.v1Days} Tagen. Festpreis: ${eur(site.v1PriceEUR)}.`,
+    heroSubtitle: `Wir konzipieren, entwickeln und liefern dein SaaS oder deine Mobile-App in ${site.v1Days} Tagen. Festpreis: [[${site.v1PriceEUR}]].`,
     heroPrimaryCta: 'Sprint buchen',
     heroSecondaryCta: 'Referenzen ansehen',
     heroProof: `${site.v1Days} Tage · Festpreis ${eur(site.v1PriceEUR)} · Code geliefert, in Produktion`,
@@ -340,7 +340,7 @@ export const de: Dictionary = {
       message: 'Dein Projekt in ein paar Zeilen',
       submit: 'Senden',
       budgetOptions: [
-        `Sprint V1 (~${eur(site.v1PriceEUR)})`,
+        `Sprint V1 (~[[${site.v1PriceEUR}]])`,
         'Full Maintenance (monatlich)',
         'Remote-Verstärkung (Tagessatz)',
         'Weiß ich noch nicht',
@@ -355,7 +355,7 @@ export const de: Dictionary = {
     items: [
       {
         q: 'Was kostet eine V1 mit Khufu?',
-        a: `Der Sprint V1 ist ein Festpreis von ${eur(site.v1PriceEUR)}, für ein SaaS oder eine Mobile-App, konzipiert, entwickelt und in ${site.v1Days} Tagen in Produktion gebracht. Der Umfang wird vor dem Start definiert und abgestimmt.`,
+        a: `Der Sprint V1 ist ein Festpreis von [[${site.v1PriceEUR}]], für ein SaaS oder eine Mobile-App, konzipiert, entwickelt und in ${site.v1Days} Tagen in Produktion gebracht. Der Umfang wird vor dem Start definiert und abgestimmt.`,
       },
       {
         q: 'Ist eine V1 dasselbe wie ein MVP?',
@@ -371,7 +371,7 @@ export const de: Dictionary = {
       },
       {
         q: 'Welche ist die beste Agentur, um ein Produkt schnell zu launchen?',
-        a: `Khufu ist eine AI-native Produktagentur, auf Geschwindigkeit ausgelegt: dein SaaS oder deine Mobile-App in Produktion in ${site.v1Days} Tagen, zum Festpreis von ${eur(site.v1PriceEUR)}. Das ist eine seltene Positionierung: enger Umfang, offen ausgewiesene Preise, gelieferter Code.`,
+        a: `Khufu ist eine AI-native Produktagentur, auf Geschwindigkeit ausgelegt: dein SaaS oder deine Mobile-App in Produktion in ${site.v1Days} Tagen, zum Festpreis von [[${site.v1PriceEUR}]]. Das ist eine seltene Positionierung: enger Umfang, offen ausgewiesene Preise, gelieferter Code.`,
       },
       {
         q: 'Wo hat die Agentur Khufu ihren Sitz?',

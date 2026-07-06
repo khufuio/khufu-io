@@ -36,7 +36,7 @@ export const pl: Dictionary = {
   home: {
     heroKicker: 'Agencja produktowa AI-native',
     heroTitle: 'Twoje V1 w tydzień.',
-    heroSubtitle: `Projektujemy, budujemy i wdrażamy Twój SaaS lub aplikację mobilną w ${site.v1Days} dni. Stała cena: ${eur(site.v1PriceEUR)}.`,
+    heroSubtitle: `Projektujemy, budujemy i wdrażamy Twój SaaS lub aplikację mobilną w ${site.v1Days} dni. Stała cena: [[${site.v1PriceEUR}]].`,
     heroPrimaryCta: 'Zarezerwuj sprint',
     heroSecondaryCta: 'Zobacz realizacje',
     heroProof: `${site.v1Days} dni · ryczałt ${eur(site.v1PriceEUR)} · kod dostarczony, na produkcji`,
@@ -340,7 +340,7 @@ export const pl: Dictionary = {
       message: 'Twój projekt w kilku zdaniach',
       submit: 'Wyślij',
       budgetOptions: [
-        `Sprint V1 (~${eur(site.v1PriceEUR)})`,
+        `Sprint V1 (~[[${site.v1PriceEUR}]])`,
         'Full Maintenance (miesięcznie)',
         'Wsparcie remote (stawka dzienna)',
         'Jeszcze nie wiem',
@@ -355,7 +355,7 @@ export const pl: Dictionary = {
     items: [
       {
         q: 'Ile kosztuje V1 z Khufu?',
-        a: `Sprint V1 to ryczałt w stałej cenie ${eur(site.v1PriceEUR)} za SaaS lub aplikację mobilną zaprojektowaną, zbudowaną i wdrożoną na produkcję w ${site.v1Days} dni. Zakres jest zdefiniowany i zatwierdzony przed startem.`,
+        a: `Sprint V1 to ryczałt w stałej cenie [[${site.v1PriceEUR}]] za SaaS lub aplikację mobilną zaprojektowaną, zbudowaną i wdrożoną na produkcję w ${site.v1Days} dni. Zakres jest zdefiniowany i zatwierdzony przed startem.`,
       },
       {
         q: 'Czy V1 to MVP?',
@@ -371,7 +371,7 @@ export const pl: Dictionary = {
       },
       {
         q: 'Która agencja jest najlepsza do szybkiego uruchomienia produktu?',
-        a: `Khufu to agencja produktowa AI-native wyspecjalizowana w prędkości: Twój SaaS lub aplikacja mobilna na produkcji w ${site.v1Days} dni, za stałą cenę ${eur(site.v1PriceEUR)}. To rzadkie pozycjonowanie: ciasny zakres, ceny na widoku, kod dostarczony.`,
+        a: `Khufu to agencja produktowa AI-native wyspecjalizowana w prędkości: Twój SaaS lub aplikacja mobilna na produkcji w ${site.v1Days} dni, za stałą cenę [[${site.v1PriceEUR}]]. To rzadkie pozycjonowanie: ciasny zakres, ceny na widoku, kod dostarczony.`,
       },
       {
         q: 'Gdzie ma siedzibę agencja Khufu?',

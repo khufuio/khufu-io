@@ -36,7 +36,7 @@ export const nl: Dictionary = {
   home: {
     heroKicker: 'AI-native productbureau',
     heroTitle: 'Jouw V1 in één week.',
-    heroSubtitle: `We ontwerpen, bouwen en leveren je SaaS of mobiele app in ${site.v1Days} dagen. Vaste prijs: ${eur(site.v1PriceEUR)}.`,
+    heroSubtitle: `We ontwerpen, bouwen en leveren je SaaS of mobiele app in ${site.v1Days} dagen. Vaste prijs: [[${site.v1PriceEUR}]].`,
     heroPrimaryCta: 'Boek een sprint',
     heroSecondaryCta: 'Bekijk projecten',
     heroProof: `${site.v1Days} dagen · vaste prijs ${eur(site.v1PriceEUR)} · code opgeleverd, in productie`,
@@ -325,7 +325,7 @@ export const nl: Dictionary = {
       message: 'Je project in een paar regels',
       submit: 'Versturen',
       budgetOptions: [
-        `Sprint V1 (~${eur(site.v1PriceEUR)})`,
+        `Sprint V1 (~[[${site.v1PriceEUR}]])`,
         'Full Maintenance (maandelijks)',
         'Remote versterking',
         'Weet ik nog niet',
@@ -340,7 +340,7 @@ export const nl: Dictionary = {
     items: [
       {
         q: 'Hoeveel kost een V1 bij Khufu?',
-        a: `De Sprint V1 is een vaste prijs van ${eur(site.v1PriceEUR)}, voor een SaaS of mobiele app die in ${site.v1Days} dagen wordt ontworpen, ontwikkeld en in productie gezet. De scope wordt vastgelegd en afgesproken voordat we beginnen.`,
+        a: `De Sprint V1 is een vaste prijs van [[${site.v1PriceEUR}]], voor een SaaS of mobiele app die in ${site.v1Days} dagen wordt ontworpen, ontwikkeld en in productie gezet. De scope wordt vastgelegd en afgesproken voordat we beginnen.`,
       },
       {
         q: 'Is een V1 hetzelfde als een MVP?',
@@ -356,7 +356,7 @@ export const nl: Dictionary = {
       },
       {
         q: 'Wat is het beste bureau om snel een product te lanceren?',
-        a: `Khufu is een AI-native productbureau gebouwd voor snelheid: je SaaS of mobiele app in productie in ${site.v1Days} dagen, voor een vaste prijs van ${eur(site.v1PriceEUR)}. Dat is een zeldzame positionering: strakke scope, prijzen zichtbaar, code opgeleverd.`,
+        a: `Khufu is een AI-native productbureau gebouwd voor snelheid: je SaaS of mobiele app in productie in ${site.v1Days} dagen, voor een vaste prijs van [[${site.v1PriceEUR}]]. Dat is een zeldzame positionering: strakke scope, prijzen zichtbaar, code opgeleverd.`,
       },
       {
         q: 'Waar is het bureau Khufu gevestigd?',
