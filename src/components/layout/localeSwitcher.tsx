@@ -2,6 +2,8 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import { locales, localeNames, type Locale } from '@/i18n/config'
+import { ui } from '@/i18n/ui'
+import { track } from '@/lib/analytics'
 
 /** Swaps the leading /:locale segment while preserving the rest of the path. */
 function swapLocale(pathname: string, next: Locale): string {
@@ -22,11 +24,14 @@ export function LocaleSwitcher({ current }: { current: Locale }) {
 
   return (
     <label className="inline-flex items-center gap-2 text-sm text-[var(--color-muted)]">
-      <span className="sr-only">Langue</span>
+      <span className="sr-only">{ui.language[current]}</span>
       <select
         value={current}
-        onChange={(e) => router.push(swapLocale(pathname, e.target.value as Locale))}
-        aria-label="Langue"
+        onChange={(e) => {
+          track('language_switched', { from: current, to: e.target.value })
+          router.push(swapLocale(pathname, e.target.value as Locale))
+        }}
+        aria-label={ui.language[current]}
         className="cursor-pointer rounded-lg border border-[var(--color-line)] bg-[var(--color-paper)] px-3 py-1.5 text-sm text-[var(--color-ink)] transition-colors hover:border-[var(--color-ink)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
       >
         {locales.map((l) => (

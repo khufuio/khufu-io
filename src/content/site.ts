@@ -81,6 +81,7 @@ export const routes = {
   method: 'methode',
   comparisons: 'comparatifs',
   useCases: 'cas-d-usage',
+  blog: 'blog',
   about: 'a-propos',
   contact: 'contact',
   legal: 'mentions-legales',

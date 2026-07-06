@@ -9,7 +9,7 @@ import { SectionHeading } from '@/components/ui/sectionHeading'
 import { ButtonLink } from '@/components/ui/button'
 import { FaqAccordion } from '@/components/sections/faqAccordion'
 import { CtaBanner } from '@/components/sections/ctaBanner'
-import { FaqJsonLd } from '@/components/seo/jsonLd'
+import { FaqJsonLd, ServiceJsonLd } from '@/components/seo/jsonLd'
 import { Price, FirmPriceNote } from '@/components/ui/price'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -64,6 +64,9 @@ export default async function OffersPage({ params }: { params: Promise<{ locale:
   return (
     <>
       <FaqJsonLd items={dict.faq.items.map((i) => ({ q: i.q, a: i.a }))} />
+      <ServiceJsonLd name={sprint.name} description={sprint.pitch} priceEUR={sprint.priceEur} />
+      <ServiceJsonLd name={maintenance.name} description={maintenance.pitch} priceEUR={maintenance.priceEur} />
+      <ServiceJsonLd name={remote.name} description={remote.pitch} priceEUR={remote.priceEur} />
       <PageHeader kicker={dict.nav.offers} title={o.title} subtitle={o.subtitle} />
 
       {/* Offers: Sprint V1 emphasised in the centre, the two others smaller on the sides */}

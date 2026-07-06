@@ -6,6 +6,7 @@ import { Container } from '@/components/ui/container'
 import { Wordmark } from './wordmark'
 import { WhatsAppGlyph } from './whatsappButton'
 import { LocaleSwitcher } from './localeSwitcher'
+import { blogUi } from '@/content/articles'
 
 export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const year = 2026 // build-time constant; bump on redeploy
@@ -47,6 +48,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
           <FooterLink href={href(locale, 'work')}>{nav.work}</FooterLink>
           <FooterLink href={href(locale, 'comparisons')}>{dict.geo.comparisonsMetaTitle}</FooterLink>
           <FooterLink href={href(locale, 'useCases')}>{dict.geo.useCasesMetaTitle}</FooterLink>
+          <FooterLink href={href(locale, 'blog')}>{blogUi.navLabel[locale]}</FooterLink>
           <FooterLink href={href(locale, 'about')}>{nav.about}</FooterLink>
           <FooterLink href={href(locale, 'contact')}>{nav.contact}</FooterLink>
         </FooterCol>

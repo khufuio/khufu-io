@@ -6,6 +6,7 @@ import { href, site } from '@/content/site'
 import { projects, getProject } from '@/content/projects'
 import { getClient } from '@/content/clients'
 import { buildMetadata } from '@/lib/metadata'
+import { ui } from '@/i18n/ui'
 import Image from 'next/image'
 import { Container } from '@/components/ui/container'
 import { ButtonLink } from '@/components/ui/button'
@@ -116,19 +117,43 @@ export default async function CaseStudyPage({
       <section>
         <Container className="py-16 sm:py-20">
           <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr]">
-            <div className="max-w-2xl space-y-6 text-lg text-[var(--color-ink-2)] text-pretty">
-              <p>{project.description[locale]}</p>
+            <div className="max-w-2xl space-y-10">
+              <p className="text-lg text-[var(--color-ink-2)] text-pretty">{project.description[locale]}</p>
+
+              {project.challenge && (
+                <div>
+                  <h2 className="font-[family-name:var(--font-display)] text-2xl font-bold tracking-[-0.01em]">
+                    {ui.challenge[locale]}
+                  </h2>
+                  <p className="mt-4 text-lg text-[var(--color-ink-2)] text-pretty">{project.challenge[locale]}</p>
+                </div>
+              )}
+
+              {project.approach && (
+                <div>
+                  <h2 className="font-[family-name:var(--font-display)] text-2xl font-bold tracking-[-0.01em]">
+                    {ui.approach[locale]}
+                  </h2>
+                  <p className="mt-4 text-lg text-[var(--color-ink-2)] text-pretty">{project.approach[locale]}</p>
+                </div>
+              )}
+
               {project.results && project.results.length > 0 && (
-                <ul className="grid gap-3 pt-4 sm:grid-cols-2">
-                  {project.results.map((r, i) => (
-                    <li
-                      key={i}
-                      className="rounded-[var(--radius-lg)] border border-[var(--color-line)] bg-white p-5 text-base text-[var(--color-ink)]"
-                    >
-                      {r[locale]}
-                    </li>
-                  ))}
-                </ul>
+                <div>
+                  <h2 className="font-[family-name:var(--font-display)] text-2xl font-bold tracking-[-0.01em]">
+                    {ui.results[locale]}
+                  </h2>
+                  <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                    {project.results.map((r, i) => (
+                      <li
+                        key={i}
+                        className="rounded-[var(--radius-lg)] border border-[var(--color-line)] bg-white p-5 text-base font-medium text-[var(--color-ink)]"
+                      >
+                        {r[locale]}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               )}
             </div>
 

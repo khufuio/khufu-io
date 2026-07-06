@@ -1,5 +1,8 @@
+'use client'
+
 import { site } from '@/content/site'
 import type { Locale } from '@/i18n/config'
+import { track } from '@/lib/analytics'
 
 const prefill: Record<Locale, string> = {
   fr: 'Bonjour Khufu, je veux lancer ma V1 !',
@@ -46,6 +49,7 @@ export function WhatsAppButton({ locale }: { locale: Locale }) {
       target="_blank"
       rel="noreferrer"
       aria-label={aria[locale]}
+      onClick={() => track('whatsapp_clicked', { locale, source: 'floating_button' })}
       className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_30px_-8px_rgba(37,211,102,0.7)] transition-transform hover:scale-105 sm:bottom-7 sm:right-7"
     >
       <WhatsAppGlyph size={30} />

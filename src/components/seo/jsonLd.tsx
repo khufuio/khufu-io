@@ -1,4 +1,4 @@
-import { site, entityDefinition } from '@/content/site'
+import { site, entityDefinition, href } from '@/content/site'
 import type { Locale } from '@/i18n/config'
 
 /** Inline a JSON-LD script tag. */
@@ -148,6 +148,75 @@ export function ReviewsJsonLd({ reviews }: { reviews: { quote: string; author: s
       reviewRating: { '@type': 'Rating', ratingValue: 5, bestRating: 5, worstRating: 1 },
       reviewBody: r.quote,
     })),
+  }
+  return <JsonLd data={data} />
+}
+
+/** BlogPosting for an article — helps search + generative engines cite it. */
+export function ArticleJsonLd({
+  headline,
+  description,
+  url,
+  image,
+  datePublished,
+  locale,
+}: {
+  headline: string
+  description: string
+  url: string
+  image?: string
+  datePublished: string
+  locale: Locale
+}) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline,
+    description,
+    url,
+    mainEntityOfPage: url,
+    ...(image && { image }),
+    datePublished,
+    dateModified: datePublished,
+    inLanguage: locale,
+    // Named author = E-E-A-T signal for search + citation by generative engines.
+    author: {
+      '@type': 'Person',
+      name: site.founder,
+      url: `${site.url}${href('fr', 'about')}`,
+    },
+    publisher: { '@id': `${site.url}/#organization` },
+  }
+  return <JsonLd data={data} />
+}
+
+/** Service node for an offer — makes the productized service machine-readable. */
+export function ServiceJsonLd({
+  name,
+  description,
+  priceEUR,
+}: {
+  name: string
+  description: string
+  priceEUR?: number
+}) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: name,
+    name,
+    description,
+    provider: { '@id': `${site.url}/#organization` },
+    areaServed: 'Worldwide',
+    ...(priceEUR
+      ? {
+          offers: {
+            '@type': 'Offer',
+            price: priceEUR,
+            priceCurrency: 'EUR',
+          },
+        }
+      : {}),
   }
   return <JsonLd data={data} />
 }

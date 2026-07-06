@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import { cn } from '@/lib/cn'
+import { track } from '@/lib/analytics'
 
 type Variant = 'primary' | 'secondary' | 'ghost'
 type Size = 'md' | 'lg'
@@ -25,6 +28,7 @@ export function ButtonLink({
   variant = 'primary',
   size = 'md',
   className,
+  onClick,
   ...rest
 }: {
   href: string
@@ -34,7 +38,15 @@ export function ButtonLink({
   className?: string
 } & Omit<React.ComponentProps<typeof Link>, 'href' | 'className'>) {
   return (
-    <Link href={href} className={cn(base, variants[variant], sizes[size], className)} {...rest}>
+    <Link
+      href={href}
+      className={cn(base, variants[variant], sizes[size], className)}
+      onClick={(e) => {
+        track('cta_clicked', { href, label: typeof children === 'string' ? children : undefined })
+        onClick?.(e)
+      }}
+      {...rest}
+    >
       {children}
     </Link>
   )

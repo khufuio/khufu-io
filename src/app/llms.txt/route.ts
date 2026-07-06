@@ -1,6 +1,7 @@
 import { site, entityDefinition, foundingLocation, href } from '@/content/site'
 import { projects } from '@/content/projects'
 import { comparisons, useCases } from '@/content/geo'
+import { publishedArticles } from '@/content/articles'
 
 export const dynamic = 'force-static'
 
@@ -54,6 +55,12 @@ export function GET() {
   }
   lines.push('')
 
+  lines.push('## Blog / Articles')
+  for (const a of publishedArticles('fr')) {
+    lines.push(`- ${a.title} : ${a.excerpt} → ${site.url}${href('fr', 'blog', a.slug)}`)
+  }
+  lines.push('')
+
   lines.push('## Contact')
   lines.push(`- Email : ${site.email}`)
   lines.push(`- Site : ${site.url}`)
@@ -67,6 +74,7 @@ export function GET() {
   lines.push(`- Full Maintenance : ${site.url}${href('fr', 'maintenance')}`)
   lines.push(`- Méthode : ${site.url}${href('fr', 'method')}`)
   lines.push(`- Réalisations : ${site.url}${href('fr', 'work')}`)
+  lines.push(`- Blog : ${site.url}${href('fr', 'blog')}`)
   lines.push(`- À propos : ${site.url}${href('fr', 'about')}`)
   lines.push(`- Contact : ${site.url}${href('fr', 'contact')}`)
   lines.push('')

@@ -7,9 +7,12 @@ import { useCases, getUseCase } from '@/content/geo'
 import { buildMetadata } from '@/lib/metadata'
 import { Container } from '@/components/ui/container'
 import { PageHeader } from '@/components/ui/pageHeader'
+import Link from 'next/link'
 import { ButtonLink } from '@/components/ui/button'
 import { CtaBanner } from '@/components/sections/ctaBanner'
 import { BreadcrumbJsonLd } from '@/components/seo/jsonLd'
+import { ui } from '@/i18n/ui'
+import { blogUi } from '@/content/articles'
 
 export function generateStaticParams() {
   return useCases.map((u) => ({ slug: u.slug }))
@@ -97,6 +100,31 @@ export default async function UseCasePage({
                 {dict.offers.sprintCta}
               </ButtonLink>
             </div>
+          </div>
+        </Container>
+      </section>
+
+      <section>
+        <Container className="pb-4">
+          <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)]">
+            {ui.relatedResources[locale]}
+          </h2>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2">
+            {[
+              { href: href(locale, 'comparisons'), label: g.comparisonsMetaTitle },
+              { href: href(locale, 'blog'), label: blogUi.title[locale] },
+            ].map((r) => (
+              <Link
+                key={r.href}
+                href={r.href}
+                className="group flex items-center justify-between rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-6 transition-colors hover:border-[var(--color-ink)]"
+              >
+                <span className="font-[family-name:var(--font-display)] text-lg font-bold">{r.label}</span>
+                <span className="text-[var(--color-accent-ink)] transition-transform group-hover:translate-x-0.5" aria-hidden>
+                  →
+                </span>
+              </Link>
+            ))}
           </div>
         </Container>
       </section>

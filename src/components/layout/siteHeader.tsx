@@ -8,6 +8,8 @@ import type { Dictionary } from '@/i18n/getDictionary'
 import { Container } from '@/components/ui/container'
 import { ButtonLink } from '@/components/ui/button'
 import { Wordmark } from './wordmark'
+import { blogUi } from '@/content/articles'
+import { ui } from '@/i18n/ui'
 import { cn } from '@/lib/cn'
 
 export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary }) {
@@ -18,6 +20,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
     { label: nav.offers, href: href(locale, 'offers') },
     { label: nav.work, href: href(locale, 'work') },
     { label: nav.method, href: href(locale, 'method') },
+    { label: blogUi.navLabel[locale], href: href(locale, 'blog') },
     { label: nav.about, href: href(locale, 'about') },
   ]
 
@@ -26,7 +29,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
       <Container className="flex h-16 items-center justify-between">
         <Wordmark locale={locale} />
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Principale">
+        <nav className="hidden items-center gap-7 md:flex" aria-label={ui.mainNav[locale]}>
           {links.map((l) => (
             <Link
               key={l.href}
@@ -47,7 +50,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
         <button
           type="button"
           className="flex h-10 w-10 items-center justify-center rounded-full ring-1 ring-inset ring-[var(--color-line)] md:hidden"
-          aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-label={open ? ui.closeMenu[locale] : ui.openMenu[locale]}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >

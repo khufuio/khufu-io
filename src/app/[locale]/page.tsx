@@ -43,7 +43,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <FaqJsonLd items={dict.faq.items.map((i) => ({ q: i.q, a: i.a }))} />
-      <ReviewsJsonLd reviews={testimonials.map((t) => ({ quote: t.quote, author: t.author, role: t.role }))} />
+      <ReviewsJsonLd reviews={testimonials.map((t) => ({ quote: t.quote[locale], author: t.author, role: t.role }))} />
 
       {/* Hero */}
       <section className="relative overflow-hidden">
@@ -180,7 +180,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {testimonials.map((t, i) => (
                 <figure key={i} className="flex flex-col rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-7">
-                  <blockquote className="flex-1 text-[var(--color-ink-2)] text-pretty">“{t.quote}”</blockquote>
+                  <blockquote className="flex-1 text-[var(--color-ink-2)] text-pretty">“{t.quote[locale]}”</blockquote>
                   <figcaption className="mt-6">
                     <div className="font-medium text-[var(--color-ink)]">{t.author}</div>
                     {t.role && <div className="text-sm text-[var(--color-muted)]">{t.role}</div>}

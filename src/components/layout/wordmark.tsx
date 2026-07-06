@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { cn } from '@/lib/cn'
 import type { Locale } from '@/i18n/config'
+import { ui } from '@/i18n/ui'
 
 /**
  * Khufu wordmark. Text-based (no asset dependency) — bold geometric display
@@ -16,7 +17,7 @@ export function Wordmark({
   return (
     <Link
       href={`/${locale}`}
-      aria-label="Khufu — accueil"
+      aria-label={ui.home[locale]}
       className={cn(
         'font-[family-name:var(--font-display)] text-xl font-bold tracking-[0.22em] text-[var(--color-ink)]',
         className,
