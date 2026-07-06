@@ -151,7 +151,7 @@ export const en: Dictionary = {
     ],
     remoteNote:
       'On-site work is possible: 1 week minimum, +50% on the rate, with expenses (travel, accommodation) covered by the client.',
-    firmPriceNote: 'Prices are firm in euros. Amounts shown in dollars are indicative, based on an approximate rate.',
+    firmPriceNote: 'Firm price in euros.',
     guaranteesTitle: 'What we guarantee',
     guarantees: [
       'A written, agreed scope before we start.',

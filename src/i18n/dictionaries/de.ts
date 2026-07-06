@@ -151,7 +151,7 @@ export const de: Dictionary = {
     ],
     remoteNote:
       'Einsatz vor Ort möglich: mindestens 1 Woche, +50 % auf den Satz, Spesen (Anreise, Unterkunft) zulasten des Kunden.',
-    firmPriceNote: 'Festpreise in Euro. In Dollar angezeigte Beträge sind Richtwerte auf Basis eines ungefähren Wechselkurses.',
+    firmPriceNote: 'Festpreis in Euro.',
     guaranteesTitle: 'Was wir garantieren',
     guarantees: [
       'Ein schriftlich festgelegter und abgestimmter Umfang, bevor wir starten.',

@@ -155,7 +155,7 @@ export const fr = {
     ],
     remoteNote:
       'Régie sur site possible : 1 semaine minimum, +50 % sur le tarif, avec frais (déplacement, logement) à la charge du client.',
-    firmPriceNote: 'Prix fermes en euros. Les montants affichés en dollars sont indicatifs, sur la base d’un taux approximatif.',
+    firmPriceNote: 'Prix ferme en euros.',
     guaranteesTitle: 'Ce qu’on garantit',
     guarantees: [
       'Un périmètre écrit et validé avant de commencer.',

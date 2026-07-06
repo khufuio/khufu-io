@@ -151,7 +151,7 @@ export const nl: Dictionary = {
     ],
     remoteNote:
       'Werken op locatie is mogelijk: minimaal 1 week, +50 % op het tarief, met onkosten (reis, verblijf) voor rekening van de klant.',
-    firmPriceNote: 'Prijzen zijn vast in euro. Bedragen in dollar zijn indicatief, op basis van een benaderende koers.',
+    firmPriceNote: 'Vaste prijs in euro.',
     guaranteesTitle: 'Wat we garanderen',
     guarantees: [
       'Een schriftelijke, afgesproken scope voordat we beginnen.',

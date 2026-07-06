@@ -151,7 +151,7 @@ export const es: Dictionary = {
     ],
     remoteNote:
       'Trabajo presencial posible: 1 semana mínimo, +50 % sobre la tarifa, con gastos (desplazamiento, alojamiento) a cargo del cliente.',
-    firmPriceNote: 'Precios firmes en euros. Los importes mostrados en dólares son orientativos, según un tipo de cambio aproximado.',
+    firmPriceNote: 'Precio cerrado en euros.',
     guaranteesTitle: 'Lo que garantizamos',
     guarantees: [
       'Un alcance escrito y acordado antes de empezar.',

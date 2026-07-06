@@ -151,7 +151,7 @@ export const tr: Dictionary = {
     ],
     remoteNote:
       'Yerinde çalışma mümkün: en az 1 hafta, ücrete +%50, masraflar (seyahat, konaklama) müşteriye ait.',
-    firmPriceNote: 'Fiyatlar euro cinsinden kesindir. Dolar olarak gösterilen tutarlar yaklaşık bir kura dayalı olup bilgi amaçlıdır.',
+    firmPriceNote: 'Sabit fiyat, euro cinsinden.',
     guaranteesTitle: 'Garanti ettiklerimiz',
     guarantees: [
       'Başlamadan önce yazılı ve onaylanmış bir kapsam.',

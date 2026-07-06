@@ -1,18 +1,19 @@
 /**
- * Geo currency layer. EUR is always the firm, contractual price; USD is shown
- * as an approximate convenience for visitors outside the eurozone.
+ * Geo currency layer. EUR is the firm, contractual price; USD visitors see a
+ * clean converted figure — shown as a plain fixed price (no "≈"), because a
+ * fixed price and a fixed timeline are the whole point of the agency. The EUR
+ * amount stays the legal anchor (see the "firm price" note).
  *
- * We deliberately support only two currencies (EUR / USD) to keep the copy
- * clean — every quoted amount stays anchored to EUR (see the "firm price" note).
+ * We deliberately support only two currencies (EUR / USD) to keep the copy clean.
  */
 
 export type Currency = 'EUR' | 'USD'
 
 export const COOKIE_NAME = 'khufu_cur'
 
-// Approximate EUR→USD rate. Kept as a hand-maintained constant on purpose:
-// prices are firm in EUR, so USD only needs to be roughly right. Bump manually.
-const EUR_TO_USD = 1.09
+// EUR→USD rate. Hand-maintained constant: EUR is the firm price, so the USD
+// figure only needs to be broadly right and land on a clean round number.
+const EUR_TO_USD = 1.13
 
 // ISO-3166 alpha-2 countries that transact in EUR (eurozone + de-facto users).
 const EUROZONE = new Set([
@@ -44,12 +45,12 @@ function money(amount: number, currency: Currency, locale: string): string {
 
 /**
  * Format an EUR amount in the target currency, honouring each locale's symbol
- * placement (e.g. "€15,000" in English, "15 000 €" in French).
- * EUR renders exactly; USD is prefixed with "≈" to signal it's approximate.
+ * placement (e.g. "€15,000" in English, "15 000 €" in French). USD is a clean
+ * round conversion shown as a plain fixed price — no "≈".
  */
 export function formatMoney(eurAmount: number, currency: Currency, locale = 'en'): string {
   if (currency === 'EUR') {
     return money(eurAmount, 'EUR', locale)
   }
-  return `≈ ${money(roundUsd(eurAmount * EUR_TO_USD), 'USD', locale)}`
+  return money(roundUsd(eurAmount * EUR_TO_USD), 'USD', locale)
 }

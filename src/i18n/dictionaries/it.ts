@@ -151,7 +151,7 @@ export const it: Dictionary = {
     ],
     remoteNote:
       'Lavoro on-site possibile: 1 settimana minimo, +50 % sulla tariffa, con spese (trasferta, alloggio) a carico del cliente.',
-    firmPriceNote: 'Prezzi fermi in euro. Gli importi mostrati in dollari sono indicativi, su base di un tasso approssimativo.',
+    firmPriceNote: 'Prezzo fisso in euro.',
     guaranteesTitle: 'Cosa garantiamo',
     guarantees: [
       'Un ambito scritto e approvato prima di iniziare.',

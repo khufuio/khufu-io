@@ -151,7 +151,7 @@ export const pl: Dictionary = {
     ],
     remoteNote:
       'Praca stacjonarna możliwa: minimum 1 tydzień, +50 % do stawki, z kosztami (dojazd, nocleg) po stronie klienta.',
-    firmPriceNote: 'Ceny stałe w euro. Kwoty podane w dolarach są orientacyjne, według przybliżonego kursu.',
+    firmPriceNote: 'Cena stała w euro.',
     guaranteesTitle: 'Co gwarantujemy',
     guarantees: [
       'Spisany i zatwierdzony zakres przed startem.',
