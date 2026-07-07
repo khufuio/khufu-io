@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import posthog from 'posthog-js'
 import { PostHogProvider as PHProvider } from 'posthog-js/react'
+import { CONSENT_KEY } from '@/lib/consent'
 
 function PageViewTracker() {
   const pathname = usePathname()
@@ -35,6 +36,9 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       person_profiles: 'identified_only',
       defaults: '2025-05-24',
     })
+    // Opt-out model: capture is ON by default. A returning visitor who declined
+    // (banner writes CONSENT_KEY, EU/UK only) is re-opted-out on every load.
+    if (localStorage.getItem(CONSENT_KEY) === 'denied') posthog.opt_out_capturing()
   }, [key])
 
   if (!key) return <>{children}</>

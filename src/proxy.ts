@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { locales, defaultLocale } from '@/i18n/config'
 import { COOKIE_NAME, currencyForCountry } from '@/lib/currency'
+import { REGION_COOKIE, needsConsent } from '@/lib/consent'
+
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 30 // 30 days
 
 const PUBLIC_FILE = /\.[^/]+$/
 
@@ -14,18 +17,24 @@ function preferredLocale(req: NextRequest): string {
   return defaultLocale
 }
 
-/** Stamp the display currency (EUR/USD) from the visitor's country onto a cookie. */
-function withCurrencyCookie(req: NextRequest, res: NextResponse): NextResponse {
-  // `geo` is populated by Vercel; the header is the portable fallback.
+/**
+ * Stamp geo-derived cookies from the visitor's country: the display currency
+ * (EUR/USD) and whether the consent banner should show (EU/EEA/UK only). Both are
+ * read client-side; the country header is Vercel-populated.
+ */
+function withGeoCookies(req: NextRequest, res: NextResponse): NextResponse {
   const country = req.headers.get('x-vercel-ip-country')
+
   const currency = currencyForCountry(country)
   if (req.cookies.get(COOKIE_NAME)?.value !== currency) {
-    res.cookies.set(COOKIE_NAME, currency, {
-      path: '/',
-      maxAge: 60 * 60 * 24 * 30,
-      sameSite: 'lax',
-    })
+    res.cookies.set(COOKIE_NAME, currency, { path: '/', maxAge: COOKIE_MAX_AGE, sameSite: 'lax' })
   }
+
+  const region = needsConsent(country) ? '1' : '0'
+  if (req.cookies.get(REGION_COOKIE)?.value !== region) {
+    res.cookies.set(REGION_COOKIE, region, { path: '/', maxAge: COOKIE_MAX_AGE, sameSite: 'lax' })
+  }
+
   return res
 }
 
@@ -48,12 +57,12 @@ export function proxy(req: NextRequest) {
   const hasLocale = locales.some(
     (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`),
   )
-  if (hasLocale) return withCurrencyCookie(req, NextResponse.next())
+  if (hasLocale) return withGeoCookies(req, NextResponse.next())
 
   const locale = preferredLocale(req)
   const url = req.nextUrl.clone()
   url.pathname = `/${locale}${pathname === '/' ? '' : pathname}`
-  return withCurrencyCookie(req, NextResponse.redirect(url))
+  return withGeoCookies(req, NextResponse.redirect(url))
 }
 
 export const config = {

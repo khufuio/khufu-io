@@ -10,6 +10,7 @@ import { PostHogProvider } from '@/components/analytics/posthogProvider'
 import { SiteHeader } from '@/components/layout/siteHeader'
 import { SiteFooter } from '@/components/layout/siteFooter'
 import { WhatsAppButton } from '@/components/layout/whatsappButton'
+import { CookieBanner } from '@/components/layout/cookieBanner'
 import { OrganizationJsonLd } from '@/components/seo/jsonLd'
 import { stripPriceTokens } from '@/lib/currency'
 
@@ -91,6 +92,7 @@ export default async function LocaleLayout({
             <main id="main">{children}</main>
             <SiteFooter locale={locale} dict={dict} />
             <WhatsAppButton locale={locale} />
+            <CookieBanner locale={locale} />
           </PostHogProvider>
         </Suspense>
       </body>
