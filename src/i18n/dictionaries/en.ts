@@ -100,7 +100,6 @@ export const en: Dictionary = {
       {
         id: 'sprint',
         name: 'Sprint V1',
-        price: `${eur(site.v1PriceEUR)}`,
         priceEur: site.v1PriceEUR,
         priceNote: 'flat fee',
         pitch: `Your first version, designed and shipped in ${site.v1Days} days.`,
@@ -117,7 +116,6 @@ export const en: Dictionary = {
       {
         id: 'maintenance',
         name: 'Full Maintenance',
-        price: 'from €1,490',
         priceEur: 1490,
         pricePrefix: 'from ',
         priceNote: '/ month',
@@ -135,14 +133,13 @@ export const en: Dictionary = {
       {
         id: 'regie',
         name: 'Remote',
-        price: `${eur(site.dailyRateEUR)}`,
         priceEur: site.dailyRateEUR,
         priceNote: '/ day',
-        pitch: 'Senior firepower, 100% remote, billed by the hour — €200/h.',
+        pitch: 'Senior firepower, 100% remote, billed by the hour — [[200]]/h.',
         featured: false,
         features: [
           '100% remote',
-          '€200/h — hourly granularity',
+          '[[200]]/h — hourly granularity',
           'Development, architecture, consulting',
           'No lock-in',
         ],
@@ -151,7 +148,7 @@ export const en: Dictionary = {
     ],
     remoteNote:
       'On-site work is possible: 1 week minimum, +50% on the rate, with expenses (travel, accommodation) covered by the client.',
-    firmPriceNote: 'Firm price in euros.',
+    firmPriceNote: 'Firm price, billed in euros or dollars — your choice.',
     guaranteesTitle: 'What we guarantee',
     guarantees: [
       'A written, agreed scope before we start.',
@@ -214,7 +211,6 @@ export const en: Dictionary = {
     ],
     popularBadge: 'Popular',
     tiersTitle: 'Three tiers',
-    tiersSubtitle: 'Pick the level of commitment that fits your needs. Prices are indicative.',
     tiers: [
       {
         id: 'starter',
@@ -247,7 +243,7 @@ export const en: Dictionary = {
       },
     ],
     devNote:
-      '6-month commitment. Mandatory tracking-tools setup at kickoff: 1 day (€1,200). Extra dev hours billed at €200/h.',
+      '6-month commitment. Mandatory tracking-tools setup at kickoff: 1 day ([[1200]]). Extra dev hours billed at [[200]]/h.',
     ctaTitle: 'Want to hand off maintenance?',
     ctaBody: 'Tell us where your product stands, we’ll suggest the right tier.',
     ctaButton: 'Talk to Khufu',
@@ -372,11 +368,11 @@ export const en: Dictionary = {
       },
       {
         q: 'What happens after the V1 is delivered?',
-        a: `You can continue with Full Maintenance (managed infra, support with an SLA and dev days included every month) or with remote support at ${eur(site.dailyRateEUR)}/day (€200/h). The source code is yours either way.`,
+        a: `You can continue with Full Maintenance (managed infra, support with an SLA and dev days included every month) or with remote support at [[${site.dailyRateEUR}]]/day ([[200]]/h). The source code is yours either way.`,
       },
       {
         q: 'What is Khufu’s rate for ongoing support?',
-        a: `Support is 100% remote, billed at €200/h with hourly granularity (i.e. ${eur(site.dailyRateEUR)}/day), with no lock-in. On-site work is possible: 1 week minimum, +50% on the rate and expenses covered by the client.`,
+        a: `Support is 100% remote, billed at [[200]]/h with hourly granularity (i.e. [[${site.dailyRateEUR}]]/day), with no lock-in. On-site work is possible: 1 week minimum, +50% on the rate and expenses covered by the client.`,
       },
       {
         q: 'Can Khufu build mobile apps and AI features?',

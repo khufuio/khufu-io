@@ -100,7 +100,6 @@ export const pt: Dictionary = {
       {
         id: 'sprint',
         name: 'Sprint V1',
-        price: `${eur(site.v1PriceEUR)}`,
         priceEur: site.v1PriceEUR,
         priceNote: 'valor fixo',
         pitch: `A sua primeira versão, concebida e entregue em ${site.v1Days} dias.`,
@@ -117,7 +116,6 @@ export const pt: Dictionary = {
       {
         id: 'maintenance',
         name: 'Full Maintenance',
-        price: 'desde 1 490 €',
         priceEur: 1490,
         pricePrefix: 'desde ',
         priceNote: '/ mês',
@@ -135,14 +133,13 @@ export const pt: Dictionary = {
       {
         id: 'regie',
         name: 'Remote',
-        price: `${eur(site.dailyRateEUR)}`,
         priceEur: site.dailyRateEUR,
         priceNote: '/ dia',
-        pitch: 'Um reforço sénior 100 % remoto, faturado à hora — 200 €/h.',
+        pitch: 'Um reforço sénior 100 % remoto, faturado à hora — [[200]]/h.',
         featured: false,
         features: [
           '100 % remoto',
-          '200 €/h — granularidade horária',
+          '[[200]]/h — granularidade horária',
           'Desenvolvimento, arquitetura, consultoria',
           'Sem compromisso de duração',
         ],
@@ -151,7 +148,7 @@ export const pt: Dictionary = {
     ],
     remoteNote:
       'Trabalho presencial possível: 1 semana mínimo, +50 % sobre o valor, com despesas (deslocação, alojamento) a cargo do cliente.',
-    firmPriceNote: 'Preço fixo em euros.',
+    firmPriceNote: 'Preço fixo, faturado em euros ou dólares, à tua escolha.',
     guaranteesTitle: 'O que garantimos',
     guarantees: [
       'Um âmbito escrito e validado antes de começar.',
@@ -214,7 +211,6 @@ export const pt: Dictionary = {
     ],
     popularBadge: 'Popular',
     tiersTitle: 'Três planos',
-    tiersSubtitle: 'Escolha o nível de compromisso conforme as suas necessidades. Os preços são indicativos.',
     tiers: [
       {
         id: 'starter',
@@ -262,7 +258,7 @@ export const pt: Dictionary = {
       },
     ],
     devNote:
-      'Compromisso de 6 meses. Configuração obrigatória das ferramentas de tracking no arranque: 1 dia (1 200 €). Horas de dev adicionais faturadas a 200 €/h.',
+      'Compromisso de 6 meses. Configuração obrigatória das ferramentas de tracking no arranque: 1 dia ([[1200]]). Horas de dev adicionais faturadas a [[200]]/h.',
     ctaTitle: 'Quer delegar a manutenção?',
     ctaBody: 'Diga-nos em que ponto está o seu produto e propomos-lhe o plano adequado.',
     ctaButton: 'Falar com a Khufu',
@@ -387,11 +383,11 @@ export const pt: Dictionary = {
       },
       {
         q: 'O que acontece depois da entrega da V1?',
-        a: `Pode continuar com a oferta Full Maintenance (infra gerida, suporte com SLA e dias de dev incluídos todos os meses) ou em reforço remoto a ${eur(site.dailyRateEUR)}/dia (200 €/h). O código-fonte é seu em qualquer caso.`,
+        a: `Pode continuar com a oferta Full Maintenance (infra gerida, suporte com SLA e dias de dev incluídos todos os meses) ou em reforço remoto a [[${site.dailyRateEUR}]]/dia ([[200]]/h). O código-fonte é seu em qualquer caso.`,
       },
       {
         q: 'Qual é o valor da Khufu em reforço?',
-        a: `O reforço é 100 % remoto, faturado a 200 €/h com granularidade horária (ou seja, ${eur(site.dailyRateEUR)}/dia), sem compromisso de duração. Um trabalho presencial é possível: 1 semana mínimo, +50 % sobre o valor e despesas a cargo do cliente.`,
+        a: `O reforço é 100 % remoto, faturado a [[200]]/h com granularidade horária (ou seja, [[${site.dailyRateEUR}]]/dia), sem compromisso de duração. Um trabalho presencial é possível: 1 semana mínimo, +50 % sobre o valor e despesas a cargo do cliente.`,
       },
       {
         q: 'A Khufu pode desenvolver aplicações móveis e IA?',

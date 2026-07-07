@@ -10,7 +10,7 @@ import { ButtonLink } from '@/components/ui/button'
 import { FaqAccordion } from '@/components/sections/faqAccordion'
 import { CtaBanner } from '@/components/sections/ctaBanner'
 import { FaqJsonLd, ServiceJsonLd } from '@/components/seo/jsonLd'
-import { Price, FirmPriceNote } from '@/components/ui/price'
+import { Price, FirmPriceNote, PricedText } from '@/components/ui/price'
 import { stripPriceTokens } from '@/lib/currency'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -45,14 +45,16 @@ export default async function OffersPage({ params }: { params: Promise<{ locale:
         </span>
         <span className="text-sm text-[var(--color-muted)]">{offer.priceNote}</span>
       </div>
-      <p className="mt-3 text-sm text-[var(--color-ink-2)]">{offer.pitch}</p>
+      <p className="mt-3 text-sm text-[var(--color-ink-2)]">
+        <PricedText text={offer.pitch} locale={locale} />
+      </p>
       <ul className="mt-5 flex flex-1 flex-col gap-2.5">
         {offer.features.slice(0, 4).map((f) => (
           <li key={f} className="flex gap-2 text-sm text-[var(--color-ink-2)]">
             <span className="mt-0.5 shrink-0 text-[var(--color-accent-ink)]" aria-hidden>
               ✓
             </span>
-            {f}
+            <PricedText text={f} locale={locale} />
           </li>
         ))}
       </ul>
@@ -67,7 +69,7 @@ export default async function OffersPage({ params }: { params: Promise<{ locale:
       <FaqJsonLd items={dict.faq.items.map((i) => ({ q: i.q, a: stripPriceTokens(i.a, locale) }))} />
       <ServiceJsonLd name={sprint.name} description={sprint.pitch} priceEUR={sprint.priceEur} />
       <ServiceJsonLd name={maintenance.name} description={maintenance.pitch} priceEUR={maintenance.priceEur} />
-      <ServiceJsonLd name={remote.name} description={remote.pitch} priceEUR={remote.priceEur} />
+      <ServiceJsonLd name={remote.name} description={stripPriceTokens(remote.pitch, locale)} priceEUR={remote.priceEur} />
       <PageHeader kicker={dict.nav.offers} title={o.title} subtitle={o.subtitle} />
 
       {/* Offers: Sprint V1 emphasised in the centre, the two others smaller on the sides */}

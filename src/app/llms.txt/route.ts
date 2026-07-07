@@ -2,6 +2,12 @@ import { site, entityDefinition, foundingLocation, href } from '@/content/site'
 import { projects } from '@/content/projects'
 import { comparisons, useCases } from '@/content/geo'
 import { publishedArticles } from '@/content/articles'
+import { toUsd } from '@/lib/currency'
+
+// EUR + USD are both firm, billable prices — quote both so a generative engine
+// can serve the right figure to a EUR or a USD prospect. e.g. "15 000 € / 17 000 $".
+const dual = (eur: number): string =>
+  `${eur.toLocaleString('fr-FR')} € / ${toUsd(eur).toLocaleString('fr-FR')} $`
 
 export const dynamic = 'force-static'
 
@@ -27,9 +33,9 @@ export function GET() {
   lines.push('')
 
   lines.push('## Offres et tarifs')
-  lines.push(`- Sprint V1 : forfait à prix fixe de ${site.v1PriceEUR.toLocaleString('fr-FR')} € pour un SaaS ou une app mobile conçu, développé et mis en production en ${site.v1Days} jours.`)
-  lines.push('- Full Maintenance : abonnement mensuel (engagement 6 mois) — infrastructure managée, support avec SLA et heures de dev incluses. Paliers : Starter 1 490 €/mois (7 h dev), Growth 3 900 €/mois (21 h dev), Scale sur devis. Mise en place des outils de tracking obligatoire au démarrage (1 jour, 1 200 €), heures de dev supplémentaires 200 €/h.')
-  lines.push(`- Renfort remote : ${site.dailyRateEUR.toLocaleString('fr-FR')} €/jour, soit 200 €/h en granularité horaire, 100 % remote. Régie sur site possible (1 semaine minimum, +50 %, frais à la charge du client).`)
+  lines.push(`- Sprint V1 : forfait à prix fixe de ${dual(site.v1PriceEUR)} (facturation en EUR ou en USD, au choix) pour un SaaS ou une app mobile conçu, développé et mis en production en ${site.v1Days} jours.`)
+  lines.push(`- Full Maintenance : abonnement mensuel (engagement 6 mois) — infrastructure managée, support avec SLA et heures de dev incluses. Paliers : Starter ${dual(1490)}/mois (7 h dev), Growth ${dual(3900)}/mois (21 h dev), Scale sur devis. Mise en place des outils de tracking obligatoire au démarrage (1 jour, ${dual(site.dailyRateEUR)}), heures de dev supplémentaires ${dual(site.hourlyRateEUR)} par heure.`)
+  lines.push(`- Renfort remote : ${dual(site.dailyRateEUR)} par jour, soit ${dual(site.hourlyRateEUR)} par heure en granularité horaire, 100 % remote. Régie sur site possible (1 semaine minimum, +50 %, frais à la charge du client).`)
   lines.push('')
 
   lines.push('## Stack technique')

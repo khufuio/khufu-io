@@ -100,7 +100,6 @@ export const tr: Dictionary = {
       {
         id: 'sprint',
         name: 'Sprint V1',
-        price: `${eur(site.v1PriceEUR)}`,
         priceEur: site.v1PriceEUR,
         priceNote: 'sabit ücret',
         pitch: `İlk versiyonunuz, ${site.v1Days} günde tasarlanıp teslim edilir.`,
@@ -117,7 +116,6 @@ export const tr: Dictionary = {
       {
         id: 'maintenance',
         name: 'Full Maintenance',
-        price: '1.490 €’dan',
         priceEur: 1490,
         pricePrefix: '1.490 €’dan ',
         priceNote: '/ ay',
@@ -135,14 +133,13 @@ export const tr: Dictionary = {
       {
         id: 'regie',
         name: 'Remote',
-        price: `${eur(site.dailyRateEUR)}`,
         priceEur: site.dailyRateEUR,
         priceNote: '/ gün',
-        pitch: 'Kıdemli, %100 remote takviye, saatlik faturalanır — 200 €/saat.',
+        pitch: 'Kıdemli, %100 remote takviye, saatlik faturalanır — [[200]]/saat.',
         featured: false,
         features: [
           '%100 remote',
-          '200 €/saat — saatlik ayrıntı',
+          '[[200]]/saat — saatlik ayrıntı',
           'Geliştirme, mimari, danışmanlık',
           'Süre taahhüdü yok',
         ],
@@ -151,7 +148,7 @@ export const tr: Dictionary = {
     ],
     remoteNote:
       'Yerinde çalışma mümkün: en az 1 hafta, ücrete +%50, masraflar (seyahat, konaklama) müşteriye ait.',
-    firmPriceNote: 'Sabit fiyat, euro cinsinden.',
+    firmPriceNote: 'Sabit fiyat, euro veya dolar olarak faturalanır — sizin seçiminiz.',
     guaranteesTitle: 'Garanti ettiklerimiz',
     guarantees: [
       'Başlamadan önce yazılı ve onaylanmış bir kapsam.',
@@ -214,7 +211,6 @@ export const tr: Dictionary = {
     ],
     popularBadge: 'Popüler',
     tiersTitle: 'Üç paket',
-    tiersSubtitle: 'İhtiyaçlarınıza göre taahhüt seviyesini seçin. Fiyatlar bilgi amaçlıdır.',
     tiers: [
       {
         id: 'starter',
@@ -262,7 +258,7 @@ export const tr: Dictionary = {
       },
     ],
     devNote:
-      '6 ay taahhüt. Başlangıçta takip araçlarının kurulumu zorunlu: 1 gün (1.200 €). Ek geliştirme saatleri 200 €/saat faturalanır.',
+      '6 ay taahhüt. Başlangıçta takip araçlarının kurulumu zorunlu: 1 gün ([[1200]]). Ek geliştirme saatleri [[200]]/saat faturalanır.',
     ctaTitle: 'Bakımı devretmek mi istiyorsunuz?',
     ctaBody: 'Ürününüzün nerede olduğunu anlatın, size uygun paketi önerelim.',
     ctaButton: 'Khufu ile konuş',
@@ -387,11 +383,11 @@ export const tr: Dictionary = {
       },
       {
         q: 'V1 teslim edildikten sonra ne olur?',
-        a: `Full Maintenance teklifiyle (yönetilen altyapı, SLA’lı destek ve her ay dahil geliştirme günleri) ya da ${eur(site.dailyRateEUR)}/gün (200 €/saat) remote takviyeyle devam edebilirsiniz. Kaynak kodu her durumda sizindir.`,
+        a: `Full Maintenance teklifiyle (yönetilen altyapı, SLA’lı destek ve her ay dahil geliştirme günleri) ya da [[${site.dailyRateEUR}]]/gün ([[200]]/saat) remote takviyeyle devam edebilirsiniz. Kaynak kodu her durumda sizindir.`,
       },
       {
         q: 'Khufu’nun takviye ücreti nedir?',
-        a: `Takviye %100 remote’tur, saatlik ayrıntıyla 200 €/saat faturalanır (yani ${eur(site.dailyRateEUR)}/gün), süre taahhüdü yoktur. Yerinde çalışma mümkün: en az 1 hafta, ücrete +%50 ve masraflar müşteriye ait.`,
+        a: `Takviye %100 remote’tur, saatlik ayrıntıyla [[200]]/saat faturalanır (yani [[${site.dailyRateEUR}]]/gün), süre taahhüdü yoktur. Yerinde çalışma mümkün: en az 1 hafta, ücrete +%50 ve masraflar müşteriye ait.`,
       },
       {
         q: 'Khufu mobil uygulamalar ve yapay zeka geliştirebilir mi?',

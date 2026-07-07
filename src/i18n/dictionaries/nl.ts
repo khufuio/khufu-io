@@ -100,7 +100,6 @@ export const nl: Dictionary = {
       {
         id: 'sprint',
         name: 'Sprint V1',
-        price: `${eur(site.v1PriceEUR)}`,
         priceEur: site.v1PriceEUR,
         priceNote: 'vaste prijs',
         pitch: `Je eerste versie, ontworpen en opgeleverd in ${site.v1Days} dagen.`,
@@ -117,7 +116,6 @@ export const nl: Dictionary = {
       {
         id: 'maintenance',
         name: 'Full Maintenance',
-        price: 'vanaf € 1.490',
         priceEur: 1490,
         pricePrefix: 'vanaf ',
         priceNote: '/ maand',
@@ -135,14 +133,13 @@ export const nl: Dictionary = {
       {
         id: 'regie',
         name: 'Remote',
-        price: `${eur(site.dailyRateEUR)}`,
         priceEur: site.dailyRateEUR,
         priceNote: '/ dag',
-        pitch: 'Senior slagkracht, 100 % remote, per uur gefactureerd — 200 €/h.',
+        pitch: 'Senior slagkracht, 100 % remote, per uur gefactureerd — [[200]]/h.',
         featured: false,
         features: [
           '100 % remote',
-          '200 €/h — per uur nauwkeurig',
+          '[[200]]/h — per uur nauwkeurig',
           'Ontwikkeling, architectuur, advies',
           'Geen contractduur',
         ],
@@ -151,7 +148,7 @@ export const nl: Dictionary = {
     ],
     remoteNote:
       'Werken op locatie is mogelijk: minimaal 1 week, +50 % op het tarief, met onkosten (reis, verblijf) voor rekening van de klant.',
-    firmPriceNote: 'Vaste prijs in euro.',
+    firmPriceNote: 'Vaste prijs, gefactureerd in euro of dollar — jouw keuze.',
     guaranteesTitle: 'Wat we garanderen',
     guarantees: [
       'Een schriftelijke, afgesproken scope voordat we beginnen.',
@@ -214,7 +211,6 @@ export const nl: Dictionary = {
     ],
     popularBadge: 'Populair',
     tiersTitle: 'Drie niveaus',
-    tiersSubtitle: 'Kies het niveau van betrokkenheid dat bij je past. Prijzen zijn indicatief.',
     tiers: [
       {
         id: 'starter',
@@ -247,7 +243,7 @@ export const nl: Dictionary = {
       },
     ],
     devNote:
-      'Verbintenis van 6 maanden. Verplichte setup van tracking-tools bij de kickoff: 1 dag (€ 1.200). Extra dev-uren gefactureerd tegen 200 €/h.',
+      'Verbintenis van 6 maanden. Verplichte setup van tracking-tools bij de kickoff: 1 dag ([[1200]]). Extra dev-uren gefactureerd tegen [[200]]/h.',
     ctaTitle: 'Onderhoud uit handen geven?',
     ctaBody: 'Vertel ons waar je product staat, wij stellen het juiste niveau voor.',
     ctaButton: 'Praat met Khufu',
@@ -372,11 +368,11 @@ export const nl: Dictionary = {
       },
       {
         q: 'Wat gebeurt er na de oplevering van de V1?',
-        a: `Je kunt verder met Full Maintenance (beheerde infra, support met SLA en dev-dagen inbegrepen elke maand) of met remote versterking à ${eur(site.dailyRateEUR)}/dag (200 €/h). De broncode is hoe dan ook van jou.`,
+        a: `Je kunt verder met Full Maintenance (beheerde infra, support met SLA en dev-dagen inbegrepen elke maand) of met remote versterking à [[${site.dailyRateEUR}]]/dag ([[200]]/h). De broncode is hoe dan ook van jou.`,
       },
       {
         q: 'Wat is het tarief van Khufu voor versterking?',
-        a: `De versterking is 100 % remote, gefactureerd tegen 200 €/h met uurnauwkeurigheid (oftewel ${eur(site.dailyRateEUR)}/dag), zonder contractduur. Werken op locatie is mogelijk: minimaal 1 week, +50 % op het tarief en onkosten voor rekening van de klant.`,
+        a: `De versterking is 100 % remote, gefactureerd tegen [[200]]/h met uurnauwkeurigheid (oftewel [[${site.dailyRateEUR}]]/dag), zonder contractduur. Werken op locatie is mogelijk: minimaal 1 week, +50 % op het tarief en onkosten voor rekening van de klant.`,
       },
       {
         q: 'Kan Khufu mobiele apps en AI ontwikkelen?',

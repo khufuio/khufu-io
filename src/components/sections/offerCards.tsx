@@ -3,7 +3,7 @@ import { href } from '@/content/site'
 import type { Dictionary } from '@/i18n/getDictionary'
 import { cn } from '@/lib/cn'
 import { ButtonLink } from '@/components/ui/button'
-import { Price, FirmPriceNote } from '@/components/ui/price'
+import { Price, FirmPriceNote, PricedText } from '@/components/ui/price'
 
 const ctaHrefFor = (locale: Locale, id: string): string => {
   if (id === 'maintenance') return href(locale, 'maintenance')
@@ -44,7 +44,7 @@ export function OfferCards({ locale, dict }: { locale: Locale; dict: Dictionary 
           </div>
 
           <p className={cn('mt-3 text-sm', offer.featured ? 'text-[var(--color-paper-2)]' : 'text-[var(--color-ink-2)]')}>
-            {offer.pitch}
+            <PricedText text={offer.pitch} locale={locale} />
           </p>
 
           <ul className="mt-6 flex flex-1 flex-col gap-3">
@@ -59,7 +59,9 @@ export function OfferCards({ locale, dict }: { locale: Locale; dict: Dictionary 
                 >
                   ✓
                 </span>
-                <span className={offer.featured ? 'text-[var(--color-paper)]' : 'text-[var(--color-ink-2)]'}>{f}</span>
+                <span className={offer.featured ? 'text-[var(--color-paper)]' : 'text-[var(--color-ink-2)]'}>
+                  <PricedText text={f} locale={locale} />
+                </span>
               </li>
             ))}
           </ul>

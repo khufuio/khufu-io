@@ -6,6 +6,7 @@ import { buildMetadata } from '@/lib/metadata'
 import { Container } from '@/components/ui/container'
 import { PageHeader } from '@/components/ui/pageHeader'
 import { CtaBanner } from '@/components/sections/ctaBanner'
+import { Price, PricedText } from '@/components/ui/price'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -36,10 +37,14 @@ export default async function RemotePage({ params }: { params: Promise<{ locale:
             <div className="rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-8">
               <p className="text-sm text-[var(--color-muted)]">{offer.name}</p>
               <div className="mt-3 flex items-baseline gap-2">
-                <span className="font-[family-name:var(--font-display)] text-5xl font-bold">{offer.price}</span>
+                <span className="font-[family-name:var(--font-display)] text-5xl font-bold">
+                  <Price eur={offer.priceEur} locale={locale} />
+                </span>
                 <span className="text-[var(--color-muted)]">{offer.priceNote}</span>
               </div>
-              <p className="mt-4 text-[var(--color-ink-2)]">{offer.pitch}</p>
+              <p className="mt-4 text-[var(--color-ink-2)]">
+                <PricedText text={offer.pitch} locale={locale} />
+              </p>
               <p className="mt-6 text-sm leading-relaxed text-[var(--color-muted)]">{dict.offers.remoteNote}</p>
             </div>
           </div>
@@ -54,7 +59,7 @@ export default async function RemotePage({ params }: { params: Promise<{ locale:
                   <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent-soft)] text-xs text-[var(--color-accent-ink)]">
                     ✓
                   </span>
-                  {f}
+                  <PricedText text={f} locale={locale} />
                 </li>
               ))}
             </ul>

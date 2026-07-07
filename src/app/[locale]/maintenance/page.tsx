@@ -9,7 +9,7 @@ import { PageHeader } from '@/components/ui/pageHeader'
 import { SectionHeading } from '@/components/ui/sectionHeading'
 import { ButtonLink } from '@/components/ui/button'
 import { CtaBanner } from '@/components/sections/ctaBanner'
-import { Price, FirmPriceNote } from '@/components/ui/price'
+import { Price, FirmPriceNote, PricedText } from '@/components/ui/price'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -54,7 +54,7 @@ export default async function MaintenancePage({ params }: { params: Promise<{ lo
       {/* Tiers */}
       <section className="bg-[var(--color-paper-2)]">
         <Container className="py-16 sm:py-20">
-          <SectionHeading title={m.tiersTitle} subtitle={m.tiersSubtitle} />
+          <SectionHeading title={m.tiersTitle} />
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {m.tiers.map((tier) => (
               <div
@@ -111,7 +111,9 @@ export default async function MaintenancePage({ params }: { params: Promise<{ lo
             ))}
           </div>
 
-          <p className="mt-8 max-w-3xl text-sm text-[var(--color-muted)]">{m.devNote}</p>
+          <p className="mt-8 max-w-3xl text-sm text-[var(--color-muted)]">
+            <PricedText text={m.devNote} locale={locale} />
+          </p>
           <FirmPriceNote className="mt-3 max-w-3xl text-xs text-[var(--color-muted)]">{dict.offers.firmPriceNote}</FirmPriceNote>
         </Container>
       </section>

@@ -36,6 +36,19 @@ export const site = {
   v1Days: 7,
   v1PriceEUR: 15000,
   dailyRateEUR: 1200,
+  hourlyRateEUR: 200,
+  // Both EUR and USD are firm, billable prices (the client picks; we settle in
+  // AED regardless), so USD is NOT an FX conversion — these are chosen round
+  // list prices, keyed by their EUR anchor. Covers every price we display
+  // (Sprint V1, day/hour rate, maintenance tiers 1490/3900). Any EUR amount not
+  // listed falls back to a rate conversion in currency.ts (safety net only).
+  usdPrices: {
+    15000: 17000,
+    1200: 1400,
+    200: 240,
+    1490: 1690,
+    3900: 4400,
+  } as Record<number, number>,
   // Founder's personal profiles (indie-dev brand). Attached to the founder
   // (Person) in structured data, not to the Organization.
   social: {

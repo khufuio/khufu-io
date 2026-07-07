@@ -104,7 +104,6 @@ export const fr = {
       {
         id: 'sprint',
         name: 'Sprint V1',
-        price: `${eur(site.v1PriceEUR)} €`,
         priceEur: site.v1PriceEUR,
         priceNote: 'forfait',
         pitch: `Votre première version, conçue et livrée en ${site.v1Days} jours.`,
@@ -121,7 +120,6 @@ export const fr = {
       {
         id: 'maintenance',
         name: 'Full Maintenance',
-        price: 'dès 1 490 €',
         priceEur: 1490,
         pricePrefix: 'dès ',
         priceNote: '/ mois',
@@ -139,14 +137,13 @@ export const fr = {
       {
         id: 'regie',
         name: 'Remote',
-        price: `${eur(site.dailyRateEUR)} €`,
         priceEur: site.dailyRateEUR,
         priceNote: '/ jour',
-        pitch: 'Un renfort senior 100 % remote, facturé à l’heure — 200 €/h.',
+        pitch: 'Un renfort senior 100 % remote, facturé à l’heure — [[200]]/h.',
         featured: false,
         features: [
           '100 % remote',
-          '200 €/h — granularité horaire',
+          '[[200]]/h — granularité horaire',
           'Développement, architecture, conseil',
           'Sans engagement de durée',
         ],
@@ -155,7 +152,7 @@ export const fr = {
     ],
     remoteNote:
       'Régie sur site possible : 1 semaine minimum, +50 % sur le tarif, avec frais (déplacement, logement) à la charge du client.',
-    firmPriceNote: 'Prix ferme en euros.',
+    firmPriceNote: 'Prix ferme, facturé en euros ou en dollars, au choix.',
     guaranteesTitle: 'Ce qu’on garantit',
     guarantees: [
       'Un périmètre écrit et validé avant de commencer.',
@@ -218,7 +215,6 @@ export const fr = {
     ],
     popularBadge: 'Populaire',
     tiersTitle: 'Trois paliers',
-    tiersSubtitle: 'Choisissez le niveau d’engagement selon vos besoins. Les tarifs sont indicatifs.',
     tiers: [
       {
         id: 'starter',
@@ -266,7 +262,7 @@ export const fr = {
       },
     ],
     devNote:
-      'Engagement 6 mois. Mise en place des outils de tracking obligatoire au démarrage : 1 jour (1 200 €). Heures de dev supplémentaires facturées 200 €/h.',
+      'Engagement 6 mois. Mise en place des outils de tracking obligatoire au démarrage : 1 jour ([[1200]]). Heures de dev supplémentaires facturées [[200]]/h.',
     ctaTitle: 'Envie de déléguer la maintenance ?',
     ctaBody: 'Dites-nous où en est votre produit, on vous propose le palier adapté.',
     ctaButton: 'Parler à Khufu',
@@ -391,11 +387,11 @@ export const fr = {
       },
       {
         q: 'Que se passe-t-il après la livraison de la V1 ?',
-        a: `Vous pouvez continuer avec l’offre Full Maintenance (infra managée, support avec SLA et jours de dev inclus chaque mois) ou en renfort remote à ${eur(site.dailyRateEUR)} €/jour (200 €/h). Le code source vous appartient dans tous les cas.`,
+        a: `Vous pouvez continuer avec l’offre Full Maintenance (infra managée, support avec SLA et jours de dev inclus chaque mois) ou en renfort remote à [[${site.dailyRateEUR}]]/jour ([[200]]/h). Le code source vous appartient dans tous les cas.`,
       },
       {
         q: 'Quel est le tarif de Khufu en renfort ?',
-        a: `Le renfort est 100 % remote, facturé 200 €/h en granularité horaire (soit ${eur(site.dailyRateEUR)} €/jour), sans engagement de durée. Une régie sur site est possible : 1 semaine minimum, +50 % sur le tarif et frais à la charge du client.`,
+        a: `Le renfort est 100 % remote, facturé [[200]]/h en granularité horaire (soit [[${site.dailyRateEUR}]]/jour), sans engagement de durée. Une régie sur site est possible : 1 semaine minimum, +50 % sur le tarif et frais à la charge du client.`,
       },
       {
         q: 'Khufu peut-il développer des applications mobiles et de l’IA ?',

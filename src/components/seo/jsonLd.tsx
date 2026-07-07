@@ -1,4 +1,5 @@
 import { site, entityDefinition, href } from '@/content/site'
+import { toUsd } from '@/lib/currency'
 import type { Locale } from '@/i18n/config'
 
 /** Inline a JSON-LD script tag. */
@@ -72,16 +73,20 @@ export function OrganizationJsonLd({ locale }: { locale: Locale }) {
             '@type': 'Offer',
             name: 'Sprint V1',
             description: `A SaaS or mobile app designed, built and shipped in ${site.v1Days} days, fixed price.`,
-            price: site.v1PriceEUR,
-            priceCurrency: 'EUR',
+            // Both currencies are firm, billable list prices — advertise each.
+            priceSpecification: [
+              { '@type': 'PriceSpecification', price: site.v1PriceEUR, priceCurrency: 'EUR' },
+              { '@type': 'PriceSpecification', price: toUsd(site.v1PriceEUR), priceCurrency: 'USD' },
+            ],
           },
           {
             '@type': 'Offer',
             name: 'Remote support',
-            description: 'Senior product engineering, 100% remote, billed hourly (€200/h).',
-            price: site.dailyRateEUR,
-            priceCurrency: 'EUR',
-            unitText: 'DAY',
+            description: `Senior product engineering, 100% remote, billed hourly (€${site.hourlyRateEUR}/h or $${toUsd(site.hourlyRateEUR)}/h).`,
+            priceSpecification: [
+              { '@type': 'UnitPriceSpecification', price: site.dailyRateEUR, priceCurrency: 'EUR', unitText: 'DAY' },
+              { '@type': 'UnitPriceSpecification', price: toUsd(site.dailyRateEUR), priceCurrency: 'USD', unitText: 'DAY' },
+            ],
           },
           {
             '@type': 'Offer',
@@ -212,8 +217,11 @@ export function ServiceJsonLd({
       ? {
           offers: {
             '@type': 'Offer',
-            price: priceEUR,
-            priceCurrency: 'EUR',
+            // EUR and USD are both firm, billable list prices — advertise each.
+            priceSpecification: [
+              { '@type': 'PriceSpecification', price: priceEUR, priceCurrency: 'EUR' },
+              { '@type': 'PriceSpecification', price: toUsd(priceEUR), priceCurrency: 'USD' },
+            ],
           },
         }
       : {}),

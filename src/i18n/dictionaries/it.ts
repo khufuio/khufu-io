@@ -100,7 +100,6 @@ export const it: Dictionary = {
       {
         id: 'sprint',
         name: 'Sprint V1',
-        price: `${eur(site.v1PriceEUR)}`,
         priceEur: site.v1PriceEUR,
         priceNote: 'forfait',
         pitch: `La tua prima versione, progettata e consegnata in ${site.v1Days} giorni.`,
@@ -117,7 +116,6 @@ export const it: Dictionary = {
       {
         id: 'maintenance',
         name: 'Full Maintenance',
-        price: 'da 1.490 €',
         priceEur: 1490,
         pricePrefix: 'da ',
         priceNote: '/ mese',
@@ -135,14 +133,13 @@ export const it: Dictionary = {
       {
         id: 'regie',
         name: 'Remote',
-        price: `${eur(site.dailyRateEUR)}`,
         priceEur: site.dailyRateEUR,
         priceNote: '/ giorno',
-        pitch: 'Un rinforzo senior 100 % remoto, fatturato a ore — 200 €/h.',
+        pitch: 'Un rinforzo senior 100 % remoto, fatturato a ore — [[200]]/h.',
         featured: false,
         features: [
           '100 % remoto',
-          '200 €/h — granularità oraria',
+          '[[200]]/h — granularità oraria',
           'Sviluppo, architettura, consulenza',
           'Senza vincoli di durata',
         ],
@@ -151,7 +148,7 @@ export const it: Dictionary = {
     ],
     remoteNote:
       'Lavoro on-site possibile: 1 settimana minimo, +50 % sulla tariffa, con spese (trasferta, alloggio) a carico del cliente.',
-    firmPriceNote: 'Prezzo fisso in euro.',
+    firmPriceNote: 'Prezzo fisso, fatturato in euro o in dollari, a tua scelta.',
     guaranteesTitle: 'Cosa garantiamo',
     guarantees: [
       'Un ambito scritto e approvato prima di iniziare.',
@@ -214,7 +211,6 @@ export const it: Dictionary = {
     ],
     popularBadge: 'Popolare',
     tiersTitle: 'Tre livelli',
-    tiersSubtitle: 'Scegli il livello di impegno in base alle tue esigenze. I prezzi sono indicativi.',
     tiers: [
       {
         id: 'starter',
@@ -262,7 +258,7 @@ export const it: Dictionary = {
       },
     ],
     devNote:
-      'Impegno 6 mesi. Configurazione degli strumenti di tracking obbligatoria all’avvio: 1 giorno (1.200 €). Ore di sviluppo aggiuntive fatturate a 200 €/h.',
+      'Impegno 6 mesi. Configurazione degli strumenti di tracking obbligatoria all’avvio: 1 giorno ([[1200]]). Ore di sviluppo aggiuntive fatturate a [[200]]/h.',
     ctaTitle: 'Vuoi delegare la manutenzione?',
     ctaBody: 'Dicci a che punto è il tuo prodotto, ti proponiamo il livello adatto.',
     ctaButton: 'Parla con Khufu',
@@ -387,11 +383,11 @@ export const it: Dictionary = {
       },
       {
         q: 'Cosa succede dopo la consegna della V1?',
-        a: `Puoi continuare con l’offerta Full Maintenance (infra gestita, supporto con SLA e giornate di sviluppo incluse ogni mese) o con il supporto remoto a ${eur(site.dailyRateEUR)}/giorno (200 €/h). Il codice sorgente ti appartiene in ogni caso.`,
+        a: `Puoi continuare con l’offerta Full Maintenance (infra gestita, supporto con SLA e giornate di sviluppo incluse ogni mese) o con il supporto remoto a [[${site.dailyRateEUR}]]/giorno ([[200]]/h). Il codice sorgente ti appartiene in ogni caso.`,
       },
       {
         q: 'Qual è la tariffa di Khufu come rinforzo?',
-        a: `Il rinforzo è 100 % remoto, fatturato a 200 €/h con granularità oraria (cioè ${eur(site.dailyRateEUR)}/giorno), senza vincoli di durata. È possibile un lavoro on-site: 1 settimana minimo, +50 % sulla tariffa e spese a carico del cliente.`,
+        a: `Il rinforzo è 100 % remoto, fatturato a [[200]]/h con granularità oraria (cioè [[${site.dailyRateEUR}]]/giorno), senza vincoli di durata. È possibile un lavoro on-site: 1 settimana minimo, +50 % sulla tariffa e spese a carico del cliente.`,
       },
       {
         q: 'Khufu può sviluppare app mobile e IA?',

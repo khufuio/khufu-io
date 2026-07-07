@@ -1,18 +1,22 @@
 /**
- * Geo currency layer. EUR is the firm, contractual price; USD visitors see a
- * clean converted figure — shown as a plain fixed price (no "≈"), because a
- * fixed price and a fixed timeline are the whole point of the agency. The EUR
- * amount stays the legal anchor (see the "firm price" note).
+ * Geo currency layer. EUR and USD are BOTH firm, billable prices (the client
+ * picks their invoicing currency; we settle in AED either way) — so USD is not
+ * an FX conversion of EUR. Each headline price has a chosen round figure in both
+ * currencies, shown as a plain fixed price (no "≈"): a fixed price and a fixed
+ * timeline are the whole point of the agency.
  *
  * We deliberately support only two currencies (EUR / USD) to keep the copy clean.
  */
+
+import { site } from '@/content/site'
 
 export type Currency = 'EUR' | 'USD'
 
 export const COOKIE_NAME = 'khufu_cur'
 
-// EUR→USD rate. Hand-maintained constant: EUR is the firm price, so the USD
-// figure only needs to be broadly right and land on a clean round number.
+// Fallback EUR→USD rate — safety net for any EUR amount without a fixed USD list
+// price. Every price we currently display is in site.usdPrices, so this is only
+// hit if a new amount is introduced; it just needs a broadly-right round number.
 const EUR_TO_USD = 1.13
 
 // ISO-3166 alpha-2 countries that transact in EUR (eurozone + de-facto users).
@@ -34,6 +38,15 @@ function roundUsd(usd: number): number {
   return Math.round(usd / 10) * 10
 }
 
+/**
+ * The USD figure for an EUR price: a chosen fixed list price when we have one,
+ * otherwise a rate-based fallback (indicative tiers). Exported so structured
+ * data (JSON-LD) can advertise the same number the visitor sees.
+ */
+export function toUsd(eurAmount: number): number {
+  return site.usdPrices[eurAmount] ?? roundUsd(eurAmount * EUR_TO_USD)
+}
+
 function money(amount: number, currency: Currency, locale: string): string {
   return new Intl.NumberFormat(locale, {
     style: 'currency',
@@ -45,14 +58,14 @@ function money(amount: number, currency: Currency, locale: string): string {
 
 /**
  * Format an EUR amount in the target currency, honouring each locale's symbol
- * placement (e.g. "€15,000" in English, "15 000 €" in French). USD is a clean
- * round conversion shown as a plain fixed price — no "≈".
+ * placement (e.g. "€15,000" in English, "15 000 €" in French). USD resolves to
+ * its fixed list price (see toUsd), shown as a plain fixed price — no "≈".
  */
 export function formatMoney(eurAmount: number, currency: Currency, locale = 'en'): string {
   if (currency === 'EUR') {
     return money(eurAmount, 'EUR', locale)
   }
-  return money(roundUsd(eurAmount * EUR_TO_USD), 'USD', locale)
+  return money(toUsd(eurAmount), 'USD', locale)
 }
 
 /**
