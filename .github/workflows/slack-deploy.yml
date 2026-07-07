@@ -1,0 +1,36 @@
+name: Slack deploy notification
+
+# Relays the deploy outcome to Slack when the platform (Vercel) reports a GitHub
+# deployment status. No deploy logic here — the platform still owns the deploy.
+# Same file across every repo; set the per-repo secret SLACK_WEBHOOK_URL to the
+# project's Slack channel webhook. Must live on the repo's DEFAULT branch to fire.
+on:
+  deployment_status:
+
+jobs:
+  notify:
+    # Only final states — skip pending / queued / in_progress.
+    if: ${{ contains(fromJSON('["success","failure","error"]'), github.event.deployment_status.state) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post deploy result to Slack
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          STATE: ${{ github.event.deployment_status.state }}
+          ENVIRON: ${{ github.event.deployment_status.environment }}
+          TARGET_URL: ${{ github.event.deployment_status.target_url }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          if [ -z "${SLACK_WEBHOOK_URL:-}" ]; then
+            echo "SLACK_WEBHOOK_URL not set — skipping Slack notification"; exit 0
+          fi
+          [ "$STATE" = "success" ] && EMOJI="✅" || EMOJI="❌"
+          TEXT="$EMOJI *$REPO* — deploy *$STATE* ($ENVIRON) · ${SHA:0:7}"
+          if [ -n "${TARGET_URL:-}" ]; then
+            TEXT="$TEXT
+$TARGET_URL"
+          fi
+          PAYLOAD=$(jq -n --arg t "$TEXT" '{text: $t}')
+          curl -sf -X POST -H 'Content-type: application/json' --data "$PAYLOAD" "$SLACK_WEBHOOK_URL"
