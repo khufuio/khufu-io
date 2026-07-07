@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og'
 import { isLocale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/getDictionary'
+import { ARABIC, ARABIC_FALLBACK } from '@/lib/ogImage'
 
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
@@ -9,6 +10,10 @@ export const alt = 'Khufu — Votre V1 en 1 semaine'
 export default async function OgImage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const dict = getDictionary(isLocale(locale) ? locale : 'fr')
+  // satori can't shape arabic — fall back to a latin brand card (see ogImage.tsx).
+  const isArabic = ARABIC.test(dict.home.heroTitle)
+  const title = isArabic ? ARABIC_FALLBACK.title : dict.home.heroTitle
+  const subtitle = isArabic ? ARABIC_FALLBACK.eyebrow : `${dict.home.heroKicker} · ${dict.home.heroProof}`
 
   return new ImageResponse(
     (
@@ -46,10 +51,10 @@ export default async function OgImage({ params }: { params: Promise<{ locale: st
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ fontSize: 84, fontWeight: 700, letterSpacing: -3, lineHeight: 1, color: '#0e0e10' }}>
-            {dict.home.heroTitle}
+            {title}
           </div>
           <div style={{ marginTop: 28, fontSize: 30, color: '#3a3a40', maxWidth: 900 }}>
-            {`${dict.home.heroKicker} · ${dict.home.heroProof}`}
+            {subtitle}
           </div>
         </div>
       </div>

@@ -5,10 +5,18 @@ export const OG_CONTENT_TYPE = 'image/png'
 
 const INDIGO = '#4c30ff'
 
-/**
- * Shared Open Graph image renderer (brand-consistent). Uses the default sans
- * font so it works everywhere without bundling a font file.
- */
+// satori (behind next/og) can't shape arabic — it needs contextual letter
+// joining its font engine doesn't support, so an arabic string either tofus or
+// crashes the renderer. Rather than that, arabic copy falls back to a clean
+// latin brand card (see ARABIC_FALLBACK).
+export const ARABIC = /[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/
+export const ARABIC_FALLBACK = {
+  eyebrow: 'AI-native product agency',
+  title: 'Your V1 in one week.',
+  footer: 'khufu.io · Your V1 in one week',
+}
+
+/** Shared Open Graph image renderer (brand-consistent, default sans font). */
 export function renderOg({
   title,
   eyebrow,
@@ -18,6 +26,11 @@ export function renderOg({
   eyebrow?: string
   footer?: string
 }): ImageResponse {
+  if (ARABIC.test(`${title} ${eyebrow ?? ''} ${footer ?? ''}`)) {
+    title = ARABIC_FALLBACK.title
+    eyebrow = ARABIC_FALLBACK.eyebrow
+    footer = footer && ARABIC.test(footer) ? ARABIC_FALLBACK.footer : footer
+  }
   return new ImageResponse(
     (
       <div
