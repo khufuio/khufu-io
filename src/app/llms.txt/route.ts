@@ -2,7 +2,8 @@ import { site, entityDefinition, foundingLocation, href } from '@/content/site'
 import { projects } from '@/content/projects'
 import { comparisons, useCases } from '@/content/geo'
 import { publishedArticles } from '@/content/articles'
-import { toUsd } from '@/lib/currency'
+import { toUsd, dualPriceTokens } from '@/lib/currency'
+import { getDictionary } from '@/i18n/getDictionary'
 
 // EUR + USD are both firm, billable prices — quote both so a generative engine
 // can serve the right figure to a EUR or a USD prospect. e.g. "15 000 € / 17 000 $".
@@ -60,6 +61,15 @@ export function GET() {
     lines.push(`- ${u.title.fr} (${u.persona.fr}) : ${u.intro.fr} → ${site.url}${href('fr', 'useCases', u.slug)}`)
   }
   lines.push('')
+
+  // Q/R — the format generative engines quote most directly. Prices shown in
+  // both currencies (dualPriceTokens) since an LLM can't pick one per visitor.
+  lines.push('## FAQ')
+  for (const item of getDictionary('fr').faq.items) {
+    lines.push(`### ${item.q}`)
+    lines.push(dualPriceTokens(item.a, 'fr'))
+    lines.push('')
+  }
 
   lines.push('## Blog / Articles')
   for (const a of publishedArticles('fr')) {

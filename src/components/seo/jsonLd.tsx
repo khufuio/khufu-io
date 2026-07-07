@@ -188,7 +188,7 @@ export function ArticleJsonLd({
     author: {
       '@type': 'Person',
       name: site.founder,
-      url: `${site.url}${href('fr', 'about')}`,
+      url: `${site.url}${href(locale, 'about')}`,
     },
     publisher: { '@id': `${site.url}/#organization` },
   }

@@ -15,7 +15,7 @@ import { FaqAccordion } from '@/components/sections/faqAccordion'
 import { FaqJsonLd, ReviewsJsonLd } from '@/components/seo/jsonLd'
 import { Price, PricedText } from '@/components/ui/price'
 import { EmailLink } from '@/components/ui/emailLink'
-import { stripPriceTokens } from '@/lib/currency'
+import { stripPriceTokens, dualPriceTokens } from '@/lib/currency'
 
 export async function generateMetadata({
   params,
@@ -45,7 +45,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
-      <FaqJsonLd items={dict.faq.items.map((i) => ({ q: i.q, a: stripPriceTokens(i.a, locale) }))} />
+      <FaqJsonLd items={dict.faq.items.map((i) => ({ q: i.q, a: dualPriceTokens(i.a, locale) }))} />
       <ReviewsJsonLd reviews={testimonials.map((t) => ({ quote: t.quote[locale], author: t.author, role: t.role }))} />
 
       {/* Hero */}

@@ -70,9 +70,21 @@ export function formatMoney(eurAmount: number, currency: Currency, locale = 'en'
 
 /**
  * Replace `[[<eurAmount>]]` price tokens with the plain EUR-formatted price.
- * Server-safe (no hook) — for metadata, JSON-LD and other non-JSX contexts where
- * the geo-aware <Price>/<PricedText> can't run and EUR is the right anchor.
+ * Server-safe (no hook) — for metadata and other non-JSX contexts where the
+ * geo-aware <Price>/<PricedText> can't run and EUR is the right anchor.
  */
 export function stripPriceTokens(text: string, locale = 'en'): string {
   return text.replace(/\[\[(\d+)\]\]/g, (_, n) => formatMoney(Number(n), 'EUR', locale))
+}
+
+/**
+ * Replace `[[<eurAmount>]]` price tokens with BOTH currencies ("15 000 € / 17 000 $").
+ * For machine-readable surfaces (FAQ JSON-LD, llms.txt) where a crawler/LLM can't
+ * pick a currency per visitor, so we advertise both firm prices at once.
+ */
+export function dualPriceTokens(text: string, locale = 'en'): string {
+  return text.replace(
+    /\[\[(\d+)\]\]/g,
+    (_, n) => `${formatMoney(Number(n), 'EUR', locale)} / ${formatMoney(Number(n), 'USD', locale)}`,
+  )
 }
