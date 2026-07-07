@@ -22,6 +22,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
     { label: nav.method, href: href(locale, 'method') },
     { label: blogUi.navLabel[locale], href: href(locale, 'blog') },
     { label: nav.about, href: href(locale, 'about') },
+    { label: nav.contact, href: href(locale, 'contact') },
   ]
 
   return (

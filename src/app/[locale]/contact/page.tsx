@@ -30,6 +30,21 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
     <>
       <PageHeader kicker={c.kicker} title={c.title} subtitle={c.subtitle} />
 
+      {/* Main channel — WhatsApp, fastest way to reach Khufu */}
+      <section className="border-b border-[var(--color-line)]">
+        <Container className="pb-8 sm:pb-10">
+          <a
+            href={`https://wa.me/${site.whatsapp}`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-5 py-3 text-base font-medium text-white shadow-[0_10px_30px_-12px_rgba(37,211,102,0.8)] transition-transform hover:scale-[1.02]"
+          >
+            <WhatsAppGlyph size={20} />
+            WhatsApp · {site.whatsappDisplay}
+          </a>
+        </Container>
+      </section>
+
       <section>
         <Container className="grid gap-12 py-16 sm:py-20 lg:grid-cols-[1.4fr_1fr]">
           <div>
