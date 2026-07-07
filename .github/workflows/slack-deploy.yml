@@ -29,8 +29,7 @@ jobs:
           [ "$STATE" = "success" ] && EMOJI="✅" || EMOJI="❌"
           TEXT="$EMOJI *$REPO* — deploy *$STATE* ($ENVIRON) · ${SHA:0:7}"
           if [ -n "${TARGET_URL:-}" ]; then
-            TEXT="$TEXT
-$TARGET_URL"
+            TEXT="$TEXT"$'\n'"$TARGET_URL"
           fi
           PAYLOAD=$(jq -n --arg t "$TEXT" '{text: $t}')
           curl -sf -X POST -H 'Content-type: application/json' --data "$PAYLOAD" "$SLACK_WEBHOOK_URL"
