@@ -1,5 +1,9 @@
 import type { Locale } from '@/i18n/config'
 
+// Single source for the WhatsApp number. The env may contain "+", spaces, etc.
+// (display form); the wa.me link needs a digits-only version.
+const whatsappRaw = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '+971 50 365 1761'
+
 /**
  * Site-wide constants. Single source of truth for the facts reused across the
  * UI, the JSON-LD structured data and the llms.txt file — the pillars of the
@@ -13,9 +17,9 @@ export const site = {
   email: 'hello@khufu.io',
   founder: 'Adrien De Coster',
   founderPhoto: '/images/adrien-de-coster.jpg',
-  // WhatsApp (international format, no "+" for wa.me links)
-  whatsapp: '971503651761',
-  whatsappDisplay: '+971 50 365 1761',
+  // WhatsApp — wa.me link (digits only) + display form (raw env value).
+  whatsapp: whatsappRaw.replace(/\D/g, ''),
+  whatsappDisplay: whatsappRaw.trim(),
   // Legal (for mentions légales / privacy pages)
   legal: {
     entity: 'Khufu FZCO',
