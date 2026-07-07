@@ -4,7 +4,8 @@ import { href, site } from '@/content/site'
 import type { Dictionary } from '@/i18n/getDictionary'
 import { Container } from '@/components/ui/container'
 import { Wordmark } from './wordmark'
-import { WhatsAppGlyph } from './whatsappButton'
+import { WhatsAppGlyph, WhatsAppLink } from './whatsappButton'
+import { EmailLink } from '@/components/ui/emailLink'
 import { LocaleSwitcher } from './localeSwitcher'
 import { blogUi } from '@/content/articles'
 
@@ -19,21 +20,20 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
         <div className="lg:col-span-1">
           <Wordmark locale={locale} />
           <p className="mt-4 max-w-xs text-sm text-[var(--color-muted)]">{f.tagline}</p>
-          <a
-            href={`mailto:${site.email}`}
+          <EmailLink
+            source="footer"
             className="mt-4 inline-block text-sm font-medium text-[var(--color-accent-ink)] hover:underline"
           >
             {site.email}
-          </a>
-          <a
-            href={`https://wa.me/${site.whatsapp}`}
-            target="_blank"
-            rel="noreferrer"
+          </EmailLink>
+          <WhatsAppLink
+            locale={locale}
+            source="footer"
             className="mt-1 flex items-center gap-1.5 text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)]"
           >
             <WhatsAppGlyph size={15} className="text-[#25D366]" />
             WhatsApp
-          </a>
+          </WhatsAppLink>
         </div>
 
         <FooterCol title={f.columns.offers}>

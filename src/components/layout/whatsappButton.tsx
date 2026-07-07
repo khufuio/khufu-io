@@ -39,6 +39,37 @@ export function WhatsAppGlyph({ size = 24, className }: { size?: number; classNa
   )
 }
 
+/**
+ * Tracked WhatsApp link — wa.me with the localised prefill, emits
+ * `whatsapp_clicked` with its `source` so every entry point is counted (not just
+ * the floating button). Style-agnostic: caller passes className + children.
+ */
+export function WhatsAppLink({
+  locale,
+  source,
+  className,
+  children,
+}: {
+  locale: Locale
+  source: string
+  className?: string
+  children: React.ReactNode
+}) {
+  const url = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(prefill[locale])}`
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={aria[locale]}
+      onClick={() => track('whatsapp_clicked', { locale, source })}
+      className={className}
+    >
+      {children}
+    </a>
+  )
+}
+
 /** Floating WhatsApp button (bottom-right), links to wa.me with a prefilled message. */
 export function WhatsAppButton({ locale }: { locale: Locale }) {
   const url = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(prefill[locale])}`

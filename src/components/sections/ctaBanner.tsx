@@ -1,5 +1,6 @@
 import { Container } from '@/components/ui/container'
 import { ButtonLink } from '@/components/ui/button'
+import { EmailLink } from '@/components/ui/emailLink'
 import { site } from '@/content/site'
 
 export function CtaBanner({
@@ -26,7 +27,12 @@ export function CtaBanner({
               {buttonLabel}
             </ButtonLink>
           </div>
-          <p className="mt-6 text-sm text-[color-mix(in_srgb,var(--color-paper)_60%,transparent)]">{site.email}</p>
+          <EmailLink
+            source="cta_banner"
+            className="mt-6 inline-block text-sm text-[color-mix(in_srgb,var(--color-paper)_60%,transparent)] hover:text-[var(--color-paper)] hover:underline"
+          >
+            {site.email}
+          </EmailLink>
         </div>
       </Container>
     </section>

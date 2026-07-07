@@ -6,7 +6,8 @@ import { buildMetadata } from '@/lib/metadata'
 import { Container } from '@/components/ui/container'
 import { PageHeader } from '@/components/ui/pageHeader'
 import { ContactForm } from '@/components/sections/contactForm'
-import { WhatsAppGlyph } from '@/components/layout/whatsappButton'
+import { WhatsAppGlyph, WhatsAppLink } from '@/components/layout/whatsappButton'
+import { EmailLink } from '@/components/ui/emailLink'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -33,15 +34,14 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       {/* Main channel — WhatsApp, fastest way to reach Khufu */}
       <section className="border-b border-[var(--color-line)]">
         <Container className="pb-8 sm:pb-10">
-          <a
-            href={`https://wa.me/${site.whatsapp}`}
-            target="_blank"
-            rel="noreferrer"
+          <WhatsAppLink
+            locale={locale}
+            source="contact_hero"
             className="inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-5 py-3 text-base font-medium text-white shadow-[0_10px_30px_-12px_rgba(37,211,102,0.8)] transition-transform hover:scale-[1.02]"
           >
             <WhatsAppGlyph size={20} />
             WhatsApp · {site.whatsappDisplay}
-          </a>
+          </WhatsAppLink>
         </Container>
       </section>
 
@@ -56,22 +56,21 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               <p className="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)]">
                 {c.form.emailLabel}
               </p>
-              <a
-                href={`mailto:${site.email}`}
+              <EmailLink
+                source="contact_aside"
                 className="mt-2 block font-[family-name:var(--font-display)] text-xl font-bold text-[var(--color-accent-ink)] hover:underline"
               >
                 {site.email}
-              </a>
+              </EmailLink>
 
-              <a
-                href={`https://wa.me/${site.whatsapp}`}
-                target="_blank"
-                rel="noreferrer"
+              <WhatsAppLink
+                locale={locale}
+                source="contact_aside"
                 className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2.5 text-sm font-medium text-white transition-transform hover:scale-[1.02]"
               >
                 <WhatsAppGlyph size={18} />
                 {site.whatsappDisplay}
-              </a>
+              </WhatsAppLink>
 
               <p className="mt-6 text-sm text-[var(--color-ink-2)]">{dict.home.finalCtaBody}</p>
             </div>

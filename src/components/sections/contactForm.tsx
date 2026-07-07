@@ -1,10 +1,10 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import posthog from 'posthog-js'
 import { site } from '@/content/site'
 import type { Dictionary } from '@/i18n/getDictionary'
 import { cn } from '@/lib/cn'
+import { track } from '@/lib/analytics'
 import { WhatsAppGlyph } from '@/components/layout/whatsappButton'
 import { PricedText, useResolvePrice } from '@/components/ui/price'
 
@@ -32,6 +32,7 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
     ]
       .filter(Boolean)
       .join('\n')
+    track('whatsapp_clicked', { locale: dict.meta.locale, source: 'contact_form' })
     window.open(`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`, '_blank')
   }
 
@@ -68,14 +69,17 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
         body: JSON.stringify({ ...fields, budget: resolvedBudget }),
       })
       if (res.ok) {
-        if (posthog.__loaded) posthog.capture('contact_form_submitted', { budget: resolvedBudget })
+        track('contact_form_submitted', { budget: resolvedBudget })
         setStatus('success')
         return
       }
-      // Endpoint not configured or failed → mailto fallback.
+      // Endpoint not configured (e.g. Resend key missing) → mailto fallback.
+      // Tracked separately: these leads never hit `contact_form_submitted`.
+      track('contact_form_fallback', { budget: resolvedBudget, reason: 'endpoint' })
       mailtoFallback(fields)
       setStatus('idle')
     } catch {
+      track('contact_form_fallback', { budget: resolvedBudget, reason: 'network' })
       mailtoFallback(fields)
       setStatus('idle')
     }

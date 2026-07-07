@@ -14,6 +14,7 @@ import { ProjectCard } from '@/components/sections/projectCard'
 import { FaqAccordion } from '@/components/sections/faqAccordion'
 import { FaqJsonLd, ReviewsJsonLd } from '@/components/seo/jsonLd'
 import { Price, PricedText } from '@/components/ui/price'
+import { EmailLink } from '@/components/ui/emailLink'
 import { stripPriceTokens } from '@/lib/currency'
 
 export async function generateMetadata({
@@ -244,7 +245,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 {h.finalCtaButton}
               </ButtonLink>
             </div>
-            <p className="mt-6 text-sm text-[color-mix(in_srgb,var(--color-paper)_60%,transparent)]">{site.email}</p>
+            <EmailLink
+              source="home_final_cta"
+              className="mt-6 inline-block text-sm text-[color-mix(in_srgb,var(--color-paper)_60%,transparent)] hover:text-[var(--color-paper)] hover:underline"
+            >
+              {site.email}
+            </EmailLink>
           </div>
         </Container>
       </section>
