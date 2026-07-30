@@ -4,6 +4,7 @@ import { site } from '@/content/site'
 import { getLeadMagnet, pdfPath } from '@/content/leadMagnets'
 import { deliveryEmail, nurtureSequence } from '@/content/leadMagnets/nurture'
 import { renderEmail, listUnsubscribeHeaders } from '@/lib/email'
+import { captureLead } from '@/lib/posthogServer'
 
 export const runtime = 'nodejs'
 
@@ -19,8 +20,9 @@ const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'ut
 /**
  * Keep only the five known tags, as short strings.
  *
- * The body is public input and these values become contact properties, so an
- * unbounded object from the client must not flow straight into Resend.
+ * The body is public input and these values become analytics properties and
+ * email content, so an unbounded object from the client must not flow straight
+ * through.
  */
 function cleanUtm(raw: Record<string, unknown> | undefined): Record<string, string> {
   const out: Record<string, string> = {}
@@ -88,10 +90,6 @@ export async function POST(req: NextRequest) {
   const resend = new Resend(apiKey)
   const from = process.env.LEAD_FROM_EMAIL ?? process.env.CONTACT_FROM_EMAIL ?? 'Khufu <onboarding@resend.dev>'
   const notifyTo = process.env.CONTACT_TO_EMAIL ?? site.email
-  // Resend replaced Audiences with one Audience + Segments/Properties, and the
-  // SDK deprecated `audienceId` in favour of `segments`. Optional: without it the
-  // contact is still created and still carries its properties.
-  const segmentId = process.env.RESEND_SEGMENT_ID
 
   // 1. Deliver the guide.
   const delivery = deliveryEmail(magnet)
@@ -160,37 +158,19 @@ export async function POST(req: NextRequest) {
     return res
   })
 
-  // The Resend contact is the whole lead store — no database. The properties are
-  // what make it useful later: they let a segment be built per guide, per page,
-  // without shipping a new segment id every time a magnet is added.
-  const subscribe = resend.contacts
-    .create({
-      email,
-      unsubscribed: false,
-      properties: {
-        source: 'lead-magnet',
-        lead_magnet: magnet.slug,
-        signup_page: `${site.url}/${magnet.slug}`,
-        // The ad tags travel with the lead so cost-per-lead stays knowable per
-        // creative, not just per landing page. See docs/tools/utm-conventions.md:
-        // an attribution chain is only as good as its narrowest hop.
-        ...utm,
-      },
-      ...(segmentId ? { segments: [{ id: segmentId }] } : {}),
-    })
-    .then((res) => {
-      // The lead store failing is the worst silent failure in this route: the
-      // guide still goes out, so everything looks fine while no lead is kept.
-      if (res.error) console.error('[lead-magnet] CONTACT NOT STORED:', res.error)
-      return res
-    })
+  // The lead record goes to PostHog, not to Resend.
+  //
+  // Writing a Resend contact needs a FULL-ACCESS key, and this deployment is a
+  // public-facing site: a key that can read every contact and delete a verified
+  // domain does not belong here. PostHog's ingestion key is write-only and
+  // already public, so recording the lead costs no privilege at all. HQ — which
+  // runs locally and does hold a full-access key — reads these events and owns
+  // the list from there.
+  const record = captureLead({ email, magnet: magnet.slug, placement: body.placement, utm })
 
-  const results = await Promise.allSettled([...followUps, notify, subscribe])
+  const results = await Promise.allSettled([...followUps, notify, record])
   for (const r of results) {
     if (r.status === 'rejected') console.error('[lead-magnet] post-delivery step failed:', r.reason)
-  }
-  if (!segmentId) {
-    console.warn('[lead-magnet] RESEND_SEGMENT_ID unset — contact created without a segment')
   }
 
   return NextResponse.json({ ok: true })
