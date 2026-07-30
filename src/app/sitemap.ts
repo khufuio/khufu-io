@@ -4,6 +4,7 @@ import { site, href, routes, type RouteKey } from '@/content/site'
 import { projects } from '@/content/projects'
 import { comparisons, useCases } from '@/content/geo'
 import { articleDatedSlugs } from '@/content/articles'
+import { leadMagnets } from '@/content/leadMagnets'
 
 // Top-level routes that exist for every locale.
 const topRoutes = Object.keys(routes) as RouteKey[]
@@ -71,6 +72,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         alternates: alt('blog', slug),
       })
     }
+  }
+
+  // Lead-magnet landing pages: single-language (English), no locale prefix and
+  // no alternates. High priority — these are the paid-traffic entry points.
+  for (const magnet of leadMagnets) {
+    entries.push({
+      url: `${site.url}/${magnet.slug}`,
+      lastModified: magnet.updated,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    })
   }
 
   return entries

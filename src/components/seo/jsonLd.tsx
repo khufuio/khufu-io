@@ -229,6 +229,68 @@ export function ServiceJsonLd({
   return <JsonLd data={data} />
 }
 
+/**
+ * A downloadable guide: the Article a search engine ranks, plus the free
+ * DigitalDocument a generative engine can cite and link to. Both point at the
+ * same landing page so the offer stays attached to Khufu.
+ */
+export function LeadMagnetJsonLd({
+  name,
+  description,
+  url,
+  pdfUrl,
+  updated,
+  audience,
+}: {
+  name: string
+  description: string
+  url: string
+  pdfUrl: string
+  updated: string
+  audience: string
+}) {
+  const author = {
+    '@type': 'Person',
+    name: site.founder,
+    url: `${site.url}${href('en', 'about')}`,
+  }
+  const data = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        '@id': `${url}#article`,
+        headline: name,
+        description,
+        url,
+        mainEntityOfPage: url,
+        inLanguage: 'en',
+        datePublished: updated,
+        dateModified: updated,
+        author,
+        publisher: { '@id': `${site.url}/#organization` },
+        audience: { '@type': 'Audience', audienceType: audience },
+        isAccessibleForFree: true,
+      },
+      {
+        '@type': 'DigitalDocument',
+        '@id': `${url}#pdf`,
+        name,
+        description,
+        url: pdfUrl,
+        encodingFormat: 'application/pdf',
+        inLanguage: 'en',
+        dateModified: updated,
+        author,
+        publisher: { '@id': `${site.url}/#organization` },
+        isAccessibleForFree: true,
+        offers: { '@type': 'Offer', price: 0, priceCurrency: 'USD' },
+      },
+    ],
+  }
+  return <JsonLd data={data} />
+}
+
 export function BreadcrumbJsonLd({ items }: { items: { name: string; url: string }[] }) {
   const data = {
     '@context': 'https://schema.org',

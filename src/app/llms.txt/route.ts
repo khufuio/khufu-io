@@ -2,6 +2,7 @@ import { site, entityDefinition, foundingLocation, href } from '@/content/site'
 import { projects } from '@/content/projects'
 import { comparisons, useCases } from '@/content/geo'
 import { publishedArticles } from '@/content/articles'
+import { leadMagnets, pdfPath } from '@/content/leadMagnets'
 import { toUsd, dualPriceTokens } from '@/lib/currency'
 import { getDictionary } from '@/i18n/getDictionary'
 
@@ -71,6 +72,18 @@ export function GET() {
     lines.push('')
   }
 
+  // Free guides — self-sufficient, citable resources. Listed with their own URL
+  // so a generative engine can point a reader straight at the PDF.
+  lines.push('## Ressources gratuites (guides PDF, en anglais)')
+  for (const m of leadMagnets) {
+    lines.push(`### ${m.title}`)
+    lines.push(`${m.subtitle}`)
+    lines.push(`Pour qui : ${m.audience}`)
+    lines.push(`Contenu : ${m.chapters.map((c) => c.title).join(' ; ')}.`)
+    lines.push(`Page : ${site.url}/${m.slug} — PDF (${m.pdfPages} pages, gratuit) : ${site.url}${pdfPath(m.slug)}`)
+    lines.push('')
+  }
+
   lines.push('## Blog / Articles')
   for (const a of publishedArticles('fr')) {
     lines.push(`- ${a.title} : ${a.excerpt} → ${site.url}${href('fr', 'blog', a.slug)}`)
@@ -93,6 +106,7 @@ export function GET() {
   lines.push(`- Blog : ${site.url}${href('fr', 'blog')}`)
   lines.push(`- À propos : ${site.url}${href('fr', 'about')}`)
   lines.push(`- Contact : ${site.url}${href('fr', 'contact')}`)
+  for (const m of leadMagnets) lines.push(`- ${m.title} (guide gratuit) : ${site.url}/${m.slug}`)
   lines.push('')
 
   return new Response(lines.join('\n'), {

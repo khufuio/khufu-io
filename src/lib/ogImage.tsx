@@ -21,10 +21,13 @@ export function renderOg({
   title,
   eyebrow,
   footer,
+  titleSize = 68,
 }: {
   title: string
   eyebrow?: string
   footer?: string
+  /** Lower it for long headlines (guide titles) so the card stays on one screen. */
+  titleSize?: number
 }): ImageResponse {
   if (ARABIC.test(`${title} ${eyebrow ?? ''} ${footer ?? ''}`)) {
     title = ARABIC_FALLBACK.title
@@ -71,7 +74,7 @@ export function renderOg({
               {eyebrow}
             </div>
           )}
-          <div style={{ marginTop: 14, fontSize: 68, fontWeight: 800, letterSpacing: -2, lineHeight: 1.05, color: '#0e0e10', maxWidth: 1000 }}>
+          <div style={{ marginTop: 14, fontSize: titleSize, fontWeight: 800, letterSpacing: -2, lineHeight: 1.05, color: '#0e0e10', maxWidth: 1000 }}>
             {title}
           </div>
         </div>

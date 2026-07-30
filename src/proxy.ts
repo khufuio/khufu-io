@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { locales, defaultLocale } from '@/i18n/config'
 import { COOKIE_NAME, currencyForCountry } from '@/lib/currency'
 import { REGION_COOKIE, needsConsent } from '@/lib/consent'
+import { isLeadMagnetPath } from '@/content/leadMagnets/slugs'
 
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 30 // 30 days
 
@@ -53,6 +54,11 @@ export function proxy(req: NextRequest) {
   ) {
     return
   }
+
+  // Lead-magnet landing pages live at the root, in English only — they must not
+  // be redirected into a locale. They still get the geo cookies, so the consent
+  // banner behaves the same for EU/UK visitors arriving from an ad.
+  if (isLeadMagnetPath(pathname)) return withGeoCookies(req, NextResponse.next())
 
   const hasLocale = locales.some(
     (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`),

@@ -9,3 +9,14 @@ export function track(event: string, props?: Record<string, unknown>): void {
   if (!posthog.__loaded) return
   posthog.capture(event, props)
 }
+
+/**
+ * Attach the anonymous session to an email — used when a lead magnet form is
+ * submitted, so the pre-download pageviews stitch to the identified person and
+ * the three landing pages stay comparable in a funnel.
+ */
+export function identifyLead(email: string, props?: Record<string, unknown>): void {
+  if (typeof window === 'undefined') return
+  if (!posthog.__loaded) return
+  posthog.identify(email, { email, ...props })
+}
