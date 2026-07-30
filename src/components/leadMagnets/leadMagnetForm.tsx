@@ -9,6 +9,26 @@ type Status = 'idle' | 'sending' | 'success'
 
 const isEmail = (v: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
 
+const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const
+
+/**
+ * Carry the ad tags from the URL onto the lead itself.
+ *
+ * PostHog stores them session-side, but the Resend contact is what tells us
+ * later which creative produced a paid sprint. Without this hop the chain breaks
+ * exactly where it matters: attributable on arrival, anonymous at the outcome.
+ */
+function readUtm(): Record<string, string> {
+  if (typeof window === 'undefined') return {}
+  const params = new URLSearchParams(window.location.search)
+  const out: Record<string, string> = {}
+  for (const key of UTM_KEYS) {
+    const value = params.get(key)?.trim()
+    if (value) out[key] = value.slice(0, 120)
+  }
+  return out
+}
+
 /**
  * The single conversion point of a lead magnet page: email in, PDF out.
  *
@@ -55,14 +75,15 @@ export function LeadMagnetForm({
     }
 
     setStatus('sending')
-    identifyLead(email, { lead_magnet: slug })
-    track('lead_magnet_submitted', { magnet: slug, placement })
+    const utm = readUtm()
+    identifyLead(email, { lead_magnet: slug, ...utm })
+    track('lead_magnet_submitted', { magnet: slug, placement, ...utm })
 
     try {
       const res = await fetch('/api/lead-magnet', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ email, slug, placement }),
+        body: JSON.stringify({ email, slug, placement, utm }),
       })
       const body = (await res.json().catch(() => ({}))) as { ok?: boolean; reason?: string }
       if (res.ok && body.ok) {

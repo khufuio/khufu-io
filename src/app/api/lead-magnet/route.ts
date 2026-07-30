@@ -11,6 +11,25 @@ type Payload = {
   email?: string
   slug?: string
   placement?: string
+  utm?: Record<string, unknown>
+}
+
+const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const
+
+/**
+ * Keep only the five known tags, as short strings.
+ *
+ * The body is public input and these values become contact properties, so an
+ * unbounded object from the client must not flow straight into Resend.
+ */
+function cleanUtm(raw: Record<string, unknown> | undefined): Record<string, string> {
+  const out: Record<string, string> = {}
+  if (!raw) return out
+  for (const key of UTM_KEYS) {
+    const value = raw[key]
+    if (typeof value === 'string' && value.trim()) out[key] = value.trim().slice(0, 120)
+  }
+  return out
 }
 
 const isEmail = (v: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
@@ -54,6 +73,7 @@ export async function POST(req: NextRequest) {
 
   const email = (body.email ?? '').trim().toLowerCase()
   const magnet = getLeadMagnet((body.slug ?? '').trim())
+  const utm = cleanUtm(body.utm)
   if (!isEmail(email) || !magnet) {
     return NextResponse.json({ ok: false, reason: 'invalid' }, { status: 422 })
   }
@@ -122,6 +142,9 @@ export async function POST(req: NextRequest) {
       `Email: ${email}`,
       `Page: ${site.url}/${magnet.slug}`,
       `Form: ${body.placement ?? 'unknown'}`,
+      Object.keys(utm).length
+        ? `Campaign: ${utm.utm_source ?? '?'} / ${utm.utm_campaign ?? '?'} / ${utm.utm_content ?? '?'}`
+        : 'Campaign: none (organic or untagged link)',
       `PDF: ${site.url}${pdfPath(magnet.slug)}`,
       ``,
       `The 3-email follow-up sequence is scheduled (day 2, 4 and 7).`,
@@ -138,6 +161,10 @@ export async function POST(req: NextRequest) {
       source: 'lead-magnet',
       lead_magnet: magnet.slug,
       signup_page: `${site.url}/${magnet.slug}`,
+      // The ad tags travel with the lead so cost-per-lead stays knowable per
+      // creative, not just per landing page. See docs/tools/utm-conventions.md:
+      // an attribution chain is only as good as its narrowest hop.
+      ...utm,
     },
     ...(segmentId ? { segments: [{ id: segmentId }] } : {}),
   })
