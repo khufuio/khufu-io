@@ -68,7 +68,10 @@ export async function POST(req: NextRequest) {
   const resend = new Resend(apiKey)
   const from = process.env.LEAD_FROM_EMAIL ?? process.env.CONTACT_FROM_EMAIL ?? 'Khufu <onboarding@resend.dev>'
   const notifyTo = process.env.CONTACT_TO_EMAIL ?? site.email
-  const audienceId = process.env.RESEND_AUDIENCE_ID
+  // Resend replaced Audiences with one Audience + Segments/Properties, and the
+  // SDK deprecated `audienceId` in favour of `segments`. Optional: without it the
+  // contact is still created and still carries its properties.
+  const segmentId = process.env.RESEND_SEGMENT_ID
 
   // 1. Deliver the guide.
   const delivery = deliveryEmail(magnet)
@@ -125,17 +128,26 @@ export async function POST(req: NextRequest) {
     ].join('\n'),
   })
 
-  // Subscribing to a Resend audience is the whole lead store — no database.
-  const subscribe = audienceId
-    ? resend.contacts.create({ audienceId, email, unsubscribed: false })
-    : Promise.resolve(null)
+  // The Resend contact is the whole lead store — no database. The properties are
+  // what make it useful later: they let a segment be built per guide, per page,
+  // without shipping a new segment id every time a magnet is added.
+  const subscribe = resend.contacts.create({
+    email,
+    unsubscribed: false,
+    properties: {
+      source: 'lead-magnet',
+      lead_magnet: magnet.slug,
+      signup_page: `${site.url}/${magnet.slug}`,
+    },
+    ...(segmentId ? { segments: [{ id: segmentId }] } : {}),
+  })
 
   const results = await Promise.allSettled([...followUps, notify, subscribe])
   for (const r of results) {
     if (r.status === 'rejected') console.error('[lead-magnet] post-delivery step failed:', r.reason)
   }
-  if (!audienceId) {
-    console.warn('[lead-magnet] RESEND_AUDIENCE_ID unset — lead only exists as a notification email')
+  if (!segmentId) {
+    console.warn('[lead-magnet] RESEND_SEGMENT_ID unset — contact created without a segment')
   }
 
   return NextResponse.json({ ok: true })
