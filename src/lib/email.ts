@@ -9,6 +9,15 @@ export type EmailContent = {
   cta?: { label: string; url: string }
   /** Trailing note under the CTA (e.g. the download link as plain text). */
   note?: string
+  /**
+   * Dispatch token printed small in the footer (e.g. "KHUFU-LM-PLAYBOOK").
+   *
+   * It is in the BODY on purpose. Custom X- headers identify our outbound mail
+   * but do not survive into a lead's reply, and Gmail cannot filter on them
+   * anyway — a quoted body token does both: it comes back inside the reply and
+   * a plain Gmail filter ("has the words") can route it.
+   */
+  ref?: string
 }
 
 export type RenderedEmail = { html: string; text: string }
@@ -57,6 +66,7 @@ ${note}
       <a href="${site.url}" style="color:#6b6b73;">khufu.io</a> ·
       <a href="${unsubscribe}" style="color:#6b6b73;">unsubscribe</a>
     </p>
+    ${content.ref ? `<p style="margin:10px 0 0;font-size:11px;color:#b9b9c0;">${escapeHtml(content.ref)}</p>` : ''}
   </div>
 </body>
 </html>`
@@ -69,6 +79,7 @@ ${note}
     `${site.founder} · ${site.legal.entity}, Dubai, UAE`,
     site.url,
     `Unsubscribe: reply to this email with "unsubscribe" (${site.email}).`,
+    content.ref ?? '',
   ]
     .filter(Boolean)
     .join('\n\n')

@@ -21,6 +21,22 @@ function inDays(days: number): string {
 }
 
 /**
+ * Invisible dispatch tags on our outbound mail: which flow, which guide, which
+ * step. They never show in the From or Reply-To, and an agent reading the
+ * mailbox over the Gmail API can route on them. They do NOT survive into a
+ * lead's reply — that is what the footer ref token is for (see lib/email.ts).
+ */
+function tagHeaders(slug: string, step: string): Record<string, string> {
+  return {
+    ...listUnsubscribeHeaders,
+    'X-Khufu-Project': 'khufu',
+    'X-Khufu-Flow': 'lead-magnet',
+    'X-Khufu-Magnet': slug,
+    'X-Khufu-Step': step,
+  }
+}
+
+/**
  * Lead magnet capture: delivers the guide, notifies the founder, and schedules
  * the follow-up sequence.
  *
@@ -60,11 +76,10 @@ export async function POST(req: NextRequest) {
   const { error } = await resend.emails.send({
     from,
     to: email,
-    replyTo: site.email,
     subject: delivery.subject,
     html: rendered.html,
     text: rendered.text,
-    headers: listUnsubscribeHeaders,
+    headers: tagHeaders(magnet.slug, delivery.step),
   })
 
   if (error) {
@@ -82,11 +97,10 @@ export async function POST(req: NextRequest) {
     const res = await resend.emails.send({
       from,
       to: email,
-      replyTo: site.email,
       subject: mail.subject,
       html: content.html,
       text: content.text,
-      headers: listUnsubscribeHeaders,
+      headers: tagHeaders(magnet.slug, mail.step),
       scheduledAt: inDays(mail.delayDays),
     })
     if (res.error) console.error(`[lead-magnet] scheduling day ${mail.delayDays} failed:`, res.error)
@@ -97,6 +111,7 @@ export async function POST(req: NextRequest) {
     to: notifyTo,
     replyTo: email,
     subject: `[lead] ${magnet.label} — ${email}`,
+    headers: tagHeaders(magnet.slug, 'notification'),
     text: [
       `New lead magnet download.`,
       ``,

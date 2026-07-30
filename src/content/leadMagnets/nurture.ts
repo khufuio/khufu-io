@@ -18,13 +18,21 @@ const eur = site.v1PriceEUR.toLocaleString('en-US')
 export type NurtureEmail = EmailContent & {
   /** Days after the download. 0 = sent immediately. */
   delayDays: number
+  /** Stable step id — goes into the X-Khufu-Step header and the footer ref. */
+  step: string
 }
+
+/** Footer dispatch token: survives quoting, so a Gmail filter can route replies. */
+export const dispatchRef = (magnet: LeadMagnet): string =>
+  `Ref: KHUFU-LM-${magnet.slug.toUpperCase()}`
 
 /** Email 1 — the delivery. Sent the moment the form is submitted. */
 export function deliveryEmail(magnet: LeadMagnet): NurtureEmail {
   const url = `${site.url}${pdfPath(magnet.slug)}`
   return {
     delayDays: 0,
+    step: 'delivery',
+    ref: dispatchRef(magnet),
     subject: `Your copy: ${magnet.title}`,
     preheader: `${magnet.pdfPages} pages, free, no strings.`,
     paragraphs: [
@@ -42,6 +50,8 @@ export function nurtureSequence(magnet: LeadMagnet): NurtureEmail[] {
   return [
     {
       delayDays: 2,
+      step: 'nurture-scope',
+      ref: dispatchRef(magnet),
       subject: 'The one question that decides your V1 scope',
       preheader: 'Everything before it is required. Everything after it is version two.',
       paragraphs: [
@@ -54,6 +64,8 @@ export function nurtureSequence(magnet: LeadMagnet): NurtureEmail[] {
     },
     {
       delayDays: 4,
+      step: 'nurture-price',
+      ref: dispatchRef(magnet),
       subject: 'What a fixed-price sprint actually includes',
       preheader: `${usd} dollars, seven days, and the parts people expect to be extra.`,
       paragraphs: [
@@ -66,6 +78,8 @@ export function nurtureSequence(magnet: LeadMagnet): NurtureEmail[] {
     },
     {
       delayDays: 7,
+      step: 'nurture-offer',
+      ref: dispatchRef(magnet),
       subject: 'Want me to run this on your product?',
       preheader: 'One founder, one week, one product.',
       paragraphs: [
