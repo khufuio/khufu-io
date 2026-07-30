@@ -115,6 +115,12 @@ export async function POST(req: NextRequest) {
 
   // 2. Everything below is best-effort: the reader already has their guide, so a
   // failure here is logged and swallowed rather than surfaced as an error.
+  //
+  // ⚠️ The SDK RESOLVES with `{ error }` on an API rejection instead of throwing,
+  // so Promise.allSettled alone reports success on a call that failed. Every
+  // result is inspected explicitly — that gap hid a 422 that dropped the lead
+  // store entirely (Resend requires custom properties to be declared before use,
+  // see hq docs/tools/utm-conventions.md).
   const followUps = nurtureSequence(magnet).map(async (mail) => {
     const content = renderEmail(mail)
     const res = await resend.emails.send({
@@ -149,25 +155,35 @@ export async function POST(req: NextRequest) {
       ``,
       `The 3-email follow-up sequence is scheduled (day 2, 4 and 7).`,
     ].join('\n'),
+  }).then((res) => {
+    if (res.error) console.error('[lead-magnet] notification failed:', res.error)
+    return res
   })
 
   // The Resend contact is the whole lead store — no database. The properties are
   // what make it useful later: they let a segment be built per guide, per page,
   // without shipping a new segment id every time a magnet is added.
-  const subscribe = resend.contacts.create({
-    email,
-    unsubscribed: false,
-    properties: {
-      source: 'lead-magnet',
-      lead_magnet: magnet.slug,
-      signup_page: `${site.url}/${magnet.slug}`,
-      // The ad tags travel with the lead so cost-per-lead stays knowable per
-      // creative, not just per landing page. See docs/tools/utm-conventions.md:
-      // an attribution chain is only as good as its narrowest hop.
-      ...utm,
-    },
-    ...(segmentId ? { segments: [{ id: segmentId }] } : {}),
-  })
+  const subscribe = resend.contacts
+    .create({
+      email,
+      unsubscribed: false,
+      properties: {
+        source: 'lead-magnet',
+        lead_magnet: magnet.slug,
+        signup_page: `${site.url}/${magnet.slug}`,
+        // The ad tags travel with the lead so cost-per-lead stays knowable per
+        // creative, not just per landing page. See docs/tools/utm-conventions.md:
+        // an attribution chain is only as good as its narrowest hop.
+        ...utm,
+      },
+      ...(segmentId ? { segments: [{ id: segmentId }] } : {}),
+    })
+    .then((res) => {
+      // The lead store failing is the worst silent failure in this route: the
+      // guide still goes out, so everything looks fine while no lead is kept.
+      if (res.error) console.error('[lead-magnet] CONTACT NOT STORED:', res.error)
+      return res
+    })
 
   const results = await Promise.allSettled([...followUps, notify, subscribe])
   for (const r of results) {
