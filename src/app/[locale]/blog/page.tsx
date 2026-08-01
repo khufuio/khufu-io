@@ -8,6 +8,7 @@ import { getDictionary } from '@/i18n/getDictionary'
 import { Container } from '@/components/ui/container'
 import { PageHeader } from '@/components/ui/pageHeader'
 import { CtaBanner } from '@/components/sections/ctaBanner'
+import { GuideStrip } from '@/components/leadMagnets/guideStrip'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -61,6 +62,8 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
           </div>
         </Container>
       </section>
+
+      <GuideStrip locale={locale} source="blog-index" />
 
       <CtaBanner
         title={dict.home.finalCtaTitle}

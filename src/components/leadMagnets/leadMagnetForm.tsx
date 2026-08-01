@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { cn } from '@/lib/cn'
 import { track, identifyLead } from '@/lib/analytics'
+import { readInternalSource } from '@/lib/internalSource'
 import { pdfPath } from '@/content/leadMagnets'
 
 type Status = 'idle' | 'sending' | 'success'
@@ -76,14 +77,15 @@ export function LeadMagnetForm({
 
     setStatus('sending')
     const utm = readUtm()
-    identifyLead(email, { lead_magnet: slug, ...utm })
-    track('lead_magnet_submitted', { magnet: slug, placement, ...utm })
+    const source = readInternalSource()
+    identifyLead(email, { lead_magnet: slug, ...utm, internal_source: source ?? 'direct' })
+    track('lead_magnet_submitted', { magnet: slug, placement, ...utm, internal_source: source ?? 'direct' })
 
     try {
       const res = await fetch('/api/lead-magnet', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ email, slug, placement, utm }),
+        body: JSON.stringify({ email, slug, placement, utm, source }),
       })
       const body = (await res.json().catch(() => ({}))) as { ok?: boolean; reason?: string }
       if (res.ok && body.ok) {

@@ -5,6 +5,7 @@ import { getLeadMagnet, pdfPath } from '@/content/leadMagnets'
 import { deliveryEmail, nurtureSequence } from '@/content/leadMagnets/nurture'
 import { renderEmail, listUnsubscribeHeaders } from '@/lib/email'
 import { captureLead } from '@/lib/posthogServer'
+import { isKnownInternalSource } from '@/lib/internalSource'
 
 export const runtime = 'nodejs'
 
@@ -13,6 +14,8 @@ type Payload = {
   slug?: string
   placement?: string
   utm?: Record<string, unknown>
+  /** Internal surface that linked to the guide — blog, footer… See lib/internalSource.ts. */
+  source?: unknown
 }
 
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const
@@ -76,6 +79,10 @@ export async function POST(req: NextRequest) {
   const email = (body.email ?? '').trim().toLowerCase()
   const magnet = getLeadMagnet((body.slug ?? '').trim())
   const utm = cleanUtm(body.utm)
+  // Allow-listed client-side too, but this is public input: an unknown value is
+  // dropped rather than echoed into analytics and a notification email.
+  const source =
+    typeof body.source === 'string' && isKnownInternalSource(body.source) ? body.source : undefined
   if (!isEmail(email) || !magnet) {
     return NextResponse.json({ ok: false, reason: 'invalid' }, { status: 422 })
   }
@@ -149,6 +156,7 @@ export async function POST(req: NextRequest) {
       Object.keys(utm).length
         ? `Campaign: ${utm.utm_source ?? '?'} / ${utm.utm_campaign ?? '?'} / ${utm.utm_content ?? '?'}`
         : 'Campaign: none (organic or untagged link)',
+      `Came from: ${source ?? 'direct / ad'}`,
       `PDF: ${site.url}${pdfPath(magnet.slug)}`,
       ``,
       `The 3-email follow-up sequence is scheduled (day 2, 4 and 7).`,
@@ -166,7 +174,7 @@ export async function POST(req: NextRequest) {
   // already public, so recording the lead costs no privilege at all. HQ — which
   // runs locally and does hold a full-access key — reads these events and owns
   // the list from there.
-  const record = captureLead({ email, magnet: magnet.slug, placement: body.placement, utm })
+  const record = captureLead({ email, magnet: magnet.slug, placement: body.placement, utm, source })
 
   const results = await Promise.allSettled([...followUps, notify, record])
   for (const r of results) {

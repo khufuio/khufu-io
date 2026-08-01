@@ -8,6 +8,8 @@ import { WhatsAppGlyph, WhatsAppLink } from './whatsappButton'
 import { EmailLink } from '@/components/ui/emailLink'
 import { LocaleSwitcher } from './localeSwitcher'
 import { blogUi } from '@/content/articles'
+import { ui } from '@/i18n/ui'
+import { guidePath, leadMagnets } from '@/content/leadMagnets'
 
 export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const year = 2026 // build-time constant; bump on redeploy
@@ -16,7 +18,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
 
   return (
     <footer className="mt-24 border-t border-[var(--color-line)] bg-[var(--color-paper-2)]">
-      <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+      <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-1">
           <Wordmark locale={locale} />
           <p className="mt-4 max-w-xs text-sm text-[var(--color-muted)]">{f.tagline}</p>
@@ -51,6 +53,17 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
           <FooterLink href={href(locale, 'blog')}>{blogUi.navLabel[locale]}</FooterLink>
           <FooterLink href={href(locale, 'about')}>{nav.about}</FooterLink>
           <FooterLink href={href(locale, 'contact')}>{nav.contact}</FooterLink>
+        </FooterCol>
+
+        {/* The guides live outside the locale tree (/playbook, not /fr/playbook)
+            and their landing pages carry no navigation, so this footer column is
+            the only site-wide entry point into them. */}
+        <FooterCol title={ui.freeGuides[locale]}>
+          {leadMagnets.map((magnet) => (
+            <FooterLink key={magnet.slug} href={guidePath(magnet.slug, 'footer')}>
+              {magnet.label}
+            </FooterLink>
+          ))}
         </FooterCol>
 
         <FooterCol title={f.columns.legal}>

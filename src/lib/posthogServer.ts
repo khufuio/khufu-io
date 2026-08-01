@@ -20,6 +20,8 @@ export type LeadCapture = {
   magnet: string
   placement?: string
   utm: Record<string, string>
+  /** Internal surface that sent the visitor, when it was one of ours. */
+  source?: string
 }
 
 /**
@@ -53,11 +55,16 @@ export async function captureLead(lead: LeadCapture): Promise<boolean> {
           magnet: lead.magnet,
           placement: lead.placement ?? 'unknown',
           signup_page: `${site.url}/${lead.magnet}`,
+          // 'direct' rather than undefined: an absent property drops the row out
+          // of a PostHog breakdown entirely, which would make paid traffic look
+          // like it does not exist next to the internal surfaces.
+          internal_source: lead.source ?? 'direct',
           ...lead.utm,
           // Person properties, so a lead can be read without replaying events.
           $set: {
             email: lead.email,
             lead_magnet: lead.magnet,
+            internal_source: lead.source ?? 'direct',
             ...lead.utm,
           },
         },

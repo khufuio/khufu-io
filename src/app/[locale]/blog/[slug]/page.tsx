@@ -7,8 +7,9 @@ import { buildMetadata } from '@/lib/metadata'
 import { articleSlugs, getArticle, relatedArticles, blogUi, type ArticleBlock } from '@/content/articles'
 import { Container } from '@/components/ui/container'
 import { PageHeader } from '@/components/ui/pageHeader'
-import { ButtonLink } from '@/components/ui/button'
 import { CtaBanner } from '@/components/sections/ctaBanner'
+import { GuideCta } from '@/components/leadMagnets/guideCta'
+import { getLeadMagnet, guideForArticle } from '@/content/leadMagnets'
 import { ui } from '@/i18n/ui'
 import { getDictionary } from '@/i18n/getDictionary'
 import { ArticleJsonLd, BreadcrumbJsonLd } from '@/components/seo/jsonLd'
@@ -73,6 +74,7 @@ export default async function ArticlePage({
   if (!a) notFound()
   const related = relatedArticles(locale, slug, 3)
   const articleUrl = `${site.url}${href(locale, 'blog', a.slug)}`
+  const guide = getLeadMagnet(guideForArticle(slug))
 
   return (
     <>
@@ -104,16 +106,10 @@ export default async function ArticlePage({
             ))}
           </article>
 
-          {/* Contextual CTA at the end of the read */}
-          <div className="mt-12 max-w-2xl rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-[var(--color-paper-2)] p-8">
-            <h2 className="font-[family-name:var(--font-display)] text-xl font-bold tracking-[-0.01em]">
-              {dict.home.finalCtaTitle}
-            </h2>
-            <p className="mt-2 text-[var(--color-ink-2)] text-pretty">{dict.home.finalCtaBody}</p>
-            <div className="mt-5">
-              <ButtonLink href={href(locale, 'contact')}>{dict.nav.cta}</ButtonLink>
-            </div>
-          </div>
+          {/* Contextual offer at the end of the read: the guide matching the
+              article's subject. The contact CTA is not repeated here — the
+              CtaBanner at the bottom of the page already carries that copy. */}
+          {guide && <GuideCta locale={locale} magnet={guide} source="blog-article" />}
 
           <div className="mt-12">
             <Link href={href(locale, 'blog')} className="text-sm font-medium text-[var(--color-accent-ink)] hover:underline">
