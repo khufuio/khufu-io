@@ -22,6 +22,16 @@ export type LeadCapture = {
   utm: Record<string, string>
   /** Internal surface that sent the visitor, when it was one of ours. */
   source?: string
+  /**
+   * Resend ids of the follow-up emails queued for this capture, in send order.
+   *
+   * The nurture mails sit in Resend's schedule for up to a week, so an opt-out
+   * arriving on day 1 has to cancel them — and `emails.cancel` needs the id.
+   * This deployment cannot cancel anything itself (that takes a full-access
+   * key, deliberately absent here, see the route), so the ids are recorded for
+   * HQ, which holds the key and reads these events.
+   */
+  scheduledIds?: string[]
 }
 
 /**
@@ -60,6 +70,10 @@ export async function captureLead(lead: LeadCapture): Promise<boolean> {
           // like it does not exist next to the internal surfaces.
           internal_source: lead.source ?? 'direct',
           ...lead.utm,
+          // Event property only, never a person property: a second download
+          // would overwrite $set and orphan the first batch's ids, leaving
+          // mails nobody can cancel.
+          scheduled_email_ids: lead.scheduledIds ?? [],
           // Person properties, so a lead can be read without replaying events.
           $set: {
             email: lead.email,

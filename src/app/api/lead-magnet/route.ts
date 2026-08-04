@@ -126,19 +126,36 @@ export async function POST(req: NextRequest) {
   // result is inspected explicitly — that gap hid a 422 that dropped the lead
   // store entirely (Resend requires custom properties to be declared before use,
   // see hq docs/tools/utm-conventions.md).
-  const followUps = nurtureSequence(magnet).map(async (mail) => {
-    const content = renderEmail(mail)
-    const res = await resend.emails.send({
-      from,
-      to: email,
-      subject: mail.subject,
-      html: content.html,
-      text: content.text,
-      headers: tagHeaders(magnet.slug, mail.step),
-      scheduledAt: inDays(mail.delayDays),
-    })
-    if (res.error) console.error(`[lead-magnet] scheduling day ${mail.delayDays} failed:`, res.error)
-  })
+  //
+  // Awaited before the lead is recorded, on purpose: the ids of the queued mails
+  // are part of that record (see below), so they have to exist first.
+  const sequence = nurtureSequence(magnet)
+  const scheduledIds = (
+    await Promise.all(
+      sequence.map(async (mail) => {
+        const content = renderEmail(mail)
+        try {
+          const res = await resend.emails.send({
+            from,
+            to: email,
+            subject: mail.subject,
+            html: content.html,
+            text: content.text,
+            headers: tagHeaders(magnet.slug, mail.step),
+            scheduledAt: inDays(mail.delayDays),
+          })
+          if (res.error) {
+            console.error(`[lead-magnet] scheduling day ${mail.delayDays} failed:`, res.error)
+            return null
+          }
+          return res.data?.id ?? null
+        } catch (e) {
+          console.error(`[lead-magnet] scheduling day ${mail.delayDays} threw:`, e)
+          return null
+        }
+      }),
+    )
+  ).filter((id): id is string => Boolean(id))
 
   const notify = resend.emails.send({
     from,
@@ -159,7 +176,10 @@ export async function POST(req: NextRequest) {
       `Came from: ${source ?? 'direct / ad'}`,
       `PDF: ${site.url}${pdfPath(magnet.slug)}`,
       ``,
-      `The 3-email follow-up sequence is scheduled (day 2, 4 and 7).`,
+      `Follow-ups scheduled: ${scheduledIds.length}/${sequence.length} (day ${sequence.map((m) => m.delayDays).join(', ')}).`,
+      // Printed here so an "unsubscribe" reply can be honoured from this very
+      // thread: these are the ids to pass to Resend's cancel endpoint.
+      scheduledIds.length ? `Cancel ids: ${scheduledIds.join(' ')}` : `Cancel ids: none — nothing queued.`,
     ].join('\n'),
   }).then((res) => {
     if (res.error) console.error('[lead-magnet] notification failed:', res.error)
@@ -174,9 +194,16 @@ export async function POST(req: NextRequest) {
   // already public, so recording the lead costs no privilege at all. HQ — which
   // runs locally and does hold a full-access key — reads these events and owns
   // the list from there.
-  const record = captureLead({ email, magnet: magnet.slug, placement: body.placement, utm, source })
+  const record = captureLead({
+    email,
+    magnet: magnet.slug,
+    placement: body.placement,
+    utm,
+    source,
+    scheduledIds,
+  })
 
-  const results = await Promise.allSettled([...followUps, notify, record])
+  const results = await Promise.allSettled([notify, record])
   for (const r of results) {
     if (r.status === 'rejected') console.error('[lead-magnet] post-delivery step failed:', r.reason)
   }

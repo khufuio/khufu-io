@@ -167,7 +167,7 @@ export function LeadMagnetForm({
       </button>
 
       <p className="mt-3 text-center text-xs text-[var(--color-muted)]">
-        Free, no account needed. A few follow-up emails about shipping V1s — unsubscribe in one click.
+        Free, no account needed. A few follow-up emails about shipping V1s — reply &ldquo;unsubscribe&rdquo; and they stop.
       </p>
     </form>
   )
