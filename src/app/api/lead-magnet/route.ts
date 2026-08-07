@@ -98,8 +98,13 @@ export async function POST(req: NextRequest) {
   const from = process.env.LEAD_FROM_EMAIL ?? process.env.CONTACT_FROM_EMAIL ?? 'Khufu <onboarding@resend.dev>'
   const notifyTo = process.env.CONTACT_TO_EMAIL ?? site.email
 
+  // Carried into the WhatsApp deep links in every email of the sequence, so a
+  // conversation that starts weeks later still names the campaign that paid for
+  // it. utm_source is the fallback: an untagged ad set is still not organic.
+  const leadCtx = { campaign: utm.utm_campaign ?? utm.utm_source }
+
   // 1. Deliver the guide.
-  const delivery = deliveryEmail(magnet)
+  const delivery = deliveryEmail(magnet, leadCtx)
   const rendered = renderEmail(delivery)
   const { error } = await resend.emails.send({
     from,
@@ -134,7 +139,7 @@ export async function POST(req: NextRequest) {
   //
   // Awaited before the lead is recorded, on purpose: the ids of the queued mails
   // are part of that record (see below), so they have to exist first.
-  const sequence = nurtureSequence(magnet)
+  const sequence = nurtureSequence(magnet, leadCtx)
   const scheduledIds = (
     await Promise.all(
       sequence.map(async (mail) => {
