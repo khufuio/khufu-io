@@ -96,26 +96,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </Container>
       </section>
 
-      {/* Positioning — what a fractional CTO leaves you with, and what we do */}
-      <section className="bg-[var(--color-paper-2)]">
-        <Container className="py-20 sm:py-28">
-          <SectionHeading title={h.ctoTitle} subtitle={h.ctoSubtitle} />
-          <div className="mt-12">
-            <CtoComparison locale={locale} dict={dict} />
-          </div>
-        </Container>
-      </section>
-
-      {/* The roles the sprint covers — the proof behind "a full team" */}
-      <section>
-        <Container className="py-20 sm:py-28">
-          <SectionHeading title={h.teamTitle} subtitle={h.teamSubtitle} />
-          <div className="mt-12">
-            <TeamRoles dict={dict} />
-          </div>
-        </Container>
-      </section>
-
       {/* How we go fast */}
       <section className="bg-[var(--color-paper-2)]">
         <Container className="py-20 sm:py-28">
@@ -145,6 +125,27 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <ButtonLink href={href(locale, 'offers')} variant="ghost">
               {dict.common.learnMore} →
             </ButtonLink>
+          </div>
+        </Container>
+      </section>
+
+      {/* The roles the sprint covers — the proof behind "every role, one contract" */}
+      <section className="bg-[var(--color-paper-2)]">
+        <Container className="py-20 sm:py-28">
+          <SectionHeading title={h.teamTitle} subtitle={h.teamSubtitle} />
+          <div className="mt-12">
+            <TeamRoles dict={dict} />
+          </div>
+        </Container>
+      </section>
+
+      {/* Why the sprint over a fractional CTO. A reason to buy, placed after the
+          offer it argues for — deliberately not the headline. */}
+      <section>
+        <Container className="py-20 sm:py-28">
+          <SectionHeading title={h.ctoTitle} subtitle={h.ctoSubtitle} />
+          <div className="mt-12">
+            <CtoComparison locale={locale} dict={dict} />
           </div>
         </Container>
       </section>

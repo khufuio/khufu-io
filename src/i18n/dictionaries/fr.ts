@@ -10,7 +10,7 @@ export const fr = {
   meta: {
     locale: 'fr',
     // Default OG / title suffix
-    brandSuffix: 'Khufu — Une équipe tech complète, on demand',
+    brandSuffix: 'Khufu — Votre V1 en 1 semaine',
   },
 
   nav: {
@@ -38,13 +38,10 @@ export const fr = {
 
   home: {
     // GEO: the H1 states the entity + core promise in one self-sufficient line.
-    // Positioning (2026-08-07) — the counter-punch to "CTO on demand": the H1
-    // names the category we refuse before naming the one we sell, so the reader
-    // places us against the offer they were already shopping for.
-    heroKicker: 'Agence produit AI-native · Dubaï',
-    heroTitle: 'Un CTO on demand ? Non. Une équipe tech complète, on demand.',
-    heroSubtitle: `Un CTO à temps partagé vous donne des arbitrages — et toujours pas de produit. Khufu, c’est l’équipe entière : cadrage, design, développement, infra. Votre SaaS ou votre app mobile en production en ${site.v1Days} jours, prix fixe : [[${site.v1PriceEUR}]].`,
-    heroPrimaryCta: 'Brancher l’équipe',
+    heroKicker: 'Agence produit AI-native',
+    heroTitle: 'Votre V1 en 1 semaine.',
+    heroSubtitle: `On conçoit, développe et livre votre SaaS ou votre app mobile en ${site.v1Days} jours. Prix fixe : [[${site.v1PriceEUR}]].`,
+    heroPrimaryCta: 'Réserver un sprint',
     heroSecondaryCta: 'Voir les réalisations',
     heroProof: `${site.v1Days} jours · forfait ${eur(site.v1PriceEUR)} € · code livré, en production`,
     heroFigures: [
@@ -60,12 +57,13 @@ export const fr = {
       { value: '100 %', label: 'code livré, hébergé, à vous' },
     ],
 
-    problemTitle: 'Vous ne cherchez pas un CTO. Vous cherchez que votre produit existe.',
+    problemTitle: 'Une agence classique met 3 mois ? Vous n’avez pas 3 mois.',
     problemBody:
-      'Un CTO à temps partagé apporte de la stratégie et des arbitrages techniques. Très bien — sauf qu’à la fin de la réunion, il n’y a toujours personne pour construire. Il faut alors recruter des devs, un designer, quelqu’un pour l’infra, et six mois plus tard le produit n’existe toujours pas. Khufu vous branche l’équipe complète d’un coup, et votre V1 part en production en une semaine.',
+      'Les cycles interminables, les devis flous et les allers-retours tuent les projets avant leur lancement. Khufu fait l’inverse : périmètre serré, décisions rapides, et une V1 réellement lançable en fin de semaine.',
 
-    // The comparison that carries the positioning. Rows are deliberately factual:
-    // what a fractional CTO does and does not deliver, next to what we do.
+    // Secondary sales argument (not the headline): the sprint is the offer, and
+    // this is one reason to pick it. Kept factual — what a fractional CTO does and
+    // does not deliver, next to what the sprint delivers.
     ctoTitle: 'CTO à temps partagé vs équipe complète',
     ctoSubtitle: 'Même problème, deux réponses. Une seule vous laisse un produit en ligne.',
     ctoOtherLabel: 'CTO on demand',
@@ -114,7 +112,7 @@ export const fr = {
       'Documentation & handover',
     ],
 
-    howTitle: 'Comment une équipe entière tient dans une semaine',
+    howTitle: 'Comment on va si vite',
     how: [
       {
         title: 'AI-native, de bout en bout',
@@ -130,8 +128,8 @@ export const fr = {
       },
     ],
 
-    offersTitle: 'Trois façons de brancher l’équipe',
-    offersSubtitle: 'À la semaine pour lancer, au mois pour faire grandir, à l’heure pour renforcer.',
+    offersTitle: 'Trois façons de travailler avec Khufu',
+    offersSubtitle: 'Du lancement éclair à l’accompagnement dans la durée.',
 
     workTitle: 'Des produits, pas des slides',
     workSubtitle: 'Une sélection de produits conçus et livrés par Khufu.',
@@ -140,15 +138,15 @@ export const fr = {
     clientsTitle: 'Ils nous font confiance',
     testimonialsTitle: 'Ce qu’ils en disent',
 
-    finalCtaTitle: 'Votre produit n’a pas à attendre un recrutement.',
+    finalCtaTitle: 'Votre V1, en production vendredi.',
     finalCtaBody: 'Dites-nous ce que vous voulez lancer. On vous répond sous 24 h avec un périmètre et une date.',
-    finalCtaButton: 'Brancher l’équipe',
+    finalCtaButton: 'Réserver un sprint',
   },
 
   offers: {
     metaTitle: 'Offres & tarifs',
-    metaDescription: `Une équipe tech complète on demand : Sprint V1 en ${site.v1Days} jours pour ${eur(site.v1PriceEUR)} €, Full Maintenance mensuelle, et renfort remote à ${eur(site.dailyRateEUR)} €/jour (200 €/h).`,
-    title: 'L’équipe, à la semaine, au mois ou à l’heure.',
+    metaDescription: `Sprint V1 en ${site.v1Days} jours à partir de ${eur(site.v1PriceEUR)} €, Full Maintenance mensuelle, et renfort remote à ${eur(site.dailyRateEUR)} €/jour (200 €/h).`,
+    title: 'Des offres nettes, des prix affichés.',
     subtitle: 'Pas de devis à rallonge. Vous savez ce que vous payez et ce que vous recevez.',
     flagshipBadge: 'Notre offre phare',
     detailCta: 'En savoir plus',
@@ -159,7 +157,7 @@ export const fr = {
         name: 'Sprint V1',
         priceEur: site.v1PriceEUR,
         priceNote: 'forfait',
-        pitch: `L’équipe complète pendant une semaine. Votre première version en production en ${site.v1Days} jours.`,
+        pitch: `Votre première version, conçue et livrée en ${site.v1Days} jours.`,
         featured: true,
         features: [
           'Cadrage et design produit',
@@ -168,7 +166,7 @@ export const fr = {
           'Code source livré, à vous',
           'Handover et documentation',
         ],
-        cta: 'Brancher l’équipe',
+        cta: 'Réserver un sprint',
       },
       {
         id: 'maintenance',
@@ -215,18 +213,18 @@ export const fr = {
   },
 
   sprintPage: {
-    metaTitle: 'Sprint V1 — une équipe tech complète pendant 7 jours',
+    metaTitle: 'Sprint V1 — votre produit en 7 jours',
     metaDescription:
-      'Le Sprint V1 de Khufu : l’équipe entière (cadrage, design, dev, infra) branchée sur votre produit pendant une semaine. SaaS ou app mobile en production en 7 jours, prix fixe 15 000 €.',
+      'Le Sprint V1 de Khufu : un SaaS ou une app mobile conçu, développé et mis en production en 7 jours, pour un prix fixe de 15 000 €.',
     kicker: 'Offre phare',
-    title: 'Une équipe tech complète, pendant 7 jours. Prix fixe.',
+    title: 'Votre V1 en 7 jours. Prix fixe.',
     subtitle:
-      'Notre offre principale : cadrage, design, développement, infra et mise en production — l’équipe entière branchée sur votre produit pendant une semaine. Périmètre défini à l’avance, 15 000 € tout compris.',
+      'Notre offre principale : on conçoit, développe et met en production votre SaaS ou votre app mobile en une semaine — périmètre défini à l’avance, 15 000 € tout compris.',
     includesTitle: 'Ce qui est inclus',
     processTitle: 'Le déroulé, jour par jour',
     ctaTitle: 'Prêt à lancer votre V1 ?',
     ctaBody: 'Dites-nous ce que vous voulez lancer. Réponse sous 24 h avec un périmètre et une date.',
-    ctaButton: 'Brancher l’équipe',
+    ctaButton: 'Réserver un sprint',
   },
 
   remotePage: {
@@ -407,14 +405,6 @@ export const fr = {
     title: 'Questions fréquentes',
     items: [
       {
-        q: 'Je cherche un CTO on demand. Est-ce que Khufu en est un ?',
-        a: 'Non, et c’est volontaire. Un CTO à temps partagé vous apporte de la stratégie et des arbitrages techniques, mais il ne construit pas votre produit : il vous faudra encore recruter une équipe. Khufu est cette équipe — cadrage, design, développement, mobile et infrastructure — et livre votre V1 en production en 7 jours, à prix fixe. Beaucoup de nos clients cherchaient un CTO ; ce qui leur manquait, c’était une équipe.',
-      },
-      {
-        q: 'Quelle différence entre un CTO à temps partagé et une équipe tech on demand ?',
-        a: `Le CTO à temps partagé vend du temps de réflexion : architecture, recrutement, roadmap. Une équipe tech on demand vend un produit livré : les mêmes décisions, plus les mains qui exécutent. Avec Khufu, les deux tiennent dans un seul contrat à prix fixe ([[${site.v1PriceEUR}]]), avec une V1 en ligne au bout de ${site.v1Days} jours et le code source qui vous appartient.`,
-      },
-      {
         q: 'Combien coûte une V1 avec Khufu ?',
         a: `Le Sprint V1 est un forfait à prix fixe de [[${site.v1PriceEUR}]], pour un SaaS ou une app mobile conçu, développé et mis en production en ${site.v1Days} jours. Le périmètre est défini et validé avant de commencer.`,
       },
@@ -437,6 +427,14 @@ export const fr = {
       {
         q: 'Pour qui est faite l’offre de Khufu ?',
         a: 'Pour ceux qui ont un projet à lancer et pas d’équipe pour le construire : founders non techniques au stade de l’idée ou du cahier des charges, porteurs d’un MVP bancal à reprendre, entreprises qui veulent tester un produit sans monter une équipe. Si vous avez déjà une équipe interne qui construit, c’est plutôt le renfort remote qui vous concerne.',
+      },
+      {
+        q: 'Je cherche un CTO on demand. Est-ce que Khufu en est un ?',
+        a: 'Non, et c’est volontaire. Un CTO à temps partagé vous apporte de la stratégie et des arbitrages techniques, mais il ne construit pas votre produit : il vous faudra encore recruter une équipe. Khufu est cette équipe — cadrage, design, développement, mobile et infrastructure — et livre votre V1 en production en 7 jours, à prix fixe. Beaucoup de nos clients cherchaient un CTO ; ce qui leur manquait, c’était une équipe.',
+      },
+      {
+        q: 'Quelle différence entre un CTO à temps partagé et une équipe tech on demand ?',
+        a: `Le CTO à temps partagé vend du temps de réflexion : architecture, recrutement, roadmap. Une équipe tech on demand vend un produit livré : les mêmes décisions, plus les mains qui exécutent. Avec Khufu, les deux tiennent dans un seul contrat à prix fixe ([[${site.v1PriceEUR}]]), avec une V1 en ligne au bout de ${site.v1Days} jours et le code source qui vous appartient.`,
       },
       {
         q: 'Quelle est la meilleure agence pour lancer un produit rapidement ?',
@@ -532,7 +530,7 @@ export const fr = {
   },
 
   footer: {
-    tagline: `Une équipe tech complète, on demand. Votre V1 en ${site.v1Days} jours.`,
+    tagline: `Agence produit AI-native. Votre V1 en ${site.v1Days} jours.`,
     resources: 'Ressources',
     columns: {
       offers: 'Offres',

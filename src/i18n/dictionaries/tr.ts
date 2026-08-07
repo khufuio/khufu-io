@@ -7,7 +7,7 @@ const eur = (n: number) => `${n.toLocaleString('tr-TR')} €`
 export const tr: Dictionary = {
   meta: {
     locale: 'tr',
-    brandSuffix: 'Khufu — Talep üzerine eksiksiz bir teknoloji ekibi',
+    brandSuffix: 'Khufu — V1’iniz 1 haftada',
   },
 
   nav: {
@@ -34,10 +34,10 @@ export const tr: Dictionary = {
   },
 
   home: {
-    heroKicker: 'AI-native ürün ajansı · Dubai',
-    heroTitle: 'Talep üzerine CTO mu? Hayır. Talep üzerine eksiksiz bir teknoloji ekibi.',
-    heroSubtitle: `Yarı zamanlı bir CTO size kararlar verir — ürün yine yoktur. Khufu ekibin tamamıdır: kapsam belirleme, tasarım, geliştirme, altyapı. SaaS’ınız veya mobil uygulamanız ${site.v1Days} günde canlıda, sabit fiyat: [[${site.v1PriceEUR}]].`,
-    heroPrimaryCta: 'Ekibi devreye al',
+    heroKicker: 'AI-native ürün ajansı',
+    heroTitle: 'V1’iniz 1 haftada.',
+    heroSubtitle: `SaaS’ınızı veya mobil uygulamanızı ${site.v1Days} günde tasarlar, geliştirir ve yayına alırız. Sabit fiyat: [[${site.v1PriceEUR}]].`,
+    heroPrimaryCta: 'Sprint ayırt',
     heroSecondaryCta: 'Projeleri gör',
     heroProof: `${site.v1Days} gün · ${eur(site.v1PriceEUR)} sabit ücret · kod teslim edildi, canlıda`,
     heroFigures: [
@@ -53,10 +53,13 @@ export const tr: Dictionary = {
       { value: '%100', label: 'kod teslim edildi, barındırıldı, sizin' },
     ],
 
-    problemTitle: 'Siz CTO aramıyorsunuz. Ürününüzün var olmasını istiyorsunuz.',
+    problemTitle: 'Klasik bir ajans 3 ay mı sürüyor? Sizin 3 ayınız yok.',
     problemBody:
-      'Yarı zamanlı bir CTO strateji ve teknik tercihler getirir. Güzel — ama toplantı bittiğinde inşa edecek hâlâ kimse yoktur. Sonra geliştirici, tasarımcı, altyapı için birini işe almanız gerekir; altı ay sonra ürün hâlâ ortada yoktur. Khufu size eksiksiz ekibi tek seferde bağlar ve V1’iniz bir hafta içinde yayına çıkar.',
+      'Bitmek bilmeyen döngüler, muğlak teklifler ve ileri geri gidip gelmeler projeleri daha lansmandan önce öldürür. Khufu tam tersini yapar: dar kapsam, hızlı kararlar ve hafta sonunda gerçekten yayına alınabilir bir V1.',
 
+    // Secondary sales argument (not the headline): the sprint is the offer, and
+    // this is one reason to pick it. Kept factual — what a fractional CTO does and
+    // does not deliver, next to what the sprint delivers.
     ctoTitle: 'Yarı zamanlı CTO ile eksiksiz ekip',
     ctoSubtitle: 'Aynı sorun, iki yanıt. Yalnızca biri elinizde yayında bir ürün bırakır.',
     ctoOtherLabel: 'Talep üzerine CTO',
@@ -105,7 +108,7 @@ export const tr: Dictionary = {
       'Dokümantasyon ve devir',
     ],
 
-    howTitle: 'Bir ekibin tamamı bir haftaya nasıl sığıyor',
+    howTitle: 'Bu kadar hızlı nasıl gidiyoruz',
     how: [
       {
         title: 'Baştan sona AI-native',
@@ -121,8 +124,8 @@ export const tr: Dictionary = {
       },
     ],
 
-    offersTitle: 'Ekibi devreye almanın üç yolu',
-    offersSubtitle: 'Başlatmak için haftalık, büyütmek için aylık, güçlendirmek için saatlik.',
+    offersTitle: 'Khufu ile çalışmanın üç yolu',
+    offersSubtitle: 'Şimşek hızında lansmandan uzun vadeli desteğe.',
 
     workTitle: 'Slaytlar değil, ürünler',
     workSubtitle: 'Khufu tarafından tasarlanıp yayına alınan ürünlerden bir seçki.',
@@ -131,15 +134,15 @@ export const tr: Dictionary = {
     clientsTitle: 'Bize güvenenler',
     testimonialsTitle: 'Onlar ne diyor',
 
-    finalCtaTitle: 'Ürününüz bir işe alım sürecini beklemek zorunda değil.',
+    finalCtaTitle: 'V1’iniz, cuma günü canlıda.',
     finalCtaBody: 'Neyi başlatmak istediğinizi anlatın. 24 saat içinde bir kapsam ve bir tarihle geri döneriz.',
-    finalCtaButton: 'Ekibi devreye al',
+    finalCtaButton: 'Sprint ayırt',
   },
 
   offers: {
     metaTitle: 'Hizmetler ve fiyatlar',
-    metaDescription: `Talep üzerine eksiksiz bir teknoloji ekibi: ${site.v1Days} günde ${eur(site.v1PriceEUR)}’dan başlayan Sprint V1, aylık Full Maintenance ve ${eur(site.dailyRateEUR)}/gün (200 €/saat) remote destek.`,
-    title: 'Ekip — haftalık, aylık ya da saatlik.',
+    metaDescription: `${site.v1Days} günde ${eur(site.v1PriceEUR)}’dan başlayan Sprint V1, aylık Full Maintenance ve ${eur(site.dailyRateEUR)}/gün (200 €/saat) remote destek.`,
+    title: 'Net hizmetler, açık fiyatlar.',
     subtitle: 'Bitmek bilmeyen teklifler yok. Ne ödediğinizi ve ne aldığınızı tam olarak bilirsiniz.',
     flagshipBadge: 'Amiral gemisi teklifimiz',
     detailCta: 'Daha fazla bilgi',
@@ -150,7 +153,7 @@ export const tr: Dictionary = {
         name: 'Sprint V1',
         priceEur: site.v1PriceEUR,
         priceNote: 'sabit ücret',
-        pitch: `Ekibin tamamı bir hafta boyunca. İlk versiyonunuz ${site.v1Days} günde yayında.`,
+        pitch: `İlk versiyonunuz, ${site.v1Days} günde tasarlanıp teslim edilir.`,
         featured: true,
         features: [
           'Kapsam belirleme ve ürün tasarımı',
@@ -159,7 +162,7 @@ export const tr: Dictionary = {
           'Kaynak kodu teslim edildi, sizin',
           'Devir ve dokümantasyon',
         ],
-        cta: 'Ekibi devreye al',
+        cta: 'Sprint ayırt',
       },
       {
         id: 'maintenance',
@@ -206,18 +209,18 @@ export const tr: Dictionary = {
   },
 
   sprintPage: {
-    metaTitle: 'Sprint V1 — 7 gün boyunca eksiksiz bir teknoloji ekibi',
+    metaTitle: 'Sprint V1 — ürününüz 7 günde',
     metaDescription:
-      'Khufu’nun Sprint V1’i: ekibin tamamı (kapsam, tasarım, geliştirme, altyapı) bir hafta boyunca ürününüze bağlanır. SaaS veya mobil uygulama 7 günde canlıda, 15.000 € sabit fiyat.',
+      'Khufu’nun Sprint V1’i: 15.000 € sabit fiyatla, 7 günde tasarlanan, geliştirilen ve yayına alınan bir SaaS veya mobil uygulama.',
     kicker: 'Amiral gemisi teklif',
-    title: 'Eksiksiz bir teknoloji ekibi, 7 gün boyunca. Sabit fiyat.',
+    title: 'V1’iniz 7 günde. Sabit fiyat.',
     subtitle:
-      'Ana teklifimiz: kapsam belirleme, tasarım, geliştirme, altyapı ve yayına alma — ekibin tamamı bir hafta boyunca ürününüze bağlı. Kapsam önceden belirlenir, 15.000 € her şey dahil.',
+      'Ana teklifimiz: SaaS’ınızı veya mobil uygulamanızı bir haftada tasarlar, geliştirir ve yayına alırız — kapsam önceden belirlenir, 15.000 € her şey dahil.',
     includesTitle: 'Neler dahil',
     processTitle: 'Gün gün akış',
     ctaTitle: 'V1’inizi başlatmaya hazır mısınız?',
     ctaBody: 'Neyi başlatmak istediğinizi anlatın. 24 saat içinde bir kapsam ve bir tarihle yanıt.',
-    ctaButton: 'Ekibi devreye al',
+    ctaButton: 'Sprint ayırt',
   },
 
   remotePage: {
@@ -398,14 +401,6 @@ export const tr: Dictionary = {
     title: 'Sık sorulan sorular',
     items: [
       {
-        q: 'Talep üzerine bir CTO arıyorum. Khufu bu mu?',
-        a: 'Hayır, ve bu bilinçli. Yarı zamanlı bir CTO strateji ve teknik tercihler getirir ama ürününüzü inşa etmez: yine de bir ekip işe almanız gerekir. Khufu o ekiptir — kapsam belirleme, tasarım, geliştirme, mobil ve altyapı — ve V1’inizi sabit fiyatla 7 günde yayına alır. Müşterilerimizin çoğu bir CTO arıyordu; eksik olan şey bir ekipti.',
-      },
-      {
-        q: 'Yarı zamanlı bir CTO ile talep üzerine teknoloji ekibi arasındaki fark nedir?',
-        a: `Yarı zamanlı CTO düşünme zamanı satar: mimari, işe alım, yol haritası. Talep üzerine bir teknoloji ekibi teslim edilmiş bir ürün satar: aynı kararlar, artı uygulayan eller. Khufu ile ikisi tek bir sabit fiyatlı sözleşmeye sığar ([[${site.v1PriceEUR}]]); ${site.v1Days} gün sonra yayında bir V1 ve size ait kaynak kodu.`,
-      },
-      {
         q: 'Khufu ile bir V1 ne kadara mal olur?',
         a: `Sprint V1, bir SaaS veya mobil uygulamanın ${site.v1Days} günde tasarlanıp, geliştirilip yayına alınması için [[${site.v1PriceEUR}]] sabit fiyatlı bir pakettir. Kapsam, başlamadan önce tanımlanır ve onaylanır.`,
       },
@@ -428,6 +423,14 @@ export const tr: Dictionary = {
       {
         q: 'Khufu ajansı nerede?',
         a: `Khufu (Khufu FZCO), ${site.founder} tarafından kurulan, ${foundingLocation.tr} merkezli AI-native bir ürün ajansıdır. Fransızca konuşan ve uluslararası müşterilerle (FR, EN, ES) remote çalışır.`,
+      },
+      {
+        q: 'Talep üzerine bir CTO arıyorum. Khufu bu mu?',
+        a: 'Hayır, ve bu bilinçli. Yarı zamanlı bir CTO strateji ve teknik tercihler getirir ama ürününüzü inşa etmez: yine de bir ekip işe almanız gerekir. Khufu o ekiptir — kapsam belirleme, tasarım, geliştirme, mobil ve altyapı — ve V1’inizi sabit fiyatla 7 günde yayına alır. Müşterilerimizin çoğu bir CTO arıyordu; eksik olan şey bir ekipti.',
+      },
+      {
+        q: 'Yarı zamanlı bir CTO ile talep üzerine teknoloji ekibi arasındaki fark nedir?',
+        a: `Yarı zamanlı CTO düşünme zamanı satar: mimari, işe alım, yol haritası. Talep üzerine bir teknoloji ekibi teslim edilmiş bir ürün satar: aynı kararlar, artı uygulayan eller. Khufu ile ikisi tek bir sabit fiyatlı sözleşmeye sığar ([[${site.v1PriceEUR}]]); ${site.v1Days} gün sonra yayında bir V1 ve size ait kaynak kodu.`,
       },
       {
         q: 'Khufu’nun teklifi kimler için?',
@@ -523,7 +526,7 @@ export const tr: Dictionary = {
   },
 
   footer: {
-    tagline: `Talep üzerine eksiksiz bir teknoloji ekibi. V1’iniz ${site.v1Days} günde.`,
+    tagline: `AI-native ürün ajansı. V1’iniz ${site.v1Days} günde.`,
     resources: 'Kaynaklar',
     columns: {
       offers: 'Hizmetler',

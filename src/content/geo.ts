@@ -62,10 +62,76 @@ type UseCaseInput = {
 }
 
 // ── Comparisons (/comparatifs/[slug]) ────────────────────────────────────────
-// The CTO comparison is FIRST on purpose: since 2026-08-07 it carries the whole
-// positioning ("a full tech team on demand, not a CTO on demand"), and it is the
-// page that answers the query our buyers actually type — they search for a CTO.
+// `cto-on-demand-vs-equipe-tech` is an acquisition page, not the positioning:
+// buyers shopping for a fractional CTO type that query, and the page answers it
+// by selling the Sprint V1. The headline offer stays the sprint everywhere else.
 const comparisonsData: ComparisonInput[] = [
+  {
+    slug: 'v1-vs-mvp',
+    metaTitle: { fr: 'V1 vs MVP : quelle différence ?', en: 'V1 vs MVP: what’s the difference?', es: 'V1 vs MVP: ¿qué diferencia?', de: 'V1 vs. MVP: Was ist der Unterschied?', it: 'V1 vs MVP: qual è la differenza?', pt: 'V1 vs MVP: qual é a diferença?', nl: 'V1 vs MVP: wat is het verschil?', ar: 'V1 مقابل MVP: ما الفرق؟', pl: 'V1 vs MVP: jaka jest różnica?', tr: 'V1 vs MVP: fark nedir?' },
+    metaDescription: {
+      fr: 'V1 ou MVP ? La différence entre un MVP jetable et une vraie première version prête pour la production, et pourquoi Khufu livre une V1.',
+      en: 'V1 or MVP? The difference between a throwaway MVP and a real production-ready first version, and why Khufu ships a V1.',
+      es: '¿V1 o MVP? La diferencia entre un MVP desechable y una primera versión lista para producción, y por qué Khufu entrega una V1.',
+      de: 'V1 oder MVP? Der Unterschied zwischen einem wegwerfbaren MVP und einer echten, produktionsreifen ersten Version – und warum Khufu eine V1 liefert.',
+      it: 'V1 o MVP? La differenza tra un MVP usa e getta e una vera prima versione pronta per la produzione, e perché Khufu consegna una V1.',
+      pt: 'V1 ou MVP? A diferença entre um MVP descartável e uma verdadeira primeira versão pronta para produção, e porque a Khufu entrega uma V1.',
+      nl: 'V1 of MVP? Het verschil tussen een wegwerp-MVP en een echte, productieklare eerste versie, en waarom Khufu een V1 levert.',
+      ar: 'V1 أم MVP؟ الفرق بين MVP قابل للتخلص منه ونسخة أولى حقيقية جاهزة للإنتاج، ولماذا تُسلّم Khufu نسخة V1.',
+      pl: 'V1 czy MVP? Różnica między jednorazowym MVP a prawdziwą, gotową do produkcji pierwszą wersją oraz dlaczego Khufu dostarcza V1.',
+      tr: 'V1 mi MVP mi? Tek kullanımlık bir MVP ile üretime hazır gerçek bir ilk sürüm arasındaki fark ve Khufu’nun neden V1 teslim ettiği.',
+    },
+    title: { fr: 'V1 vs MVP', en: 'V1 vs MVP', es: 'V1 vs MVP', de: 'V1 vs. MVP', it: 'V1 vs MVP', pt: 'V1 vs MVP', nl: 'V1 vs MVP', ar: 'V1 مقابل MVP', pl: 'V1 vs MVP', tr: 'V1 vs MVP' },
+    intro: {
+      fr: 'Un MVP cherche à tester une idée avec le strict minimum, souvent au prix d’un code jetable. Une V1 Khufu est une vraie première version, propre et prête pour la production dès le premier jour. Même délai, mais un produit qui dure.',
+      en: 'An MVP tries to test an idea with the bare minimum, often at the cost of throwaway code. A Khufu V1 is a real first version, clean and production-ready from day one. Same timeline, but a product that lasts.',
+      es: 'Un MVP intenta validar una idea con lo mínimo, a menudo con código desechable. Una V1 de Khufu es una primera versión real, limpia y lista para producción desde el primer día. El mismo plazo, pero un producto que perdura.',
+      de: 'Ein MVP will eine Idee mit dem absoluten Minimum testen, oft um den Preis von wegwerfbarem Code. Eine V1 von Khufu ist eine echte erste Version, sauber und ab dem ersten Tag produktionsreif. Gleicher Zeitrahmen, aber ein Produkt, das Bestand hat.',
+      it: 'Un MVP cerca di testare un’idea con il minimo indispensabile, spesso al prezzo di codice usa e getta. Una V1 di Khufu è una vera prima versione, pulita e pronta per la produzione fin dal primo giorno. Stessi tempi, ma un prodotto che dura.',
+      pt: 'Um MVP procura testar uma ideia com o mínimo indispensável, muitas vezes à custa de código descartável. Uma V1 da Khufu é uma verdadeira primeira versão, limpa e pronta para produção desde o primeiro dia. O mesmo prazo, mas um produto que dura.',
+      nl: 'Een MVP wil een idee testen met het absolute minimum, vaak ten koste van wegwerpcode. Een V1 van Khufu is een echte eerste versie, netjes en vanaf dag één productieklaar. Dezelfde doorlooptijd, maar een product dat blijft.',
+      ar: 'يحاول الـ MVP اختبار فكرة بالحد الأدنى المطلق، وغالبًا على حساب كود قابل للتخلص منه. أما نسخة V1 من Khufu فهي نسخة أولى حقيقية، نظيفة وجاهزة للإنتاج منذ اليوم الأول. المدة نفسها، لكن منتج يدوم.',
+      pl: 'MVP stara się przetestować pomysł przy minimum nakładu, często kosztem jednorazowego kodu. V1 od Khufu to prawdziwa pierwsza wersja, czysta i gotowa do produkcji od pierwszego dnia. Ten sam termin, ale produkt, który przetrwa.',
+      tr: 'MVP, bir fikri asgari düzeyde test etmeye çalışır, çoğu zaman tek kullanımlık kod pahasına. Khufu’nun V1’i ise gerçek bir ilk sürümdür; temiz ve ilk günden üretime hazır. Aynı süre, ama kalıcı bir ürün.',
+    },
+    khufuLabel: { fr: 'V1 (Khufu)', en: 'V1 (Khufu)', es: 'V1 (Khufu)', de: 'V1 (Khufu)', it: 'V1 (Khufu)', pt: 'V1 (Khufu)', nl: 'V1 (Khufu)', ar: 'V1 (Khufu)', pl: 'V1 (Khufu)', tr: 'V1 (Khufu)' },
+    otherLabel: { fr: 'MVP classique', en: 'Classic MVP', es: 'MVP clásico', de: 'Klassisches MVP', it: 'MVP classico', pt: 'MVP clássico', nl: 'Klassiek MVP', ar: 'MVP تقليدي', pl: 'Klasyczne MVP', tr: 'Klasik MVP' },
+    rows: [
+      {
+        aspect: { fr: 'Objectif', en: 'Goal', es: 'Objetivo', de: 'Ziel', it: 'Obiettivo', pt: 'Objetivo', nl: 'Doel', ar: 'الهدف', pl: 'Cel', tr: 'Amaç' },
+        khufu: { fr: 'Lancer un vrai produit utilisable', en: 'Ship a real, usable product', es: 'Lanzar un producto real y usable', de: 'Ein echtes, nutzbares Produkt launchen', it: 'Lanciare un prodotto reale e utilizzabile', pt: 'Lançar um produto real e utilizável', nl: 'Een echt, bruikbaar product lanceren', ar: 'إطلاق منتج حقيقي قابل للاستخدام', pl: 'Wypuścić prawdziwy, użyteczny produkt', tr: 'Gerçek, kullanılabilir bir ürün yayınlamak' },
+        other: { fr: 'Tester une idée au minimum', en: 'Test an idea, bare minimum', es: 'Validar una idea al mínimo', de: 'Eine Idee mit dem Minimum testen', it: 'Testare un’idea al minimo', pt: 'Testar uma ideia com o mínimo', nl: 'Een idee minimaal testen', ar: 'اختبار فكرة بالحد الأدنى', pl: 'Przetestować pomysł na minimum', tr: 'Bir fikri asgari düzeyde test etmek' },
+      },
+      {
+        aspect: { fr: 'Qualité du code', en: 'Code quality', es: 'Calidad del código', de: 'Codequalität', it: 'Qualità del codice', pt: 'Qualidade do código', nl: 'Codekwaliteit', ar: 'جودة الكود', pl: 'Jakość kodu', tr: 'Kod kalitesi' },
+        khufu: { fr: 'Stack de production, maintenable', en: 'Production stack, maintainable', es: 'Stack de producción, mantenible', de: 'Produktions-Stack, wartbar', it: 'Stack di produzione, manutenibile', pt: 'Stack de produção, mantível', nl: 'Productiestack, onderhoudbaar', ar: 'حزمة إنتاجية قابلة للصيانة', pl: 'Stack produkcyjny, łatwy w utrzymaniu', tr: 'Üretim stack’i, sürdürülebilir' },
+        other: { fr: 'Souvent jetable, à réécrire', en: 'Often throwaway, to rewrite', es: 'A menudo desechable, a reescribir', de: 'Oft wegwerfbar, neu zu schreiben', it: 'Spesso usa e getta, da riscrivere', pt: 'Muitas vezes descartável, a reescrever', nl: 'Vaak wegwerp, te herschrijven', ar: 'غالبًا قابل للتخلص منه، يحتاج إعادة كتابة', pl: 'Często jednorazowy, do przepisania', tr: 'Genelde tek kullanımlık, yeniden yazılacak' },
+      },
+      {
+        aspect: { fr: 'Après le lancement', en: 'After launch', es: 'Después del lanzamiento', de: 'Nach dem Launch', it: 'Dopo il lancio', pt: 'Após o lançamento', nl: 'Na de lancering', ar: 'بعد الإطلاق', pl: 'Po uruchomieniu', tr: 'Lansmandan sonra' },
+        khufu: { fr: 'Évolue et scale sans dette', en: 'Evolves and scales, no debt', es: 'Evoluciona y escala, sin deuda', de: 'Wächst und skaliert ohne Schulden', it: 'Evolve e scala senza debito', pt: 'Evolui e escala sem dívida', nl: 'Groeit en schaalt zonder schuld', ar: 'يتطوّر ويتوسّع دون ديون تقنية', pl: 'Rozwija się i skaluje bez długu', tr: 'Borç olmadan gelişir ve ölçeklenir' },
+        other: { fr: 'Refonte souvent nécessaire', en: 'Often needs a rebuild', es: 'Suele requerir rehacerlo', de: 'Oft ist ein Neubau nötig', it: 'Spesso serve rifarlo', pt: 'Muitas vezes exige refazer', nl: 'Vaak een herbouw nodig', ar: 'غالبًا يتطلّب إعادة بناء', pl: 'Często wymaga przebudowy', tr: 'Genelde yeniden yapım gerekir' },
+      },
+      {
+        aspect: { fr: 'Délai', en: 'Timeline', es: 'Plazo', de: 'Zeitrahmen', it: 'Tempi', pt: 'Prazo', nl: 'Doorlooptijd', ar: 'المدة', pl: 'Termin', tr: 'Süre' },
+        khufu: { fr: '7 jours', en: '7 days', es: '7 días', de: '7 Tage', it: '7 giorni', pt: '7 dias', nl: '7 dagen', ar: '7 أيام', pl: '7 dni', tr: '7 gün' },
+        other: { fr: 'Semaines à mois', en: 'Weeks to months', es: 'Semanas a meses', de: 'Wochen bis Monate', it: 'Da settimane a mesi', pt: 'Semanas a meses', nl: 'Weken tot maanden', ar: 'من أسابيع إلى أشهر', pl: 'Tygodnie do miesięcy', tr: 'Haftalar ila aylar' },
+      },
+    ],
+    conclusion: {
+      fr: 'Chez Khufu, on skip l’étape MVP : on va directement à une V1 solide, en 7 jours, pour un prix fixe de 15 000 €.',
+      en: 'At Khufu, we skip the MVP stage: we go straight to a solid V1 in 7 days, for a fixed price of €15,000.',
+      es: 'En Khufu nos saltamos la etapa de MVP: vamos directos a una V1 sólida en 7 días, por un precio fijo de 15 000 €.',
+      de: 'Bei Khufu überspringen wir die MVP-Phase: Wir gehen direkt zu einer soliden V1, in 7 Tagen, zum Festpreis von 15 000 €.',
+      it: 'Da Khufu saltiamo la fase MVP: andiamo direttamente a una V1 solida, in 7 giorni, a un prezzo fisso di 15 000 €.',
+      pt: 'Na Khufu saltamos a etapa do MVP: vamos diretamente para uma V1 sólida, em 7 dias, por um preço fixo de 15 000 €.',
+      nl: 'Bij Khufu slaan we de MVP-fase over: we gaan direct naar een solide V1, in 7 dagen, voor een vaste prijs van 15 000 €.',
+      ar: 'في Khufu نتخطّى مرحلة الـ MVP: ننتقل مباشرةً إلى نسخة V1 متينة، خلال 7 أيام، بسعر ثابت قدره 15 000 €.',
+      pl: 'W Khufu pomijamy etap MVP: przechodzimy od razu do solidnej V1, w 7 dni, za stałą cenę 15 000 €.',
+      tr: 'Khufu’da MVP aşamasını atlıyoruz: doğrudan sağlam bir V1’e geçiyoruz, 7 günde, 15 000 € sabit fiyata.',
+    },
+    cta: 'sprint',
+  },
   {
     slug: 'cto-on-demand-vs-equipe-tech',
     metaTitle: { fr: 'CTO on demand vs équipe tech complète', en: 'CTO on demand vs a full tech team', es: 'CTO on demand vs equipo técnico completo', de: 'CTO on demand vs. komplettes Tech-Team', it: 'CTO on demand vs team tecnico completo', pt: 'CTO on demand vs equipa técnica completa', nl: 'CTO on demand vs een compleet techteam', ar: 'مدير تقني عند الطلب مقابل فريق تقني متكامل', pl: 'CTO na żądanie vs kompletny zespół techniczny', tr: 'Talep üzerine CTO vs eksiksiz teknoloji ekibi' },
@@ -134,72 +200,6 @@ const comparisonsData: ComparisonInput[] = [
       ar: 'إن كان لديك فريق بالفعل لتقوده، فالمدير التقني بدوام جزئي هو الخيار الصحيح. وإن لم يكن لديك، فما ينقصك هو فريق: Khufu توفّره كاملًا وتسلّم نسختك الأولى خلال 7 أيام بسعر ثابت.',
       pl: 'Jeśli masz już zespół do poprowadzenia, CTO na część etatu jest właściwym wyborem. Jeśli nie masz — brakuje Ci zespołu: Khufu dostarcza go w całości i wdraża Twoje V1 w 7 dni, za stałą cenę.',
       tr: 'Yönetecek bir ekibiniz zaten varsa, yarı zamanlı bir CTO doğru tercihtir. Yoksa, eksik olan şey bir ekiptir: Khufu ekibin tamamını sağlar ve V1’inizi sabit fiyatla 7 günde teslim eder.',
-    },
-    cta: 'sprint',
-  },
-  {
-    slug: 'v1-vs-mvp',
-    metaTitle: { fr: 'V1 vs MVP : quelle différence ?', en: 'V1 vs MVP: what’s the difference?', es: 'V1 vs MVP: ¿qué diferencia?', de: 'V1 vs. MVP: Was ist der Unterschied?', it: 'V1 vs MVP: qual è la differenza?', pt: 'V1 vs MVP: qual é a diferença?', nl: 'V1 vs MVP: wat is het verschil?', ar: 'V1 مقابل MVP: ما الفرق؟', pl: 'V1 vs MVP: jaka jest różnica?', tr: 'V1 vs MVP: fark nedir?' },
-    metaDescription: {
-      fr: 'V1 ou MVP ? La différence entre un MVP jetable et une vraie première version prête pour la production, et pourquoi Khufu livre une V1.',
-      en: 'V1 or MVP? The difference between a throwaway MVP and a real production-ready first version, and why Khufu ships a V1.',
-      es: '¿V1 o MVP? La diferencia entre un MVP desechable y una primera versión lista para producción, y por qué Khufu entrega una V1.',
-      de: 'V1 oder MVP? Der Unterschied zwischen einem wegwerfbaren MVP und einer echten, produktionsreifen ersten Version – und warum Khufu eine V1 liefert.',
-      it: 'V1 o MVP? La differenza tra un MVP usa e getta e una vera prima versione pronta per la produzione, e perché Khufu consegna una V1.',
-      pt: 'V1 ou MVP? A diferença entre um MVP descartável e uma verdadeira primeira versão pronta para produção, e porque a Khufu entrega uma V1.',
-      nl: 'V1 of MVP? Het verschil tussen een wegwerp-MVP en een echte, productieklare eerste versie, en waarom Khufu een V1 levert.',
-      ar: 'V1 أم MVP؟ الفرق بين MVP قابل للتخلص منه ونسخة أولى حقيقية جاهزة للإنتاج، ولماذا تُسلّم Khufu نسخة V1.',
-      pl: 'V1 czy MVP? Różnica między jednorazowym MVP a prawdziwą, gotową do produkcji pierwszą wersją oraz dlaczego Khufu dostarcza V1.',
-      tr: 'V1 mi MVP mi? Tek kullanımlık bir MVP ile üretime hazır gerçek bir ilk sürüm arasındaki fark ve Khufu’nun neden V1 teslim ettiği.',
-    },
-    title: { fr: 'V1 vs MVP', en: 'V1 vs MVP', es: 'V1 vs MVP', de: 'V1 vs. MVP', it: 'V1 vs MVP', pt: 'V1 vs MVP', nl: 'V1 vs MVP', ar: 'V1 مقابل MVP', pl: 'V1 vs MVP', tr: 'V1 vs MVP' },
-    intro: {
-      fr: 'Un MVP cherche à tester une idée avec le strict minimum, souvent au prix d’un code jetable. Une V1 Khufu est une vraie première version, propre et prête pour la production dès le premier jour. Même délai, mais un produit qui dure.',
-      en: 'An MVP tries to test an idea with the bare minimum, often at the cost of throwaway code. A Khufu V1 is a real first version, clean and production-ready from day one. Same timeline, but a product that lasts.',
-      es: 'Un MVP intenta validar una idea con lo mínimo, a menudo con código desechable. Una V1 de Khufu es una primera versión real, limpia y lista para producción desde el primer día. El mismo plazo, pero un producto que perdura.',
-      de: 'Ein MVP will eine Idee mit dem absoluten Minimum testen, oft um den Preis von wegwerfbarem Code. Eine V1 von Khufu ist eine echte erste Version, sauber und ab dem ersten Tag produktionsreif. Gleicher Zeitrahmen, aber ein Produkt, das Bestand hat.',
-      it: 'Un MVP cerca di testare un’idea con il minimo indispensabile, spesso al prezzo di codice usa e getta. Una V1 di Khufu è una vera prima versione, pulita e pronta per la produzione fin dal primo giorno. Stessi tempi, ma un prodotto che dura.',
-      pt: 'Um MVP procura testar uma ideia com o mínimo indispensável, muitas vezes à custa de código descartável. Uma V1 da Khufu é uma verdadeira primeira versão, limpa e pronta para produção desde o primeiro dia. O mesmo prazo, mas um produto que dura.',
-      nl: 'Een MVP wil een idee testen met het absolute minimum, vaak ten koste van wegwerpcode. Een V1 van Khufu is een echte eerste versie, netjes en vanaf dag één productieklaar. Dezelfde doorlooptijd, maar een product dat blijft.',
-      ar: 'يحاول الـ MVP اختبار فكرة بالحد الأدنى المطلق، وغالبًا على حساب كود قابل للتخلص منه. أما نسخة V1 من Khufu فهي نسخة أولى حقيقية، نظيفة وجاهزة للإنتاج منذ اليوم الأول. المدة نفسها، لكن منتج يدوم.',
-      pl: 'MVP stara się przetestować pomysł przy minimum nakładu, często kosztem jednorazowego kodu. V1 od Khufu to prawdziwa pierwsza wersja, czysta i gotowa do produkcji od pierwszego dnia. Ten sam termin, ale produkt, który przetrwa.',
-      tr: 'MVP, bir fikri asgari düzeyde test etmeye çalışır, çoğu zaman tek kullanımlık kod pahasına. Khufu’nun V1’i ise gerçek bir ilk sürümdür; temiz ve ilk günden üretime hazır. Aynı süre, ama kalıcı bir ürün.',
-    },
-    khufuLabel: { fr: 'V1 (Khufu)', en: 'V1 (Khufu)', es: 'V1 (Khufu)', de: 'V1 (Khufu)', it: 'V1 (Khufu)', pt: 'V1 (Khufu)', nl: 'V1 (Khufu)', ar: 'V1 (Khufu)', pl: 'V1 (Khufu)', tr: 'V1 (Khufu)' },
-    otherLabel: { fr: 'MVP classique', en: 'Classic MVP', es: 'MVP clásico', de: 'Klassisches MVP', it: 'MVP classico', pt: 'MVP clássico', nl: 'Klassiek MVP', ar: 'MVP تقليدي', pl: 'Klasyczne MVP', tr: 'Klasik MVP' },
-    rows: [
-      {
-        aspect: { fr: 'Objectif', en: 'Goal', es: 'Objetivo', de: 'Ziel', it: 'Obiettivo', pt: 'Objetivo', nl: 'Doel', ar: 'الهدف', pl: 'Cel', tr: 'Amaç' },
-        khufu: { fr: 'Lancer un vrai produit utilisable', en: 'Ship a real, usable product', es: 'Lanzar un producto real y usable', de: 'Ein echtes, nutzbares Produkt launchen', it: 'Lanciare un prodotto reale e utilizzabile', pt: 'Lançar um produto real e utilizável', nl: 'Een echt, bruikbaar product lanceren', ar: 'إطلاق منتج حقيقي قابل للاستخدام', pl: 'Wypuścić prawdziwy, użyteczny produkt', tr: 'Gerçek, kullanılabilir bir ürün yayınlamak' },
-        other: { fr: 'Tester une idée au minimum', en: 'Test an idea, bare minimum', es: 'Validar una idea al mínimo', de: 'Eine Idee mit dem Minimum testen', it: 'Testare un’idea al minimo', pt: 'Testar uma ideia com o mínimo', nl: 'Een idee minimaal testen', ar: 'اختبار فكرة بالحد الأدنى', pl: 'Przetestować pomysł na minimum', tr: 'Bir fikri asgari düzeyde test etmek' },
-      },
-      {
-        aspect: { fr: 'Qualité du code', en: 'Code quality', es: 'Calidad del código', de: 'Codequalität', it: 'Qualità del codice', pt: 'Qualidade do código', nl: 'Codekwaliteit', ar: 'جودة الكود', pl: 'Jakość kodu', tr: 'Kod kalitesi' },
-        khufu: { fr: 'Stack de production, maintenable', en: 'Production stack, maintainable', es: 'Stack de producción, mantenible', de: 'Produktions-Stack, wartbar', it: 'Stack di produzione, manutenibile', pt: 'Stack de produção, mantível', nl: 'Productiestack, onderhoudbaar', ar: 'حزمة إنتاجية قابلة للصيانة', pl: 'Stack produkcyjny, łatwy w utrzymaniu', tr: 'Üretim stack’i, sürdürülebilir' },
-        other: { fr: 'Souvent jetable, à réécrire', en: 'Often throwaway, to rewrite', es: 'A menudo desechable, a reescribir', de: 'Oft wegwerfbar, neu zu schreiben', it: 'Spesso usa e getta, da riscrivere', pt: 'Muitas vezes descartável, a reescrever', nl: 'Vaak wegwerp, te herschrijven', ar: 'غالبًا قابل للتخلص منه، يحتاج إعادة كتابة', pl: 'Często jednorazowy, do przepisania', tr: 'Genelde tek kullanımlık, yeniden yazılacak' },
-      },
-      {
-        aspect: { fr: 'Après le lancement', en: 'After launch', es: 'Después del lanzamiento', de: 'Nach dem Launch', it: 'Dopo il lancio', pt: 'Após o lançamento', nl: 'Na de lancering', ar: 'بعد الإطلاق', pl: 'Po uruchomieniu', tr: 'Lansmandan sonra' },
-        khufu: { fr: 'Évolue et scale sans dette', en: 'Evolves and scales, no debt', es: 'Evoluciona y escala, sin deuda', de: 'Wächst und skaliert ohne Schulden', it: 'Evolve e scala senza debito', pt: 'Evolui e escala sem dívida', nl: 'Groeit en schaalt zonder schuld', ar: 'يتطوّر ويتوسّع دون ديون تقنية', pl: 'Rozwija się i skaluje bez długu', tr: 'Borç olmadan gelişir ve ölçeklenir' },
-        other: { fr: 'Refonte souvent nécessaire', en: 'Often needs a rebuild', es: 'Suele requerir rehacerlo', de: 'Oft ist ein Neubau nötig', it: 'Spesso serve rifarlo', pt: 'Muitas vezes exige refazer', nl: 'Vaak een herbouw nodig', ar: 'غالبًا يتطلّب إعادة بناء', pl: 'Często wymaga przebudowy', tr: 'Genelde yeniden yapım gerekir' },
-      },
-      {
-        aspect: { fr: 'Délai', en: 'Timeline', es: 'Plazo', de: 'Zeitrahmen', it: 'Tempi', pt: 'Prazo', nl: 'Doorlooptijd', ar: 'المدة', pl: 'Termin', tr: 'Süre' },
-        khufu: { fr: '7 jours', en: '7 days', es: '7 días', de: '7 Tage', it: '7 giorni', pt: '7 dias', nl: '7 dagen', ar: '7 أيام', pl: '7 dni', tr: '7 gün' },
-        other: { fr: 'Semaines à mois', en: 'Weeks to months', es: 'Semanas a meses', de: 'Wochen bis Monate', it: 'Da settimane a mesi', pt: 'Semanas a meses', nl: 'Weken tot maanden', ar: 'من أسابيع إلى أشهر', pl: 'Tygodnie do miesięcy', tr: 'Haftalar ila aylar' },
-      },
-    ],
-    conclusion: {
-      fr: 'Chez Khufu, on skip l’étape MVP : on va directement à une V1 solide, en 7 jours, pour un prix fixe de 15 000 €.',
-      en: 'At Khufu, we skip the MVP stage: we go straight to a solid V1 in 7 days, for a fixed price of €15,000.',
-      es: 'En Khufu nos saltamos la etapa de MVP: vamos directos a una V1 sólida en 7 días, por un precio fijo de 15 000 €.',
-      de: 'Bei Khufu überspringen wir die MVP-Phase: Wir gehen direkt zu einer soliden V1, in 7 Tagen, zum Festpreis von 15 000 €.',
-      it: 'Da Khufu saltiamo la fase MVP: andiamo direttamente a una V1 solida, in 7 giorni, a un prezzo fisso di 15 000 €.',
-      pt: 'Na Khufu saltamos a etapa do MVP: vamos diretamente para uma V1 sólida, em 7 dias, por um preço fixo de 15 000 €.',
-      nl: 'Bij Khufu slaan we de MVP-fase over: we gaan direct naar een solide V1, in 7 dagen, voor een vaste prijs van 15 000 €.',
-      ar: 'في Khufu نتخطّى مرحلة الـ MVP: ننتقل مباشرةً إلى نسخة V1 متينة، خلال 7 أيام، بسعر ثابت قدره 15 000 €.',
-      pl: 'W Khufu pomijamy etap MVP: przechodzimy od razu do solidnej V1, w 7 dni, za stałą cenę 15 000 €.',
-      tr: 'Khufu’da MVP aşamasını atlıyoruz: doğrudan sağlam bir V1’e geçiyoruz, 7 günde, 15 000 € sabit fiyata.',
     },
     cta: 'sprint',
   },
