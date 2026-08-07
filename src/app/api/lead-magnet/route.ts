@@ -112,6 +112,11 @@ export async function POST(req: NextRequest) {
 
   if (error) {
     console.error('[lead-magnet] delivery failed:', error)
+    // Record the lead anyway before bailing out. The visitor already has the PDF
+    // (the client never gates the download on this call), so a Resend outage that
+    // also erased the capture would quietly delete a paid click from the funnel —
+    // the ad spend would show a visit and no lead that ever existed.
+    await captureLead({ email, magnet: magnet.slug, placement: body.placement, utm, source, delivered: false })
     return NextResponse.json(
       { ok: false, reason: 'send_failed', detail: error.message ?? String(error) },
       { status: 502 },
@@ -201,6 +206,7 @@ export async function POST(req: NextRequest) {
     utm,
     source,
     scheduledIds,
+    delivered: true,
   })
 
   const results = await Promise.allSettled([notify, record])

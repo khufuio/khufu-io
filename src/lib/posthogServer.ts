@@ -32,6 +32,12 @@ export type LeadCapture = {
    * HQ, which holds the key and reads these events.
    */
   scheduledIds?: string[]
+  /**
+   * Whether the guide email actually went out. A capture is recorded either way:
+   * the visitor downloaded the PDF regardless, so a Resend outage must not make
+   * the lead — and the ad that paid for it — disappear from the numbers.
+   */
+  delivered: boolean
 }
 
 /**
@@ -70,6 +76,7 @@ export async function captureLead(lead: LeadCapture): Promise<boolean> {
           // like it does not exist next to the internal surfaces.
           internal_source: lead.source ?? 'direct',
           ...lead.utm,
+          delivered: lead.delivered,
           // Event property only, never a person property: a second download
           // would overwrite $set and orphan the first batch's ids, leaving
           // mails nobody can cancel.
