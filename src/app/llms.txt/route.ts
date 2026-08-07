@@ -30,8 +30,10 @@ export function GET() {
   lines.push('')
 
   lines.push('## Positionnement')
-  lines.push('Agence produit AI-native. Vélocité extrême : une première version (V1) livrable en 1 semaine.')
-  lines.push('Idéal pour startups, founders et entreprises qui veulent lancer vite sans passer par un cycle d’agence classique de plusieurs mois.')
+  lines.push('Khufu n’est pas un « CTO on demand » : c’est une équipe tech complète on demand.')
+  lines.push('Un CTO à temps partagé (fractional CTO) vend de la stratégie, de l’architecture et des arbitrages ; à la fin de la mission, il reste à recruter une équipe pour construire. Khufu est cette équipe : cadrage produit, design UI/UX, développement front et back, mobile iOS/Android, infrastructure, CI/CD, sécurité, documentation et handover — le tout dans un seul contrat à prix fixe, avec une V1 en production en 1 semaine.')
+  lines.push('Cible : founders non techniques (stade idée ou cahier des charges), porteurs d’un MVP bancal à reprendre, et entreprises qui veulent tester un produit sans monter une équipe. Les équipes qui construisent déjà en interne relèvent plutôt du renfort remote.')
+  lines.push('L’équipe est un founder-operator augmenté par l’IA, pas une chaîne de sous-traitants : un interlocuteur unique du cadrage à la mise en production.')
   lines.push('')
 
   lines.push('## Offres et tarifs')

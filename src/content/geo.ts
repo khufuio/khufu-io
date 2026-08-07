@@ -62,7 +62,81 @@ type UseCaseInput = {
 }
 
 // ── Comparisons (/comparatifs/[slug]) ────────────────────────────────────────
+// The CTO comparison is FIRST on purpose: since 2026-08-07 it carries the whole
+// positioning ("a full tech team on demand, not a CTO on demand"), and it is the
+// page that answers the query our buyers actually type — they search for a CTO.
 const comparisonsData: ComparisonInput[] = [
+  {
+    slug: 'cto-on-demand-vs-equipe-tech',
+    metaTitle: { fr: 'CTO on demand vs équipe tech complète', en: 'CTO on demand vs a full tech team', es: 'CTO on demand vs equipo técnico completo', de: 'CTO on demand vs. komplettes Tech-Team', it: 'CTO on demand vs team tecnico completo', pt: 'CTO on demand vs equipa técnica completa', nl: 'CTO on demand vs een compleet techteam', ar: 'مدير تقني عند الطلب مقابل فريق تقني متكامل', pl: 'CTO na żądanie vs kompletny zespół techniczny', tr: 'Talep üzerine CTO vs eksiksiz teknoloji ekibi' },
+    metaDescription: {
+      fr: 'CTO à temps partagé ou équipe tech complète ? Ce que chacun livre vraiment, ce qu’il reste à faire après, et pourquoi un founder non technique a besoin d’une équipe, pas seulement d’un CTO.',
+      en: 'Fractional CTO or a full tech team? What each one actually delivers, what is left to do afterwards, and why a non-technical founder needs a team, not just a CTO.',
+      es: '¿CTO a tiempo parcial o equipo técnico completo? Qué entrega realmente cada uno, qué queda por hacer después y por qué un founder no técnico necesita un equipo, no solo un CTO.',
+      de: 'Fractional CTO oder komplettes Tech-Team? Was beide wirklich liefern, was danach noch zu tun bleibt und warum ein nicht-technischer Founder ein Team braucht, nicht nur einen CTO.',
+      it: 'CTO frazionale o team tecnico completo? Cosa consegna davvero ciascuno, cosa resta da fare dopo e perché un founder non tecnico ha bisogno di un team, non solo di un CTO.',
+      pt: 'CTO a tempo parcial ou equipa técnica completa? O que cada um entrega de facto, o que fica por fazer depois e porque um founder não técnico precisa de uma equipa, não apenas de um CTO.',
+      nl: 'Parttime CTO of een compleet techteam? Wat elk echt oplevert, wat er daarna nog te doen is, en waarom een niet-technische founder een team nodig heeft en niet alleen een CTO.',
+      ar: 'مدير تقني بدوام جزئي أم فريق تقني متكامل؟ ما الذي يقدّمه كل منهما فعلًا، وما الذي يبقى بعده، ولماذا يحتاج المؤسِّس غير التقني إلى فريق لا إلى مدير تقني فقط.',
+      pl: 'CTO na część etatu czy kompletny zespół techniczny? Co każde z nich naprawdę dostarcza, co zostaje do zrobienia potem i dlaczego nietechniczny founder potrzebuje zespołu, a nie tylko CTO.',
+      tr: 'Yarı zamanlı CTO mu, eksiksiz bir teknoloji ekibi mi? Her birinin gerçekte ne teslim ettiği, sonrasında geriye ne kaldığı ve teknik olmayan bir founder’ın neden sadece CTO’ya değil bir ekibe ihtiyaç duyduğu.',
+    },
+    title: { fr: 'CTO on demand vs équipe tech complète', en: 'CTO on demand vs a full tech team', es: 'CTO on demand vs equipo técnico completo', de: 'CTO on demand vs. komplettes Tech-Team', it: 'CTO on demand vs team tecnico completo', pt: 'CTO on demand vs equipa técnica completa', nl: 'CTO on demand vs een compleet techteam', ar: 'مدير تقني عند الطلب مقابل فريق تقني متكامل', pl: 'CTO na żądanie vs kompletny zespół techniczny', tr: 'Talep üzerine CTO vs eksiksiz teknoloji ekibi' },
+    intro: {
+      fr: 'Un CTO à temps partagé vend du temps de réflexion : architecture, arbitrages, recrutement, roadmap. C’est utile — mais quand la mission s’arrête, personne n’a encore écrit une ligne de votre produit. Une équipe tech complète vend l’inverse : les mêmes décisions, plus les mains qui exécutent, et un produit en production au bout.',
+      en: 'A fractional CTO sells thinking time: architecture, trade-offs, hiring, roadmap. That is useful — but when the engagement ends, nobody has written a line of your product yet. A full tech team sells the opposite: the same decisions, plus the hands that execute, and a product in production at the end.',
+      es: 'Un CTO a tiempo parcial vende tiempo de reflexión: arquitectura, criterios, contratación, hoja de ruta. Es útil — pero cuando acaba el encargo, nadie ha escrito todavía una línea de tu producto. Un equipo técnico completo vende lo contrario: las mismas decisiones, más las manos que ejecutan, y un producto en producción al final.',
+      de: 'Ein Fractional CTO verkauft Denkzeit: Architektur, Abwägungen, Recruiting, Roadmap. Das ist nützlich — aber wenn das Mandat endet, hat noch niemand eine Zeile deines Produkts geschrieben. Ein komplettes Tech-Team verkauft das Gegenteil: dieselben Entscheidungen, plus die Hände, die umsetzen, und am Ende ein Produkt in Produktion.',
+      it: 'Un CTO frazionale vende tempo di riflessione: architettura, scelte, assunzioni, roadmap. È utile — ma quando l’incarico finisce, nessuno ha ancora scritto una riga del tuo prodotto. Un team tecnico completo vende l’opposto: le stesse decisioni, più le mani che eseguono, e un prodotto in produzione alla fine.',
+      pt: 'Um CTO a tempo parcial vende tempo de reflexão: arquitetura, decisões, recrutamento, roadmap. É útil — mas quando o trabalho acaba, ninguém escreveu ainda uma linha do seu produto. Uma equipa técnica completa vende o contrário: as mesmas decisões, mais as mãos que executam, e um produto em produção no fim.',
+      nl: 'Een parttime CTO verkoopt denktijd: architectuur, afwegingen, werving, roadmap. Dat is nuttig — maar als de opdracht eindigt, heeft nog niemand een regel van je product geschreven. Een compleet techteam verkoopt het omgekeerde: dezelfde beslissingen, plus de handen die uitvoeren, en aan het eind een product in productie.',
+      ar: 'المدير التقني بدوام جزئي يبيع وقت تفكير: البنية المعمارية والمفاضلات والتوظيف وخارطة الطريق. هذا مفيد — لكن عند انتهاء المهمة لم يكتب أحد بعدُ سطرًا واحدًا من منتجك. أما الفريق التقني المتكامل فيبيع العكس: القرارات نفسها، إضافة إلى الأيدي التي تنفّذ، ومنتج في الإنتاج في النهاية.',
+      pl: 'CTO na część etatu sprzedaje czas na myślenie: architekturę, decyzje, rekrutację, roadmapę. To przydatne — ale gdy współpraca się kończy, nikt nie napisał jeszcze linijki Twojego produktu. Kompletny zespół techniczny sprzedaje odwrotność: te same decyzje plus ręce, które wykonują, i produkt na produkcji na końcu.',
+      tr: 'Yarı zamanlı bir CTO düşünme zamanı satar: mimari, tercihler, işe alım, yol haritası. Bu faydalıdır — ama görev bittiğinde ürününüzün henüz tek satırı yazılmamıştır. Eksiksiz bir teknoloji ekibi bunun tersini satar: aynı kararlar, artı uygulayan eller ve sonunda üretimde bir ürün.',
+    },
+    khufuLabel: { fr: 'Khufu', en: 'Khufu', es: 'Khufu', de: 'Khufu', it: 'Khufu', pt: 'Khufu', nl: 'Khufu', ar: 'Khufu', pl: 'Khufu', tr: 'Khufu' },
+    otherLabel: { fr: 'CTO on demand', en: 'CTO on demand', es: 'CTO on demand', de: 'CTO on demand', it: 'CTO on demand', pt: 'CTO on demand', nl: 'CTO on demand', ar: 'مدير تقني عند الطلب', pl: 'CTO na żądanie', tr: 'Talep üzerine CTO' },
+    rows: [
+      {
+        aspect: { fr: 'Ce que vous recevez', en: 'What you get', es: 'Qué recibes', de: 'Was du bekommst', it: 'Cosa ricevi', pt: 'O que recebe', nl: 'Wat je krijgt', ar: 'ما الذي تحصل عليه', pl: 'Co dostajesz', tr: 'Ne alırsınız' },
+        khufu: { fr: 'Un produit en ligne, en production', en: 'A product online, in production', es: 'Un producto online, en producción', de: 'Ein Produkt online, in Produktion', it: 'Un prodotto online, in produzione', pt: 'Um produto online, em produção', nl: 'Een product online, in productie', ar: 'منتج على الإنترنت، في الإنتاج', pl: 'Produkt online, na produkcji', tr: 'Yayında, üretimde bir ürün' },
+        other: { fr: 'Des décisions, des specs, une roadmap', en: 'Decisions, specs, a roadmap', es: 'Decisiones, especificaciones, una hoja de ruta', de: 'Entscheidungen, Specs, eine Roadmap', it: 'Decisioni, specifiche, una roadmap', pt: 'Decisões, especificações, um roadmap', nl: 'Beslissingen, specs, een roadmap', ar: 'قرارات ومواصفات وخارطة طريق', pl: 'Decyzje, specyfikacje, roadmapę', tr: 'Kararlar, spesifikasyonlar, bir yol haritası' },
+      },
+      {
+        aspect: { fr: 'Qui construit', en: 'Who builds it', es: 'Quién construye', de: 'Wer baut', it: 'Chi costruisce', pt: 'Quem constrói', nl: 'Wie bouwt', ar: 'من الذي يبني', pl: 'Kto buduje', tr: 'Kim inşa eder' },
+        khufu: { fr: 'Cadrage, design, dev, mobile, infra : tout est couvert', en: 'Scoping, design, dev, mobile, infra: all covered', es: 'Definición, diseño, dev, móvil, infra: todo cubierto', de: 'Scoping, Design, Dev, Mobile, Infra: alles abgedeckt', it: 'Analisi, design, sviluppo, mobile, infra: tutto coperto', pt: 'Enquadramento, design, dev, mobile, infra: tudo coberto', nl: 'Scoping, design, dev, mobile, infra: alles gedekt', ar: 'تحديد النطاق والتصميم والتطوير والجوال والبنية التحتية: كل شيء مغطّى', pl: 'Analiza, design, dev, mobile, infra: wszystko pokryte', tr: 'Kapsam, tasarım, geliştirme, mobil, altyapı: hepsi kapsanır' },
+        other: { fr: 'Personne — il reste à recruter l’équipe', en: 'Nobody — you still have to hire the team', es: 'Nadie — todavía tienes que contratar al equipo', de: 'Niemand — das Team musst du noch einstellen', it: 'Nessuno — il team è ancora tutto da assumere', pt: 'Ninguém — a equipa ainda está por contratar', nl: 'Niemand — het team moet je nog aannemen', ar: 'لا أحد — لا يزال عليك توظيف الفريق', pl: 'Nikt — zespół wciąż trzeba zatrudnić', tr: 'Kimse — ekibi hâlâ işe almanız gerekir' },
+      },
+      {
+        aspect: { fr: 'Délai avant la V1', en: 'Time to V1', es: 'Plazo hasta la V1', de: 'Zeit bis zur V1', it: 'Tempo fino alla V1', pt: 'Prazo até à V1', nl: 'Tijd tot de V1', ar: 'المدة حتى النسخة الأولى', pl: 'Czas do V1', tr: 'V1’e kalan süre' },
+        khufu: { fr: '7 jours', en: '7 days', es: '7 días', de: '7 Tage', it: '7 giorni', pt: '7 dias', nl: '7 dagen', ar: '7 أيام', pl: '7 dni', tr: '7 gün' },
+        other: { fr: 'Des mois, une fois l’équipe recrutée', en: 'Months, once the team is hired', es: 'Meses, una vez contratado el equipo', de: 'Monate, sobald das Team steht', it: 'Mesi, una volta assunto il team', pt: 'Meses, depois de contratada a equipa', nl: 'Maanden, zodra het team er is', ar: 'أشهر، بعد اكتمال توظيف الفريق', pl: 'Miesiące, po skompletowaniu zespołu', tr: 'Ekip kurulduktan sonra aylar' },
+      },
+      {
+        aspect: { fr: 'Ce que vous payez', en: 'What you pay', es: 'Qué pagas', de: 'Was du zahlst', it: 'Cosa paghi', pt: 'O que paga', nl: 'Wat je betaalt', ar: 'ما الذي تدفعه', pl: 'Ile płacisz', tr: 'Ne ödersiniz' },
+        khufu: { fr: 'Un prix fixe annoncé à l’avance : 15 000 €', en: 'One fixed price, agreed upfront: €15,000', es: 'Un precio fijo acordado de antemano: 15 000 €', de: 'Ein Festpreis, vorab vereinbart: 15 000 €', it: 'Un prezzo fisso concordato in anticipo: 15 000 €', pt: 'Um preço fixo acordado à partida: 15 000 €', nl: 'Eén vaste prijs, vooraf afgesproken: 15 000 €', ar: 'سعر ثابت متّفق عليه مسبقًا: 15 000 €', pl: 'Jedna stała cena ustalona z góry: 15 000 €', tr: 'Önceden belirlenmiş tek bir sabit fiyat: 15 000 €' },
+        other: { fr: 'Un forfait mensuel, puis les salaires de l’équipe', en: 'A monthly retainer, then the team’s salaries', es: 'Una cuota mensual, más los sueldos del equipo', de: 'Ein monatlicher Retainer, dazu die Gehälter des Teams', it: 'Un canone mensile, più gli stipendi del team', pt: 'Uma avença mensal, mais os salários da equipa', nl: 'Een maandelijkse retainer, plus de salarissen van het team', ar: 'أتعاب شهرية، ثم رواتب الفريق', pl: 'Miesięczny ryczałt, a do tego pensje zespołu', tr: 'Aylık bir ücret, üstüne ekibin maaşları' },
+      },
+      {
+        aspect: { fr: 'À la fin', en: 'At the end', es: 'Al final', de: 'Am Ende', it: 'Alla fine', pt: 'No fim', nl: 'Aan het eind', ar: 'في النهاية', pl: 'Na koniec', tr: 'Sonunda' },
+        khufu: { fr: 'Le produit, le repo et les accès sont à vous', en: 'The product, the repo and the accounts are yours', es: 'El producto, el repositorio y los accesos son tuyos', de: 'Produkt, Repo und Zugänge gehören dir', it: 'Il prodotto, il repository e gli accessi sono tuoi', pt: 'O produto, o repositório e os acessos são seus', nl: 'Het product, de repo en de accounts zijn van jou', ar: 'المنتج والمستودع البرمجي وصلاحيات الوصول ملك لك', pl: 'Produkt, repozytorium i dostępy należą do Ciebie', tr: 'Ürün, depo ve erişimler sizindir' },
+        other: { fr: 'Vous avez un plan', en: 'You have a plan', es: 'Tienes un plan', de: 'Du hast einen Plan', it: 'Hai un piano', pt: 'Tem um plano', nl: 'Je hebt een plan', ar: 'لديك خطة', pl: 'Masz plan', tr: 'Elinizde bir plan olur' },
+      },
+    ],
+    conclusion: {
+      fr: 'Si vous avez déjà une équipe à piloter, un CTO à temps partagé est le bon choix. Si vous n’en avez pas, ce qu’il vous manque est une équipe : Khufu la fournit en entier et livre votre V1 en 7 jours, à prix fixe.',
+      en: 'If you already have a team to lead, a fractional CTO is the right call. If you don’t, what you are missing is a team: Khufu provides the whole one and ships your V1 in 7 days, at a fixed price.',
+      es: 'Si ya tienes un equipo al que dirigir, un CTO a tiempo parcial es la opción correcta. Si no lo tienes, lo que te falta es un equipo: Khufu la aporta entera y entrega tu V1 en 7 días, a precio fijo.',
+      de: 'Wenn du bereits ein Team zu führen hast, ist ein Fractional CTO die richtige Wahl. Wenn nicht, fehlt dir ein Team: Khufu stellt es komplett und liefert deine V1 in 7 Tagen zum Festpreis.',
+      it: 'Se hai già un team da guidare, un CTO frazionale è la scelta giusta. Se non ce l’hai, quello che ti manca è un team: Khufu lo fornisce per intero e consegna la tua V1 in 7 giorni, a prezzo fisso.',
+      pt: 'Se já tem uma equipa para liderar, um CTO a tempo parcial é a escolha certa. Se não tem, o que lhe falta é uma equipa: a Khufu fornece-a por inteiro e entrega a sua V1 em 7 dias, a preço fixo.',
+      nl: 'Heb je al een team om aan te sturen, dan is een parttime CTO de juiste keuze. Heb je dat niet, dan mis je een team: Khufu levert het volledige team en zet je V1 in 7 dagen live, tegen een vaste prijs.',
+      ar: 'إن كان لديك فريق بالفعل لتقوده، فالمدير التقني بدوام جزئي هو الخيار الصحيح. وإن لم يكن لديك، فما ينقصك هو فريق: Khufu توفّره كاملًا وتسلّم نسختك الأولى خلال 7 أيام بسعر ثابت.',
+      pl: 'Jeśli masz już zespół do poprowadzenia, CTO na część etatu jest właściwym wyborem. Jeśli nie masz — brakuje Ci zespołu: Khufu dostarcza go w całości i wdraża Twoje V1 w 7 dni, za stałą cenę.',
+      tr: 'Yönetecek bir ekibiniz zaten varsa, yarı zamanlı bir CTO doğru tercihtir. Yoksa, eksik olan şey bir ekiptir: Khufu ekibin tamamını sağlar ve V1’inizi sabit fiyatla 7 günde teslim eder.',
+    },
+    cta: 'sprint',
+  },
   {
     slug: 'v1-vs-mvp',
     metaTitle: { fr: 'V1 vs MVP : quelle différence ?', en: 'V1 vs MVP: what’s the difference?', es: 'V1 vs MVP: ¿qué diferencia?', de: 'V1 vs. MVP: Was ist der Unterschied?', it: 'V1 vs MVP: qual è la differenza?', pt: 'V1 vs MVP: qual é a diferença?', nl: 'V1 vs MVP: wat is het verschil?', ar: 'V1 مقابل MVP: ما الفرق؟', pl: 'V1 vs MVP: jaka jest różnica?', tr: 'V1 vs MVP: fark nedir?' },

@@ -10,6 +10,7 @@ import { Container } from '@/components/ui/container'
 import { ButtonLink } from '@/components/ui/button'
 import { SectionHeading } from '@/components/ui/sectionHeading'
 import { OfferCards } from '@/components/sections/offerCards'
+import { CtoComparison, TeamRoles } from '@/components/sections/ctoComparison'
 import { ProjectCard } from '@/components/sections/projectCard'
 import { FaqAccordion } from '@/components/sections/faqAccordion'
 import { FaqJsonLd, ReviewsJsonLd } from '@/components/seo/jsonLd'
@@ -91,6 +92,26 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               {h.problemTitle}
             </h2>
             <p className="mt-5 text-lg text-[var(--color-ink-2)] text-pretty">{h.problemBody}</p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Positioning — what a fractional CTO leaves you with, and what we do */}
+      <section className="bg-[var(--color-paper-2)]">
+        <Container className="py-20 sm:py-28">
+          <SectionHeading title={h.ctoTitle} subtitle={h.ctoSubtitle} />
+          <div className="mt-12">
+            <CtoComparison locale={locale} dict={dict} />
+          </div>
+        </Container>
+      </section>
+
+      {/* The roles the sprint covers — the proof behind "a full team" */}
+      <section>
+        <Container className="py-20 sm:py-28">
+          <SectionHeading title={h.teamTitle} subtitle={h.teamSubtitle} />
+          <div className="mt-12">
+            <TeamRoles dict={dict} />
           </div>
         </Container>
       </section>

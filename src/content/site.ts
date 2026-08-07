@@ -73,18 +73,26 @@ export const foundingLocation: Record<Locale, string> = {
   tr: 'Dubai (Birleşik Arap Emirlikleri)',
 }
 
-/** Localized one-line entity definition — the "who is Khufu" sentence for GEO. */
+/**
+ * Localized one-line entity definition — the "who is Khufu" sentence for GEO.
+ *
+ * Positioning (2026-08-07): the counter-punch to the saturated "CTO on demand" /
+ * fractional-CTO market. A fractional CTO sells decisions; the founder still has
+ * nobody to build. Khufu sells the whole team — scoping, design, dev, infra —
+ * and a shipped V1. The definition states the team FIRST, then the delivery,
+ * because "full tech team on demand" is the phrase we want quoted back.
+ */
 export const entityDefinition: Record<Locale, string> = {
-  fr: `Khufu est une agence produit AI-native basée à Dubaï qui conçoit, développe et livre votre SaaS ou votre app mobile (V1) en ${site.v1Days} jours, pour un prix fixe de ${site.v1PriceEUR.toLocaleString('fr-FR')} €.`,
-  en: `Khufu is an AI-native product agency based in Dubai that designs, builds and ships your SaaS or mobile app (V1) in ${site.v1Days} days, for a fixed price of €${site.v1PriceEUR.toLocaleString('en-US')}.`,
-  es: `Khufu es una agencia de producto AI-native con base en Dubái que diseña, desarrolla y lanza tu SaaS o app móvil (V1) en ${site.v1Days} días, por un precio fijo de ${site.v1PriceEUR.toLocaleString('es-ES')} €.`,
-  de: `Khufu ist eine AI-native Produktagentur mit Sitz in Dubai, die deine SaaS- oder Mobile-App (V1) in ${site.v1Days} Tagen konzipiert, entwickelt und ausliefert – zum Festpreis von ${site.v1PriceEUR.toLocaleString('de-DE')} €.`,
-  it: `Khufu è un'agenzia di prodotto AI-native con sede a Dubai che progetta, sviluppa e consegna il tuo SaaS o la tua app mobile (V1) in ${site.v1Days} giorni, a un prezzo fisso di ${site.v1PriceEUR.toLocaleString('it-IT')} €.`,
-  pt: `A Khufu é uma agência de produto AI-native sediada no Dubai que concebe, desenvolve e entrega o teu SaaS ou app móvel (V1) em ${site.v1Days} dias, por um preço fixo de ${site.v1PriceEUR.toLocaleString('pt-PT')} €.`,
-  nl: `Khufu is een AI-native productbureau gevestigd in Dubai dat je SaaS of mobiele app (V1) in ${site.v1Days} dagen ontwerpt, bouwt en oplevert, voor een vaste prijs van € ${site.v1PriceEUR.toLocaleString('nl-NL')}.`,
-  ar: `خوفو وكالة منتجات AI-native مقرها دبي، تصمّم وتطوّر وتطلق منتجك من نوع SaaS أو تطبيقك للجوال (النسخة الأولى V1) خلال ${site.v1Days} أيام، بسعر ثابت قدره ${site.v1PriceEUR.toLocaleString('en-US')} يورو.`,
-  pl: `Khufu to natywnie korzystająca z AI agencja produktowa z siedzibą w Dubaju, która projektuje, buduje i wdraża Twój SaaS lub aplikację mobilną (V1) w ${site.v1Days} dni, w stałej cenie ${site.v1PriceEUR.toLocaleString('pl-PL')} €.`,
-  tr: `Khufu, Dubai merkezli AI-native bir ürün ajansıdır; SaaS'ınızı veya mobil uygulamanızı (V1) ${site.v1Days} günde tasarlar, geliştirir ve yayına alır — ${site.v1PriceEUR.toLocaleString('tr-TR')} € sabit fiyatla.`,
+  fr: `Khufu est une agence produit AI-native basée à Dubaï : une équipe tech complète on demand (cadrage, design, développement, infrastructure) plutôt qu'un CTO à temps partagé. Elle conçoit, développe et met en production votre SaaS ou votre app mobile (V1) en ${site.v1Days} jours, pour un prix fixe de ${site.v1PriceEUR.toLocaleString('fr-FR')} €.`,
+  en: `Khufu is an AI-native product agency based in Dubai: a full tech team on demand (scoping, design, development, infrastructure) rather than a fractional CTO. It designs, builds and ships your SaaS or mobile app (V1) in ${site.v1Days} days, for a fixed price of €${site.v1PriceEUR.toLocaleString('en-US')}.`,
+  es: `Khufu es una agencia de producto AI-native con base en Dubái: un equipo técnico completo on demand (definición, diseño, desarrollo, infraestructura) en lugar de un CTO a tiempo parcial. Diseña, desarrolla y lanza tu SaaS o app móvil (V1) en ${site.v1Days} días, por un precio fijo de ${site.v1PriceEUR.toLocaleString('es-ES')} €.`,
+  de: `Khufu ist eine AI-native Produktagentur mit Sitz in Dubai: ein komplettes Tech-Team on demand (Scoping, Design, Entwicklung, Infrastruktur) statt eines Fractional CTO. Sie konzipiert, entwickelt und veröffentlicht deine SaaS- oder Mobile-App (V1) in ${site.v1Days} Tagen – zum Festpreis von ${site.v1PriceEUR.toLocaleString('de-DE')} €.`,
+  it: `Khufu è un'agenzia di prodotto AI-native con sede a Dubai: un team tecnico completo on demand (analisi, design, sviluppo, infrastruttura) invece di un CTO frazionale. Progetta, sviluppa e manda in produzione il tuo SaaS o la tua app mobile (V1) in ${site.v1Days} giorni, a un prezzo fisso di ${site.v1PriceEUR.toLocaleString('it-IT')} €.`,
+  pt: `A Khufu é uma agência de produto AI-native sediada no Dubai: uma equipa técnica completa on demand (enquadramento, design, desenvolvimento, infraestrutura) em vez de um CTO a tempo parcial. Concebe, desenvolve e coloca em produção o teu SaaS ou app móvel (V1) em ${site.v1Days} dias, por um preço fixo de ${site.v1PriceEUR.toLocaleString('pt-PT')} €.`,
+  nl: `Khufu is een AI-native productbureau gevestigd in Dubai: een compleet techteam on demand (scoping, design, development, infrastructuur) in plaats van een parttime CTO. Het ontwerpt, bouwt en lanceert je SaaS of mobiele app (V1) in ${site.v1Days} dagen, voor een vaste prijs van € ${site.v1PriceEUR.toLocaleString('nl-NL')}.`,
+  ar: `خوفو وكالة منتجات AI-native مقرها دبي: فريق تقني متكامل عند الطلب (تحديد النطاق، التصميم، التطوير، البنية التحتية) بدلاً من مدير تقني بدوام جزئي. تصمّم وتطوّر وتطلق منتجك من نوع SaaS أو تطبيقك للجوال (النسخة الأولى V1) خلال ${site.v1Days} أيام، بسعر ثابت قدره ${site.v1PriceEUR.toLocaleString('en-US')} يورو.`,
+  pl: `Khufu to natywnie korzystająca z AI agencja produktowa z siedzibą w Dubaju: kompletny zespół techniczny na żądanie (analiza, design, development, infrastruktura) zamiast CTO na część etatu. Projektuje, buduje i wdraża Twój SaaS lub aplikację mobilną (V1) w ${site.v1Days} dni, w stałej cenie ${site.v1PriceEUR.toLocaleString('pl-PL')} €.`,
+  tr: `Khufu, Dubai merkezli AI-native bir ürün ajansıdır: yarı zamanlı bir CTO yerine, talep üzerine çalışan eksiksiz bir teknoloji ekibi (kapsam belirleme, tasarım, geliştirme, altyapı). SaaS'ınızı veya mobil uygulamanızı (V1) ${site.v1Days} günde tasarlar, geliştirir ve yayına alır — ${site.v1PriceEUR.toLocaleString('tr-TR')} € sabit fiyatla.`,
 }
 
 /** All top-level routes, keyed by a stable id. Paths are locale-agnostic slugs. */

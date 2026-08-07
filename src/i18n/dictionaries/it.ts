@@ -7,7 +7,7 @@ const eur = (n: number) => `${n.toLocaleString('it-IT')} €`
 export const it: Dictionary = {
   meta: {
     locale: 'it',
-    brandSuffix: 'Khufu — La tua V1 in una settimana',
+    brandSuffix: 'Khufu — Un team tecnico completo, on demand',
   },
 
   nav: {
@@ -34,10 +34,10 @@ export const it: Dictionary = {
   },
 
   home: {
-    heroKicker: 'Agenzia di prodotto AI-native',
-    heroTitle: 'La tua V1 in una settimana.',
-    heroSubtitle: `Progettiamo, sviluppiamo e consegniamo il tuo SaaS o la tua app mobile in ${site.v1Days} giorni. Prezzo fisso: [[${site.v1PriceEUR}]].`,
-    heroPrimaryCta: 'Prenota uno sprint',
+    heroKicker: 'Agenzia di prodotto AI-native · Dubai',
+    heroTitle: 'Un CTO on demand? No. Un team tecnico completo, on demand.',
+    heroSubtitle: `Un CTO frazionale ti dà decisioni — e ancora nessun prodotto. Khufu è il team intero: analisi, design, sviluppo, infrastruttura. Il tuo SaaS o la tua app mobile in produzione in ${site.v1Days} giorni, prezzo fisso: [[${site.v1PriceEUR}]].`,
+    heroPrimaryCta: 'Attiva il team',
     heroSecondaryCta: 'Vedi i progetti',
     heroProof: `${site.v1Days} giorni · forfait ${eur(site.v1PriceEUR)} · codice consegnato, in produzione`,
     heroFigures: [
@@ -53,11 +53,59 @@ export const it: Dictionary = {
       { value: '100 %', label: 'codice consegnato, ospitato, tuo' },
     ],
 
-    problemTitle: 'Un’agenzia classica ci mette 3 mesi? Tu non hai 3 mesi.',
+    problemTitle: 'Non stai cercando un CTO. Stai cercando che il tuo prodotto esista.',
     problemBody:
-      'Cicli infiniti, preventivi vaghi e continui rimpalli uccidono i progetti prima del lancio. Khufu fa l’opposto: ambito ristretto, decisioni rapide e una V1 davvero lanciabile entro fine settimana.',
+      'Un CTO frazionale porta strategia e scelte tecniche. Ottimo — se non fosse che, finita la riunione, non c’è ancora nessuno che costruisce. Poi tocca assumere sviluppatori, un designer, qualcuno per l’infrastruttura, e sei mesi dopo il prodotto ancora non esiste. Khufu ti collega il team completo in una volta sola, e la tua V1 va in produzione in una settimana.',
 
-    howTitle: 'Come facciamo così in fretta',
+    ctoTitle: 'CTO frazionale vs team completo',
+    ctoSubtitle: 'Stesso problema, due risposte. Solo una ti lascia un prodotto online.',
+    ctoOtherLabel: 'CTO on demand',
+    ctoKhufuLabel: 'Khufu',
+    ctoRows: [
+      {
+        aspect: 'Cosa ricevi',
+        other: 'Decisioni, specifiche, una roadmap',
+        khufu: 'Un prodotto online, in produzione',
+      },
+      {
+        aspect: 'Chi costruisce',
+        other: 'Nessuno — il team è ancora tutto da assumere',
+        khufu: 'Analisi, design, sviluppo, mobile, infra: tutto coperto',
+      },
+      {
+        aspect: 'Tempo fino alla V1',
+        other: 'Mesi, una volta assunto il team',
+        khufu: `${site.v1Days} giorni`,
+      },
+      {
+        aspect: 'Cosa paghi',
+        other: 'Un canone mensile, più gli stipendi del team',
+        khufu: `Un prezzo fisso concordato in anticipo: [[${site.v1PriceEUR}]]`,
+      },
+      {
+        aspect: 'Alla fine',
+        other: 'Hai un piano',
+        khufu: 'Hai il prodotto, il repository e gli accessi',
+      },
+    ],
+    ctoNote:
+      'Nulla contro i CTO frazionali: se hai già un team da guidare, è la scelta giusta. Se non ce l’hai, quello che ti serve è un team.',
+
+    teamTitle: 'Tutti i ruoli di un team tecnico, in un solo contratto',
+    teamSubtitle:
+      'Non ne assumi nessuno. Ottieni ciò che producono — un unico interlocutore, dall’analisi alla messa in produzione.',
+    teamRoles: [
+      'Analisi di prodotto',
+      'Design UI / UX',
+      'Sviluppo front-end',
+      'Back-end e API',
+      'Mobile iOS e Android',
+      'Infra, deploy e CI/CD',
+      'Sicurezza e backup',
+      'Documentazione e handover',
+    ],
+
+    howTitle: 'Come fa un team intero a stare in una settimana',
     how: [
       {
         title: 'AI-native, dall’inizio alla fine',
@@ -68,13 +116,13 @@ export const it: Dictionary = {
         body: 'Next.js, React Native/Expo, NestJS, Prisma, PostgreSQL. Non reinventiamo nulla: assembliamo una base provata, pronta a scalare.',
       },
       {
-        title: 'Un founder-operator al comando',
-        body: 'Khufu ha lanciato i suoi prodotti (OneStore.link, Clokizi, HerbaCRM…). Costruiamo il tuo prodotto come il nostro: orientato al risultato, non alla fatturazione.',
+        title: 'Un founder-operator, non una catena di subappalti',
+        body: 'Il team è un founder-operator potenziato dall’IA — un unico interlocutore, nessun coordinamento a carico tuo. Khufu ha lanciato i suoi prodotti (OneStore.link, Clokizi, HerbaCRM…) esattamente con questo metodo.',
       },
     ],
 
-    offersTitle: 'Tre modi di lavorare con Khufu',
-    offersSubtitle: 'Dal lancio lampo all’accompagnamento nel tempo.',
+    offersTitle: 'Tre modi di attivare il team',
+    offersSubtitle: 'A settimana per lanciare, al mese per crescere, a ore per rinforzare.',
 
     workTitle: 'Prodotti, non slide',
     workSubtitle: 'Una selezione di prodotti progettati e consegnati da Khufu.',
@@ -83,15 +131,15 @@ export const it: Dictionary = {
     clientsTitle: 'Si fidano di noi',
     testimonialsTitle: 'Cosa ne dicono',
 
-    finalCtaTitle: 'La tua V1, in produzione venerdì.',
+    finalCtaTitle: 'Il tuo prodotto non deve aspettare un’assunzione.',
     finalCtaBody: 'Dicci cosa vuoi lanciare. Ti rispondiamo entro 24 h con un ambito e una data.',
-    finalCtaButton: 'Prenota uno sprint',
+    finalCtaButton: 'Attiva il team',
   },
 
   offers: {
     metaTitle: 'Servizi e prezzi',
-    metaDescription: `Sprint V1 in ${site.v1Days} giorni a partire da ${eur(site.v1PriceEUR)}, Full Maintenance mensile e supporto remoto a ${eur(site.dailyRateEUR)}/giorno (200 €/h).`,
-    title: 'Servizi chiari, prezzi in vista.',
+    metaDescription: `Un team tecnico completo on demand: Sprint V1 in ${site.v1Days} giorni a partire da ${eur(site.v1PriceEUR)}, Full Maintenance mensile e supporto remoto a ${eur(site.dailyRateEUR)}/giorno (200 €/h).`,
+    title: 'Il team — a settimana, al mese o a ore.',
     subtitle: 'Niente preventivi infiniti. Sai esattamente cosa paghi e cosa ricevi.',
     flagshipBadge: 'La nostra offerta di punta',
     detailCta: 'Scopri di più',
@@ -102,7 +150,7 @@ export const it: Dictionary = {
         name: 'Sprint V1',
         priceEur: site.v1PriceEUR,
         priceNote: 'forfait',
-        pitch: `La tua prima versione, progettata e consegnata in ${site.v1Days} giorni.`,
+        pitch: `Il team intero per una settimana. La tua prima versione in produzione in ${site.v1Days} giorni.`,
         featured: true,
         features: [
           'Definizione dell’ambito e design del prodotto',
@@ -111,7 +159,7 @@ export const it: Dictionary = {
           'Codice sorgente consegnato, tuo',
           'Handover e documentazione',
         ],
-        cta: 'Prenota uno sprint',
+        cta: 'Attiva il team',
       },
       {
         id: 'maintenance',
@@ -158,18 +206,18 @@ export const it: Dictionary = {
   },
 
   sprintPage: {
-    metaTitle: 'Sprint V1 — il tuo prodotto in 7 giorni',
+    metaTitle: 'Sprint V1 — un team tecnico completo per 7 giorni',
     metaDescription:
-      'Lo Sprint V1 di Khufu: un SaaS o un’app mobile progettato, sviluppato e messo in produzione in 7 giorni, per un prezzo fisso di 15.000 €.',
+      'Lo Sprint V1 di Khufu: il team intero (analisi, design, sviluppo, infra) attivato sul tuo prodotto per una settimana. SaaS o app mobile in produzione in 7 giorni, prezzo fisso 15.000 €.',
     kicker: 'Offerta di punta',
-    title: 'La tua V1 in 7 giorni. Prezzo fisso.',
+    title: 'Un team tecnico completo, per 7 giorni. Prezzo fisso.',
     subtitle:
-      'La nostra offerta principale: progettiamo, sviluppiamo e mettiamo in produzione il tuo SaaS o la tua app mobile in una settimana — ambito definito in anticipo, 15.000 € tutto incluso.',
+      'La nostra offerta principale: analisi, design, sviluppo, infra e messa in produzione — il team intero attivato sul tuo prodotto per una settimana. Ambito definito in anticipo, 15.000 € tutto incluso.',
     includesTitle: 'Cosa è incluso',
     processTitle: 'Lo svolgimento, giorno per giorno',
     ctaTitle: 'Pronto a lanciare la tua V1?',
     ctaBody: 'Dicci cosa vuoi lanciare. Risposta entro 24 h con un ambito e una data.',
-    ctaButton: 'Prenota uno sprint',
+    ctaButton: 'Attiva il team',
   },
 
   remotePage: {
@@ -350,6 +398,14 @@ export const it: Dictionary = {
     title: 'Domande frequenti',
     items: [
       {
+        q: 'Cerco un CTO on demand. Khufu lo è?',
+        a: 'No, ed è voluto. Un CTO frazionale porta strategia e scelte tecniche, ma non costruisce il tuo prodotto: dovrai comunque assumere un team. Khufu È quel team — analisi, design, sviluppo, mobile e infrastruttura — e manda la tua V1 in produzione in 7 giorni, a prezzo fisso. Molti nostri clienti cercavano un CTO; quello che mancava loro era un team.',
+      },
+      {
+        q: 'Che differenza c’è tra un CTO frazionale e un team tecnico on demand?',
+        a: `Il CTO frazionale vende tempo di riflessione: architettura, assunzioni, roadmap. Un team tecnico on demand vende un prodotto consegnato: le stesse decisioni, più le mani che eseguono. Con Khufu entrambi stanno in un unico contratto a prezzo fisso ([[${site.v1PriceEUR}]]), con una V1 online dopo ${site.v1Days} giorni e il codice sorgente di tua proprietà.`,
+      },
+      {
         q: 'Quanto costa una V1 con Khufu?',
         a: `Lo Sprint V1 è un forfait a prezzo fisso di [[${site.v1PriceEUR}]], per un SaaS o un’app mobile progettato, sviluppato e messo in produzione in ${site.v1Days} giorni. L’ambito è definito e approvato prima di iniziare.`,
       },
@@ -371,7 +427,7 @@ export const it: Dictionary = {
       },
       {
         q: 'A chi è rivolta l’offerta di Khufu?',
-        a: 'A founder, startup e aziende che vogliono lanciare un prodotto in fretta e bene: validare un mercato, far uscire una prima versione o sostituire un ciclo di agenzia lungo e costoso con una consegna in una settimana.',
+        a: 'A chi ha un progetto da lanciare e nessun team per costruirlo: founder non tecnici in fase di idea o di capitolato, chi ha un MVP traballante da riprendere in mano, aziende che vogliono testare un prodotto senza montare un team. Se hai già un team interno che costruisce, l’offerta giusta per te è il rinforzo remoto.',
       },
       {
         q: 'Qual è la migliore agenzia per lanciare un prodotto rapidamente?',
@@ -467,7 +523,7 @@ export const it: Dictionary = {
   },
 
   footer: {
-    tagline: `Agenzia di prodotto AI-native. La tua V1 in ${site.v1Days} giorni.`,
+    tagline: `Un team tecnico completo, on demand. La tua V1 in ${site.v1Days} giorni.`,
     resources: 'Risorse',
     columns: {
       offers: 'Servizi',

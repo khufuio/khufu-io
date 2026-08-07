@@ -7,7 +7,7 @@ const eur = (n: number) => `€ ${n.toLocaleString('nl-NL')}`
 export const nl: Dictionary = {
   meta: {
     locale: 'nl',
-    brandSuffix: 'Khufu — Jouw V1 in één week',
+    brandSuffix: 'Khufu — Een compleet techteam, on demand',
   },
 
   nav: {
@@ -34,10 +34,10 @@ export const nl: Dictionary = {
   },
 
   home: {
-    heroKicker: 'AI-native productbureau',
-    heroTitle: 'Jouw V1 in één week.',
-    heroSubtitle: `We ontwerpen, bouwen en leveren je SaaS of mobiele app in ${site.v1Days} dagen. Vaste prijs: [[${site.v1PriceEUR}]].`,
-    heroPrimaryCta: 'Boek een sprint',
+    heroKicker: 'AI-native productbureau · Dubai',
+    heroTitle: 'Een CTO on demand? Nee. Een compleet techteam on demand.',
+    heroSubtitle: `Een parttime CTO geeft je beslissingen — en nog steeds geen product. Khufu is het hele team: scoping, design, development, infrastructuur. Je SaaS of mobiele app live in ${site.v1Days} dagen, vaste prijs: [[${site.v1PriceEUR}]].`,
+    heroPrimaryCta: 'Zet het team in',
     heroSecondaryCta: 'Bekijk projecten',
     heroProof: `${site.v1Days} dagen · vaste prijs ${eur(site.v1PriceEUR)} · code opgeleverd, in productie`,
     heroFigures: [
@@ -53,11 +53,59 @@ export const nl: Dictionary = {
       { value: '100 %', label: 'code opgeleverd, gehost, van jou' },
     ],
 
-    problemTitle: 'Een klassiek bureau doet er 3 maanden over? Jij hebt geen 3 maanden.',
+    problemTitle: 'Je zoekt geen CTO. Je wilt dat je product bestaat.',
     problemBody:
-      'Eindeloze cycli, vage offertes en heen-en-weer gepraat maken projecten kapot voordat ze live gaan. Khufu doet het omgekeerde: strakke scope, snelle beslissingen en een echt lanceerbare V1 aan het eind van de week.',
+      'Een parttime CTO brengt strategie en technische afwegingen. Prima — alleen staat er als de meeting afgelopen is nog steeds niemand om te bouwen. Daarna moet je developers aannemen, een designer, iemand voor de infrastructuur, en zes maanden later bestaat het product nog altijd niet. Khufu zet het complete team in één keer voor je klaar, en jouw V1 gaat binnen een week naar productie.',
 
-    howTitle: 'Hoe we zo snel gaan',
+    ctoTitle: 'Parttime CTO vs een compleet team',
+    ctoSubtitle: 'Hetzelfde probleem, twee antwoorden. Slechts één laat je achter met een product online.',
+    ctoOtherLabel: 'CTO on demand',
+    ctoKhufuLabel: 'Khufu',
+    ctoRows: [
+      {
+        aspect: 'Wat je krijgt',
+        other: 'Beslissingen, specs, een roadmap',
+        khufu: 'Een product online, in productie',
+      },
+      {
+        aspect: 'Wie bouwt',
+        other: 'Niemand — het team moet je nog aannemen',
+        khufu: 'Scoping, design, dev, mobile, infra: alles gedekt',
+      },
+      {
+        aspect: 'Tijd tot de V1',
+        other: 'Maanden, zodra het team er is',
+        khufu: `${site.v1Days} dagen`,
+      },
+      {
+        aspect: 'Wat je betaalt',
+        other: 'Een maandelijkse retainer, plus de salarissen van het team',
+        khufu: `Eén vaste prijs, vooraf afgesproken: [[${site.v1PriceEUR}]]`,
+      },
+      {
+        aspect: 'Aan het eind',
+        other: 'Je hebt een plan',
+        khufu: 'Je hebt het product, de repo en de accounts',
+      },
+    ],
+    ctoNote:
+      'Niets ten nadele van parttime CTO’s: heb je al een team om aan te sturen, dan is dat de juiste keuze. Heb je dat niet, dan is een team precies wat je nodig hebt.',
+
+    teamTitle: 'Alle rollen van een techteam, in één contract',
+    teamSubtitle:
+      'Je neemt er geen enkele aan. Je krijgt wat ze opleveren — één aanspreekpunt, van scoping tot productie.',
+    teamRoles: [
+      'Productscoping',
+      'UI / UX-design',
+      'Front-end development',
+      'Back-end & API’s',
+      'Mobiel iOS & Android',
+      'Infra, deploys & CI/CD',
+      'Security & back-ups',
+      'Documentatie & handover',
+    ],
+
+    howTitle: 'Hoe een heel team in één week past',
     how: [
       {
         title: 'AI-native, van begin tot eind',
@@ -68,13 +116,13 @@ export const nl: Dictionary = {
         body: 'Next.js, React Native/Expo, NestJS, Prisma, PostgreSQL. We vinden niets opnieuw uit: we zetten een bewezen basis in elkaar, klaar om te schalen.',
       },
       {
-        title: 'Een founder-operator aan het roer',
-        body: 'Khufu heeft zijn eigen producten gelanceerd (OneStore.link, Clokizi, HerbaCRM…). We bouwen jouw product als het onze: gericht op resultaat, niet op facturatie.',
+        title: 'Een founder-operator, geen keten van onderaannemers',
+        body: 'Het team is één founder-operator versterkt door AI — één aanspreekpunt, geen coördinatie op jouw bord. Khufu heeft zijn eigen producten (OneStore.link, Clokizi, HerbaCRM…) met precies deze methode gelanceerd.',
       },
     ],
 
-    offersTitle: 'Drie manieren om met Khufu te werken',
-    offersSubtitle: 'Van een bliksemsnelle lancering tot begeleiding op lange termijn.',
+    offersTitle: 'Drie manieren om het team in te zetten',
+    offersSubtitle: 'Per week om te lanceren, per maand om te groeien, per uur om te versterken.',
 
     workTitle: 'Producten, geen slides',
     workSubtitle: 'Een selectie van producten ontworpen en opgeleverd door Khufu.',
@@ -83,15 +131,15 @@ export const nl: Dictionary = {
     clientsTitle: 'Zij vertrouwen ons',
     testimonialsTitle: 'Wat ze zeggen',
 
-    finalCtaTitle: 'Jouw V1, vrijdag in productie.',
+    finalCtaTitle: 'Je product hoeft niet te wachten op een wervingstraject.',
     finalCtaBody: 'Vertel ons wat je wilt lanceren. We antwoorden binnen 24 u met een scope en een datum.',
-    finalCtaButton: 'Boek een sprint',
+    finalCtaButton: 'Zet het team in',
   },
 
   offers: {
     metaTitle: 'Diensten & prijzen',
-    metaDescription: `Sprint V1 in ${site.v1Days} dagen vanaf ${eur(site.v1PriceEUR)}, maandelijkse Full Maintenance en remote versterking à ${eur(site.dailyRateEUR)}/dag (200 €/h).`,
-    title: 'Heldere diensten, prijzen zichtbaar.',
+    metaDescription: `Een compleet techteam on demand: Sprint V1 in ${site.v1Days} dagen vanaf ${eur(site.v1PriceEUR)}, maandelijkse Full Maintenance en remote versterking à ${eur(site.dailyRateEUR)}/dag (200 €/h).`,
+    title: 'Het team — per week, per maand of per uur.',
     subtitle: 'Geen eindeloze offertes. Je weet precies wat je betaalt en wat je krijgt.',
     flagshipBadge: 'Ons vlaggenschip',
     detailCta: 'Meer weten',
@@ -102,7 +150,7 @@ export const nl: Dictionary = {
         name: 'Sprint V1',
         priceEur: site.v1PriceEUR,
         priceNote: 'vaste prijs',
-        pitch: `Je eerste versie, ontworpen en opgeleverd in ${site.v1Days} dagen.`,
+        pitch: `Het hele team voor één week. Je eerste versie in productie in ${site.v1Days} dagen.`,
         featured: true,
         features: [
           'Scoping en productdesign',
@@ -111,7 +159,7 @@ export const nl: Dictionary = {
           'Broncode opgeleverd, van jou',
           'Overdracht en documentatie',
         ],
-        cta: 'Boek een sprint',
+        cta: 'Zet het team in',
       },
       {
         id: 'maintenance',
@@ -158,18 +206,18 @@ export const nl: Dictionary = {
   },
 
   sprintPage: {
-    metaTitle: 'Sprint V1 — je product in 7 dagen',
+    metaTitle: 'Sprint V1 — een compleet techteam gedurende 7 dagen',
     metaDescription:
-      'De Sprint V1 van Khufu: een SaaS of mobiele app ontworpen, ontwikkeld en in productie gezet in 7 dagen, voor een vaste prijs van € 15.000.',
+      'De Sprint V1 van Khufu: het hele team (scoping, design, dev, infra) een week lang op jouw product. SaaS of mobiele app in productie in 7 dagen, vaste prijs € 15.000.',
     kicker: 'Vlaggenschip',
-    title: 'Jouw V1 in 7 dagen. Vaste prijs.',
+    title: 'Een compleet techteam, 7 dagen lang. Vaste prijs.',
     subtitle:
-      'Onze belangrijkste dienst: we ontwerpen, bouwen en zetten je SaaS of mobiele app in één week in productie — scope vooraf afgesproken, € 15.000 alles inbegrepen.',
+      'Onze belangrijkste dienst: scoping, design, development, infra en livegang — het hele team een week lang op jouw product. Scope vooraf afgesproken, € 15.000 alles inbegrepen.',
     includesTitle: 'Wat inbegrepen is',
     processTitle: 'Het verloop, dag per dag',
     ctaTitle: 'Klaar om je V1 te lanceren?',
     ctaBody: 'Vertel ons wat je wilt lanceren. Antwoord binnen 24 u met een scope en een datum.',
-    ctaButton: 'Boek een sprint',
+    ctaButton: 'Zet het team in',
   },
 
   remotePage: {
@@ -335,6 +383,14 @@ export const nl: Dictionary = {
     title: 'Veelgestelde vragen',
     items: [
       {
+        q: 'Ik zoek een CTO on demand. Is Khufu dat?',
+        a: 'Nee, en dat is bewust. Een parttime CTO brengt strategie en technische afwegingen, maar bouwt je product niet: je moet nog steeds een team aannemen. Khufu ÍS dat team — scoping, design, development, mobile en infrastructuur — en zet je V1 in 7 dagen in productie, tegen een vaste prijs. Veel van onze klanten zochten een CTO; wat ze misten was een team.',
+      },
+      {
+        q: 'Wat is het verschil tussen een parttime CTO en een techteam on demand?',
+        a: `Een parttime CTO verkoopt denktijd: architectuur, werving, roadmap. Een techteam on demand verkoopt een opgeleverd product: dezelfde beslissingen, plus de handen die uitvoeren. Bij Khufu passen ze allebei in één contract tegen vaste prijs ([[${site.v1PriceEUR}]]), met een V1 online na ${site.v1Days} dagen en broncode die van jou is.`,
+      },
+      {
         q: 'Hoeveel kost een V1 bij Khufu?',
         a: `De Sprint V1 is een vaste prijs van [[${site.v1PriceEUR}]], voor een SaaS of mobiele app die in ${site.v1Days} dagen wordt ontworpen, ontwikkeld en in productie gezet. De scope wordt vastgelegd en afgesproken voordat we beginnen.`,
       },
@@ -360,7 +416,7 @@ export const nl: Dictionary = {
       },
       {
         q: 'Voor wie is het aanbod van Khufu bedoeld?',
-        a: 'Voor founders, startups en bedrijven die snel en goed een product willen lanceren: een markt valideren, een eerste versie uitbrengen, of een lange, dure bureaucyclus vervangen door een levering in één week.',
+        a: 'Voor wie een project heeft om te lanceren en geen team om het te bouwen: niet-technische founders in de idee- of specificatiefase, eigenaren van een wankel MVP dat overgenomen moet worden, bedrijven die een product willen testen zonder een team op te tuigen. Heb je al een intern team dat bouwt, dan past remote versterking beter bij je.',
       },
       {
         q: 'Gebruikt Khufu AI om te ontwikkelen?',
@@ -452,7 +508,7 @@ export const nl: Dictionary = {
   },
 
   footer: {
-    tagline: `AI-native productbureau. Jouw V1 in ${site.v1Days} dagen.`,
+    tagline: `Een compleet techteam, on demand. Jouw V1 in ${site.v1Days} dagen.`,
     resources: 'Bronnen',
     columns: {
       offers: 'Diensten',

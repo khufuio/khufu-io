@@ -7,7 +7,7 @@ const eur = (n: number) => `€${n.toLocaleString('en-US')}`
 export const en: Dictionary = {
   meta: {
     locale: 'en',
-    brandSuffix: 'Khufu — Your V1 in one week',
+    brandSuffix: 'Khufu — A full tech team, on demand',
   },
 
   nav: {
@@ -34,10 +34,10 @@ export const en: Dictionary = {
   },
 
   home: {
-    heroKicker: 'AI-native product agency',
-    heroTitle: 'Your V1 in one week.',
-    heroSubtitle: `We design, build and ship your SaaS or mobile app in ${site.v1Days} days. Fixed price: ${eur(site.v1PriceEUR)}.`,
-    heroPrimaryCta: 'Book a sprint',
+    heroKicker: 'AI-native product agency · Dubai',
+    heroTitle: 'A CTO on demand? No. A full tech team on demand.',
+    heroSubtitle: `A fractional CTO gives you decisions — and still no product. Khufu is the whole team: scoping, design, development, infra. Your SaaS or mobile app live in ${site.v1Days} days, one fixed price: [[${site.v1PriceEUR}]].`,
+    heroPrimaryCta: 'Plug in the team',
     heroSecondaryCta: 'See our work',
     heroProof: `${site.v1Days} days · ${eur(site.v1PriceEUR)} flat fee · code shipped, in production`,
     heroFigures: [
@@ -53,11 +53,59 @@ export const en: Dictionary = {
       { value: '100%', label: 'code shipped, hosted, yours' },
     ],
 
-    problemTitle: 'A classic agency takes 3 months? You don’t have 3 months.',
+    problemTitle: 'You’re not looking for a CTO. You’re looking for your product to exist.',
     problemBody:
-      'Endless cycles, vague quotes and back-and-forth kill projects before they launch. Khufu does the opposite: tight scope, fast decisions, and a genuinely launchable V1 by the end of the week.',
+      'A fractional CTO brings strategy and technical trade-offs. Great — except that when the meeting ends, there is still nobody to build. You then have to hire developers, a designer, someone for the infrastructure, and six months later the product still doesn’t exist. Khufu plugs in the whole team at once, and your V1 ships to production in a week.',
 
-    howTitle: 'How we go this fast',
+    ctoTitle: 'Fractional CTO vs a full team',
+    ctoSubtitle: 'Same problem, two answers. Only one leaves you with a product online.',
+    ctoOtherLabel: 'CTO on demand',
+    ctoKhufuLabel: 'Khufu',
+    ctoRows: [
+      {
+        aspect: 'What you get',
+        other: 'Decisions, specs, a roadmap',
+        khufu: 'A product online, in production',
+      },
+      {
+        aspect: 'Who builds it',
+        other: 'Nobody — you still have to hire the team',
+        khufu: 'Scoping, design, dev, mobile, infra: all covered',
+      },
+      {
+        aspect: 'Time to V1',
+        other: 'Months, once the team is hired',
+        khufu: `${site.v1Days} days`,
+      },
+      {
+        aspect: 'What you pay',
+        other: 'A monthly retainer, then the team’s salaries',
+        khufu: `One fixed price, agreed upfront: [[${site.v1PriceEUR}]]`,
+      },
+      {
+        aspect: 'At the end',
+        other: 'You have a plan',
+        khufu: 'You have the product, the repo and the accounts',
+      },
+    ],
+    ctoNote:
+      'Nothing against fractional CTOs: if you already have a team to lead, that’s the right call. If you don’t, what you need is a team.',
+
+    teamTitle: 'Every role a tech team plays, in a single contract',
+    teamSubtitle:
+      'You hire none of them. You get what they produce — one point of contact, from scoping to production.',
+    teamRoles: [
+      'Product scoping',
+      'UI / UX design',
+      'Front-end development',
+      'Back-end & APIs',
+      'iOS & Android mobile',
+      'Infra, deploys & CI/CD',
+      'Security & backups',
+      'Documentation & handover',
+    ],
+
+    howTitle: 'How a whole team fits into one week',
     how: [
       {
         title: 'AI-native, end to end',
@@ -68,13 +116,13 @@ export const en: Dictionary = {
         body: 'Next.js, React Native/Expo, NestJS, Prisma, PostgreSQL. We don’t reinvent anything: we assemble a battle-tested base, ready to scale.',
       },
       {
-        title: 'A founder-operator at the helm',
-        body: 'Khufu has launched its own products (OneStore.link, Clokizi, HerbaCRM…). We build your product like our own: outcome-driven, not billing-driven.',
+        title: 'A founder-operator, not a chain of subcontractors',
+        body: 'The team is one founder-operator amplified by AI — a single point of contact, with no coordination left on your plate. Khufu has launched its own products (OneStore.link, Clokizi, HerbaCRM…) with exactly this method.',
       },
     ],
 
-    offersTitle: 'Three ways to work with Khufu',
-    offersSubtitle: 'From a lightning launch to long-term support.',
+    offersTitle: 'Three ways to plug in the team',
+    offersSubtitle: 'By the week to launch, by the month to grow, by the hour to reinforce.',
 
     workTitle: 'Products, not slides',
     workSubtitle: 'A selection of products designed and shipped by Khufu.',
@@ -83,15 +131,15 @@ export const en: Dictionary = {
     clientsTitle: 'Trusted by',
     testimonialsTitle: 'What they say',
 
-    finalCtaTitle: 'Your V1, in production by Friday.',
+    finalCtaTitle: 'Your product shouldn’t wait on a hiring process.',
     finalCtaBody: 'Tell us what you want to launch. We reply within 24h with a scope and a date.',
-    finalCtaButton: 'Book a sprint',
+    finalCtaButton: 'Plug in the team',
   },
 
   offers: {
     metaTitle: 'Offers & pricing',
-    metaDescription: `Sprint V1 in ${site.v1Days} days for ${eur(site.v1PriceEUR)}, monthly Full Maintenance, and remote support at ${eur(site.dailyRateEUR)}/day (€200/h).`,
-    title: 'Clear offers, prices on display.',
+    metaDescription: `A full tech team on demand: Sprint V1 in ${site.v1Days} days for ${eur(site.v1PriceEUR)}, monthly Full Maintenance, and remote support at ${eur(site.dailyRateEUR)}/day (€200/h).`,
+    title: 'The team — by the week, the month or the hour.',
     subtitle: 'No endless quotes. You know exactly what you pay and what you get.',
     flagshipBadge: 'Our flagship offer',
     detailCta: 'Learn more',
@@ -102,7 +150,7 @@ export const en: Dictionary = {
         name: 'Sprint V1',
         priceEur: site.v1PriceEUR,
         priceNote: 'flat fee',
-        pitch: `Your first version, designed and shipped in ${site.v1Days} days.`,
+        pitch: `The whole team for one week. Your first version in production in ${site.v1Days} days.`,
         featured: true,
         features: [
           'Product scoping and design',
@@ -111,7 +159,7 @@ export const en: Dictionary = {
           'Source code shipped, yours',
           'Handover and documentation',
         ],
-        cta: 'Book a sprint',
+        cta: 'Plug in the team',
       },
       {
         id: 'maintenance',
@@ -158,18 +206,18 @@ export const en: Dictionary = {
   },
 
   sprintPage: {
-    metaTitle: 'V1 Sprint — your product in 7 days',
+    metaTitle: 'V1 Sprint — a full tech team for 7 days',
     metaDescription:
-      'Khufu’s V1 Sprint: a SaaS or mobile app designed, built and shipped to production in 7 days, for a fixed price of €15,000.',
+      'Khufu’s V1 Sprint: the whole team (scoping, design, dev, infra) plugged into your product for a week. SaaS or mobile app in production in 7 days, fixed price €15,000.',
     kicker: 'Flagship offer',
-    title: 'Your V1 in 7 days. Fixed price.',
+    title: 'A full tech team, for 7 days. Fixed price.',
     subtitle:
-      'Our main offer: we design, build and ship your SaaS or mobile app in one week — scope agreed upfront, €15,000 all-in.',
+      'Our main offer: scoping, design, development, infra and production deploy — the whole team plugged into your product for one week. Scope agreed upfront, €15,000 all-in.',
     includesTitle: 'What’s included',
     processTitle: 'The day-by-day breakdown',
     ctaTitle: 'Ready to launch your V1?',
     ctaBody: 'Tell us what you want to launch. Reply within 24h with a scope and a date.',
-    ctaButton: 'Book a sprint',
+    ctaButton: 'Plug in the team',
   },
 
   remotePage: {
@@ -335,6 +383,14 @@ export const en: Dictionary = {
     title: 'Frequently asked questions',
     items: [
       {
+        q: 'I’m looking for a CTO on demand. Is Khufu one?',
+        a: 'No, and that’s on purpose. A fractional CTO brings strategy and technical trade-offs, but doesn’t build your product: you still have to hire a team. Khufu is that team — scoping, design, development, mobile and infrastructure — and ships your V1 to production in 7 days, at a fixed price. Many of our clients were shopping for a CTO; what they were missing was a team.',
+      },
+      {
+        q: 'What’s the difference between a fractional CTO and a tech team on demand?',
+        a: `A fractional CTO sells thinking time: architecture, hiring, roadmap. A tech team on demand sells a shipped product: the same decisions, plus the hands that execute. With Khufu both fit into a single fixed-price contract ([[${site.v1PriceEUR}]]), with a V1 online after ${site.v1Days} days and source code that belongs to you.`,
+      },
+      {
         q: 'How much does a V1 cost with Khufu?',
         a: `The Sprint V1 is a fixed-price flat fee of [[${site.v1PriceEUR}]], for a SaaS or mobile app designed, built and shipped to production in ${site.v1Days} days. The scope is defined and agreed before we start.`,
       },
@@ -360,7 +416,7 @@ export const en: Dictionary = {
       },
       {
         q: 'Who is Khufu’s offer for?',
-        a: 'For founders, startups and companies who want to launch a product fast and well: validate a market, ship a first version, or replace a long, costly agency cycle with a one-week delivery.',
+        a: 'For anyone with a project to launch and no team to build it: non-technical founders at the idea or spec stage, owners of a shaky MVP that needs taking over, companies that want to test a product without standing up a team. If you already have an in-house team building, remote reinforcement is the offer that fits you.',
       },
       {
         q: 'Does Khufu use AI to build?',
@@ -452,7 +508,7 @@ export const en: Dictionary = {
   },
 
   footer: {
-    tagline: `AI-native product agency. Your V1 in ${site.v1Days} days.`,
+    tagline: `A full tech team, on demand. Your V1 in ${site.v1Days} days.`,
     resources: 'Resources',
     columns: {
       offers: 'Offers',
