@@ -271,7 +271,7 @@ export const nl: Dictionary = {
         priceNote: '/ maand',
         pitch: 'Om een stabiel product online te houden.',
         featured: false,
-        features: ['Beheerde infra + monitoring', 'Support binnen 48 werkuren', '7 u dev / maand inbegrepen', 'Maandrapport'],
+        features: ['Beheerde infra + monitoring', 'Support binnen 48 werkuren', '8 u dev / maand inbegrepen', 'Maandrapport'],
       },
       {
         id: 'growth',
@@ -281,7 +281,7 @@ export const nl: Dictionary = {
         priceNote: '/ maand',
         pitch: 'Voor een product dat blijft evolueren.',
         featured: true,
-        features: ['Alles van Starter', 'Support binnen 24 werkuren', '21 u dev / maand inbegrepen', 'Maandelijkse productreview'],
+        features: ['Alles van Starter', 'Support binnen 24 werkuren', '24 u dev / maand inbegrepen', 'Maandelijkse productreview'],
       },
       {
         id: 'scale',

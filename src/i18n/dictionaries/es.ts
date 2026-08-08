@@ -271,7 +271,7 @@ export const es: Dictionary = {
         priceNote: '/ mes',
         pitch: 'Para mantener un producto estable online.',
         featured: false,
-        features: ['Infra gestionada + monitorización', 'Soporte en 48 h laborables', '7 h de desarrollo / mes incluidas', 'Informe mensual'],
+        features: ['Infra gestionada + monitorización', 'Soporte en 48 h laborables', '8 h de desarrollo / mes incluidas', 'Informe mensual'],
       },
       {
         id: 'growth',
@@ -281,7 +281,7 @@ export const es: Dictionary = {
         priceNote: '/ mes',
         pitch: 'Para un producto que evoluciona de forma continua.',
         featured: true,
-        features: ['Todo lo de Starter', 'Soporte en 24 h laborables', '21 h de desarrollo / mes incluidas', 'Revisión de producto mensual'],
+        features: ['Todo lo de Starter', 'Soporte en 24 h laborables', '24 h de desarrollo / mes incluidas', 'Revisión de producto mensual'],
       },
       {
         id: 'scale',

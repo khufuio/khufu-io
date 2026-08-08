@@ -278,7 +278,7 @@ export const fr = {
         features: [
           'Infra managée + monitoring',
           'Support sous 48 h ouvrées',
-          '7 h de dev / mois incluses',
+          '8 h de dev / mois incluses',
           'Rapport mensuel',
         ],
       },
@@ -293,7 +293,7 @@ export const fr = {
         features: [
           'Tout Starter',
           'Support sous 24 h ouvrées',
-          '21 h de dev / mois incluses',
+          '24 h de dev / mois incluses',
           'Point produit mensuel',
         ],
       },

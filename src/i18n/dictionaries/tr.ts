@@ -274,7 +274,7 @@ export const tr: Dictionary = {
         features: [
           'Yönetilen altyapı + izleme',
           '48 iş saati içinde destek',
-          'Ayda 7 saat geliştirme dahil',
+          'Ayda 8 saat geliştirme dahil',
           'Aylık rapor',
         ],
       },
@@ -289,7 +289,7 @@ export const tr: Dictionary = {
         features: [
           'Tüm Starter içeriği',
           '24 iş saati içinde destek',
-          'Ayda 21 saat geliştirme dahil',
+          'Ayda 24 saat geliştirme dahil',
           'Aylık ürün değerlendirmesi',
         ],
       },

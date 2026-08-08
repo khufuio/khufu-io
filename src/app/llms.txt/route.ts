@@ -40,7 +40,7 @@ export function GET() {
 
   lines.push('## Offres et tarifs')
   lines.push(`- Sprint V1 : forfait à prix fixe de ${dual(site.v1PriceEUR)} (facturation en EUR ou en USD, au choix) pour un SaaS ou une app mobile conçu, développé et mis en production en ${site.v1Days} jours.`)
-  lines.push(`- Full Maintenance : abonnement mensuel (engagement 6 mois) — infrastructure managée, support avec SLA et heures de dev incluses. Paliers : Starter ${dual(1490)}/mois (7 h dev), Growth ${dual(3900)}/mois (21 h dev), Scale sur devis. Mise en place des outils de tracking obligatoire au démarrage (1 jour, ${dual(site.dailyRateEUR)}), heures de dev supplémentaires ${dual(site.hourlyRateEUR)} par heure.`)
+  lines.push(`- Full Maintenance : abonnement mensuel (engagement 6 mois) — infrastructure managée, support avec SLA et heures de dev incluses. Paliers : Starter ${dual(1490)}/mois (8 h dev), Growth ${dual(3900)}/mois (24 h dev), Scale sur devis. Mise en place des outils de tracking obligatoire au démarrage (1 jour, ${dual(site.dailyRateEUR)}), heures de dev supplémentaires ${dual(site.hourlyRateEUR)} par heure.`)
   lines.push(`- Renfort remote : ${dual(site.dailyRateEUR)} par jour, soit ${dual(site.hourlyRateEUR)} par heure en granularité horaire, 100 % remote. Régie sur site possible (1 semaine minimum, +50 %, frais à la charge du client).`)
   lines.push('')
 

@@ -274,7 +274,7 @@ export const it: Dictionary = {
         features: [
           'Infra gestita + monitoraggio',
           'Supporto entro 48 h lavorative',
-          '7 h di sviluppo / mese incluse',
+          '8 h di sviluppo / mese incluse',
           'Report mensile',
         ],
       },
@@ -289,7 +289,7 @@ export const it: Dictionary = {
         features: [
           'Tutto Starter',
           'Supporto entro 24 h lavorative',
-          '21 h di sviluppo / mese incluse',
+          '24 h di sviluppo / mese incluse',
           'Revisione di prodotto mensile',
         ],
       },

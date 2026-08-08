@@ -271,7 +271,7 @@ export const en: Dictionary = {
         priceNote: '/ month',
         pitch: 'To keep a stable product online.',
         featured: false,
-        features: ['Managed infra + monitoring', 'Support within 48 business hours', '7 h of dev / month included', 'Monthly report'],
+        features: ['Managed infra + monitoring', 'Support within 48 business hours', '8 h of dev / month included', 'Monthly report'],
       },
       {
         id: 'growth',
@@ -281,7 +281,7 @@ export const en: Dictionary = {
         priceNote: '/ month',
         pitch: 'For a product that keeps evolving.',
         featured: true,
-        features: ['Everything in Starter', 'Support within 24 business hours', '21 h of dev / month included', 'Monthly product review'],
+        features: ['Everything in Starter', 'Support within 24 business hours', '24 h of dev / month included', 'Monthly product review'],
       },
       {
         id: 'scale',
