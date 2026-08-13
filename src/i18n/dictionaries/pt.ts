@@ -273,7 +273,7 @@ export const pt: Dictionary = {
         featured: false,
         features: [
           'Infra gerida + monitorização',
-          'Suporte em 48 h úteis',
+          'Suporte em 48 h',
           '8 h de dev / mês incluídas',
           'Relatório mensal',
         ],

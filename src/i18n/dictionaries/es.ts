@@ -271,7 +271,7 @@ export const es: Dictionary = {
         priceNote: '/ mes',
         pitch: 'Para mantener un producto estable online.',
         featured: false,
-        features: ['Infra gestionada + monitorización', 'Soporte en 48 h laborables', '8 h de desarrollo / mes incluidas', 'Informe mensual'],
+        features: ['Infra gestionada + monitorización', 'Soporte en 48 h', '8 h de desarrollo / mes incluidas', 'Informe mensual'],
       },
       {
         id: 'growth',

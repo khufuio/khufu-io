@@ -273,7 +273,7 @@ export const de: Dictionary = {
         featured: false,
         features: [
           'Managed Infra + Monitoring',
-          'Support innerhalb von 48 Arbeitsstunden',
+          'Support innerhalb von 48 Stunden',
           '8 h Dev / Monat inklusive',
           'Monatlicher Report',
         ],

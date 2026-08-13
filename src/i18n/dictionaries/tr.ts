@@ -273,7 +273,7 @@ export const tr: Dictionary = {
         featured: false,
         features: [
           'Yönetilen altyapı + izleme',
-          '48 iş saati içinde destek',
+          '48 saat içinde destek',
           'Ayda 8 saat geliştirme dahil',
           'Aylık rapor',
         ],

@@ -277,7 +277,7 @@ export const fr = {
         featured: false,
         features: [
           'Infra managée + monitoring',
-          'Support sous 48 h ouvrées',
+          'Support sous 48 h',
           '8 h de dev / mois incluses',
           'Rapport mensuel',
         ],
