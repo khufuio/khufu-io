@@ -281,7 +281,7 @@ export const es: Dictionary = {
         priceNote: '/ mes',
         pitch: 'Para un producto que evoluciona de forma continua.',
         featured: true,
-        features: ['Todo lo de Starter', 'Soporte en 24 h laborables', '24 h de desarrollo / mes incluidas', 'Revisión de producto mensual'],
+        features: ['Todo lo de Starter', 'Soporte en 24 h', '24 h de desarrollo / mes incluidas', 'Revisión de producto mensual'],
       },
       {
         id: 'scale',

@@ -292,7 +292,7 @@ export const fr = {
         featured: true,
         features: [
           'Tout Starter',
-          'Support sous 24 h ouvrées',
+          'Support sous 24 h',
           '24 h de dev / mois incluses',
           'Point produit mensuel',
         ],

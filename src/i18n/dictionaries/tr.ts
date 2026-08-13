@@ -288,7 +288,7 @@ export const tr: Dictionary = {
         featured: true,
         features: [
           'Tüm Starter içeriği',
-          '24 iş saati içinde destek',
+          '24 saat içinde destek',
           'Ayda 24 saat geliştirme dahil',
           'Aylık ürün değerlendirmesi',
         ],

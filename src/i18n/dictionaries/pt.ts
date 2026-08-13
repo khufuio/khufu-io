@@ -288,7 +288,7 @@ export const pt: Dictionary = {
         featured: true,
         features: [
           'Tudo o do Starter',
-          'Suporte em 24 h úteis',
+          'Suporte em 24 h',
           '24 h de dev / mês incluídas',
           'Ponto de produto mensal',
         ],

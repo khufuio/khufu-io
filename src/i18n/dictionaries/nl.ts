@@ -281,7 +281,7 @@ export const nl: Dictionary = {
         priceNote: '/ maand',
         pitch: 'Voor een product dat blijft evolueren.',
         featured: true,
-        features: ['Alles van Starter', 'Support binnen 24 werkuren', '24 u dev / maand inbegrepen', 'Maandelijkse productreview'],
+        features: ['Alles van Starter', 'Support binnen 24 uur', '24 u dev / maand inbegrepen', 'Maandelijkse productreview'],
       },
       {
         id: 'scale',

@@ -288,7 +288,7 @@ export const ar: Dictionary = {
         featured: true,
         features: [
           'كل ما في Starter',
-          'دعم خلال 24 ساعة عمل',
+          'دعم خلال 24 ساعة',
           '24 ساعة تطوير / شهر مشمولة',
           'مراجعة منتج شهرية',
         ],

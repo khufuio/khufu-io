@@ -281,7 +281,7 @@ export const en: Dictionary = {
         priceNote: '/ month',
         pitch: 'For a product that keeps evolving.',
         featured: true,
-        features: ['Everything in Starter', 'Support within 24 business hours', '24 h of dev / month included', 'Monthly product review'],
+        features: ['Everything in Starter', 'Support within 24 hours', '24 h of dev / month included', 'Monthly product review'],
       },
       {
         id: 'scale',
