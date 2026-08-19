@@ -78,3 +78,9 @@ yarn-error.log
 
 # TS incremental build info
 *.tsbuildinfo
+
+# ── khufu HQ · env convention (docs/hq/project-env.md) ──
+!**/.env.local.enc
+!.env.local.enc
+!**/.env.example
+!.env.example
