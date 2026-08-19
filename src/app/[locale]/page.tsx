@@ -40,7 +40,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const clients = approvedClients()
 
   // Featured on the home: a mix of SaaS + mobile.
-  const featuredProjects = ['peach-farmer', 'onestore-link', 'clokizi']
+  const featuredProjects = ['onestore-link', 'clokizi', 'labyrinth']
     .map((slug) => projects.find((p) => p.slug === slug))
     .filter((p): p is (typeof projects)[number] => Boolean(p))
 
