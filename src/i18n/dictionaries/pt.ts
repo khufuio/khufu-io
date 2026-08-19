@@ -343,7 +343,7 @@ export const pt: Dictionary = {
   work: {
     metaTitle: 'Projetos',
     metaDescription:
-      'Produtos web e móveis concebidos e lançados pela Khufu: OneStore.link, Clokizi, HerbaCRM, Peach Farmer, Labyrinth.',
+      'Produtos web e móveis concebidos e lançados pela Khufu: OneStore.link, Clokizi, HerbaCRM, Labyrinth.',
     title: 'O que construímos.',
     subtitle: 'Produtos reais, em produção, concebidos e desenvolvidos pela Khufu.',
     internalLabel: 'Produto Khufu',

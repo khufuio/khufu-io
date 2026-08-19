@@ -347,7 +347,7 @@ export const fr = {
   work: {
     metaTitle: 'Réalisations',
     metaDescription:
-      'Produits web et mobiles conçus et livrés par Khufu : OneStore.link, Clokizi, HerbaCRM, Peach Farmer, Labyrinth.',
+      'Produits web et mobiles conçus et livrés par Khufu : OneStore.link, Clokizi, HerbaCRM, Labyrinth.',
     title: 'Ce qu’on a construit.',
     subtitle: 'Des produits réels, en production, conçus et développés par Khufu.',
     internalLabel: 'Produit Khufu',

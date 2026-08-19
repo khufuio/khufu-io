@@ -343,7 +343,7 @@ export const tr: Dictionary = {
   work: {
     metaTitle: 'Projeler',
     metaDescription:
-      'Khufu tarafından tasarlanıp yayına alınan web ve mobil ürünler: OneStore.link, Clokizi, HerbaCRM, Peach Farmer, Labyrinth.',
+      'Khufu tarafından tasarlanıp yayına alınan web ve mobil ürünler: OneStore.link, Clokizi, HerbaCRM, Labyrinth.',
     title: 'Neler inşa ettik.',
     subtitle: 'Gerçek ürünler, canlıda, Khufu tarafından tasarlanıp geliştirildi.',
     internalLabel: 'Khufu ürünü',

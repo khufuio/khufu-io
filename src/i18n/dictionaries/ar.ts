@@ -343,7 +343,7 @@ export const ar: Dictionary = {
   work: {
     metaTitle: 'الأعمال',
     metaDescription:
-      'منتجات ويب وجوال صمّمتها Khufu وأطلقتها: OneStore.link، Clokizi، HerbaCRM، Peach Farmer، Labyrinth.',
+      'منتجات ويب وجوال صمّمتها Khufu وأطلقتها: OneStore.link، Clokizi، HerbaCRM، Labyrinth.',
     title: 'ما بنيناه.',
     subtitle: 'منتجات حقيقية، في الإنتاج، صمّمتها وطوّرتها Khufu.',
     internalLabel: 'منتج Khufu',

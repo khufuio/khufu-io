@@ -328,7 +328,7 @@ export const en: Dictionary = {
   work: {
     metaTitle: 'Work',
     metaDescription:
-      'Web and mobile products designed and shipped by Khufu: OneStore.link, Clokizi, HerbaCRM, Peach Farmer, Labyrinth.',
+      'Web and mobile products designed and shipped by Khufu: OneStore.link, Clokizi, HerbaCRM, Labyrinth.',
     title: 'What we’ve built.',
     subtitle: 'Real products, in production, designed and developed by Khufu.',
     internalLabel: 'Khufu product',

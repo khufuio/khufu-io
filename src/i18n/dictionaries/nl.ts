@@ -328,7 +328,7 @@ export const nl: Dictionary = {
   work: {
     metaTitle: 'Projecten',
     metaDescription:
-      'Web- en mobiele producten ontworpen en opgeleverd door Khufu: OneStore.link, Clokizi, HerbaCRM, Peach Farmer, Labyrinth.',
+      'Web- en mobiele producten ontworpen en opgeleverd door Khufu: OneStore.link, Clokizi, HerbaCRM, Labyrinth.',
     title: 'Wat we gebouwd hebben.',
     subtitle: 'Echte producten, in productie, ontworpen en ontwikkeld door Khufu.',
     internalLabel: 'Khufu-product',
