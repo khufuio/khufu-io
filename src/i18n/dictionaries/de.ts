@@ -197,6 +197,7 @@ export const de: Dictionary = {
         cta: 'Mit Khufu sprechen',
       },
     ],
+    remoteNoteShort: 'Einsatz vor Ort möglich, unter Bedingungen.',
     remoteNote:
       'Einsatz vor Ort möglich: mindestens 1 Woche, +50 % auf den Satz, Spesen (Anreise, Unterkunft) zulasten des Kunden.',
     firmPriceNote: 'Festpreis, wahlweise in Euro oder US-Dollar abgerechnet.',

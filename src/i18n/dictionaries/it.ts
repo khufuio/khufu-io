@@ -197,6 +197,7 @@ export const it: Dictionary = {
         cta: 'Parla con Khufu',
       },
     ],
+    remoteNoteShort: 'Lavoro in sede possibile, a determinate condizioni.',
     remoteNote:
       'Lavoro on-site possibile: 1 settimana minimo, +50 % sulla tariffa, con spese (trasferta, alloggio) a carico del cliente.',
     firmPriceNote: 'Prezzo fisso, fatturato in euro o in dollari, a tua scelta.',

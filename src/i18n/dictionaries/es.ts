@@ -197,6 +197,7 @@ export const es: Dictionary = {
         cta: 'Habla con Khufu',
       },
     ],
+    remoteNoteShort: 'Trabajo presencial posible, con condiciones.',
     remoteNote:
       'Trabajo presencial posible: 1 semana mínimo, +50 % sobre la tarifa, con gastos (desplazamiento, alojamiento) a cargo del cliente.',
     firmPriceNote: 'Precio cerrado, facturado en euros o dólares, a tu elección.',

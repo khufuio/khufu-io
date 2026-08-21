@@ -197,6 +197,7 @@ export const tr: Dictionary = {
         cta: 'Khufu ile konuş',
       },
     ],
+    remoteNoteShort: 'Yerinde çalışma mümkün, koşullara bağlı.',
     remoteNote:
       'Yerinde çalışma mümkün: en az 1 hafta, ücrete +%50, masraflar (seyahat, konaklama) müşteriye ait.',
     firmPriceNote: 'Sabit fiyat, euro veya dolar olarak faturalanır — sizin seçiminiz.',

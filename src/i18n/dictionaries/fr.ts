@@ -201,6 +201,7 @@ export const fr = {
         cta: 'Parler à Khufu',
       },
     ],
+    remoteNoteShort: 'Régie sur site possible, sous conditions.',
     remoteNote:
       'Régie sur site possible : 1 semaine minimum, +50 % sur le tarif, avec frais (déplacement, logement) à la charge du client.',
     firmPriceNote: 'Prix ferme, facturé en euros ou en dollars, au choix.',

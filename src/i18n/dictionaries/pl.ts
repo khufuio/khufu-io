@@ -197,6 +197,7 @@ export const pl: Dictionary = {
         cta: 'Porozmawiaj z Khufu',
       },
     ],
+    remoteNoteShort: 'Praca stacjonarna możliwa, na określonych warunkach.',
     remoteNote:
       'Praca stacjonarna możliwa: minimum 1 tydzień, +50 % do stawki, z kosztami (dojazd, nocleg) po stronie klienta.',
     firmPriceNote: 'Cena stała, rozliczana w euro lub dolarach — do wyboru.',

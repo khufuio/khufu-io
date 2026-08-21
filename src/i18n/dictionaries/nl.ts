@@ -197,6 +197,7 @@ export const nl: Dictionary = {
         cta: 'Praat met Khufu',
       },
     ],
+    remoteNoteShort: 'Werken op locatie mogelijk, onder voorwaarden.',
     remoteNote:
       'Werken op locatie is mogelijk: minimaal 1 week, +50 % op het tarief, met onkosten (reis, verblijf) voor rekening van de klant.',
     firmPriceNote: 'Vaste prijs, gefactureerd in euro of dollar — jouw keuze.',

@@ -75,7 +75,7 @@ export function OfferCards({ locale, dict }: { locale: Locale; dict: Dictionary 
           </ButtonLink>
 
           {offer.id === 'regie' && (
-            <p className="mt-4 text-xs leading-relaxed text-[var(--color-muted)]">{dict.offers.remoteNote}</p>
+            <p className="mt-4 text-xs leading-relaxed text-[var(--color-muted)]">{dict.offers.remoteNoteShort}</p>
           )}
         </div>
       ))}
