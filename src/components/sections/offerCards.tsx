@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { Locale } from '@/i18n/config'
 import { href } from '@/content/site'
 import type { Dictionary } from '@/i18n/getDictionary'
@@ -73,12 +74,16 @@ export function OfferCards({ locale, dict }: { locale: Locale; dict: Dictionary 
           >
             {offer.cta}
           </ButtonLink>
-
-          {offer.id === 'regie' && (
-            <p className="mt-4 text-xs leading-relaxed text-[var(--color-muted)]">{dict.offers.remoteNoteShort}</p>
-          )}
         </div>
       ))}
+
+      {/* Hors des cards : sur une 2e rangée, la note ne décale plus le bouton de la card Remote.
+          Le détail complet (durée mini, majoration, frais) vit sur /remote. */}
+      <p className="-mt-2 text-xs leading-relaxed text-[var(--color-muted)] lg:col-start-3">
+        <Link href={href(locale, 'remote')} className="hover:text-[var(--color-ink-2)] hover:underline">
+          {dict.offers.remoteNoteShort}
+        </Link>
+      </p>
     </div>
     <FirmPriceNote className="mt-5 text-xs text-[var(--color-muted)]">{dict.offers.firmPriceNote}</FirmPriceNote>
     </>
