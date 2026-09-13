@@ -32,7 +32,7 @@ export const buildVsBuy: LeadMagnet = {
   metaDescription:
     'Free guide: what it really costs to get a SaaS or mobile V1 built — in-house hire, freelancer, agency, offshore, no-code or a fixed-price sprint. Market ranges, hidden costs and a decision framework.',
   pdfPages: 10,
-  updated: '2026-07-31',
+  updated: '2026-09-13',
   intro: [
     'Every quote you receive answers the wrong question. It tells you what someone will charge, not what the decision will cost you.',
     'The difference between those two numbers is usually larger than the quote itself: recruiting fees, your own management time, the months of revenue you did not earn while waiting, and the rebuild you pay for eighteen months later.',
@@ -223,7 +223,7 @@ export const buildVsBuy: LeadMagnet = {
     },
     {
       q: 'What if I already have a developer or a team?',
-      a: `Then you probably do not need an agency, you need reinforcement. Khufu bills remote support at $${toUsd(site.dailyRateEUR).toLocaleString('en-US')} per day or $${toUsd(site.hourlyRateEUR).toLocaleString('en-US')} per hour for teams with an existing codebase.`,
+      a: `Then the question is what you are asking them to build. If it is the next stretch of the product they already know, keep it in-house — you will not beat a team that has the context. A sprint earns its place when the thing does not exist yet and your team cannot start it without dropping what they are on: Khufu builds that first version alongside them, in ${site.v1Days} days at $${usd} fixed, and hands over the repo so they own it afterwards.`,
     },
     {
       q: 'How much does a SaaS V1 cost in 2026?',

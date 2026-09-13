@@ -5,27 +5,30 @@ import type { LeadMagnet } from './types'
 import type { LeadMagnetSlug } from './slugs'
 import { pdfPath } from './index'
 
-const dayUsd = toUsd(site.dailyRateEUR).toLocaleString('en-US')
 const v1Usd = toUsd(site.v1PriceEUR).toLocaleString('en-US')
 
 /**
  * Post-download sequence: one delivery email plus four follow-ups over two weeks.
  *
- * It does NOT sell Sprint V1. Someone who just downloaded a free guide is not
- * ready to sign a $17,000 engagement, and asking for it on day 7 is what turns
- * a warm reader into an unsubscribe. The job of these emails is to QUALIFY —
- * what is actually stuck, by when it has to exist, who signs — and to open a
- * conversation, because on this ticket size the conversation is what converts,
- * not a pricing page.
+ * It sells ONE thing, Sprint V1, and it names it in the first email. The
+ * previous version led with day-rate reinforcement and only mentioned the
+ * sprint on day 7, as an aside — which quietly acquired for an offer we do not
+ * acquire on, and left a reader who arrived through a paid ad for the sprint
+ * being sold something else a week later. Khufu has a single offer (decided
+ * 2026-09-08); Full Maintenance and Remote are follow-ups to a sprint and have
+ * no place in an acquisition sequence.
  *
- * Written for the clients who have actually paid: product companies with a
- * backlog and not enough hands to ship it — a game studio, a SaaS that needed
- * its mobile app rebuilt. Not visionary CTOs shopping for a technical opinion.
+ * Naming the offer early is NOT the same as asking for the money early. The job
+ * of these emails is still to QUALIFY — what is actually stuck, by when it has
+ * to exist, who signs — and to open a conversation, because on this ticket size
+ * the conversation is what converts, not a pricing page. The reader simply
+ * knows from email one what conversation they are being invited into.
  *
- * The offer that leads is therefore reinforcement by the day, not the sprint:
- * it is the cheap, reversible way for a team that is already underwater to find
- * out whether this works. The fixed-price V1 is named once, late, as the other
- * shape — for the reader who is genuinely starting from zero.
+ * ⚠️ No client references and no activity figures anywhere in here (decided
+ * 2026-09-13): no named client, no download counts, no revenue, no project
+ * tally. What is left to argue with is the offer itself — a date in the
+ * contract, a fixed price, a scope frozen on day 0 — and Khufu's own live
+ * products, named without ever claiming a duration for them.
  *
  * Each email has to be worth opening on its own. A sequence that only asks
  * trains the reader to stop opening.
@@ -107,6 +110,9 @@ const magnetHook: Record<LeadMagnetSlug, string> = {
     'You picked up the hiring checklist, so you are close to putting someone external on a build.',
 }
 
+/** One line naming the offer. Same sentence everywhere, so the number sticks. */
+const offerLine = `Sprint V1: a designed, built and deployed first version in ${site.v1Days} days, $${v1Usd} fixed, scope frozen before anything starts.`
+
 /** Email 1 — the delivery. Sent the moment the form is submitted. */
 export function deliveryEmail(magnet: LeadMagnet, ctx?: LeadContext): NurtureEmail {
   const url = `${site.url}${pdfPath(magnet.slug)}`
@@ -126,6 +132,7 @@ export function deliveryEmail(magnet: LeadMagnet, ctx?: LeadContext): NurtureEma
       'Here it is, as promised.',
       `${magnet.title} — ${magnet.pdfPages} pages. ${magnet.subtitle}`,
       'One thing before you close this tab, and it is the reason I send these myself rather than automating them away: what are you actually trying to ship, and what is the date it needs to exist by?',
+      `I ask because Khufu sells exactly one thing, and it is built around that date. ${offerLine} That is the whole catalogue — no options, no tiers, no discovery phase to buy first.`,
       `Two lines is plenty. WhatsApp is fastest — that is my own number, I answer it myself — but replying to this email reaches me just as well. Either way I answer the specific ones properly: a guide is general by definition, your situation is not.`,
     ],
     cta: { label: 'Download the PDF', url },
@@ -141,12 +148,13 @@ export function nurtureSequence(magnet: LeadMagnet, ctx?: LeadContext): NurtureE
       step: 'nurture-diagnosis',
       ref: dispatchRef(magnet),
       subject: 'The thing that is blocking your release is almost never the plan',
-      preheader: 'Three reasons a roadmap stops moving. Only one of them is fixable this month.',
+      preheader: 'Three reasons a roadmap stops moving. Only one of them is a Khufu problem.',
       paragraphs: [
         `${magnetHook[magnet.slug]} So here is the part of it that matters most, in case the PDF is still sitting unopened.`,
         'When a product team is not shipping, it is very rarely because nobody knows what to build. The backlog is usually right. What is missing is capacity pointed at the right thing, and it fails in one of three ways.',
-        'One: the team is fully booked on the existing product, so anything new waits for a gap that never comes. Two: the work needs a skill nobody on the team has this quarter — a mobile rebuild, a payments integration, an app store release — so it gets postponed rather than done badly. Three: there is a piece of the product someone left half-finished, and everyone is quietly avoiding it.',
-        'Those three have very different answers, and only the first two can be fixed inside a month. Which one is yours? Send me the number on WhatsApp — one digit is a complete answer, and it tells me more than any form would.',
+        'One: the team is fully booked on the existing product, so anything new waits for a gap that never comes. Two: the thing you need does not exist yet at all — a new product, a second one, a side of the business someone has been describing in slides for two quarters — and nobody has hours to start it. Three: there is a piece of the product someone left half-finished, and everyone is quietly avoiding it.',
+        `Number two is the one Khufu is built for, and it is the only thing Khufu sells. ${offerLine} A date in the contract, not an estimate — which is the point when what you are missing is a product, not an opinion about one.`,
+        'Which of the three is yours? Send me the number on WhatsApp — one digit is a complete answer, and it tells me more than any form would.',
       ],
       cta: {
         label: 'Send me the number',
@@ -158,20 +166,20 @@ export function nurtureSequence(magnet: LeadMagnet, ctx?: LeadContext): NurtureE
       delayDays: 4,
       step: 'nurture-proof',
       ref: dispatchRef(magnet),
-      subject: 'The cheapest way to find out whether I am any good',
-      preheader: `A few days, $${dayUsd} a day, and no contract to unwind if it does not fit.`,
+      subject: 'How seven days is possible, and where the catch actually is',
+      preheader: 'The scope is frozen on day 0. That is the trade, and it is the whole trick.',
       paragraphs: [
-        'Two situations from the last couple of years, because they are the ones that keep repeating and one of them is probably close to yours.',
-        'A mobile game studio needed a game built and out on both stores while the team stayed on the live one. It shipped, and it is past 250,000 downloads. A recruitment SaaS had a mobile app a previous developer had walked away from — technical debt, bugs, users complaining daily. I took the code over as it was, rebuilt it, and kept shipping features on it afterwards.',
-        'Neither of those started with a big engagement. They started with a few days of an extra pair of hands on a specific, annoying, well-defined problem.',
-        `That is what remote reinforcement is: $${dayUsd} a day, I work inside your repo and your tools, you keep the decisions, and you stop whenever it stops being useful. If a few days do not convince you, nothing longer would have.`,
-        'Tell me what is stuck on your side and I will tell you straight whether a few days move it. One message is enough to find out.',
+        'The reasonable reaction to "a product in seven days" is that something must be missing. Something is, and it is worth being blunt about which part.',
+        'What makes the week work is not typing faster. It is that the scope is written down and frozen on day 0, before a line is written — so there is no mid-project renegotiation, no waiting on a decision, no second opinion to schedule. Add a stack that is the same every time (Next.js, NestJS, PostgreSQL, React Native) and AI doing the parts of the work that are mechanical, and a week is enough for a real first version. It is the same method behind Khufu’s own products — Clokizi, HerbaCRM — which run in production today.',
+        `The catch: the scope has to be small enough to be finished. Everything you think of on day 3 goes in the next version. If your project cannot survive that constraint, a sprint is the wrong shape and I will tell you so before you pay, not during.`,
+        'What the fixed price covers, so there is nothing to discover on the invoice: scoping and design, the build, infrastructure and the production deploy, a showcase site for the product optimised for SEO and generative search, two weeks of fixes after delivery, and the source code, which is yours. All included, at the price on the page.',
+        `${offerLine}`,
       ],
       cta: {
-        label: 'Tell me what is stuck',
-        url: waLink(magnet, 'proof', `Hi Adrien — here's what's stuck on our side: `, ctx),
+        label: 'See the full offer',
+        url: `${site.url}${href('en', 'sprint')}`,
       },
-      note: `Or read the detail first: ${site.url}${href('en', 'remote')}`,
+      note: `Or just tell me what you would want built, on WhatsApp: ${waLink(magnet, 'proof', `Hi Adrien — what we'd want built: `, ctx)}`,
     },
     {
       delayDays: 7,
@@ -181,9 +189,9 @@ export function nurtureSequence(magnet: LeadMagnet, ctx?: LeadContext): NurtureE
       preheader: 'What is stuck, by when, and who decides. That is the whole qualification.',
       paragraphs: [
         'This is the one email in the sequence that asks for something, so I will be precise about what.',
-        'Three lines. What specifically is not shipping. The date it needs to exist by. Who besides you has to agree before anything starts. Send those on WhatsApp and I will tell you within the day whether I can move it, roughly how long it takes and what it costs — and if the answer is that you do not need me, you get that answer there rather than after an invoice.',
+        'Three lines. What you need built. The date it has to exist by. Who besides you has to agree before anything starts. Send those on WhatsApp and I will tell you within the day whether it fits in a sprint and which week I can take — and if the answer is that you do not need me, you get that answer there rather than after an invoice.',
         'If it looks like a fit we jump on a twenty-minute call from the same conversation. No deck, no discovery phase, no proposal to read first. If the third line is a long list of people, say so — it changes what I would suggest, it does not disqualify you.',
-        `Two shapes come out of that. Days of reinforcement at $${dayUsd} a day if you already have a product and a team, which is most people who read this far. Or a fixed-price V1 at $${v1Usd} in ${site.v1Days} days if you are genuinely starting from nothing. I will tell you which one you are in; guessing it yourself is not your job.`,
+        `There is one thing at the end of it, and you already know the number. ${offerLine} If your answer to the second line is "no date, sometime next year", say that too — it usually means a sprint is not what you need yet, and that is a fine outcome for both of us.`,
       ],
       cta: {
         label: 'Send the three lines',

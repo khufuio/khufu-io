@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import type { Locale } from '@/i18n/config'
-import { href } from '@/content/site'
+import { href, sprintHref } from '@/content/site'
 import type { Dictionary } from '@/i18n/getDictionary'
 import { Container } from '@/components/ui/container'
 import { ButtonLink } from '@/components/ui/button'
@@ -43,7 +43,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
-          <ButtonLink href={href(locale, 'contact')} size="md">
+          <ButtonLink href={sprintHref(locale, 'header')} size="md">
             {nav.cta}
           </ButtonLink>
         </div>
@@ -92,7 +92,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
               </Link>
             ))}
             <div className="mt-3 flex items-center justify-end px-2">
-              <ButtonLink href={href(locale, 'contact')} onClick={() => setOpen(false)}>
+              <ButtonLink href={sprintHref(locale, 'header')} onClick={() => setOpen(false)}>
                 {nav.cta}
               </ButtonLink>
             </div>

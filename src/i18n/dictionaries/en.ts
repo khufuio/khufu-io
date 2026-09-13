@@ -124,8 +124,12 @@ export const en: Dictionary = {
       },
     ],
 
-    offersTitle: 'Three ways to work with Khufu',
-    offersSubtitle: 'From a lightning launch to long-term support.',
+    // ONE offer on the home, not three (decided 2026-09-08). Maintenance and
+    // Remote are still sold — as follow-ups to a sprint, below and subordinate.
+    offersTitle: 'One offer: the V1 Sprint',
+    offersSubtitle: `Your V1 designed, built and shipped to production in ${site.v1Days} days, at a fixed price. That is what Khufu sells.`,
+    followUpsTitle: 'After the sprint',
+    followUpsBody: 'Once your V1 is live, two ways to keep going — your call, and never before.',
 
     workTitle: 'Products, not slides',
     workSubtitle: 'A selection of products designed and shipped by Khufu.',
@@ -158,7 +162,9 @@ export const en: Dictionary = {
         features: [
           'Product scoping and design',
           'SaaS or mobile app development',
-          'Production deploy + hosting',
+          'Infrastructure, hosting and production deploy',
+          'Showcase site for the product, SEO- and GEO-optimised',
+          '2 weeks of fixes after delivery',
           'Source code shipped, yours',
           'Handover and documentation',
         ],
