@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { cn } from '@/lib/cn'
 import { site } from '@/content/site'
 import type { Locale } from '@/i18n/config'
@@ -16,7 +16,6 @@ export type SprintFormCopy = {
   body: string
   name: string
   email: string
-  company: string
   project: string
   projectPlaceholder: string
   submit: string
@@ -52,18 +51,21 @@ export function SprintLeadForm({
 }) {
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState<string | null>(null)
+  // Fired once, on the first field touched. Without it the funnel jumps straight
+  // from "landed" to "submitted" and there is no way to tell a page that doesn't
+  // convert from a form that doesn't — which is the difference between fixing
+  // the creative and fixing the form.
+  const started = useRef(false)
 
-  function mailtoFallback(fields: { name: string; email: string; company: string; message: string }): void {
+  function onFirstInteraction(): void {
+    if (started.current) return
+    started.current = true
+    track('sprint_form_started', { placement, locale, ...campaignProps() })
+  }
+
+  function mailtoFallback(fields: { name: string; email: string; message: string }): void {
     const subject = `[khufu.io] Sprint V1 — ${fields.name}`
-    const body = [
-      `Name: ${fields.name}`,
-      `Email: ${fields.email}`,
-      fields.company && `Company: ${fields.company}`,
-      '',
-      fields.message,
-    ]
-      .filter(Boolean)
-      .join('\n')
+    const body = [`Name: ${fields.name}`, `Email: ${fields.email}`, '', fields.message].filter(Boolean).join('\n')
     window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
@@ -73,7 +75,6 @@ export function SprintLeadForm({
     const fields = {
       name: String(data.get('name') ?? '').trim(),
       email: String(data.get('email') ?? '').trim(),
-      company: String(data.get('company') ?? '').trim(),
       message: String(data.get('message') ?? '').trim(),
     }
     // Honeypot: a real visitor never fills a hidden field. Succeed silently so a
@@ -149,6 +150,7 @@ export function SprintLeadForm({
   return (
     <form
       onSubmit={onSubmit}
+      onFocusCapture={onFirstInteraction}
       className="rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-6 shadow-[0_1px_2px_rgba(14,14,16,0.04)] sm:p-7"
     >
       <div className="grid gap-4">
@@ -178,21 +180,21 @@ export function SprintLeadForm({
             </p>
           )}
         </div>
-        <div>
-          <label className={label} htmlFor={`company-${placement}`}>
-            {copy.company}
-          </label>
-          <input id={`company-${placement}`} name="company" autoComplete="organization" className={field} />
-        </div>
+        {/* The company field was removed: it was optional, it was never needed to
+            call somebody back, and on cold paid mobile traffic every extra row is
+            paid for at the LinkedIn CPC. It is a question for the call. */}
         <div>
           <label className={label} htmlFor={`message-${placement}`}>
             {copy.project}
           </label>
+          {/* Not `required`: name + email is everything needed to come back to
+              someone. A visitor who won't type three lines on a phone used to
+              leave with nothing; now they leave a lead, and the brief happens in
+              the reply. */}
           <textarea
             id={`message-${placement}`}
             name="message"
-            required
-            rows={4}
+            rows={3}
             placeholder={copy.projectPlaceholder}
             className={cn(field, 'resize-y placeholder:text-[var(--color-muted)]')}
           />
