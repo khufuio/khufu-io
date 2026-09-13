@@ -1,13 +1,14 @@
 /**
- * The seven-day run, drawn instead of described.
+ * The week, drawn instead of described.
  *
- * The page already listed day 0 → day 7 as seven cards; the thing the cards
- * could not say is the argument the offer actually rests on — that the clock
- * only starts once the scope is settled. So the schema draws that: the segment
- * before day 1 is dashed (nothing is being built yet, and the annotation above
- * it says why), the seven working days are one continuous span under a single
- * bracket, and the last node is the only filled one because production is the
- * only delivery criterion.
+ * The page already listed the run as cards; what cards could not say is the two
+ * things the offer actually rests on, and the schema draws both (khufu HQ
+ * decision cmu0fbad):
+ *   1. The clock only starts once the scope is settled — so the segment before
+ *      day 1 is dashed, and the annotation above it says why.
+ *   2. The week is a CALENDAR, not a duration: Monday 06:00 UTC → Sunday, with
+ *      the client's own acceptance-testing day (Friday) marked as theirs by a
+ *      ring, and production as the only filled node.
  *
  * It is a server component: the SVG and the text ship as finished markup, and
  * the motion is CSS reacting to the `data-in` attribute that the page's single
@@ -16,9 +17,14 @@
  * `stroke-dashoffset`, so the section cannot move layout.
  */
 export type SprintTimelineStep = {
+  /** Short label drawn on the node — "Jour 5". */
   day: string
+  /** The calendar underneath it — "vendredi". This is what makes the week real. */
+  weekday: string
   title: string
   body: string
+  /** The client's day: ringed in the schema, tagged in the column. */
+  client?: boolean
 }
 
 /** Six equal columns, so the SVG nodes sit exactly on the HTML grid's centres. */
@@ -29,12 +35,15 @@ export function SprintTimeline({
   steps,
   scopeLabel,
   spanLabel,
+  clientLabel,
 }: {
   steps: SprintTimelineStep[]
   /** Annotation over day 0 — e.g. "Périmètre arrêté". */
   scopeLabel: string
-  /** Annotation over the bracket spanning day 1 → day 7 — e.g. "7 jours ouvrés". */
+  /** Annotation over the bracket spanning day 1 → day 7 — e.g. "7 jours, lundi → dimanche". */
   spanLabel: string
+  /** Tag on the client's own day — e.g. "Vous". */
+  clientLabel: string
 }) {
   const width = steps.length * COLUMN_WIDTH
   const first = nodeX(0)
@@ -46,7 +55,7 @@ export function SprintTimeline({
       {/* ---------------- Desktop: the horizontal schema ---------------- */}
       <div className="hidden lg:block">
         <svg
-          viewBox={`0 0 ${width} 124`}
+          viewBox={`0 0 ${width} 140`}
           className="w-full"
           role="img"
           aria-label={`${scopeLabel} — ${spanLabel}`}
@@ -123,18 +132,24 @@ export function SprintTimeline({
           {steps.map((step, i) => {
             const x = nodeX(i)
             const isDelivery = i === steps.length - 1
+            const accent = i === 0 || isDelivery || step.client
             return (
               <g
                 key={step.day}
                 data-fade
                 style={{ '--fade-delay': `${250 + i * 130}ms` } as React.CSSProperties}
               >
+                {/* The client's day wears a ring: it is the only one that asks
+                    something of them, and it is an argument, not a constraint. */}
+                {step.client && (
+                  <circle cx={x} cy={86} r={9.5} fill="none" stroke="var(--color-accent)" strokeWidth={1} opacity={0.4} />
+                )}
                 <circle
                   cx={x}
                   cy={86}
                   r={5}
                   fill={isDelivery ? 'var(--color-accent)' : 'var(--color-paper)'}
-                  stroke={i === 0 || isDelivery ? 'var(--color-accent)' : 'var(--color-muted)'}
+                  stroke={accent ? 'var(--color-accent)' : 'var(--color-muted)'}
                   strokeWidth={1.25}
                 />
                 <text
@@ -142,9 +157,18 @@ export function SprintTimeline({
                   y={112}
                   textAnchor="middle"
                   className="font-[family-name:var(--font-display)] text-[13px] font-semibold"
-                  fill={isDelivery ? 'var(--color-accent-ink)' : 'var(--color-ink-2)'}
+                  fill={isDelivery || step.client ? 'var(--color-accent-ink)' : 'var(--color-ink-2)'}
                 >
                   {step.day}
+                </text>
+                <text
+                  x={x}
+                  y={130}
+                  textAnchor="middle"
+                  className="text-[11px]"
+                  fill="var(--color-muted)"
+                >
+                  {step.weekday}
                 </text>
               </g>
             )
@@ -156,10 +180,17 @@ export function SprintTimeline({
           {steps.map((step, i) => (
             <li
               key={step.day}
-              className="border-t border-[var(--color-line)] pt-4"
+              className={`border-t pt-4 ${
+                step.client ? 'border-[var(--color-accent)]' : 'border-[var(--color-line)]'
+              }`}
               data-reveal
               style={{ '--reveal-delay': `${300 + i * 110}ms` } as React.CSSProperties}
             >
+              {step.client && (
+                <p className="mb-2 inline-flex items-center rounded-full bg-[var(--color-accent-soft)] px-2.5 py-0.5 text-[10px] font-semibold tracking-[0.14em] text-[var(--color-accent-ink)] uppercase">
+                  {clientLabel}
+                </p>
+              )}
               <h3 className="text-sm font-semibold text-balance">{step.title}</h3>
               <p className="mt-2 text-xs/[1.6] text-[var(--color-ink-2)] text-pretty">{step.body}</p>
             </li>
@@ -194,19 +225,26 @@ export function SprintTimeline({
                 className={`absolute top-[4px] left-0 size-[11px] rounded-full border-[1.25px] ${
                   isDelivery
                     ? 'border-[var(--color-accent)] bg-[var(--color-accent)]'
-                    : i === 0
+                    : i === 0 || step.client
                       ? 'border-[var(--color-accent)] bg-[var(--color-paper)]'
                       : 'border-[var(--color-muted)] bg-[var(--color-paper)]'
                 }`}
               />
               <p
                 className={`font-[family-name:var(--font-display)] text-xs font-semibold uppercase tracking-[0.14em] ${
-                  isDelivery ? 'text-[var(--color-accent-ink)]' : 'text-[var(--color-muted)]'
+                  isDelivery || step.client ? 'text-[var(--color-accent-ink)]' : 'text-[var(--color-muted)]'
                 }`}
               >
-                {step.day}
+                {step.day} <span className="font-normal text-[var(--color-muted)] normal-case">· {step.weekday}</span>
               </p>
-              <h3 className="mt-1 font-semibold">{step.title}</h3>
+              <h3 className="mt-1 font-semibold">
+                {step.title}
+                {step.client && (
+                  <span className="ml-2 inline-flex items-center rounded-full bg-[var(--color-accent-soft)] px-2 py-0.5 align-middle text-[10px] font-semibold tracking-[0.14em] text-[var(--color-accent-ink)] uppercase">
+                    {clientLabel}
+                  </span>
+                )}
+              </h3>
               <p className="mt-1.5 text-sm/[1.6] text-[var(--color-ink-2)] text-pretty">{step.body}</p>
             </li>
           )
