@@ -22,6 +22,14 @@ const sizes: Record<Size, string> = {
   lg: 'h-13 px-7 text-base',
 }
 
+/**
+ * The button's visual classes, on their own — so a plain <a> (an in-page anchor,
+ * a mailto) can look exactly like a ButtonLink without routing through next/link.
+ */
+export function buttonClasses(variant: Variant = 'primary', size: Size = 'md', className?: string): string {
+  return cn(base, variants[variant], sizes[size], className)
+}
+
 export function ButtonLink({
   href,
   children,
@@ -40,7 +48,7 @@ export function ButtonLink({
   return (
     <Link
       href={href}
-      className={cn(base, variants[variant], sizes[size], className)}
+      className={buttonClasses(variant, size, className)}
       onClick={(e) => {
         track('cta_clicked', { href, label: typeof children === 'string' ? children : undefined })
         onClick?.(e)

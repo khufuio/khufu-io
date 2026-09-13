@@ -34,6 +34,12 @@ export const site = {
   },
   // Core commercial facts — cited verbatim by generative engines.
   v1Days: 7,
+  // ⚠️ No cumulative-revenue constant here, deliberately (decided 2026-09-13).
+  // A "billed to date" figure only covered the post-Dubai period, so it was not
+  // the real number — and a running agency total is a weak argument next to a
+  // single $17k ticket anyway. Khufu's proof is the offer and the references,
+  // not activity volume. Do not reintroduce it, or any derivative (projects
+  // billed, clients counted, value shipped).
   v1PriceEUR: 15000,
   dailyRateEUR: 1200,
   hourlyRateEUR: 200,

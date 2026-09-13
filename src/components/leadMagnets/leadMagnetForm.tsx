@@ -4,31 +4,12 @@ import { useState } from 'react'
 import { cn } from '@/lib/cn'
 import { track, identifyLead } from '@/lib/analytics'
 import { readInternalSource } from '@/lib/internalSource'
+import { readUtm } from '@/lib/utm'
 import { pdfPath } from '@/content/leadMagnets'
 
 type Status = 'idle' | 'sending' | 'success'
 
 const isEmail = (v: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
-
-const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const
-
-/**
- * Carry the ad tags from the URL onto the lead itself.
- *
- * PostHog stores them session-side, but the Resend contact is what tells us
- * later which creative produced a paid sprint. Without this hop the chain breaks
- * exactly where it matters: attributable on arrival, anonymous at the outcome.
- */
-function readUtm(): Record<string, string> {
-  if (typeof window === 'undefined') return {}
-  const params = new URLSearchParams(window.location.search)
-  const out: Record<string, string> = {}
-  for (const key of UTM_KEYS) {
-    const value = params.get(key)?.trim()
-    if (value) out[key] = value.slice(0, 120)
-  }
-  return out
-}
 
 /**
  * The single conversion point of a lead magnet page: email in, PDF out.

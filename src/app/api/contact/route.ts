@@ -10,6 +10,26 @@ type ContactPayload = {
   company?: string
   budget?: string
   message?: string
+  /** Which surface produced the lead, e.g. "sprint-landing:hero". */
+  source?: string
+  /** Campaign tags read off the landing URL (utm_*, li_fat_id, traffic_source). */
+  utm?: Record<string, unknown>
+}
+
+/**
+ * Flatten the campaign tags for the notification email.
+ *
+ * Values arrive from a public form, so they are treated as untrusted text:
+ * key and value are both clamped to a known character set and length. This
+ * lands in a plain-text mail, never in HTML — nothing here is interpolated
+ * into markup.
+ */
+function campaignLines(utm: Record<string, unknown> | undefined): string[] {
+  if (!utm || typeof utm !== 'object') return []
+  return Object.entries(utm)
+    .filter(([, v]) => typeof v === 'string' && v.trim() !== '')
+    .slice(0, 10)
+    .map(([k, v]) => `${k.replace(/[^a-z0-9_]/gi, '').slice(0, 40)}: ${String(v).replace(/[\r\n]+/g, ' ').slice(0, 120)}`)
 }
 
 const isEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
@@ -33,6 +53,8 @@ export async function POST(req: NextRequest) {
   const company = (body.company ?? '').trim()
   const budget = (body.budget ?? '').trim()
   const message = (body.message ?? '').trim()
+  const source = (body.source ?? '').trim().slice(0, 60)
+  const campaign = campaignLines(body.utm)
 
   if (!name || !email || !isEmail(email) || !message) {
     return NextResponse.json({ ok: false, reason: 'invalid' }, { status: 422 })
@@ -47,6 +69,8 @@ export async function POST(req: NextRequest) {
     `Email: ${email}`,
     company && `Entreprise: ${company}`,
     budget && `Budget: ${budget}`,
+    source && `Source: ${source}`,
+    ...campaign,
     '',
     message,
   ]
@@ -58,7 +82,7 @@ export async function POST(req: NextRequest) {
       from,
       to,
       replyTo: email,
-      subject: `[khufu.io] ${name}${budget ? ` — ${budget}` : ''}`,
+      subject: `[khufu.io] ${name}${budget ? ` — ${budget}` : ''}${source ? ` (${source})` : ''}`,
       text,
     })
     if (error) {

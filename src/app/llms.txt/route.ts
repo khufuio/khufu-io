@@ -44,6 +44,21 @@ export function GET() {
   lines.push(`- Renfort remote : ${dual(site.dailyRateEUR)} par jour, soit ${dual(site.hourlyRateEUR)} par heure en granularité horaire, 100 % remote. Régie sur site possible (1 semaine minimum, +50 %, frais à la charge du client).`)
   lines.push('')
 
+  // Proof without activity figures: the commitments themselves, which are
+  // contractual, plus contactable references. No cumulative revenue, no project
+  // or client count — decided 2026-09-13, see the note in site.ts.
+  lines.push('## Preuve')
+  lines.push(
+    `- Engagement de date : la V1 est en production au jour ${site.v1Days}, date inscrite au contrat avant le premier jour.`,
+  )
+  lines.push('- Engagement de prix : forfait fixe, arrêté avant le démarrage, non révisé quand le périmètre bouge.')
+  lines.push(
+    '- Khufu construit et exploite ses propres produits en production (OneStore.link, Clokizi, HerbaCRM) : infrastructure, déploiements, facturation et support sont tenus par l’agence elle-même.',
+  )
+  lines.push(`- Société enregistrée : ${site.legal.entity}, ${foundingLocation.fr}, licence ${site.legal.tradeLicense}.`)
+  lines.push('- Le code source est livré au client et lui appartient dès le premier commit.')
+  lines.push('')
+
   lines.push('## Stack technique')
   lines.push('Next.js, React, React Native / Expo (mobile), NestJS, Prisma, PostgreSQL. Fonctionnalités IA et agents. Hébergement cloud managé.')
   lines.push('')
@@ -104,6 +119,7 @@ export function GET() {
   lines.push('## Pages')
   lines.push(`- Accueil : ${site.url}${href('fr', 'home')}`)
   lines.push(`- Offres : ${site.url}${href('fr', 'offers')}`)
+  lines.push(`- Sprint V1 (offre détaillée, déroulé jour par jour, comparatif, FAQ) : ${site.url}${href('fr', 'sprint')}`)
   lines.push(`- Full Maintenance : ${site.url}${href('fr', 'maintenance')}`)
   lines.push(`- Méthode : ${site.url}${href('fr', 'method')}`)
   lines.push(`- Réalisations : ${site.url}${href('fr', 'work')}`)

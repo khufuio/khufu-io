@@ -25,7 +25,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // (a build-time `new Date()` would falsely bump every URL on each deploy). Only blog
   // articles, which have a real publication date, carry lastModified.
   for (const key of topRoutes) {
-    const priority = key === 'home' ? 1 : lowPriorityRoutes.has(key) ? 0.3 : 0.7
+    // `sprint` is the paid-traffic landing and the page the whole offer hangs
+    // off — it outranks the other top-level pages on purpose.
+    const priority = key === 'home' ? 1 : key === 'sprint' ? 0.9 : lowPriorityRoutes.has(key) ? 0.3 : 0.7
     for (const locale of locales) {
       entries.push({
         url: `${site.url}${href(locale, key)}`,
