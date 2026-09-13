@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Locale } from '@/i18n/config'
-import { href, site } from '@/content/site'
+import { href, sprintHref, site } from '@/content/site'
 import type { Dictionary } from '@/i18n/getDictionary'
 import { Container } from '@/components/ui/container'
 import { Wordmark } from './wordmark'
@@ -39,7 +39,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
         </div>
 
         <FooterCol title={f.columns.offers}>
-          <FooterLink href={href(locale, 'sprint')}>Sprint V1</FooterLink>
+          <FooterLink href={sprintHref(locale, 'footer')}>Sprint V1</FooterLink>
           <FooterLink href={href(locale, 'maintenance')}>{nav.maintenance}</FooterLink>
           <FooterLink href={href(locale, 'remote')}>Remote</FooterLink>
           <FooterLink href={href(locale, 'offers')}>{nav.offers}</FooterLink>

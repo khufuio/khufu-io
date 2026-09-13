@@ -128,8 +128,12 @@ export const fr = {
       },
     ],
 
-    offersTitle: 'Trois façons de travailler avec Khufu',
-    offersSubtitle: 'Du lancement éclair à l’accompagnement dans la durée.',
+    // ONE offer on the home, not three (decided 2026-09-08). Maintenance and
+    // Remote are still sold — as follow-ups to a sprint, below and subordinate.
+    offersTitle: 'Une seule offre : le Sprint V1',
+    offersSubtitle: `Votre V1 conçue, développée et mise en production en ${site.v1Days} jours, à prix fixe. C’est ce que Khufu vend.`,
+    followUpsTitle: 'Après le sprint',
+    followUpsBody: 'Une fois votre V1 en ligne, deux façons de continuer — au choix, et jamais avant.',
 
     workTitle: 'Des produits, pas des slides',
     workSubtitle: 'Une sélection de produits conçus et livrés par Khufu.',
@@ -162,7 +166,9 @@ export const fr = {
         features: [
           'Cadrage et design produit',
           'Développement SaaS ou app mobile',
-          'Mise en production + hébergement',
+          'Infrastructure, hébergement et mise en production',
+          'Site showcase du produit, optimisé SEO et GEO',
+          '2 semaines de correctifs après la livraison',
           'Code source livré, à vous',
           'Handover et documentation',
         ],

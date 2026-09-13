@@ -14,6 +14,12 @@ import { SprintCta, SPRINT_FORM_ANCHOR } from '@/components/sprint/sprintCta'
 import { SprintComparison } from '@/components/sprint/sprintComparison'
 import { SprintLandingView } from '@/components/sprint/sprintLandingView'
 import { SprintLeadForm, type SprintFormCopy } from '@/components/sprint/sprintLeadForm'
+import { SprintMotion } from '@/components/sprint/sprintMotion'
+import { SprintTimeline } from '@/components/sprint/sprintTimeline'
+import { SprintIncluded } from '@/components/sprint/sprintIncluded'
+import { SprintDelayChart } from '@/components/sprint/sprintDelayChart'
+import { CountUpPrice } from '@/components/sprint/countUpPrice'
+import Image from 'next/image'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -57,7 +63,6 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
     body: c.form.body[locale],
     name: c.form.name[locale],
     email: c.form.email[locale],
-    company: c.form.company[locale],
     project: c.form.project[locale],
     projectPlaceholder: c.form.projectPlaceholder[locale],
     submit: c.form.submit[locale],
@@ -79,7 +84,15 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
   // Khufu's own live products — no client references on this page, and no
   // duration claimed for any of them. See the note in sprintLanding.ts.
   // Traqio joins only when its flag is on (its showcase is not online yet).
-  const ownProducts: { key: string; name: string; type: string; tagline: string; url?: string; stack: readonly string[] }[] = [
+  const ownProducts: {
+    key: string
+    name: string
+    type: string
+    tagline: string
+    url?: string
+    stack: readonly string[]
+    image?: string
+  }[] = [
     ...sprintProductSlugs
       .map((slug) => projects.find((p) => p.slug === slug))
       .filter((p): p is (typeof projects)[number] => Boolean(p))
@@ -90,6 +103,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
         tagline: p.tagline[locale],
         url: p.url,
         stack: p.stack,
+        image: p.image,
       })),
     ...(sprintLandingFlags.traqioProduct
       ? [
@@ -110,6 +124,18 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
   return (
     <>
       <SprintLandingView locale={locale} />
+      <SprintMotion />
+      {/* The reveal animations hide their element until the observer marks it in
+          view. Without JS there is no observer, so the page would read blank —
+          this puts every one of them back. Crawlers get the markup either way;
+          only the opacity is scripted. */}
+      <noscript>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: '[data-reveal],[data-fade]{opacity:1!important;transform:none!important}[data-bar]{transform:scaleX(1)!important}[data-rail-y]{transform:scaleY(1)!important}[data-draw]{stroke-dashoffset:0!important}',
+          }}
+        />
+      </noscript>
       <ServiceJsonLd name={offer.name} description={s.subtitle} priceEUR={offer.priceEur} />
       <HowToJsonLd
         name={s.title}
@@ -136,7 +162,10 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
             </h1>
             <p className="mt-5 max-w-xl text-lg/[1.6] text-[var(--color-ink-2)] text-pretty">{s.subtitle}</p>
 
-            <dl className="mt-9 flex flex-wrap gap-x-10 gap-y-6">
+            {/* Side by side on a phone: stacked, the two figures pushed the CTA
+                off the first screen, and price + delay are exactly what has to
+                be readable before the button. */}
+            <dl className="mt-8 grid grid-cols-2 gap-x-6 sm:mt-9 sm:flex sm:flex-wrap sm:gap-x-10 sm:gap-y-6">
               <div className="border-l-2 border-[var(--color-accent)] pl-4">
                 <dt className="sr-only">{dict.home.heroFigures[0].label}</dt>
                 <dd>
@@ -161,12 +190,17 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
               </div>
             </dl>
 
-            <p className="mt-6 max-w-md text-sm text-[var(--color-muted)] text-pretty">{c.hero.trust[locale]}</p>
-
-            <div className="mt-9 lg:hidden">
-              <SprintCta placement="hero" label={c.hero.ctaLabel[locale]} />
+            {/* Mobile order is deliberate and differs from desktop: LinkedIn Ads
+                traffic is overwhelmingly mobile, and the CTA used to sit below
+                the trust line, which pushed it off the first screen on a phone.
+                It now follows the two figures directly — price and delay stay
+                the last thing read before the button. */}
+            <div className="mt-8 lg:hidden">
+              <SprintCta placement="hero" label={c.hero.ctaLabel[locale]} className="w-full sm:w-auto" />
               <p className="mt-3 max-w-sm text-sm text-[var(--color-muted)]">{c.hero.ctaNote[locale]}</p>
             </div>
+
+            <p className="mt-6 max-w-md text-sm text-[var(--color-muted)] text-pretty">{c.hero.trust[locale]}</p>
           </div>
 
           {/* On desktop the form is the hero's right column: cold traffic should
@@ -234,6 +268,8 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
               <div
                 key={item.title[locale]}
                 className="rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-7"
+                data-reveal
+                style={{ '--reveal-delay': `${(i % 3) * 110}ms` } as React.CSSProperties}
               >
                 <span className="font-[family-name:var(--font-display)] text-sm font-bold text-[var(--color-accent-ink)]">
                   {String(i + 1).padStart(2, '0')}
@@ -251,25 +287,33 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
         </Container>
       </section>
 
-      {/* Day 0 → day 7 */}
+      {/* What comes with it. Three FIXED deliverables and only three — Stripe,
+          analytics and light branding were deliberately kept out and answered in
+          one FAQ entry instead (khufu HQ decisions cmu09gb6 / cmu09gn1 / cmu09j84). */}
       <section>
         <Container className="py-16 sm:py-24">
+          <SectionHeading title={c.included.title[locale]} subtitle={c.included.subtitle[locale]} />
+          <div className="mt-12">
+            <SprintIncluded locale={locale} />
+          </div>
+        </Container>
+      </section>
+
+      {/* Day 0 → day 7, drawn rather than listed. The schema is what makes the
+          offer's central claim visible — the clock only starts once the scope is
+          settled — which seven equal cards could not say. Sits on a plain
+          background directly after the "included" section, hence the top rule. */}
+      <section className="border-t border-[var(--color-line)]">
+        <Container className="py-16 sm:py-24">
           <SectionHeading title={c.timeline.title[locale]} subtitle={c.timeline.subtitle[locale]} />
-          <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {timeline.map((step) => (
-              <li
-                key={step.day}
-                className="rounded-[var(--radius-lg)] border border-[var(--color-line)] bg-white p-6"
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-accent-ink)]">
-                  {step.day}
-                </p>
-                <h3 className="mt-1 font-semibold">{step.title}</h3>
-                <p className="mt-2 text-sm text-[var(--color-ink-2)] text-pretty">{step.body}</p>
-              </li>
-            ))}
-          </ol>
-          <div className="mt-8 flex flex-col gap-3">
+          <div className="mt-14">
+            <SprintTimeline
+              steps={timeline}
+              scopeLabel={c.timeline.scopeLabel[locale]}
+              spanLabel={c.timeline.spanLabel[locale]}
+            />
+          </div>
+          <div className="mt-10 flex flex-col gap-3">
             <p className="max-w-3xl text-sm text-[var(--color-ink-2)] text-pretty">{c.timeline.note[locale]}</p>
             <p className="max-w-3xl text-sm text-[var(--color-muted)] text-pretty">{dict.method.storeNote}</p>
           </div>
@@ -286,11 +330,28 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
         <Container className="py-16 sm:py-24">
           <SectionHeading title={c.products.title[locale]} subtitle={c.products.subtitle[locale]} />
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            {ownProducts.map((p) => (
+            {ownProducts.map((p, i) => (
               <article
                 key={p.key}
-                className="flex flex-col rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-7"
+                className="flex flex-col overflow-hidden rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white"
+                data-reveal
+                style={{ '--reveal-delay': `${i * 130}ms` } as React.CSSProperties}
               >
+                {/* The product as it actually looks. Below the fold and lazy, so
+                    it cannot enter the LCP calculation; width/height are fixed so
+                    it cannot shift anything either. */}
+                {p.image && (
+                  <Image
+                    src={p.image}
+                    alt={`${p.name} — ${p.tagline}`}
+                    width={1400}
+                    height={1050}
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    loading="lazy"
+                    className="aspect-[4/3] w-full border-b border-[var(--color-line)] object-cover"
+                  />
+                )}
+                <div className="flex flex-1 flex-col p-7">
                 <div className="flex items-center gap-2">
                   <span aria-hidden className="size-2 shrink-0 rounded-full bg-[#16a34a]" />
                   <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-muted)]">
@@ -319,6 +380,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
                     </span>
                   ))}
                 </div>
+                </div>
               </article>
             ))}
           </div>
@@ -346,17 +408,19 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
                 label: c.proof.dateLabel[locale],
               },
               {
-                value: <Price eur={site.v1PriceEUR} locale={locale} />,
+                value: <CountUpPrice eur={site.v1PriceEUR} locale={locale} />,
                 label: c.proof.priceLabel[locale],
               },
               {
                 value: c.proof.codeValue[locale],
                 label: c.proof.codeLabel[locale],
               },
-            ].map((item) => (
+            ].map((item, i) => (
               <div
                 key={item.label}
                 className="rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-7"
+                data-reveal
+                style={{ '--reveal-delay': `${i * 130}ms` } as React.CSSProperties}
               >
                 <dt className="sr-only">{item.label}</dt>
                 <dd>
@@ -376,6 +440,19 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
       <section className="border-y border-[var(--color-line)] bg-[var(--color-paper-2)]">
         <Container className="py-16 sm:py-24">
           <SectionHeading title={c.comparison.title[locale]} subtitle={c.comparison.subtitle[locale]} />
+
+          {/* The one axis where the answer is not a matter of taste: time. Delay
+              only, never a price — see the note on `delayChart` in sprintLanding.ts
+              for why, and for where the two third-party figures come from. */}
+          <div className="mt-12 rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-6 sm:p-9">
+            <h3 className="font-[family-name:var(--font-display)] text-xl font-bold tracking-[-0.01em] text-balance sm:text-2xl">
+              {c.delayChart.title[locale]}
+            </h3>
+            <div className="mt-8">
+              <SprintDelayChart locale={locale} />
+            </div>
+          </div>
+
           <div className="mt-12">
             <SprintComparison locale={locale} />
           </div>
@@ -387,8 +464,13 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
         <Container className="py-16 sm:py-24">
           <SectionHeading title={c.objections.title[locale]} subtitle={c.objections.subtitle[locale]} />
           <div className="mt-12 flex flex-col gap-10">
-            {c.objections.items.map((item) => (
-              <article key={item.q[locale]} className="max-w-3xl border-l-2 border-[var(--color-accent)] pl-6">
+            {c.objections.items.map((item, i) => (
+              <article
+                key={item.q[locale]}
+                className="max-w-3xl border-l-2 border-[var(--color-accent)] pl-6"
+                data-reveal
+                style={{ '--reveal-delay': `${i * 120}ms` } as React.CSSProperties}
+              >
                 <h3 className="font-[family-name:var(--font-display)] text-xl font-bold tracking-[-0.01em] text-balance">
                   {item.q[locale]}
                 </h3>

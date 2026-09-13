@@ -130,7 +130,27 @@ type Section<T> = {
     title: Leaf<T>
     subtitle: Leaf<T>
     dayZero: { day: Leaf<T>; title: Leaf<T>; body: Leaf<T> }
+    /** Annotation drawn over day 0 in the schema. */
+    scopeLabel: Leaf<T>
+    /** Annotation drawn over the day 1 → day 7 bracket. */
+    spanLabel: Leaf<T>
     note: Leaf<T>
+  }
+  /** The three fixed deliverables that come with the price (cmu09gb6 / cmu09gn1). */
+  included: {
+    title: Leaf<T>
+    subtitle: Leaf<T>
+    badge: Leaf<T>
+    /** `value` is the optional struck-through worth — empty until it can be sourced. */
+    items: { title: Leaf<T>; body: Leaf<T>; scope: Leaf<T>; value: Leaf<T> }[]
+    note: Leaf<T>
+  }
+  /** Time-to-production, charted. Delay only — never a price (see the note in the component). */
+  delayChart: {
+    title: Leaf<T>
+    ticks: { zero: Leaf<T>; oneMonth: Leaf<T>; threeMonths: Leaf<T>; sixMonths: Leaf<T> }
+    rows: Record<'khufu' | 'agency' | 'hire', { name: Leaf<T>; value: Leaf<T>; note: Leaf<T> }>
+    sources: Leaf<T>
   }
   products: {
     title: Leaf<T>
@@ -186,7 +206,6 @@ type Section<T> = {
     body: Leaf<T>
     name: Leaf<T>
     email: Leaf<T>
-    company: Leaf<T>
     project: Leaf<T>
     projectPlaceholder: Leaf<T>
     submit: Leaf<T>
@@ -429,10 +448,114 @@ const content: Section<LocalizedInput> = {
         es: 'Llamada de encuadre, alcance escrito, presupuesto firmado. El sprint solo arranca cuando los tres están hechos: eso es justamente lo que hace sostenible la fecha.',
       },
     },
+    scopeLabel: {
+      fr: 'Périmètre arrêté',
+      en: 'Scope settled',
+      es: 'Alcance cerrado',
+    },
+    spanLabel: {
+      fr: '7 jours ouvrés',
+      en: '7 working days',
+      es: '7 días hábiles',
+    },
     note: {
       fr: 'Pendant toute la semaine, vous parlez directement au founder qui écrit le code. Pas de chef de projet intermédiaire, pas de compte rendu qui arrive trois jours après la décision.',
       en: 'All week you talk directly to the founder writing the code. No project manager in between, no status report landing three days after the decision.',
       es: 'Durante toda la semana hablas directamente con el founder que escribe el código. Sin jefe de proyecto de por medio, sin informes que llegan tres días después de la decisión.',
+    },
+  },
+
+  /*
+   * ⛔ THREE ITEMS, NEVER MORE (khufu HQ decisions cmu09gb6 / cmu09gn1 / cmu09j84).
+   *
+   * Stripe, analytics and light branding were proposed and ruled OUT of this
+   * list: they are what a shipped product is made of, and advertising them as a
+   * bonus suggests they might not have been included — which lowers the
+   * perceived level of a $17k offer. They are answered in ONE FAQ entry
+   * instead, in the "obviously it's included" register. Do not move them here.
+   *
+   * ⚠️ The word is "included". Never "free", never "on the house": on a $17,000
+   * sale the word "free" devalues everything standing next to it.
+   *
+   * ⚠️ Every `scope` line exists to keep its item a FIXED, templated deliverable.
+   * If one of them starts reading like something to negotiate, it eats the
+   * promise the offer rests on — scope settled on day 0 (cmtt6x3k).
+   */
+  included: {
+    title: {
+      fr: 'Ce qui est inclus, et que vous n’aurez pas à acheter ailleurs.',
+      en: 'What comes with it — and what you won’t have to buy elsewhere.',
+      es: 'Lo que está incluido, y que no tendrás que comprar en otro sitio.',
+    },
+    subtitle: {
+      fr: 'Trois livrables figés, dans le même prix. Pas des options, pas des suppléments à négocier.',
+      en: 'Three fixed deliverables, inside the same price. Not options, not add-ons to negotiate.',
+      es: 'Tres entregables fijos, dentro del mismo precio. Ni opciones ni extras que negociar.',
+    },
+    badge: { fr: 'Inclus', en: 'Included', es: 'Incluido' },
+    items: [
+      {
+        title: {
+          fr: 'Le site vitrine de votre produit, optimisé SEO et GEO',
+          en: 'The showcase site for your product, SEO- and GEO-optimised',
+          es: 'El sitio escaparate de tu producto, optimizado para SEO y GEO',
+        },
+        body: {
+          fr: 'Une page de présentation de votre produit, livrée en même temps que lui : balises meta, Open Graph et Twitter cards, sitemap.xml, robots.txt, données structurées JSON-LD, hreflang et llms.txt. Vous ne repartez pas seulement avec un produit, vous repartez avec de quoi le montrer — lisible par Google comme par ChatGPT.',
+          en: 'A presentation page for your product, delivered alongside it: meta tags, Open Graph and Twitter cards, sitemap.xml, robots.txt, JSON-LD structured data, hreflang and llms.txt. You don’t just leave with a product, you leave with somewhere to show it — readable by Google and by ChatGPT alike.',
+          es: 'Una página de presentación de tu producto, entregada al mismo tiempo que él: etiquetas meta, Open Graph y Twitter cards, sitemap.xml, robots.txt, datos estructurados JSON-LD, hreflang y llms.txt. No te vas solo con un producto: te vas con dónde enseñarlo, legible tanto para Google como para ChatGPT.',
+        },
+        scope: {
+          fr: 'Sur notre gabarit, avec vos textes, vos couleurs et votre logo. Ce n’est pas un site de marque sur mesure : le gabarit est précisément ce qui permet de le livrer dans la semaine sans toucher à la date.',
+          en: 'On our template, with your copy, your colours and your logo. It is not a bespoke brand site: the template is exactly what lets us ship it within the week without moving the date.',
+          es: 'Sobre nuestra plantilla, con tus textos, tus colores y tu logo. No es un sitio de marca a medida: la plantilla es justamente lo que permite entregarlo dentro de la semana sin tocar la fecha.',
+        },
+        // See sprintIncluded.tsx: published agency prices for a showcase site
+        // run from €300 to €8,000, which is a spread, not a figure. Left empty
+        // rather than approximated.
+        value: { fr: '', en: '', es: '' },
+      },
+      {
+        title: {
+          fr: 'L’infrastructure, le déploiement et la mise en production',
+          en: 'Infrastructure, deployment and going live',
+          es: 'La infraestructura, el despliegue y la puesta en producción',
+        },
+        body: {
+          fr: 'Hébergement, intégration continue, déploiement automatisé, sauvegardes, nom de domaine et certificats — configurés sur vos propres comptes, à votre nom. Le jour 7, le produit tourne : vous n’avez pas un dépôt Git à faire déployer par quelqu’un d’autre.',
+          en: 'Hosting, continuous integration, automated deployment, backups, domain name and certificates — set up on your own accounts, in your name. On day 7 the product runs: you are not left with a Git repository for somebody else to deploy.',
+          es: 'Alojamiento, integración continua, despliegue automatizado, copias de seguridad, dominio y certificados, configurados en tus propias cuentas y a tu nombre. El día 7 el producto funciona: no te quedas con un repositorio Git para que lo despliegue otro.',
+        },
+        scope: {
+          fr: 'Sur notre stack standard — Vercel, Google Cloud Run, PostgreSQL. Un hébergeur imposé ou une contrainte d’infrastructure particulière se traite au jour 0, avant que la date soit fixée.',
+          en: 'On our standard stack — Vercel, Google Cloud Run, PostgreSQL. A mandated host or a specific infrastructure constraint is settled on day 0, before the date is set.',
+          es: 'Sobre nuestro stack estándar: Vercel, Google Cloud Run, PostgreSQL. Un alojamiento impuesto o una restricción de infraestructura concreta se trata el día 0, antes de fijar la fecha.',
+        },
+        value: { fr: '', en: '', es: '' },
+      },
+      {
+        title: {
+          fr: '2 semaines de correctifs après la livraison',
+          en: '2 weeks of fixes after delivery',
+          es: '2 semanas de correcciones tras la entrega',
+        },
+        body: {
+          fr: 'Pendant les quinze jours qui suivent la mise en production, ce qui ne fonctionne pas conformément au périmètre signé au jour 0 est corrigé — sans facture et sans discussion.',
+          en: 'For the fortnight following go-live, anything that does not work as the scope signed on day 0 says it should is fixed — no invoice, no debate.',
+          es: 'Durante los quince días siguientes a la puesta en producción, lo que no funcione conforme al alcance firmado el día 0 se corrige, sin factura y sin discusión.',
+        },
+        scope: {
+          fr: 'Ce sont des correctifs, pas deux semaines de développement offertes : une évolution ou une fonctionnalité en plus reste une suite payante — jour de développement, Full Maintenance ou renfort remote.',
+          en: 'These are fixes, not two free weeks of development: an evolution or an extra feature remains a paid follow-up — a development day, Full Maintenance or remote support.',
+          es: 'Son correcciones, no dos semanas de desarrollo regaladas: una evolución o una funcionalidad extra sigue siendo una continuación de pago — día de desarrollo, Full Maintenance o refuerzo remoto.',
+        },
+        value: { fr: '', en: '', es: '' },
+      },
+    ],
+    note: {
+      fr: 'Ces trois éléments sont dans le prix fixe et dans le contrat. Ils sont volontairement figés : c’est ce qui permet de les livrer dans les sept jours sans déplacer la date.',
+      en: 'All three sit inside the fixed price and inside the contract. They are deliberately fixed: that is what makes it possible to ship them within the seven days without moving the date.',
+      es: 'Los tres están dentro del precio fijo y dentro del contrato. Están deliberadamente fijados: es lo que permite entregarlos en los siete días sin mover la fecha.',
     },
   },
 
@@ -508,6 +631,72 @@ const content: Section<LocalizedInput> = {
       fr: 'Khufu est une société enregistrée à Dubaï (Khufu FZCO, licence 5214). Les factures sont émises en euros ou en dollars, au choix.',
       en: 'Khufu is a company registered in Dubai (Khufu FZCO, licence 5214). Invoices are issued in euros or in dollars, your call.',
       es: 'Khufu es una sociedad registrada en Dubái (Khufu FZCO, licencia 5214). Las facturas se emiten en euros o en dólares, a tu elección.',
+    },
+  },
+
+  /*
+   * ⛔ DELAY ONLY ON THIS CHART — NO PRICE, and not one figure invented.
+   *
+   * The two third-party numbers are published, dated and cited on the page
+   * itself (`sources` below):
+   *   - 12 weeks: Apec, « Pratiques de recrutement des cadres » (2023), average
+   *     time to hire a cadre in France, all sectors. It is the delay before
+   *     somebody STARTS — the build is still ahead, which is why the bar keeps
+   *     running past it.
+   *   - 3 to 6 months: the range French MVP agencies publish for their own
+   *     engagements.
+   * A price comparison was deliberately NOT built: nothing defensible could be
+   * sourced for what an agency charges or what a developer costs fully loaded,
+   * and a fragile number is expensive on the one page carrying an ad budget.
+   *
+   * ⚠️ The bar widths live in sprintDelayChart.tsx. Change a figure here and you
+   * must change it there.
+   */
+  delayChart: {
+    title: {
+      fr: 'Combien de temps avant d’être en ligne.',
+      en: 'How long before you are live.',
+      es: 'Cuánto tiempo antes de estar en línea.',
+    },
+    ticks: {
+      zero: { fr: 'Jour 0', en: 'Day 0', es: 'Día 0' },
+      oneMonth: { fr: '1 mois', en: '1 month', es: '1 mes' },
+      threeMonths: { fr: '3 mois', en: '3 months', es: '3 meses' },
+      sixMonths: { fr: '6 mois', en: '6 months', es: '6 meses' },
+    },
+    rows: {
+      khufu: {
+        name: { fr: 'Khufu · Sprint V1', en: 'Khufu · Sprint V1', es: 'Khufu · Sprint V1' },
+        value: { fr: '7 jours', en: '7 days', es: '7 días' },
+        note: {
+          fr: 'Du cadrage à la mise en production. La date est inscrite au contrat avant le premier jour.',
+          en: 'From scoping to production. The date goes into the contract before day one.',
+          es: 'Del encuadre a la puesta en producción. La fecha se inscribe en el contrato antes del primer día.',
+        },
+      },
+      agency: {
+        name: { fr: 'Agence au devis', en: 'Quote-based agency', es: 'Agencia con presupuesto' },
+        value: { fr: '3 à 6 mois', en: '3 to 6 months', es: '3 a 6 meses' },
+        note: {
+          fr: 'La fourchette que les agences françaises de développement de MVP annoncent elles-mêmes pour un accompagnement — cadrage, comités et allers-retours de validation compris.',
+          en: 'The range French MVP development agencies publish for their own engagements — scoping, committees and rounds of sign-off included.',
+          es: 'El rango que las propias agencias francesas de desarrollo de MVP anuncian para un acompañamiento: encuadre, comités y validaciones incluidos.',
+        },
+      },
+      hire: {
+        name: { fr: 'Recruter un développeur', en: 'Hiring a developer', es: 'Contratar a un desarrollador' },
+        value: { fr: '12 semaines', en: '12 weeks', es: '12 semanas' },
+        note: {
+          fr: 'Le délai moyen pour recruter un cadre en France — avant la première ligne de code. Le développement commence après, et la barre continue.',
+          en: 'The average time to hire a cadre in France — before the first line of code. Development starts after that, and the bar keeps running.',
+          es: 'El plazo medio para contratar a un cuadro en Francia, antes de la primera línea de código. El desarrollo empieza después, y la barra sigue.',
+        },
+      },
+    },
+    sources: {
+      fr: 'Sources — Recrutement : Apec, « Pratiques de recrutement des cadres » (2023), délai moyen de recrutement d’un cadre en France, tous secteurs : 12 semaines. Agence : fourchette de 3 à 6 mois publiée par les agences françaises de développement de MVP pour leurs propres missions. Les 7 jours ne sont pas une moyenne : c’est le délai que nous inscrivons au contrat.',
+      en: 'Sources — Hiring: Apec, “Pratiques de recrutement des cadres” (2023), average time to hire a cadre in France, all sectors: 12 weeks. Agency: the 3-to-6-month range published by French MVP development agencies for their own engagements. The 7 days are not an average: it is the delay we write into the contract.',
+      es: 'Fuentes — Contratación: Apec, «Pratiques de recrutement des cadres» (2023), plazo medio para contratar a un cuadro en Francia, todos los sectores: 12 semanas. Agencia: el rango de 3 a 6 meses publicado por las agencias francesas de desarrollo de MVP para sus propios encargos. Los 7 días no son una media: es el plazo que inscribimos en el contrato.',
     },
   },
 
@@ -712,9 +901,25 @@ const content: Section<LocalizedInput> = {
           es: '¿Qué incluye el precio?',
         },
         a: {
-          fr: 'Le cadrage, le design, le développement, l’infrastructure, la mise en production, la passation et le code source. Pas de frais de dossier, pas de licence Khufu. Les seuls coûts qui restent chez vous sont ceux de vos propres comptes — hébergement, nom de domaine, services tiers — qu’on configure pour vous et qui restent à votre nom.',
-          en: 'Scoping, design, development, infrastructure, going live, handover and the source code. No setup fee, no Khufu licence. The only costs left with you are your own accounts — hosting, domain name, third-party services — which we set up for you and which stay in your name.',
-          es: 'El encuadre, el diseño, el desarrollo, la infraestructura, la puesta en producción, el traspaso y el código fuente. Sin gastos de apertura ni licencia Khufu. Los únicos costes que quedan de tu lado son los de tus propias cuentas —alojamiento, dominio, servicios de terceros—, que configuramos por ti y quedan a tu nombre.',
+          fr: 'Le cadrage, le design, le développement, l’infrastructure, la mise en production, le site vitrine du produit, deux semaines de correctifs, la passation et le code source. Pas de frais de dossier, pas de licence Khufu. Les seuls coûts qui restent chez vous sont ceux de vos propres comptes — hébergement, nom de domaine, services tiers — qu’on configure pour vous et qui restent à votre nom.',
+          en: 'Scoping, design, development, infrastructure, going live, the product’s showcase site, two weeks of fixes, handover and the source code. No setup fee, no Khufu licence. The only costs left with you are your own accounts — hosting, domain name, third-party services — which we set up for you and which stay in your name.',
+          es: 'El encuadre, el diseño, el desarrollo, la infraestructura, la puesta en producción, el sitio escaparate del producto, dos semanas de correcciones, el traspaso y el código fuente. Sin gastos de apertura ni licencia Khufu. Los únicos costes que quedan de tu lado son los de tus propias cuentas —alojamiento, dominio, servicios de terceros—, que configuramos por ti y quedan a tu nombre.',
+        },
+      },
+      {
+        // ⛔ ONE question for all four, on purpose (khufu HQ decision cmu09j84).
+        // Splitting them, or promoting them to the "included" list, would suggest
+        // they might not have been included and lower the perceived level of the
+        // offer. Keep the register confident, and keep it short.
+        q: {
+          fr: 'Le paiement, les analytics, les emails transactionnels et l’identité visuelle sont compris ?',
+          en: 'Are payments, analytics, transactional emails and the visual identity included?',
+          es: '¿El pago, la analítica, los emails transaccionales y la identidad visual están incluidos?',
+        },
+        a: {
+          fr: 'Oui, évidemment. C’est ce que veut dire livrer un produit en production : si votre produit encaisse, il a Stripe branché ; s’il a des utilisateurs, il a ses emails transactionnels, sa mesure d’audience et une identité cohérente. On ne facture pas en supplément ce qui fait qu’un produit fonctionne.',
+          en: 'Yes, obviously. That is what shipping a product to production means: if your product takes payments, Stripe is wired in; if it has users, it has its transactional emails, its analytics and a coherent identity. We don’t bill separately for what makes a product work.',
+          es: 'Sí, evidentemente. Eso es lo que significa entregar un producto en producción: si tu producto cobra, lleva Stripe conectado; si tiene usuarios, tiene sus emails transaccionales, su medición de audiencia y una identidad coherente. No facturamos aparte lo que hace que un producto funcione.',
         },
       },
       {
@@ -853,8 +1058,14 @@ const content: Section<LocalizedInput> = {
     },
     name: { fr: 'Nom', en: 'Name', es: 'Nombre' },
     email: { fr: 'Email professionnel', en: 'Work email', es: 'Email profesional' },
-    company: { fr: 'Entreprise (optionnel)', en: 'Company (optional)', es: 'Empresa (opcional)' },
-    project: { fr: 'Ce que vous voulez lancer', en: 'What you want to launch', es: 'Qué quieres lanzar' },
+    // The form asks for a name, an email and — optionally — the brief. Nothing
+    // else: the traffic is cold, paid and mostly on a phone, and every extra row
+    // is paid for twice. The company was dropped; it is a question for the call.
+    project: {
+      fr: 'Ce que vous voulez lancer (optionnel)',
+      en: 'What you want to launch (optional)',
+      es: 'Qué quieres lanzar (opcional)',
+    },
     projectPlaceholder: {
       fr: 'En trois lignes : à quoi sert le produit, pour qui, et ce qui doit absolument marcher le jour du lancement.',
       en: 'In three lines: what the product does, for whom, and what absolutely has to work on launch day.',

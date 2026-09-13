@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { locales, localeHrefLang } from '@/i18n/config'
+import { locales, defaultLocale, localeHrefLang } from '@/i18n/config'
 import { site, href, routes, type RouteKey } from '@/content/site'
 import { projects } from '@/content/projects'
 import { comparisons, useCases } from '@/content/geo'
@@ -15,10 +15,16 @@ const lowPriorityRoutes = new Set<RouteKey>(['legal', 'privacy'])
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = []
 
+  // `x-default` must match what the pages themselves declare (see lib/metadata.ts):
+  // Google treats sitemap and on-page hreflang as one set, and a missing x-default
+  // here made the two disagree on every localized URL.
   const alt = (key: RouteKey, slug?: string) => ({
-    languages: Object.fromEntries(
-      locales.map((l) => [localeHrefLang[l], `${site.url}${href(l, key, slug)}`]),
-    ),
+    languages: {
+      ...Object.fromEntries(
+        locales.map((l) => [localeHrefLang[l], `${site.url}${href(l, key, slug)}`]),
+      ),
+      'x-default': `${site.url}${href(defaultLocale, key, slug)}`,
+    },
   })
 
   // No `lastModified` on evergreen pages: Google prefers no lastmod over a fake one

@@ -124,8 +124,12 @@ export const tr: Dictionary = {
       },
     ],
 
-    offersTitle: 'Khufu ile çalışmanın üç yolu',
-    offersSubtitle: 'Şimşek hızında lansmandan uzun vadeli desteğe.',
+    // ONE offer on the home, not three (decided 2026-09-08). Maintenance and
+    // Remote are still sold — as follow-ups to a sprint, below and subordinate.
+    offersTitle: 'Tek bir teklif: Sprint V1',
+    offersSubtitle: `V1’iniz ${site.v1Days} günde tasarlanır, geliştirilir ve yayına alınır — sabit fiyatla. Khufu’nun sattığı şey bu.`,
+    followUpsTitle: 'Sprint’ten sonra',
+    followUpsBody: 'V1’iniz yayına girdikten sonra devam etmenin iki yolu var — seçim sizin, asla önceden değil.',
 
     workTitle: 'Slaytlar değil, ürünler',
     workSubtitle: 'Khufu tarafından tasarlanıp yayına alınan ürünlerden bir seçki.',
@@ -158,7 +162,9 @@ export const tr: Dictionary = {
         features: [
           'Kapsam belirleme ve ürün tasarımı',
           'SaaS veya mobil uygulama geliştirme',
-          'Yayına alma + barındırma',
+          'Altyapı, barındırma ve yayına alma',
+          'Ürün için showcase sitesi, SEO ve GEO uyumlu',
+          'Teslimattan sonra 2 hafta düzeltme',
           'Kaynak kodu teslim edildi, sizin',
           'Devir ve dokümantasyon',
         ],
