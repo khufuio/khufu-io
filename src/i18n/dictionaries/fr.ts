@@ -333,12 +333,17 @@ export const fr = {
     kicker: 'La méthode',
     title: 'Sept jours, un produit lançable.',
     subtitle: 'Un déroulé serré et transparent. Vous savez exactement ce qui se passe, chaque jour.',
+    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
+    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
+    // full testing day while the technical work runs, and the weekend applies what
+    // that testing found. Feeds /methode AND the /sprint-v1 timeline — keep them in
+    // step with the contract (art. 3.5) rather than with a nicer-sounding story.
     days: [
-      { day: 'Jour 1', title: 'Cadrage', body: 'On définit le périmètre exact, les parcours clés et l’architecture technique. Vous validez avant qu’on écrive la moindre ligne.' },
-      { day: 'Jour 2–3', title: 'Développement', body: 'On attaque le cœur du produit : front, back et base de données. Code propre et architecture claire dès le premier commit.' },
-      { day: 'Jour 4', title: 'Infra & tests', body: 'Mise en place de l’infrastructure, tests, performance et sécurité. On solidifie les fondations avant d’itérer.' },
-      { day: 'Jour 5–6', title: 'Itérations', body: 'Développement piloté par vos retours : on ajuste le produit en direct, en échange continu avec vous.' },
-      { day: 'Jour 7', title: 'Mise en production', body: 'Déploiement, configuration CI/CD, hébergement et handover. Votre V1 est en ligne, entre vos mains.' },
+      { day: 'Jour 1', title: 'Lancement', body: 'Le périmètre est arrêté au jour 0, avant le lundi : on attaque le produit dès 6 h. Architecture, socle technique, premiers écrans.' },
+      { day: 'Jour 2–3', title: 'Développement', body: 'On construit le cœur du produit : front, back et base de données. Code propre et architecture claire dès le premier commit.' },
+      { day: 'Jour 4', title: 'Infra & tests', body: 'Mise en place de l’infrastructure, tests, performance et sécurité. On solidifie les fondations avant de vous montrer le produit.' },
+      { day: 'Jour 5', title: 'Votre journée de recette', body: 'Vendredi, vous testez le produit toute la journée pendant qu’on traite le technique : chaîne de déploiement, infrastructure, mise en production.' },
+      { day: 'Jour 6–7', title: 'Correctifs et mise en ligne', body: 'On applique vos retours du vendredi, on finalise, et votre V1 est en production à la fin du dimanche.' },
     ],
     qualityTitle: 'Du code propre, maintenable et performant',
     qualityBody:

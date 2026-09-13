@@ -329,12 +329,17 @@ export const de: Dictionary = {
     kicker: 'Die Methode',
     title: 'Sieben Tage, ein startklares Produkt.',
     subtitle: 'Ein enger, transparenter Ablauf. Du weißt genau, was jeden Tag passiert.',
+    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
+    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
+    // full testing day while the technical work runs, and the weekend applies what
+    // that testing found. Feeds /methode AND the /sprint-v1 timeline — keep them in
+    // step with the contract (art. 3.5) rather than with a nicer-sounding story.
     days: [
-      { day: 'Tag 1', title: 'Scoping', body: 'Wir definieren den exakten Umfang, die zentralen Flows und die technische Architektur. Du gibst frei, bevor wir eine einzige Zeile schreiben.' },
-      { day: 'Tag 2–3', title: 'Entwicklung', body: 'Wir gehen den Kern des Produkts an: Front, Back und Datenbank. Sauberer Code und klare Architektur ab dem ersten Commit.' },
-      { day: 'Tag 4', title: 'Infra & Tests', body: 'Aufbau der Infrastruktur, Tests, Performance und Sicherheit. Wir festigen das Fundament, bevor wir iterieren.' },
-      { day: 'Tag 5–6', title: 'Iterationen', body: 'Entwicklung nach deinem Feedback: Wir passen das Produkt live an, im ständigen Austausch mit dir.' },
-      { day: 'Tag 7', title: 'Go-Live', body: 'Deployment, CI/CD-Konfiguration, Hosting und Übergabe. Deine V1 ist online, in deinen Händen.' },
+      { day: 'Tag 1', title: 'Start', body: 'Der Umfang steht an Tag 0 fest, vor dem Montag: Wir bauen ab 6 Uhr. Architektur, technisches Fundament, erste Screens.' },
+      { day: 'Tag 2–3', title: 'Entwicklung', body: 'Wir bauen den Kern des Produkts: Frontend, Backend und Datenbank. Sauberer Code und klare Architektur ab dem ersten Commit.' },
+      { day: 'Tag 4', title: 'Infra & Tests', body: 'Infrastruktur, Tests, Performance und Sicherheit. Wir festigen das Fundament, bevor du das Produkt zu sehen bekommst.' },
+      { day: 'Tag 5', title: 'Dein Testtag', body: 'Am Freitag testest du das Produkt den ganzen Tag, während wir die Technik erledigen: Deployment-Pipeline, Infrastruktur, Go-live.' },
+      { day: 'Tag 6–7', title: 'Korrekturen und Go-live', body: 'Wir setzen dein Freitags-Feedback um, finalisieren, und deine V1 ist am Ende des Sonntags live.' },
     ],
     qualityTitle: 'Sauberer, wartbarer und performanter Code',
     qualityBody:

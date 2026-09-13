@@ -329,12 +329,17 @@ export const pt: Dictionary = {
     kicker: 'O método',
     title: 'Sete dias, um produto lançável.',
     subtitle: 'Um processo apertado e transparente. Sabe exatamente o que acontece, todos os dias.',
+    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
+    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
+    // full testing day while the technical work runs, and the weekend applies what
+    // that testing found. Feeds /methode AND the /sprint-v1 timeline — keep them in
+    // step with the contract (art. 3.5) rather than with a nicer-sounding story.
     days: [
-      { day: 'Dia 1', title: 'Definição de âmbito', body: 'Definimos o âmbito exato, os fluxos principais e a arquitetura técnica. Valida antes de escrevermos uma única linha.' },
-      { day: 'Dia 2–3', title: 'Desenvolvimento', body: 'Atacamos o núcleo do produto: front, back e base de dados. Código limpo e arquitetura clara desde o primeiro commit.' },
-      { day: 'Dia 4', title: 'Infra e testes', body: 'Implementação da infraestrutura, testes, desempenho e segurança. Solidificamos os alicerces antes de iterar.' },
-      { day: 'Dia 5–6', title: 'Iterações', body: 'Desenvolvimento guiado pelo seu feedback: ajustamos o produto ao vivo, em contacto contínuo consigo.' },
-      { day: 'Dia 7', title: 'Colocação em produção', body: 'Deploy, configuração CI/CD, alojamento e handover. A sua V1 está online, nas suas mãos.' },
+      { day: 'Dia 1', title: 'Arranque', body: 'O âmbito fica fechado no dia 0, antes da segunda-feira: começamos a construir às 6 h. Arquitetura, base técnica, primeiros ecrãs.' },
+      { day: 'Dia 2–3', title: 'Desenvolvimento', body: 'Construímos o núcleo do produto: front, back e base de dados. Código limpo e arquitetura clara desde o primeiro commit.' },
+      { day: 'Dia 4', title: 'Infra e testes', body: 'Infraestrutura, testes, desempenho e segurança. Consolidamos as fundações antes de lhe mostrar o produto.' },
+      { day: 'Dia 5', title: 'O seu dia de testes', body: 'Na sexta-feira testa o produto o dia todo enquanto tratamos da parte técnica: pipeline de deploy, infraestrutura, entrada em produção.' },
+      { day: 'Dia 6–7', title: 'Correções e lançamento', body: 'Aplicamos o seu feedback de sexta-feira, finalizamos, e a sua V1 está em produção no final de domingo.' },
     ],
     qualityTitle: 'Código limpo, sustentável e de alto desempenho',
     qualityBody:

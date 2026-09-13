@@ -314,12 +314,17 @@ export const en: Dictionary = {
     kicker: 'The method',
     title: 'Seven days, a launchable product.',
     subtitle: 'A tight, transparent flow. You know exactly what happens, every day.',
+    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
+    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
+    // full testing day while the technical work runs, and the weekend applies what
+    // that testing found. Feeds /methode AND the /sprint-v1 timeline — keep them in
+    // step with the contract (art. 3.5) rather than with a nicer-sounding story.
     days: [
-      { day: 'Day 1', title: 'Scoping', body: 'We define the exact scope, the key flows and the technical architecture. You sign off before we write a single line.' },
-      { day: 'Day 2–3', title: 'Development', body: 'We build the core of the product: front, back and database. Clean code and clear architecture from the first commit.' },
-      { day: 'Day 4', title: 'Infra & tests', body: 'Infrastructure, tests, performance and security. We solidify the foundations before iterating.' },
-      { day: 'Day 5–6', title: 'Iterations', body: 'Development driven by your feedback: we adjust the product live, in continuous contact with you.' },
-      { day: 'Day 7', title: 'Go live', body: 'Deployment, CI/CD setup, hosting and handover. Your V1 is online, in your hands.' },
+      { day: 'Day 1', title: 'Kickoff', body: 'The scope is settled on day 0, before the Monday: we start building at 6am. Architecture, technical foundations, first screens.' },
+      { day: 'Day 2–3', title: 'Development', body: 'We build the core of the product: front end, back end and database. Clean code and a clear architecture from the first commit.' },
+      { day: 'Day 4', title: 'Infra & testing', body: 'Infrastructure, tests, performance and security. We solidify the foundations before putting the product in front of you.' },
+      { day: 'Day 5', title: 'Your testing day', body: 'On Friday you test the product all day while we handle the technical side: deployment pipeline, infrastructure, going live.' },
+      { day: 'Day 6–7', title: 'Fixes and go-live', body: 'We apply your Friday feedback, finalise, and your V1 is in production by the end of Sunday.' },
     ],
     qualityTitle: 'Clean, maintainable, performant code',
     qualityBody:

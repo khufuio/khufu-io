@@ -314,12 +314,17 @@ export const nl: Dictionary = {
     kicker: 'De methode',
     title: 'Zeven dagen, een lanceerbaar product.',
     subtitle: 'Een strak, transparant verloop. Je weet precies wat er elke dag gebeurt.',
+    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
+    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
+    // full testing day while the technical work runs, and the weekend applies what
+    // that testing found. Feeds /methode AND the /sprint-v1 timeline — keep them in
+    // step with the contract (art. 3.5) rather than with a nicer-sounding story.
     days: [
-      { day: 'Dag 1', title: 'Scoping', body: 'We bepalen de exacte scope, de belangrijkste flows en de technische architectuur. Jij keurt goed voordat we één regel schrijven.' },
-      { day: 'Dag 2–3', title: 'Ontwikkeling', body: 'We bouwen de kern van het product: front, back en database. Schone code en heldere architectuur vanaf de eerste commit.' },
-      { day: 'Dag 4', title: 'Infra & tests', body: 'Infrastructuur, tests, performance en security. We verstevigen de fundamenten voordat we itereren.' },
-      { day: 'Dag 5–6', title: 'Iteraties', body: 'Ontwikkeling gestuurd door jouw feedback: we passen het product live aan, in voortdurend contact met jou.' },
-      { day: 'Dag 7', title: 'Livegang', body: 'Deployment, CI/CD-setup, hosting en overdracht. Je V1 staat online, in jouw handen.' },
+      { day: 'Dag 1', title: 'Start', body: 'De scope staat vast op dag 0, vóór de maandag: we bouwen vanaf 6 uur. Architectuur, technische basis, eerste schermen.' },
+      { day: 'Dag 2–3', title: 'Ontwikkeling', body: 'We bouwen de kern van het product: front, back en database. Schone code en een heldere architectuur vanaf de eerste commit.' },
+      { day: 'Dag 4', title: 'Infra & tests', body: 'Infrastructuur, tests, performance en security. We verstevigen het fundament voordat we het product aan je laten zien.' },
+      { day: 'Dag 5', title: 'Jouw testdag', body: 'Op vrijdag test jij het product de hele dag terwijl wij de techniek doen: deploypijplijn, infrastructuur, livegang.' },
+      { day: 'Dag 6–7', title: 'Correcties en livegang', body: 'We verwerken je feedback van vrijdag, ronden af, en je V1 staat aan het eind van zondag live.' },
     ],
     qualityTitle: 'Schone, onderhoudbare en performante code',
     qualityBody:

@@ -329,12 +329,17 @@ export const pl: Dictionary = {
     kicker: 'Metoda',
     title: 'Siedem dni, produkt gotowy do startu.',
     subtitle: 'Ciasny i przejrzysty przebieg. Wiesz dokładnie, co dzieje się każdego dnia.',
+    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
+    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
+    // full testing day while the technical work runs, and the weekend applies what
+    // that testing found. Feeds /methode AND the /sprint-v1 timeline — keep them in
+    // step with the contract (art. 3.5) rather than with a nicer-sounding story.
     days: [
-      { day: 'Dzień 1', title: 'Zakres', body: 'Definiujemy dokładny zakres, kluczowe ścieżki i architekturę techniczną. Zatwierdzasz, zanim napiszemy choćby jedną linię.' },
-      { day: 'Dzień 2–3', title: 'Rozwój', body: 'Bierzemy się za rdzeń produktu: front, back i bazę danych. Czysty kod i jasna architektura od pierwszego commita.' },
-      { day: 'Dzień 4', title: 'Infra i testy', body: 'Konfiguracja infrastruktury, testy, wydajność i bezpieczeństwo. Wzmacniamy fundamenty przed iteracjami.' },
-      { day: 'Dzień 5–6', title: 'Iteracje', body: 'Rozwój sterowany Twoim feedbackiem: dostrajamy produkt na żywo, w ciągłym kontakcie z Tobą.' },
-      { day: 'Dzień 7', title: 'Wdrożenie na produkcję', body: 'Deployment, konfiguracja CI/CD, hosting i przekazanie. Twoje V1 jest online, w Twoich rękach.' },
+      { day: 'Dzień 1', title: 'Start', body: 'Zakres jest ustalony w dniu 0, przed poniedziałkiem: budujemy od 6 rano. Architektura, fundament techniczny, pierwsze ekrany.' },
+      { day: 'Dzień 2–3', title: 'Development', body: 'Budujemy rdzeń produktu: front, back i bazę danych. Czysty kod i jasna architektura od pierwszego commita.' },
+      { day: 'Dzień 4', title: 'Infra i testy', body: 'Infrastruktura, testy, wydajność i bezpieczeństwo. Wzmacniamy fundamenty, zanim pokażemy Ci produkt.' },
+      { day: 'Dzień 5', title: 'Twój dzień testów', body: 'W piątek testujesz produkt przez cały dzień, a my zajmujemy się techniką: pipeline wdrożeniowy, infrastruktura, wejście na produkcję.' },
+      { day: 'Dzień 6–7', title: 'Poprawki i start', body: 'Wprowadzamy Twoje piątkowe uwagi, finalizujemy, i Twoje V1 jest na produkcji pod koniec niedzieli.' },
     ],
     qualityTitle: 'Czysty, łatwy w utrzymaniu i wydajny kod',
     qualityBody:

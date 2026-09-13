@@ -329,12 +329,17 @@ export const it: Dictionary = {
     kicker: 'Il metodo',
     title: 'Sette giorni, un prodotto lanciabile.',
     subtitle: 'Uno svolgimento serrato e trasparente. Sai esattamente cosa succede, ogni giorno.',
+    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
+    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
+    // full testing day while the technical work runs, and the weekend applies what
+    // that testing found. Feeds /methode AND the /sprint-v1 timeline — keep them in
+    // step with the contract (art. 3.5) rather than with a nicer-sounding story.
     days: [
-      { day: 'Giorno 1', title: 'Definizione dell’ambito', body: 'Definiamo l’ambito esatto, i flussi chiave e l’architettura tecnica. Approvi prima che scriviamo una sola riga.' },
-      { day: 'Giorno 2–3', title: 'Sviluppo', body: 'Attacchiamo il cuore del prodotto: front, back e database. Codice pulito e architettura chiara fin dal primo commit.' },
-      { day: 'Giorno 4', title: 'Infra e test', body: 'Predisposizione dell’infrastruttura, test, performance e sicurezza. Consolidiamo le fondamenta prima di iterare.' },
-      { day: 'Giorno 5–6', title: 'Iterazioni', body: 'Sviluppo guidato dai tuoi feedback: aggiustiamo il prodotto in diretta, in scambio continuo con te.' },
-      { day: 'Giorno 7', title: 'Messa in produzione', body: 'Deploy, configurazione CI/CD, hosting e handover. La tua V1 è online, nelle tue mani.' },
+      { day: 'Giorno 1', title: 'Avvio', body: 'L’ambito è chiuso al giorno 0, prima del lunedì: si costruisce dalle 6. Architettura, base tecnica, prime schermate.' },
+      { day: 'Giorno 2–3', title: 'Sviluppo', body: 'Costruiamo il cuore del prodotto: front, back e database. Codice pulito e architettura chiara dal primo commit.' },
+      { day: 'Giorno 4', title: 'Infra e test', body: 'Infrastruttura, test, performance e sicurezza. Consolidiamo le fondamenta prima di mostrarti il prodotto.' },
+      { day: 'Giorno 5', title: 'La tua giornata di collaudo', body: 'Il venerdì provi il prodotto tutto il giorno mentre noi ci occupiamo della parte tecnica: pipeline di deploy, infrastruttura, messa in produzione.' },
+      { day: 'Giorno 6–7', title: 'Correzioni e go-live', body: 'Applichiamo i tuoi riscontri del venerdì, finalizziamo, e la tua V1 è in produzione alla fine della domenica.' },
     ],
     qualityTitle: 'Codice pulito, manutenibile e performante',
     qualityBody:

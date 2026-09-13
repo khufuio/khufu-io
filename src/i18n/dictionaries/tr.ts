@@ -329,12 +329,17 @@ export const tr: Dictionary = {
     kicker: 'Yöntem',
     title: 'Yedi gün, yayına alınabilir bir ürün.',
     subtitle: 'Sıkı ve şeffaf bir akış. Her gün tam olarak ne olduğunu bilirsiniz.',
+    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
+    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
+    // full testing day while the technical work runs, and the weekend applies what
+    // that testing found. Feeds /methode AND the /sprint-v1 timeline — keep them in
+    // step with the contract (art. 3.5) rather than with a nicer-sounding story.
     days: [
-      { day: '1. Gün', title: 'Kapsam belirleme', body: 'Tam kapsamı, kritik akışları ve teknik mimariyi tanımlarız. Tek bir satır yazmadan önce siz onaylarsınız.' },
-      { day: '2–3. Gün', title: 'Geliştirme', body: 'Ürünün kalbine gireriz: front, back ve veritabanı. İlk commit’ten itibaren temiz kod ve net mimari.' },
-      { day: '4. Gün', title: 'Altyapı ve testler', body: 'Altyapı kurulumu, testler, performans ve güvenlik. Yinelemeden önce temelleri sağlamlaştırırız.' },
-      { day: '5–6. Gün', title: 'Yinelemeler', body: 'Geri bildirimlerinizle yönlendirilen geliştirme: ürünü sizinle sürekli iletişimde, canlı olarak ayarlarız.' },
-      { day: '7. Gün', title: 'Yayına alma', body: 'Dağıtım, CI/CD yapılandırması, barındırma ve devir. V1’iniz çevrimiçi, sizin elinizde.' },
+      { day: 'Gün 1', title: 'Başlangıç', body: 'Kapsam 0. günde, pazartesiden önce netleşir: saat 6’dan itibaren ürünü inşa ederiz. Mimari, teknik temel, ilk ekranlar.' },
+      { day: 'Gün 2–3', title: 'Geliştirme', body: 'Ürünün çekirdeğini kurarız: ön yüz, arka uç ve veritabanı. İlk commit’ten itibaren temiz kod ve net mimari.' },
+      { day: 'Gün 4', title: 'Altyapı ve testler', body: 'Altyapı, testler, performans ve güvenlik. Ürünü size göstermeden önce temelleri sağlamlaştırırız.' },
+      { day: 'Gün 5', title: 'Sizin test gününüz', body: 'Cuma günü ürünü gün boyu test edersiniz; biz bu sırada teknik tarafı hallederiz: dağıtım hattı, altyapı, yayına alma.' },
+      { day: 'Gün 6–7', title: 'Düzeltmeler ve yayın', body: 'Cuma günkü geri bildirimlerinizi uygular, tamamlar ve V1’inizi pazar günü sonunda canlıya alırız.' },
     ],
     qualityTitle: 'Temiz, sürdürülebilir ve performanslı kod',
     qualityBody:
