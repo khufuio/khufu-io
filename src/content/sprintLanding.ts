@@ -375,11 +375,35 @@ const content: Section<LocalizedInput> = {
         },
       },
       {
+        title: {
+          fr: 'Un site showcase du produit',
+          en: 'A showcase site for the product',
+          es: 'Un sitio showcase del producto',
+        },
+        body: {
+          fr: 'Une page de présentation du produit livré, optimisée pour le référencement et pour les moteurs génératifs. Vous ne repartez pas seulement avec une V1 : vous repartez avec de quoi la vendre.',
+          en: 'A presentation page for the delivered product, optimised for search and for generative engines. You don’t walk away with a V1 alone: you walk away with something to sell it with.',
+          es: 'Una página de presentación del producto entregado, optimizada para buscadores y para motores generativos. No te vas solo con una V1: te vas con algo para venderla.',
+        },
+      },
+      {
         title: { fr: 'Passation documentée', en: 'Documented handover', es: 'Traspaso documentado' },
         body: {
           fr: 'Documentation technique, transfert de tous les accès et une session de passation. Vous repartez capable d’opérer le produit, ou de le confier à quelqu’un d’autre.',
           en: 'Technical documentation, every access transferred and a handover session. You leave able to run the product — or to hand it to someone else.',
           es: 'Documentación técnica, traspaso de todos los accesos y una sesión de handover. Te vas pudiendo operar el producto, o confiárselo a otra persona.',
+        },
+      },
+      {
+        title: {
+          fr: 'Deux semaines de correctifs',
+          en: 'Two weeks of fixes',
+          es: 'Dos semanas de correcciones',
+        },
+        body: {
+          fr: 'Après la livraison, quatorze jours pendant lesquels ce qui ne fonctionne pas conformément au périmètre signé au jour 0 est corrigé. Ce sont des correctifs, pas du développement : une évolution ou un ajout reste une prestation à part.',
+          en: 'After delivery, fourteen days during which anything that does not work the way the scope signed on day 0 says it should is fixed. These are fixes, not development: an evolution or an addition is separate work.',
+          es: 'Tras la entrega, catorce días durante los cuales se corrige todo lo que no funciona conforme al alcance firmado el día 0. Son correcciones, no desarrollo: una evolución o un añadido es un trabajo aparte.',
         },
       },
     ],
@@ -670,9 +694,9 @@ const content: Section<LocalizedInput> = {
           es: '«¿Y después del día 7, qué hago?»',
         },
         a: {
-          fr: 'Le code est à vous et il tourne sur vos propres comptes : vous pouvez continuer seul, recruter, ou confier la suite à n’importe quel prestataire. Si vous préférez ne pas vous en occuper, deux suites existent chez nous — Full Maintenance (infra managée, support avec SLA, jours de développement inclus chaque mois) ou du renfort remote facturé à l’heure. Aucune des deux n’est obligatoire et le sprint ne vous y engage pas : c’est la différence entre un produit livré et un abonnement déguisé.',
-          en: 'The code is yours and it runs on your own accounts: you can continue alone, hire, or hand the rest to any provider. If you’d rather not deal with it, we offer two follow-ups — Full Maintenance (managed infra, support with SLA, development days included every month) or remote support billed by the hour. Neither is mandatory and the sprint doesn’t commit you to them: that’s the difference between a delivered product and a disguised subscription.',
-          es: 'El código es tuyo y funciona en tus propias cuentas: puedes continuar solo, contratar o confiar el resto a cualquier proveedor. Si prefieres no ocuparte, tenemos dos continuaciones: Full Maintenance (infra gestionada, soporte con SLA, días de desarrollo incluidos cada mes) o refuerzo remoto facturado por horas. Ninguna es obligatoria y el sprint no te compromete: esa es la diferencia entre un producto entregado y una suscripción disfrazada.',
+          fr: 'D’abord, rien ne s’arrête au jour 7 : vous avez deux semaines de correctifs, pendant lesquelles ce qui ne fonctionne pas comme le périmètre signé au jour 0 le prévoit est corrigé. Ensuite, le code est à vous et il tourne sur vos propres comptes : vous pouvez continuer seul, recruter, ou confier la suite à n’importe quel prestataire. Si vous préférez ne pas vous en occuper, deux suites existent chez nous — Full Maintenance (infra managée, support avec SLA, jours de développement inclus chaque mois) ou du renfort remote facturé à l’heure. Aucune des deux n’est obligatoire et le sprint ne vous y engage pas : c’est la différence entre un produit livré et un abonnement déguisé.',
+          en: 'First, nothing stops on day 7: you have two weeks of fixes, during which anything that does not work the way the scope signed on day 0 says it should is put right. Then, the code is yours and it runs on your own accounts: you can continue alone, hire, or hand the rest to any provider. If you’d rather not deal with it, we offer two follow-ups — Full Maintenance (managed infra, support with SLA, development days included every month) or remote support billed by the hour. Neither is mandatory and the sprint doesn’t commit you to them: that’s the difference between a delivered product and a disguised subscription.',
+          es: 'Primero, nada se detiene el día 7: tienes dos semanas de correcciones, durante las cuales se arregla todo lo que no funciona conforme al alcance firmado el día 0. Después, el código es tuyo y funciona en tus propias cuentas: puedes continuar solo, contratar o confiar el resto a cualquier proveedor. Si prefieres no ocuparte, tenemos dos continuaciones: Full Maintenance (infra gestionada, soporte con SLA, días de desarrollo incluidos cada mes) o refuerzo remoto facturado por horas. Ninguna es obligatoria y el sprint no te compromete: esa es la diferencia entre un producto entregado y una suscripción disfrazada.',
         },
       },
     ],
