@@ -210,7 +210,7 @@ export const nl: Dictionary = {
     guaranteesTitle: 'Wat we garanderen',
     guarantees: [
       'Een schriftelijke, afgesproken scope voordat we beginnen.',
-      'Een leverdatum, gehaald.',
+      'Een leverdatum, gehaald: we starten op maandag, zeven dagen later sta je live.',
       'De broncode is van jou, vanaf dag één.',
     ],
   },
@@ -447,6 +447,10 @@ export const nl: Dictionary = {
       {
         q: 'Zit de storevalidatie in de doorlooptijd van één week?',
         a: 'Nee. De 7 dagen dekken design, ontwikkeling en livegang. Voor een mobiele app komt de reviewtijd van de App Store en Google Play erbij en die ligt buiten onze controle (meestal enkele dagen).',
+      },
+      {
+        q: 'Wanneer start een sprint?',
+        a: 'Een sprint start altijd op maandag om 06:00 UTC en eindigt op zondag: zeven dagen, weekend inbegrepen. Khufu draait één sprint tegelijk — één week, één klant. Scoping, de schriftelijke scope en de toegangen regelen we vóór de maandag, op dag 0, zodat ze de week niet opeten. Vrijdag (dag 5) is jouw testdag: jij test terwijl wij de livegang en de infrastructuur doen. Zaterdag en zondag zijn voor de correcties uit jouw test, en de V1 staat aan het eind van zondag live.',
       },
     ],
   },

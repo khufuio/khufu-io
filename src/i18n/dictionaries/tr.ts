@@ -210,7 +210,7 @@ export const tr: Dictionary = {
     guaranteesTitle: 'Garanti ettiklerimiz',
     guarantees: [
       'Başlamadan önce yazılı ve onaylanmış bir kapsam.',
-      'Bir teslim tarihi, tutulan.',
+      'Bir teslim tarihi, tutulan: pazartesi başlıyoruz, yedi gün sonra canlıdasınız.',
       'Kaynak kodu, ilk günden itibaren sizindir.',
     ],
   },
@@ -462,6 +462,10 @@ export const tr: Dictionary = {
       {
         q: 'Bir haftalık süre store onaylarını içeriyor mu?',
         a: 'Hayır. 7 gün tasarımı, geliştirmeyi ve yayına almayı kapsar. Bir mobil uygulama için App Store ve Google Play onay süresi buna eklenir ve bizim kontrolümüzde değildir (genellikle birkaç gün).',
+      },
+      {
+        q: 'Bir sprint ne zaman başlar?',
+        a: 'Sprint her zaman pazartesi 06:00 UTC’de başlar ve pazar günü biter: hafta sonu dahil yedi gün. Khufu aynı anda tek bir sprint yürütür — bir hafta, bir müşteri. Kapsam belirleme, yazılı kapsam ve erişimler pazartesiden önce, 0. günde halledilir; böylece haftayı yemezler. Cuma (5. gün) sizin test gününüzdür: siz test edersiniz, biz yayına alma ve altyapıyla ilgileniriz. Cumartesi ve pazar, testinizden çıkan düzeltmeler içindir; V1 pazar günü sonunda canlıdadır.',
       },
     ],
   },

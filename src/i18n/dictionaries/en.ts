@@ -210,7 +210,7 @@ export const en: Dictionary = {
     guaranteesTitle: 'What we guarantee',
     guarantees: [
       'A written, agreed scope before we start.',
-      'A delivery date, met.',
+      'A delivery date, met: we start on a Monday, you are in production seven days later.',
       'The source code is yours, from day one.',
     ],
   },
@@ -447,6 +447,10 @@ export const en: Dictionary = {
       {
         q: 'Does the one-week timeline include app store review?',
         a: 'No. The 7 days cover design, development and production deployment. For a mobile app, App Store and Google Play review time is additional and outside our control (usually a few days).',
+      },
+      {
+        q: 'When does a sprint start?',
+        a: 'A sprint always starts on Monday at 06:00 UTC and ends on the Sunday: seven days, weekend included. Khufu runs one sprint at a time — one week, one client. Scoping, the written scope and the accesses are settled before the Monday, on day 0, so they don’t eat into the week. Friday (day 5) is your acceptance-testing day: you test while we handle deployment and infrastructure. Saturday and Sunday are for the fixes your testing turned up, and the V1 is in production by the end of Sunday.',
       },
     ],
   },

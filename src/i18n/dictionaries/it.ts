@@ -210,7 +210,7 @@ export const it: Dictionary = {
     guaranteesTitle: 'Cosa garantiamo',
     guarantees: [
       'Un ambito scritto e approvato prima di iniziare.',
-      'Una data di consegna, rispettata.',
+      'Una data di consegna, rispettata: si parte di lunedì, sette giorni dopo sei in produzione.',
       'Il codice sorgente è tuo, dal primo giorno.',
     ],
   },
@@ -462,6 +462,10 @@ export const it: Dictionary = {
       {
         q: 'Il termine di una settimana include la validazione degli store?',
         a: 'No. I 7 giorni coprono progettazione, sviluppo e messa in produzione. Per un’app mobile, il tempo di validazione dell’App Store e di Google Play si aggiunge e non dipende da noi (di solito qualche giorno).',
+      },
+      {
+        q: 'Quando inizia uno sprint?',
+        a: 'Uno sprint inizia sempre il lunedì alle 06:00 UTC e finisce la domenica: sette giorni, weekend compreso. Khufu segue un solo sprint alla volta — una settimana, un cliente. Inquadramento, ambito scritto e accessi si sistemano prima del lunedì, al giorno 0, per non consumare la settimana. Il venerdì (giorno 5) è la tua giornata di collaudo: tu provi mentre noi ci occupiamo di messa in produzione e infrastruttura. Sabato e domenica servono alle correzioni emerse dal tuo collaudo, e la V1 è in produzione alla fine della domenica.',
       },
     ],
   },

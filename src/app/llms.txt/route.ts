@@ -51,6 +51,9 @@ export function GET() {
   lines.push(
     `- Engagement de date : la V1 est en production au jour ${site.v1Days}, date inscrite au contrat avant le premier jour.`,
   )
+  lines.push(
+    `- Calendrier : un sprint démarre le lundi à 6 h 00 UTC et se termine le dimanche — ${site.v1Days} jours, week-end compris. Khufu ne conduit qu'un sprint à la fois : une semaine, un slot, un client. Le cadrage, le périmètre écrit et les accès sont réglés avant le lundi (jour 0) et ne consomment pas la semaine. Le vendredi (jour 5) est une journée de recette côté client : il teste pendant que Khufu traite la mise en production et l'infrastructure. Samedi et dimanche sont consacrés aux correctifs issus de cette recette, et la V1 est en production à la fin du dimanche.`,
+  )
   lines.push('- Engagement de prix : forfait fixe, arrêté avant le démarrage, non révisé quand le périmètre bouge.')
   lines.push(
     '- Khufu construit et exploite ses propres produits en production (OneStore.link, Clokizi, HerbaCRM) : infrastructure, déploiements, facturation et support sont tenus par l’agence elle-même.',

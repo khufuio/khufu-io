@@ -214,7 +214,7 @@ export const fr = {
     guaranteesTitle: 'Ce qu’on garantit',
     guarantees: [
       'Un périmètre écrit et validé avant de commencer.',
-      'Une date de livraison, tenue.',
+      'Une date de livraison, tenue : on démarre un lundi, vous êtes en production sept jours plus tard.',
       'Le code source vous appartient, dès le premier jour.',
     ],
   },
@@ -466,6 +466,10 @@ export const fr = {
       {
         q: 'Le délai d’une semaine inclut-il la validation des stores ?',
         a: 'Non. Les 7 jours couvrent la conception, le développement et la mise en production. Pour une app mobile, le délai de validation de l’App Store et de Google Play s’ajoute et ne dépend pas de nous (généralement quelques jours).',
+      },
+      {
+        q: 'Quand démarre un sprint ?',
+        a: 'Un sprint démarre toujours le lundi à 6 h 00 UTC et se termine le dimanche : sept jours, week-end compris. Khufu ne conduit qu’un sprint à la fois — une semaine, un client. Le cadrage, le périmètre écrit et les accès se règlent avant le lundi, au jour 0, pour ne pas consommer la semaine. Le vendredi (jour 5) est votre journée de recette : vous testez pendant qu’on traite la mise en production et l’infrastructure. Le samedi et le dimanche servent aux correctifs issus de votre recette, et la V1 est en production à la fin du dimanche.',
       },
     ],
   },
