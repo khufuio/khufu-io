@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { Locale } from '@/i18n/config'
-import { href } from '@/content/site'
+import { href, sprintHref } from '@/content/site'
 import type { Dictionary } from '@/i18n/getDictionary'
 import { Container } from '@/components/ui/container'
 import { ButtonLink } from '@/components/ui/button'
@@ -22,18 +22,18 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
   /*
    * On the Sprint V1 landing the header CTA stays on the page.
    *
-   * Everywhere else it routes to /contact, which is right. There, it sent a
-   * visitor we PAID for to a different page and a different form — losing the
-   * campaign tags on the way, since they only live in this page's URL — while
-   * being the most prominent, permanently visible button on a phone. Here it
-   * scrolls to the one conversion form instead.
+   * Everywhere else it routes to that landing, tagged `?src=header`, which is
+   * right. There, it sent a visitor we PAID for to a different page and a
+   * different form — losing the campaign tags on the way, since they only live
+   * in this page's URL — while being the most prominent, permanently visible
+   * button on a phone. Here it scrolls to the one conversion form instead.
    *
    * Scoped by pathname rather than by a prop because the header is rendered by
    * the shared locale layout, which has no idea which page it is wrapping.
    */
   const pathname = usePathname()
   const onSprintLanding = pathname?.includes('/sprint-v1') ?? false
-  const ctaHref = onSprintLanding ? '#start' : href(locale, 'contact')
+  const ctaHref = onSprintLanding ? '#start' : sprintHref(locale, 'header')
 
   /** Same event and shape as the page's other CTAs, so the five are comparable. */
   const onCtaClick = (): void => {
