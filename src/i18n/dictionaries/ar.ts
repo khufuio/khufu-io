@@ -124,8 +124,12 @@ export const ar: Dictionary = {
       },
     ],
 
-    offersTitle: 'ثلاث طرق للعمل مع Khufu',
-    offersSubtitle: 'من الإطلاق الخاطف إلى المرافقة على المدى الطويل.',
+    // ONE offer on the home, not three (decided 2026-09-08). Maintenance and
+    // Remote are still sold — as follow-ups to a sprint, below and subordinate.
+    offersTitle: 'عرض واحد فقط: سبرينت V1',
+    offersSubtitle: `منتجك في نسخته الأولى: تصميم وتطوير وإطلاق في ${site.v1Days} أيام، بسعر ثابت. هذا ما تبيعه Khufu.`,
+    followUpsTitle: 'بعد السبرينت',
+    followUpsBody: 'بمجرد أن تصبح نسختك الأولى على الإنترنت، هناك طريقتان للمتابعة — القرار لك، وليس قبل ذلك.',
 
     workTitle: 'منتجات، لا شرائح عرض',
     workSubtitle: 'مجموعة مختارة من المنتجات التي صمّمتها Khufu وأطلقتها.',
@@ -158,7 +162,9 @@ export const ar: Dictionary = {
         features: [
           'تحديد النطاق وتصميم المنتج',
           'تطوير SaaS أو تطبيق للجوال',
-          'إطلاق في الإنتاج + استضافة',
+          'البنية التحتية والاستضافة والإطلاق في الإنتاج',
+          'موقع showcase للمنتج، مُحسَّن لـ SEO وGEO',
+          'أسبوعان من الإصلاحات بعد التسليم',
           'الكود المصدري مُسلَّم وملك لك',
           'تسليم وتوثيق',
         ],

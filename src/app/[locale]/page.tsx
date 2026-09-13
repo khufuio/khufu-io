@@ -2,14 +2,14 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { isLocale, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/getDictionary'
-import { href, site } from '@/content/site'
+import { href, site, sprintHref } from '@/content/site'
 import { projects } from '@/content/projects'
 import { approvedClients } from '@/content/clients'
 import { testimonials } from '@/content/testimonials'
 import { Container } from '@/components/ui/container'
 import { ButtonLink } from '@/components/ui/button'
 import { SectionHeading } from '@/components/ui/sectionHeading'
-import { OfferCards } from '@/components/sections/offerCards'
+import { SprintOffer, SprintFollowUps } from '@/components/sections/sprintOffer'
 import { CtoComparison, TeamRoles } from '@/components/sections/ctoComparison'
 import { ProjectCard } from '@/components/sections/projectCard'
 import { FaqAccordion } from '@/components/sections/faqAccordion'
@@ -63,7 +63,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <ButtonLink href={href(locale, 'contact')} size="lg">
+            <ButtonLink href={sprintHref(locale, 'home-hero')} size="lg">
               {h.heroPrimaryCta}
             </ButtonLink>
             <ButtonLink href={href(locale, 'work')} variant="secondary" size="lg">
@@ -114,17 +114,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </Container>
       </section>
 
-      {/* Offers */}
+      {/* The offer. One, not three — the follow-ups sit below it, subordinate. */}
       <section id="offres">
         <Container className="py-20 sm:py-28">
           <SectionHeading kicker={dict.nav.offers} title={h.offersTitle} subtitle={h.offersSubtitle} />
           <div className="mt-12">
-            <OfferCards locale={locale} dict={dict} />
+            <SprintOffer locale={locale} dict={dict} />
           </div>
-          <div className="mt-8">
-            <ButtonLink href={href(locale, 'offers')} variant="ghost">
-              {dict.common.learnMore} →
-            </ButtonLink>
+          <div className="mt-14">
+            <SprintFollowUps locale={locale} dict={dict} />
           </div>
         </Container>
       </section>
@@ -263,7 +261,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-[var(--color-paper-2)] text-pretty">{h.finalCtaBody}</p>
             <div className="mt-8">
-              <ButtonLink href={href(locale, 'contact')} size="lg">
+              <ButtonLink href={sprintHref(locale, 'home-final')} size="lg">
                 {h.finalCtaButton}
               </ButtonLink>
             </div>

@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/config'
+import type { InternalSource } from '@/lib/internalSource'
 
 // Single source for the WhatsApp number. The env may contain "+", spaces, etc.
 // (display form); the wa.me link needs a digits-only version.
@@ -127,4 +128,18 @@ export function href(locale: Locale, key: RouteKey, slug?: string): string {
   const base = routes[key]
   const parts = [locale, base, slug].filter((p) => p !== undefined && p !== '')
   return '/' + parts.join('/')
+}
+
+/**
+ * Internal link to the Sprint V1 landing, tagged with the surface it came from.
+ *
+ * `?src=` and never `utm_*`: the UTM tags belong to the paid campaign that
+ * bought the visit and have to survive the detour through our own pages — a
+ * visitor who lands on an ad, clicks the logo and converts from the home must
+ * stay attributed to that campaign. `src` records the internal surface
+ * alongside the campaign instead of on top of it. Same rule as `guidePath()`,
+ * see hq docs/tools/utm-conventions.md.
+ */
+export function sprintHref(locale: Locale, source: InternalSource): string {
+  return `${href(locale, 'sprint')}?src=${source}`
 }

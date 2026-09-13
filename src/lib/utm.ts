@@ -1,3 +1,5 @@
+import { readInternalSource, type InternalSource } from './internalSource'
+
 /**
  * Campaign tags carried from an ad click into our own systems.
  *
@@ -30,9 +32,22 @@ export function readUtm(): UtmParams {
  * Campaign tags plus a coarse `traffic_source` so paid and organic arrivals on
  * the same page stay separable in a funnel even when a creative ships without
  * UTM tags.
+ *
+ * `internal_source` rides ALONGSIDE the campaign rather than replacing it: our
+ * own links into the sprint landing carry `?src=` and never `utm_*`, precisely
+ * so a visitor bought by an ad who wanders through the home before converting
+ * is still counted against the campaign that paid for them. Reported here so
+ * "which of our surfaces sent this lead" stays answerable without that trade.
  */
-export function campaignProps(): UtmParams & { traffic_source: string } {
+export function campaignProps(): UtmParams & {
+  traffic_source: string
+  internal_source: InternalSource | 'direct'
+} {
   const utm = readUtm()
   const paid = Boolean(utm.utm_source || utm.li_fat_id)
-  return { ...utm, traffic_source: paid ? (utm.utm_source ?? 'linkedin') : 'organic' }
+  return {
+    ...utm,
+    traffic_source: paid ? (utm.utm_source ?? 'linkedin') : 'organic',
+    internal_source: readInternalSource() ?? 'direct',
+  }
 }

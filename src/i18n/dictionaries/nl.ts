@@ -124,8 +124,12 @@ export const nl: Dictionary = {
       },
     ],
 
-    offersTitle: 'Drie manieren om met Khufu te werken',
-    offersSubtitle: 'Van een bliksemsnelle lancering tot begeleiding op lange termijn.',
+    // ONE offer on the home, not three (decided 2026-09-08). Maintenance and
+    // Remote are still sold — as follow-ups to a sprint, below and subordinate.
+    offersTitle: 'Eén aanbod: de Sprint V1',
+    offersSubtitle: `Je V1 ontworpen, gebouwd en in ${site.v1Days} dagen live, voor een vaste prijs. Dat is wat Khufu verkoopt.`,
+    followUpsTitle: 'Na de sprint',
+    followUpsBody: 'Zodra je V1 live is, twee manieren om door te gaan — jouw keuze, en nooit eerder.',
 
     workTitle: 'Producten, geen slides',
     workSubtitle: 'Een selectie van producten ontworpen en opgeleverd door Khufu.',
@@ -158,7 +162,9 @@ export const nl: Dictionary = {
         features: [
           'Scoping en productdesign',
           'SaaS- of mobiele-app-ontwikkeling',
-          'Livegang + hosting',
+          'Infrastructuur, hosting en livegang',
+          'Showcasesite voor het product, SEO- en GEO-geoptimaliseerd',
+          '2 weken bugfixes na oplevering',
           'Broncode opgeleverd, van jou',
           'Overdracht en documentatie',
         ],
