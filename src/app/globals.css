@@ -160,3 +160,83 @@ body {
     transform: scaleY(1);
   }
 }
+
+/* ------------------------------------------------------------------ *
+ * Sprint V1 hero — the "pro / luxury" canvas.
+ *
+ * Three stacked decorative layers on a near-black ground: a hairline grid, a
+ * soft accent halo, and a fine grain. Together they give the first screen a
+ * material quality before a single word is read — which is the point, since
+ * what the page sells is the quality of the work itself.
+ *
+ * ⚠️ THE RULES THAT MAKE THIS CHEAP, and they are not optional:
+ *   - no image and no network request: the grid is two gradients, the grain is
+ *     a ~300-byte inline SVG data URI;
+ *   - the only animated property is `transform` on an aria-hidden element, so
+ *     the hero can neither delay LCP nor shift layout (this page measures 0 CLS);
+ *   - the drift is 90s for one cell. It must read as depth, never as animation.
+ *     ⛔ Nothing bouncy, nothing pulsing, no particles — see sprintHero.tsx.
+ *   - the whole motion lives inside `prefers-reduced-motion: no-preference`; a
+ *     visitor who asked for less simply gets the still canvas, which is finished.
+ * ------------------------------------------------------------------ */
+.sprint-hero-grid,
+.sprint-hero-glow,
+.sprint-hero-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sprint-hero-grid {
+  /* Oversized so the drift can never expose an edge. */
+  inset: -12%;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 76px 76px;
+  /* Fades out downwards, so the grid never competes with the copy. */
+  mask-image: radial-gradient(130% 92% at 50% 0%, #000 18%, transparent 76%);
+}
+
+.sprint-hero-glow {
+  background:
+    radial-gradient(44rem 26rem at 14% -12%, rgba(76, 48, 255, 0.34), transparent 62%),
+    radial-gradient(34rem 22rem at 96% 6%, rgba(76, 48, 255, 0.14), transparent 60%);
+}
+
+/* ⚠️ ONE octave and a small tile, on purpose. A 3-octave 140px fractal-noise
+   tile measured +0.4s of LCP on a throttled phone: the browser has to rasterise
+   the filter before the hero can paint, and the hero is what LCP is measured on.
+   `mix-blend-mode` is gone for the same reason — it forced a second compositing
+   pass over the whole section. Plain opacity reads the same at this strength. */
+.sprint-hero-grain {
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* A hairline at the very bottom, where the dark hero meets the paper page. */
+.sprint-hero::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(76, 48, 255, 0.55), transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sprint-hero-grid {
+    /* Exactly one cell, so the loop is seamless and never jumps. */
+    animation: sprint-grid-drift 90s linear infinite;
+  }
+}
+
+@keyframes sprint-grid-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-76px, -76px, 0);
+  }
+}

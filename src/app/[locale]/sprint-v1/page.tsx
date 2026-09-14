@@ -5,6 +5,7 @@ import { href, site } from '@/content/site'
 import { projects } from '@/content/projects'
 import { sprintLanding, sprintLandingFlags, sprintProductSlugs, traqioProduct } from '@/content/sprintLanding'
 import { buildMetadata } from '@/lib/metadata'
+import { sprintSlots } from '@/lib/sprintSlots'
 import { Container } from '@/components/ui/container'
 import { SectionHeading } from '@/components/ui/sectionHeading'
 import { Price } from '@/components/ui/price'
@@ -12,6 +13,7 @@ import { FaqAccordion } from '@/components/sections/faqAccordion'
 import { BreadcrumbJsonLd, FaqJsonLd, HowToJsonLd, ServiceJsonLd } from '@/components/seo/jsonLd'
 import { SprintCta, SPRINT_FORM_ANCHOR } from '@/components/sprint/sprintCta'
 import { SprintComparison } from '@/components/sprint/sprintComparison'
+import { SprintHero } from '@/components/sprint/sprintHero'
 import { SprintLandingView } from '@/components/sprint/sprintLandingView'
 import { SprintLeadForm, type SprintFormCopy } from '@/components/sprint/sprintLeadForm'
 import { SprintMotion } from '@/components/sprint/sprintMotion'
@@ -20,6 +22,14 @@ import { SprintIncluded } from '@/components/sprint/sprintIncluded'
 import { SprintDelayChart } from '@/components/sprint/sprintDelayChart'
 import { CountUpPrice } from '@/components/sprint/countUpPrice'
 import Image from 'next/image'
+
+/**
+ * The hero shows the next Mondays a sprint can start on, and they are computed
+ * (lib/sprintSlots.ts). Without a revalidation window this statically generated
+ * page would freeze them at build time and end up advertising a Monday in the
+ * past — hourly is far more often than a week, and costs nothing.
+ */
+export const revalidate = 3600
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -46,9 +56,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
  * the work reachable, and the chrome is what makes this page look like part of a
  * real company rather than a funnel.
  *
- * Every claim here is traceable: prices from `site.ts`, revenue from `site.ts`
- * (invoiced AND collected, with its date), cases from `projects.ts`. The two
- * promises that are not yet contractual live behind `sprintLandingFlags`.
+ * Every claim here is traceable: prices from `site.ts`, the run and the copy
+ * from `sprintLanding.ts`, Khufu's own products from `projects.ts`, the start
+ * dates computed in `lib/sprintSlots.ts`.
+ *
+ * ⛔ ONE OFFER, NOTHING AROUND IT. There is no delivery guarantee and no 48h
+ * prototype on this page any more, and neither comes back without a new khufu HQ
+ * decision replacing cmu0exke and cmu0fcvk. Both were deleted rather than hidden
+ * behind a flag, precisely so they cannot be switched back on by accident.
  */
 export default async function SprintPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params
@@ -74,12 +89,41 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
     whatsapp: c.form.whatsapp[locale],
   }
 
-  // Day 0 (scoping + signature) is landing-only; days 1→7 are the shared method,
-  // already translated in all ten locales.
+  /*
+   * The run is authored on this page rather than reused from `method.days`.
+   *
+   * Since khufu HQ decision cmu0fbad the landing's week is CALENDAR-BOUND —
+   * Monday 06:00 UTC → Sunday, Friday is the client's acceptance-testing day,
+   * the weekend is where their feedback is applied — and the shared /methode
+   * page still describes the generic run. Reusing it would have meant either
+   * losing the calendar here or rewriting a ten-locale dictionary that serves
+   * another page. See the note on `timeline` in sprintLanding.ts.
+   */
   const timeline = [
-    { day: c.timeline.dayZero.day[locale], title: c.timeline.dayZero.title[locale], body: c.timeline.dayZero.body[locale] },
-    ...dict.method.days.map((d) => ({ day: d.day, title: d.title, body: d.body })),
+    {
+      day: c.timeline.dayZero.day[locale],
+      weekday: c.timeline.dayZero.weekday[locale],
+      title: c.timeline.dayZero.title[locale],
+      body: c.timeline.dayZero.body[locale],
+    },
+    ...c.timeline.days.map((d) => ({
+      day: d.day[locale],
+      weekday: d.weekday[locale],
+      title: d.title[locale],
+      body: d.body[locale],
+      client: d.client,
+    })),
   ]
+
+  /*
+   * The booking window, computed at render time (decision cmu0fugh): the next
+   * three Mondays, all shown as open. Nothing here knows or claims that any week
+   * is taken — see the header note in lib/sprintSlots.ts before touching it.
+   */
+  const slots = sprintSlots(locale)
+  /** The dated CTA; falls back to a plain label if the window is ever empty. */
+  const ctaWithSlot = (fallback: string): string =>
+    slots[0] ? c.hero.ctaLabelSlot[locale].replace('{date}', slots[0].dateLabel) : fallback
 
   // Khufu's own live products — no client references on this page, and no
   // duration claimed for any of them. See the note in sprintLanding.ts.
@@ -92,6 +136,8 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
     url?: string
     stack: readonly string[]
     image?: string
+    /** Overrides the shared "in production" badge — see Traqio below. */
+    status?: string
   }[] = [
     ...sprintProductSlugs
       .map((slug) => projects.find((p) => p.slug === slug))
@@ -114,6 +160,9 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
             tagline: c.products.traqioTagline[locale],
             url: traqioProduct.url,
             stack: traqioProduct.stack,
+            // Its SITE is live; the product is a prelaunch (decision cmu0fqj7).
+            // It must never wear the same badge as the three shipped products.
+            status: c.products.traqioStatus[locale],
           },
         ]
       : []),
@@ -150,67 +199,27 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
         ]}
       />
 
-      {/* Hero — the promise, the figures and the form, all above the fold on desktop. */}
-      <section className="border-b border-[var(--color-line)] bg-[var(--color-paper-2)]">
-        <Container className="grid gap-10 pt-14 pb-16 sm:pt-20 sm:pb-20 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
-          <div>
-            <p className="inline-flex items-center gap-2 rounded-full bg-[var(--color-accent-soft)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent-ink)]">
-              {s.kicker}
-            </p>
-            <h1 className="mt-5 font-[family-name:var(--font-display)] text-[length:clamp(2.3rem,4.8vw,4rem)]/[1.02] font-bold tracking-[-0.03em] text-balance">
-              {s.title}
-            </h1>
-            <p className="mt-5 max-w-xl text-lg/[1.6] text-[var(--color-ink-2)] text-pretty">{s.subtitle}</p>
-
-            {/* Side by side on a phone: stacked, the two figures pushed the CTA
-                off the first screen, and price + delay are exactly what has to
-                be readable before the button. */}
-            <dl className="mt-8 grid grid-cols-2 gap-x-6 sm:mt-9 sm:flex sm:flex-wrap sm:gap-x-10 sm:gap-y-6">
-              <div className="border-l-2 border-[var(--color-accent)] pl-4">
-                <dt className="sr-only">{dict.home.heroFigures[0].label}</dt>
-                <dd>
-                  <p className="font-[family-name:var(--font-display)] text-3xl font-bold tracking-[-0.02em]">
-                    {site.v1Days} {dict.common.days}
-                  </p>
-                  <p className="mt-1 max-w-[16ch] text-sm text-[var(--color-muted)]">
-                    {dict.home.heroFigures[0].label}
-                  </p>
-                </dd>
-              </div>
-              <div className="border-l-2 border-[var(--color-accent)] pl-4">
-                <dt className="sr-only">{dict.home.heroFigures[1].label}</dt>
-                <dd>
-                  <p className="font-[family-name:var(--font-display)] text-3xl font-bold tracking-[-0.02em]">
-                    <Price eur={site.v1PriceEUR} locale={locale} />
-                  </p>
-                  <p className="mt-1 max-w-[16ch] text-sm text-[var(--color-muted)]">
-                    {dict.home.heroFigures[1].label}
-                  </p>
-                </dd>
-              </div>
-            </dl>
-
-            {/* Mobile order is deliberate and differs from desktop: LinkedIn Ads
-                traffic is overwhelmingly mobile, and the CTA used to sit below
-                the trust line, which pushed it off the first screen on a phone.
-                It now follows the two figures directly — price and delay stay
-                the last thing read before the button. */}
-            <div className="mt-8 lg:hidden">
-              <SprintCta placement="hero" label={c.hero.ctaLabel[locale]} className="w-full sm:w-auto" />
-              <p className="mt-3 max-w-sm text-sm text-[var(--color-muted)]">{c.hero.ctaNote[locale]}</p>
-            </div>
-
-            <p className="mt-6 max-w-md text-sm text-[var(--color-muted)] text-pretty">{c.hero.trust[locale]}</p>
-          </div>
-
-          {/* On desktop the form is the hero's right column: cold traffic should
-              never have to scroll to find the action. */}
-          <div className="hidden lg:block">
-            <SprintLeadForm copy={formCopy} locale={locale} placement="hero" />
-            <p className="mt-3 text-center text-sm text-[var(--color-muted)]">{c.hero.ctaNote[locale]}</p>
-          </div>
-        </Container>
-      </section>
+      {/* Hero. Everything about its look — and what must never be added to it —
+          is documented in sprintHero.tsx. */}
+      <SprintHero
+        kicker={s.kicker}
+        title={s.title}
+        subtitle={s.subtitle}
+        figures={[
+          { value: `${site.v1Days} ${dict.common.days}`, label: dict.home.heroFigures[0].label },
+          { value: <Price eur={site.v1PriceEUR} locale={locale} />, label: dict.home.heroFigures[1].label },
+        ]}
+        ctaLabel={c.hero.ctaLabel[locale]}
+        ctaLabelSlot={c.hero.ctaLabelSlot[locale]}
+        ctaNote={c.hero.ctaNote[locale]}
+        trust={c.hero.trust[locale]}
+        slots={slots}
+        slotsTitle={c.hero.slotsTitle[locale]}
+        slotsNote={c.hero.slotsNote[locale]}
+        slotOpenLabel={c.hero.slotOpen[locale]}
+        formTitle={c.form.title[locale]}
+        form={<SprintLeadForm copy={formCopy} locale={locale} placement="hero" />}
+      />
 
       {/* Who it's for / who it isn't — filtering upfront raises lead quality. */}
       <section>
@@ -302,8 +311,11 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
       {/* Day 0 → day 7, drawn rather than listed. The schema is what makes the
           offer's central claim visible — the clock only starts once the scope is
           settled — which seven equal cards could not say. Sits on a plain
-          background directly after the "included" section, hence the top rule. */}
-      <section className="border-t border-[var(--color-line)]">
+          background directly after the "included" section, hence the top rule.
+
+          The run is the part of the page that sells on its own, so it carries an
+          id: a post, an ad or an email can point a reader straight at it. */}
+      <section id="deroule" className="scroll-mt-20 border-t border-[var(--color-line)]">
         <Container className="py-16 sm:py-24">
           <SectionHeading title={c.timeline.title[locale]} subtitle={c.timeline.subtitle[locale]} />
           <div className="mt-14">
@@ -311,6 +323,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
               steps={timeline}
               scopeLabel={c.timeline.scopeLabel[locale]}
               spanLabel={c.timeline.spanLabel[locale]}
+              clientLabel={c.timeline.clientLabel[locale]}
             />
           </div>
           <div className="mt-10 flex flex-col gap-3">
@@ -329,7 +342,11 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
       <section className="border-y border-[var(--color-line)] bg-[var(--color-paper-2)]">
         <Container className="py-16 sm:py-24">
           <SectionHeading title={c.products.title[locale]} subtitle={c.products.subtitle[locale]} />
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+          <div
+            className={`mt-12 grid gap-5 sm:grid-cols-2 ${
+              ownProducts.length % 3 === 0 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'
+            }`}
+          >
             {ownProducts.map((p, i) => (
               <article
                 key={p.key}
@@ -352,10 +369,16 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
                   />
                 )}
                 <div className="flex flex-1 flex-col p-7">
+                {/* Green dot = in production. A product whose site is live but
+                    which has not launched gets a neutral dot and says so — the
+                    two are not the same claim (decision cmu0fqj7). */}
                 <div className="flex items-center gap-2">
-                  <span aria-hidden className="size-2 shrink-0 rounded-full bg-[#16a34a]" />
+                  <span
+                    aria-hidden
+                    className={`size-2 shrink-0 rounded-full ${p.status ? 'bg-[var(--color-muted)]' : 'bg-[#16a34a]'}`}
+                  />
                   <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-muted)]">
-                    {c.products.liveLabel[locale]}
+                    {p.status ?? c.products.liveLabel[locale]}
                   </span>
                 </div>
                 <h3 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-bold tracking-[-0.01em]">
@@ -479,25 +502,12 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
             ))}
           </div>
 
-          {/* Not contractual yet — see sprintLandingFlags (khufu HQ todo cmtt6tt9). */}
-          {sprintLandingFlags.deliveryGuarantee && (
-            <div className="mt-12 rounded-[var(--radius-xl)] bg-[var(--color-ink)] p-8 text-[var(--color-paper)] sm:p-10">
-              <h3 className="max-w-2xl font-[family-name:var(--font-display)] text-2xl font-bold tracking-[-0.01em] text-balance">
-                {c.guarantee.title[locale]}
-              </h3>
-              <p className="mt-4 max-w-2xl text-lg text-[var(--color-paper-2)] text-pretty">
-                {c.guarantee.body[locale]}
-              </p>
-              <ul className="mt-6 flex max-w-2xl flex-col gap-2 text-sm text-[color-mix(in_srgb,var(--color-paper)_70%,transparent)]">
-                {c.guarantee.terms.map((term) => (
-                  <li key={term[locale]}>— {term[locale]}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-
+          {/* The last CTA before the FAQ names the week too (decision cmu0fugh):
+              it lands exactly where the visitor has run out of objections. The
+              two mid-page CTAs above keep their plain labels — repeating the date
+              five times would wear it out. */}
           <div className="mt-12">
-            <SprintCta placement="objections" label={c.midCta.objections[locale]} />
+            <SprintCta placement="objections" label={ctaWithSlot(c.midCta.objections[locale])} />
           </div>
         </Container>
       </section>
@@ -527,14 +537,6 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
                 <li key={f}>— {f}</li>
               ))}
             </ul>
-
-            {/* Not contractual yet — see sprintLandingFlags (khufu HQ todo cmtt6tt9). */}
-            {sprintLandingFlags.prototypeOffer && (
-              <div className="mt-8 rounded-[var(--radius-lg)] border border-[color-mix(in_srgb,var(--color-paper)_25%,transparent)] p-5">
-                <p className="font-semibold">{c.prototype.title[locale]}</p>
-                <p className="mt-2 text-sm text-[var(--color-paper-2)]">{c.prototype.body[locale]}</p>
-              </div>
-            )}
           </div>
 
           <div>

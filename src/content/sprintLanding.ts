@@ -26,46 +26,69 @@ import { fillLocaleDeep, type LocalizedInput } from '@/i18n/localize'
  * deliberately unwritten rather than approximated — this is the one page with an
  * ad budget pointed at it, so a fragile number is expensive here:
  *   - PLACEHOLDER: number of V1s actually delivered as a Sprint V1
- *   - PLACEHOLDER: sprint slots available per month (the scarcity lever, absent)
+ *   - PLACEHOLDER: whether a given Monday is still free. The page now shows the
+ *     next start DATES (computed, see lib/sprintSlots.ts) because a sprint always
+ *     starts on a Monday and one week is one client — but nothing here knows
+ *     which of them is taken, so no availability is stated. Wire a real booking
+ *     source before writing one; an invented counter would cost more than it
+ *     could return.
  *   - PLACEHOLDER: measured first-response time, against the "within 24h" claim
  *   - PLACEHOLDER: share of clients who continue past day 7
  * Ask before filling any of these in.
  */
 
 /**
- * Commercial promises that are written but NOT yet in the contract. Both blocks
- * are fully built below and rendered only when their flag is true.
+ * Blocks that are written and built below, and rendered only when their flag is
+ * true.
  *
- * Do NOT flip either one until the engagement letter carries the matching
- * clause (khufu HQ todo cmtt6tt9). Advertising a guarantee we cannot honour on
- * paper is a liability, not a conversion lever.
+ * ⛔ KHUFU SELLS ONE OFFER, WITH NOTHING AROUND IT. Two things used to live here
+ * behind a flag and are now DELETED, copy included, so that nobody can flip them
+ * back on:
+ *   - The J7 delivery guarantee (decision cmu0exke): no penalty, no $500/day, no
+ *     $3,500 cap, no equivalent wording — not on this page, not in the contract,
+ *     not in the partner kit. A client who asks for a guarantee is answered case
+ *     by case, in conversation, never in the public offer.
+ *   - The "clickable prototype in 48h — $990" entry offer (decision cmu0fcvk,
+ *     which replaces cmu0exke on this point). Adrien: « 0 prototype wesh ! ». It
+ *     had come out of an audit todo and was never his call.
+ * Do not reintroduce either one without a new decision replacing those two.
  */
 export const sprintLandingFlags: {
-  deliveryGuarantee: boolean
-  prototypeOffer: boolean
   traqioProduct: boolean
 } = {
-  // "In production on day 7, or $500/day of delay refunded, capped at $3,500."
-  deliveryGuarantee: false,
-  // Entry offer: "clickable prototype in 48h — $990".
-  prototypeOffer: false,
   /*
-   * Traqio as a fourth own-product card. Written and ready, deliberately OFF.
+   * Traqio as a fourth own-product card — ON since khufu HQ decision cmu0fqj7.
    *
-   * ⛔ DO NOT flip this "in anticipation" of the launch. The landing can ship to
-   * production before the showcase does, and this page carries an ad budget — a
-   * reference pointing at a dead domain is exactly the detail that gets costly.
+   * Checked before flipping it, not assumed: https://traqio.app/ answers 200 and
+   * serves a complete, presentable showcase (title, description, Open Graph, the
+   * pricing and comparison sections) — verified 2026-09-14.
    *
-   * BOTH of these must be true first, checked, not assumed:
-   *   1. https://traqio.app answers publicly (the showcase is actually online).
-   *      Verified 2026-09-13: it does NOT resolve — curl returns 000.
-   *   2. The HQ registry status for slug `traqio` reads `live`.
-   *      Verified 2026-09-13: it reads `prelaunch`.
-   * Same rule for any other product: `live` in the registry and reachable, or
-   * it stays off this page.
+   * ⚠️ THE NUANCE THAT MUST SURVIVE, or the proof becomes a lie: what is online is
+   * Traqio's SITE. The product itself is still a prelaunch. So the card carries
+   * its own status label — never the "in production" one the other three wear —
+   * and NOTHING anywhere may imply users, customers, revenue or traction.
+   *
+   * Same rule as ever for any other product: reachable and truthfully labelled,
+   * or it stays off this page.
    */
-  traqioProduct: false,
+  traqioProduct: true,
 }
+
+/**
+ * Weeks to keep out of the booking window — the Monday of each, `YYYY-MM-DD`.
+ *
+ * A configuration value, deliberately NOT a feature (khufu HQ decision cmu0fugh:
+ * Adrien does not want a booking tool to maintain). Add a date here to close a
+ * week — holidays, a week actually sold — and the strip simply shows the next
+ * Monday instead. Past dates can stay: the window has already moved past them, so
+ * the list never needs cleaning up.
+ *
+ * ⛔ This is the ONLY lever on the calendar. No "2 places left", no countdown, no
+ * week labelled "booked": the page says which weeks are open, it never claims the
+ * others are gone. A false claim is verifiable by reloading the page two weeks
+ * running, on the one page we point an ad budget at.
+ */
+export const sprintExcludedMondays: readonly string[] = []
 
 /**
  * Facts for the flagged Traqio card. Traqio is not in `projects.ts` (it has no
@@ -91,8 +114,10 @@ export const sprintProductSlugs = ['onestore-link', 'clokizi', 'herbacrm'] as co
  * What replaced them are Khufu's own products, which is a stronger claim on this
  * page precisely because it is checkable: we own the repos, the infra and the
  * billing, so the timeline is knowable rather than asserted. All three are
- * `status: live` in the HQ registry (verified 2026-09-13). Anything not `live`
- * stays off — Traqio is `prelaunch` and is NOT production proof.
+ * `status: live` in the HQ registry (verified 2026-09-13). Traqio joined them on
+ * 2026-09-14 (decision cmu0fqj7) but through the flag below and with its OWN
+ * status label: its showcase is online, the product is still a prelaunch, and the
+ * card must never imply users, customers or traction.
  *
  * ⛔ NEVER IMPLY THESE WERE BUILT IN SEVEN DAYS. They were not, and the git
  * history says so plainly: Clokizi's repos start 2023-08, HerbaCRM's 2024-01,
@@ -111,6 +136,18 @@ type Section<T> = {
     ctaLabel: Leaf<T>
     ctaNote: Leaf<T>
     trust: Leaf<T>
+    /**
+     * The dated CTA (decision cmu0fugh) — carries `{date}`, replaced with the
+     * next open Monday. This is the page's central argument: a dated slot turns
+     * an abstract delay into a decision to take now.
+     */
+    ctaLabelSlot: Leaf<T>
+    /** Label above the slot chips — states the rule, never an availability. */
+    slotsTitle: Leaf<T>
+    /** What one slot is, and what is NOT claimed about it. See lib/sprintSlots.ts. */
+    slotsNote: Leaf<T>
+    /** Badge under each date. Every shown week is open — see sprintExcludedMondays. */
+    slotOpen: Leaf<T>
   }
   audience: {
     title: Leaf<T>
@@ -129,11 +166,20 @@ type Section<T> = {
   timeline: {
     title: Leaf<T>
     subtitle: Leaf<T>
-    dayZero: { day: Leaf<T>; title: Leaf<T>; body: Leaf<T> }
+    dayZero: { day: Leaf<T>; weekday: Leaf<T>; title: Leaf<T>; body: Leaf<T> }
+    /**
+     * Day 1 → day 7, authored HERE rather than reused from `method.days`: the
+     * landing's run is calendar-bound (it starts on a Monday, day 5 is the
+     * client's full acceptance-testing day — decision cmu0exvn) and the shared
+     * method page is not. `weekday` is what makes the calendar visible.
+     */
+    days: { day: Leaf<T>; weekday: Leaf<T>; title: Leaf<T>; body: Leaf<T>; client?: boolean }[]
     /** Annotation drawn over day 0 in the schema. */
     scopeLabel: Leaf<T>
     /** Annotation drawn over the day 1 → day 7 bracket. */
     spanLabel: Leaf<T>
+    /** Tag on the one day that is the client's — Friday's acceptance testing. */
+    clientLabel: Leaf<T>
     note: Leaf<T>
   }
   /** The three fixed deliverables that come with the price (cmu09gb6 / cmu09gn1). */
@@ -156,9 +202,15 @@ type Section<T> = {
     title: Leaf<T>
     subtitle: Leaf<T>
     liveLabel: Leaf<T>
-    /** Flagged-off Traqio card — see `sprintLandingFlags.traqioProduct`. */
+    /** Traqio card — see `sprintLandingFlags.traqioProduct`. */
     traqioType: Leaf<T>
     traqioTagline: Leaf<T>
+    /**
+     * Traqio's own status badge. ⛔ NEVER `liveLabel`: its site is online, the
+     * product is a prelaunch (decision cmu0fqj7), and the two are not the same
+     * claim.
+     */
+    traqioStatus: Leaf<T>
     /** What this block does NOT prove — see the note on `sprintProductSlugs`. */
     note: Leaf<T>
   }
@@ -190,16 +242,6 @@ type Section<T> = {
   faq: {
     title: Leaf<T>
     items: { q: Leaf<T>; a: Leaf<T> }[]
-  }
-  guarantee: {
-    title: Leaf<T>
-    body: Leaf<T>
-    terms: Leaf<T>[]
-  }
-  prototype: {
-    title: Leaf<T>
-    body: Leaf<T>
-    cta: Leaf<T>
   }
   form: {
     title: Leaf<T>
@@ -249,6 +291,33 @@ const content: Section<LocalizedInput> = {
       en: 'Scope settled on day 0, date written into the contract, source code yours.',
       es: 'Alcance cerrado el día 0, fecha inscrita en el contrato, código fuente tuyo.',
     },
+
+    /*
+     * The calendar, in the hero. A sprint always starts on a Monday (decision
+     * cmu0exvn), so the delay stops being an abstraction and becomes a date the
+     * visitor can decide against.
+     *
+     * ⛔ DATES ONLY, NEVER A STATE. The Mondays are computed at render time
+     * (lib/sprintSlots.ts); nothing here knows or claims whether one is free.
+     * No counter, no "2 slots left", no colour code — an invented scarcity
+     * signal would cost more than it could ever return on this page.
+     */
+    ctaLabelSlot: {
+      fr: 'Slot du {date} encore disponible',
+      en: 'Slot of {date} still open',
+      es: 'Slot del {date} aún disponible',
+    },
+    slotsTitle: {
+      fr: 'Les trois prochains départs',
+      en: 'The next three starts',
+      es: 'Las tres próximas salidas',
+    },
+    slotsNote: {
+      fr: 'Un sprint démarre un lundi, et on n’ouvre que trois semaines à la réservation : une semaine, un client. Votre lundi est confirmé au jour 0, avec le périmètre et le prix.',
+      en: 'A sprint starts on a Monday, and only three weeks are open to booking at a time: one week, one client. Your Monday is confirmed on day 0, along with the scope and the price.',
+      es: 'Un sprint empieza un lunes y solo abrimos tres semanas a reserva: una semana, un cliente. Tu lunes se confirma el día 0, junto con el alcance y el precio.',
+    },
+    slotOpen: { fr: 'Disponible', en: 'Open', es: 'Disponible' },
   },
 
   audience: {
@@ -428,36 +497,132 @@ const content: Section<LocalizedInput> = {
     ],
   },
 
+  /*
+   * THE CALENDAR — khufu HQ decision cmu0fbad (which completes cmu0exvn).
+   *
+   * The run is not "seven days" in the abstract any more, it is a WEEK WITH
+   * WEEKDAYS: Monday 06:00 UTC → Sunday, one week = one slot = one client, and
+   * the next slot opens the following Monday at 06:00 UTC.
+   *
+   * ⛔ NEVER "jours ouvrés" / "working days" AGAIN. Seven working days means
+   * nine real ones and wrecks the one claim the offer rests on.
+   *
+   * The two days that have to survive any rewrite, because they are the whole
+   * argument:
+   *   - FRIDAY (day 5) is the client's full acceptance-testing day. It costs no
+   *     production day because it runs ON TOP of the technical work that does
+   *     not need them (CI/CD, infra, preparing go-live). Written as a benefit —
+   *     they get their hands on the product before it ships — never as a chore.
+   *   - SATURDAY + SUNDAY are the window where what they found on Friday is
+   *     FIXED, before production. The weekend is not a hole in the calendar, it
+   *     is what makes their testing day worth having. Go-live: end of Sunday.
+   *
+   * ⚠️ Day 0 (scoping + prerequisites) sits BEFORE the Monday, never inside the
+   * week, or the production week loses a day.
+   *
+   * ⚠️ NOT SETTLED BY ADRIEN (cmu0fbad): whether to advertise Friday's contact
+   * points at all. What is written below is a PROPOSAL — availability ("we stay
+   * reachable all day") and deliberately NOT a call schedule, because a written
+   * schedule becomes a rigid commitment while the reassurance comes from the
+   * availability. Remove the sentence if he says no.
+   */
   timeline: {
     title: {
-      fr: 'Le déroulé, du jour 0 au jour 7.',
-      en: 'The run, from day 0 to day 7.',
-      es: 'El desarrollo, del día 0 al día 7.',
+      fr: 'Le déroulé, du jour 0 au dimanche soir.',
+      en: 'The run, from day 0 to Sunday evening.',
+      es: 'El desarrollo, del día 0 al domingo por la noche.',
     },
     subtitle: {
-      fr: 'Sept jours ouvrés, un déroulé identique à chaque sprint. Vous savez ce qui se passe chaque jour.',
-      en: 'Seven working days, the same run on every sprint. You know what happens each day.',
-      es: 'Siete días hábiles, el mismo recorrido en cada sprint. Sabes qué pasa cada día.',
+      fr: 'Sept jours, du lundi 6 h 00 UTC au dimanche. Le même déroulé à chaque sprint : vous savez ce qui se passe chaque jour, et quand on a besoin de vous.',
+      en: 'Seven days, from Monday 06:00 UTC to Sunday. The same run on every sprint: you know what happens each day, and when we need you.',
+      es: 'Siete días, del lunes a las 6:00 UTC al domingo. El mismo recorrido en cada sprint: sabes qué pasa cada día y cuándo te necesitamos.',
     },
     dayZero: {
       day: { fr: 'Jour 0', en: 'Day 0', es: 'Día 0' },
-      title: { fr: 'Avant que le compteur démarre', en: 'Before the clock starts', es: 'Antes de que arranque el reloj' },
+      weekday: { fr: 'avant le lundi', en: 'before the Monday', es: 'antes del lunes' },
+      title: {
+        fr: 'Avant que la semaine commence',
+        en: 'Before the week starts',
+        es: 'Antes de que empiece la semana',
+      },
       body: {
-        fr: 'Appel de cadrage, périmètre écrit, devis signé. Le sprint ne démarre que quand les trois sont faits — c’est précisément ce qui rend la date tenable.',
-        en: 'Scoping call, written scope, signed quote. The sprint only starts once all three are done — that is exactly what makes the date holdable.',
-        es: 'Llamada de encuadre, alcance escrito, presupuesto firmado. El sprint solo arranca cuando los tres están hechos: eso es justamente lo que hace sostenible la fecha.',
+        fr: 'Appel de cadrage, périmètre écrit, devis signé. Tant que les trois ne sont pas faits, le lundi n’est pas réservé — c’est précisément ce qui rend la date tenable.',
+        en: 'Scoping call, written scope, signed quote. Until all three are done the Monday isn’t booked — that is exactly what makes the date holdable.',
+        es: 'Llamada de encuadre, alcance escrito, presupuesto firmado. Mientras los tres no estén hechos, el lunes no está reservado: eso es justo lo que hace sostenible la fecha.',
       },
     },
+    days: [
+      {
+        day: { fr: 'Jour 1', en: 'Day 1', es: 'Día 1' },
+        weekday: { fr: 'lundi', en: 'Monday', es: 'lunes' },
+        title: { fr: 'Kickoff à 6 h 00 UTC', en: 'Kickoff at 06:00 UTC', es: 'Kickoff a las 6:00 UTC' },
+        body: {
+          fr: 'Le sprint démarre. Architecture, fondations, premiers écrans : à la fin de la journée, le produit existe et tourne.',
+          en: 'The sprint starts. Architecture, foundations, first screens: by the end of the day the product exists and runs.',
+          es: 'Arranca el sprint. Arquitectura, cimientos, primeras pantallas: al final del día el producto existe y funciona.',
+        },
+      },
+      {
+        day: { fr: 'Jours 2–3', en: 'Days 2–3', es: 'Días 2–3' },
+        weekday: { fr: 'mardi, mercredi', en: 'Tuesday, Wednesday', es: 'martes, miércoles' },
+        title: { fr: 'Le cœur du produit', en: 'The core of the product', es: 'El corazón del producto' },
+        body: {
+          fr: 'Les parcours clés, de bout en bout : données, back-end, interfaces. Vous voyez avancer en direct et vous arbitrez au fil de l’eau.',
+          en: 'The key flows, end to end: data, back-end, interfaces. You watch it happen and make the calls as we go.',
+          es: 'Los flujos clave, de principio a fin: datos, back-end, interfaces. Lo ves avanzar en directo y decides sobre la marcha.',
+        },
+      },
+      {
+        day: { fr: 'Jour 4', en: 'Day 4', es: 'Día 4' },
+        weekday: { fr: 'jeudi', en: 'Thursday', es: 'jueves' },
+        title: {
+          fr: 'La version complète, déployée pour vous',
+          en: 'The complete version, deployed for you',
+          es: 'La versión completa, desplegada para ti',
+        },
+        body: {
+          fr: 'Finitions, contenus, cas limites. En fin de journée, la V1 complète est déployée à une adresse où vous pouvez la manipuler.',
+          en: 'Finishing touches, content, edge cases. By the end of the day the full V1 is deployed at an address where you can get your hands on it.',
+          es: 'Acabados, contenidos, casos límite. Al final del día, la V1 completa está desplegada en una dirección donde puedes manejarla.',
+        },
+      },
+      {
+        day: { fr: 'Jour 5', en: 'Day 5', es: 'Día 5' },
+        weekday: { fr: 'vendredi', en: 'Friday', es: 'viernes' },
+        title: { fr: 'Votre journée de recette', en: 'Your acceptance-testing day', es: 'Tu día de recepción' },
+        body: {
+          fr: 'Vous testez le produit toute la journée et vous notez tout. Pendant ce temps, on traite le technique qui n’a pas besoin de vous : CI/CD, infrastructure, préparation de la mise en production. Votre journée de test ne coûte donc pas un jour de développement. On reste joignable toute la journée.',
+          en: 'You test the product all day and write everything down. Meanwhile we handle the technical work that doesn’t need you: CI/CD, infrastructure, preparing the go-live. So your testing day costs no development day. We stay reachable all day.',
+          es: 'Pruebas el producto todo el día y lo anotas todo. Mientras tanto nos ocupamos de lo técnico que no te necesita: CI/CD, infraestructura, preparación de la puesta en producción. Así tu día de pruebas no cuesta un día de desarrollo. Seguimos localizables todo el día.',
+        },
+        client: true,
+      },
+      {
+        day: { fr: 'Jours 6–7', en: 'Days 6–7', es: 'Días 6–7' },
+        weekday: { fr: 'samedi, dimanche', en: 'Saturday, Sunday', es: 'sábado, domingo' },
+        title: {
+          fr: 'Vos retours appliqués, puis la production',
+          en: 'Your feedback applied, then production',
+          es: 'Tus comentarios aplicados, y después producción',
+        },
+        body: {
+          fr: 'Le week-end sert à corriger ce que votre recette a trouvé, pas à attendre. Dimanche en fin de journée, votre V1 est en production. Le lundi suivant, la semaine s’ouvre pour un autre client.',
+          en: 'The weekend is there to fix what your testing found, not to wait. By the end of Sunday your V1 is in production. The following Monday, the week opens for another client.',
+          es: 'El fin de semana sirve para corregir lo que encontró tu recepción, no para esperar. El domingo al final del día tu V1 está en producción. El lunes siguiente, la semana se abre para otro cliente.',
+        },
+      },
+    ],
     scopeLabel: {
       fr: 'Périmètre arrêté',
       en: 'Scope settled',
       es: 'Alcance cerrado',
     },
     spanLabel: {
-      fr: '7 jours ouvrés',
-      en: '7 working days',
-      es: '7 días hábiles',
+      fr: '7 jours, lundi → dimanche',
+      en: '7 days, Monday → Sunday',
+      es: '7 días, lunes → domingo',
     },
+    clientLabel: { fr: 'Vous', en: 'You', es: 'Tú' },
     note: {
       fr: 'Pendant toute la semaine, vous parlez directement au founder qui écrit le code. Pas de chef de projet intermédiaire, pas de compte rendu qui arrive trois jours après la décision.',
       en: 'All week you talk directly to the founder writing the code. No project manager in between, no status report landing three days after the decision.',
@@ -585,10 +750,15 @@ const content: Section<LocalizedInput> = {
       en: 'Install attribution and campaign ROAS, without the black box.',
       es: 'Atribución de instalaciones y ROAS de campañas, sin caja negra.',
     },
+    traqioStatus: {
+      fr: 'Site en ligne · produit en préparation',
+      en: 'Site live · product in the making',
+      es: 'Sitio en línea · producto en preparación',
+    },
     note: {
-      fr: 'Ce sont les produits de Khufu, pas des livrables de sprint. On les a construits, et surtout on les exploite : infrastructure, déploiements, facturation, support, mises à jour. Ils prouvent une chose et une seule — on sait mettre un produit en production et l’y maintenir dans la durée. Pas qu’on l’a fait en sept jours : aucun d’eux n’a été construit en une semaine, et on n’affiche donc aucun délai en face.',
-      en: 'These are Khufu’s own products, not sprint deliverables. We built them and, more to the point, we run them: infrastructure, deployments, billing, support, updates. They prove one thing and one only — we can put a product into production and keep it there over time. Not that we did it in seven days: none of them was built in a week, so no timeline is claimed next to them.',
-      es: 'Son los productos de Khufu, no entregables de sprint. Los construimos y, sobre todo, los operamos: infraestructura, despliegues, facturación, soporte, actualizaciones. Demuestran una sola cosa: sabemos poner un producto en producción y mantenerlo ahí con el tiempo. No que lo hicimos en siete días: ninguno se construyó en una semana, así que no mostramos ningún plazo al lado.',
+      fr: 'Ce sont les produits de Khufu, pas des livrables de sprint. On les a construits, et surtout on les exploite : infrastructure, déploiements, facturation, support, mises à jour. Ils prouvent une chose et une seule — on sait mettre un produit en production et l’y maintenir dans la durée. Pas qu’on l’a fait en sept jours : aucun d’eux n’a été construit en une semaine, et on n’affiche donc aucun délai en face. Traqio est à part et c’est écrit sur sa carte : son site est en ligne, le produit lui-même est encore en préparation.',
+      en: 'These are Khufu’s own products, not sprint deliverables. We built them and, more to the point, we run them: infrastructure, deployments, billing, support, updates. They prove one thing and one only — we can put a product into production and keep it there over time. Not that we did it in seven days: none of them was built in a week, so no timeline is claimed next to them. Traqio is the exception and its card says so: its site is live, the product itself is still in the making.',
+      es: 'Son los productos de Khufu, no entregables de sprint. Los construimos y, sobre todo, los operamos: infraestructura, despliegues, facturación, soporte, actualizaciones. Demuestran una sola cosa: sabemos poner un producto en producción y mantenerlo ahí con el tiempo. No que lo hicimos en siete días: ninguno se construyó en una semana, así que no mostramos ningún plazo al lado. Traqio es la excepción y su tarjeta lo dice: su sitio está en línea, el producto en sí sigue en preparación.',
     },
   },
 
@@ -995,54 +1165,6 @@ const content: Section<LocalizedInput> = {
         },
       },
     ],
-  },
-
-  guarantee: {
-    title: {
-      fr: 'En production le jour 7, ou le retard vous est remboursé.',
-      en: 'In production on day 7, or the delay is refunded.',
-      es: 'En producción el día 7, o te devolvemos el retraso.',
-    },
-    body: {
-      fr: 'Si votre V1 n’est pas en production à la fin du jour 7 pour une raison qui nous incombe, on vous rembourse 500 $ par jour de retard, plafonnés à 3 500 $.',
-      en: 'If your V1 isn’t in production at the end of day 7 for a reason that is on us, we refund $500 per day of delay, capped at $3,500.',
-      es: 'Si tu V1 no está en producción al final del día 7 por una causa que nos corresponde, te devolvemos 500 $ por día de retraso, con un tope de 3 500 $.',
-    },
-    terms: [
-      {
-        fr: 'Le périmètre signé au jour 0 fait foi : un ajout en cours de semaine décale la date d’autant, en accord avec vous.',
-        en: 'The scope signed on day 0 is what counts: an addition mid-week moves the date accordingly, with your agreement.',
-        es: 'El alcance firmado el día 0 es el que cuenta: un añadido a mitad de semana desplaza la fecha en consecuencia, de acuerdo contigo.',
-      },
-      {
-        fr: 'Les attentes externes ne comptent pas dans le retard : validation App Store ou Google Play, accès à un service tiers, contenu ou décision de votre côté.',
-        en: 'External waits don’t count as delay: App Store or Google Play review, access to a third-party service, content or a decision on your side.',
-        es: 'Las esperas externas no cuentan como retraso: validación de App Store o Google Play, acceso a un servicio de terceros, contenido o una decisión de tu parte.',
-      },
-      {
-        fr: 'Le remboursement est déduit de la facture finale, ou reversé si la facture est déjà réglée.',
-        en: 'The refund is deducted from the final invoice, or paid back if the invoice is already settled.',
-        es: 'El reembolso se descuenta de la factura final, o se devuelve si la factura ya está pagada.',
-      },
-    ],
-  },
-
-  prototype: {
-    title: {
-      fr: 'Pas encore prêt pour un sprint complet ?',
-      en: 'Not ready for a full sprint yet?',
-      es: '¿Aún no estás listo para un sprint completo?',
-    },
-    body: {
-      fr: 'Prototype cliquable en 48 h — 990 $. Les parcours clés de votre produit, cliquables et testables auprès de vos utilisateurs, en deux jours.',
-      en: 'Clickable prototype in 48h — $990. Your product’s key flows, clickable and testable with your users, in two days.',
-      es: 'Prototipo clicable en 48 h — 990 $. Los flujos clave de tu producto, clicables y testables con tus usuarios, en dos días.',
-    },
-    cta: {
-      fr: 'Demander le prototype',
-      en: 'Request the prototype',
-      es: 'Solicitar el prototipo',
-    },
   },
 
   form: {
