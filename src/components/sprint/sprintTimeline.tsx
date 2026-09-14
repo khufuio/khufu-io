@@ -1,19 +1,27 @@
 /**
  * The week, drawn instead of described.
  *
- * The page already listed the run as cards; what cards could not say is the two
- * things the offer actually rests on, and the schema draws both (khufu HQ
- * decision cmu0fbad):
+ * Two things the offer rests on that a list of cards could not say, and the
+ * schema draws both (khufu HQ decision cmu0fbad):
  *   1. The clock only starts once the scope is settled — so the segment before
  *      day 1 is dashed, and the annotation above it says why.
- *   2. The week is a CALENDAR, not a duration: Monday 06:00 UTC → Sunday, with
- *      the client's own acceptance-testing day (Friday) marked as theirs by a
- *      ring, and production as the only filled node.
+ *   2. FRIDAY RUNS ON TWO TRACKS AT ONCE. The rail splits: a second lane rises
+ *      above it, labelled "Vous", and rejoins. Adrien on the previous version,
+ *      where Friday was one column of prose: « ça fait penser que nous on fait
+ *      rien ». The client's testing day costs no production day precisely
+ *      BECAUSE the technical track runs underneath it, and that is a drawing,
+ *      not a paragraph.
  *
- * It is a server component: the SVG and the text ship as finished markup, and
- * the motion is CSS reacting to the `data-in` attribute that the page's single
- * observer sets (see sprintMotion.tsx and the motion block in globals.css).
- * Nothing here animates anything but `opacity`, `transform` and
+ * ⛔ NO TIME OF DAY. The 06:00 UTC kickoff stays in the contract and off this
+ * page (Adrien: « ça peut faire peur de dire 6am à quelqu'un »). Monday morning,
+ * or nothing.
+ *
+ * ⚠️ The "Vous" tag sits on its OWN line, never inline with the title — inline it
+ * pushed the whole text block sideways, which is the layout bug Adrien reported.
+ *
+ * A server component: the SVG and the text ship as finished markup, and the
+ * motion is CSS reacting to the `data-in` attribute the page's single observer
+ * sets. Nothing animates anything but `opacity`, `transform` and
  * `stroke-dashoffset`, so the section cannot move layout.
  */
 export type SprintTimelineStep = {
@@ -22,9 +30,22 @@ export type SprintTimelineStep = {
   /** The calendar underneath it — "vendredi". This is what makes the week real. */
   weekday: string
   title: string
-  body: string
-  /** The client's day: ringed in the schema, tagged in the column. */
-  client?: boolean
+  /** The single-track days. Mutually exclusive with `lanes`. */
+  body?: string
+  /** Friday only: the two tracks that run at the same time. */
+  lanes?: { you: string; us: string }
+}
+
+/**
+ * The digits of a day label — "Jours 2–3" → "2–3" — for the mobile calendar
+ * tile, which shows the number and lets the weekday carry the word. The labels
+ * are authored in French and filled from it for every untranslated locale, so
+ * the digits are always ASCII; if a future label somehow carries none, the tile
+ * falls back to the whole string rather than rendering empty.
+ */
+function dayNumbers(day: string): string {
+  const digits = day.replace(/[^0-9\u2013-]/g, '').replace(/^-|-$/g, '')
+  return digits || day
 }
 
 /** Six equal columns, so the SVG nodes sit exactly on the HTML grid's centres. */
@@ -35,27 +56,35 @@ export function SprintTimeline({
   steps,
   scopeLabel,
   spanLabel,
-  clientLabel,
+  youLabel,
+  usLabel,
+  weekLetters,
 }: {
   steps: SprintTimelineStep[]
   /** Annotation over day 0 — e.g. "Périmètre arrêté". */
   scopeLabel: string
-  /** Annotation over the bracket spanning day 1 → day 7 — e.g. "7 jours, lundi → dimanche". */
+  /** Annotation over the day 1 → day 7 bracket — e.g. "7 jours, lundi → dimanche". */
   spanLabel: string
-  /** Tag on the client's own day — e.g. "Vous". */
-  clientLabel: string
+  /** The client's track on Friday. */
+  youLabel: string
+  /** Ours, running underneath it. */
+  usLabel: string
+  /** Monday → Sunday, one narrow letter each, localized. Small screens only. */
+  weekLetters: string[]
 }) {
   const width = steps.length * COLUMN_WIDTH
   const first = nodeX(0)
   const last = nodeX(steps.length - 1)
   const clockStart = nodeX(1)
+  const splitIndex = steps.findIndex((s) => s.lanes)
+  const splitX = splitIndex >= 0 ? nodeX(splitIndex) : null
 
   return (
     <div data-reveal>
       {/* ---------------- Desktop: the horizontal schema ---------------- */}
       <div className="hidden lg:block">
         <svg
-          viewBox={`0 0 ${width} 140`}
+          viewBox={`0 0 ${width} 150`}
           className="w-full"
           role="img"
           aria-label={`${scopeLabel} — ${spanLabel}`}
@@ -76,14 +105,14 @@ export function SprintTimeline({
             x1={first}
             y1={32}
             x2={first}
-            y2={78}
+            y2={96}
             stroke="var(--color-line)"
             strokeWidth={1}
             data-fade
             style={{ '--fade-delay': '150ms' } as React.CSSProperties}
           />
 
-          {/* Bracket over day 1 → day 7: the span that is written into the contract. */}
+          {/* Bracket over day 1 → day 7: the span written into the contract. */}
           <text
             x={(clockStart + last) / 2}
             y={20}
@@ -108,9 +137,9 @@ export function SprintTimeline({
           {/* Before the clock starts: drawn, but dashed. */}
           <line
             x1={first}
-            y1={86}
+            y1={96}
             x2={clockStart}
-            y2={86}
+            y2={96}
             stroke="var(--color-muted)"
             strokeWidth={1}
             strokeDasharray="3 5"
@@ -118,9 +147,9 @@ export function SprintTimeline({
             style={{ '--fade-delay': '150ms' } as React.CSSProperties}
           />
 
-          {/* The seven days themselves. */}
+          {/* The seven days themselves — the track that is ours all week. */}
           <path
-            d={`M${clockStart} 86 H${last}`}
+            d={`M${clockStart} 96 H${last}`}
             fill="none"
             stroke="var(--color-muted)"
             strokeWidth={1}
@@ -129,24 +158,54 @@ export function SprintTimeline({
             style={{ '--draw-delay': '250ms' } as React.CSSProperties}
           />
 
+          {/* Friday's second track: it rises off the rail, carries the client's
+              day, and rejoins. The whole argument of the week, drawn once. */}
+          {splitX !== null && (
+            <g data-fade style={{ '--fade-delay': '1100ms' } as React.CSSProperties}>
+              <path
+                d={`M${splitX - 78} 96 C${splitX - 46} 96 ${splitX - 46} 66 ${splitX - 14} 66 H${splitX + 14} C${splitX + 46} 66 ${splitX + 46} 96 ${splitX + 78} 96`}
+                fill="none"
+                stroke="var(--color-accent)"
+                strokeWidth={1.25}
+                pathLength={1}
+                data-draw
+                style={{ '--draw-delay': '1100ms' } as React.CSSProperties}
+              />
+              <circle cx={splitX} cy={66} r={4.5} fill="var(--color-accent)" />
+              <text
+                x={splitX}
+                y={56}
+                textAnchor="middle"
+                className="text-[11px] font-semibold tracking-[0.14em]"
+                fill="var(--color-accent-ink)"
+              >
+                {youLabel.toUpperCase()}
+              </text>
+              <text
+                x={splitX}
+                y={116}
+                textAnchor="middle"
+                className="text-[11px] tracking-[0.14em]"
+                fill="var(--color-muted)"
+              >
+                {usLabel.toUpperCase()}
+              </text>
+            </g>
+          )}
+
           {steps.map((step, i) => {
             const x = nodeX(i)
             const isDelivery = i === steps.length - 1
-            const accent = i === 0 || isDelivery || step.client
+            const accent = i === 0 || isDelivery || Boolean(step.lanes)
             return (
               <g
                 key={step.day}
                 data-fade
                 style={{ '--fade-delay': `${250 + i * 130}ms` } as React.CSSProperties}
               >
-                {/* The client's day wears a ring: it is the only one that asks
-                    something of them, and it is an argument, not a constraint. */}
-                {step.client && (
-                  <circle cx={x} cy={86} r={9.5} fill="none" stroke="var(--color-accent)" strokeWidth={1} opacity={0.4} />
-                )}
                 <circle
                   cx={x}
-                  cy={86}
+                  cy={96}
                   r={5}
                   fill={isDelivery ? 'var(--color-accent)' : 'var(--color-paper)'}
                   stroke={accent ? 'var(--color-accent)' : 'var(--color-muted)'}
@@ -154,16 +213,16 @@ export function SprintTimeline({
                 />
                 <text
                   x={x}
-                  y={112}
+                  y={step.lanes ? 134 : 122}
                   textAnchor="middle"
                   className="font-[family-name:var(--font-display)] text-[13px] font-semibold"
-                  fill={isDelivery || step.client ? 'var(--color-accent-ink)' : 'var(--color-ink-2)'}
+                  fill={isDelivery || step.lanes ? 'var(--color-accent-ink)' : 'var(--color-ink-2)'}
                 >
                   {step.day}
                 </text>
                 <text
                   x={x}
-                  y={130}
+                  y={step.lanes ? 148 : 138}
                   textAnchor="middle"
                   className="text-[11px]"
                   fill="var(--color-muted)"
@@ -180,80 +239,177 @@ export function SprintTimeline({
           {steps.map((step, i) => (
             <li
               key={step.day}
-              className={`border-t pt-4 ${
-                step.client ? 'border-[var(--color-accent)]' : 'border-[var(--color-line)]'
-              }`}
+              className={`border-t pt-4 ${step.lanes ? 'border-[var(--color-accent)]' : 'border-[var(--color-line)]'}`}
               data-reveal
               style={{ '--reveal-delay': `${300 + i * 110}ms` } as React.CSSProperties}
             >
-              {step.client && (
-                <p className="mb-2 inline-flex items-center rounded-full bg-[var(--color-accent-soft)] px-2.5 py-0.5 text-[10px] font-semibold tracking-[0.14em] text-[var(--color-accent-ink)] uppercase">
-                  {clientLabel}
-                </p>
-              )}
               <h3 className="text-sm font-semibold text-balance">{step.title}</h3>
-              <p className="mt-2 text-xs/[1.6] text-[var(--color-ink-2)] text-pretty">{step.body}</p>
+              {step.body && <p className="mt-2 text-xs/[1.6] text-[var(--color-ink-2)] text-pretty">{step.body}</p>}
+              {step.lanes && <Lanes lanes={step.lanes} youLabel={youLabel} usLabel={usLabel} />}
             </li>
           ))}
         </ol>
       </div>
 
       {/* ---------------- Mobile / tablet: the same run, vertical ---------------- */}
-      <ol className="flex flex-col gap-8 lg:hidden">
+      <WeekStrip letters={weekLetters} youLabel={youLabel} usLabel={usLabel} />
+
+      <ol className="flex flex-col gap-6 lg:hidden">
         {steps.map((step, i) => {
           const isDelivery = i === steps.length - 1
+          const accent = i === 0 || isDelivery || Boolean(step.lanes)
           return (
             <li
               key={step.day}
-              className="relative pl-8"
+              className="relative pl-14"
               data-reveal
               style={{ '--reveal-delay': `${i * 90}ms` } as React.CSSProperties}
             >
-              {/* One rail segment per step, from this node down to the next, so
-                  the rail stops exactly on the last node instead of running past
-                  it — and draws itself step by step as the list comes into view.
-                  `-bottom-8` spans the list's `gap-8`. */}
+              {/* One rail segment per step, from this tile down to the next, so
+                  the rail stops on the last one instead of running past it.
+                  `-bottom-6` spans the list's `gap-6`. */}
               {!isDelivery && (
                 <span
                   aria-hidden
-                  className="absolute top-[9px] -bottom-8 left-[5px] w-px bg-[var(--color-line)]"
+                  className="absolute top-10 -bottom-6 left-[19px] w-px bg-[var(--color-line)]"
                   data-rail-y
                 />
               )}
+              {/* The day as a calendar tile rather than a bullet: the column of
+                  them is what turns this list into a week on a phone, and it
+                  carries the label the text line used to repeat. */}
               <span
                 aria-hidden
-                className={`absolute top-[4px] left-0 size-[11px] rounded-full border-[1.25px] ${
+                // A day range is a number, so it stays LTR: in Arabic the bidi
+                // algorithm otherwise flips "2–3" into "3–2".
+                dir="ltr"
+                className={`absolute top-0 left-0 flex size-10 items-center justify-center rounded-[11px] font-[family-name:var(--font-display)] text-sm font-bold ${
                   isDelivery
-                    ? 'border-[var(--color-accent)] bg-[var(--color-accent)]'
-                    : i === 0 || step.client
-                      ? 'border-[var(--color-accent)] bg-[var(--color-paper)]'
-                      : 'border-[var(--color-muted)] bg-[var(--color-paper)]'
-                }`}
-              />
-              <p
-                className={`font-[family-name:var(--font-display)] text-xs font-semibold uppercase tracking-[0.14em] ${
-                  isDelivery || step.client ? 'text-[var(--color-accent-ink)]' : 'text-[var(--color-muted)]'
+                    ? 'bg-[var(--color-accent)] text-white'
+                    : accent
+                      ? 'bg-[var(--color-accent-soft)] text-[var(--color-accent-ink)]'
+                      : 'bg-[var(--color-paper-2)] text-[var(--color-muted)]'
                 }`}
               >
-                {step.day} <span className="font-normal text-[var(--color-muted)] normal-case">· {step.weekday}</span>
+                {dayNumbers(step.day)}
+              </span>
+              <p className="text-xs font-semibold tracking-[0.14em] text-[var(--color-muted)] uppercase">
+                <span className="sr-only">{step.day} · </span>
+                {step.weekday}
               </p>
-              <h3 className="mt-1 font-semibold">
-                {step.title}
-                {step.client && (
-                  <span className="ml-2 inline-flex items-center rounded-full bg-[var(--color-accent-soft)] px-2 py-0.5 align-middle text-[10px] font-semibold tracking-[0.14em] text-[var(--color-accent-ink)] uppercase">
-                    {clientLabel}
-                  </span>
-                )}
-              </h3>
-              <p className="mt-1.5 text-sm/[1.6] text-[var(--color-ink-2)] text-pretty">{step.body}</p>
+              <h3 className="mt-0.5 font-semibold">{step.title}</h3>
+              {step.body && <p className="mt-1.5 text-sm/[1.6] text-[var(--color-ink-2)] text-pretty">{step.body}</p>}
+              {step.lanes && <Lanes lanes={step.lanes} youLabel={youLabel} usLabel={usLabel} />}
             </li>
           )
         })}
       </ol>
 
       {/* The two annotations the desktop schema carries, as text on small screens. */}
-      <p className="mt-8 text-sm text-[var(--color-muted)] lg:hidden">
+      <p className="mt-7 text-sm text-[var(--color-muted)] lg:hidden">
         <span className="font-medium text-[var(--color-ink-2)]">{scopeLabel}</span> · {spanLabel}
+      </p>
+    </div>
+  )
+}
+
+/**
+ * Friday's two tracks, side by side — the client's on the accent rule, ours on
+ * the muted one. The tag sits above its line, never inline with it: inline, the
+ * badge shifted the text block it was meant to label.
+ */
+function Lanes({
+  lanes,
+  youLabel,
+  usLabel,
+}: {
+  lanes: { you: string; us: string }
+  youLabel: string
+  usLabel: string
+}) {
+  const rows = [
+    { label: youLabel, text: lanes.you, accent: true },
+    { label: usLabel, text: lanes.us, accent: false },
+  ]
+  return (
+    <div className="mt-3 flex flex-col gap-2.5">
+      {rows.map((row) => (
+        <div
+          key={row.label}
+          className={`border-l-2 pl-3 ${row.accent ? 'border-[var(--color-accent)]' : 'border-[var(--color-line)]'}`}
+        >
+          <p
+            className={`text-[10px] font-semibold tracking-[0.14em] uppercase ${
+              row.accent ? 'text-[var(--color-accent-ink)]' : 'text-[var(--color-muted)]'
+            }`}
+          >
+            {row.label}
+          </p>
+          <p className="mt-0.5 text-xs/[1.55] text-[var(--color-ink-2)] text-pretty sm:text-sm/[1.55] lg:text-xs/[1.6]">
+            {row.text}
+          </p>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+/**
+ * The week as one object, for small screens — the two lanes the desktop schema
+ * draws on its rail, flattened into a calendar.
+ *
+ * It exists because of the acceptance criterion for this page: at 390×844 no
+ * screen may be nothing but text, and the vertical run below is a list. Seven
+ * cells, our track running under all of them, the client's track over Friday
+ * alone, and Sunday filled because that is the day it goes live.
+ *
+ * The letters are computed from `Intl` by the page, so they are right in all ten
+ * locales and cost no copy.
+ */
+function WeekStrip({
+  letters,
+  youLabel,
+  usLabel,
+}: {
+  letters: string[]
+  youLabel: string
+  usLabel: string
+}) {
+  /** Friday is the shared day, Sunday is go-live — both indexed from Monday. */
+  const FRIDAY = 4
+  const SUNDAY = 6
+
+  return (
+    <div className="mb-9 lg:hidden" data-reveal>
+      <p className="text-[10px] font-semibold tracking-[0.14em] text-[var(--color-accent-ink)] uppercase">
+        {youLabel}
+      </p>
+      <div className="mt-1.5 grid grid-cols-7 gap-1" aria-hidden>
+        <span className="col-start-5 h-1.5 rounded-full bg-[var(--color-accent)]" />
+      </div>
+
+      <ul className="mt-2 grid grid-cols-7 gap-1">
+        {letters.map((letter, i) => (
+          <li
+            key={i}
+            className={`flex h-9 items-center justify-center rounded-[7px] text-[11px] font-semibold uppercase ${
+              i === SUNDAY
+                ? 'bg-[var(--color-accent)] text-white'
+                : i === FRIDAY
+                  ? 'bg-[var(--color-accent-soft)] text-[var(--color-accent-ink)]'
+                  : 'bg-[var(--color-paper-2)] text-[var(--color-muted)]'
+            }`}
+          >
+            {letter}
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-2 grid grid-cols-7 gap-1" aria-hidden>
+        <span className="col-span-7 h-1.5 rounded-full bg-[color-mix(in_srgb,var(--color-muted)_32%,transparent)]" />
+      </div>
+      <p className="mt-1.5 text-[10px] font-semibold tracking-[0.14em] text-[var(--color-muted)] uppercase">
+        {usLabel}
       </p>
     </div>
   )

@@ -7,11 +7,19 @@ import { PricedText } from '@/components/ui/price'
 export function FaqAccordion({
   items,
   locale = 'en',
+  defaultOpen = 0,
 }: {
   items: readonly { q: string; a: string }[]
   locale?: string
+  /**
+   * Which answer is unfolded on arrival, or `null` for none. Defaults to the
+   * first, as everywhere else on the site; the Sprint V1 landing passes `null`
+   * so its question zone reads as a list rather than as a paragraph on a phone.
+   * Every answer is in the DOM either way, so this changes nothing for crawlers.
+   */
+  defaultOpen?: number | null
 }) {
-  const [open, setOpen] = useState<number | null>(0)
+  const [open, setOpen] = useState<number | null>(defaultOpen)
 
   return (
     <div className="divide-y divide-[var(--color-line)] border-y border-[var(--color-line)]">

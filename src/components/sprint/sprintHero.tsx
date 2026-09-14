@@ -1,33 +1,40 @@
 import { Container } from '@/components/ui/container'
 import { SprintCta, SPRINT_FORM_ANCHOR } from '@/components/sprint/sprintCta'
+import { ProductShot } from '@/components/sprint/productShot'
 import type { SprintSlot } from '@/lib/sprintSlots'
 
 /**
  * The first screen of the Sprint V1 landing — the one thing a visitor coming
  * from an ad judges before reading a word.
  *
- * ⚠️ WHY IT LOOKS LIKE THIS, AND WHAT MUST NOT BE ADDED.
+ * ⚠️ WHY IT LOOKS LIKE THIS, AND WHAT MUST NOT COME BACK.
  *
- * The page used to read as a well-set document: correct, and flat. What is sold
- * here is a product WE build, at $17k, to someone who decides alone and fast —
- * so the first screen has to carry the level of the work before it carries the
- * argument. The register is deliberately PRO / LUXURY, not "startup that moves":
- *   - one dark canvas, hairlines, a single accent (#4C30FF), lots of air;
- *   - motion so slow it reads as depth rather than as animation (the grid drifts
- *     one cell every 90s);
- *   - a fine grain, which is what keeps a flat dark surface from looking cheap.
- * ⛔ No particles, no animated blob, no loud gradient, no bouncing micro-
- * interaction. Anything that reads "template" costs more than it returns here.
+ * It used to be a dark canvas, and Adrien was right about why that failed
+ * (2026-09-13): « tu as juste mis en dark, là où tout le reste est light […]
+ * c'est pas réfléchi ». Dark was decoration, not a decision. The page now runs
+ * ONE system — paper ground, one accent, a lot of air — and the dark is spent
+ * deliberately, once, on the products section. The "pro / luxury" register comes
+ * from space and restraint, not from a black background.
  *
- * ⚠️ PERFORMANCE. Every layer is CSS — no image, no library, no extra request —
- * and the only animated property is `transform` on a decorative, aria-hidden
- * element. Nothing above the fold is hidden behind a scroll reveal, so nothing
- * here can delay LCP, and nothing can shift layout (this page measures CLS 0).
+ * ⛔ THE HERO SHOWS THE PRODUCT, IT DOES NOT DESCRIBE IT. A real capture of a
+ * site that is online, in a browser frame, plus three figures and a dated
+ * button. A prospect has to get the offer in three seconds without reading a
+ * paragraph, so there is exactly one sentence here and it stays one sentence.
  *
- * ⚠️ MOBILE FIRST, AND THE ORDER IS DELIBERATE. LinkedIn Ads traffic is mostly
- * on a phone: title → subtitle → the two figures (delay and price) → CTA. The
- * price and the delay must stay readable on the first screen, and the button has
- * to follow them directly. The form is the hero's right column on desktop only.
+ * ⛔ AND IT EXPLAINS NOTHING ABOUT THE SLOTS. The strip is dates and their state,
+ * full stop — no "a sprint starts on a Monday and only three weeks are open".
+ * Adrien: « ça perd l'avantage des slots ». Silence is not a false claim: no week
+ * is ever labelled taken (decision cmu0fugh).
+ *
+ * ⚠️ MOBILE ORDER IS DELIBERATE, and it is the acceptance criterion for the whole
+ * page: title → one line → button → CAPTURE → figures → dates. No screen of this
+ * page may be nothing but text at 390×844, and on the first screen the capture is
+ * what guarantees it.
+ *
+ * ⚠️ PERFORMANCE. The capture is the LCP element and is served pre-encoded
+ * (AVIF ~18 kB) with its dimensions set; the decorative layers are two CSS
+ * gradients on an aria-hidden element whose only animated property is
+ * `transform`. Nothing above the fold is hidden behind a scroll reveal.
  */
 
 export type SprintHeroFigure = { value: React.ReactNode; label: string }
@@ -40,78 +47,82 @@ export function SprintHero({
   ctaLabel,
   ctaLabelSlot,
   ctaNote,
-  trust,
   slots,
-  slotsTitle,
-  slotsNote,
   slotOpenLabel,
-  formTitle,
-  form,
+  shot,
 }: {
   kicker: string
   title: string
   subtitle: string
-  /** Delay and price, in that order — the two numbers allowed on this page. */
-  figures: [SprintHeroFigure, SprintHeroFigure]
+  /** Delay, price, and the one client a week — the only figures this page allows. */
+  figures: SprintHeroFigure[]
   ctaLabel: string
-  /** Dated variant of the CTA, carrying `{date}` — see the note on the button. */
+  /** Dated variant of the CTA, carrying `{date}` (decision cmu0fugh). */
   ctaLabelSlot: string
   ctaNote: string
-  trust: string
   /** The booking window — the next open Mondays, computed. */
   slots: SprintSlot[]
-  slotsTitle: string
-  slotsNote: string
   slotOpenLabel: string
-  /** Heading above the form card — the card used to open straight on "Name". */
-  formTitle: string
-  /** The lead form, rendered by the page (it is a client component). */
-  form: React.ReactNode
+  shot: { src: string; alt: string; domain: string }
 }) {
   /*
    * The CTA names the week it is selling (decision cmu0fugh): a dated slot turns
-   * an abstract delay into a decision to take now. It names the next open Monday,
-   * and falls back to the plain label only if the window somehow comes back empty
-   * — a label naming no week beats a label naming a wrong one.
+   * an abstract delay into a decision to take now. It falls back to the plain
+   * label only if the window ever comes back empty — a label naming no week beats
+   * a label naming a wrong one.
    */
   const next = slots[0]
   const ctaText = next ? ctaLabelSlot.replace('{date}', next.dateLabel) : ctaLabel
 
   return (
-    <section className="sprint-hero relative isolate overflow-hidden bg-[#0b0b0e] text-[var(--color-paper)]">
-      {/* Three decorative layers, in depth order. All aria-hidden: they carry no
-          information, only the impression the copy then has to live up to. */}
+    <section className="sprint-hero relative isolate overflow-hidden">
       <span aria-hidden className="sprint-hero-grid" />
       <span aria-hidden className="sprint-hero-glow" />
-      <span aria-hidden className="sprint-hero-grain" />
 
-      <Container className="relative grid gap-12 pt-14 pb-16 sm:pt-20 sm:pb-20 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
-        <div>
-          <p className="flex items-center gap-3 text-xs font-semibold tracking-[0.18em] text-[color-mix(in_srgb,var(--color-paper)_62%,transparent)] uppercase">
+      <Container className="relative grid gap-10 pt-10 pb-16 sm:pt-14 sm:pb-20 lg:grid-cols-[1fr_1.04fr] lg:items-start lg:gap-x-16 lg:gap-y-9 lg:pt-20 lg:pb-28">
+        {/* Text + action. On a phone this is everything above the capture. */}
+        <div className="lg:col-start-1 lg:row-start-1">
+          <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-accent-ink)]">
             <span aria-hidden className="h-px w-7 bg-[var(--color-accent)]" />
             {kicker}
           </p>
 
-          <h1 className="mt-6 font-[family-name:var(--font-display)] text-[length:clamp(2.4rem,5vw,4.2rem)]/[1.02] font-bold tracking-[-0.03em] text-balance">
+          <h1 className="mt-5 font-[family-name:var(--font-display)] text-[length:clamp(2.5rem,5.4vw,4.25rem)]/[1.0] font-bold tracking-[-0.035em] text-balance">
             {title}
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg/[1.6] text-[color-mix(in_srgb,var(--color-paper)_72%,transparent)] text-pretty">
-            {subtitle}
-          </p>
+          <p className="mt-5 max-w-md text-lg/[1.55] text-[var(--color-ink-2)] text-pretty">{subtitle}</p>
 
-          {/* Side by side on a phone: stacked, the two figures pushed the CTA off
-              the first screen, and price + delay are exactly what has to be read
-              before the button. */}
-          <dl className="mt-9 grid grid-cols-2 gap-x-6 sm:flex sm:flex-wrap sm:gap-x-12 sm:gap-y-6">
+          <div className="mt-8">
+            <SprintCta placement="hero" label={ctaText} className="w-full sm:w-auto" />
+            <p className="mt-3 text-sm text-[var(--color-muted)]">{ctaNote}</p>
+          </div>
+        </div>
+
+        {/* The product, shown. Second in the DOM so it lands directly under the
+            button on a phone — the first screen is never text alone. */}
+        <div className="lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center">
+          <ProductShot
+            src={shot.src}
+            alt={shot.alt}
+            domain={shot.domain}
+            priority
+            sizes="(min-width: 1024px) 46vw, 92vw"
+            className="sprint-shot--hero"
+          />
+        </div>
+
+        {/* The figures and the calendar: two graphic objects, no sentence. */}
+        <div className="lg:col-start-1 lg:row-start-2">
+          <dl className="grid grid-cols-3 divide-x divide-[var(--color-line)] border-y border-[var(--color-line)] py-5">
             {figures.map((figure) => (
-              <div key={figure.label} className="border-l-2 border-[var(--color-accent)] pl-4">
+              <div key={figure.label} className="px-3 first:pl-0 last:pr-0">
                 <dt className="sr-only">{figure.label}</dt>
                 <dd>
-                  <p className="font-[family-name:var(--font-display)] text-[length:clamp(1.9rem,3.2vw,2.5rem)] font-bold tracking-[-0.02em]">
+                  <p className="font-[family-name:var(--font-display)] text-[length:clamp(1.5rem,5.2vw,2.25rem)]/[1.05] font-bold tracking-[-0.03em] whitespace-nowrap">
                     {figure.value}
                   </p>
-                  <p className="mt-1 max-w-[16ch] text-sm text-[color-mix(in_srgb,var(--color-paper)_55%,transparent)]">
+                  <p className="mt-1.5 text-[11px]/[1.35] tracking-wide text-[var(--color-muted)] uppercase">
                     {figure.label}
                   </p>
                 </dd>
@@ -119,36 +130,7 @@ export function SprintHero({
             ))}
           </dl>
 
-          <div className="mt-9 lg:hidden">
-            <SprintCta placement="hero" label={ctaText} className="w-full sm:w-auto" />
-            <p className="mt-3 max-w-sm text-sm text-[color-mix(in_srgb,var(--color-paper)_55%,transparent)]">
-              {ctaNote}
-            </p>
-          </div>
-
-          <SprintSlotStrip
-            slots={slots}
-            title={slotsTitle}
-            note={slotsNote}
-            openLabel={slotOpenLabel}
-          />
-
-          <p className="mt-8 max-w-md text-sm text-[color-mix(in_srgb,var(--color-paper)_50%,transparent)] text-pretty">
-            {trust}
-          </p>
-        </div>
-
-        {/* On desktop the form is the hero's right column: cold traffic should
-            never have to scroll to find the action. On the dark canvas the white
-            card reads as the one thing to touch. */}
-        <div className="hidden lg:block">
-          <p className="mb-4 font-[family-name:var(--font-display)] text-xl font-bold tracking-[-0.01em] text-balance">
-            {formTitle}
-          </p>
-          {form}
-          <p className="mt-3 text-center text-sm text-[color-mix(in_srgb,var(--color-paper)_55%,transparent)]">
-            {ctaNote}
-          </p>
+          <SprintSlotStrip slots={slots} openLabel={slotOpenLabel} />
         </div>
       </Container>
     </section>
@@ -156,62 +138,48 @@ export function SprintHero({
 }
 
 /**
- * The calendar, staged: the next open Mondays.
+ * The calendar: the next open Mondays, and nothing else.
+ *
+ * ⛔ NO HEADING, NO EXPLANATION, NO COUNT. Adrien, 2026-09-13: the strip's whole
+ * value is the impression it leaves, and commenting the mechanic destroys it.
+ * It shows dates and one state.
  *
  * ⛔ EVERY CHIP IS OPEN, AND NONE IS EVER LABELLED TAKEN. No booking state exists
  * (decision cmu0fugh — Adrien refused a tool to maintain), so the page states
  * which weeks are open and never claims the others are gone: a "full" badge on a
  * free week is a false claim anyone can check by reloading the page two weeks
- * running. The scarcity effect comes from the DATE and from showing only three
- * weeks, both of which are true. The single lever is `sprintExcludedMondays`.
+ * running. The single lever is `sprintExcludedMondays`.
  *
  * Each chip is a link to the form: the dated slot IS the call to action.
  */
-function SprintSlotStrip({
-  slots,
-  title,
-  note,
-  openLabel,
-}: {
-  slots: SprintSlot[]
-  title: string
-  note: string
-  openLabel: string
-}) {
+function SprintSlotStrip({ slots, openLabel }: { slots: SprintSlot[]; openLabel: string }) {
   return (
-    <div className="mt-10 border-t border-[color-mix(in_srgb,var(--color-paper)_14%,transparent)] pt-7">
-      <p className="text-xs font-semibold tracking-[0.16em] text-[color-mix(in_srgb,var(--color-paper)_55%,transparent)] uppercase">
-        {title}
-      </p>
-      <ul className="mt-4 flex flex-wrap gap-2.5">
-        {slots.map((slot) => (
-          <li key={slot.iso}>
-            <a
-              href={`#${SPRINT_FORM_ANCHOR}`}
-              aria-label={`${openLabel} — ${slot.dateLabel}`}
-              className="block min-w-[5.25rem] rounded-[var(--radius-lg)] border border-[color-mix(in_srgb,var(--color-paper)_18%,transparent)] bg-[color-mix(in_srgb,var(--color-paper)_5%,transparent)] px-4 py-3 text-center transition-colors hover:border-[var(--color-accent)] hover:bg-[color-mix(in_srgb,var(--color-accent)_16%,transparent)]"
-            >
-              <time dateTime={slot.iso}>
-                <span className="block text-[11px] tracking-[0.12em] text-[color-mix(in_srgb,var(--color-paper)_50%,transparent)] uppercase">
-                  {slot.weekday}
-                </span>
-                <span className="mt-0.5 block font-[family-name:var(--font-display)] text-2xl font-bold tracking-[-0.02em]">
-                  {slot.day}
-                </span>
-                <span className="block text-[11px] tracking-[0.12em] text-[color-mix(in_srgb,var(--color-paper)_50%,transparent)] uppercase">
-                  {slot.month}
-                </span>
-              </time>
-              <span className="mt-2 block text-[10px] font-semibold tracking-[0.12em] text-[color-mix(in_srgb,var(--color-accent)_70%,white)] uppercase">
-                {openLabel}
+    <ul className="mt-6 grid grid-cols-3 gap-2.5">
+      {slots.map((slot) => (
+        <li key={slot.iso}>
+          <a
+            href={`#${SPRINT_FORM_ANCHOR}`}
+            aria-label={`${openLabel} — ${slot.dateLabel}`}
+            className="block rounded-[var(--radius-lg)] border border-[var(--color-line)] bg-white px-2 py-3 text-center transition-colors hover:border-[var(--color-accent)] hover:bg-[var(--color-accent-soft)]"
+          >
+            <time dateTime={slot.iso}>
+              <span className="block text-[10px] tracking-[0.12em] text-[var(--color-muted)] uppercase">
+                {slot.weekday}
               </span>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <p className="mt-4 max-w-md text-sm text-[color-mix(in_srgb,var(--color-paper)_55%,transparent)] text-pretty">
-        {note}
-      </p>
-    </div>
+              <span className="mt-0.5 block font-[family-name:var(--font-display)] text-2xl font-bold tracking-[-0.02em]">
+                {slot.day}
+              </span>
+              <span className="block text-[10px] tracking-[0.12em] text-[var(--color-muted)] uppercase">
+                {slot.month}
+              </span>
+            </time>
+            <span className="mt-2 flex items-center justify-center gap-1.5 text-[10px] font-semibold tracking-[0.1em] text-[var(--color-accent-ink)] uppercase">
+              <span aria-hidden className="size-1.5 rounded-full bg-[var(--color-accent)]" />
+              {openLabel}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
   )
 }

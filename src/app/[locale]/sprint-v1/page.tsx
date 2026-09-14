@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
-import { isLocale, type Locale } from '@/i18n/config'
+import { isLocale, localeHrefLang, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/getDictionary'
 import { href, site } from '@/content/site'
-import { projects } from '@/content/projects'
-import { sprintLanding, sprintLandingFlags, sprintProductSlugs, traqioProduct } from '@/content/sprintLanding'
+import { sprintLanding } from '@/content/sprintLanding'
 import { buildMetadata } from '@/lib/metadata'
 import { sprintSlots } from '@/lib/sprintSlots'
 import { Container } from '@/components/ui/container'
@@ -13,15 +12,14 @@ import { FaqAccordion } from '@/components/sections/faqAccordion'
 import { BreadcrumbJsonLd, FaqJsonLd, HowToJsonLd, ServiceJsonLd } from '@/components/seo/jsonLd'
 import { SprintCta, SPRINT_FORM_ANCHOR } from '@/components/sprint/sprintCta'
 import { SprintComparison } from '@/components/sprint/sprintComparison'
+import { SprintDay7 } from '@/components/sprint/sprintDay7'
+import { SprintDelayChart } from '@/components/sprint/sprintDelayChart'
 import { SprintHero } from '@/components/sprint/sprintHero'
 import { SprintLandingView } from '@/components/sprint/sprintLandingView'
 import { SprintLeadForm, type SprintFormCopy } from '@/components/sprint/sprintLeadForm'
 import { SprintMotion } from '@/components/sprint/sprintMotion'
-import { SprintTimeline } from '@/components/sprint/sprintTimeline'
-import { SprintIncluded } from '@/components/sprint/sprintIncluded'
-import { SprintDelayChart } from '@/components/sprint/sprintDelayChart'
-import { CountUpPrice } from '@/components/sprint/countUpPrice'
-import Image from 'next/image'
+import { SprintProductWall } from '@/components/sprint/sprintProductWall'
+import { SprintTimeline, type SprintTimelineStep } from '@/components/sprint/sprintTimeline'
 
 /**
  * The hero shows the next Mondays a sprint can start on, and they are computed
@@ -46,24 +44,40 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 /**
  * Sprint V1 — the landing page PAID traffic lands on (LinkedIn Ads first).
  *
- * Written for cold visitors, so it breaks from the rest of the site on purpose:
- * one offer, one action repeated five times, and a page long enough to answer
- * every objection before the visitor has to ask. The home page still presents
- * the three offers; this one sells exactly one.
+ * ⛔ THIS PAGE IS A SHOP WINDOW, NOT A DOCUMENT (khufu HQ decision cmu0hv4c).
+ *
+ * It was rebuilt on 2026-09-14 after Adrien took the production version apart
+ * point by point. The cause he identified is the one to keep fixed: every
+ * previous session on this page had been a WRITING session, each adding copy and
+ * none removing any, until a shop window had become a well-set document. The
+ * rewrite cut the visitor-facing French copy by roughly two thirds
+ * (`scripts/measureSprintCopy.ts` measures it — run it before and after).
+ *
+ * WHAT THE STRUCTURE IS FOR, section by section:
+ *   hero        — SHOWS a real product and three figures. One sentence, one
+ *                 dated button, the dates. No paragraph, no slot mechanics.
+ *   commitments — the three contractual promises, as a band. Replaces a section
+ *                 headed « Ce qu'on peut prouver », which Adrien called « vendeur
+ *                 de tapis pourri » and whose figures repeated the hero's.
+ *   products    — the work itself, and the ONE dark section of the page.
+ *   timeline    — the week drawn, with Friday's two parallel tracks.
+ *   day7        — one icon grid where two prose sections used to say the same
+ *                 nine things twice.
+ *   comparison  — a chart for the delay (the only sourceable axis) and a matrix
+ *                 of marks for the rest. Not one unsourced figure.
+ *   audience    — who it is for, in chips.
+ *   faq         — the ONE question zone. The « trois questions » block that sat
+ *                 on top of it is merged in.
+ *
+ * ⛔ ONE OFFER, NOTHING AROUND IT. No delivery guarantee and no 48h prototype;
+ * neither comes back without a new decision replacing cmu0exke and cmu0fcvk.
+ * ⛔ NO TIME OF DAY anywhere on the page (the 06:00 UTC kickoff is contractual
+ * and stays off the page). ⛔ No claim, anywhere, about how long our own products
+ * took to build.
  *
  * The site header and footer are kept rather than stripped as on the lead-magnet
- * landings: a €17k decision needs the legal pages, the address and the rest of
- * the work reachable, and the chrome is what makes this page look like part of a
- * real company rather than a funnel.
- *
- * Every claim here is traceable: prices from `site.ts`, the run and the copy
- * from `sprintLanding.ts`, Khufu's own products from `projects.ts`, the start
- * dates computed in `lib/sprintSlots.ts`.
- *
- * ⛔ ONE OFFER, NOTHING AROUND IT. There is no delivery guarantee and no 48h
- * prototype on this page any more, and neither comes back without a new khufu HQ
- * decision replacing cmu0exke and cmu0fcvk. Both were deleted rather than hidden
- * behind a flag, precisely so they cannot be switched back on by accident.
+ * landings: a €15k decision needs the legal pages and the rest of the company
+ * reachable.
  */
 export default async function SprintPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params
@@ -90,16 +104,12 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
   }
 
   /*
-   * The run is authored on this page rather than reused from `method.days`.
-   *
-   * Since khufu HQ decision cmu0fbad the landing's week is CALENDAR-BOUND —
-   * Monday 06:00 UTC → Sunday, Friday is the client's acceptance-testing day,
-   * the weekend is where their feedback is applied — and the shared /methode
-   * page still describes the generic run. Reusing it would have meant either
-   * losing the calendar here or rewriting a ten-locale dictionary that serves
-   * another page. See the note on `timeline` in sprintLanding.ts.
+   * The run is authored on this page rather than reused from `method.days`: the
+   * landing's week is calendar-bound (decision cmu0fbad — Monday → Sunday,
+   * Friday is the client's acceptance-testing day and runs alongside our
+   * technical track) and the shared /methode page describes the generic run.
    */
-  const timeline = [
+  const timeline: SprintTimelineStep[] = [
     {
       day: c.timeline.dayZero.day[locale],
       weekday: c.timeline.dayZero.weekday[locale],
@@ -110,8 +120,8 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
       day: d.day[locale],
       weekday: d.weekday[locale],
       title: d.title[locale],
-      body: d.body[locale],
-      client: d.client,
+      body: d.body?.[locale],
+      lanes: d.lanes ? { you: d.lanes.you[locale], us: d.lanes.us[locale] } : undefined,
     })),
   ]
 
@@ -125,48 +135,17 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
   const ctaWithSlot = (fallback: string): string =>
     slots[0] ? c.hero.ctaLabelSlot[locale].replace('{date}', slots[0].dateLabel) : fallback
 
-  // Khufu's own live products — no client references on this page, and no
-  // duration claimed for any of them. See the note in sprintLanding.ts.
-  // Traqio joins only when its flag is on (its showcase is not online yet).
-  const ownProducts: {
-    key: string
-    name: string
-    type: string
-    tagline: string
-    url?: string
-    stack: readonly string[]
-    image?: string
-    /** Overrides the shared "in production" badge — see Traqio below. */
-    status?: string
-  }[] = [
-    ...sprintProductSlugs
-      .map((slug) => projects.find((p) => p.slug === slug))
-      .filter((p): p is (typeof projects)[number] => Boolean(p))
-      .map((p) => ({
-        key: p.slug,
-        name: p.name,
-        type: p.type[locale],
-        tagline: p.tagline[locale],
-        url: p.url,
-        stack: p.stack,
-        image: p.image,
-      })),
-    ...(sprintLandingFlags.traqioProduct
-      ? [
-          {
-            key: 'traqio',
-            name: traqioProduct.name,
-            type: c.products.traqioType[locale],
-            tagline: c.products.traqioTagline[locale],
-            url: traqioProduct.url,
-            stack: traqioProduct.stack,
-            // Its SITE is live; the product is a prelaunch (decision cmu0fqj7).
-            // It must never wear the same badge as the three shipped products.
-            status: c.products.traqioStatus[locale],
-          },
-        ]
-      : []),
-  ]
+  /*
+   * Monday → Sunday as one narrow letter each, for the timeline's week strip on
+   * small screens. Computed rather than written: ten locales, zero copy, and a
+   * fixed UTC week in 2024 so the labels can never depend on today's date or on
+   * the server's timezone.
+   */
+  const weekLetters = Array.from({ length: 7 }, (_, i) =>
+    new Intl.DateTimeFormat(localeHrefLang[locale], { weekday: 'narrow', timeZone: 'UTC' }).format(
+      new Date(Date.UTC(2024, 0, 1 + i)),
+    ),
+  )
 
   const faqItems = c.faq.items.map((i) => ({ q: i.q[locale], a: i.a[locale] }))
 
@@ -189,7 +168,10 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
       <HowToJsonLd
         name={s.title}
         description={s.metaDescription}
-        steps={timeline.map((t) => ({ name: `${t.day} — ${t.title}`, text: t.body }))}
+        steps={timeline.map((t) => ({
+          name: `${t.day} — ${t.title}`,
+          text: t.body ?? [t.lanes?.you, t.lanes?.us].filter(Boolean).join(' '),
+        }))}
       />
       <FaqJsonLd items={faqItems} />
       <BreadcrumbJsonLd
@@ -204,271 +186,102 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
       <SprintHero
         kicker={s.kicker}
         title={s.title}
-        subtitle={s.subtitle}
+        subtitle={c.hero.subtitle[locale]}
         figures={[
           { value: `${site.v1Days} ${dict.common.days}`, label: dict.home.heroFigures[0].label },
           { value: <Price eur={site.v1PriceEUR} locale={locale} />, label: dict.home.heroFigures[1].label },
+          { value: '1', label: c.hero.clientsPerWeek[locale] },
         ]}
         ctaLabel={c.hero.ctaLabel[locale]}
         ctaLabelSlot={c.hero.ctaLabelSlot[locale]}
         ctaNote={c.hero.ctaNote[locale]}
-        trust={c.hero.trust[locale]}
         slots={slots}
-        slotsTitle={c.hero.slotsTitle[locale]}
-        slotsNote={c.hero.slotsNote[locale]}
         slotOpenLabel={c.hero.slotOpen[locale]}
-        formTitle={c.form.title[locale]}
-        form={<SprintLeadForm copy={formCopy} locale={locale} placement="hero" />}
+        shot={{ src: '/images/sprint/clokizi', alt: c.hero.shotAlt[locale], domain: 'clokizi.com' }}
       />
 
-      {/* Who it's for / who it isn't — filtering upfront raises lead quality. */}
-      <section>
-        <Container className="py-16 sm:py-24">
-          <SectionHeading title={c.audience.title[locale]} subtitle={c.audience.subtitle[locale]} />
-          <div className="mt-12 grid gap-5 md:grid-cols-2">
-            <div className="rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-7">
-              <h3 className="font-[family-name:var(--font-display)] text-xl font-bold">
-                {c.audience.forTitle[locale]}
-              </h3>
-              <ul className="mt-5 flex flex-col gap-3">
-                {c.audience.forItems.map((item) => (
-                  <li key={item[locale]} className="flex gap-3 text-[var(--color-ink-2)]">
-                    <span
-                      aria-hidden
-                      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent-soft)] text-xs text-[var(--color-accent-ink)]"
-                    >
-                      ✓
-                    </span>
-                    {item[locale]}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-[var(--color-paper-2)] p-7">
-              <h3 className="font-[family-name:var(--font-display)] text-xl font-bold">
-                {c.audience.notForTitle[locale]}
-              </h3>
-              <ul className="mt-5 flex flex-col gap-3">
-                {c.audience.notForItems.map((item) => (
-                  <li key={item[locale]} className="flex gap-3 text-[var(--color-muted)]">
-                    <span
-                      aria-hidden
-                      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white text-sm leading-none text-[var(--color-muted)]"
-                    >
-                      ×
-                    </span>
-                    {item[locale]}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <p className="mt-8 max-w-2xl text-sm text-[var(--color-muted)] text-pretty">{c.audience.note[locale]}</p>
-        </Container>
-      </section>
-
-      {/* What is delivered on day 7 */}
+      {/* The three contractual commitments. A band, not a section: no heading, no
+          subtitle, no note — the figures they used to repeat are in the hero. */}
       <section className="border-y border-[var(--color-line)] bg-[var(--color-paper-2)]">
-        <Container className="py-16 sm:py-24">
-          <SectionHeading title={c.deliverables.title[locale]} subtitle={c.deliverables.subtitle[locale]} />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {c.deliverables.items.map((item, i) => (
-              <div
-                key={item.title[locale]}
-                className="rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-7"
-                data-reveal
-                style={{ '--reveal-delay': `${(i % 3) * 110}ms` } as React.CSSProperties}
-              >
-                <span className="font-[family-name:var(--font-display)] text-sm font-bold text-[var(--color-accent-ink)]">
+        <Container>
+          <dl className="grid divide-y divide-[var(--color-line)] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            {c.commitments.map((item, i) => (
+              <div key={item.title[locale]} className="flex items-baseline gap-3 py-5 sm:px-6 sm:first:pl-0 sm:last:pr-0">
+                <span
+                  aria-hidden
+                  className="font-[family-name:var(--font-display)] text-xs font-bold text-[var(--color-accent)]"
+                >
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 className="mt-3 text-lg font-semibold">{item.title[locale]}</h3>
-                <p className="mt-2 text-[var(--color-ink-2)] text-pretty">{item.body[locale]}</p>
+                <div>
+                  <dt className="font-[family-name:var(--font-display)] font-bold tracking-[-0.01em]">
+                    {item.title[locale]}
+                  </dt>
+                  <dd className="mt-0.5 text-sm text-[var(--color-muted)] text-pretty">{item.note[locale]}</dd>
+                </div>
               </div>
             ))}
-          </div>
-
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <SprintCta placement="deliverables" label={c.midCta.deliverables[locale]} />
-            <p className="text-sm text-[var(--color-muted)]">{c.hero.ctaNote[locale]}</p>
-          </div>
+          </dl>
         </Container>
       </section>
 
-      {/* What comes with it. Three FIXED deliverables and only three — Stripe,
-          analytics and light branding were deliberately kept out and answered in
-          one FAQ entry instead (khufu HQ decisions cmu09gb6 / cmu09gn1 / cmu09j84). */}
-      <section>
+      {/* The work itself — and the one dark section of the page. See the note in
+          sprintProductWall.tsx for why dark is spent here and nowhere else. */}
+      <section className="bg-[#0b0b0e]">
         <Container className="py-16 sm:py-24">
-          <SectionHeading title={c.included.title[locale]} subtitle={c.included.subtitle[locale]} />
-          <div className="mt-12">
-            <SprintIncluded locale={locale} />
+          <h2 className="font-[family-name:var(--font-display)] text-[length:var(--text-h2)]/[1.05] font-bold tracking-[-0.02em] text-balance text-[var(--color-paper)]">
+            {c.products.title[locale]}
+          </h2>
+          <div className="mt-10 sm:mt-12">
+            <SprintProductWall locale={locale} />
+          </div>
+          <div className="mt-10">
+            <SprintCta placement="products" label={c.midCta.products[locale]} />
           </div>
         </Container>
       </section>
 
-      {/* Day 0 → day 7, drawn rather than listed. The schema is what makes the
-          offer's central claim visible — the clock only starts once the scope is
-          settled — which seven equal cards could not say. Sits on a plain
-          background directly after the "included" section, hence the top rule.
-
-          The run is the part of the page that sells on its own, so it carries an
-          id: a post, an ad or an email can point a reader straight at it. */}
-      <section id="deroule" className="scroll-mt-20 border-t border-[var(--color-line)]">
+      {/* Day 0 → day 7, drawn rather than listed. It carries an id so a post, an
+          ad or an email can point a reader straight at it. */}
+      <section id="deroule" className="scroll-mt-20">
         <Container className="py-16 sm:py-24">
           <SectionHeading title={c.timeline.title[locale]} subtitle={c.timeline.subtitle[locale]} />
-          <div className="mt-14">
+          <div className="mt-12 sm:mt-14">
             <SprintTimeline
               steps={timeline}
               scopeLabel={c.timeline.scopeLabel[locale]}
               spanLabel={c.timeline.spanLabel[locale]}
-              clientLabel={c.timeline.clientLabel[locale]}
+              youLabel={c.timeline.youLabel[locale]}
+              usLabel={c.timeline.usLabel[locale]}
+              weekLetters={weekLetters}
             />
           </div>
-          <div className="mt-10 flex flex-col gap-3">
-            <p className="max-w-3xl text-sm text-[var(--color-ink-2)] text-pretty">{c.timeline.note[locale]}</p>
-            <p className="max-w-3xl text-sm text-[var(--color-muted)] text-pretty">{dict.method.storeNote}</p>
-          </div>
+          <p className="mt-10 text-sm text-[var(--color-muted)]">{c.timeline.note[locale]}</p>
         </Container>
       </section>
 
-      {/* Khufu's own products. Replaces the client case studies, which were pulled
-          wholesale (2026-09-13). Deliberately carries NO timeline: none of these
-          was built in seven days, and this section sits right after the J0→J7
-          run, so `note` says it in as many words rather than letting adjacency
-          imply it. The domains are plain text, not links — an outbound click
-          from a paid visitor is a lost lead. */}
+      {/* What is in the box on day 7 — one grid where two prose sections used to
+          say the same things twice. */}
       <section className="border-y border-[var(--color-line)] bg-[var(--color-paper-2)]">
         <Container className="py-16 sm:py-24">
-          <SectionHeading title={c.products.title[locale]} subtitle={c.products.subtitle[locale]} />
-          <div
-            className={`mt-12 grid gap-5 sm:grid-cols-2 ${
-              ownProducts.length % 3 === 0 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'
-            }`}
-          >
-            {ownProducts.map((p, i) => (
-              <article
-                key={p.key}
-                className="flex flex-col overflow-hidden rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white"
-                data-reveal
-                style={{ '--reveal-delay': `${i * 130}ms` } as React.CSSProperties}
-              >
-                {/* The product as it actually looks. Below the fold and lazy, so
-                    it cannot enter the LCP calculation; width/height are fixed so
-                    it cannot shift anything either. */}
-                {p.image && (
-                  <Image
-                    src={p.image}
-                    alt={`${p.name} — ${p.tagline}`}
-                    width={1400}
-                    height={1050}
-                    sizes="(min-width: 1024px) 33vw, 100vw"
-                    loading="lazy"
-                    className="aspect-[4/3] w-full border-b border-[var(--color-line)] object-cover"
-                  />
-                )}
-                <div className="flex flex-1 flex-col p-7">
-                {/* Green dot = in production. A product whose site is live but
-                    which has not launched gets a neutral dot and says so — the
-                    two are not the same claim (decision cmu0fqj7). */}
-                <div className="flex items-center gap-2">
-                  <span
-                    aria-hidden
-                    className={`size-2 shrink-0 rounded-full ${p.status ? 'bg-[var(--color-muted)]' : 'bg-[#16a34a]'}`}
-                  />
-                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-muted)]">
-                    {p.status ?? c.products.liveLabel[locale]}
-                  </span>
-                </div>
-                <h3 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-bold tracking-[-0.01em]">
-                  {p.name}
-                </h3>
-                <p className="mt-1 text-xs font-medium uppercase tracking-wider text-[var(--color-muted)]">
-                  {p.type}
-                </p>
-                <p className="mt-3 flex-1 text-[var(--color-ink-2)] text-pretty">{p.tagline}</p>
-                {p.url && (
-                  <p className="mt-4 font-[family-name:var(--font-display)] text-sm font-bold text-[var(--color-accent-ink)]">
-                    {p.url.replace(/^https?:\/\//, '')}
-                  </p>
-                )}
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {p.stack.slice(0, 4).map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-full bg-[var(--color-paper-2)] px-2.5 py-1 text-xs text-[var(--color-ink-2)]"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                </div>
-              </article>
-            ))}
+          <SectionHeading title={c.day7.title[locale]} />
+          <div className="mt-10 sm:mt-12">
+            <SprintDay7 locale={locale} />
           </div>
-
-          <div className="mt-8 max-w-3xl rounded-[var(--radius-lg)] border border-[var(--color-line)] bg-white p-5 sm:p-6">
-            <p className="text-sm/[1.6] text-[var(--color-ink-2)] text-pretty">{c.products.note[locale]}</p>
-          </div>
-
-          <div className="mt-8">
-            <SprintCta placement="products" label={c.midCta.products[locale]} variant="secondary" />
+          <div className="mt-10">
+            <SprintCta placement="day7" label={ctaWithSlot(c.midCta.day7[locale])} />
           </div>
         </Container>
       </section>
 
-      {/* Proof */}
+      {/* The alternatives: a chart for the delay — the only axis we can source —
+          then a matrix of marks for everything else. */}
       <section>
         <Container className="py-16 sm:py-24">
-          <SectionHeading title={c.proof.title[locale]} subtitle={c.proof.subtitle[locale]} />
-          {/* Commitments, not activity stats: the only figures on this page are a
-              price or a delay (see the header note in sprintLanding.ts). */}
-          <dl className="mt-12 grid gap-5 sm:grid-cols-3">
-            {[
-              {
-                value: `${site.v1Days} ${dict.common.days}`,
-                label: c.proof.dateLabel[locale],
-              },
-              {
-                value: <CountUpPrice eur={site.v1PriceEUR} locale={locale} />,
-                label: c.proof.priceLabel[locale],
-              },
-              {
-                value: c.proof.codeValue[locale],
-                label: c.proof.codeLabel[locale],
-              },
-            ].map((item, i) => (
-              <div
-                key={item.label}
-                className="rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-7"
-                data-reveal
-                style={{ '--reveal-delay': `${i * 130}ms` } as React.CSSProperties}
-              >
-                <dt className="sr-only">{item.label}</dt>
-                <dd>
-                  <p className="font-[family-name:var(--font-display)] text-4xl font-bold tracking-[-0.02em]">
-                    {item.value}
-                  </p>
-                  <p className="mt-2 text-[var(--color-ink-2)] text-pretty">{item.label}</p>
-                </dd>
-              </div>
-            ))}
-          </dl>
-          <p className="mt-8 max-w-2xl text-sm text-[var(--color-muted)] text-pretty">{c.proof.note[locale]}</p>
-        </Container>
-      </section>
+          <SectionHeading title={c.comparison.title[locale]} />
 
-      {/* Honest comparison with the real alternatives */}
-      <section className="border-y border-[var(--color-line)] bg-[var(--color-paper-2)]">
-        <Container className="py-16 sm:py-24">
-          <SectionHeading title={c.comparison.title[locale]} subtitle={c.comparison.subtitle[locale]} />
-
-          {/* The one axis where the answer is not a matter of taste: time. Delay
-              only, never a price — see the note on `delayChart` in sprintLanding.ts
-              for why, and for where the two third-party figures come from. */}
-          <div className="mt-12 rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-6 sm:p-9">
-            <h3 className="font-[family-name:var(--font-display)] text-xl font-bold tracking-[-0.01em] text-balance sm:text-2xl">
+          <div className="mt-10 rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-6 sm:mt-12 sm:p-9">
+            <h3 className="font-[family-name:var(--font-display)] text-lg font-bold tracking-[-0.01em] text-balance sm:text-xl">
               {c.delayChart.title[locale]}
             </h3>
             <div className="mt-8">
@@ -476,67 +289,91 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
             </div>
           </div>
 
-          <div className="mt-12">
+          <div className="mt-6">
             <SprintComparison locale={locale} />
           </div>
         </Container>
       </section>
 
-      {/* Objections, head-on */}
-      <section>
+      {/* Who it's for / who it isn't — filtering upfront raises lead quality, and
+          it is four chips a side, not ten sentences. */}
+      <section className="border-t border-[var(--color-line)]">
         <Container className="py-16 sm:py-24">
-          <SectionHeading title={c.objections.title[locale]} subtitle={c.objections.subtitle[locale]} />
-          <div className="mt-12 flex flex-col gap-10">
-            {c.objections.items.map((item, i) => (
-              <article
-                key={item.q[locale]}
-                className="max-w-3xl border-l-2 border-[var(--color-accent)] pl-6"
+          <SectionHeading title={c.audience.title[locale]} />
+          <div className="mt-10 grid gap-4 sm:mt-12 md:grid-cols-2">
+            {[
+              { title: c.audience.forTitle[locale], items: c.audience.forItems, yes: true },
+              { title: c.audience.notForTitle[locale], items: c.audience.notForItems, yes: false },
+            ].map((col) => (
+              <div
+                key={col.title}
+                className={`rounded-[var(--radius-xl)] border p-6 sm:p-7 ${
+                  col.yes
+                    ? 'border-[var(--color-accent)]/25 bg-[var(--color-accent-soft)]'
+                    : 'border-[var(--color-line)] bg-[var(--color-paper-2)]'
+                }`}
                 data-reveal
-                style={{ '--reveal-delay': `${i * 120}ms` } as React.CSSProperties}
               >
-                <h3 className="font-[family-name:var(--font-display)] text-xl font-bold tracking-[-0.01em] text-balance">
-                  {item.q[locale]}
+                <h3
+                  className={`font-[family-name:var(--font-display)] text-sm font-bold tracking-[0.14em] uppercase ${
+                    col.yes ? 'text-[var(--color-accent-ink)]' : 'text-[var(--color-muted)]'
+                  }`}
+                >
+                  {col.title}
                 </h3>
-                <p className="mt-3 text-[17px]/[1.7] text-[var(--color-ink-2)] text-pretty">{item.a[locale]}</p>
-              </article>
+                <ul className="mt-4 flex flex-col gap-2.5">
+                  {col.items.map((item) => (
+                    <li
+                      key={item[locale]}
+                      className={`flex gap-2.5 text-[15px]/[1.45] ${col.yes ? 'text-[var(--color-ink)]' : 'text-[var(--color-muted)]'}`}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden
+                        className={`mt-[3px] size-4 shrink-0 ${col.yes ? 'stroke-[var(--color-accent)]' : 'stroke-[var(--color-muted)]'}`}
+                        fill="none"
+                        strokeWidth={2.2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        {col.yes ? <path d="m5 12.5 4.5 4.5L19 7.5" /> : <path d="m6.5 6.5 11 11M17.5 6.5l-11 11" />}
+                      </svg>
+                      {item[locale]}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </div>
-
-          {/* The last CTA before the FAQ names the week too (decision cmu0fugh):
-              it lands exactly where the visitor has run out of objections. The
-              two mid-page CTAs above keep their plain labels — repeating the date
-              five times would wear it out. */}
-          <div className="mt-12">
-            <SprintCta placement="objections" label={ctaWithSlot(c.midCta.objections[locale])} />
           </div>
         </Container>
       </section>
 
-      {/* FAQ */}
-      <section className="border-t border-[var(--color-line)]">
+      {/* The ONE question zone of the page. */}
+      <section className="border-t border-[var(--color-line)] bg-[var(--color-paper-2)]">
         <Container className="py-16 sm:py-24">
           <SectionHeading title={c.faq.title[locale]} />
           <div className="mt-10">
-            <FaqAccordion items={faqItems} locale={locale} />
+            {/* Closed on arrival: on a phone an open answer turns the one
+                question zone into the wall of text the page was rebuilt to
+                remove. Every answer ships in the markup regardless. */}
+            <FaqAccordion items={faqItems} locale={locale} defaultOpen={null} />
           </div>
         </Container>
       </section>
 
-      {/* Final conversion point — the same form, the same action. */}
+      {/* The single conversion point — every CTA on the page anchors here. */}
       <section id={SPRINT_FORM_ANCHOR} className="scroll-mt-20 bg-[var(--color-ink)] text-[var(--color-paper)]">
-        <Container className="grid gap-10 py-16 sm:py-24 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-          <div>
+        <Container className="grid gap-10 py-16 sm:py-24 lg:grid-cols-[1fr_1fr] lg:gap-16">
+          <div className="lg:self-center">
             <h2 className="font-[family-name:var(--font-display)] text-[length:var(--text-h2)]/[1.05] font-bold tracking-[-0.02em] text-balance">
               {c.finalCta.title[locale]}
             </h2>
-            <p className="mt-4 max-w-xl text-lg text-[var(--color-paper-2)] text-pretty">{c.finalCta.body[locale]}</p>
-            <p className="mt-6 max-w-xl text-[var(--color-paper-2)] text-pretty">{c.form.body[locale]}</p>
-
-            <ul className="mt-8 flex flex-col gap-2 text-sm text-[color-mix(in_srgb,var(--color-paper)_70%,transparent)]">
-              {offer.features.map((f) => (
-                <li key={f}>— {f}</li>
-              ))}
-            </ul>
+            <p className="mt-4 text-lg text-[color-mix(in_srgb,var(--color-paper)_70%,transparent)] text-pretty">
+              {c.finalCta.body[locale]}
+            </p>
+            <p className="mt-6 text-[color-mix(in_srgb,var(--color-paper)_60%,transparent)] text-pretty">
+              {c.form.body[locale]}
+            </p>
           </div>
 
           <div>
