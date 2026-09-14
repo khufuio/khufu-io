@@ -11,6 +11,7 @@ import { Price } from '@/components/ui/price'
 import { FaqAccordion } from '@/components/sections/faqAccordion'
 import { BreadcrumbJsonLd, FaqJsonLd, HowToJsonLd, ServiceJsonLd } from '@/components/seo/jsonLd'
 import { SprintCta, SPRINT_FORM_ANCHOR } from '@/components/sprint/sprintCta'
+import { SprintCommitments } from '@/components/sprint/sprintCommitments'
 import { SprintComparison } from '@/components/sprint/sprintComparison'
 import { SprintDay7 } from '@/components/sprint/sprintDay7'
 import { SprintDelayChart } from '@/components/sprint/sprintDelayChart'
@@ -56,9 +57,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
  * WHAT THE STRUCTURE IS FOR, section by section:
  *   hero        — SHOWS a real product and three figures. One sentence, one
  *                 dated button, the dates. No paragraph, no slot mechanics.
- *   commitments — the three contractual promises, as a band. Replaces a section
- *                 headed « Ce qu'on peut prouver », which Adrien called « vendeur
- *                 de tapis pourri » and whose figures repeated the hero's.
  *   products    — the work itself, and the ONE dark section of the page.
  *   timeline    — the week drawn, with Friday's two parallel tracks.
  *   day7        — one icon grid where two prose sections used to say the same
@@ -68,6 +66,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
  *   audience    — who it is for, in chips.
  *   faq         — the ONE question zone. The « trois questions » block that sat
  *                 on top of it is merged in.
+ *   commitments — what the contract says, as cards, immediately before the form:
+ *                 the reminder someone who entered mid-page needs in order to
+ *                 decide (cmu0jo1w). It re-presents the hero's promise in
+ *                 another shape — never the same object twice.
  *
  * ⛔ ONE OFFER, NOTHING AROUND IT. No delivery guarantee and no 48h prototype;
  * neither comes back without a new decision replacing cmu0exke and cmu0fcvk.
@@ -199,31 +201,6 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
         slotOpenLabel={c.hero.slotOpen[locale]}
         shot={{ src: '/images/sprint/clokizi', alt: c.hero.shotAlt[locale], domain: 'clokizi.com' }}
       />
-
-      {/* The three contractual commitments. A band, not a section: no heading, no
-          subtitle, no note — the figures they used to repeat are in the hero. */}
-      <section className="border-y border-[var(--color-line)] bg-[var(--color-paper-2)]">
-        <Container>
-          <dl className="grid divide-y divide-[var(--color-line)] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {c.commitments.map((item, i) => (
-              <div key={item.title[locale]} className="flex items-baseline gap-3 py-5 sm:px-6 sm:first:pl-0 sm:last:pr-0">
-                <span
-                  aria-hidden
-                  className="font-[family-name:var(--font-display)] text-xs font-bold text-[var(--color-accent)]"
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <div>
-                  <dt className="font-[family-name:var(--font-display)] font-bold tracking-[-0.01em]">
-                    {item.title[locale]}
-                  </dt>
-                  <dd className="mt-0.5 text-sm text-[var(--color-muted)] text-pretty">{item.note[locale]}</dd>
-                </div>
-              </div>
-            ))}
-          </dl>
-        </Container>
-      </section>
 
       {/* The work itself — and the one dark section of the page. See the note in
           sprintProductWall.tsx for why dark is spent here and nowhere else. */}
@@ -357,6 +334,18 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
                 question zone into the wall of text the page was rebuilt to
                 remove. Every answer ships in the markup regardless. */}
             <FaqAccordion items={faqItems} locale={locale} defaultOpen={null} />
+          </div>
+        </Container>
+      </section>
+
+      {/* What the contract says — the reminder, next to the decision.
+          Deliberately NOT the hero's figures a second time: cards, another
+          angle, and only here (khufu HQ decision cmu0jo1w, see the component). */}
+      <section className="border-t border-[var(--color-line)]">
+        <Container className="py-16 sm:py-20">
+          <SectionHeading title={c.commitments.title[locale]} />
+          <div className="mt-9 sm:mt-10">
+            <SprintCommitments locale={locale} />
           </div>
         </Container>
       </section>

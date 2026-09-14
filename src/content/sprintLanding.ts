@@ -161,12 +161,35 @@ type Section<T> = {
     shotAlt: Leaf<T>
   }
   /**
-   * The three contractual commitments, as a thin band — no heading, no prose.
-   * Replaces the section once titled « Ce qu'on peut prouver », which Adrien
-   * called « vendeur de tapis pourri » and whose three figures simply repeat the
-   * hero's.
+   * The three contractual commitments — a real, styled section, low on the page.
+   *
+   * ⚠️ ITS HISTORY, BECAUSE IT HAS BEEN MOVED TWICE AND THE REASONING MATTERS.
+   * It was a section headed « Ce qu'on peut prouver », which Adrien called
+   * « vendeur de tapis pourri ». The 2026-09-14 rewrite demoted it to a thin
+   * band under the hero, on the argument that its three figures merely repeated
+   * the hero's. Adrien overruled that (decision cmu0jo1w): « une vraie section
+   * en bande avec des cards ou un truc stylisé qui le rappelle c'est jamais
+   * mauvais non ? ». He is right at the scale of a landing — a prospect scans
+   * and enters mid-page, and whoever reaches the final CTA without having read
+   * the hero no longer has the promise in front of them. Repeating is a
+   * conversion mechanism.
+   *
+   * ⛔ SO IT REMINDS, IT DOES NOT REPEAT, and those are two different objects:
+   *   - the hero states the FIGURES (7 days, the price, one client a week) in a
+   *     hairline row. This section states what is WRITTEN IN THE CONTRACT — the
+   *     date, the price, the ownership — as cards. Same promise, other angle,
+   *     other shape. If it ever becomes the same visual object as the hero row,
+   *     it has stopped being a reminder and has become a duplicate.
+   *   - it sits just before the final CTA, where a reminder helps someone
+   *     decide, and nowhere else. There is no third copy of it on the page.
+   * ⚠️ And it stays SHORT: cmu0hv4c holds — one line per card, no paragraph.
    */
-  commitments: { title: Leaf<T>; note: Leaf<T> }[]
+  commitments: {
+    title: Leaf<T>
+    /** The hairline tag at the foot of each card. */
+    tag: Leaf<T>
+    items: { title: Leaf<T>; note: Leaf<T> }[]
+  }
   /** Khufu's own products. Labels only — see the note on `sprintProducts`. */
   products: {
     title: Leaf<T>
@@ -343,32 +366,40 @@ const content: Section<LocalizedInput> = {
     },
   },
 
-  commitments: [
-    {
-      title: { fr: 'Une date', en: 'A date', es: 'Una fecha' },
-      note: {
-        fr: 'inscrite au contrat avant le premier jour',
-        en: 'written into the contract before day one',
-        es: 'inscrita en el contrato antes del primer día',
-      },
+  commitments: {
+    title: {
+      fr: 'Ce qui est écrit au contrat.',
+      en: 'What the contract says.',
+      es: 'Lo que dice el contrato.',
     },
-    {
-      title: { fr: 'Un prix fixe', en: 'A fixed price', es: 'Un precio fijo' },
-      note: {
-        fr: 'il ne bouge pas quand le périmètre bouge',
-        en: 'it does not move when the scope moves',
-        es: 'no se mueve cuando se mueve el alcance',
+    tag: { fr: 'Au contrat', en: 'In the contract', es: 'En el contrato' },
+    items: [
+      {
+        title: { fr: 'La date de livraison', en: 'The delivery date', es: 'La fecha de entrega' },
+        note: {
+          fr: 'fixée avant le premier jour, pas en cours de route',
+          en: 'set before day one, not along the way',
+          es: 'fijada antes del primer día, no sobre la marcha',
+        },
       },
-    },
-    {
-      title: { fr: 'Le code', en: 'The code', es: 'El código' },
-      note: {
-        fr: 'à vous dès le premier commit, sans lock-in',
-        en: 'yours from the first commit, no lock-in',
-        es: 'tuyo desde el primer commit, sin lock-in',
+      {
+        title: { fr: 'Le prix', en: 'The price', es: 'El precio' },
+        note: {
+          fr: 'arrêté avant de commencer, il ne bouge pas si le périmètre bouge',
+          en: 'settled before we start, it does not move when the scope moves',
+          es: 'cerrado antes de empezar, no se mueve si se mueve el alcance',
+        },
       },
-    },
-  ],
+      {
+        title: { fr: 'La propriété du code', en: 'Ownership of the code', es: 'La propiedad del código' },
+        note: {
+          fr: 'à vous dès le premier commit, sans licence ni lock-in',
+          en: 'yours from the first commit, no licence and no lock-in',
+          es: 'tuyo desde el primer commit, sin licencia ni lock-in',
+        },
+      },
+    ],
+  },
 
   products: {
     title: { fr: 'Nos produits.', en: 'Our products.', es: 'Nuestros productos.' },
