@@ -2,33 +2,41 @@ import type { Locale } from '@/i18n/config'
 import { sprintLanding } from '@/content/sprintLanding'
 
 /**
- * What is in the box on day 7 — an icon grid, four words a line.
+ * What is in the box on day 7.
  *
- * ⚠️ THIS ONE BLOCK REPLACES TWO. The page used to carry nine "deliverables"
- * cards of prose and then three "included" cards of more prose, with the
- * showcase site, the infrastructure and the two weeks of fixes written out
- * TWICE. Adrien on the first: « du texte, du texte, du texte, même moi j'ai la
- * flemme de le lire ». On the second: « tu peux pas use + d'infographie ? ».
+ * ⛔ IT IS NOT AN INVENTORY ANY MORE, and that is the 2026-09-15 rebuild. Adrien:
+ * « ça fait liste mais je sais pas si ultra vendeur, je te laisse aviser ». He is
+ * right about the failure: nine identical cells weight every line the same, so
+ * "your product is live" read exactly like "documented handover" — nothing to
+ * want, and a delivery note where a promise belonged.
  *
- * ⛔ SO: one line per item, an icon, and nothing else. A sentence that wants to
- * grow back here belongs in the FAQ.
+ * So the block has a FOCAL POINT and a supporting grid. The one thing a buyer is
+ * actually paying for — the product in production, on their own domain or in the
+ * stores — takes the accented panel; the rest is what comes with it, in a denser
+ * grid that reads as "and all of this too" rather than as nine equal claims.
  *
- * ⛔ AND NO ITEM WEARS AN "INCLUDED" CHIP. Three of them did — the showcase site,
- * the hosting and the two weeks of fixes — and Adrien removed them on
- * 2026-09-14: « ça implique que les autres le sont pas, c'est dommage ». He is
- * right, and it is the kind of mistake a grid makes easily: badging three of
- * nine turns the other six into an open question, on the one block whose entire
- * job is to say the box is full. Decisions cmu09gb6 and cmu09gn1 are still
- * honoured — those three are still ON the grid — they simply no longer wear a
- * label the others lack. Do not put the chip back.
+ * ⛔ TWO CORRECTIONS THAT ARE FACTUAL, NOT COSMETIC, AND MUST NOT BE UNDONE:
+ *   1. NO BACK-OFFICE IN THE BASE SCOPE. « Données et back-office » sat on the old
+ *      grid and Adrien pulled it: a back-office is not systematic and, depending
+ *      on the need, is a real piece of work. Promising it here sells scope nobody
+ *      agreed. The question is answered honestly in the FAQ instead — it is
+ *      settled on day 0, in writing.
+ *   2. « à votre adresse » IMPLIED A DOMAIN, therefore a web product, on a page
+ *      that also sells mobile apps. The lead now covers both — a domain for the
+ *      web, a store submission for an app — which is also exactly what the FAQ on
+ *      store review already says. ⛔ Do not shorten it back to an "address".
  *
- * The scope guardrails those cards used to carry (the showcase ships on our
- * template, the infra on our standard stack, two weeks of fixes are not two
- * weeks of development) are NOT lost — they moved into one FAQ answer, which is
- * where a scope question is actually asked. Do not let them creep back up here.
+ * ⛔ AND NO ITEM WEARS AN "INCLUDED" CHIP. Three of them did, and Adrien removed
+ * them on 2026-09-14: « ça implique que les autres le sont pas, c'est dommage ».
+ * Badging three of nine turns the other six into an open question, on the one
+ * block whose entire job is to say the box is full. Decisions cmu09gb6 and
+ * cmu09gn1 are still honoured — those three are still here — they simply do not
+ * wear a label the others lack.
+ *
+ * ⛔ ONE LINE PER ITEM. A sentence that wants to grow back here belongs in the FAQ.
  */
 
-/** 24×24 stroke icons, drawn here so the grid costs no request and no library. */
+/** 24×24 stroke icons, drawn here so the block costs no request and no library. */
 const icons: Record<string, React.ReactNode> = {
   live: (
     <>
@@ -47,12 +55,6 @@ const icons: Record<string, React.ReactNode> = {
     <>
       <circle cx="12" cy="8" r="3.5" />
       <path d="M5 20c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5" />
-    </>
-  ),
-  data: (
-    <>
-      <ellipse cx="12" cy="6" rx="7" ry="2.8" />
-      <path d="M5 6v12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8V6M5 12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8" />
     </>
   ),
   infra: (
@@ -82,37 +84,74 @@ const icons: Record<string, React.ReactNode> = {
   ),
 }
 
-const order = ['live', 'code', 'design', 'users', 'data', 'infra', 'seo', 'handover', 'fixes']
+/** The supporting items, in the order the copy declares them. */
+const order = ['code', 'design', 'users', 'infra', 'seo', 'handover', 'fixes']
 
 export function SprintDay7({ locale }: { locale: Locale }) {
   const c = sprintLanding.day7
 
   return (
-    <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-[var(--color-line)] sm:grid-cols-3">
-      {c.items.map((item, i) => (
-        <li
-          key={item.title[locale]}
-          className="flex flex-col bg-white p-5 last:col-span-2 sm:p-6 sm:last:col-span-1"
-          data-reveal
-          style={{ '--reveal-delay': `${(i % 3) * 90}ms` } as React.CSSProperties}
+    <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)]">
+      {/* The focal point. Accented, larger, and alone — a visitor who reads one
+          thing in this section has to read this one. */}
+      <div
+        className="relative overflow-hidden rounded-[var(--radius-xl)] border border-[var(--color-accent)]/25 bg-[var(--color-accent-soft)] p-6 sm:p-8"
+        data-reveal
+      >
+        <span
+          aria-hidden
+          className="flex size-12 items-center justify-center rounded-full bg-white/70"
         >
           <svg
             viewBox="0 0 24 24"
-            aria-hidden
-            className="size-6 shrink-0 stroke-[var(--color-accent)] sm:size-7"
+            className="size-6 stroke-[var(--color-accent-ink)]"
             fill="none"
             strokeWidth={1.4}
             strokeLinecap="round"
             strokeLinejoin="round"
           >
-            {icons[order[i]]}
+            {icons.live}
           </svg>
-          <h3 className="mt-4 text-sm font-semibold text-balance sm:text-base">{item.title[locale]}</h3>
-          <p className="mt-1 text-xs/[1.5] text-[var(--color-muted)] text-pretty sm:text-sm/[1.5]">
-            {item.note[locale]}
-          </p>
-        </li>
-      ))}
-    </ul>
+        </span>
+        <h3 className="mt-5 font-[family-name:var(--font-display)] text-[length:clamp(1.4rem,3.4vw,1.9rem)]/[1.1] font-bold tracking-[-0.02em] text-balance text-[var(--color-accent-ink)]">
+          {c.lead.title[locale]}
+        </h3>
+        <p className="mt-2.5 text-[15px]/[1.55] text-[var(--color-ink-2)] text-pretty">{c.lead.note[locale]}</p>
+      </div>
+
+      {/* And everything that comes with it. Denser on purpose: this is the "and
+          all of this too" beat, not seven more promises of equal weight. */}
+      <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-[var(--color-line)] sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
+        {c.items.map((item, i) => (
+          <li
+            key={item.title[locale]}
+            /* ⚠️ THE LAST CELL SPANS THE REST OF ITS ROW at every breakpoint.
+               Seven items in a three-column grid leave two empty cells, and an
+               empty cell here is not neutral: the grid's own line colour shows
+               through as a grey block, which reads as a missing deliverable on
+               the one section whose job is to say the box is full. */
+            className="flex flex-col bg-white p-4 last:col-span-2 sm:p-5 sm:last:col-span-3 lg:last:col-span-2 xl:last:col-span-3"
+            data-reveal
+            style={{ '--reveal-delay': `${(i % 3) * 80}ms` } as React.CSSProperties}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden
+              className="size-5 shrink-0 stroke-[var(--color-accent)]"
+              fill="none"
+              strokeWidth={1.4}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              {icons[order[i]]}
+            </svg>
+            <h3 className="mt-3 text-[13px] font-semibold text-balance sm:text-sm">{item.title[locale]}</h3>
+            <p className="mt-0.5 text-[11px]/[1.45] text-[var(--color-muted)] text-pretty sm:text-xs/[1.5]">
+              {item.note[locale]}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }

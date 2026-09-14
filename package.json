@@ -12,7 +12,8 @@
     "pdfs": "tsx scripts/buildLeadMagnetPdfs.ts",
     "partner-kit": "tsx scripts/buildPartnerKit.ts",
     "typecheck": "tsc --noEmit",
-    "check:sprint": "tsx scripts/checkSprintSlots.ts && tsx scripts/checkSprintLocales.ts"
+    "check:sprint": "tsx scripts/checkSprintSlots.ts && tsx scripts/checkSprintLocales.ts",
+    "check:sprint-html": "tsx scripts/checkSprintHtml.ts"
   },
   "dependencies": {
     "next": "^16.0.0",

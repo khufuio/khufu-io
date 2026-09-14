@@ -23,9 +23,16 @@ import { fillLocaleDeep, type LocalizedInput } from '@/i18n/localize'
  *      text is a failure, not a compromise.
  * And the register stays sober: no heading that sounds like a market stall.
  *
- * ⚠️ A REWRITE THAT ADDS COPY HERE MUST SAY WHAT IT REMOVES. The rewrite of
- * 2026-09-14 cut the visitor-facing French copy from 16,426 characters to the
- * figure `scripts/measureSprintCopy.ts` prints today. Keep measuring.
+ * ⚠️ A REWRITE THAT ADDS COPY HERE MUST SAY WHAT IT REMOVES. The 2026-09-14
+ * rewrite cut the visitor-facing French copy from 16,426 characters; the
+ * 2026-09-15 pass took it to 7,249 (`scripts/measureSprintCopy.ts` prints the
+ * current figure — run it before and after). What that pass REMOVED, so the
+ * ledger is explicit: the whole `form` section (the page no longer carries a
+ * form of its own — the Google booking page collects the same fields), the
+ * « founder qui écrit le code » line and its FAQ twin, the « Le formulaire prend
+ * deux minutes » line, the day-7 back-office promise, and the hero sequence's
+ * per-day labels. What it ADDED: the `system` block that explains the seven days
+ * and the `contact` copy for the booking modal.
  *
  * ⚠️ Every figure on this page must be real. Anything not invoiced, contracted
  * or shipped does not belong here — this is the one page with an ad budget
@@ -144,36 +151,52 @@ export const sprintHeldMondays: Readonly<Record<string, string>> = {
 /**
  * Khufu's own products shown on the page, in FULL SCOPE.
  *
- * ⛔ THE POINT OF THIS SECTION CHANGED ON 2026-09-14 (khufu HQ decision
- * cmu1qkaz). It used to be four browser captures. Adrien: « ça manque pas d'app
- * mobile dans l'exemple ? […] et pour Clokizi et HerbaCRM, comme ils ont des
- * apps compagnons, ça vaut le coup de mettre tout non ? voire même plateforme
- * web + app + showcase non ? genre on montre qu'on fait les produits au
- * complet ». A single capture reads as "they make websites"; a platform, its
- * companion app and its showcase site, of the SAME product, read as "they ship
- * whole products" — which is what a founder with no team is actually buying.
- * And an all-web line-up invents the objection "so you can't do apps".
+ * ⛔ THE POINT OF THIS SECTION (khufu HQ decision cmu1qkaz). It used to be four
+ * browser captures. Adrien: « ça manque pas d'app mobile dans l'exemple ? […] et
+ * pour Clokizi et HerbaCRM, comme ils ont des apps compagnons, ça vaut le coup de
+ * mettre tout non ? voire même plateforme web + app + showcase non ? genre on
+ * montre qu'on fait les produits au complet ». A single capture reads as "they
+ * make websites"; a platform, its companion app and its showcase site, of the
+ * SAME product, read as "they ship whole products" — which is what a founder
+ * with no team is actually buying.
+ *
+ * ⚠️ ONESTORE LINK IS BACK, 2026-09-15, on Adrien's instruction (« il manque
+ * OSL »). That reverses the 2026-09-14 removal, whose reasoning was mine and not
+ * his: I dropped it as "a free redirect tool is not a whole product". He wants it
+ * shown, so it is shown. Do not pull it again without asking him.
  *
  * NO CLIENT REFERENCES ON THIS PAGE (Adrien, 2026-09-13). Flatchr, Peach Farmer,
  * Tarokai, Mojo and Tim Management were all pulled. Do not put any of them back.
- * OneStore Link was dropped on 2026-09-14 — a free redirect tool is not a whole
- * product, and on the one section arguing scope it argued against itself.
  *
  * ⛔ NEVER IMPLY THESE WERE BUILT IN SEVEN DAYS. They were not, and the git
  * history says so plainly. So this block carries NO duration at all, anywhere,
- * and no paragraph explains it either — the note that used to sit under the
- * cards is gone on Adrien's instruction (2026-09-13): « sur-explicatif, ça perd
- * le côté ambigu qu'on veut mettre en place pour convaincre ». The line to hold
- * is exact and it is not the same as lying: the section SAYS NOTHING about how
- * long these took or who they were built for. Silent, never false.
+ * and no paragraph explains it either — the note that used to sit under the cards
+ * is gone on Adrien's instruction (2026-09-13): « sur-explicatif, ça perd le côté
+ * ambigu qu'on veut mettre en place pour convaincre ». The line to hold is exact
+ * and it is not the same as lying: the section SAYS NOTHING about how long these
+ * took or who they were built for. Silent, never false.
  *
- * ⛔ AND THE STATUS BADGE IS PER PRODUCT, never a default. `live` is only for a
- * product that is actually in production. Traqio's SITE is online while the
- * product is a prelaunch (decision cmu0fqj7), and Hive TCG's stores are not open
- * yet — both wear `siteOnly`, and nothing anywhere may imply users, customers,
- * revenue or traction for either.
+ * ⚠️ THE STATUS BADGE — SETTLED 2026-09-15 (khufu HQ decision cmu1u7c9). Every
+ * product here wears « En production », Hive TCG included. Adrien: « "En
+ * production" même pour Hive, tkt ». The badge qualifies the TECHNICAL state of
+ * the product — it is built, deployed and running — not its distribution. That
+ * replaces the `siteOnly` badge this file used to carry.
+ *
+ * ⛔ AND THE LIMIT THAT COMES WITH IT IS NOT OPTIONAL. Nothing on this page may
+ * say or imply that a product is AVAILABLE, downloadable, open to the public or
+ * being sold when it is not: no store button for Hive TCG, no user numbers, no
+ * "launched", no traction. The badge, yes. The distribution promise, never.
+ * Traqio's product is still a prelaunch (decision cmu0fqj7) — which is exactly
+ * why its non-public surfaces are declared in `soonSurfaces` and labelled as
+ * such, rather than sitting silently next to the public ones.
  */
-export type SprintSurface = 'web' | 'app' | 'site'
+
+/**
+ * A surface a product ships on. `sdk` and `packages` exist because Traqio is not
+ * a showcase site — reducing it to one was the 2026-09-14 mistake Adrien caught:
+ * « ne le réduis pas au site vitrine ».
+ */
+export type SprintSurface = 'web' | 'app' | 'site' | 'sdk' | 'packages'
 
 export type SprintProduct = {
   key: string
@@ -187,9 +210,15 @@ export type SprintProduct = {
   appShot?: string
   /** A second phone, for a product with no web surface to put in a browser frame. */
   appShot2?: string
-  /** Named under the card. Must match what the product really ships. */
+  /** Surfaces that are PUBLIC. Must match what the product really ships today. */
   surfaces: readonly SprintSurface[]
-  status: 'live' | 'siteOnly'
+  /**
+   * Surfaces that are BUILT BUT NOT PUBLIC YET. Rendered with their own label so
+   * the card can show the real scope of a prelaunch without claiming it is out
+   * (Traqio — decision cmu0fqj7). ⛔ Never move one of these into `surfaces` to
+   * make a card look fuller.
+   */
+  soonSurfaces?: readonly SprintSurface[]
 }
 
 export const sprintProducts: readonly SprintProduct[] = [
@@ -199,7 +228,6 @@ export const sprintProducts: readonly SprintProduct[] = [
     shot: { image: '/images/sprint/clokizi-web', domain: 'app.clokizi.com' },
     appShot: '/images/sprint/clokizi-app',
     surfaces: ['web', 'app', 'site'],
-    status: 'live',
   },
   {
     key: 'herbacrm',
@@ -207,32 +235,38 @@ export const sprintProducts: readonly SprintProduct[] = [
     shot: { image: '/images/sprint/herbacrm-web', domain: 'app.herbacrm.com' },
     appShot: '/images/sprint/herbacrm-app',
     surfaces: ['web', 'app', 'site'],
-    status: 'live',
+  },
+  {
+    key: 'traqio',
+    name: 'Traqio',
+    shot: { image: '/images/sprint/traqio', domain: 'traqio.app' },
+    // ⚠️ The site is public; the platform, the SDKs and the packages are built
+    // and not open yet. Declared, never dressed as live (decision cmu0fqj7).
+    surfaces: ['site'],
+    soonSurfaces: ['web', 'sdk', 'packages'],
   },
   {
     key: 'hive',
     name: 'Hive TCG',
     shot: { image: '/images/sprint/hive', domain: 'hive-tcg.app' },
     appShot: '/images/sprint/hive-app',
+    // ⛔ No store link and no store badge anywhere for this one: the stores are
+    // not open. It is in production; it is not distributed. Those differ.
     surfaces: ['app', 'site'],
-    // The site is online; the stores are not open yet. Never `live`.
-    status: 'siteOnly',
   },
   {
     key: 'labyrinth',
     slug: 'labyrinth',
-    // No web surface at all, so the card is two phones rather than an empty frame.
+    // No web platform, so the card is two phones rather than an empty frame.
     appShot: '/images/sprint/labyrinth-app',
     appShot2: '/images/sprint/labyrinth-app-2',
     surfaces: ['app'],
-    status: 'live',
   },
   {
-    key: 'traqio',
-    name: 'Traqio',
-    shot: { image: '/images/sprint/traqio', domain: 'traqio.app' },
-    surfaces: ['site'],
-    status: 'siteOnly',
+    key: 'onestore',
+    slug: 'onestore-link',
+    shot: { image: '/images/sprint/onestore-link', domain: 'onestore.link' },
+    surfaces: ['web', 'site'],
   },
 ]
 
@@ -244,8 +278,8 @@ export type CompareMark = 'yes' | 'mixed' | 'no'
 
 type Section<T> = {
   /**
-   * The first screen. It SHOWS the product (a real capture, lightly staged) and
-   * carries three figures; it does not describe anything.
+   * The first screen. It SHOWS what a week produces and carries three figures;
+   * it does not describe anything.
    *
    * ⛔ NOTHING HERE EXPLAINS THE SLOTS. The strip shows four Mondays and their
    * state — open, or full — and that is all it does. No "a sprint starts on a
@@ -258,7 +292,17 @@ type Section<T> = {
    */
   hero: {
     subtitle: Leaf<T>
-    /** Third figure next to the delay and the price — the calendar itself. */
+    /**
+     * The third figure, next to the delay and the price.
+     *
+     * ⚠️ IT IS PHRASED AS THE BUYER'S GAIN, NOT AS OUR CONSTRAINT, and that is
+     * the whole point of the 2026-09-15 rewrite. It used to read « client par
+     * semaine », which describes our capacity limit; Adrien asked whether the
+     * figure earned its place at all. It does — it is what makes a full week
+     * credible and what justifies the scarcity — but only said from the buyer's
+     * side: the week is theirs, they are not queued behind three other projects.
+     * ⛔ Never write "we only take one client": that is the seller's sentence.
+     */
     clientsPerWeek: Leaf<T>
     ctaLabel: Leaf<T>
     /**
@@ -271,6 +315,13 @@ type Section<T> = {
     ctaLabelSlot: Leaf<T>
     /** The state, on its own hairline next to the button — never in the label. */
     ctaAvailable: Leaf<T>
+    /**
+     * ⛔ NO PRICE IN THIS PROMISE. It used to read « Périmètre, prix et date sous
+     * 24 h », which contradicted the offer itself — Adrien, 2026-09-15: « c'est
+     * pertinent alors justement prix fixe ? ». He is right: the price is fixed
+     * and displayed on the page, so announcing that we will send one in 24h says
+     * it is not settled. What comes back in 24h is the SCOPE and the DATE.
+     */
     ctaNote: Leaf<T>
     /** Badge under an open date. */
     slotOpen: Leaf<T>
@@ -283,31 +334,71 @@ type Section<T> = {
     slotHeld: Leaf<T>
     /** Alt text of the staged capture. Says what it is, claims nothing about it. */
     shotAlt: Leaf<T>
-    /** Day counter of the hero sequence — carries `{n}`. A label, not a caption. */
-    buildDay: Leaf<T>
   }
   /**
-   * The three contractual commitments — a real, styled section, low on the page.
+   * WHERE THE SPEED COMES FROM — the block that replaced « vous parlez au founder
+   * qui écrit le code » (khufu HQ decision cmu1u21i).
    *
-   * ⚠️ ITS HISTORY, BECAUSE IT HAS BEEN MOVED TWICE AND THE REASONING MATTERS.
-   * It was a section headed « Ce qu'on peut prouver », which Adrien called
-   * « vendeur de tapis pourri ». The 2026-09-14 rewrite demoted it to a thin
-   * band under the hero, on the argument that its three figures merely repeated
-   * the hero's. Adrien overruled that (decision cmu0jo1w): « une vraie section
-   * en bande avec des cards ou un truc stylisé qui le rappelle c'est jamais
-   * mauvais non ? ». He is right at the scale of a landing — a prospect scans
-   * and enters mid-page, and whoever reaches the final CTA without having read
-   * the hero no longer has the promise in front of them. Repeating is a
-   * conversion mechanism.
+   * ⚠️ WHY THE OLD LINE HAD TO GO, in Adrien's words (2026-09-14): « tu dis
+   * "écrit le code", donc faux, pas pertinent avec notre message. Et dire en gros
+   * que je suis solo, c'est pas un argument positif pour 17k USD ». Both halves
+   * count. The claim was inaccurate, and "one person" reads as bus factor on a
+   * $17k decision — it argued against the sale.
    *
-   * ⛔ SO IT REMINDS, IT DOES NOT REPEAT, and those are two different objects:
-   *   - the hero states the FIGURES (7 days, the price, one client a week) in a
-   *     hairline row. This section states what is WRITTEN IN THE CONTRACT — the
-   *     date, the price, the ownership — as cards. Same promise, other angle,
-   *     other shape. If it ever becomes the same visual object as the hero row,
-   *     it has stopped being a reminder and has become a duplicate.
-   *   - it sits just before the final CTA, where a reminder helps someone
-   *     decide, and nowhere else. There is no third copy of it on the page.
+   * ⚠️ AND WHY SOMETHING HAD TO REPLACE IT rather than simply be deleted: without
+   * an explanation, "seven days" reads as bluff. This is that explanation, and
+   * Adrien asked for it in this exact shape: « une petite infographie du genre
+   * système IA complexe, ça peut être vendeur, et justifier encore + le 1 week ».
+   *
+   * ⛔ THREE THINGS THIS BLOCK MAY NEVER DO, and they are the bounds of cmu1u21i:
+   *   1. invent headcount or capacity — no team, no "N sprints at once";
+   *   2. present the system as running without a human — the last step is a
+   *      person deciding, and it is there because it is true;
+   *   3. use developer vocabulary (cmu1qk2g) — the reader is a founder, not an
+   *      engineer. « les écrans, les données, la mise en ligne », never « CI ».
+   *
+   * ⚠️ What stays true and reassuring, said the other way: ONE person to talk to,
+   * who decides. That line lives under the timeline, without the word "solo" and
+   * without claiming anybody types the code.
+   */
+  system: {
+    title: Leaf<T>
+    subtitle: Leaf<T>
+    steps: { title: Leaf<T>; note: Leaf<T> }[]
+    /** The one sentence allowed here, and it closes the argument. */
+    note: Leaf<T>
+  }
+  /**
+   * What the contract says — and ONLY what a reader would not already assume.
+   *
+   * ⚠️ ITS HISTORY, BECAUSE IT HAS BEEN MOVED AND REWRITTEN SEVERAL TIMES. It was
+   * headed « Ce qu'on peut prouver », which Adrien called « vendeur de tapis
+   * pourri ». It was then demoted to a thin band, which he overruled (decision
+   * cmu0jo1w): « une vraie section en bande avec des cards ou un truc stylisé qui
+   * le rappelle c'est jamais mauvais non ? ». He is right at the scale of a
+   * landing — a prospect scans and enters mid-page, and whoever reaches the final
+   * CTA without having read the hero no longer has the promise in front of them.
+   *
+   * ⛔ AND ON 2026-09-15 ITS CONTENT CHANGED, which is the part to preserve. It
+   * listed the delivery date, the price and the ownership of the code. Adrien:
+   * « tu parles du prix dans le contrat, bah oui c'est le concept ». Stating that
+   * a fixed-price contract contains the price tells the reader nothing — it
+   * spends a card on an axiom. So the rule is now: THIS SECTION ONLY CARRIES WHAT
+   * SURPRISES OR REASSURES BEYOND THE OBVIOUS.
+   *
+   * Every line below is read off the real contracts in
+   * ~/code/projects/hq/docs/khufu/contracts/ and nothing else:
+   *   - ownership / reversibility → annexe 1, art. 9.1: the client owns their
+   *     accounts, repository and domain FROM DAY ONE; we work through delegated
+   *     access, so there is no migration at the end, only access handed back.
+   *   - no tacit renewal → contrat forfait, art. 7.8.1: the end of the fix window
+   *     creates no contract, no subscription, no renewal. The contract itself
+   *     calls the opposite reading « vendable comme un abonnement caché ».
+   *   - if it slips → art. 3.4: past ten days of delay attributable to us alone,
+   *     the client terminates and is refunded for work not performed.
+   *   - confidentiality → annexe 1, art. 7.2 and 7.3: five years past the end of
+   *     the contract, non-solicitation for twelve months.
+   * ⛔ Do not add a line here that is not in those files.
    * ⚠️ And it stays SHORT: cmu0hv4c holds — one line per card, no paragraph.
    */
   commitments: {
@@ -319,14 +410,20 @@ type Section<T> = {
   /** Khufu's own products. Labels only — see the note on `sprintProducts`. */
   products: {
     title: Leaf<T>
+    /**
+     * ⛔ ONE BADGE FOR EVERY PRODUCT (khufu HQ decision cmu1u7c9). Adrien,
+     * 2026-09-15: « "En production" même pour Hive, tkt ». It qualifies the
+     * technical state — built, deployed, running — never the distribution. The
+     * `siteOnly` badge this page used to carry is gone.
+     */
     liveLabel: Leaf<T>
     /**
-     * The badge for a product whose SITE is online while the product itself is
-     * not yet out — Traqio is a prelaunch (decision cmu0fqj7) and Hive TCG's
-     * stores are not open. ⛔ NEVER `liveLabel` for either: "site live" and "in
-     * production" are not the same claim.
+     * Suffix on a surface that EXISTS BUT IS NOT PUBLIC — Traqio's platform, its
+     * SDKs and its packages. It is what lets the card show the real scope of a
+     * prelaunch without claiming it is out (decision cmu0fqj7). ⛔ Never drop the
+     * suffix to make a card look fuller.
      */
-    siteOnlyLabel: Leaf<T>
+    soonSuffix: Leaf<T>
     /** Taglines for the products that have no `projects.ts` entry to read one from. */
     taglines: { traqio: Leaf<T>; hive: Leaf<T> }
     /** Alt text pattern for a card capture, carrying `{name}`. */
@@ -344,7 +441,7 @@ type Section<T> = {
      * rule: we SHOW these, we never write that any of them was delivered to a
      * client in seven days.
      */
-    surfaces: { web: Leaf<T>; app: Leaf<T>; site: Leaf<T> }
+    surfaces: { web: Leaf<T>; app: Leaf<T>; site: Leaf<T>; sdk: Leaf<T>; packages: Leaf<T> }
   }
   /**
    * The week, drawn. khufu HQ decision cmu0fbad: Monday → Sunday, Friday is the
@@ -366,13 +463,6 @@ type Section<T> = {
      * Day 1 → day 7. `lanes` exists for Friday only: the day runs on TWO tracks
      * at once, and drawing them side by side is the whole point — Adrien on the
      * previous version: « ça fait penser que nous on fait rien ».
-     *
-     * ⚠️ EVERY DAY CARRIES AN ACTOR BADGE, and that is recent. The rule was
-     * Adrien's, 2026-09-14: Friday's shape — a left rule plus a "who" badge —
-     * « est validé : applique-le à TOUS les jours, pour la cohérence ». A badge
-     * that appears on one day out of eight reads as an exception; on all of them
-     * it reads as a column, and the visitor can see at a glance that the week is
-     * ours and Friday is theirs.
      */
     days: {
       day: Leaf<T>
@@ -385,35 +475,45 @@ type Section<T> = {
     scopeLabel: Leaf<T>
     /** Annotation over the day 1 → day 7 bracket. */
     spanLabel: Leaf<T>
-    /**
-     * Who a day belongs to. Every day wears one (Adrien, 2026-09-14).
-     *
-     * ⛔ AND THE BAND ABOVE THE MOBILE RUN NO LONGER CARRIES `usLabel` AT ALL.
-     * Adrien: « supprime le libellé "NOUS" de la bande (il n'apparaît pas sur
-     * les jours précédents, donc il n'a pas de sens isolé) ». A label naming one
-     * track when the other is unnamed labels nothing.
-     */
     youLabel: Leaf<T>
     usLabel: Leaf<T>
+    /**
+     * ⛔ THIS LINE NO LONGER SAYS ANYBODY WRITES THE CODE (decision cmu1u21i).
+     * It used to read « Vous parlez au founder qui écrit le code », which was
+     * both inaccurate and a solo-founder argument on a $17k page. What replaced
+     * it is the half of the claim that is true AND reassuring: one person to
+     * talk to, who decides. No « solo », no authorship claim.
+     */
     note: Leaf<T>
   }
   /**
-   * What is in the box on day 7 — one icon grid, four words per line.
+   * What is in the box on day 7.
    *
-   * Merges the two sections that used to say the same thing twice (nine
-   * "deliverables" cards of prose, then three "included" cards of more prose,
-   * with the showcase site, the infrastructure and the fixes appearing in both).
-   * ⛔ NO "INCLUDED" CHIP ON ANY ITEM, and the reason is Adrien's, 2026-09-14:
-   * « ça implique que les autres le sont pas, c'est dommage ». He is right —
-   * three badged items out of nine turn the other six into an open question, on
-   * the one grid whose entire job is to say the box is full. Everything listed
-   * here is included, so nothing is marked. Decisions cmu09gb6 and cmu09gn1 are
-   * still honoured: the showcase site, the hosting and the two weeks of fixes
-   * are still ON the grid, they simply no longer wear a label the others lack.
-   * The scope guardrails those cards carried live in ONE faq entry.
+   * ⛔ IT IS NOT AN INVENTORY ANY MORE, and that is the 2026-09-15 change. Adrien:
+   * « ça fait liste mais je sais pas si ultra vendeur ». Nine equal cells read as
+   * a delivery note — every line weighted the same, nothing to want. So ONE item
+   * leads (`lead`, the product actually being live) and the rest support it.
+   *
+   * ⛔ TWO CORRECTIONS THAT ARE FACTUAL, NOT COSMETIC, and must not be undone:
+   *   1. NO BACK-OFFICE IN THE BASE SCOPE. « Données et back-office » was on the
+   *      grid and Adrien pulled it: a back-office is not systematic and, depending
+   *      on the need, is a project of its own. Promising it here would sell scope
+   *      we have not agreed. The honest version is a FAQ answer saying it is
+   *      settled on day 0.
+   *   2. « à votre adresse » IMPLIED A DOMAIN, therefore a web product. The offer
+   *      also sells mobile apps. The lead now covers both — a domain for the web,
+   *      a store submission for an app — which is also what the FAQ on store
+   *      review already says.
+   *
+   * ⛔ AND NO ITEM WEARS AN "INCLUDED" CHIP (Adrien, 2026-09-14): « ça implique
+   * que les autres le sont pas, c'est dommage ». Badging three of nine turns the
+   * other six into an open question, on the one block whose job is to say the box
+   * is full.
    */
   day7: {
     title: Leaf<T>
+    /** The one thing that sells the block. Rendered large, on its own. */
+    lead: { title: Leaf<T>; note: Leaf<T> }
     items: { title: Leaf<T>; note: Leaf<T> }[]
   }
   /** Time-to-production, charted. Delay only — never a price (see the component). */
@@ -426,10 +526,20 @@ type Section<T> = {
   /**
    * The alternatives, as a matrix of marks and two-word cells.
    *
-   * Adrien on the paragraph table it replaces: « beaucoup beaucoup de texte et
-   * de place, très peu de compréhension visuelle ». ⛔ NOT ONE FIGURE IN HERE:
-   * the delay is the chart's job, and it is the only axis we can source. A grid
-   * of unsourced numbers reads as measured, which is worse than prose.
+   * ⚠️ IT STAYS ON THE PAGE, and that was asked and settled on 2026-09-15: Adrien
+   * wondered whether a comparison block belongs on a landing at all. It does —
+   * this is where the « why not an agency / a freelancer / a hire » objection gets
+   * handled, and the prospect is running it in their head whether or not we write
+   * it down. The condition is that it stays COMPACT AND VISUAL, never a wall.
+   *
+   * Adrien on the paragraph table it replaces: « beaucoup beaucoup de texte et de
+   * place, très peu de compréhension visuelle ». ⛔ NOT ONE FIGURE IN HERE: the
+   * delay is the chart's job, and it is the only axis we can source. A grid of
+   * unsourced numbers reads as measured, which is worse than prose.
+   *
+   * ⛔ AND NO ROW MAY ARGUE « one person builds it » (decision cmu1u21i). The row
+   * that used to answer « Qui construit » with « Le founder » is gone; what
+   * replaced it says the thing the buyer actually cares about — whose week it is.
    */
   comparison: {
     title: Leaf<T>
@@ -450,19 +560,18 @@ type Section<T> = {
   /**
    * Who it is for, and who it is not.
    *
-   * ⛔ THE "NOT FOR YOU" COLUMN IS THREE LINES AND EACH ONE HAS TO DISQUALIFY.
-   * Adrien took the previous three apart on 2026-09-14 and each objection was
-   * right: « "Vous cherchez le moins cher" — bah je suis pas d'accord, comparé
-   * aux autres possibilités on n'est pas cher » (it conceded a weakness we do
-   * not have); « "Rien ne peut sortir de la V1" — je comprends même pas la
-   * phrase moi » (a line the reader has to decode filters nobody); and on the
-   * facing column, « pas sûr que le "seul" soit pertinent » — deciding ALONE is
-   * not the requirement, deciding FAST is.
+   * ⛔ IT QUALIFIES BY RECOGNITION, NOT BY CONDITIONS — the 2026-09-15 rewrite.
+   * Adrien: « tu as bien changé ce qu'il fallait mais pas sûr que ce soit ouf
+   * pertinent/vendeur, je te laisse refaire une passe ». The previous lines were
+   * criteria a reader had to check themselves against (« Votre périmètre est
+   * arbitrable ») — administrative, and nobody nods at an eligibility rule. Each
+   * line is now a SITUATION the right prospect recognises as their own in one
+   * second: a date staring at them, a launch they can already describe.
    *
-   * So the three that remain are things a reader recognises about themselves in
-   * one second and that genuinely rule the offer out: a product that cannot be
-   * reduced to a V1, a brief that needs weeks of committee, and nobody able to
-   * settle a question inside the week.
+   * ⛔ AND THE "NOT FOR YOU" COLUMN CONCEDES NOTHING WE DO NOT OWE. Adrien killed
+   * « Vous cherchez le moins cher » (« comparé aux autres possibilités on n'est
+   * pas cher ») and « Rien ne peut sortir de la V1 » (« je comprends même pas la
+   * phrase moi »). Three lines, each one genuinely disqualifying.
    */
   audience: {
     title: Leaf<T>
@@ -472,10 +581,10 @@ type Section<T> = {
     notForItems: Leaf<T>[]
   }
   /**
-   * ONE question zone on the page. The block once titled « Les trois questions
-   * qu'on nous pose à chaque fois » sat on top of this one and asked the same
-   * things at four times the length — Adrien: « redondant, lourd, prend un max
-   * de place ». Its three answers are the first three entries here, shortened.
+   * ONE question zone on the page, and a DENSE one since 2026-09-15 — Adrien:
+   * « ça prend beaucoup de place non ? trop de padding ? ». The tightening is in
+   * the component; what belongs here is the rule that no answer grows into a
+   * paragraph.
    */
   faq: {
     title: Leaf<T>
@@ -487,28 +596,97 @@ type Section<T> = {
      */
     items: { q: Leaf<T>; a: Leaf<T>; linkLabel?: Leaf<T>; linkRoute?: 'maintenance' }[]
   }
-  form: {
+  /**
+   * The contact modal every CTA opens (khufu HQ note, 2026-09-15).
+   *
+   * ⚠️ WHY A MODAL AND NOT A SCROLL. Adrien: « les CTA qui t'emmènent juste à la
+   * section contact, ça te semble pertinent ? un mec qui voit la page défiler va
+   * juste vouloir lire… faudrait pas plutôt un truc style modal qui propose
+   * WhatsApp ou form (ou mail) ? ». A button that scrolls asks the visitor to
+   * start reading again at a different altitude; a modal answers the click.
+   *
+   * ⛔ THE HIERARCHY IS SETTLED — Adrien, 2026-09-15, closing the question rather
+   * than leaving the options open. THREE PATHS, ONE DOMINANT, nothing else:
+   *   1. « RÉSERVER 20 MIN » — the main path, the most visible thing in the modal,
+   *      carrying the week that was clicked. His reasoning, and it is the part to
+   *      preserve: « à 15 000 €, la conversion qui compte est une conversation,
+   *      pas une adresse e-mail dans une base ; et un rendez-vous à l'agenda est
+   *      exactement le registre premium qu'on vend, là où trois champs anonymes
+   *      font low-cost. »
+   *   2. THE NET, one discreet line straight under it — « Pas dispo pour un
+   *      appel ? Laissez votre e-mail. » One field, the lead is recorded on
+   *      submit. It catches everyone not ready to block twenty minutes, which on
+   *      cold paid traffic is most of them.
+   *   3. WhatsApp, tertiary: a link, never a block.
+   * ⛔ NOTHING ELSE MAY BE ADDED. « Au-delà, on ne réduit pas le frein, on ajoute
+   * de l'hésitation. » The direct mailto row was removed for exactly that reason.
+   *
+   * ⚠️ WHEN THE BOOKING URL IS NOT CONFIGURED, THE NET BECOMES THE MAIN PATH and
+   * is rendered as such. The page may never be left without a working CTA, which
+   * is the whole reason the booking row is hidden rather than disabled.
+   *
+   * ⛔ AND NEVER A HOME-MADE CALENDAR (décision d'outillage cmu1uq7l — native
+   * Google Workspace booking, never Cal.com or Calendly). Real availability, time
+   * zones and cancellations are a product, not a landing-page feature.
+   *
+   * ⚠️ The brief is never a toll gate: it comes AFTER the contact is recorded.
+   * And the page keeps its capture at the foot as the net for a visitor who
+   * scrolled past every button.
+   */
+  contact: {
+    title: Leaf<T>
+    /** Carries `{date}` — the week the click came from. Never a claim, just a reminder. */
+    weekNote: Leaf<T>
+    bookLabel: Leaf<T>
+    bookNote: Leaf<T>
+    /**
+     * ⚠️ THE BOOKING PAGE IS IN ENGLISH ONLY, and the landing says so. Google's
+     * appointment schedule has a single description field — there is no way to
+     * localise it — so a visitor arriving in one of our ten languages would
+     * otherwise hit an English page with no warning. The line is short and it is
+     * not an apology.
+     */
+    bookingLangNote: Leaf<T>
+    /** Availability, said once and said exactly. See `contact.bookingHours`. */
+    bookingHours: Leaf<T>
+    whatsappLabel: Leaf<T>
+    close: Leaf<T>
+    /** The no-JavaScript route: a plain link to the booking block at the foot of the page. */
+    fallback: Leaf<T>
+  }
+  /**
+   * The foot-of-page booking block — the page's last word, and its no-JavaScript
+   * target (`#start`).
+   *
+   * ⛔ THERE IS NO HOME-MADE FORM ON THIS PAGE ANY MORE, and that is a decision,
+   * not an omission. Adrien, 2026-09-15, after wiring the real Google appointment
+   * schedule: « AUCUN formulaire maison sur la landing : le CTA ouvre directement
+   * le calendrier. » The booking page already collects first name, last name,
+   * e-mail and a required « Where is your project today? » — everything a form
+   * here would have asked, asked once, on the page that also books the slot.
+   *
+   * ⚠️ WHAT THIS COSTS, so that it is a known trade and not a surprise: a visitor
+   * who will not block thirty minutes now has no way to leave an address, and
+   * there is no « e-mail left » event to compare against « call booked ». If the
+   * funnel shows that gap hurting, the one-field capture is the thing to bring
+   * back — it was built and removed, not forgotten.
+   */
+  closing: {
     title: Leaf<T>
     body: Leaf<T>
-    name: Leaf<T>
-    email: Leaf<T>
-    project: Leaf<T>
-    projectPlaceholder: Leaf<T>
-    submit: Leaf<T>
-    sending: Leaf<T>
-    invalidEmail: Leaf<T>
-    successTitle: Leaf<T>
-    successBody: Leaf<T>
-    privacy: Leaf<T>
-    whatsapp: Leaf<T>
   }
   midCta: {
     products: Leaf<T>
     day7: Leaf<T>
   }
+  /**
+   * ⛔ NO BODY LINE HERE ANY MORE. It read « Le formulaire prend deux minutes. »
+   * and Adrien removed it on 2026-09-15: « tu es sûr de ce genre de sentence ? x) ».
+   * He is right — it advertises effort at the exact moment the visitor is deciding
+   * to spend some, and the form it described no longer exists (it is one field).
+   */
   finalCta: {
     title: Leaf<T>
-    body: Leaf<T>
   }
 }
 
@@ -522,9 +700,9 @@ const content: Section<LocalizedInput> = {
       es: 'Un SaaS o una app móvil, en producción. Ni maqueta ni demo.',
     },
     clientsPerWeek: {
-      fr: 'client par semaine',
-      en: 'client per week',
-      es: 'cliente por semana',
+      fr: 'projet à la fois — le vôtre',
+      en: 'project at a time — yours',
+      es: 'proyecto a la vez: el tuyo',
     },
     ctaLabel: {
       fr: 'Réserver mon sprint',
@@ -542,9 +720,9 @@ const content: Section<LocalizedInput> = {
       es: 'Aún disponible',
     },
     ctaNote: {
-      fr: 'Périmètre, prix et date sous 24 h.',
-      en: 'Scope, price and date within 24h.',
-      es: 'Alcance, precio y fecha en 24 h.',
+      fr: 'Périmètre et date confirmés sous 24 h.',
+      en: 'Scope and date confirmed within 24h.',
+      es: 'Alcance y fecha confirmados en 24 h.',
     },
     slotOpen: { fr: 'Disponible', en: 'Open', es: 'Disponible' },
     slotHeld: { fr: 'Complet', en: 'Full', es: 'Completo' },
@@ -553,7 +731,66 @@ const content: Section<LocalizedInput> = {
       en: 'A Khufu product online, seen in a browser.',
       es: 'Un producto de Khufu en línea, visto en un navegador.',
     },
-    buildDay: { fr: 'Jour {n}', en: 'Day {n}', es: 'Día {n}' },
+  },
+
+  system: {
+    title: {
+      fr: 'D’où vient la vitesse.',
+      en: 'Where the speed comes from.',
+      es: 'De dónde viene la velocidad.',
+    },
+    subtitle: {
+      fr: 'Le même travail, conduit en parallèle au lieu d’être fait à la suite.',
+      en: 'The same work, run in parallel instead of one thing after another.',
+      es: 'El mismo trabajo, en paralelo en vez de uno detrás de otro.',
+    },
+    steps: [
+      {
+        title: { fr: 'Le projet est découpé', en: 'The project is cut up', es: 'El proyecto se divide' },
+        note: {
+          fr: 'en chantiers qui n’ont pas besoin de s’attendre',
+          en: 'into pieces that don’t have to wait for each other',
+          es: 'en partes que no tienen que esperarse entre sí',
+        },
+      },
+      {
+        title: {
+          fr: 'Plusieurs agents avancent en même temps',
+          en: 'Several agents move at once',
+          es: 'Varios agentes avanzan a la vez',
+        },
+        note: {
+          fr: 'les écrans, les données, le site, la mise en ligne',
+          en: 'the screens, the data, the site, going live',
+          es: 'las pantallas, los datos, el sitio, la puesta en línea',
+        },
+      },
+      {
+        title: {
+          fr: 'Tout est vérifié automatiquement',
+          en: 'Everything is checked automatically',
+          es: 'Todo se verifica automáticamente',
+        },
+        note: {
+          fr: 'à chaque étape, pas à la fin',
+          en: 'at every step, not at the end',
+          es: 'en cada paso, no al final',
+        },
+      },
+      {
+        title: { fr: 'Un humain tranche', en: 'A human decides', es: 'Una persona decide' },
+        note: {
+          fr: 'rien ne part en ligne sans validation',
+          en: 'nothing goes live without sign-off',
+          es: 'nada se publica sin validación',
+        },
+      },
+    ],
+    note: {
+      fr: 'C’est ce qui tient les sept jours. Pas des nuits blanches.',
+      en: 'That is what holds the seven days. Not all-nighters.',
+      es: 'Eso es lo que sostiene los siete días. No las noches en vela.',
+    },
   },
 
   commitments: {
@@ -565,27 +802,47 @@ const content: Section<LocalizedInput> = {
     tag: { fr: 'Au contrat', en: 'In the contract', es: 'En el contrato' },
     items: [
       {
-        title: { fr: 'La date de livraison', en: 'The delivery date', es: 'La fecha de entrega' },
+        title: {
+          fr: 'Tout est chez vous dès le premier jour',
+          en: 'Everything is yours from day one',
+          es: 'Todo es tuyo desde el primer día',
+        },
         note: {
-          fr: 'fixée avant le premier jour, pas en cours de route',
-          en: 'set before day one, not along the way',
-          es: 'fijada antes del primer día, no sobre la marcha',
+          fr: 'vos comptes, votre domaine, votre code — on y travaille avec des accès que vous donnez',
+          en: 'your accounts, your domain, your code — we work through access you grant',
+          es: 'tus cuentas, tu dominio, tu código: trabajamos con accesos que tú concedes',
         },
       },
       {
-        title: { fr: 'Le prix', en: 'The price', es: 'El precio' },
+        title: {
+          fr: 'Rien ne se reconduit tout seul',
+          en: 'Nothing renews on its own',
+          es: 'Nada se renueva solo',
+        },
         note: {
-          fr: 'arrêté avant de commencer, il ne bouge pas si le périmètre bouge',
-          en: 'settled before we start, it does not move when the scope moves',
-          es: 'cerrado antes de empezar, no se mueve si se mueve el alcance',
+          fr: 'à la fin des deux semaines de correctifs, aucun abonnement ne se déclenche',
+          en: 'when the two weeks of fixes end, no subscription starts',
+          es: 'al terminar las dos semanas de correcciones, no se activa ninguna suscripción',
         },
       },
       {
-        title: { fr: 'La propriété du code', en: 'Ownership of the code', es: 'La propiedad del código' },
+        title: {
+          fr: 'Si le retard vient de nous',
+          en: 'If the delay is on us',
+          es: 'Si el retraso es nuestro',
+        },
         note: {
-          fr: 'à vous dès le premier jour, sans licence ni dépendance à nous',
-          en: 'yours from day one, no licence and nothing tying you to us',
-          es: 'tuyo desde el primer día, sin licencia ni dependencia de nosotros',
+          fr: 'au-delà de dix jours, vous résiliez et vous êtes remboursé',
+          en: 'past ten days, you terminate and you are refunded',
+          es: 'pasados diez días, rescindes y te devolvemos el dinero',
+        },
+      },
+      {
+        title: { fr: 'Confidentialité', en: 'Confidentiality', es: 'Confidencialidad' },
+        note: {
+          fr: 'cinq ans après la fin du contrat, non-sollicitation comprise',
+          en: 'five years past the end of the contract, non-solicitation included',
+          es: 'cinco años tras el fin del contrato, con no captación incluida',
         },
       },
     ],
@@ -594,12 +851,14 @@ const content: Section<LocalizedInput> = {
   products: {
     title: { fr: 'Quelques exemples.', en: 'A few examples.', es: 'Algunos ejemplos.' },
     liveLabel: { fr: 'En production', en: 'In production', es: 'En producción' },
+    soonSuffix: { fr: 'à venir', en: 'coming', es: 'próximamente' },
     surfaces: {
       web: { fr: 'Plateforme web', en: 'Web platform', es: 'Plataforma web' },
       app: { fr: 'App mobile', en: 'Mobile app', es: 'App móvil' },
       site: { fr: 'Site vitrine', en: 'Showcase site', es: 'Sitio escaparate' },
+      sdk: { fr: 'SDK', en: 'SDKs', es: 'SDK' },
+      packages: { fr: 'Packages', en: 'Packages', es: 'Paquetes' },
     },
-    siteOnlyLabel: { fr: 'Site en ligne', en: 'Site live', es: 'Sitio en línea' },
     taglines: {
       traqio: {
         fr: 'L’attribution d’installs et le ROAS, sans boîte noire.',
@@ -613,9 +872,9 @@ const content: Section<LocalizedInput> = {
       },
     },
     shotAlt: {
-      fr: 'Le site de {name}, en ligne.',
-      en: 'The {name} site, live.',
-      es: 'El sitio de {name}, en línea.',
+      fr: 'Le produit {name}, en ligne.',
+      en: 'The {name} product, live.',
+      es: 'El producto {name}, en línea.',
     },
     appShotAlt: {
       fr: 'L’application mobile {name}.',
@@ -713,19 +972,31 @@ const content: Section<LocalizedInput> = {
     youLabel: { fr: 'Vous', en: 'You', es: 'Tú' },
     usLabel: { fr: 'Nous', en: 'Us', es: 'Nosotros' },
     note: {
-      fr: 'Vous parlez au founder qui écrit le code.',
-      en: 'You talk to the founder writing the code.',
-      es: 'Hablas con el founder que escribe el código.',
+      fr: 'Un seul interlocuteur, qui décide, du premier échange à la passation.',
+      en: 'One person to talk to, who decides, from the first exchange to the handover.',
+      es: 'Un solo interlocutor, que decide, desde el primer contacto hasta el traspaso.',
     },
   },
 
   day7: {
-    title: { fr: 'Livré le jour 7.', en: 'Delivered on day 7.', es: 'Entregado el día 7.' },
-    items: [
-      {
-        title: { fr: 'Produit en production', en: 'Product in production', es: 'Producto en producción' },
-        note: { fr: 'en ligne, à votre adresse', en: 'live, at your address', es: 'en línea, en tu dirección' },
+    title: {
+      fr: 'Ce que vous avez dimanche soir.',
+      en: 'What you have on Sunday evening.',
+      es: 'Lo que tienes el domingo por la noche.',
+    },
+    lead: {
+      title: {
+        fr: 'Votre produit, en production',
+        en: 'Your product, in production',
+        es: 'Tu producto, en producción',
       },
+      note: {
+        fr: 'Sur votre nom de domaine pour un produit web, soumis aux stores pour une app. Pas un lien de test.',
+        en: 'On your own domain for a web product, submitted to the stores for an app. Not a test link.',
+        es: 'En tu dominio si es un producto web, enviado a las stores si es una app. No un enlace de prueba.',
+      },
+    },
+    items: [
       {
         title: { fr: 'Le code du produit', en: 'The product’s code', es: 'El código del producto' },
         note: {
@@ -748,14 +1019,6 @@ const content: Section<LocalizedInput> = {
           fr: 'inscription, connexion, permissions',
           en: 'sign-up, login, permissions',
           es: 'registro, acceso, permisos',
-        },
-      },
-      {
-        title: { fr: 'Données et back-office', en: 'Data and back-office', es: 'Datos y back-office' },
-        note: {
-          fr: 'pour l’exploiter sans développeur',
-          en: 'to run it without a developer',
-          es: 'para operarlo sin desarrollador',
         },
       },
       {
@@ -870,11 +1133,16 @@ const content: Section<LocalizedInput> = {
         khufu: { mark: 'yes', label: { fr: 'Oui', en: 'Yes', es: 'Sí' } },
       },
       {
-        aspect: { fr: 'Qui construit', en: 'Who builds it', es: 'Quién lo construye' },
-        agency: { mark: 'mixed', label: { fr: 'Équipe partagée', en: 'Shared team', es: 'Equipo compartido' } },
-        freelance: { mark: 'mixed', label: { fr: 'Une personne', en: 'One person', es: 'Una persona' } },
-        noCode: { mark: 'mixed', label: { fr: 'Vous', en: 'You', es: 'Tú' } },
-        khufu: { mark: 'yes', label: { fr: 'Le founder', en: 'The founder', es: 'El founder' } },
+        /*
+         * ⛔ THIS ROW REPLACED « Qui construit » / « Le founder » (cmu1u21i). The
+         * old one argued the seller's org chart; this one answers the question
+         * the buyer is actually asking — am I queued behind other projects?
+         */
+        aspect: { fr: 'Votre place dans la file', en: 'Your place in the queue', es: 'Tu lugar en la cola' },
+        agency: { mark: 'mixed', label: { fr: 'Un projet parmi d’autres', en: 'One project among many', es: 'Un proyecto entre otros' } },
+        freelance: { mark: 'mixed', label: { fr: 'En parallèle d’autres clients', en: 'Alongside other clients', es: 'En paralelo a otros clientes' } },
+        noCode: { mark: 'mixed', label: { fr: 'Vous, sur votre temps', en: 'You, on your own time', es: 'Tú, en tu tiempo' } },
+        khufu: { mark: 'yes', label: { fr: 'La semaine est à vous', en: 'The week is yours', es: 'La semana es tuya' } },
       },
       {
         aspect: { fr: 'Si ça dérape', en: 'If it slips', es: 'Si se desvía' },
@@ -897,37 +1165,45 @@ const content: Section<LocalizedInput> = {
       en: 'Who it’s for, and who it isn’t.',
       es: 'Para quién es, y para quién no.',
     },
-    forTitle: { fr: 'Pour vous si', en: 'For you if', es: 'Para ti si' },
+    forTitle: { fr: 'C’est vous si', en: 'This is you if', es: 'Eres tú si' },
     forItems: [
-      { fr: 'Vous avez une date en face de vous.', en: 'You have a date staring at you.', es: 'Tienes una fecha delante.' },
-      { fr: 'Votre périmètre est arbitrable.', en: 'Your scope can be cut.', es: 'Tu alcance se puede recortar.' },
       {
-        fr: 'Un prix fixe vous rassure plus qu’un devis.',
-        en: 'A fixed price reassures you more than a quote.',
-        es: 'Un precio fijo te tranquiliza más que un presupuesto.',
+        fr: 'Vous avez une date : un salon, une levée, un client qui attend.',
+        en: 'You have a date: a trade show, a raise, a client waiting.',
+        es: 'Tienes una fecha: una feria, una ronda, un cliente esperando.',
       },
       {
-        fr: 'Vous pouvez trancher dans la journée.',
-        en: 'You can settle a question the same day.',
-        es: 'Puedes decidir en el día.',
+        fr: 'Vous savez déjà ce que le produit doit faire au lancement.',
+        en: 'You already know what the product has to do at launch.',
+        es: 'Ya sabes qué tiene que hacer el producto al lanzarse.',
+      },
+      {
+        fr: 'Vous préférez un prix affiché à un devis qui se discute.',
+        en: 'You’d rather have a posted price than a quote to argue over.',
+        es: 'Prefieres un precio publicado a un presupuesto que se negocia.',
+      },
+      {
+        fr: 'Vous répondez à une question dans la journée, pas la semaine suivante.',
+        en: 'You answer a question the same day, not the following week.',
+        es: 'Respondes una pregunta el mismo día, no la semana siguiente.',
       },
     ],
-    notForTitle: { fr: 'Pas pour vous si', en: 'Not for you if', es: 'No es para ti si' },
+    notForTitle: { fr: 'Ce n’est pas vous si', en: 'This isn’t you if', es: 'No eres tú si' },
     notForItems: [
       {
-        fr: 'Votre produit ne tient pas dans une V1, même réduite.',
-        en: 'Your product doesn’t fit a V1, not even a trimmed one.',
-        es: 'Tu producto no cabe en una V1, ni siquiera recortada.',
+        fr: 'Votre produit n’a pas de version réduite qui tienne debout.',
+        en: 'Your product has no smaller version that stands up on its own.',
+        es: 'Tu producto no tiene una versión reducida que se sostenga.',
       },
       {
-        fr: 'Votre cahier des charges passe par un comité, sur plusieurs semaines.',
-        en: 'Your brief goes through a committee, over several weeks.',
-        es: 'Tu pliego pasa por un comité, durante varias semanas.',
+        fr: 'Chaque décision passe par un comité, sur plusieurs semaines.',
+        en: 'Every decision goes through a committee, over several weeks.',
+        es: 'Cada decisión pasa por un comité, durante varias semanas.',
       },
       {
-        fr: 'Personne chez vous ne peut trancher dans la semaine.',
-        en: 'Nobody on your side can settle a question within the week.',
-        es: 'Nadie de tu lado puede decidir dentro de la semana.',
+        fr: 'Personne chez vous ne peut trancher pendant la semaine.',
+        en: 'Nobody on your side can settle a question during the week.',
+        es: 'Nadie de tu lado puede decidir durante la semana.',
       },
     ],
   },
@@ -941,10 +1217,16 @@ const content: Section<LocalizedInput> = {
           en: '“Shipping in 7 days is impossible.”',
           es: '«Entregar en 7 días es imposible.»',
         },
+        /*
+         * ⛔ THIS ANSWER NO LONGER SAYS « une seule personne tient tous les rôles »
+         * (decision cmu1u21i). It pointed at the solo founder, which is both the
+         * wrong argument and a weak one. It now points at the system, which is
+         * what actually explains the delay.
+         */
         a: {
-          fr: 'Avec une agence, oui : quatre personnes et trois réunions de validation. Ici une seule tient tous les rôles, amplifiée par l’IA, et le périmètre est arrêté avant le jour 1. On livre le produit qui peut être lancé, pas toute votre feuille de route.',
-          en: 'With an agency, yes: four people and three sign-off meetings. Here one person holds every role, amplified by AI, and the scope is settled before day 1. We ship the product that can launch, not your whole plan.',
-          es: 'Con una agencia, sí: cuatro personas y tres reuniones de validación. Aquí una sola cubre todos los roles, amplificada por la IA, y el alcance se cierra antes del día 1. Entregamos el producto que puede lanzarse, no todo tu plan.',
+          fr: 'Avec une agence, oui : quatre personnes et trois réunions de validation. Ici le travail est découpé et mené en parallèle par un système d’agents, sous supervision humaine, et le périmètre est arrêté avant le jour 1. On livre le produit qui peut être lancé, pas toute votre feuille de route.',
+          en: 'With an agency, yes: four people and three sign-off meetings. Here the work is cut up and run in parallel by a system of agents, under human supervision, and the scope is settled before day 1. We ship the product that can launch, not your whole plan.',
+          es: 'Con una agencia, sí: cuatro personas y tres reuniones de validación. Aquí el trabajo se divide y avanza en paralelo mediante un sistema de agentes, con supervisión humana, y el alcance se cierra antes del día 1. Entregamos el producto que puede lanzarse, no todo tu plan.',
         },
       },
       {
@@ -954,9 +1236,9 @@ const content: Section<LocalizedInput> = {
           es: '«¿Y si se tuerce a mitad de semana?»',
         },
         a: {
-          fr: 'Le prix est fixe : le dépassement est pour nous. Vous parlez au founder tous les jours, donc un écart se voit le jour même. Et si le cadrage montre qu’il faut plus de sept jours, on vous le dit avant de commencer.',
-          en: 'The price is fixed: the overrun is on us. You talk to the founder every day, so a drift shows up the same day. And if scoping shows it needs more than seven days, we tell you before we start.',
-          es: 'El precio es fijo: el exceso corre por nuestra cuenta. Hablas con el founder cada día, así que una desviación se ve el mismo día. Y si el encuadre muestra que hacen falta más de siete días, te lo decimos antes de empezar.',
+          fr: 'Le prix est fixe : le dépassement est pour nous. Vous avez un point chaque jour, donc un écart se voit le jour même. Et si le cadrage montre qu’il faut plus de sept jours, on vous le dit avant de commencer.',
+          en: 'The price is fixed: the overrun is on us. You get a check-in every day, so a drift shows up the same day. And if scoping shows it needs more than seven days, we tell you before we start.',
+          es: 'El precio es fijo: el exceso corre por nuestra cuenta. Tienes un punto cada día, así que una desviación se ve el mismo día. Y si el encuadre muestra que hacen falta más de siete días, te lo decimos antes de empezar.',
         },
       },
       {
@@ -1011,6 +1293,26 @@ const content: Section<LocalizedInput> = {
         },
       },
       {
+        /*
+         * ⚠️ ADDED 2026-09-15, and it exists because something was REMOVED from
+         * the day-7 grid. « Données et back-office » was promised there; Adrien
+         * pulled it: a back-office is not systematic and, depending on the need,
+         * is a real piece of work. Deleting the promise without answering the
+         * question would just move the surprise to day 3, so the answer says how
+         * it is arbitrated — on day 0, in writing, before anybody starts.
+         */
+        q: {
+          fr: 'Un back-office est-il compris ?',
+          en: 'Is an admin back-office included?',
+          es: '¿Se incluye un back-office?',
+        },
+        a: {
+          fr: 'Ça dépend de ce que vous devez piloter. Un espace d’administration simple entre dans le périmètre ; un véritable outil de gestion est un chantier à part entière. C’est arbitré au jour 0, avec vous, jamais découvert en cours de semaine.',
+          en: 'It depends on what you need to run. A simple admin area is in scope; a full management tool is a project of its own. It is settled on day 0, with you, never discovered mid-week.',
+          es: 'Depende de lo que necesites gestionar. Un área de administración sencilla entra en el alcance; una herramienta de gestión completa es un proyecto aparte. Se decide el día 0, contigo, nunca a mitad de semana.',
+        },
+      },
+      {
         // ⛔ ONE question for all four, on purpose (khufu HQ decision cmu09j84).
         // Splitting them, or promoting them to the day-7 grid, would suggest they
         // might not have been included and lower the perceived level of the offer.
@@ -1028,11 +1330,9 @@ const content: Section<LocalizedInput> = {
       {
         /*
          * The stack, answered as a FEAR and not as a curiosity — which is why it
-         * is a FAQ line and no longer a section. Adrien asked whether showing the
-         * stack of our own products was relevant; it is not: a founder buying a
-         * V1 is not buying Next.js. What they are buying is the certainty of not
-         * being locked in, so that is what this answers, and the product cards
-         * lost their technology chips at the same time.
+         * is a FAQ line and no longer a section. A founder buying a V1 is not
+         * buying Next.js; what they are buying is the certainty of not being
+         * locked in, so that is what this answers.
          */
         q: {
           fr: 'Je serai prisonnier de votre techno ?',
@@ -1070,11 +1370,22 @@ const content: Section<LocalizedInput> = {
         },
       },
       {
-        q: { fr: 'Qui écrit le code ?', en: 'Who writes the code?', es: '¿Quién escribe el código?' },
+        /*
+         * ⛔ THIS QUESTION USED TO BE « Qui écrit le code ? » AND IT IS GONE
+         * (decision cmu1u21i). Adrien: « tu dis "écrit le code", donc faux ».
+         * What replaced it keeps the half that is true and reassuring — one
+         * person to talk to, who decides — without the word "solo" and without
+         * claiming anybody types it by hand.
+         */
+        q: {
+          fr: 'Qui est mon interlocuteur ?',
+          en: 'Who am I dealing with?',
+          es: '¿Quién es mi interlocutor?',
+        },
         a: {
-          fr: 'Adrien De Coster, le founder de Khufu. La même personne du premier appel à la passation.',
-          en: 'Adrien De Coster, Khufu’s founder. The same person from the first call to the handover.',
-          es: 'Adrien De Coster, el founder de Khufu. La misma persona desde la primera llamada hasta el traspaso.',
+          fr: 'Adrien De Coster, le founder de Khufu, du premier échange à la passation. Une seule personne à qui parler, et qui décide : pas de chef de projet qui relaie, pas d’interlocuteur qui change en cours de semaine.',
+          en: 'Adrien De Coster, Khufu’s founder, from the first exchange to the handover. One person to talk to, who decides: no project manager relaying, no change of contact mid-week.',
+          es: 'Adrien De Coster, el founder de Khufu, desde el primer contacto hasta el traspaso. Una sola persona con quien hablar, y que decide: sin jefe de proyecto que hace de intermediario, sin cambios de interlocutor a mitad de semana.',
         },
       },
       {
@@ -1088,55 +1399,72 @@ const content: Section<LocalizedInput> = {
     ],
   },
 
-  form: {
+  contact: {
     title: {
-      fr: 'Dites-nous ce que vous voulez lancer.',
-      en: 'Tell us what you want to launch.',
-      es: 'Cuéntanos qué quieres lanzar.',
+      fr: 'Parlons de votre projet.',
+      en: 'Let’s talk about your project.',
+      es: 'Hablemos de tu proyecto.',
+    },
+    weekNote: {
+      fr: 'Semaine du {date}',
+      en: 'Week of {date}',
+      es: 'Semana del {date}',
+    },
+    bookLabel: {
+      fr: 'Réserver un appel de 30 min',
+      en: 'Book a 30-min call',
+      es: 'Reservar una llamada de 30 min',
+    },
+    /* ⚠️ EXACT, and read off the real appointment schedule (« Sprint V1 —
+       30 min », Google Meet generated automatically, Mon→Fri 10:00–14:00 UTC,
+       30-minute slots, minimum 24h notice). ⛔ Do not write a duration or a
+       channel the schedule does not offer: a button that contradicts the booking
+       page is the one discrepancy a prospect notices immediately. ⛔ And do not
+       restate the opening hours or the 24h notice here — Google's page already
+       shows both, and duplicating them adds copy that can only go stale. */
+    bookNote: {
+      fr: 'Visio de 30 minutes. On cadre votre projet, vous repartez avec une date.',
+      en: 'A 30-minute video call. We scope your project, you leave with a date.',
+      es: 'Videollamada de 30 minutos. Encuadramos tu proyecto y te vas con una fecha.',
+    },
+    bookingLangNote: {
+      fr: 'La page de réservation est en anglais.',
+      en: 'The booking page is in English.',
+      es: 'La página de reserva está en inglés.',
+    },
+    /* ⚠️ « 7 j/7 », never « en semaine » — the schedule runs every day, and the
+       window is 10:00–14:00 UTC. ⛔ Do not add the 24h notice or the 14-day
+       horizon here: Google's page enforces and displays both, and a second copy
+       on the landing can only drift. */
+    bookingHours: {
+      fr: '7 j/7, 10 h – 14 h UTC',
+      en: '7 days a week, 10:00–14:00 UTC',
+      es: '7 días a la semana, 10:00–14:00 UTC',
+    },
+    whatsappLabel: {
+      fr: 'Ou écrivez-nous sur WhatsApp',
+      en: 'Or message us on WhatsApp',
+      es: 'O escríbenos por WhatsApp',
+    },
+    close: { fr: 'Fermer', en: 'Close', es: 'Cerrar' },
+    fallback: {
+      fr: 'Prendre rendez-vous',
+      en: 'Book a call',
+      es: 'Reservar una cita',
+    },
+  },
+
+  closing: {
+    title: {
+      fr: 'Trente minutes pour savoir si c’est faisable.',
+      en: 'Thirty minutes to find out whether it is doable.',
+      es: 'Treinta minutos para saber si es viable.',
     },
     body: {
-      fr: 'Réponse sous 24 h : un périmètre écrit, un prix, une date.',
-      en: 'Answer within 24h: a written scope, a price, a date.',
-      es: 'Respuesta en 24 h: un alcance escrito, un precio, una fecha.',
+      fr: 'On regarde votre projet ensemble et vous repartez avec un périmètre et une date.',
+      en: 'We look at your project together and you leave with a scope and a date.',
+      es: 'Miramos tu proyecto juntos y te vas con un alcance y una fecha.',
     },
-    name: { fr: 'Nom', en: 'Name', es: 'Nombre' },
-    email: { fr: 'Email professionnel', en: 'Work email', es: 'Email profesional' },
-    // The form asks for a name, an email and — optionally — the brief. Nothing
-    // else: the traffic is cold, paid and mostly on a phone, and every extra row
-    // is paid for twice.
-    project: {
-      fr: 'Ce que vous voulez lancer (optionnel)',
-      en: 'What you want to launch (optional)',
-      es: 'Qué quieres lanzar (opcional)',
-    },
-    projectPlaceholder: {
-      fr: 'En trois lignes : à quoi sert le produit, pour qui, et ce qui doit marcher au lancement.',
-      en: 'In three lines: what the product does, for whom, and what has to work at launch.',
-      es: 'En tres líneas: para qué sirve el producto, para quién, y qué debe funcionar al lanzar.',
-    },
-    submit: {
-      fr: 'Recevoir mon périmètre et ma date',
-      en: 'Get my scope and my date',
-      es: 'Recibir mi alcance y mi fecha',
-    },
-    sending: { fr: 'Envoi…', en: 'Sending…', es: 'Enviando…' },
-    invalidEmail: {
-      fr: 'Merci d’indiquer une adresse email valide.',
-      en: 'Please enter a valid email address.',
-      es: 'Introduce una dirección de email válida.',
-    },
-    successTitle: { fr: 'C’est noté.', en: 'Got it.', es: 'Recibido.' },
-    successBody: {
-      fr: 'Réponse sous 24 h avec un périmètre, un prix et une date. Si c’est urgent, WhatsApp est plus rapide.',
-      en: 'An answer within 24h with a scope, a price and a date. If it’s urgent, WhatsApp is faster.',
-      es: 'Respuesta en 24 h con un alcance, un precio y una fecha. Si es urgente, WhatsApp es más rápido.',
-    },
-    privacy: {
-      fr: 'Vos informations servent uniquement à répondre. Pas de revente, pas de newsletter.',
-      en: 'Your details are only used to answer. No reselling, no newsletter.',
-      es: 'Tus datos solo se usan para responder. Sin reventa ni newsletter.',
-    },
-    whatsapp: { fr: 'Ou par WhatsApp', en: 'Or on WhatsApp', es: 'O por WhatsApp' },
   },
 
   midCta: {
@@ -1149,11 +1477,6 @@ const content: Section<LocalizedInput> = {
       fr: 'Dans sept jours, votre produit peut être en ligne.',
       en: 'Seven days from now, your product can be live.',
       es: 'Dentro de siete días, tu producto puede estar en línea.',
-    },
-    body: {
-      fr: 'Le formulaire prend deux minutes.',
-      en: 'The form takes two minutes.',
-      es: 'El formulario lleva dos minutos.',
     },
   },
 }

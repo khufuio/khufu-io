@@ -27,14 +27,26 @@ export type FaqAccordionItem = {
  * a full-width target at least 44px tall on a phone. The rotation sits inside
  * `motion-safe`, so a visitor who asked for less motion gets the flip with no
  * animation rather than no feedback.
+ *
+ * ⚠️ `dense` EXISTS FOR /sprint-v1 AND IS SCOPED TO IT. Adrien, 2026-09-15: « ça
+ * prend beaucoup de place non ? trop de padding ? ». He is right there — that
+ * page carries twelve questions low on a long landing, and at the default rhythm
+ * the zone ran longer than the offer above it. It is a PROP rather than a new
+ * default because the same rhythm is correct on the home page and /offres, where
+ * the FAQ is a destination rather than a footnote.
+ * ⛔ Density stops at the 44px touch target: `min-h-11` stays on the row whatever
+ * the padding, so a thumb never misses a question.
  */
 export function FaqAccordion({
   items,
   locale = 'en',
   defaultOpen = 0,
+  dense = false,
 }: {
   items: readonly FaqAccordionItem[]
   locale?: string
+  /** Tighter rhythm for a long question zone low on a page. See the note above. */
+  dense?: boolean
   /**
    * Which answer is unfolded on arrival, or `null` for none. Defaults to the
    * first, as everywhere else on the site; the Sprint V1 landing passes `null`
@@ -56,12 +68,23 @@ export function FaqAccordion({
                 type="button"
                 onClick={() => setOpen(isOpen ? null : i)}
                 aria-expanded={isOpen}
-                className="flex min-h-11 w-full items-center justify-between gap-4 py-5 text-left"
+                className={cn(
+                  'flex min-h-11 w-full items-center justify-between gap-4 text-left',
+                  dense ? 'py-3' : 'py-5',
+                )}
               >
-                <span className="text-base font-medium text-[var(--color-ink)]">{item.q}</span>
                 <span
                   className={cn(
-                    'flex h-7 w-7 shrink-0 items-center justify-center rounded-full motion-safe:transition-transform',
+                    'font-medium text-[var(--color-ink)]',
+                    dense ? 'text-[15px]/[1.4]' : 'text-base',
+                  )}
+                >
+                  {item.q}
+                </span>
+                <span
+                  className={cn(
+                    'flex shrink-0 items-center justify-center rounded-full motion-safe:transition-transform',
+                    dense ? 'h-6 w-6' : 'h-7 w-7',
                     isOpen
                       ? 'rotate-180 bg-[var(--color-accent)] text-white'
                       : 'bg-[var(--color-paper-2)] text-[var(--color-ink)]',
@@ -70,7 +93,7 @@ export function FaqAccordion({
                 >
                   <svg
                     viewBox="0 0 24 24"
-                    className="size-4"
+                    className={dense ? 'size-3.5' : 'size-4'}
                     fill="none"
                     stroke="currentColor"
                     strokeWidth={2.2}
@@ -82,9 +105,14 @@ export function FaqAccordion({
                 </span>
               </button>
             </h3>
-            <div className={cn('grid transition-all', isOpen ? 'grid-rows-[1fr] pb-5' : 'grid-rows-[0fr]')}>
+            <div
+              className={cn(
+                'grid transition-all',
+                isOpen ? (dense ? 'grid-rows-[1fr] pb-4' : 'grid-rows-[1fr] pb-5') : 'grid-rows-[0fr]',
+              )}
+            >
               <div className="overflow-hidden">
-                <p className="max-w-2xl text-[var(--color-ink-2)]">
+                <p className={cn('max-w-2xl text-[var(--color-ink-2)]', dense && 'text-[14px]/[1.55]')}>
                   <PricedText text={item.a} locale={locale} />
                 </p>
                 {item.link && (

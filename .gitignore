@@ -53,6 +53,8 @@ typings/
 
 # dotenv environment variable files
 .env*
+# …except the template, which documents what the app reads and holds no values.
+!.env.example
 
 # next.js
 .next/

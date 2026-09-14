@@ -20,6 +20,16 @@
   --color-accent-ink: #3a1fe0;
   --color-accent-soft: #edeaff;
 
+  /* The « Complet » state of a booking slot — see sprintSlotStrip.tsx.
+     ⚠️ MEASURED, NOT PICKED BY EYE: ink on soft is 7.1:1, and the chip's small
+     10px labels sit at 80% of that ink over the same ground, i.e. 5.0:1 — both AA.
+     A full week used to be grey at 70% opacity, which read as a disabled control
+     rather than as a week that is gone, and lost the scarcity argument the strip
+     exists for (Adrien, 2026-09-15: « rends "Complet" nettement plus visible »). */
+  --color-full-ink: #a3161d;
+  --color-full-soft: #fdf1f1;
+  --color-full-line: #f2d3d4;
+
   /* Radii */
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
@@ -320,35 +330,42 @@ body {
  * The bezel is CSS so a mobile capture costs one image and not two. Same radius
  * family and same shadow as the browser frame: the two have to read as one kit.
  * ------------------------------------------------------------------ */
+/* ⚠️ THINNER AND MORE NEUTRAL SINCE 2026-09-15. Adrien, on the previous frame:
+   « les téléphones je suis pas fan du format/frame ». It was a 6px near-black
+   bezel with a fat pill — a toy phone, and at three cards per row it was mostly
+   bezel. The frame's job is to say "this is a phone" and then disappear: a
+   hairline bezel, a softer radius, and a pill reduced to a hint. ⛔ Do not thicken
+   it back: the capture is the content, the frame is punctuation. */
 .sprint-phone {
   position: relative;
   overflow: hidden;
-  border: 6px solid #111114;
-  border-radius: 1.75rem;
-  background: #111114;
+  border: 3px solid #1c1c22;
+  border-radius: 1.25rem;
+  background: #1c1c22;
   box-shadow:
     0 1px 2px rgba(14, 14, 16, 0.05),
-    0 20px 46px -22px rgba(14, 14, 16, 0.42);
+    0 16px 38px -20px rgba(14, 14, 16, 0.38);
 }
 
 .sprint-phone--dark {
-  border-color: #26262e;
-  background: #26262e;
-  box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.9);
+  border-color: #33333d;
+  background: #33333d;
+  box-shadow: 0 20px 50px -26px rgba(0, 0, 0, 0.85);
 }
 
 /* The pill, drawn rather than captured — the screens come from several devices
-   and several years, and a consistent frame is the whole point of having one. */
+   and several years, and a consistent frame is the whole point of having one.
+   Deliberately small: at a third of a row it must not become the phone's face. */
 .sprint-phone-notch {
   position: absolute;
-  top: 0.45rem;
+  top: 0.3rem;
   left: 50%;
   z-index: 1;
-  width: 28%;
-  height: 0.45rem;
+  width: 20%;
+  height: 0.28rem;
   transform: translateX(-50%);
   border-radius: 9999px;
-  background: #111114;
+  background: color-mix(in srgb, #ffffff 26%, transparent);
 }
 
 .sprint-phone-img {
@@ -358,17 +375,23 @@ body {
   aspect-ratio: 560 / 1180;
   object-fit: cover;
   object-position: top center;
-  border-radius: 1.4rem;
+  border-radius: 1rem;
 }
 
 /* ------------------------------------------------------------------ *
- * The hero sequence: a product built from day 1 to day 7
+ * The hero sequence: a WHOLE PRODUCT built, then put online
  * (sprintBuildSequence.tsx).
  *
- * ⛔ WHAT THIS IS, AND WHAT IT IS NOT. It illustrates the SHAPE of a sprint
- * week. It is never dressed as a recording of a real client's build — no date,
- * no client, no caption claiming it happened. Adrien asked for the beat
- * (2026-09-14, « un timelapse de day 1 à day 7 »); the honesty bound is ours.
+ * ⛔ WHAT IT SHOWS, AND WHY IT WAS REBUILT ON 2026-09-15. It used to draw one
+ * screen filling in. Adrien validated the beat and rejected what it showed:
+ * « il manque pas l'app et le showcase ? et aussi montrer le côté infra, CD… là
+ * je sais pas si vraiment en soi on comprend ». So it now has two movements:
+ * the SCOPE arrives (platform, then companion app, then showcase site), then it
+ * GOES LIVE (infrastructure assembles, pipeline turns green, domain lights up).
+ *
+ * ⛔ AND THERE IS NOTHING TO READ. The « Jour N » chip is gone — it was text, in
+ * ten locales, on the one object that must be understood without reading. The
+ * seven days are a seven-segment rail that fills. Do not put a label back.
  *
  * ⚠️ THE PERFORMANCE CONTRACT, and it is not negotiable (decision cmu093fb:
  * mobile LCP < 2.5 s, CLS < 0.1):
@@ -376,44 +399,46 @@ body {
  *     on the first frame, is never `opacity: 0`, and never waits on anything
  *     here. The overlay sits on top and dissolves off it.
  *   - only `opacity` and `transform` are animated, so nothing can shift layout.
- *   - the whole thing is CSS: no library, no request, no hydration. The sequence
- *     runs once and stops on day 7; a hero that keeps moving competes with the
- *     button next to it.
+ *     ⛔ The pipeline fill uses `transform: scaleX()`, never `width`.
+ *   - the whole thing is CSS: no library, no request, no hydration. It runs once
+ *     and stops; a hero that keeps moving competes with the button next to it.
  *   - the entire overlay lives inside `prefers-reduced-motion: no-preference`.
- *     A visitor who asked for less gets the day-7 state, which is finished.
+ *     A visitor who asked for less gets the finished product, which is correct.
  *
- * Timing — one beat is 780ms, the last beat is the dissolve:
- *   0.35s  the sheet lands and the sequence starts
- *   day 1  the rail
- *   day 2–3  four blocks fill in
- *   day 4  the last two blocks, the layout is complete
- *   day 5  the phone arrives
- *   day 6–7  everything dissolves into the real capture
+ * Timing — the whole story is told in 5.6s, dissolved by 6.8s:
+ *   0.30s  the sheet lands
+ *   0.45s  the platform's frame, then its blocks fill in   (days 1–3)
+ *   2.30s  the companion app rises beside it               (day 4)
+ *   2.95s  the showcase site lands under it                (day 5)
+ *   3.55s  the infrastructure assembles                    (day 6)
+ *   3.95s  the pipeline runs, turning green as it finishes
+ *   4.95s  the domain lights up                            (day 7)
+ *   5.85s  everything dissolves into the real capture
  * ------------------------------------------------------------------ */
 .sprint-build {
   position: relative;
 }
 
 .sprint-build-stage,
-.sprint-build-days {
+.sprint-build-steps {
   display: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* The whole overlay dissolves as ONE layer on days 6–7, which is why the
-     fade-out lives here and not on each block: fading nine elements separately
-     is nine chances for them to drift apart, and one chance to get it right. */
+  /* The whole overlay dissolves as ONE layer, which is why the fade-out lives
+     here and not on each part: fading a dozen elements separately is a dozen
+     chances for them to drift apart, and one chance to get it right. */
   .sprint-build-stage {
     position: absolute;
     inset: 0;
     display: block;
     overflow: hidden;
     pointer-events: none;
-    animation: sprint-build-fade-out 950ms ease 5.15s forwards;
+    animation: sprint-build-fade-out 950ms ease 5.85s forwards;
   }
 
-  /* The paper the wireframe is drawn on. It covers the capture; it never hides
-     it from the browser, which is what keeps the image the LCP element. */
+  /* The paper the build is drawn on. It covers the capture; it never hides it
+     from the browser, which is what keeps the image the LCP element. */
   .sprint-build-sheet {
     position: absolute;
     inset: 0;
@@ -422,47 +447,48 @@ body {
 
   .sprint-build-stage > *:not(.sprint-build-sheet) {
     position: absolute;
-    border-radius: 0.35rem;
-    background: color-mix(in srgb, var(--color-accent) 16%, transparent);
     opacity: 0;
-    animation-duration: 520ms;
+    animation-duration: 480ms;
     animation-timing-function: cubic-bezier(0.2, 0.8, 0.25, 1);
     animation-fill-mode: both;
   }
 
-  /* Day 1 — the frame of the product exists. */
+  /* ---- Movement 1: the scope ------------------------------------------- */
+
+  /* Days 1–3 — the web platform lays itself out. */
   .sprint-build-rail {
-    top: 7%;
-    left: 5%;
-    width: 90%;
-    height: 9%;
+    top: 6%;
+    left: 4%;
+    width: 60%;
+    height: 8%;
+    border-radius: 0.3rem;
+    background: color-mix(in srgb, var(--color-accent) 20%, transparent);
     animation-name: sprint-build-in;
-    animation-delay: 0.35s;
+    animation-delay: 0.45s;
   }
 
-  /* Days 2–4 — the screen fills in, block by block. */
   .sprint-build-block {
-    animation-name: sprint-build-in;
+    border-radius: 0.3rem;
     background: color-mix(in srgb, var(--color-accent) 13%, transparent);
+    animation-name: sprint-build-in;
   }
-  .sprint-build-block--1 { top: 23%; left: 5%; width: 26%; height: 26%; animation-delay: 1.1s; }
-  .sprint-build-block--2 { top: 23%; left: 34%; width: 26%; height: 26%; animation-delay: 1.45s; }
-  .sprint-build-block--3 { top: 23%; left: 63%; width: 32%; height: 58%; animation-delay: 1.8s; }
-  .sprint-build-block--4 { top: 53%; left: 5%; width: 55%; height: 12%; animation-delay: 2.5s; }
-  .sprint-build-block--5 { top: 69%; left: 5%; width: 55%; height: 12%; animation-delay: 2.85s; }
-  .sprint-build-block--6 { top: 85%; left: 5%; width: 90%; height: 8%; animation-delay: 3.2s; }
+  .sprint-build-block--1 { top: 19%; left: 4%; width: 18%; height: 21%; animation-delay: 0.95s; }
+  .sprint-build-block--2 { top: 19%; left: 25%; width: 18%; height: 21%; animation-delay: 1.25s; }
+  .sprint-build-block--3 { top: 19%; left: 46%; width: 18%; height: 21%; animation-delay: 1.55s; }
+  .sprint-build-block--4 { top: 45%; left: 4%; width: 60%; height: 9%; animation-delay: 1.85s; }
+  .sprint-build-block--5 { top: 57%; left: 4%; width: 60%; height: 9%; animation-delay: 2.05s; }
 
-  /* Day 5 — the companion app shows up next to it. */
+  /* Day 4 — the companion app arrives beside the platform. */
   .sprint-build-phone {
-    right: 6%;
-    bottom: 6%;
-    width: 13%;
-    height: 46%;
+    top: 17%;
+    right: 5%;
+    width: 12%;
+    height: 37%;
     border: 2px solid color-mix(in srgb, var(--color-accent) 42%, transparent);
-    border-radius: 0.65rem;
+    border-radius: 0.6rem;
     background: var(--color-paper);
     animation-name: sprint-build-rise;
-    animation-delay: 4s;
+    animation-delay: 2.3s;
   }
 
   .sprint-build-phone-bar,
@@ -473,45 +499,138 @@ body {
     border-radius: 0.2rem;
     background: color-mix(in srgb, var(--color-accent) 28%, transparent);
   }
-  .sprint-build-phone-bar { top: 10%; height: 8%; }
-  .sprint-build-phone-body { top: 24%; height: 58%; }
+  .sprint-build-phone-bar { top: 9%; height: 8%; }
+  .sprint-build-phone-body { top: 23%; height: 58%; }
 
-  /* The day counter, stepping alongside the build. */
-  .sprint-build-days {
+  /* Day 5 — the showcase site lands under it. The third surface is what makes
+     the card read as a PRODUCT rather than as an app (decision cmu1qkaz). */
+  .sprint-build-site {
+    top: 58%;
+    right: 5%;
+    width: 22%;
+    height: 20%;
+    border: 2px solid color-mix(in srgb, var(--color-accent) 34%, transparent);
+    border-radius: 0.4rem;
+    background: var(--color-paper);
+    animation-name: sprint-build-rise;
+    animation-delay: 2.95s;
+  }
+
+  .sprint-build-site-bar,
+  .sprint-build-site-body {
     position: absolute;
-    top: 3.25rem;
+    left: 10%;
+    border-radius: 0.15rem;
+    background: color-mix(in srgb, var(--color-accent) 26%, transparent);
+  }
+  .sprint-build-site-bar { top: 14%; width: 46%; height: 14%; }
+  .sprint-build-site-body { top: 40%; width: 80%; height: 34%; }
+
+  /* ---- Movement 2: it goes live ---------------------------------------- */
+
+  /* Day 6 — the infrastructure assembles: three nodes and the line between them. */
+  .sprint-build-deploy {
+    top: 83%;
+    right: 5%;
+    left: 4%;
+    height: 11%;
+    animation-name: sprint-build-in;
+    animation-delay: 3.55s;
+  }
+
+  .sprint-build-node {
+    position: absolute;
+    top: 50%;
+    width: 8%;
+    height: 62%;
+    border-radius: 0.25rem;
+    background: color-mix(in srgb, var(--color-accent) 30%, transparent);
+    transform: translateY(-50%);
+  }
+  .sprint-build-node--1 { left: 0; }
+  .sprint-build-node--2 { left: 16%; }
+  .sprint-build-node--3 { left: 32%; }
+
+  /* The pipeline: a hairline that fills left to right and lands green.
+     ⛔ `scaleX`, never `width` — a width animation on this element would be a
+     layout animation inside the LCP container. */
+  .sprint-build-pipe {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 46%;
+    height: 22%;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--color-ink) 10%, transparent);
+    transform: translateY(-50%);
+  }
+
+  .sprint-build-pipe-fill {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 9999px;
+    /* ⚠️ `background-color`, not the `background` shorthand: the shorthand does
+       not interpolate reliably in a keyframe, which is why the pipeline stayed
+       accent-coloured through the go-live beat on the first attempt. */
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    /* Two animations: the bar fills, and its colour changes over the LAST THIRD
+       of that fill, so the eye reads one movement — "it went through" — rather
+       than a bar and then a recolour.
+       ⚠️ `background-color`, not the `background` shorthand, in the keyframe:
+       shorthand interpolation is not dependable here. Verify a change to this the
+       way it was verified — `getComputedStyle(el).animationName` must list BOTH
+       names, and the computed `backgroundColor` must actually reach the green. */
+    animation:
+      sprint-build-pipe-run 800ms cubic-bezier(0.3, 0.7, 0.3, 1) 3.95s forwards,
+      sprint-build-pipe-pass 300ms ease 4.55s forwards;
+  }
+
+  /* Day 7 — the domain lights up. Green, and green ONLY here: it is the one
+     "it is live" signal on the page, and it must not become decoration. */
+  .sprint-build-domain {
+    top: 6%;
+    right: 5%;
+    width: 12%;
+    height: 7%;
+    border-radius: 9999px;
+    background: #16a34a;
+    animation-name: sprint-build-light;
+    animation-duration: 620ms;
+    animation-delay: 4.95s;
+  }
+
+  /* The seven days, drawn as a rail under the frame. One segment lights per day,
+     so the "7" is visible without a single word. */
+  .sprint-build-steps {
+    position: absolute;
+    right: 1rem;
+    bottom: -1.1rem;
     left: 1rem;
     display: grid;
-    padding: 0.2rem 0.6rem;
-    border-radius: 9999px;
-    background: color-mix(in srgb, var(--color-ink) 82%, transparent);
-    color: var(--color-paper);
-    font-family: var(--font-display), sans-serif;
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    opacity: 0;
-    animation:
-      sprint-build-chip-in 400ms ease 0.35s both,
-      sprint-build-fade-out 700ms ease 5.4s both;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.25rem;
+    animation: sprint-build-fade-out 700ms ease 6.1s both;
   }
 
-  /* `forwards`, never `both`: a backwards fill would paint all seven labels on
-     top of each other for the first third of a second. */
-  .sprint-build-day {
-    grid-area: 1 / 1;
-    opacity: 0;
-    animation: sprint-build-step 780ms steps(1, end) forwards;
+  .sprint-build-step {
+    height: 3px;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--color-ink) 9%, transparent);
+    /* `forwards`, never `both`: a backwards fill would light all seven at once
+       for the first third of a second. */
+    animation: sprint-build-step-on 300ms ease forwards;
   }
-  .sprint-build-day--1 { animation-delay: 0.35s; }
-  .sprint-build-day--2 { animation-delay: 1.13s; }
-  .sprint-build-day--3 { animation-delay: 1.91s; }
-  .sprint-build-day--4 { animation-delay: 2.69s; }
-  .sprint-build-day--5 { animation-delay: 3.47s; }
-  .sprint-build-day--6 { animation-delay: 4.25s; }
-  /* The last one holds: the sequence stops on day 7, it does not loop. */
-  .sprint-build-day--7 { animation: sprint-build-hold 300ms ease 5.03s forwards; }
+  .sprint-build-step--1 { animation-delay: 0.45s; }
+  .sprint-build-step--2 { animation-delay: 1.25s; }
+  .sprint-build-step--3 { animation-delay: 1.85s; }
+  .sprint-build-step--4 { animation-delay: 2.3s; }
+  .sprint-build-step--5 { animation-delay: 2.95s; }
+  .sprint-build-step--6 { animation-delay: 3.55s; }
+  .sprint-build-step--7 { animation-delay: 4.95s; }
 }
 
 @keyframes sprint-build-in {
@@ -536,6 +655,44 @@ body {
   }
 }
 
+@keyframes sprint-build-light {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sprint-build-pipe-run {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* It went through. Same green as the domain chip: one "it is live" signal on the
+   page, used twice in the same beat, and nowhere else. */
+@keyframes sprint-build-pipe-pass {
+  to {
+    background-color: #16a34a;
+  }
+}
+
+@keyframes sprint-build-step-on {
+  to {
+    background: var(--color-accent);
+  }
+}
+
 @keyframes sprint-build-fade-out {
   from {
     opacity: 1;
@@ -545,32 +702,100 @@ body {
   }
 }
 
-@keyframes sprint-build-chip-in {
+/* ------------------------------------------------------------------ *
+ * The contact modal (sprintContact.tsx) — the page's conversion surface.
+ *
+ * ⚠️ IT IS THE ONLY PATH, so it is built for a phone first: the panel is bottom-
+ * anchored and can scroll inside itself, because the capture field raises a
+ * keyboard over half the viewport and a centred panel would put the button
+ * underneath it. On anything larger it centres.
+ * ⚠️ The backdrop is a plain background on the container, not a separate element:
+ * one node fewer to keep in sync, and the click-outside handler already lives on
+ * that container.
+ * ------------------------------------------------------------------ */
+.sprint-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+  background: color-mix(in srgb, var(--color-ink) 55%, transparent);
+  animation: sprint-modal-veil 180ms ease both;
+}
+
+@media (min-width: 640px) {
+  .sprint-modal {
+    align-items: center;
+    padding: 1.5rem;
+  }
+}
+
+.sprint-modal-panel {
+  position: relative;
+  width: 100%;
+  max-width: 30rem;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 1.75rem 1.25rem calc(1.75rem + env(safe-area-inset-bottom, 0px));
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background: var(--color-paper);
+  box-shadow: 0 -20px 60px -20px rgba(14, 14, 16, 0.4);
+  animation: sprint-modal-rise 220ms cubic-bezier(0.2, 0.8, 0.25, 1) both;
+}
+
+@media (min-width: 640px) {
+  .sprint-modal-panel {
+    padding: 2rem;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 30px 80px -24px rgba(14, 14, 16, 0.45);
+  }
+}
+
+.sprint-modal-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  color: var(--color-muted);
+  background: var(--color-paper-2);
+  transition: color 150ms ease;
+}
+
+.sprint-modal-close:hover {
+  color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sprint-modal,
+  .sprint-modal-panel {
+    animation: none;
+  }
+}
+
+@keyframes sprint-modal-veil {
   from {
     opacity: 0;
-    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sprint-modal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
     transform: none;
-  }
-}
-
-@keyframes sprint-build-step {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes sprint-build-hold {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 1;
   }
 }
 
@@ -589,4 +814,108 @@ body {
  * ------------------------------------------------------------------ */
 main:has(> [data-flush-footer]:last-child) + footer {
   margin-top: 0;
+}
+
+/* ------------------------------------------------------------------ *
+ * The system diagram (sprintSystem.tsx) — where the seven days come from.
+ *
+ * ⚠️ IT IS A SEQUENCE, AND THE SPINE IS WHAT SAYS SO. Four cards side by side
+ * read as a feature list; four cards threaded on one line read as a process,
+ * which is the whole argument of the block (decision cmu1u21i — explain the
+ * speed, do not claim a headcount).
+ *
+ * The spine is a pseudo-element: vertical down the left on a phone, horizontal
+ * behind the nodes from `sm` up. No extra node, no request, and it cannot shift
+ * layout because it is positioned out of flow.
+ * ------------------------------------------------------------------ */
+.sprint-system-track {
+  position: relative;
+  display: grid;
+  gap: 1.75rem;
+  list-style: none;
+}
+
+/* Phone: the spine runs down the left, through the nodes. */
+.sprint-system-track::before {
+  content: '';
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-accent) 30%, transparent),
+    color-mix(in srgb, var(--color-accent) 12%, transparent)
+  );
+}
+
+.sprint-system-step {
+  position: relative;
+  padding-left: 3.5rem;
+}
+
+.sprint-system-node {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: var(--color-accent-soft);
+  /* The ring is what lifts the node off the spine rather than letting the line
+     run visibly through it. */
+  box-shadow: 0 0 0 4px var(--color-paper);
+}
+
+.sprint-system-step h3 {
+  margin-top: 0.15rem;
+}
+
+@media (min-width: 640px) {
+  .sprint-system-track {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* ⚠️ Desktop draws the spine as ONE CONNECTOR PER STEP rather than as a single
+     rail across the track. A single rail has to guess where the first and last
+     nodes sit — the nodes are left-aligned inside their columns, not centred —
+     and the first attempt overshot the last node by a visible margin at every
+     width. A connector anchored to its own step cannot miss. */
+  .sprint-system-track::before {
+    content: none;
+  }
+
+  .sprint-system-step {
+    position: relative;
+    padding-left: 0;
+  }
+
+  .sprint-system-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    /* From the right edge of this node to the left edge of the next one: the
+       node is 2.5rem wide, the grid gap is 1.5rem. */
+    top: 1.25rem;
+    left: 2.9rem;
+    width: calc(100% - 2.9rem + 1.5rem - 0.4rem);
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      color-mix(in srgb, var(--color-accent) 28%, transparent),
+      color-mix(in srgb, var(--color-accent) 14%, transparent)
+    );
+  }
+
+  .sprint-system-node {
+    position: relative;
+  }
+
+  .sprint-system-step h3 {
+    margin-top: 1rem;
+  }
 }
