@@ -18,6 +18,13 @@ import { sprintLanding, type CompareMark } from '@/content/sprintLanding'
  *
  * The mark is never colour alone: `yes` is a check, `mixed` a dash, `no` a
  * cross, each with its own shape and its own text label.
+ *
+ * ⛔ KHUFU IS THE FIRST COLUMN, not the last. Adrien, 2026-09-14: « Khufu passe
+ * en PREMIÈRE colonne, pas en dernière, et c'est elle qui est accentuée ». A
+ * comparison is read left to right: last place is where a reader arrives already
+ * having decided, and where the eye goes only if it finishes the row. First is
+ * the reference the other three are measured against — which is the claim the
+ * table exists to make.
  */
 
 const glyph: Record<CompareMark, React.ReactNode> = {
@@ -71,15 +78,6 @@ export function SprintComparison({ locale }: { locale: Locale }) {
               {row.aspect[locale]}
             </p>
             <div className="mt-3 grid grid-cols-2 gap-2">
-              {columns.map((col) => (
-                <div key={col.key} className="rounded-[var(--radius-lg)] bg-[var(--color-paper-2)] px-3 py-2.5">
-                  <p className="text-[11px] tracking-wide text-[var(--color-muted)] uppercase">{col.label}</p>
-                  <p className="mt-1 flex items-center gap-1.5 text-sm text-[var(--color-ink-2)]">
-                    <Mark mark={row[col.key].mark} />
-                    {row[col.key].label[locale]}
-                  </p>
-                </div>
-              ))}
               <div className="rounded-[var(--radius-lg)] bg-[var(--color-accent-soft)] px-3 py-2.5">
                 <p className="text-[11px] font-semibold tracking-wide text-[var(--color-accent-ink)] uppercase">
                   {c.khufu[locale]}
@@ -89,6 +87,15 @@ export function SprintComparison({ locale }: { locale: Locale }) {
                   {row.khufu.label[locale]}
                 </p>
               </div>
+              {columns.map((col) => (
+                <div key={col.key} className="rounded-[var(--radius-lg)] bg-[var(--color-paper-2)] px-3 py-2.5">
+                  <p className="text-[11px] tracking-wide text-[var(--color-muted)] uppercase">{col.label}</p>
+                  <p className="mt-1 flex items-center gap-1.5 text-sm text-[var(--color-ink-2)]">
+                    <Mark mark={row[col.key].mark} />
+                    {row[col.key].label[locale]}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         ))}
@@ -106,17 +113,17 @@ export function SprintComparison({ locale }: { locale: Locale }) {
               >
                 {c.aspectLabel[locale]}
               </th>
-              {columns.map((col) => (
-                <th key={col.key} scope="col" className="px-6 py-5 text-sm font-medium text-[var(--color-muted)]">
-                  {col.label}
-                </th>
-              ))}
               <th
                 scope="col"
                 className="bg-[var(--color-accent-soft)] px-6 py-5 font-[family-name:var(--font-display)] text-sm font-bold text-[var(--color-accent-ink)]"
               >
                 {c.khufu[locale]}
               </th>
+              {columns.map((col) => (
+                <th key={col.key} scope="col" className="px-6 py-5 text-sm font-medium text-[var(--color-muted)]">
+                  {col.label}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -125,6 +132,12 @@ export function SprintComparison({ locale }: { locale: Locale }) {
                 <th scope="row" className="px-6 py-5 text-sm font-medium text-[var(--color-ink)]">
                   {row.aspect[locale]}
                 </th>
+                <td className="bg-[var(--color-accent-soft)] px-6 py-5 text-sm font-semibold text-[var(--color-ink)]">
+                  <span className="flex items-center gap-2">
+                    <Mark mark={row.khufu.mark} on="accent" />
+                    {row.khufu.label[locale]}
+                  </span>
+                </td>
                 {columns.map((col) => (
                   <td key={col.key} className="px-6 py-5 text-sm text-[var(--color-ink-2)]">
                     <span className="flex items-center gap-2">
@@ -133,12 +146,6 @@ export function SprintComparison({ locale }: { locale: Locale }) {
                     </span>
                   </td>
                 ))}
-                <td className="bg-[var(--color-accent-soft)] px-6 py-5 text-sm font-semibold text-[var(--color-ink)]">
-                  <span className="flex items-center gap-2">
-                    <Mark mark={row.khufu.mark} on="accent" />
-                    {row.khufu.label[locale]}
-                  </span>
-                </td>
               </tr>
             ))}
           </tbody>

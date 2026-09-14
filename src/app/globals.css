@@ -300,6 +300,11 @@ body {
   color: rgba(255, 255, 255, 0.5);
 }
 
+.sprint-shot-canvas {
+  position: relative;
+  isolation: isolate;
+}
+
 .sprint-shot-img {
   display: block;
   width: 100%;
@@ -307,4 +312,281 @@ body {
   aspect-ratio: 1200 / 650;
   object-fit: cover;
   object-position: top center;
+}
+
+/* ------------------------------------------------------------------ *
+ * The phone frame (productShot.tsx).
+ *
+ * The bezel is CSS so a mobile capture costs one image and not two. Same radius
+ * family and same shadow as the browser frame: the two have to read as one kit.
+ * ------------------------------------------------------------------ */
+.sprint-phone {
+  position: relative;
+  overflow: hidden;
+  border: 6px solid #111114;
+  border-radius: 1.75rem;
+  background: #111114;
+  box-shadow:
+    0 1px 2px rgba(14, 14, 16, 0.05),
+    0 20px 46px -22px rgba(14, 14, 16, 0.42);
+}
+
+.sprint-phone--dark {
+  border-color: #26262e;
+  background: #26262e;
+  box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.9);
+}
+
+/* The pill, drawn rather than captured — the screens come from several devices
+   and several years, and a consistent frame is the whole point of having one. */
+.sprint-phone-notch {
+  position: absolute;
+  top: 0.45rem;
+  left: 50%;
+  z-index: 1;
+  width: 28%;
+  height: 0.45rem;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: #111114;
+}
+
+.sprint-phone-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 560 / 1180;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 1.4rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * The hero sequence: a product built from day 1 to day 7
+ * (sprintBuildSequence.tsx).
+ *
+ * ⛔ WHAT THIS IS, AND WHAT IT IS NOT. It illustrates the SHAPE of a sprint
+ * week. It is never dressed as a recording of a real client's build — no date,
+ * no client, no caption claiming it happened. Adrien asked for the beat
+ * (2026-09-14, « un timelapse de day 1 à day 7 »); the honesty bound is ours.
+ *
+ * ⚠️ THE PERFORMANCE CONTRACT, and it is not negotiable (decision cmu093fb:
+ * mobile LCP < 2.5 s, CLS < 0.1):
+ *   - the LCP element is the real capture UNDERNEATH this overlay. It is painted
+ *     on the first frame, is never `opacity: 0`, and never waits on anything
+ *     here. The overlay sits on top and dissolves off it.
+ *   - only `opacity` and `transform` are animated, so nothing can shift layout.
+ *   - the whole thing is CSS: no library, no request, no hydration. The sequence
+ *     runs once and stops on day 7; a hero that keeps moving competes with the
+ *     button next to it.
+ *   - the entire overlay lives inside `prefers-reduced-motion: no-preference`.
+ *     A visitor who asked for less gets the day-7 state, which is finished.
+ *
+ * Timing — one beat is 780ms, the last beat is the dissolve:
+ *   0.35s  the sheet lands and the sequence starts
+ *   day 1  the rail
+ *   day 2–3  four blocks fill in
+ *   day 4  the last two blocks, the layout is complete
+ *   day 5  the phone arrives
+ *   day 6–7  everything dissolves into the real capture
+ * ------------------------------------------------------------------ */
+.sprint-build {
+  position: relative;
+}
+
+.sprint-build-stage,
+.sprint-build-days {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* The whole overlay dissolves as ONE layer on days 6–7, which is why the
+     fade-out lives here and not on each block: fading nine elements separately
+     is nine chances for them to drift apart, and one chance to get it right. */
+  .sprint-build-stage {
+    position: absolute;
+    inset: 0;
+    display: block;
+    overflow: hidden;
+    pointer-events: none;
+    animation: sprint-build-fade-out 950ms ease 5.15s forwards;
+  }
+
+  /* The paper the wireframe is drawn on. It covers the capture; it never hides
+     it from the browser, which is what keeps the image the LCP element. */
+  .sprint-build-sheet {
+    position: absolute;
+    inset: 0;
+    background: var(--color-paper-2);
+  }
+
+  .sprint-build-stage > *:not(.sprint-build-sheet) {
+    position: absolute;
+    border-radius: 0.35rem;
+    background: color-mix(in srgb, var(--color-accent) 16%, transparent);
+    opacity: 0;
+    animation-duration: 520ms;
+    animation-timing-function: cubic-bezier(0.2, 0.8, 0.25, 1);
+    animation-fill-mode: both;
+  }
+
+  /* Day 1 — the frame of the product exists. */
+  .sprint-build-rail {
+    top: 7%;
+    left: 5%;
+    width: 90%;
+    height: 9%;
+    animation-name: sprint-build-in;
+    animation-delay: 0.35s;
+  }
+
+  /* Days 2–4 — the screen fills in, block by block. */
+  .sprint-build-block {
+    animation-name: sprint-build-in;
+    background: color-mix(in srgb, var(--color-accent) 13%, transparent);
+  }
+  .sprint-build-block--1 { top: 23%; left: 5%; width: 26%; height: 26%; animation-delay: 1.1s; }
+  .sprint-build-block--2 { top: 23%; left: 34%; width: 26%; height: 26%; animation-delay: 1.45s; }
+  .sprint-build-block--3 { top: 23%; left: 63%; width: 32%; height: 58%; animation-delay: 1.8s; }
+  .sprint-build-block--4 { top: 53%; left: 5%; width: 55%; height: 12%; animation-delay: 2.5s; }
+  .sprint-build-block--5 { top: 69%; left: 5%; width: 55%; height: 12%; animation-delay: 2.85s; }
+  .sprint-build-block--6 { top: 85%; left: 5%; width: 90%; height: 8%; animation-delay: 3.2s; }
+
+  /* Day 5 — the companion app shows up next to it. */
+  .sprint-build-phone {
+    right: 6%;
+    bottom: 6%;
+    width: 13%;
+    height: 46%;
+    border: 2px solid color-mix(in srgb, var(--color-accent) 42%, transparent);
+    border-radius: 0.65rem;
+    background: var(--color-paper);
+    animation-name: sprint-build-rise;
+    animation-delay: 4s;
+  }
+
+  .sprint-build-phone-bar,
+  .sprint-build-phone-body {
+    position: absolute;
+    left: 12%;
+    width: 76%;
+    border-radius: 0.2rem;
+    background: color-mix(in srgb, var(--color-accent) 28%, transparent);
+  }
+  .sprint-build-phone-bar { top: 10%; height: 8%; }
+  .sprint-build-phone-body { top: 24%; height: 58%; }
+
+  /* The day counter, stepping alongside the build. */
+  .sprint-build-days {
+    position: absolute;
+    top: 3.25rem;
+    left: 1rem;
+    display: grid;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--color-ink) 82%, transparent);
+    color: var(--color-paper);
+    font-family: var(--font-display), sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation:
+      sprint-build-chip-in 400ms ease 0.35s both,
+      sprint-build-fade-out 700ms ease 5.4s both;
+  }
+
+  /* `forwards`, never `both`: a backwards fill would paint all seven labels on
+     top of each other for the first third of a second. */
+  .sprint-build-day {
+    grid-area: 1 / 1;
+    opacity: 0;
+    animation: sprint-build-step 780ms steps(1, end) forwards;
+  }
+  .sprint-build-day--1 { animation-delay: 0.35s; }
+  .sprint-build-day--2 { animation-delay: 1.13s; }
+  .sprint-build-day--3 { animation-delay: 1.91s; }
+  .sprint-build-day--4 { animation-delay: 2.69s; }
+  .sprint-build-day--5 { animation-delay: 3.47s; }
+  .sprint-build-day--6 { animation-delay: 4.25s; }
+  /* The last one holds: the sequence stops on day 7, it does not loop. */
+  .sprint-build-day--7 { animation: sprint-build-hold 300ms ease 5.03s forwards; }
+}
+
+@keyframes sprint-build-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sprint-build-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sprint-build-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes sprint-build-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sprint-build-step {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes sprint-build-hold {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * A page whose last section paints its own full-bleed background sits FLUSH
+ * against the footer.
+ *
+ * The footer carries `mt-24`, which is right on a page that ends on paper and
+ * wrong on one that ends on the dark contact block: the margin is paper, so it
+ * renders as an empty white band between the two. Adrien reported exactly that
+ * on /sprint-v1 (2026-09-14): « entre le footer et la zone de contact, on
+ * dirait qu'il y a une zone blanche vide ».
+ *
+ * Marking the section rather than the route keeps the rule with the thing that
+ * causes it, and any future page that ends on a coloured block gets it free.
+ * ------------------------------------------------------------------ */
+main:has(> [data-flush-footer]:last-child) + footer {
+  margin-top: 0;
 }

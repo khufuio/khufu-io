@@ -4,7 +4,8 @@ import { getDictionary } from '@/i18n/getDictionary'
 import { href, site } from '@/content/site'
 import { sprintLanding } from '@/content/sprintLanding'
 import { buildMetadata } from '@/lib/metadata'
-import { sprintSlots } from '@/lib/sprintSlots'
+import { dualPriceTokens } from '@/lib/currency'
+import { firstOpenSlot, sprintSlots } from '@/lib/sprintSlots'
 import { Container } from '@/components/ui/container'
 import { SectionHeading } from '@/components/ui/sectionHeading'
 import { Price } from '@/components/ui/price'
@@ -55,9 +56,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
  * (`scripts/measureSprintCopy.ts` measures it — run it before and after).
  *
  * WHAT THE STRUCTURE IS FOR, section by section:
- *   hero        — SHOWS a real product and three figures. One sentence, one
- *                 dated button, the dates. No paragraph, no slot mechanics.
- *   products    — the work itself, and the ONE dark section of the page.
+ *   hero        — SHOWS a product being BUILT, day 1 → day 7, plus three
+ *                 figures. One sentence, one dated button, the calendar. No
+ *                 paragraph, no slot mechanics.
+ *   products    — the work itself, in full scope (platform + app + site), and
+ *                 the ONE dark section of the page.
  *   timeline    — the week drawn, with Friday's two parallel tracks.
  *   day7        — one icon grid where two prose sections used to say the same
  *                 nine things twice.
@@ -117,6 +120,9 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
       weekday: c.timeline.dayZero.weekday[locale],
       title: c.timeline.dayZero.title[locale],
       body: c.timeline.dayZero.body[locale],
+      // Day 0 is the client's: their brief, their answers, their signature.
+      // Adrien, 2026-09-14: « ajoute un badge "Vous" au jour 0 ».
+      actor: 'you',
     },
     ...c.timeline.days.map((d) => ({
       day: d.day[locale],
@@ -124,18 +130,22 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
       title: d.title[locale],
       body: d.body?.[locale],
       lanes: d.lanes ? { you: d.lanes.you[locale], us: d.lanes.us[locale] } : undefined,
+      // Every other day is ours. Friday says so twice, on two tracks.
+      actor: 'us' as const,
     })),
   ]
 
   /*
-   * The booking window, computed at render time (decision cmu0fugh): the next
-   * three Mondays, all shown as open. Nothing here knows or claims that any week
-   * is taken — see the header note in lib/sprintSlots.ts before touching it.
+   * The booking window, computed at render time (decisions cmu0fugh, cmu1qo9r):
+   * the next four Mondays with their real state. A week shows as full only if it
+   * is genuinely held — read the header note in lib/sprintSlots.ts before
+   * touching any of this.
    */
   const slots = sprintSlots(locale)
-  /** The dated CTA; falls back to a plain label if the window is ever empty. */
+  /** Every dated CTA sells the nearest OPEN week, never a held one. */
+  const openSlot = firstOpenSlot(slots)
   const ctaWithSlot = (fallback: string): string =>
-    slots[0] ? c.hero.ctaLabelSlot[locale].replace('{date}', slots[0].dateLabel) : fallback
+    openSlot ? c.hero.ctaLabelSlot[locale].replace('{date}', openSlot.dateLabel) : fallback
 
   /*
    * Monday → Sunday as one narrow letter each, for the timeline's week strip on
@@ -149,7 +159,22 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
     ),
   )
 
-  const faqItems = c.faq.items.map((i) => ({ q: i.q[locale], a: i.a[locale] }))
+  /*
+   * The JSON-LD wants questions and answers only, so the link rides alongside in
+   * `faqRows`. ⚠️ And the answers go through `dualPriceTokens` on the way: a
+   * `[[1490]]` marker renders as a price for a visitor but would reach a crawler
+   * verbatim, and a machine-readable surface cannot pick a currency per visitor
+   * — so it advertises both, exactly as the home page and llms.txt do.
+   */
+  const faqItems = c.faq.items.map((i) => ({ q: i.q[locale], a: dualPriceTokens(i.a[locale], locale) }))
+  const faqRows = c.faq.items.map((i) => ({
+    q: i.q[locale],
+    a: i.a[locale],
+    link:
+      i.linkLabel && i.linkRoute
+        ? { href: href(locale, i.linkRoute), label: i.linkLabel[locale] }
+        : undefined,
+  }))
 
   return (
     <>
@@ -196,10 +221,17 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
         ]}
         ctaLabel={c.hero.ctaLabel[locale]}
         ctaLabelSlot={c.hero.ctaLabelSlot[locale]}
+        ctaAvailable={c.hero.ctaAvailable[locale]}
         ctaNote={c.hero.ctaNote[locale]}
         slots={slots}
         slotOpenLabel={c.hero.slotOpen[locale]}
-        shot={{ src: '/images/sprint/clokizi', alt: c.hero.shotAlt[locale], domain: 'clokizi.com' }}
+        slotHeldLabel={c.hero.slotHeld[locale]}
+        buildDayLabel={c.hero.buildDay[locale]}
+        /* ⚠️ NOT the same capture as any product card below it. The sequence and
+            the first card sat on the identical screenshot, which read as a
+            template rather than as two things. Another screen of the same
+            live product keeps both real and neither repeated. */
+        shot={{ src: '/images/sprint/clokizi-planning', alt: c.hero.shotAlt[locale], domain: 'app.clokizi.com' }}
       />
 
       {/* The work itself — and the one dark section of the page. See the note in
@@ -212,8 +244,8 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
           <div className="mt-10 sm:mt-12">
             <SprintProductWall locale={locale} />
           </div>
-          <div className="mt-10">
-            <SprintCta placement="products" label={c.midCta.products[locale]} />
+          <div className="mt-10 text-center sm:text-left">
+            <SprintCta placement="products" label={c.midCta.products[locale]} className="w-full sm:w-auto" />
           </div>
         </Container>
       </section>
@@ -245,8 +277,8 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
           <div className="mt-10 sm:mt-12">
             <SprintDay7 locale={locale} />
           </div>
-          <div className="mt-10">
-            <SprintCta placement="day7" label={ctaWithSlot(c.midCta.day7[locale])} />
+          <div className="mt-10 text-center sm:text-left">
+            <SprintCta placement="day7" label={ctaWithSlot(c.midCta.day7[locale])} className="w-full sm:w-auto" />
           </div>
         </Container>
       </section>
@@ -333,7 +365,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
             {/* Closed on arrival: on a phone an open answer turns the one
                 question zone into the wall of text the page was rebuilt to
                 remove. Every answer ships in the markup regardless. */}
-            <FaqAccordion items={faqItems} locale={locale} defaultOpen={null} />
+            <FaqAccordion items={faqRows} locale={locale} defaultOpen={null} />
           </div>
         </Container>
       </section>
@@ -351,7 +383,15 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
       </section>
 
       {/* The single conversion point — every CTA on the page anchors here. */}
-      <section id={SPRINT_FORM_ANCHOR} className="scroll-mt-20 bg-[var(--color-ink)] text-[var(--color-paper)]">
+      {/* `data-flush-footer`: this section paints its own full-bleed ground, so
+          the footer's paper top margin would read as an empty white band under
+          it — the layout bug Adrien reported on 2026-09-14. The rule that kills
+          it is in globals.css, next to this attribute's explanation. */}
+      <section
+        id={SPRINT_FORM_ANCHOR}
+        data-flush-footer
+        className="scroll-mt-20 bg-[var(--color-ink)] text-[var(--color-paper)]"
+      >
         <Container className="grid gap-10 py-16 sm:py-24 lg:grid-cols-[1fr_1fr] lg:gap-16">
           <div className="lg:self-center">
             <h2 className="font-[family-name:var(--font-display)] text-[length:var(--text-h2)]/[1.05] font-bold tracking-[-0.02em] text-balance">

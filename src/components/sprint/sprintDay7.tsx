@@ -11,10 +11,16 @@ import { sprintLanding } from '@/content/sprintLanding'
  * flemme de le lire ». On the second: « tu peux pas use + d'infographie ? ».
  *
  * ⛔ SO: one line per item, an icon, and nothing else. A sentence that wants to
- * grow back here belongs in the FAQ. The three items decisions cmu09gb6 and
- * cmu09gn1 want advertised as included carry a chip instead of a paragraph — and
- * the word on that chip is "included", never "free": on a $17,000 sale "free"
- * devalues everything standing next to it.
+ * grow back here belongs in the FAQ.
+ *
+ * ⛔ AND NO ITEM WEARS AN "INCLUDED" CHIP. Three of them did — the showcase site,
+ * the hosting and the two weeks of fixes — and Adrien removed them on
+ * 2026-09-14: « ça implique que les autres le sont pas, c'est dommage ». He is
+ * right, and it is the kind of mistake a grid makes easily: badging three of
+ * nine turns the other six into an open question, on the one block whose entire
+ * job is to say the box is full. Decisions cmu09gb6 and cmu09gn1 are still
+ * honoured — those three are still ON the grid — they simply no longer wear a
+ * label the others lack. Do not put the chip back.
  *
  * The scope guardrails those cards used to carry (the showcase ships on our
  * template, the infra on our standard stack, two weeks of fixes are not two
@@ -90,24 +96,17 @@ export function SprintDay7({ locale }: { locale: Locale }) {
           data-reveal
           style={{ '--reveal-delay': `${(i % 3) * 90}ms` } as React.CSSProperties}
         >
-          <span className="flex items-start justify-between gap-2">
-            <svg
-              viewBox="0 0 24 24"
-              aria-hidden
-              className="size-6 shrink-0 stroke-[var(--color-accent)] sm:size-7"
-              fill="none"
-              strokeWidth={1.4}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              {icons[order[i]]}
-            </svg>
-            {item.included && (
-              <span className="rounded-full bg-[var(--color-accent-soft)] px-2 py-0.5 text-[9px] font-semibold tracking-[0.12em] text-[var(--color-accent-ink)] uppercase">
-                {c.badge[locale]}
-              </span>
-            )}
-          </span>
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden
+            className="size-6 shrink-0 stroke-[var(--color-accent)] sm:size-7"
+            fill="none"
+            strokeWidth={1.4}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            {icons[order[i]]}
+          </svg>
           <h3 className="mt-4 text-sm font-semibold text-balance sm:text-base">{item.title[locale]}</h3>
           <p className="mt-1 text-xs/[1.5] text-[var(--color-muted)] text-pretty sm:text-sm/[1.5]">
             {item.note[locale]}

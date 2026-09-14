@@ -19,8 +19,16 @@
  * page (Adrien: « ça peut faire peur de dire 6am à quelqu'un »). Monday morning,
  * or nothing.
  *
- * ⚠️ The "Vous" tag sits on its OWN line, never inline with the title — inline it
- * pushed the whole text block sideways, which is the layout bug Adrien reported.
+ * ⚠️ EVERY DAY WEARS THE SAME OBJECT: a left rule and a "who" badge over its
+ * line. That shape was Friday's alone until 2026-09-14, when Adrien validated it
+ * and extended it: « le FORMAT du jour 5 — bordure gauche + badge d'acteur — est
+ * validé : applique-le à TOUS les jours, pour la cohérence ». A badge on one day
+ * out of eight reads as an exception; on all of them it reads as a column, and
+ * the visitor sees at a glance that the week is ours and Friday is theirs. Day 0
+ * is the client's — their brief, their answers — so it wears "Vous".
+ *
+ * ⚠️ The tag sits on its OWN line, never inline with the title — inline it pushed
+ * the whole text block sideways, which is the layout bug Adrien reported.
  *
  * A server component: the SVG and the text ship as finished markup, and the
  * motion is CSS reacting to the `data-in` attribute the page's single observer
@@ -37,6 +45,8 @@ export type SprintTimelineStep = {
   body?: string
   /** Friday only: the two tracks that run at the same time. */
   lanes?: { you: string; us: string }
+  /** Whose day it is, for the badge over `body`. Ignored when `lanes` is set. */
+  actor?: 'you' | 'us'
 }
 
 /**
@@ -247,15 +257,14 @@ export function SprintTimeline({
               style={{ '--reveal-delay': `${300 + i * 110}ms` } as React.CSSProperties}
             >
               <h3 className="text-sm font-semibold text-balance">{step.title}</h3>
-              {step.body && <p className="mt-2 text-xs/[1.6] text-[var(--color-ink-2)] text-pretty">{step.body}</p>}
-              {step.lanes && <Lanes lanes={step.lanes} youLabel={youLabel} usLabel={usLabel} />}
+              <Lanes step={step} youLabel={youLabel} usLabel={usLabel} />
             </li>
           ))}
         </ol>
       </div>
 
       {/* ---------------- Mobile / tablet: the same run, vertical ---------------- */}
-      <WeekStrip letters={weekLetters} youLabel={youLabel} usLabel={usLabel} />
+      <WeekStrip letters={weekLetters} youLabel={youLabel} />
 
       <ol className="flex flex-col gap-6 lg:hidden">
         {steps.map((step, i) => {
@@ -301,8 +310,7 @@ export function SprintTimeline({
                 {step.weekday}
               </p>
               <h3 className="mt-0.5 font-semibold">{step.title}</h3>
-              {step.body && <p className="mt-1.5 text-sm/[1.6] text-[var(--color-ink-2)] text-pretty">{step.body}</p>}
-              {step.lanes && <Lanes lanes={step.lanes} youLabel={youLabel} usLabel={usLabel} />}
+              <Lanes step={step} youLabel={youLabel} usLabel={usLabel} />
             </li>
           )
         })}
@@ -317,23 +325,35 @@ export function SprintTimeline({
 }
 
 /**
- * Friday's two tracks, side by side — the client's on the accent rule, ours on
- * the muted one. The tag sits above its line, never inline with it: inline, the
- * badge shifted the text block it was meant to label.
+ * Who does what on a day: a left rule, a badge, and the line it labels.
+ *
+ * Friday is the only day with TWO of them — that is the whole argument of the
+ * week, and drawing the client's track next to ours is what stops the reader
+ * thinking we sit it out (Adrien, on the version where Friday was one column of
+ * prose: « ça fait penser que nous on fait rien »). Every other day has one, and
+ * having one is what makes Friday's two legible as an exception.
+ *
+ * The tag sits above its line, never inline with it: inline, the badge shifted
+ * the text block it was meant to label.
  */
 function Lanes({
-  lanes,
+  step,
   youLabel,
   usLabel,
 }: {
-  lanes: { you: string; us: string }
+  step: SprintTimelineStep
   youLabel: string
   usLabel: string
 }) {
-  const rows = [
-    { label: youLabel, text: lanes.you, accent: true },
-    { label: usLabel, text: lanes.us, accent: false },
-  ]
+  const rows = step.lanes
+    ? [
+        { label: youLabel, text: step.lanes.you, accent: true },
+        { label: usLabel, text: step.lanes.us, accent: false },
+      ]
+    : step.body
+      ? [{ label: step.actor === 'you' ? youLabel : usLabel, text: step.body, accent: step.actor === 'you' }]
+      : []
+  if (!rows.length) return null
   return (
     <div className="mt-3 flex flex-col gap-2.5">
       {rows.map((row) => (
@@ -369,15 +389,7 @@ function Lanes({
  * The letters are computed from `Intl` by the page, so they are right in all ten
  * locales and cost no copy.
  */
-function WeekStrip({
-  letters,
-  youLabel,
-  usLabel,
-}: {
-  letters: string[]
-  youLabel: string
-  usLabel: string
-}) {
+function WeekStrip({ letters, youLabel }: { letters: string[]; youLabel: string }) {
   /** Friday is the shared day, Sunday is go-live — both indexed from Monday. */
   const FRIDAY = 4
   const SUNDAY = 6
@@ -387,6 +399,10 @@ function WeekStrip({
       <p className="text-[10px] font-semibold tracking-[0.14em] text-[var(--color-accent-ink)] uppercase">
         {youLabel}
       </p>
+      {/* ⛔ NOTHING LABELS THE LOWER RAIL. Adrien, 2026-09-14: « supprime le
+          libellé "NOUS" de la bande (il n'apparaît pas sur les jours précédents,
+          donc il n'a pas de sens isolé) ». The upper mark is the one that has to
+          be read — it is the client's single day. */}
       <div className="mt-1.5 grid grid-cols-7 gap-1" aria-hidden>
         <span className="col-start-5 h-1.5 rounded-full bg-[var(--color-accent)]" />
       </div>
@@ -411,9 +427,6 @@ function WeekStrip({
       <div className="mt-2 grid grid-cols-7 gap-1" aria-hidden>
         <span className="col-span-7 h-1.5 rounded-full bg-[color-mix(in_srgb,var(--color-muted)_32%,transparent)]" />
       </div>
-      <p className="mt-1.5 text-[10px] font-semibold tracking-[0.14em] text-[var(--color-muted)] uppercase">
-        {usLabel}
-      </p>
     </div>
   )
 }

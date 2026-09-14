@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "pdfs": "tsx scripts/buildLeadMagnetPdfs.ts",
     "partner-kit": "tsx scripts/buildPartnerKit.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:sprint": "tsx scripts/checkSprintSlots.ts && tsx scripts/checkSprintLocales.ts"
   },
   "dependencies": {
     "next": "^16.0.0",
