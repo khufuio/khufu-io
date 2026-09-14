@@ -210,7 +210,7 @@ export const en: Dictionary = {
     guaranteesTitle: 'What we guarantee',
     guarantees: [
       'A written, agreed scope before we start.',
-      'A delivery date, met.',
+      'A delivery date, met: we start on a Monday, you are in production seven days later.',
       'The source code is yours, from day one.',
     ],
   },
@@ -314,11 +314,18 @@ export const en: Dictionary = {
     kicker: 'The method',
     title: 'One booked week, a launchable product.',
     subtitle: 'From Monday 06:00 UTC to Sunday, one client per week. You know exactly what happens, every day.',
+    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
+    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
+    // full testing day while the technical work runs, and the weekend applies what
+    // that testing found. /sprint-v1 no longer reuses these days — it authors its
+    // own run in `timeline` (src/content/sprintLanding.ts), so keep the two in step
+    // with each other and with the contract (art. 3.5), not with a nicer story.
     days: [
-      { day: 'Monday → Thursday', title: 'Design and build', body: 'The clock starts Monday at 06:00 UTC. Because the scope was settled before the week, these four days are all product: architecture, design, front, back and database.' },
-      { day: 'Friday', title: 'Your acceptance day', body: 'You test the product all day. Meanwhile we handle the technical work that does not need you: continuous integration, infrastructure, going live.' },
-      { day: 'Saturday and Sunday', title: 'Your fixes', body: 'Everything your Friday turned up is fixed and adjusted. Your feedback ships before the product does, not after.' },
-      { day: 'Sunday, end of day', title: 'In production', body: 'The product is deployed, at a real address, usable by your users. Online, or not delivered — that is the only delivery criterion.' },
+      { day: 'Day 1', title: 'Kickoff', body: 'The scope is settled on day 0, before the Monday: we start building at 6am. Architecture, technical foundations, first screens.' },
+      { day: 'Day 2–3', title: 'Development', body: 'We build the core of the product: front end, back end and database. Clean code and a clear architecture from the first commit.' },
+      { day: 'Day 4', title: 'Infra & testing', body: 'Infrastructure, tests, performance and security. We solidify the foundations before putting the product in front of you.' },
+      { day: 'Day 5', title: 'Your testing day', body: 'On Friday you test the product all day while we handle the technical side: deployment pipeline, infrastructure, going live.' },
+      { day: 'Day 6–7', title: 'Fixes and go-live', body: 'We apply your Friday feedback, finalise, and your V1 is in production by the end of Sunday. Online, or not delivered — that is the only delivery criterion.' },
     ],
     qualityTitle: 'Clean, maintainable, performant code',
     qualityBody:
@@ -446,6 +453,10 @@ export const en: Dictionary = {
       {
         q: 'Does the one-week timeline include app store review?',
         a: 'No. The 7 days cover design, development and production deployment. For a mobile app, App Store and Google Play review time is additional and outside our control (usually a few days).',
+      },
+      {
+        q: 'When does a sprint start?',
+        a: 'A sprint always starts on Monday at 06:00 UTC and ends on the Sunday: seven days, weekend included. Khufu runs one sprint at a time — one week, one client. Scoping, the written scope and the accesses are settled before the Monday, on day 0, so they don’t eat into the week. Friday (day 5) is your acceptance-testing day: you test while we handle deployment and infrastructure. Saturday and Sunday are for the fixes your testing turned up, and the V1 is in production by the end of Sunday.',
       },
     ],
   },

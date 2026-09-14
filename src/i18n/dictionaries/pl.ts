@@ -210,7 +210,7 @@ export const pl: Dictionary = {
     guaranteesTitle: 'Co gwarantujemy',
     guarantees: [
       'Spisany i zatwierdzony zakres przed startem.',
-      'Datę dostawy, dotrzymaną.',
+      'Datę dostawy, dotrzymaną: startujemy w poniedziałek, siedem dni później jesteś na produkcji.',
       'Kod źródłowy należy do Ciebie, od pierwszego dnia.',
     ],
   },
@@ -329,11 +329,18 @@ export const pl: Dictionary = {
     kicker: 'Metoda',
     title: 'Jeden zarezerwowany tydzień, produkt gotowy do startu.',
     subtitle: 'Od poniedziałku 06:00 UTC do niedzieli, jeden klient na tydzień. Wiesz dokładnie, co dzieje się każdego dnia.',
+    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
+    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
+    // full testing day while the technical work runs, and the weekend applies what
+    // that testing found. /sprint-v1 no longer reuses these days — it authors its
+    // own run in `timeline` (src/content/sprintLanding.ts), so keep the two in step
+    // with each other and with the contract (art. 3.5), not with a nicer story.
     days: [
-      { day: 'Poniedziałek → czwartek', title: 'Projekt i rozwój', body: 'Licznik rusza w poniedziałek o 06:00 UTC. Ponieważ zakres został zamknięty przed tygodniem, te cztery dni to w całości produkt: architektura, design, front, back i baza danych.' },
-      { day: 'Piątek', title: 'Twój dzień odbioru', body: 'Przez cały dzień testujesz produkt. W tym czasie zajmujemy się techniką, która Cię nie potrzebuje: continuous integration, infrastruktura, wdrożenie na produkcję.' },
-      { day: 'Sobota i niedziela', title: 'Twoje poprawki', body: 'Wszystko, co wyszło z Twojego piątku, zostaje poprawione i dopięte. Twój feedback trafia do produktu przed publikacją, a nie po niej.' },
-      { day: 'Niedziela, koniec dnia', title: 'Na produkcji', body: 'Produkt jest wdrożony, pod prawdziwym adresem, gotowy dla Twoich użytkowników. Online albo niedostarczony — to jedyne kryterium.' },
+      { day: 'Dzień 1', title: 'Start', body: 'Zakres jest ustalony w dniu 0, przed poniedziałkiem: budujemy od 6 rano. Architektura, fundament techniczny, pierwsze ekrany.' },
+      { day: 'Dzień 2–3', title: 'Development', body: 'Budujemy rdzeń produktu: front, back i bazę danych. Czysty kod i jasna architektura od pierwszego commita.' },
+      { day: 'Dzień 4', title: 'Infra i testy', body: 'Infrastruktura, testy, wydajność i bezpieczeństwo. Wzmacniamy fundamenty, zanim pokażemy Ci produkt.' },
+      { day: 'Dzień 5', title: 'Twój dzień testów', body: 'W piątek testujesz produkt przez cały dzień, a my zajmujemy się techniką: pipeline wdrożeniowy, infrastruktura, wejście na produkcję.' },
+      { day: 'Dzień 6–7', title: 'Poprawki i start', body: 'Wprowadzamy Twoje piątkowe uwagi, finalizujemy, i Twoje V1 jest na produkcji pod koniec niedzieli. Online albo niedostarczony — to jedyne kryterium.' },
     ],
     qualityTitle: 'Czysty, łatwy w utrzymaniu i wydajny kod',
     qualityBody:
@@ -461,6 +468,10 @@ export const pl: Dictionary = {
       {
         q: 'Czy termin jednego tygodnia obejmuje weryfikację w store’ach?',
         a: 'Nie. 7 dni obejmuje projekt, rozwój i wdrożenie na produkcję. W przypadku aplikacji mobilnej czas weryfikacji w App Store i Google Play dochodzi dodatkowo i nie zależy od nas (zwykle kilka dni).',
+      },
+      {
+        q: 'Kiedy startuje sprint?',
+        a: 'Sprint zawsze startuje w poniedziałek o 06:00 UTC i kończy się w niedzielę: siedem dni, razem z weekendem. Khufu prowadzi jeden sprint naraz — jeden tydzień, jeden klient. Zakres, spisany zakres prac i dostępy załatwiamy przed poniedziałkiem, w dniu 0, żeby nie zjadały tygodnia. Piątek (dzień 5) to Twój dzień testów: Ty testujesz, a my zajmujemy się wdrożeniem i infrastrukturą. Sobota i niedziela są na poprawki z Twoich testów, a V1 jest na produkcji pod koniec niedzieli.',
       },
     ],
   },

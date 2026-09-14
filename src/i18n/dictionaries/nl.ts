@@ -210,7 +210,7 @@ export const nl: Dictionary = {
     guaranteesTitle: 'Wat we garanderen',
     guarantees: [
       'Een schriftelijke, afgesproken scope voordat we beginnen.',
-      'Een leverdatum, gehaald.',
+      'Een leverdatum, gehaald: we starten op maandag, zeven dagen later sta je live.',
       'De broncode is van jou, vanaf dag één.',
     ],
   },
@@ -314,11 +314,18 @@ export const nl: Dictionary = {
     kicker: 'De methode',
     title: 'Eén gereserveerde week, een lanceerbaar product.',
     subtitle: 'Van maandag 06:00 UTC tot zondag, één klant per week. Je weet precies wat er elke dag gebeurt.',
+    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
+    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
+    // full testing day while the technical work runs, and the weekend applies what
+    // that testing found. /sprint-v1 no longer reuses these days — it authors its
+    // own run in `timeline` (src/content/sprintLanding.ts), so keep the two in step
+    // with each other and with the contract (art. 3.5), not with a nicer story.
     days: [
-      { day: 'Maandag → donderdag', title: 'Ontwerp en ontwikkeling', body: 'De klok start maandag om 06:00 UTC. Omdat de scope vóór de week vastlag, zijn deze vier dagen volledig product: architectuur, design, front, back en database.' },
-      { day: 'Vrijdag', title: 'Jouw acceptatiedag', body: 'Je test het product de hele dag. Ondertussen doen wij het technische werk dat jou niet nodig heeft: continuous integration, infrastructuur, livegang.' },
-      { day: 'Zaterdag en zondag', title: 'Jouw correcties', body: 'Alles wat jouw vrijdag heeft opgeleverd, wordt gecorrigeerd en bijgesteld. Je feedback landt vóór de livegang, niet erna.' },
-      { day: 'Zondag, einde van de dag', title: 'In productie', body: 'Het product staat gedeployed, op een echt adres, bruikbaar door je gebruikers. Online, of niet geleverd — dat is het enige opleveringscriterium.' },
+      { day: 'Dag 1', title: 'Start', body: 'De scope staat vast op dag 0, vóór de maandag: we bouwen vanaf 6 uur. Architectuur, technische basis, eerste schermen.' },
+      { day: 'Dag 2–3', title: 'Ontwikkeling', body: 'We bouwen de kern van het product: front, back en database. Schone code en een heldere architectuur vanaf de eerste commit.' },
+      { day: 'Dag 4', title: 'Infra & tests', body: 'Infrastructuur, tests, performance en security. We verstevigen het fundament voordat we het product aan je laten zien.' },
+      { day: 'Dag 5', title: 'Jouw testdag', body: 'Op vrijdag test jij het product de hele dag terwijl wij de techniek doen: deploypijplijn, infrastructuur, livegang.' },
+      { day: 'Dag 6–7', title: 'Correcties en livegang', body: 'We verwerken je feedback van vrijdag, ronden af, en je V1 staat aan het eind van zondag live. Online, of niet geleverd — dat is het enige opleveringscriterium.' },
     ],
     qualityTitle: 'Schone, onderhoudbare en performante code',
     qualityBody:
@@ -446,6 +453,10 @@ export const nl: Dictionary = {
       {
         q: 'Zit de storevalidatie in de doorlooptijd van één week?',
         a: 'Nee. De 7 dagen dekken design, ontwikkeling en livegang. Voor een mobiele app komt de reviewtijd van de App Store en Google Play erbij en die ligt buiten onze controle (meestal enkele dagen).',
+      },
+      {
+        q: 'Wanneer start een sprint?',
+        a: 'Een sprint start altijd op maandag om 06:00 UTC en eindigt op zondag: zeven dagen, weekend inbegrepen. Khufu draait één sprint tegelijk — één week, één klant. Scoping, de schriftelijke scope en de toegangen regelen we vóór de maandag, op dag 0, zodat ze de week niet opeten. Vrijdag (dag 5) is jouw testdag: jij test terwijl wij de livegang en de infrastructuur doen. Zaterdag en zondag zijn voor de correcties uit jouw test, en de V1 staat aan het eind van zondag live.',
       },
     ],
   },

@@ -214,7 +214,7 @@ export const fr = {
     guaranteesTitle: 'Ce qu’on garantit',
     guarantees: [
       'Un périmètre écrit et validé avant de commencer.',
-      'Une date de livraison, tenue.',
+      'Une date de livraison, tenue : on démarre un lundi, vous êtes en production sept jours plus tard.',
       'Le code source vous appartient, dès le premier jour.',
     ],
   },
@@ -333,11 +333,18 @@ export const fr = {
     kicker: 'La méthode',
     title: 'Une semaine réservée, un produit lançable.',
     subtitle: 'Du lundi 6h00 UTC au dimanche, un seul client par semaine. Vous savez exactement ce qui se passe, chaque jour.',
+    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
+    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
+    // full testing day while the technical work runs, and the weekend applies what
+    // that testing found. /sprint-v1 no longer reuses these days — it authors its
+    // own run in `timeline` (src/content/sprintLanding.ts), so keep the two in step
+    // with each other and with the contract (art. 3.5), not with a nicer story.
     days: [
-      { day: 'Lundi → jeudi', title: 'Conception et développement', body: 'Le compteur part le lundi à 6h00 UTC. Le périmètre ayant été arrêté avant la semaine, ces quatre jours sont entièrement du produit : architecture, design, front, back et base de données.' },
-      { day: 'Vendredi', title: 'Votre journée de recette', body: 'Vous testez le produit toute la journée. Pendant ce temps, on traite le technique qui n’a pas besoin de vous : intégration continue, infrastructure, mise en production.' },
-      { day: 'Samedi et dimanche', title: 'Vos correctifs', body: 'Tout ce que votre vendredi a remonté est corrigé et ajusté. Vos retours sont appliqués avant la mise en ligne, pas après.' },
-      { day: 'Dimanche, fin de journée', title: 'En production', body: 'Le produit est déployé, à une vraie adresse, utilisable par vos utilisateurs. En ligne, ou pas livré — c’est le seul critère de livraison.' },
+      { day: 'Jour 1', title: 'Lancement', body: 'Le périmètre est arrêté au jour 0, avant le lundi : on attaque le produit dès 6 h. Architecture, socle technique, premiers écrans.' },
+      { day: 'Jour 2–3', title: 'Développement', body: 'On construit le cœur du produit : front, back et base de données. Code propre et architecture claire dès le premier commit.' },
+      { day: 'Jour 4', title: 'Infra & tests', body: 'Mise en place de l’infrastructure, tests, performance et sécurité. On solidifie les fondations avant de vous montrer le produit.' },
+      { day: 'Jour 5', title: 'Votre journée de recette', body: 'Vendredi, vous testez le produit toute la journée pendant qu’on traite le technique : chaîne de déploiement, infrastructure, mise en production.' },
+      { day: 'Jour 6–7', title: 'Correctifs et mise en ligne', body: 'On applique vos retours du vendredi, on finalise, et votre V1 est en production à la fin du dimanche. En ligne, ou pas livré — c’est le seul critère de livraison.' },
     ],
     qualityTitle: 'Du code propre, maintenable et performant',
     qualityBody:
@@ -465,6 +472,10 @@ export const fr = {
       {
         q: 'Le délai d’une semaine inclut-il la validation des stores ?',
         a: 'Non. Les 7 jours couvrent la conception, le développement et la mise en production. Pour une app mobile, le délai de validation de l’App Store et de Google Play s’ajoute et ne dépend pas de nous (généralement quelques jours).',
+      },
+      {
+        q: 'Quand démarre un sprint ?',
+        a: 'Un sprint démarre toujours le lundi à 6 h 00 UTC et se termine le dimanche : sept jours, week-end compris. Khufu ne conduit qu’un sprint à la fois — une semaine, un client. Le cadrage, le périmètre écrit et les accès se règlent avant le lundi, au jour 0, pour ne pas consommer la semaine. Le vendredi (jour 5) est votre journée de recette : vous testez pendant qu’on traite la mise en production et l’infrastructure. Le samedi et le dimanche servent aux correctifs issus de votre recette, et la V1 est en production à la fin du dimanche.',
       },
     ],
   },

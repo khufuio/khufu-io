@@ -210,7 +210,7 @@ export const tr: Dictionary = {
     guaranteesTitle: 'Garanti ettiklerimiz',
     guarantees: [
       'Başlamadan önce yazılı ve onaylanmış bir kapsam.',
-      'Bir teslim tarihi, tutulan.',
+      'Bir teslim tarihi, tutulan: pazartesi başlıyoruz, yedi gün sonra canlıdasınız.',
       'Kaynak kodu, ilk günden itibaren sizindir.',
     ],
   },
@@ -329,11 +329,18 @@ export const tr: Dictionary = {
     kicker: 'Yöntem',
     title: 'Ayrılmış bir hafta, piyasaya çıkmaya hazır bir ürün.',
     subtitle: 'Pazartesi sabahı 06:00 UTC ile pazar arasında, haftada tek müşteri. Her gün ne olduğunu tam olarak bilirsiniz.',
+    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
+    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
+    // full testing day while the technical work runs, and the weekend applies what
+    // that testing found. /sprint-v1 no longer reuses these days — it authors its
+    // own run in `timeline` (src/content/sprintLanding.ts), so keep the two in step
+    // with each other and with the contract (art. 3.5), not with a nicer story.
     days: [
-      { day: 'Pazartesi → perşembe', title: 'Tasarım ve geliştirme', body: 'Sayaç pazartesi 06:00 UTC’de başlar. Kapsam haftadan önce netleştiği için bu dört gün tamamen ürüne ayrılır: mimari, tasarım, front, back ve veritabanı.' },
-      { day: 'Cuma', title: 'Kabul testi gününüz', body: 'Gün boyu ürünü test edersiniz. Bu sırada biz sizi gerektirmeyen teknik işi hallederiz: sürekli entegrasyon, altyapı ve yayına alma.' },
-      { day: 'Cumartesi ve pazar', title: 'Düzeltmeleriniz', body: 'Cumanız ne çıkardıysa düzeltilir ve ayarlanır. Geri bildiriminiz yayından önce ürüne girer, sonra değil.' },
-      { day: 'Pazar, gün sonu', title: 'Üretimde', body: 'Ürün dağıtıldı, gerçek bir adreste, kullanıcılarınızın erişimine açık. Çevrimiçi ya da teslim edilmemiş — tek teslim kriteri bu.' },
+      { day: 'Gün 1', title: 'Başlangıç', body: 'Kapsam 0. günde, pazartesiden önce netleşir: saat 6’dan itibaren ürünü inşa ederiz. Mimari, teknik temel, ilk ekranlar.' },
+      { day: 'Gün 2–3', title: 'Geliştirme', body: 'Ürünün çekirdeğini kurarız: ön yüz, arka uç ve veritabanı. İlk commit’ten itibaren temiz kod ve net mimari.' },
+      { day: 'Gün 4', title: 'Altyapı ve testler', body: 'Altyapı, testler, performans ve güvenlik. Ürünü size göstermeden önce temelleri sağlamlaştırırız.' },
+      { day: 'Gün 5', title: 'Sizin test gününüz', body: 'Cuma günü ürünü gün boyu test edersiniz; biz bu sırada teknik tarafı hallederiz: dağıtım hattı, altyapı, yayına alma.' },
+      { day: 'Gün 6–7', title: 'Düzeltmeler ve yayın', body: 'Cuma günkü geri bildirimlerinizi uygular, tamamlar ve V1’inizi pazar günü sonunda canlıya alırız. Çevrimiçi ya da teslim edilmemiş — tek teslim kriteri bu.' },
     ],
     qualityTitle: 'Temiz, sürdürülebilir ve performanslı kod',
     qualityBody:
@@ -461,6 +468,10 @@ export const tr: Dictionary = {
       {
         q: 'Bir haftalık süre store onaylarını içeriyor mu?',
         a: 'Hayır. 7 gün tasarımı, geliştirmeyi ve yayına almayı kapsar. Bir mobil uygulama için App Store ve Google Play onay süresi buna eklenir ve bizim kontrolümüzde değildir (genellikle birkaç gün).',
+      },
+      {
+        q: 'Bir sprint ne zaman başlar?',
+        a: 'Sprint her zaman pazartesi 06:00 UTC’de başlar ve pazar günü biter: hafta sonu dahil yedi gün. Khufu aynı anda tek bir sprint yürütür — bir hafta, bir müşteri. Kapsam belirleme, yazılı kapsam ve erişimler pazartesiden önce, 0. günde halledilir; böylece haftayı yemezler. Cuma (5. gün) sizin test gününüzdür: siz test edersiniz, biz yayına alma ve altyapıyla ilgileniriz. Cumartesi ve pazar, testinizden çıkan düzeltmeler içindir; V1 pazar günü sonunda canlıdadır.',
       },
     ],
   },

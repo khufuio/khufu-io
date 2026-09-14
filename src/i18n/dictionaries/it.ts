@@ -210,7 +210,7 @@ export const it: Dictionary = {
     guaranteesTitle: 'Cosa garantiamo',
     guarantees: [
       'Un ambito scritto e approvato prima di iniziare.',
-      'Una data di consegna, rispettata.',
+      'Una data di consegna, rispettata: si parte di lunedì, sette giorni dopo sei in produzione.',
       'Il codice sorgente è tuo, dal primo giorno.',
     ],
   },
@@ -329,11 +329,18 @@ export const it: Dictionary = {
     kicker: 'Il metodo',
     title: 'Una settimana riservata, un prodotto lanciabile.',
     subtitle: 'Dal lunedì alle 06:00 UTC alla domenica, un solo cliente a settimana. Sai esattamente cosa succede, ogni giorno.',
+    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
+    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
+    // full testing day while the technical work runs, and the weekend applies what
+    // that testing found. /sprint-v1 no longer reuses these days — it authors its
+    // own run in `timeline` (src/content/sprintLanding.ts), so keep the two in step
+    // with each other and with the contract (art. 3.5), not with a nicer story.
     days: [
-      { day: 'Lunedì → giovedì', title: 'Progettazione e sviluppo', body: 'Il contatore parte lunedì alle 06:00 UTC. Poiché l’ambito è stato fissato prima della settimana, questi quattro giorni sono tutti prodotto: architettura, design, front, back e database.' },
-      { day: 'Venerdì', title: 'La tua giornata di collaudo', body: 'Provi il prodotto per tutta la giornata. Nel frattempo gestiamo la parte tecnica che non ha bisogno di te: integrazione continua, infrastruttura, messa in produzione.' },
-      { day: 'Sabato e domenica', title: 'Le tue correzioni', body: 'Tutto ciò che è emerso dal tuo venerdì viene corretto e sistemato. I tuoi riscontri arrivano prima della pubblicazione, non dopo.' },
-      { day: 'Domenica, fine giornata', title: 'In produzione', body: 'Il prodotto è deployato, a un indirizzo reale, utilizzabile dai tuoi utenti. Online, o non consegnato: è l’unico criterio di consegna.' },
+      { day: 'Giorno 1', title: 'Avvio', body: 'L’ambito è chiuso al giorno 0, prima del lunedì: si costruisce dalle 6. Architettura, base tecnica, prime schermate.' },
+      { day: 'Giorno 2–3', title: 'Sviluppo', body: 'Costruiamo il cuore del prodotto: front, back e database. Codice pulito e architettura chiara dal primo commit.' },
+      { day: 'Giorno 4', title: 'Infra e test', body: 'Infrastruttura, test, performance e sicurezza. Consolidiamo le fondamenta prima di mostrarti il prodotto.' },
+      { day: 'Giorno 5', title: 'La tua giornata di collaudo', body: 'Il venerdì provi il prodotto tutto il giorno mentre noi ci occupiamo della parte tecnica: pipeline di deploy, infrastruttura, messa in produzione.' },
+      { day: 'Giorno 6–7', title: 'Correzioni e go-live', body: 'Applichiamo i tuoi riscontri del venerdì, finalizziamo, e la tua V1 è in produzione alla fine della domenica. Online, o non consegnato: è l’unico criterio di consegna.' },
     ],
     qualityTitle: 'Codice pulito, manutenibile e performante',
     qualityBody:
@@ -461,6 +468,10 @@ export const it: Dictionary = {
       {
         q: 'Il termine di una settimana include la validazione degli store?',
         a: 'No. I 7 giorni coprono progettazione, sviluppo e messa in produzione. Per un’app mobile, il tempo di validazione dell’App Store e di Google Play si aggiunge e non dipende da noi (di solito qualche giorno).',
+      },
+      {
+        q: 'Quando inizia uno sprint?',
+        a: 'Uno sprint inizia sempre il lunedì alle 06:00 UTC e finisce la domenica: sette giorni, weekend compreso. Khufu segue un solo sprint alla volta — una settimana, un cliente. Inquadramento, ambito scritto e accessi si sistemano prima del lunedì, al giorno 0, per non consumare la settimana. Il venerdì (giorno 5) è la tua giornata di collaudo: tu provi mentre noi ci occupiamo di messa in produzione e infrastruttura. Sabato e domenica servono alle correzioni emerse dal tuo collaudo, e la V1 è in produzione alla fine della domenica.',
       },
     ],
   },

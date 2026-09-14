@@ -160,3 +160,151 @@ body {
     transform: scaleY(1);
   }
 }
+
+/* ------------------------------------------------------------------ *
+ * Sprint V1 landing — the surfaces.
+ *
+ * ⚠️ THE HERO IS LIGHT NOW, AND THAT IS THE POINT. It used to be a near-black
+ * canvas on an otherwise light site, which Adrien called correctly on
+ * 2026-09-13: « tu as juste mis en dark, là où tout le reste est light […] c'est
+ * pas réfléchi ». Dark was decoration. The page now runs ONE system — paper
+ * ground, one accent, a lot of air — and spends dark exactly once, on the
+ * products section, where four light captures on a near-black ground are the
+ * argument. ⛔ Do not darken a second section, and do not bring the dark hero
+ * back without replacing this reasoning.
+ *
+ * ⚠️ THE RULES THAT KEEP IT CHEAP, and they are not optional:
+ *   - no image and no network request: the grid is two gradients, the halo one;
+ *   - the only animated property is `transform` on an aria-hidden element, so
+ *     the hero can neither delay LCP nor shift layout (this page measures 0 CLS);
+ *   - the drift is 90s for one cell. It must read as depth, never as animation.
+ *     ⛔ Nothing bouncy, nothing pulsing, no particles.
+ *   - the whole motion lives inside `prefers-reduced-motion: no-preference`; a
+ *     visitor who asked for less gets the still canvas, which is finished.
+ * ------------------------------------------------------------------ */
+.sprint-hero {
+  background: var(--color-paper);
+}
+
+.sprint-hero-grid,
+.sprint-hero-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sprint-hero-grid {
+  /* Oversized so the drift can never expose an edge. */
+  inset: -12%;
+  background-image:
+    linear-gradient(to right, rgba(14, 14, 16, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 14, 16, 0.045) 1px, transparent 1px);
+  background-size: 76px 76px;
+  /* Fades out downwards, so the grid never competes with the copy. */
+  mask-image: radial-gradient(120% 90% at 78% 0%, #000 12%, transparent 72%);
+}
+
+.sprint-hero-glow {
+  background:
+    radial-gradient(42rem 26rem at 86% -14%, rgba(76, 48, 255, 0.14), transparent 64%),
+    radial-gradient(30rem 20rem at 4% 2%, rgba(76, 48, 255, 0.05), transparent 60%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sprint-hero-grid {
+    /* Exactly one cell, so the loop is seamless and never jumps. */
+    animation: sprint-grid-drift 90s linear infinite;
+  }
+}
+
+@keyframes sprint-grid-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-76px, -76px, 0);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * The browser frame every product capture sits in (productShot.tsx).
+ *
+ * One object, reused by the hero and by all four product cards — which is what
+ * makes four unrelated products read as one system instead of a patchwork.
+ * `aspect-ratio` on the image plus width/height on the tag means the box has its
+ * final size before the file arrives: nothing here can shift layout.
+ * ------------------------------------------------------------------ */
+.sprint-shot {
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-xl);
+  background: #fff;
+  box-shadow:
+    0 1px 2px rgba(14, 14, 16, 0.04),
+    0 18px 44px -22px rgba(14, 14, 16, 0.3);
+}
+
+.sprint-shot--hero {
+  box-shadow:
+    0 1px 2px rgba(14, 14, 16, 0.05),
+    0 34px 80px -30px rgba(14, 14, 16, 0.38);
+}
+
+.sprint-shot--dark {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: #131317;
+  box-shadow: 0 28px 70px -32px rgba(0, 0, 0, 0.9);
+}
+
+.sprint-shot-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-paper-2);
+}
+
+.sprint-shot--dark .sprint-shot-bar {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  background: #1b1b21;
+}
+
+.sprint-shot-dots {
+  display: flex;
+  flex: none;
+  gap: 0.3rem;
+}
+
+.sprint-shot-dots i {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--color-muted) 40%, transparent);
+}
+
+.sprint-shot--dark .sprint-shot-dots i {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.sprint-shot-url {
+  overflow: hidden;
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+  color: var(--color-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sprint-shot--dark .sprint-shot-url {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sprint-shot-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 650;
+  object-fit: cover;
+  object-position: top center;
+}
