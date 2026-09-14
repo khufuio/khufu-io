@@ -312,14 +312,13 @@ export const nl: Dictionary = {
     metaDescription:
       'Hoe Khufu een V1 in één week oplevert: het verloop dag per dag, van scoping tot productie, versneld door AI.',
     kicker: 'De methode',
-    title: 'Zeven dagen, een lanceerbaar product.',
-    subtitle: 'Een strak, transparant verloop. Je weet precies wat er elke dag gebeurt.',
+    title: 'Eén gereserveerde week, een lanceerbaar product.',
+    subtitle: 'Van maandag 06:00 UTC tot zondag, één klant per week. Je weet precies wat er elke dag gebeurt.',
     days: [
-      { day: 'Dag 1', title: 'Scoping', body: 'We bepalen de exacte scope, de belangrijkste flows en de technische architectuur. Jij keurt goed voordat we één regel schrijven.' },
-      { day: 'Dag 2–3', title: 'Ontwikkeling', body: 'We bouwen de kern van het product: front, back en database. Schone code en heldere architectuur vanaf de eerste commit.' },
-      { day: 'Dag 4', title: 'Infra & tests', body: 'Infrastructuur, tests, performance en security. We verstevigen de fundamenten voordat we itereren.' },
-      { day: 'Dag 5–6', title: 'Iteraties', body: 'Ontwikkeling gestuurd door jouw feedback: we passen het product live aan, in voortdurend contact met jou.' },
-      { day: 'Dag 7', title: 'Livegang', body: 'Deployment, CI/CD-setup, hosting en overdracht. Je V1 staat online, in jouw handen.' },
+      { day: 'Maandag → donderdag', title: 'Ontwerp en ontwikkeling', body: 'De klok start maandag om 06:00 UTC. Omdat de scope vóór de week vastlag, zijn deze vier dagen volledig product: architectuur, design, front, back en database.' },
+      { day: 'Vrijdag', title: 'Jouw acceptatiedag', body: 'Je test het product de hele dag. Ondertussen doen wij het technische werk dat jou niet nodig heeft: continuous integration, infrastructuur, livegang.' },
+      { day: 'Zaterdag en zondag', title: 'Jouw correcties', body: 'Alles wat jouw vrijdag heeft opgeleverd, wordt gecorrigeerd en bijgesteld. Je feedback landt vóór de livegang, niet erna.' },
+      { day: 'Zondag, einde van de dag', title: 'In productie', body: 'Het product staat gedeployed, op een echt adres, bruikbaar door je gebruikers. Online, of niet geleverd — dat is het enige opleveringscriterium.' },
     ],
     qualityTitle: 'Schone, onderhoudbare en performante code',
     qualityBody:

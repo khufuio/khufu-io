@@ -327,14 +327,13 @@ export const it: Dictionary = {
     metaDescription:
       'Come Khufu consegna una V1 in una settimana: lo svolgimento giorno per giorno, dalla definizione dell’ambito alla messa in produzione, accelerato dall’IA.',
     kicker: 'Il metodo',
-    title: 'Sette giorni, un prodotto lanciabile.',
-    subtitle: 'Uno svolgimento serrato e trasparente. Sai esattamente cosa succede, ogni giorno.',
+    title: 'Una settimana riservata, un prodotto lanciabile.',
+    subtitle: 'Dal lunedì alle 06:00 UTC alla domenica, un solo cliente a settimana. Sai esattamente cosa succede, ogni giorno.',
     days: [
-      { day: 'Giorno 1', title: 'Definizione dell’ambito', body: 'Definiamo l’ambito esatto, i flussi chiave e l’architettura tecnica. Approvi prima che scriviamo una sola riga.' },
-      { day: 'Giorno 2–3', title: 'Sviluppo', body: 'Attacchiamo il cuore del prodotto: front, back e database. Codice pulito e architettura chiara fin dal primo commit.' },
-      { day: 'Giorno 4', title: 'Infra e test', body: 'Predisposizione dell’infrastruttura, test, performance e sicurezza. Consolidiamo le fondamenta prima di iterare.' },
-      { day: 'Giorno 5–6', title: 'Iterazioni', body: 'Sviluppo guidato dai tuoi feedback: aggiustiamo il prodotto in diretta, in scambio continuo con te.' },
-      { day: 'Giorno 7', title: 'Messa in produzione', body: 'Deploy, configurazione CI/CD, hosting e handover. La tua V1 è online, nelle tue mani.' },
+      { day: 'Lunedì → giovedì', title: 'Progettazione e sviluppo', body: 'Il contatore parte lunedì alle 06:00 UTC. Poiché l’ambito è stato fissato prima della settimana, questi quattro giorni sono tutti prodotto: architettura, design, front, back e database.' },
+      { day: 'Venerdì', title: 'La tua giornata di collaudo', body: 'Provi il prodotto per tutta la giornata. Nel frattempo gestiamo la parte tecnica che non ha bisogno di te: integrazione continua, infrastruttura, messa in produzione.' },
+      { day: 'Sabato e domenica', title: 'Le tue correzioni', body: 'Tutto ciò che è emerso dal tuo venerdì viene corretto e sistemato. I tuoi riscontri arrivano prima della pubblicazione, non dopo.' },
+      { day: 'Domenica, fine giornata', title: 'In produzione', body: 'Il prodotto è deployato, a un indirizzo reale, utilizzabile dai tuoi utenti. Online, o non consegnato: è l’unico criterio di consegna.' },
     ],
     qualityTitle: 'Codice pulito, manutenibile e performante',
     qualityBody:

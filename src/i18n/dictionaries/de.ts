@@ -327,14 +327,13 @@ export const de: Dictionary = {
     metaDescription:
       'Wie Khufu eine V1 in einer Woche liefert: der Ablauf Tag für Tag, vom Scoping bis zur Produktion, beschleunigt durch KI.',
     kicker: 'Die Methode',
-    title: 'Sieben Tage, ein startklares Produkt.',
-    subtitle: 'Ein enger, transparenter Ablauf. Du weißt genau, was jeden Tag passiert.',
+    title: 'Eine reservierte Woche, ein startklares Produkt.',
+    subtitle: 'Von Montag 06:00 UTC bis Sonntag, ein Kunde pro Woche. Du weißt genau, was an jedem Tag passiert.',
     days: [
-      { day: 'Tag 1', title: 'Scoping', body: 'Wir definieren den exakten Umfang, die zentralen Flows und die technische Architektur. Du gibst frei, bevor wir eine einzige Zeile schreiben.' },
-      { day: 'Tag 2–3', title: 'Entwicklung', body: 'Wir gehen den Kern des Produkts an: Front, Back und Datenbank. Sauberer Code und klare Architektur ab dem ersten Commit.' },
-      { day: 'Tag 4', title: 'Infra & Tests', body: 'Aufbau der Infrastruktur, Tests, Performance und Sicherheit. Wir festigen das Fundament, bevor wir iterieren.' },
-      { day: 'Tag 5–6', title: 'Iterationen', body: 'Entwicklung nach deinem Feedback: Wir passen das Produkt live an, im ständigen Austausch mit dir.' },
-      { day: 'Tag 7', title: 'Go-Live', body: 'Deployment, CI/CD-Konfiguration, Hosting und Übergabe. Deine V1 ist online, in deinen Händen.' },
+      { day: 'Montag → Donnerstag', title: 'Konzeption und Entwicklung', body: 'Der Countdown startet am Montag um 06:00 UTC. Da der Umfang vor der Woche feststand, sind diese vier Tage komplett Produkt: Architektur, Design, Front, Back und Datenbank.' },
+      { day: 'Freitag', title: 'Dein Abnahmetag', body: 'Du testest das Produkt den ganzen Tag. Parallel erledigen wir die Technik, die dich nicht braucht: Continuous Integration, Infrastruktur, Go-Live.' },
+      { day: 'Samstag und Sonntag', title: 'Deine Korrekturen', body: 'Alles, was dein Freitag zutage gefördert hat, wird korrigiert und nachgezogen. Dein Feedback landet vor dem Livegang, nicht danach.' },
+      { day: 'Sonntag, Tagesende', title: 'In Produktion', body: 'Das Produkt ist deployed, unter einer echten Adresse, nutzbar für deine Nutzer. Online, oder nicht geliefert — das ist das einzige Lieferkriterium.' },
     ],
     qualityTitle: 'Sauberer, wartbarer und performanter Code',
     qualityBody:

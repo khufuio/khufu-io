@@ -312,14 +312,13 @@ export const en: Dictionary = {
     metaDescription:
       'How Khufu ships a V1 in one week: the day-by-day breakdown, from scoping to production, accelerated by AI.',
     kicker: 'The method',
-    title: 'Seven days, a launchable product.',
-    subtitle: 'A tight, transparent flow. You know exactly what happens, every day.',
+    title: 'One booked week, a launchable product.',
+    subtitle: 'From Monday 06:00 UTC to Sunday, one client per week. You know exactly what happens, every day.',
     days: [
-      { day: 'Day 1', title: 'Scoping', body: 'We define the exact scope, the key flows and the technical architecture. You sign off before we write a single line.' },
-      { day: 'Day 2–3', title: 'Development', body: 'We build the core of the product: front, back and database. Clean code and clear architecture from the first commit.' },
-      { day: 'Day 4', title: 'Infra & tests', body: 'Infrastructure, tests, performance and security. We solidify the foundations before iterating.' },
-      { day: 'Day 5–6', title: 'Iterations', body: 'Development driven by your feedback: we adjust the product live, in continuous contact with you.' },
-      { day: 'Day 7', title: 'Go live', body: 'Deployment, CI/CD setup, hosting and handover. Your V1 is online, in your hands.' },
+      { day: 'Monday → Thursday', title: 'Design and build', body: 'The clock starts Monday at 06:00 UTC. Because the scope was settled before the week, these four days are all product: architecture, design, front, back and database.' },
+      { day: 'Friday', title: 'Your acceptance day', body: 'You test the product all day. Meanwhile we handle the technical work that does not need you: continuous integration, infrastructure, going live.' },
+      { day: 'Saturday and Sunday', title: 'Your fixes', body: 'Everything your Friday turned up is fixed and adjusted. Your feedback ships before the product does, not after.' },
+      { day: 'Sunday, end of day', title: 'In production', body: 'The product is deployed, at a real address, usable by your users. Online, or not delivered — that is the only delivery criterion.' },
     ],
     qualityTitle: 'Clean, maintainable, performant code',
     qualityBody:

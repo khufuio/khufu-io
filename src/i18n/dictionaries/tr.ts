@@ -327,14 +327,13 @@ export const tr: Dictionary = {
     metaDescription:
       'Khufu bir V1’i bir haftada nasıl teslim eder: kapsamdan yayına, yapay zekayla hızlandırılmış gün gün akış.',
     kicker: 'Yöntem',
-    title: 'Yedi gün, yayına alınabilir bir ürün.',
-    subtitle: 'Sıkı ve şeffaf bir akış. Her gün tam olarak ne olduğunu bilirsiniz.',
+    title: 'Ayrılmış bir hafta, piyasaya çıkmaya hazır bir ürün.',
+    subtitle: 'Pazartesi sabahı 06:00 UTC ile pazar arasında, haftada tek müşteri. Her gün ne olduğunu tam olarak bilirsiniz.',
     days: [
-      { day: '1. Gün', title: 'Kapsam belirleme', body: 'Tam kapsamı, kritik akışları ve teknik mimariyi tanımlarız. Tek bir satır yazmadan önce siz onaylarsınız.' },
-      { day: '2–3. Gün', title: 'Geliştirme', body: 'Ürünün kalbine gireriz: front, back ve veritabanı. İlk commit’ten itibaren temiz kod ve net mimari.' },
-      { day: '4. Gün', title: 'Altyapı ve testler', body: 'Altyapı kurulumu, testler, performans ve güvenlik. Yinelemeden önce temelleri sağlamlaştırırız.' },
-      { day: '5–6. Gün', title: 'Yinelemeler', body: 'Geri bildirimlerinizle yönlendirilen geliştirme: ürünü sizinle sürekli iletişimde, canlı olarak ayarlarız.' },
-      { day: '7. Gün', title: 'Yayına alma', body: 'Dağıtım, CI/CD yapılandırması, barındırma ve devir. V1’iniz çevrimiçi, sizin elinizde.' },
+      { day: 'Pazartesi → perşembe', title: 'Tasarım ve geliştirme', body: 'Sayaç pazartesi 06:00 UTC’de başlar. Kapsam haftadan önce netleştiği için bu dört gün tamamen ürüne ayrılır: mimari, tasarım, front, back ve veritabanı.' },
+      { day: 'Cuma', title: 'Kabul testi gününüz', body: 'Gün boyu ürünü test edersiniz. Bu sırada biz sizi gerektirmeyen teknik işi hallederiz: sürekli entegrasyon, altyapı ve yayına alma.' },
+      { day: 'Cumartesi ve pazar', title: 'Düzeltmeleriniz', body: 'Cumanız ne çıkardıysa düzeltilir ve ayarlanır. Geri bildiriminiz yayından önce ürüne girer, sonra değil.' },
+      { day: 'Pazar, gün sonu', title: 'Üretimde', body: 'Ürün dağıtıldı, gerçek bir adreste, kullanıcılarınızın erişimine açık. Çevrimiçi ya da teslim edilmemiş — tek teslim kriteri bu.' },
     ],
     qualityTitle: 'Temiz, sürdürülebilir ve performanslı kod',
     qualityBody:

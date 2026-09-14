@@ -327,14 +327,13 @@ export const pt: Dictionary = {
     metaDescription:
       'Como a Khufu entrega uma V1 numa semana: o processo dia a dia, do âmbito à produção, acelerado por IA.',
     kicker: 'O método',
-    title: 'Sete dias, um produto lançável.',
-    subtitle: 'Um processo apertado e transparente. Sabe exatamente o que acontece, todos os dias.',
+    title: 'Uma semana reservada, um produto lançável.',
+    subtitle: 'De segunda-feira às 06:00 UTC a domingo, um só cliente por semana. Sabe exatamente o que acontece, todos os dias.',
     days: [
-      { day: 'Dia 1', title: 'Definição de âmbito', body: 'Definimos o âmbito exato, os fluxos principais e a arquitetura técnica. Valida antes de escrevermos uma única linha.' },
-      { day: 'Dia 2–3', title: 'Desenvolvimento', body: 'Atacamos o núcleo do produto: front, back e base de dados. Código limpo e arquitetura clara desde o primeiro commit.' },
-      { day: 'Dia 4', title: 'Infra e testes', body: 'Implementação da infraestrutura, testes, desempenho e segurança. Solidificamos os alicerces antes de iterar.' },
-      { day: 'Dia 5–6', title: 'Iterações', body: 'Desenvolvimento guiado pelo seu feedback: ajustamos o produto ao vivo, em contacto contínuo consigo.' },
-      { day: 'Dia 7', title: 'Colocação em produção', body: 'Deploy, configuração CI/CD, alojamento e handover. A sua V1 está online, nas suas mãos.' },
+      { day: 'Segunda → quinta', title: 'Conceção e desenvolvimento', body: 'O contador arranca na segunda-feira às 06:00 UTC. Como o âmbito foi fechado antes da semana, estes quatro dias são todos produto: arquitetura, design, front, back e base de dados.' },
+      { day: 'Sexta-feira', title: 'O seu dia de validação', body: 'Testa o produto durante todo o dia. Entretanto tratamos da parte técnica que não precisa de si: integração contínua, infraestrutura e colocação em produção.' },
+      { day: 'Sábado e domingo', title: 'As suas correções', body: 'Tudo o que a sua sexta-feira revelou é corrigido e ajustado. O seu feedback entra antes da publicação, não depois.' },
+      { day: 'Domingo, fim do dia', title: 'Em produção', body: 'O produto está em deploy, num endereço real, utilizável pelos seus utilizadores. Online, ou não entregue: é o único critério de entrega.' },
     ],
     qualityTitle: 'Código limpo, sustentável e de alto desempenho',
     qualityBody:

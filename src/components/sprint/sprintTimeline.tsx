@@ -5,8 +5,8 @@
  * could not say is the argument the offer actually rests on — that the clock
  * only starts once the scope is settled. So the schema draws that: the segment
  * before day 1 is dashed (nothing is being built yet, and the annotation above
- * it says why), the seven working days are one continuous span under a single
- * bracket, and the last node is the only filled one because production is the
+ * it says why), the seven days of the booked week are one continuous span under a
+ * single bracket, and the last node is the only filled one because production is the
  * only delivery criterion.
  *
  * It is a server component: the SVG and the text ship as finished markup, and
@@ -33,7 +33,7 @@ export function SprintTimeline({
   steps: SprintTimelineStep[]
   /** Annotation over day 0 — e.g. "Périmètre arrêté". */
   scopeLabel: string
-  /** Annotation over the bracket spanning day 1 → day 7 — e.g. "7 jours ouvrés". */
+  /** Annotation over the bracket spanning the booked week — e.g. "Lundi → dimanche". */
   spanLabel: string
 }) {
   const width = steps.length * COLUMN_WIDTH

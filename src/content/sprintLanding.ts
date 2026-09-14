@@ -430,22 +430,22 @@ const content: Section<LocalizedInput> = {
 
   timeline: {
     title: {
-      fr: 'Le déroulé, du jour 0 au jour 7.',
-      en: 'The run, from day 0 to day 7.',
-      es: 'El desarrollo, del día 0 al día 7.',
+      fr: 'Le déroulé, du jour 0 au dimanche soir.',
+      en: 'The run, from day 0 to Sunday evening.',
+      es: 'El desarrollo, del día 0 al domingo por la noche.',
     },
     subtitle: {
-      fr: 'Sept jours ouvrés, un déroulé identique à chaque sprint. Vous savez ce qui se passe chaque jour.',
-      en: 'Seven working days, the same run on every sprint. You know what happens each day.',
-      es: 'Siete días hábiles, el mismo recorrido en cada sprint. Sabes qué pasa cada día.',
+      fr: 'Une semaine réservée, du lundi 6h00 UTC au dimanche : un seul client à la fois, et le même déroulé à chaque sprint.',
+      en: 'One booked week, Monday 06:00 UTC to Sunday: one client at a time, and the same run on every sprint.',
+      es: 'Una semana reservada, del lunes a las 06:00 UTC al domingo: un solo cliente a la vez y el mismo recorrido en cada sprint.',
     },
     dayZero: {
       day: { fr: 'Jour 0', en: 'Day 0', es: 'Día 0' },
       title: { fr: 'Avant que le compteur démarre', en: 'Before the clock starts', es: 'Antes de que arranque el reloj' },
       body: {
-        fr: 'Appel de cadrage, périmètre écrit, devis signé. Le sprint ne démarre que quand les trois sont faits — c’est précisément ce qui rend la date tenable.',
-        en: 'Scoping call, written scope, signed quote. The sprint only starts once all three are done — that is exactly what makes the date holdable.',
-        es: 'Llamada de encuadre, alcance escrito, presupuesto firmado. El sprint solo arranca cuando los tres están hechos: eso es justamente lo que hace sostenible la fecha.',
+        fr: 'Appel de cadrage, périmètre écrit, devis signé. Le jour 0 se place avant le lundi, hors de la semaine réservée — c’est ce qui permet que les sept jours soient entièrement de la production, et c’est précisément ce qui rend la date tenable.',
+        en: 'Scoping call, written scope, signed quote. Day 0 sits before Monday, outside the booked week — which is what makes all seven days production, and exactly what makes the date holdable.',
+        es: 'Llamada de encuadre, alcance escrito, presupuesto firmado. El día 0 va antes del lunes, fuera de la semana reservada: eso es lo que permite que los siete días sean producción, y justamente lo que hace sostenible la fecha.',
       },
     },
     scopeLabel: {
@@ -454,9 +454,9 @@ const content: Section<LocalizedInput> = {
       es: 'Alcance cerrado',
     },
     spanLabel: {
-      fr: '7 jours ouvrés',
-      en: '7 working days',
-      es: '7 días hábiles',
+      fr: 'Lundi → dimanche',
+      en: 'Monday → Sunday',
+      es: 'Lunes → domingo',
     },
     note: {
       fr: 'Pendant toute la semaine, vous parlez directement au founder qui écrit le code. Pas de chef de projet intermédiaire, pas de compte rendu qui arrive trois jours après la décision.',

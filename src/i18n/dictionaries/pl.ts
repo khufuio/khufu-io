@@ -327,14 +327,13 @@ export const pl: Dictionary = {
     metaDescription:
       'Jak Khufu dostarcza V1 w tydzień: przebieg dzień po dniu, od doprecyzowania zakresu po produkcję, przyspieszony przez AI.',
     kicker: 'Metoda',
-    title: 'Siedem dni, produkt gotowy do startu.',
-    subtitle: 'Ciasny i przejrzysty przebieg. Wiesz dokładnie, co dzieje się każdego dnia.',
+    title: 'Jeden zarezerwowany tydzień, produkt gotowy do startu.',
+    subtitle: 'Od poniedziałku 06:00 UTC do niedzieli, jeden klient na tydzień. Wiesz dokładnie, co dzieje się każdego dnia.',
     days: [
-      { day: 'Dzień 1', title: 'Zakres', body: 'Definiujemy dokładny zakres, kluczowe ścieżki i architekturę techniczną. Zatwierdzasz, zanim napiszemy choćby jedną linię.' },
-      { day: 'Dzień 2–3', title: 'Rozwój', body: 'Bierzemy się za rdzeń produktu: front, back i bazę danych. Czysty kod i jasna architektura od pierwszego commita.' },
-      { day: 'Dzień 4', title: 'Infra i testy', body: 'Konfiguracja infrastruktury, testy, wydajność i bezpieczeństwo. Wzmacniamy fundamenty przed iteracjami.' },
-      { day: 'Dzień 5–6', title: 'Iteracje', body: 'Rozwój sterowany Twoim feedbackiem: dostrajamy produkt na żywo, w ciągłym kontakcie z Tobą.' },
-      { day: 'Dzień 7', title: 'Wdrożenie na produkcję', body: 'Deployment, konfiguracja CI/CD, hosting i przekazanie. Twoje V1 jest online, w Twoich rękach.' },
+      { day: 'Poniedziałek → czwartek', title: 'Projekt i rozwój', body: 'Licznik rusza w poniedziałek o 06:00 UTC. Ponieważ zakres został zamknięty przed tygodniem, te cztery dni to w całości produkt: architektura, design, front, back i baza danych.' },
+      { day: 'Piątek', title: 'Twój dzień odbioru', body: 'Przez cały dzień testujesz produkt. W tym czasie zajmujemy się techniką, która Cię nie potrzebuje: continuous integration, infrastruktura, wdrożenie na produkcję.' },
+      { day: 'Sobota i niedziela', title: 'Twoje poprawki', body: 'Wszystko, co wyszło z Twojego piątku, zostaje poprawione i dopięte. Twój feedback trafia do produktu przed publikacją, a nie po niej.' },
+      { day: 'Niedziela, koniec dnia', title: 'Na produkcji', body: 'Produkt jest wdrożony, pod prawdziwym adresem, gotowy dla Twoich użytkowników. Online albo niedostarczony — to jedyne kryterium.' },
     ],
     qualityTitle: 'Czysty, łatwy w utrzymaniu i wydajny kod',
     qualityBody:

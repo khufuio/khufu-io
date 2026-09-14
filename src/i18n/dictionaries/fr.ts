@@ -331,14 +331,13 @@ export const fr = {
     metaDescription:
       'Comment Khufu livre une V1 en une semaine : le déroulé jour par jour, du cadrage à la mise en production, accéléré par l’IA.',
     kicker: 'La méthode',
-    title: 'Sept jours, un produit lançable.',
-    subtitle: 'Un déroulé serré et transparent. Vous savez exactement ce qui se passe, chaque jour.',
+    title: 'Une semaine réservée, un produit lançable.',
+    subtitle: 'Du lundi 6h00 UTC au dimanche, un seul client par semaine. Vous savez exactement ce qui se passe, chaque jour.',
     days: [
-      { day: 'Jour 1', title: 'Cadrage', body: 'On définit le périmètre exact, les parcours clés et l’architecture technique. Vous validez avant qu’on écrive la moindre ligne.' },
-      { day: 'Jour 2–3', title: 'Développement', body: 'On attaque le cœur du produit : front, back et base de données. Code propre et architecture claire dès le premier commit.' },
-      { day: 'Jour 4', title: 'Infra & tests', body: 'Mise en place de l’infrastructure, tests, performance et sécurité. On solidifie les fondations avant d’itérer.' },
-      { day: 'Jour 5–6', title: 'Itérations', body: 'Développement piloté par vos retours : on ajuste le produit en direct, en échange continu avec vous.' },
-      { day: 'Jour 7', title: 'Mise en production', body: 'Déploiement, configuration CI/CD, hébergement et handover. Votre V1 est en ligne, entre vos mains.' },
+      { day: 'Lundi → jeudi', title: 'Conception et développement', body: 'Le compteur part le lundi à 6h00 UTC. Le périmètre ayant été arrêté avant la semaine, ces quatre jours sont entièrement du produit : architecture, design, front, back et base de données.' },
+      { day: 'Vendredi', title: 'Votre journée de recette', body: 'Vous testez le produit toute la journée. Pendant ce temps, on traite le technique qui n’a pas besoin de vous : intégration continue, infrastructure, mise en production.' },
+      { day: 'Samedi et dimanche', title: 'Vos correctifs', body: 'Tout ce que votre vendredi a remonté est corrigé et ajusté. Vos retours sont appliqués avant la mise en ligne, pas après.' },
+      { day: 'Dimanche, fin de journée', title: 'En production', body: 'Le produit est déployé, à une vraie adresse, utilisable par vos utilisateurs. En ligne, ou pas livré — c’est le seul critère de livraison.' },
     ],
     qualityTitle: 'Du code propre, maintenable et performant',
     qualityBody:
