@@ -62,6 +62,9 @@ export function SprintCta({
       onClick={(e) => {
         track(SPRINT_EVENTS.ctaClicked, {
           placement,
+          /* Where the journey continues: the modal when a provider takes the
+             click, the closing block when the anchor jumps there instead. */
+          surface: contact ? 'modal' : 'closing',
           week: week ?? null,
           locale: contact?.locale ?? null,
           ...campaignProps(),

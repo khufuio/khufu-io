@@ -73,7 +73,7 @@ export function SprintSystem({ locale }: { locale: Locale }) {
       {/* ⚠️ THE CLOSING LINE CARRIES A FIGURE AND THE FIGURE IS DERIVED, never
           typed into the copy (2026-09-15, pass 5). `{count}` becomes the number
           of cards the products section renders two screens below, so the claim
-          « les N produits Khufu » is checkable by scrolling and cannot rot when a
+          « N produits en production » is checkable by scrolling and cannot rot when a
           product is added or pulled. Adrien's bound on this retour was explicit:
           a quantity on this page is true and verifiable in the HQ registry, or it
           is not shown at all. A literal here would have been the version that

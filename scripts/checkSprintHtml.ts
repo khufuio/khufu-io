@@ -79,7 +79,7 @@ function findPages(): { locale: string; file: string }[] {
  * the open chips in the calendar are the one CTA whose number depends on the
  * date, and a census cannot assert a count that legitimately changes.
  */
-const EXPECTED_CTAS = ['header', 'hero', 'products', 'day7', 'closing'] as const
+const EXPECTED_CTAS = ['header', 'hero', 'products', 'day7', 'closing', 'floating'] as const
 
 const problems: string[] = []
 const pages = findPages()

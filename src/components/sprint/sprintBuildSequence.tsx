@@ -71,6 +71,29 @@
  *     only under `no-preference`. That is also what a no-JS visitor sees, since
  *     none of this is scripted.
  *
+ * ⛔ NO SKELETON AT THE END, AND NO LOREM IPSUM ANYWHERE (2026-09-15, pass 6).
+ * Adrien liked the system tiles (« top ») and caught what sat above them: the
+ * platform, the app and the site ended as grey placeholder bars — the sequence
+ * closed on a product that LOOKS LIKE IT IS LOADING, the opposite of « in seven
+ * days you have a product in production ». He ruled out filler text himself, and
+ * his reason is the one to keep: « on va croire que c'est mon site à moi qui est
+ * pas fini ». Fake Latin on a sales page reads as OUR unfinished page.
+ * So the surfaces now end on LANGUAGE-NEUTRAL INTERFACE: figures that count up
+ * and stop on their value, a curve that finishes drawing, a progress ring that
+ * closes, status lights, avatars, a rating, a filled button, and a list row that
+ * slides in at go-live. Movement that says « it is alive », not « it is loading »,
+ * and all of it converges on the same beat the wiring turns green.
+ *   - ⚠️ ZERO i18n KEYS. Digits, `+` and `%` read the same in ten locales, and the
+ *     stage is forced `dir="ltr"` so /ar does not flip `+18%` into `%18+` — it is
+ *     a drawing of an interface, not a sentence.
+ *   - ⛔ DECOR FIGURES, NEVER OUR NUMBERS. 284, +18 %, 72 % mean nothing and must
+ *     keep meaning nothing: no 7, no 6, no price, no count that could be read as
+ *     Khufu's clients, products or days. Change them freely; never make them true.
+ *   - ⛔ NO IDENTIFIABLE PRODUCT. Not Traqio's three-source cards, not a client's
+ *     dashboard: a generic app bar, three tiles, one curve.
+ *   - The counters are CSS: a registered `@property` integer animated into a
+ *     `counter()`. A browser without `@property` simply shows the final value.
+ *
  * Everything the sequence needs lives in globals.css under `.sprint-build-*`.
  */
 
@@ -158,24 +181,76 @@ export function SprintBuildSequence({ label }: { label: string }) {
         </div>
 
         <div className="sprint-shot-canvas sprint-build-canvas" aria-hidden>
-          <span className="sprint-build-stage">
-            {/* Movement 1 — the surfaces. The web platform lays itself out… */}
-            <span className="sprint-build-rail" />
-            {Array.from({ length: 5 }, (_, i) => (
-              <span key={i} className={`sprint-build-block sprint-build-block--${i + 1}`} />
-            ))}
-
-            {/* …the companion app arrives beside it… */}
-            <span className="sprint-build-phone">
-              <span className="sprint-build-phone-bar" />
-              <span className="sprint-build-phone-body" />
+          <span className="sprint-build-stage" dir="ltr">
+            {/* Movement 1 — the surfaces. The web platform lays itself out…
+                ⚠️ AND IT FILLS WITH A REAL INTERFACE, not grey bars (see
+                « NO SKELETON » in the header): an app bar, three figures that
+                count up to their value, a curve that finishes drawing. */}
+            <span className="sprint-build-rail">
+              <span className="sprint-build-logo" />
+              <span className="sprint-build-rail-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15l1.5-2ZM10 20.5a2 2 0 0 0 4 0" />
+                </svg>
+              </span>
+              <span className="sprint-build-avatar" />
             </span>
 
-            {/* …and the showcase site lands under it. Three surfaces, one product
-                (decision cmu1qkaz, the same claim the examples section makes). */}
+            <span className="sprint-build-block sprint-build-block--1">
+              <span className="sprint-build-kpi-dot" />
+              <span className="sprint-build-num sprint-build-num--1" />
+              <svg className="sprint-build-spark" viewBox="0 0 40 12" fill="none" preserveAspectRatio="none">
+                <path d="M1 10 8 8l6 2 7-5 6 2 5-4 6-2" pathLength={1} />
+              </svg>
+            </span>
+            <span className="sprint-build-block sprint-build-block--2">
+              <span className="sprint-build-kpi-dot sprint-build-kpi-dot--up" />
+              <span className="sprint-build-num sprint-build-num--2" />
+              <span className="sprint-build-bars">
+                {Array.from({ length: 5 }, (_, i) => (
+                  <i key={i} />
+                ))}
+              </span>
+            </span>
+            <span className="sprint-build-block sprint-build-block--3">
+              <svg className="sprint-build-ring" viewBox="0 0 36 36" fill="none">
+                <circle cx="18" cy="18" r="14" className="sprint-build-ring-track" />
+                <circle cx="18" cy="18" r="14" pathLength={100} className="sprint-build-ring-arc" />
+              </svg>
+              <span className="sprint-build-num sprint-build-num--3" />
+            </span>
+
+            <span className="sprint-build-block sprint-build-block--4">
+              <svg className="sprint-build-chart" viewBox="0 0 200 40" fill="none" preserveAspectRatio="none">
+                <path className="sprint-build-chart-area" d="M0 34 20 30 40 32 60 24 80 26 100 18 120 20 140 12 160 14 180 7 200 4V40H0Z" />
+                <path className="sprint-build-chart-line" d="M0 34 20 30 40 32 60 24 80 26 100 18 120 20 140 12 160 14 180 7 200 4" pathLength={1} />
+              </svg>
+            </span>
+
+            {/* …the companion app arrives beside it — a list whose last row slides
+                in at go-live, the « it is being used » beat… */}
+            <span className="sprint-build-phone">
+              <span className="sprint-build-phone-bar" />
+              <span className="sprint-build-phone-body">
+                {Array.from({ length: 3 }, (_, i) => (
+                  <span key={i} className={`sprint-build-row sprint-build-row--${i + 1}`}>
+                    <i className="sprint-build-row-avatar" />
+                    <i className="sprint-build-row-status" />
+                  </span>
+                ))}
+              </span>
+            </span>
+
+            {/* …and the showcase site lands under it: a rating and a real button.
+                Three surfaces, one product (decision cmu1qkaz, the same claim the
+                examples section makes). */}
             <span className="sprint-build-site">
-              <span className="sprint-build-site-bar" />
-              <span className="sprint-build-site-body" />
+              <svg className="sprint-build-stars" viewBox="0 0 60 12" fill="currentColor">
+                {Array.from({ length: 5 }, (_, i) => (
+                  <path key={i} transform={`translate(${i * 12} 0)`} d="m6 .8 1.6 3.4 3.7.4-2.8 2.5.8 3.7L6 8.9 2.7 10.8l.8-3.7L.7 4.6l3.7-.4Z" />
+                ))}
+              </svg>
+              <span className="sprint-build-cta" />
             </span>
 
             {/* Movement 2 — the system underneath. Eight things a delivered

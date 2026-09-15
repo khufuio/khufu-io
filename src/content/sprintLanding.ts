@@ -194,11 +194,11 @@ export const sprintClosedMondays: Readonly<Record<string, string>> = {}
  */
 export const sprintCommitmentIcons = [
   'ownership',
-  'renewal',
-  'delay',
+  'result',
+  'warranty',
+  'handover',
   'confidentiality',
-  'scope',
-  'acceptance',
+  'freedom',
 ] as const
 
 /**
@@ -261,8 +261,11 @@ export type SprintProduct = {
   shot?: { image: string; domain: string }
   /** The phone frame, for a product that ships a companion app. */
   appShot?: string
-  /** A second phone, for a product with no web surface to put in a browser frame. */
-  appShot2?: string
+  /**
+   * A row of phones, for a product with no web surface to put in a browser frame
+   * (replaces `shot` and `appShot`). Three, not two: see the Labyrinth entry.
+   */
+  phoneShots?: readonly string[]
   /** Surfaces that are PUBLIC. Must match what the product really ships today. */
   surfaces: readonly SprintSurface[]
   /**
@@ -292,10 +295,16 @@ export const sprintProducts: readonly SprintProduct[] = [
   {
     key: 'traqio',
     name: 'Traqio',
-    // ⚠️ NOT the same screen as the hero, which now ends on Traqio too: the card
-    // shows the pricing page, the hero shows the home page. Two captures of the
-    // same live site read as one product; the same capture twice reads as a
-    // template (2026-09-15).
+    // ⚠️ THE HOME PAGE, NOT THE PRICING GRID (recaptured 2026-09-15). Adrien found
+    // the pricing capture weak, and he was right: a price table is the least
+    // distinctive screen any SaaS has. The rebuilt home page shows what the product
+    // actually does — three sources disagreeing, then Traqio's reconciled figure.
+    // Pass 4 kept this card off the home page because the hero ended on it; pass 5
+    // took every capture out of the hero, so no screen appears twice. ⛔ If a
+    // capture ever returns to the hero, it must not be this one.
+    // Captured with the site's own chrome, cookie banner and scrollbar hidden, and
+    // set in Roboto — a face from the site's own `system-ui` stack (what Android
+    // visitors get); the headless server has only DejaVu, which no visitor sees.
     shot: { image: '/images/sprint/traqio', domain: 'traqio.app' },
     // ⚠️ The site is public; the platform, the SDKs and the packages are built
     // and not open yet. Declared, never dressed as live (decision cmu0fqj7).
@@ -315,7 +324,23 @@ export const sprintProducts: readonly SprintProduct[] = [
     key: 'labyrinth',
     slug: 'labyrinth',
     /*
-     * No web platform, so the card is two phones rather than an empty frame.
+     * No web platform, so the card is a row of phones rather than an empty frame.
+     *
+     * ⚠️ THREE SMALLER PHONES, NOT TWO TALL ONES (2026-09-15). Adrien: « on peut
+     * pas réduire la height des phone frame quitte à ajouter 1 capture de + ? ».
+     * Two phones sized to fill the card's width stood 254px tall against 204–234px
+     * for a browser frame, so this card set the height of its whole row and pushed
+     * every title in it out of line. A phone is tall by nature: the only way to
+     * shorten it without shrinking the card into a stamp is to share the width
+     * between more of them. Three at a third of the width land UNDER the browser
+     * composition's height, and they show three different things — a run, the
+     * map ladder, the theme shop — which says « a whole game » better than two.
+     * The alignment itself is held by the grid, not by these sizes: see the
+     * subgrid note in sprintProductWall.tsx.
+     * ⛔ Pick screens that tell something DIFFERENT. The store set also has « You
+     * can't see the walls » and « Swipe blind », which are the same gameplay shot
+     * as the chest one, and « Three worlds », which is the three-scene triptych
+     * pass 4 removed.
      *
      * ⚠️ BOTH CAPTURES WERE REPLACED ON 2026-09-15 and the reason is worth
      * keeping. Adrien: « les captures sont moches, surtout celles de
@@ -330,8 +355,11 @@ export const sprintProducts: readonly SprintProduct[] = [
      * presentable, ship the card without it — an empty frame costs less than a
      * proof that works against us.
      */
-    appShot: '/images/sprint/labyrinth-app',
-    appShot2: '/images/sprint/labyrinth-app-2',
+    phoneShots: [
+      '/images/sprint/labyrinth-app-2',
+      '/images/sprint/labyrinth-app',
+      '/images/sprint/labyrinth-app-3',
+    ],
     surfaces: ['app'],
   },
   {
@@ -484,22 +512,48 @@ type Section<T> = {
    *
    * Every line below is read off the real contracts in
    * ~/code/projects/hq/docs/khufu/contracts/ and nothing else:
-   *   - ownership / reversibility → annexe 1, art. 9.1: the client owns their
-   *     accounts, repository and domain FROM DAY ONE; we work through delegated
-   *     access, so there is no migration at the end, only access handed back.
-   *   - no tacit renewal → contrat forfait, art. 7.8.1: the end of the fix window
-   *     creates no contract, no subscription, no renewal. The contract itself
-   *     calls the opposite reading « vendable comme un abonnement caché ».
-   *   - if it slips → art. 3.4: past ten days of delay attributable to us alone,
-   *     the client terminates and is refunded for work not performed.
-   *   - confidentiality → annexe 1, art. 7.2 and 7.3: five years past the end of
-   *     the contract, non-solicitation for twelve months.
-   *   - scope is frozen → contrat forfait, art. 4.1 and 4.2: the scope is fixed
-   *     at the kickoff; anything added along the way is priced within a day and
-   *     is only executed against the client's written agreement.
-   *   - five days to check → contrat forfait, art. 6.2: delivery is not
-   *     acceptance — the client has five days to verify and to notify their
-   *     acceptance or their reservations.
+   *   - ownership → annexe 1, art. 9.1: the client owns their accounts,
+   *     repository and domain FROM DAY ONE; we work through delegated access.
+   *   - what is signed is delivered → contrat forfait, art. 1.1 and 1.2: annexe 3
+   *     (signed by both parties) is the scope, and we owe an OBLIGATION DE
+   *     RÉSULTAT on conformity to it — most development contracts only promise
+   *     best efforts, so this one is not an axiom.
+   *   - fourteen days of warranty → contrat forfait, art. 7.1 and 7.3: from
+   *     acceptance, anything that does not do what annexe 3 says is fixed free.
+   *   - delivered with its documentation → contrat forfait, art. 1.3: code on
+   *     the client's repository, operations documentation, third-party
+   *     components and their licences.
+   *   - confidentiality → annexe 1, art. 7.2: during the contract and five years
+   *     after.
+   *   - you stay free → contrat forfait, art. 7.8.1 and 7.8.2: the end of the
+   *     warranty creates no contract and commits the client to nothing; what
+   *     follows only exists if they sign it.
+   *
+   * ⚠️ PASS 6 (2026-09-15) REBUILT THE SIX CARDS — Adrien: « j'aime pas les
+   * arguments que tu as mis », then decision cmu36lf6. What went, and why, so
+   * nobody puts it back:
+   *   - « Si le retard vient de nous — vous résiliez et vous êtes remboursé »
+   *     (art. 3.4). Adrien: we do not refund, and « résilier » reads as a
+   *     subscription. ⛔ No refund promise, and no « résilier », « reconduction »,
+   *     « souscrire » or « abonnement » anywhere in this block.
+   *   - « Cinq jours pour vérifier avant d'accepter » (art. 6.2). What the buyer
+   *     actually gets after delivery is the fourteen-day warranty of art. 7.1, so
+   *     that is the fact shown. ⛔ No five-day acceptance window on the page.
+   *   - « Le produit est défini avant de commencer — un ajout est chiffré sous un
+   *     jour ». It told the client that asking for something costs extra: the
+   *     subtraction rhetoric decision cmu26co1 bans. Replaced by the positive
+   *     face of the same contract: what is signed is delivered, as a result.
+   *   - « non-sollicitation comprise » on the confidentiality card. That clause
+   *     protects US; shown as reassurance it displays a constraint on the client.
+   *     It stays in the contract, off the shop window. ⛔ Never show a clause that
+   *     binds the client as if it protected them.
+   *   - « Rien ne se reconduit tout seul » is kept in substance (art. 7.8.1) but
+   *     says the BENEFIT now — « Vous restez libre » — instead of an absence,
+   *     which answered a fear the buyer did not have yet.
+   * ⛔ NOT ON THE PAGE, deliberately: any volume of « hours of feature
+   * adjustment ». Art. 7.2 and 7.3 say the opposite — something more or
+   * different is an evolution, billed — and the warranty covers non-conformity
+   * only. Until the contract changes, the page says fourteen days of warranty.
    * ⛔ Do not add a line here that is not in those files.
    * ⚠️ And it stays SHORT: cmu0hv4c holds — one line per card, no paragraph.
    *
@@ -670,7 +724,6 @@ type Section<T> = {
       noCode: { mark: CompareMark; label: Leaf<T> }
       khufu: { mark: CompareMark; label: Leaf<T> }
     }[]
-    note: Leaf<T>
   }
   /**
    * Who it is for, and who it is not.
@@ -858,6 +911,15 @@ type Section<T> = {
   midCta: {
     products: Leaf<T>
     day7: Leaf<T>
+    /**
+     * The floating button's label (sprintFloatingCta.tsx). Short on purpose — it
+     * sits over the page on a 390px screen. It names the call, like the hero
+     * button, because that is what the modal books.
+     * ⚠️ Authored in fr/en/es and falling back to French like every other string
+     * in this file: the modal it opens and the page under it are in French in
+     * the seven other locales, so a German button there would be the odd one out.
+     */
+    floating: Leaf<T>
   }
   /**
    * ⛔ NO BODY LINE HERE ANY MORE. It read « Le formulaire prend deux minutes. »
@@ -981,10 +1043,21 @@ const content: Section<LocalizedInput> = {
      * It does NOT say they were built in a week, and it must never be edited into
      * saying so.
      */
+    /*
+     * ⛔ AND IT NO LONGER SAYS WHOSE THE PRODUCTS ARE (2026-09-15). It read « les
+     * {count} produits Khufu ». Adrien: saying the products are ours tells the
+     * reader, without meaning to, that none of them is a client's — and that
+     * ambiguity is ours to keep. The sentence is still exactly true: the same
+     * process put {count} products into production. It claims no client either.
+     * ⛔ Do not put the owner back (« nos », « Khufu », « maison »), and do not
+     * swing the other way into implying clients: we remove a precision, we do not
+     * add a claim. No definite article for the same reason — « les {count}
+     * produits » points at a known set, and the only known set is ours.
+     */
     note: {
-      fr: 'Un process rodé : c’est celui qui a mis en production les {count} produits Khufu.',
-      en: 'A proven process: it is the one that put Khufu’s {count} products into production.',
-      es: 'Un proceso rodado: es el que ha puesto en producción los {count} productos de Khufu.',
+      fr: 'Un process rodé : c’est celui qui a mis {count} produits en production.',
+      en: 'A proven process: it is the one that has put {count} products into production.',
+      es: 'Un proceso rodado: es el que ha puesto {count} productos en producción.',
     },
   },
 
@@ -995,6 +1068,7 @@ const content: Section<LocalizedInput> = {
       es: 'Lo que dice el contrato.',
     },
     items: [
+      /* Annexe 1, art. 9.1. */
       {
         title: {
           fr: 'Tout est chez vous dès le premier jour',
@@ -1007,69 +1081,65 @@ const content: Section<LocalizedInput> = {
           es: 'tus cuentas, tu dominio, tu código: trabajamos con accesos que tú concedes',
         },
       },
+      /* Contrat forfait, art. 1.1 and 1.2 — obligation de résultat on annexe 3. */
       {
         title: {
-          fr: 'Rien ne se reconduit tout seul',
-          en: 'Nothing renews on its own',
-          es: 'Nada se renueva solo',
+          fr: 'Ce qui est signé est livré',
+          en: 'What is signed is delivered',
+          es: 'Lo que se firma se entrega',
         },
         note: {
-          fr: 'à la fin des deux semaines de correctifs, aucun abonnement ne se déclenche',
-          en: 'when the two weeks of fixes end, no subscription starts',
-          es: 'al terminar las dos semanas de correcciones, no se activa ninguna suscripción',
+          fr: 'une obligation de résultat : le produit fait tout ce que décrit la spécification signée ensemble',
+          en: 'an obligation of result: the product does everything the specification we signed together describes',
+          es: 'una obligación de resultado: el producto hace todo lo que describe la especificación firmada juntos',
         },
       },
+      /* Contrat forfait, art. 7.1 and 7.3. */
       {
         title: {
-          fr: 'Si le retard vient de nous',
-          en: 'If the delay is on us',
-          es: 'Si el retraso es nuestro',
+          fr: 'Quatorze jours de garantie',
+          en: 'Fourteen days of warranty',
+          es: 'Catorce días de garantía',
         },
         note: {
-          fr: 'au-delà de dix jours, vous résiliez et vous êtes remboursé',
-          en: 'past ten days, you terminate and you are refunded',
-          es: 'pasados diez días, rescindes y te devolvemos el dinero',
+          fr: 'après votre validation, tout écart avec la spécification est corrigé sans frais',
+          en: 'once you sign off, anything that departs from the specification is fixed at no cost',
+          es: 'tras tu validación, cualquier desviación de la especificación se corrige sin coste',
         },
       },
-      {
-        title: { fr: 'Confidentialité', en: 'Confidentiality', es: 'Confidencialidad' },
-        note: {
-          fr: 'cinq ans après la fin du contrat, non-sollicitation comprise',
-          en: 'five years past the end of the contract, non-solicitation included',
-          es: 'cinco años tras el fin del contrato, con no captación incluida',
-        },
-      },
-      /* Contrat forfait, art. 4.1 et 4.2 — le périmètre est figé au lancement,
-         toute demande de modification est chiffrée sous un jour et n'est
-         exécutée qu'après accord écrit du Client. */
-      {
-        /* ⛔ IT USED TO READ « Ce qui est livré est écrit avant de commencer », which
-           says its own section heading (« Ce qui est écrit au contrat ») back to
-           the reader and spends a card doing it. The card's real content is WHEN
-           the product is settled, so that is what it says now. */
-        title: {
-          fr: 'Le produit est défini avant de commencer',
-          en: 'The product is defined before we start',
-          es: 'El producto se define antes de empezar',
-        },
-        note: {
-          fr: 'un ajout en cours de route est chiffré sous un jour, et n’est fait que si vous dites oui',
-          en: 'an addition along the way is priced within a day, and only happens if you say yes',
-          es: 'un añadido sobre la marcha se cotiza en un día y solo se hace si dices que sí',
-        },
-      },
-      /* Contrat forfait, art. 6.2 — cinq jours pour vérifier la conformité et
-         notifier acceptation ou réserves, avant que la recette soit prononcée. */
+      /* Contrat forfait, art. 1.3. */
       {
         title: {
-          fr: 'Cinq jours pour vérifier avant d’accepter',
-          en: 'Five days to check before you accept',
-          es: 'Cinco días para comprobar antes de aceptar',
+          fr: 'Livré avec sa documentation',
+          en: 'Delivered with its documentation',
+          es: 'Entregado con su documentación',
         },
         note: {
-          fr: 'la livraison ne vaut pas acceptation : vous testez, puis vous validez ou vous listez ce qui manque',
-          en: 'delivery is not acceptance: you test, then you sign off or list what is missing',
-          es: 'la entrega no es aceptación: pruebas y luego validas o enumeras lo que falta',
+          fr: 'le code sur votre dépôt, la documentation d’exploitation, les composants tiers et leurs licences',
+          en: 'the code on your repository, the operations documentation, third-party components and their licences',
+          es: 'el código en tu repositorio, la documentación de operación, los componentes de terceros y sus licencias',
+        },
+      },
+      /* Annexe 1, art. 7.2 — and only 7.2: see the ledger on the type. */
+      {
+        title: {
+          fr: 'Votre projet reste confidentiel',
+          en: 'Your project stays confidential',
+          es: 'Tu proyecto sigue siendo confidencial',
+        },
+        note: {
+          fr: 'pendant le contrat, et cinq ans après sa fin',
+          en: 'for the length of the contract, and five years after it ends',
+          es: 'durante el contrato, y cinco años después de su fin',
+        },
+      },
+      /* Contrat forfait, art. 7.8.1 and 7.8.2. */
+      {
+        title: { fr: 'Vous restez libre', en: 'You stay free', es: 'Sigues siendo libre' },
+        note: {
+          fr: 'après la garantie, rien ne vous engage : la suite avec nous n’existe que si vous la signez',
+          en: 'after the warranty nothing binds you: anything further with us exists only if you sign it',
+          es: 'tras la garantía nada te compromete: lo que siga con nosotros solo existe si lo firmas',
         },
       },
     ],
@@ -1388,11 +1458,16 @@ const content: Section<LocalizedInput> = {
         khufu: { mark: 'yes', label: { fr: 'C’est pour nous', en: 'It’s on us', es: 'Corre por nuestra cuenta' } },
       },
     ],
-    note: {
-      fr: 'Le no-code suffit pour valider une idée sans budget. Un bon freelance coûte moins cher si vous n’êtes pas pressé.',
-      en: 'No-code is enough to validate an idea with no budget. A good freelancer costs less if you are not in a hurry.',
-      es: 'El no-code basta para validar una idea sin presupuesto. Un buen freelance cuesta menos si no tienes prisa.',
-    },
+    /*
+     * ⛔ NO NOTE UNDER THE MATRIX ANY MORE (2026-09-15). It read « Le no-code
+     * suffit pour valider une idée sans budget. Un bon freelance coûte moins cher
+     * si vous n'êtes pas pressé. » Adrien: « pourquoi tu vends un truc
+     * concurrent ?! ». It was the one line on the page that RECOMMENDED an
+     * alternative, placed right after the block whose whole job is to rule those
+     * alternatives out — so it cancelled the block. The « not for everyone »
+     * nuance lives in `audience`, which qualifies the VISITOR without praising
+     * the other side. ⛔ No line on this page may speak well of an alternative.
+     */
   },
 
   audience: {
@@ -1781,6 +1856,7 @@ const content: Section<LocalizedInput> = {
   midCta: {
     products: { fr: 'Parler de mon produit', en: 'Talk about my product', es: 'Hablar de mi producto' },
     day7: { fr: 'Cadrer mon projet', en: 'Scope my project', es: 'Encuadrar mi proyecto' },
+    floating: { fr: 'Réserver un appel', en: 'Book a call', es: 'Reservar una llamada' },
   },
 
   finalCta: {

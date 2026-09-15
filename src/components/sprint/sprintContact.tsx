@@ -111,6 +111,8 @@ type ContactContext = {
   href: string
   /** The reading language, so a trigger need not be handed it twice. */
   locale: Locale
+  /** Whether the modal is showing — the floating CTA steps aside while it is. */
+  isOpen: boolean
 }
 
 const Ctx = createContext<ContactContext | null>(null)
@@ -279,9 +281,10 @@ export function SprintContactProvider({
     }
   }, [state, close])
 
+  const isOpen = state !== null
   const value = useMemo<ContactContext>(
-    () => ({ open, href: `#${SPRINT_FORM_ANCHOR}`, locale }),
-    [open, locale],
+    () => ({ open, href: `#${SPRINT_FORM_ANCHOR}`, locale, isOpen }),
+    [open, locale, isOpen],
   )
 
   return (

@@ -151,8 +151,6 @@ export function SprintComparison({ locale }: { locale: Locale }) {
           </tbody>
         </table>
       </div>
-
-      <p className="mt-6 max-w-2xl text-sm text-[var(--color-muted)] text-pretty">{c.note[locale]}</p>
     </div>
   )
 }

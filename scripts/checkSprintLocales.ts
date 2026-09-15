@@ -66,7 +66,7 @@ if (sprintLanding.commitments.items.length % 3 !== 0) {
 /*
  * ⚠️ THE ONE FIGURE ON THIS PAGE THAT IS DERIVED RATHER THAN WRITTEN.
  *
- * The system section closes on « les {count} produits Khufu », and `{count}` is
+ * The system section closes on « {count} produits en production », and `{count}` is
  * replaced at render with `sprintProducts.length` — the cards the products
  * section actually shows (sprintSystem.tsx). Adrien's bound on that retour was
  * that a quantity on this page is true and verifiable or it is not shown at all,

@@ -34,6 +34,9 @@ const WEEKS_PER_MONTH = 4.33
 
 const pct = (weeks: number): string => `${((weeks / SCALE_WEEKS) * 100).toFixed(1)}%`
 
+/** The muted fill every non-Khufu bar uses, solid then fading out. */
+const BAR_MUTED = 'color-mix(in srgb, var(--color-muted) 45%, transparent)'
+
 type Row = {
   key: 'khufu' | 'agency' | 'hire'
   /** Solid part of the bar: the figure we can name. */
@@ -59,6 +62,17 @@ const ticks = [
   { weeks: 3 * WEEKS_PER_MONTH, key: 'threeMonths' as const, smallScreen: true },
   { weeks: SCALE_WEEKS, key: 'sixMonths' as const, smallScreen: true },
 ]
+
+/**
+ * The whole bar as one gradient: solid up to the figure we can name, then fading
+ * out across the open part. The stop is relative to the bar's OWN width, which is
+ * why it is recomputed from the two parts rather than reusing `pct`.
+ */
+function barFill(row: Row): string {
+  if (row.fadeWeeks === 0) return `linear-gradient(${BAR_MUTED}, ${BAR_MUTED})`
+  const stop = ((row.solidWeeks / (row.solidWeeks + row.fadeWeeks)) * 100).toFixed(1)
+  return `linear-gradient(to right, ${BAR_MUTED} ${stop}%, transparent)`
+}
 
 export function SprintDelayChart({ locale }: { locale: Locale }) {
   const c = sprintLanding.delayChart
@@ -107,35 +121,33 @@ export function SprintDelayChart({ locale }: { locale: Locale }) {
                 </p>
               </div>
 
-              <div className="relative mt-3 h-1.5">
-                <span aria-hidden className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-[var(--color-line)]" />
+              {/* ⛔ ONE ELEMENT PER BAR, AND NO RAIL BEHIND IT (2026-09-15). The bar
+                  used to be two rounded spans butted end to end — the named figure,
+                  then the open range — over a 1px rail running the full width.
+                  Adrien: « on voit le troncage entre les barres et on voit la line
+                  derrière ». Two `rounded-full` ends meeting carve an hourglass
+                  pinch at the junction, sub-pixel rounding at 150 %/200 % zoom
+                  opens it into a gap, and both spans were semi-transparent, so the
+                  rail showed through them. It read as a rendering bug, not as data.
+                  Now the solid part and the fade are ONE background on ONE element,
+                  so the only rounded ends are the two real ones and there is no
+                  junction left to split. ⛔ Do not split it back into two spans, and
+                  do not bring back a track under a translucent bar.
+                  ⚠️ `mr-auto` keeps it anchored LEFT in /ar too: the axis ticks are
+                  placed with a physical `left`, and so is the bar's scale origin. */}
+              <div className="mt-3 h-1.5">
                 <span
                   aria-hidden
                   data-bar
-                  className={`absolute top-0 left-0 h-1.5 rounded-full ${
-                    isKhufu ? 'bg-[var(--color-accent)]' : 'bg-[color-mix(in_srgb,var(--color-muted)_45%,transparent)]'
-                  }`}
+                  className={`mr-auto block h-1.5 rounded-full ${isKhufu ? 'bg-[var(--color-accent)]' : ''}`}
                   style={
                     {
-                      width: pct(row.solidWeeks),
+                      width: pct(row.solidWeeks + row.fadeWeeks),
+                      backgroundImage: isKhufu ? undefined : barFill(row),
                       '--bar-delay': `${200 + i * 120}ms`,
                     } as React.CSSProperties
                   }
                 />
-                {row.fadeWeeks > 0 && (
-                  <span
-                    aria-hidden
-                    data-bar
-                    className="absolute top-0 h-1.5 rounded-full bg-[linear-gradient(to_right,color-mix(in_srgb,var(--color-muted)_45%,transparent),transparent)]"
-                    style={
-                      {
-                        left: pct(row.solidWeeks),
-                        width: pct(row.fadeWeeks),
-                        '--bar-delay': `${500 + i * 120}ms`,
-                      } as React.CSSProperties
-                    }
-                  />
-                )}
               </div>
 
               <p className="mt-2.5 max-w-xl text-sm text-[var(--color-muted)] text-pretty">{label.note[locale]}</p>

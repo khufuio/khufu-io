@@ -23,6 +23,7 @@ import { SprintCommitments } from '@/components/sprint/sprintCommitments'
 import { SprintComparison } from '@/components/sprint/sprintComparison'
 import { SprintDay7 } from '@/components/sprint/sprintDay7'
 import { SprintDelayChart } from '@/components/sprint/sprintDelayChart'
+import { SprintFloatingCta } from '@/components/sprint/sprintFloatingCta'
 import { SprintHero } from '@/components/sprint/sprintHero'
 import { SprintLandingView } from '@/components/sprint/sprintLandingView'
 import { SprintMotion } from '@/components/sprint/sprintMotion'
@@ -250,6 +251,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
     <SprintContactProvider locale={locale} copy={contactCopy} week={openSlot?.dateLabel}>
       <SprintLandingView locale={locale} />
       <SprintMotion />
+      <SprintFloatingCta label={c.midCta.floating[locale]} />
       {/* The reveal animations hide their element until the observer marks it in
           view. Without JS there is no observer, so the page would read blank —
           this puts every one of them back. Crawlers get the markup either way;

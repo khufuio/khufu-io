@@ -48,49 +48,48 @@ import { sprintCommitmentIcons, sprintLanding } from '@/content/sprintLanding'
  * the ones `sprintCommitmentIcons` uses; add an icon here before naming it there.
  */
 const ICONS = {
-  /** It is yours from day one: a key. */
+  /** Everything is yours from day one: a key. */
   ownership: (
     <>
       <circle cx="8" cy="12" r="3.6" />
       <path d="M11.6 12H20.5M17.8 12v3.2M14.6 12v2.4" />
     </>
   ),
-  /** Nothing renews on its own: the loop, cut. */
-  renewal: (
+  /** What is signed is delivered: a signed page, ticked. */
+  result: (
     <>
-      <path d="M19.5 12a7.5 7.5 0 0 1-11.6 6.3M4.5 12a7.5 7.5 0 0 1 11.6-6.3" />
-      <path d="M16.6 2.9v3h-3M7.4 21.1v-3h3" />
-      <path d="m4 20 16-16" />
+      <path d="M14 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5L14 3.5Z" />
+      <path d="M14 3.5v5h5" />
+      <path d="m8.8 14.2 2.1 2.1 4.3-4.3" />
     </>
   ),
-  /** If the delay is on us: a clock. */
-  delay: (
-    <>
-      <circle cx="12" cy="12" r="8.5" />
-      <path d="M12 7.2V12l3.2 2.1" />
-    </>
-  ),
-  /** Confidentiality: a shield, closed. */
-  confidentiality: (
+  /** Fourteen days of warranty: a shield, checked. */
+  warranty: (
     <>
       <path d="M12 3.2 4.8 6v5.6c0 4 2.9 7.3 7.2 8.6 4.3-1.3 7.2-4.6 7.2-8.6V6L12 3.2Z" />
-      <path d="M12 10.4v3.4" />
-      <circle cx="12" cy="16.2" r=".4" />
+      <path d="m8.9 12.2 2.2 2.2 4-4" />
     </>
   ),
-  /** The scope, written and framed before anything starts. */
-  scope: (
+  /** Delivered with its documentation: code brackets on a page. */
+  handover: (
     <>
-      <path d="M7.5 3.5h-4v4M16.5 3.5h4v4M7.5 20.5h-4v-4M16.5 20.5h4v-4" />
-      <path d="M8.2 10h7.6M8.2 14h5" />
+      <rect x="4" y="3.5" width="16" height="17" rx="2" />
+      <path d="m10 9.5-2.5 2.5 2.5 2.5M14 9.5l2.5 2.5-2.5 2.5" />
     </>
   ),
-  /** Five days to check before you accept: a checked box. */
-  acceptance: (
+  /** Your project stays confidential: a closed padlock. */
+  confidentiality: (
     <>
-      <rect x="3.5" y="4.5" width="17" height="16" rx="2.5" />
-      <path d="M8 3v3M16 3v3" />
-      <path d="m8.6 13.2 2.2 2.2 4.6-4.6" />
+      <rect x="5" y="10.5" width="14" height="10" rx="2" />
+      <path d="M8 10.5V7.8a4 4 0 0 1 8 0v2.7" />
+      <path d="M12 14.5v2" />
+    </>
+  ),
+  /** You stay free: an open path out of a frame. */
+  freedom: (
+    <>
+      <path d="M10 4.5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h4" />
+      <path d="M13.5 8 17.5 12l-4 4M17.5 12H9" />
     </>
   ),
 } as const

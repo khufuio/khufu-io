@@ -72,8 +72,19 @@ export function SprintProductWall({ locale }: { locale: Locale }) {
           /* ⚠️ THE PANEL IS THE FIX for « on peut confondre le bloc titre avec les
              screens en dessous ». A visible edge and its own ground bound each
              product, so the caption can never be read as belonging to the capture
-             of the card below it. Do not flatten this back to a bare grid cell. */
-          className="flex flex-col rounded-[var(--radius-xl)] border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.035)] p-4 sm:p-5"
+             of the card below it. Do not flatten this back to a bare grid cell.
+
+             ⚠️ AND EACH CARD IS A SUBGRID OF FOUR ROWS — visual, title, tagline,
+             surfaces (2026-09-15). Before this, a card was a flex column: the
+             grid stretched every card of a row to the same height, but INSIDE
+             each card the visual set where the title started, so a browser
+             without a phone (204px), a browser with one (234px) and a row of
+             phones (254px) put three titles on three different lines. Adrien
+             read it as the phone cards being « beaucoup plus hautes ». With
+             `grid-rows-subgrid` the four rows are shared by the whole row of
+             cards, so titles, taglines and chips line up whatever the visual is.
+             `gap-y-0` because a subgrid inherits the wall's 20px gap otherwise. */
+          className="row-span-4 grid grid-rows-subgrid gap-y-0 rounded-[var(--radius-xl)] border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.035)] p-4 sm:p-5"
           data-reveal
           style={{ '--reveal-delay': `${(i % 3) * 110}ms` } as React.CSSProperties}
         >
@@ -96,9 +107,9 @@ export function SprintProductWall({ locale }: { locale: Locale }) {
           </p>
 
           {/* The scope, named. This IS the argument of the section, and it costs
-              one line. `mt-auto` keeps the chips on the card's floor so a row of
+              one line. `self-end` keeps the chips on the card's floor so a row of
               three reads as one band rather than as three ragged ends. */}
-          <ul className="mt-auto flex flex-wrap gap-x-1.5 gap-y-1.5 pt-3">
+          <ul className="flex flex-wrap content-end gap-x-1.5 gap-y-1.5 self-end pt-3">
             {product.surfaces.map((surface) => (
               <li
                 key={surface}
@@ -128,7 +139,7 @@ export function SprintProductWall({ locale }: { locale: Locale }) {
 
 /**
  * One product's surfaces, composed: the browser frame with the phone overlapping
- * its lower corner, or two phones for a product that has no web surface at all.
+ * its lower corner, or a row of phones for a product that has no web surface at all.
  *
  * The phone sits OUTSIDE the browser's flow and overlaps it, so the pair reads as
  * one product on two devices rather than as two unrelated captures. Both frames
@@ -147,18 +158,25 @@ function ProductScope({
   const c = sprintLanding.products
   const appAlt = c.appShotAlt[locale].replace('{name}', name)
 
-  // No web surface: two phones side by side rather than an empty browser frame.
+  /* No web surface: a row of phones rather than an empty browser frame. Each takes
+     an equal share of the width, which is what keeps the row SHORTER than a
+     browser composition (see the Labyrinth entry in sprintLanding.ts).
+     `self-center` sits it in the middle of the shared visual row.
+     ⚠️ THE RADIUS WAS RE-CHECKED AT THIS WIDTH: `.sprint-phone` has a fixed
+     0.75rem corner, and these phones render at ~90–100px, i.e. 12–13% of their
+     width — inside the 10–15% band « trop arrondis » set. Shrink them much further
+     and that stops being true. */
   if (!product.shot) {
     return (
-      <div className="flex justify-center gap-3 px-4 py-1">
-        {[product.appShot, product.appShot2].filter(Boolean).map((src) => (
+      <div className="flex w-full justify-center gap-2.5 self-center sm:gap-3">
+        {product.phoneShots?.map((src) => (
           <PhoneShot
             key={src}
-            src={src as string}
+            src={src}
             alt={appAlt}
             tone="dark"
-            sizes="(min-width: 1024px) 12vw, (min-width: 640px) 18vw, 36vw"
-            className="w-full max-w-[7.5rem]"
+            sizes="(min-width: 1024px) 9vw, (min-width: 640px) 14vw, 30vw"
+            className="min-w-0 flex-1"
           />
         ))}
       </div>
