@@ -1,5 +1,5 @@
 import type { Locale } from '@/i18n/config'
-import { sprintLanding } from '@/content/sprintLanding'
+import { sprintLanding, sprintProducts } from '@/content/sprintLanding'
 
 /**
  * Where the speed comes from — the block that REPLACED « vous parlez au founder
@@ -70,8 +70,16 @@ export function SprintSystem({ locale }: { locale: Locale }) {
         ))}
       </ol>
 
+      {/* ⚠️ THE CLOSING LINE CARRIES A FIGURE AND THE FIGURE IS DERIVED, never
+          typed into the copy (2026-09-15, pass 5). `{count}` becomes the number
+          of cards the products section renders two screens below, so the claim
+          « les N produits Khufu » is checkable by scrolling and cannot rot when a
+          product is added or pulled. Adrien's bound on this retour was explicit:
+          a quantity on this page is true and verifiable in the HQ registry, or it
+          is not shown at all. A literal here would have been the version that
+          goes stale. ⛔ Do not inline the number back into sprintLanding.ts. */}
       <p className="mt-8 text-center text-sm font-medium text-[var(--color-ink-2)] text-pretty sm:text-base">
-        {c.note[locale]}
+        {c.note[locale].replace('{count}', String(sprintProducts.length))}
       </p>
     </div>
   )

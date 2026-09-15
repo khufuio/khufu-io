@@ -15,7 +15,7 @@
  * production with an empty circle and no error anywhere. That mismatch is now a
  * red recipe.
  */
-import { sprintCommitmentIcons, sprintLanding } from '../src/content/sprintLanding'
+import { sprintCommitmentIcons, sprintLanding, sprintProducts } from '../src/content/sprintLanding'
 import { locales } from '../src/i18n/config'
 
 const problems: string[] = []
@@ -63,6 +63,30 @@ if (sprintLanding.commitments.items.length % 3 !== 0) {
   )
 }
 
+/*
+ * ⚠️ THE ONE FIGURE ON THIS PAGE THAT IS DERIVED RATHER THAN WRITTEN.
+ *
+ * The system section closes on « les {count} produits Khufu », and `{count}` is
+ * replaced at render with `sprintProducts.length` — the cards the products
+ * section actually shows (sprintSystem.tsx). Adrien's bound on that retour was
+ * that a quantity on this page is true and verifiable or it is not shown at all,
+ * so the token is the mechanism that keeps it true: a product added to or pulled
+ * from the wall corrects the sentence on its own.
+ *
+ * ⛔ A LOCALE THAT LOSES THE TOKEN IS THE FAILURE THIS CATCHES, and it is silent
+ * without a check: the sentence still renders, still reads as a claim, and simply
+ * stops carrying a number — or worse, carries one somebody typed by hand and that
+ * nothing updates. Both are exactly the false figure the rule exists to prevent.
+ */
+for (const locale of locales) {
+  if (!sprintLanding.system.note[locale].includes('{count}')) {
+    problems.push(
+      `system.note.${locale} — lost the {count} token; the product figure would render as written text ` +
+        'and stop tracking sprintProducts (sprintSystem.tsx)',
+    )
+  }
+}
+
 if (problems.length) {
   console.error(`✗ ${problems.length} problem(s) across ${locales.length} locales:`)
   for (const problem of problems) console.error(`   ${problem}`)
@@ -70,3 +94,4 @@ if (problems.length) {
 }
 console.log(`✓ every leaf resolves in all ${locales.length} locales (${locales.join(', ')})`)
 console.log(`✓ ${sprintLanding.commitments.items.length} contract cards, ${sprintCommitmentIcons.length} icons, full rows`)
+console.log(`✓ the product figure is derived in all ${locales.length} locales ({count} → ${sprintProducts.length})`)

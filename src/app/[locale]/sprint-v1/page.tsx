@@ -290,24 +290,26 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
         kicker={s.kicker}
         title={s.title}
         subtitle={c.hero.subtitle[locale]}
+        /* ⛔ TWO FIGURES, AND THE THIRD MUST NOT COME BACK (2026-09-15, pass 5).
+           It was « 1 — projet à la fois, le vôtre ». The argument for deleting it
+           rather than rewording it again is written out in full on `hero` in
+           sprintLanding.ts; the short version is that a scoreboard of what the
+           buyer gets had one slot spent on how much we can take on, and « 1 » in
+           the display face reads as our size whatever the label underneath says. */
         figures={[
           { value: `${site.v1Days} ${dict.common.days}`, label: dict.home.heroFigures[0].label },
           { value: <Price eur={site.v1PriceEUR} locale={locale} />, label: dict.home.heroFigures[1].label },
-          { value: '1', label: c.hero.clientsPerWeek[locale] },
         ]}
         ctaLabel={c.hero.ctaLabel[locale]}
         ctaNote={c.hero.ctaNote[locale]}
         slots={slots}
         slotOpenLabel={c.hero.slotOpen[locale]}
         slotHeldLabel={c.hero.slotHeld[locale]}
-        /* ⚠️ TRAQIO SINCE 2026-09-15, on Adrien's call: « passe l'animation sur
-            Traqio, c'est plus beau ». The first screen is the one thing an ad
-            visitor judges before reading a word, so it gets the best-looking
-            product we have online.
-            ⛔ NOT the same capture as Traqio's own card below — this is the home
-            page, the card is the pricing page. The sequence and a card on the
-            identical screenshot read as a template rather than as two things. */
-        shot={{ src: '/images/sprint/traqio-hero', alt: c.hero.shotAlt[locale], domain: 'traqio.app' }}
+        /* ⛔ NO CAPTURE HERE ANY MORE (2026-09-15, pass 5 — Adrien: « l'écran de
+            produit à la fin n'aide pas à comprendre le process »). The hero visual
+            is drawn end to end, so all it needs is its accessible description.
+            `traqio-hero*` was deleted with the <img> that used it. */
+        shotLabel={c.hero.shotAlt[locale]}
       />
 
       {/* The work itself — and the one dark section of the page. See the note in

@@ -34,6 +34,29 @@ import { fillLocaleDeep, type LocalizedInput } from '@/i18n/localize'
  * per-day labels. What it ADDED: the `system` block that explains the seven days
  * and the `contact` copy for the booking modal.
  *
+ * ✅ PASS 5 (2026-09-15) IS A NET REMOVAL — 7,906 → 7,783, 123 characters down.
+ * The first pass on this page in a while that pays the ledger instead of owing
+ * it. What went, and each one is argued at its own site:
+ *   - `hero.clientsPerWeek` — the third hero figure, « 1 », deleted outright;
+ *   - the back-office FAQ entry, deleted (a question a [[15000]] buyer does not
+ *     ask before a scoping call, and the only block on the page whose STRUCTURE
+ *     was an arbitration downwards);
+ *   - « Et après le jour 7, je fais quoi ? » merged into « Et après la
+ *     livraison ? » — one anxiety, asked twice, now asked once;
+ *   - « au contrat » in the day-7 grid and in the delay chart.
+ * What was REPLACED rather than removed (roughly no net copy): the system
+ * section's closing line, the FAQ's « pas toute votre feuille de route », the
+ * scope-change swap rule, and the first « pas vous si ». All four under decision
+ * cmu26co1.
+ *
+ * ⚠️ AND ONE THING GREW, declared because the rule above requires it: `shotAlt`
+ * went from 58 to 184 characters. It is the ONLY addition in this pass, and none
+ * of it is on screen — it is the hero visual's accessible description, which had
+ * to stop naming a product once the capture it described was deleted. Without it
+ * a screen reader gets nothing at all from the first screen. The rule exists to
+ * stop a shop window silting up into a document; text no sighted visitor reads
+ * does not silt. ⛔ That defence does not extend to anything that renders.
+ *
  * ⚠️ AND PASS 4 (2026-09-15) RAN IN TWO HALVES; BOTH ARE DECLARED HERE, because
  * the rule above requires it rather than letting copy creep in unannounced.
  *
@@ -342,18 +365,31 @@ type Section<T> = {
    */
   hero: {
     subtitle: Leaf<T>
-    /**
-     * The third figure, next to the delay and the price.
+    /*
+     * ⛔ THERE IS NO THIRD FIGURE, AND THERE MUST NOT BE ONE AGAIN (2026-09-15,
+     * pass 5). The hero carried « 1 — projet à la fois, le vôtre » next to the
+     * delay and the price. Adrien had already queried it once; the pass before
+     * this one heard "the wording is wrong" and only rewrote the label, which is
+     * the mistake to avoid repeating. The objection was never the wording.
      *
-     * ⚠️ IT IS PHRASED AS THE BUYER'S GAIN, NOT AS OUR CONSTRAINT, and that is
-     * the whole point of the 2026-09-15 rewrite. It used to read « client par
-     * semaine », which describes our capacity limit; Adrien asked whether the
-     * figure earned its place at all. It does — it is what makes a full week
-     * credible and what justifies the scarcity — but only said from the buyer's
-     * side: the week is theirs, they are not queued behind three other projects.
-     * ⛔ Never write "we only take one client": that is the seller's sentence.
+     * TWO REASONS, AND THE SECOND IS THE ONE THAT COSTS MONEY.
+     *   1. The row is a scoreboard of what the buyer GETS — seven days, a fixed
+     *      price. A third slot spent on how much we can take on is the one number
+     *      on it that is about us, and the odd one out on a scoreboard reads as
+     *      an apology for the size of the shop. That is decision cmu1u21i's exact
+     *      failure mode: we sell the system, never the founder's headcount.
+     *   2. "1" set in the display face, at the same weight as the price, is the
+     *      page's smallest number in its biggest type. Whatever the label says,
+     *      the eye reads the figure first and reads it as our magnitude.
+     *
+     * ⚠️ AND NOTHING WAS LOST, which is why it could simply go. The claim it
+     * carried — you are not queued behind three other projects — is made twice
+     * more on this page, both times better than a figure can: by the calendar
+     * strip directly underneath (four Mondays, two of them full: shown, dated,
+     * verifiable) and by the comparison matrix's « Votre place dans la file /
+     * La semaine est à vous ». A figure asserting it a third time added a
+     * reading we do not want and no information at all.
      */
-    clientsPerWeek: Leaf<T>
     /**
      * The one button of the first screen.
      *
@@ -843,11 +879,6 @@ const content: Section<LocalizedInput> = {
       en: 'A SaaS or a mobile app, in production. Not a mockup, not a demo.',
       es: 'Un SaaS o una app móvil, en producción. Ni maqueta ni demo.',
     },
-    clientsPerWeek: {
-      fr: 'projet à la fois — le vôtre',
-      en: 'project at a time — yours',
-      es: 'proyecto a la vez: el tuyo',
-    },
     ctaLabel: {
       fr: 'Réserver mon appel de 30 min',
       en: 'Book my 30-min call',
@@ -860,10 +891,18 @@ const content: Section<LocalizedInput> = {
     },
     slotOpen: { fr: 'Disponible', en: 'Open', es: 'Disponible' },
     slotHeld: { fr: 'Complet', en: 'Full', es: 'Completo' },
+    /*
+     * ⚠️ IT DESCRIBES THE DIAGRAM, NOT A PRODUCT (2026-09-15, pass 5). It used to
+     * be the alt text of the Traqio capture the sequence ended on; that capture
+     * is gone, so this is now the ONLY accessible description of the whole first
+     * screen's visual. A screen reader that gets nothing here gets nothing at all
+     * from the hero. ⛔ Never name a product in it again — the sequence is an
+     * illustration and must not sign itself with one.
+     */
     shotAlt: {
-      fr: 'Traqio, un produit Khufu en ligne, vu dans un navigateur.',
-      en: 'Traqio, a Khufu product online, seen in a browser.',
-      es: 'Traqio, un producto de Khufu en línea, visto en un navegador.',
+      fr: 'Un produit complet qui s’assemble puis passe en production : les écrans, l’app, le site, les comptes, les données, les paiements, les e-mails, les services connectés et l’hébergement.',
+      en: 'A complete product assembling itself, then going into production: the screens, the app, the site, accounts, data, payments, e-mails, connected services and hosting.',
+      es: 'Un producto completo que se ensambla y pasa a producción: las pantallas, la app, el sitio, las cuentas, los datos, los pagos, los correos, los servicios conectados y el alojamiento.',
     },
   },
 
@@ -920,10 +959,32 @@ const content: Section<LocalizedInput> = {
         },
       },
     ],
+    /*
+     * ⛔ IT NO LONGER READS « C’est ce qui tient les sept jours. Pas des nuits
+     * blanches. » (2026-09-15, pass 5). Adrien doubted the line; he is right, and
+     * the fault is decision cmu1u21i's again. Denying all-nighters ARGUES ABOUT A
+     * PERSON'S ENDURANCE — it invites the reader to picture somebody at a desk at
+     * 3am and then asks them to believe he is not there. We sell a system, so the
+     * closer has to be evidence the system exists, not a promise about a body.
+     *
+     * ⚠️ THE FIGURE IS DERIVED, NEVER TYPED. `{count}` is replaced at render with
+     * `sprintProducts.length` — the very cards the next section shows. So the
+     * number cannot drift from what the page displays two screens later, and a
+     * product added to or removed from the wall corrects this sentence on its own.
+     * `scripts/checkSprintLocales.ts` fails the recipe if a locale loses the token.
+     * ⛔ Do not spell the number out in words in any locale: a literal is exactly
+     * the figure that goes stale and turns into a false claim.
+     *
+     * ⛔ AND IT CLAIMS NO DURATION, which is the line the products section draws
+     * and this sentence sits two screens above it. It says the METHOD is the one
+     * that put those products in production — true, and checkable by scrolling.
+     * It does NOT say they were built in a week, and it must never be edited into
+     * saying so.
+     */
     note: {
-      fr: 'C’est ce qui tient les sept jours. Pas des nuits blanches.',
-      en: 'That is what holds the seven days. Not all-nighters.',
-      es: 'Eso es lo que sostiene los siete días. No las noches en vela.',
+      fr: 'Un process rodé : c’est celui qui a mis en production les {count} produits Khufu.',
+      en: 'A proven process: it is the one that put Khufu’s {count} products into production.',
+      es: 'Un proceso rodado: es el que ha puesto en producción los {count} productos de Khufu.',
     },
   },
 
@@ -982,10 +1043,14 @@ const content: Section<LocalizedInput> = {
          toute demande de modification est chiffrée sous un jour et n'est
          exécutée qu'après accord écrit du Client. */
       {
+        /* ⛔ IT USED TO READ « Ce qui est livré est écrit avant de commencer », which
+           says its own section heading (« Ce qui est écrit au contrat ») back to
+           the reader and spends a card doing it. The card's real content is WHEN
+           the product is settled, so that is what it says now. */
         title: {
-          fr: 'Ce qui est livré est écrit avant de commencer',
-          en: 'What gets delivered is written before we start',
-          es: 'Lo que se entrega se escribe antes de empezar',
+          fr: 'Le produit est défini avant de commencer',
+          en: 'The product is defined before we start',
+          es: 'El producto se define antes de empezar',
         },
         note: {
           fr: 'un ajout en cours de route est chiffré sous un jour, et n’est fait que si vous dites oui',
@@ -1205,7 +1270,12 @@ const content: Section<LocalizedInput> = {
       },
       {
         title: { fr: '2 semaines de correctifs', en: '2 weeks of fixes', es: '2 semanas de correcciones' },
-        note: { fr: 'après la livraison, au contrat', en: 'after delivery, in the contract', es: 'tras la entrega, en el contrato' },
+        /* ⛔ « au contrat » IS GONE (2026-09-15, pass 5). Adrien: « pourquoi "au
+           contrat" ? » — and the answer is that it was a credibility crutch, not
+           information. Worse, it was worn by ONE tile in a grid of eight: saying
+           it here quietly suggests the seven others are goodwill. Everything in
+           this grid is contractual, so nothing in it says so. */
+        note: { fr: 'après la mise en ligne', en: 'after go-live', es: 'tras la puesta en línea' },
       },
     ],
   },
@@ -1240,10 +1310,14 @@ const content: Section<LocalizedInput> = {
       khufu: {
         name: { fr: 'Khufu · Sprint V1', en: 'Khufu · Sprint V1', es: 'Khufu · Sprint V1' },
         value: { fr: '7 jours', en: '7 days', es: '7 días' },
+        /* Same tic, same cut (pass 5) — but the FACT under it is the whole point
+           of the chart, so it is restated as what it means to the buyer instead
+           of as where it is written. It also now reads straight against the two
+           rows below it, which are explicitly estimates. */
         note: {
-          fr: 'Inscrit au contrat avant le premier jour.',
-          en: 'Written into the contract before day one.',
-          es: 'Inscrito en el contrato antes del primer día.',
+          fr: 'Un engagement, pas une estimation.',
+          en: 'A commitment, not an estimate.',
+          es: 'Un compromiso, no una estimación.',
         },
       },
       agency: {
@@ -1352,10 +1426,17 @@ const content: Section<LocalizedInput> = {
     ],
     notForTitle: { fr: 'Ce n’est pas vous si', en: 'This isn’t you if', es: 'No eres tú si' },
     notForItems: [
+      /* ⚠️ A FRANK NO, AND IT STAYS ONE (cmu26co1). Adrien's instruction on the
+         amputation sweep protected this block by name: refusing a project is not
+         lowering the offer, and the two must not be confused. What changed is
+         only the direction of the sentence — it used to say the visitor's product
+         had « pas de version réduite qui tienne debout », which describes us
+         shrinking their idea until it fits our week. It now says their project is
+         bigger than this offer, which is the same no without the amputation. */
       {
-        fr: 'Votre produit n’a pas de version réduite qui tienne debout.',
-        en: 'Your product has no smaller version that stands up on its own.',
-        es: 'Tu producto no tiene una versión reducida que se sostenga.',
+        fr: 'Votre projet demande plusieurs mois de construction : ce n’est pas un sprint.',
+        en: 'Your project needs months of building: this is not a sprint.',
+        es: 'Tu proyecto necesita meses de construcción: esto no es un sprint.',
       },
       {
         fr: 'Chaque décision passe par un comité, sur plusieurs semaines.',
@@ -1384,11 +1465,22 @@ const content: Section<LocalizedInput> = {
          * (decision cmu1u21i). It pointed at the solo founder, which is both the
          * wrong argument and a weak one. It now points at the system, which is
          * what actually explains the delay.
+         *
+         * ⛔ AND ITS LAST SENTENCE IS GONE — « On livre le produit qui peut être
+         * lancé, pas toute votre feuille de route » (decision cmu26co1). Adrien:
+         * « bah non… on livre tout, faut arrêter de rabaisser l’offre ». He is
+         * right and it was the single most expensive sentence on the page: the
+         * answer spent three clauses building a feat, then took it back in the
+         * fourth. A buyer at [[15000]] who is told they get "the launchable part,
+         * not the plan" has been handed a reason to negotiate, and a V1 sold as
+         * an amputation is an MVP with a premium price on it.
+         * ⛔ Day 0 DEFINES the product with the client. It does not cut it down,
+         * and no sentence on this page may suggest that it does.
          */
         a: {
-          fr: 'Avec une agence, oui : quatre personnes et trois réunions de validation. Ici le travail est découpé et mené en parallèle par un système d’agents, sous supervision humaine, et le périmètre est arrêté avant le jour 1. On livre le produit qui peut être lancé, pas toute votre feuille de route.',
-          en: 'With an agency, yes: four people and three sign-off meetings. Here the work is cut up and run in parallel by a system of agents, under human supervision, and the scope is settled before day 1. We ship the product that can launch, not your whole plan.',
-          es: 'Con una agencia, sí: cuatro personas y tres reuniones de validación. Aquí el trabajo se divide y avanza en paralelo mediante un sistema de agentes, con supervisión humana, y el alcance se cierra antes del día 1. Entregamos el producto que puede lanzarse, no todo tu plan.',
+          fr: 'Avec une agence, oui : quatre personnes et trois réunions de validation. Ici le travail est découpé et mené en parallèle par un système d’agents, sous supervision humaine, et le produit est défini avec vous avant le jour 1. Ce qui est défini est livré en entier, en production, dimanche soir.',
+          en: 'With an agency, yes: four people and three sign-off meetings. Here the work is cut up and run in parallel by a system of agents, under human supervision, and the product is defined with you before day 1. What is defined is delivered whole, in production, on Sunday evening.',
+          es: 'Con una agencia, sí: cuatro personas y tres reuniones de validación. Aquí el trabajo se divide y avanza en paralelo mediante un sistema de agentes, con supervisión humana, y el producto se define contigo antes del día 1. Lo que se define se entrega entero, en producción, el domingo por la noche.',
         },
       },
       {
@@ -1404,36 +1496,31 @@ const content: Section<LocalizedInput> = {
         },
       },
       {
-        q: {
-          fr: '« Et après le jour 7, je fais quoi ? »',
-          en: '“And after day 7, what do I do?”',
-          es: '«¿Y después del día 7, qué hago?»',
-        },
-        a: {
-          fr: 'Deux semaines de correctifs sont comprises. Le produit tourne déjà sur vos comptes, à votre nom.',
-          en: 'Two weeks of fixes are included. The product already runs on your own accounts, in your name.',
-          es: 'Dos semanas de correcciones están incluidas. El producto ya funciona en tus cuentas, a tu nombre.',
-        },
-      },
-      {
         /*
-         * The fear this answers is the last one before signing and it is not
-         * about the build: « je me retrouve seul au jour 21 ». Adrien asked for
-         * the bridge on 2026-09-14 — the tone is reassuring and factual, never
-         * a pitch, and nothing here may be invented: the tiers, the scope and
-         * the commitment are read off /maintenance and nothing else.
+         * ⚠️ ONE QUESTION WHERE THERE WERE TWO (2026-09-15, pass 5). « Et après le
+         * jour 7, je fais quoi ? » sat directly above « Et après les deux semaines
+         * de correctifs ? » — the same anxiety asked twice, a fortnight apart,
+         * which made the reader climb a staircase to get one answer. The first
+         * was also the weaker: it asked what the buyer should DO and answered
+         * with what they GET. Merged, nothing is lost and one entry goes.
+         *
+         * The fear underneath is the last one before signing and it is not about
+         * the build: « je me retrouve seul au jour 21 ». Adrien asked for the
+         * bridge on 2026-09-14 — the tone is reassuring and factual, never a
+         * pitch, and nothing here may be invented: the tiers, the scope and the
+         * commitment are read off /maintenance and nothing else.
          * ⚠️ « à partir de » is exact: [[1490]] is the Starter tier, and Growth
          * and Scale sit above it. Do not write a price this page cannot source.
          */
         q: {
-          fr: 'Et après les deux semaines de correctifs ?',
-          en: 'And after the two weeks of fixes?',
-          es: '¿Y después de las dos semanas de correcciones?',
+          fr: '« Et après la livraison ? »',
+          en: '“And after delivery?”',
+          es: '«¿Y después de la entrega?»',
         },
         a: {
-          fr: 'Vous n’êtes obligé à rien : le produit est à vous et tourne sans nous. Si vous préférez ne pas le porter seul, Full Maintenance prend la suite — hébergement, support et jours de développement compris chaque mois, à partir de [[1490]] par mois, engagement 6 mois.',
-          en: 'You are not tied to anything: the product is yours and runs without us. If you would rather not carry it alone, Full Maintenance takes over — hosting, support and development days included every month, from [[1490]] a month, on a 6-month commitment.',
-          es: 'No estás obligado a nada: el producto es tuyo y funciona sin nosotros. Si prefieres no llevarlo solo, Full Maintenance toma el relevo — alojamiento, soporte y días de desarrollo incluidos cada mes, desde [[1490]] al mes, con compromiso de 6 meses.',
+          fr: 'Deux semaines de correctifs suivent la mise en ligne, et le produit tourne déjà sur vos comptes, à votre nom. Ensuite vous n’êtes obligé à rien : il est à vous et tourne sans nous. Si vous préférez ne pas le porter seul, Full Maintenance prend la suite — hébergement, support et jours de développement compris chaque mois, à partir de [[1490]] par mois, engagement 6 mois.',
+          en: 'Two weeks of fixes follow the go-live, and the product already runs on your own accounts, in your name. After that you are tied to nothing: it is yours and runs without us. If you would rather not carry it alone, Full Maintenance takes over — hosting, support and development days included every month, from [[1490]] a month, on a 6-month commitment.',
+          es: 'Dos semanas de correcciones siguen a la puesta en línea, y el producto ya funciona en tus cuentas, a tu nombre. Después no estás obligado a nada: es tuyo y funciona sin nosotros. Si prefieres no llevarlo solo, Full Maintenance toma el relevo — alojamiento, soporte y días de desarrollo incluidos cada mes, desde [[1490]] al mes, con compromiso de 6 meses.',
         },
         linkLabel: {
           fr: 'Voir Full Maintenance',
@@ -1452,26 +1539,6 @@ const content: Section<LocalizedInput> = {
           fr: 'Tout ce qui est listé plus haut. Le site vitrine est livré sur notre gabarit avec vos textes et vos couleurs, l’hébergement sur nos outils habituels, et les deux semaines sont des correctifs — une évolution reste une prestation à part. Les seuls coûts qui restent chez vous sont ceux de vos propres comptes, à votre nom.',
           en: 'Everything listed above. The showcase site ships on our template with your copy and colours, the hosting on the tools we always use, and the two weeks are fixes — an evolution remains separate work. The only costs left with you are your own accounts, in your name.',
           es: 'Todo lo listado arriba. El sitio escaparate se entrega sobre nuestra plantilla con tus textos y colores, el alojamiento sobre las herramientas que usamos siempre, y las dos semanas son correcciones: una evolución sigue siendo un trabajo aparte. Los únicos costes que quedan de tu lado son los de tus propias cuentas, a tu nombre.',
-        },
-      },
-      {
-        /*
-         * ⚠️ ADDED 2026-09-15, and it exists because something was REMOVED from
-         * the day-7 grid. « Données et back-office » was promised there; Adrien
-         * pulled it: a back-office is not systematic and, depending on the need,
-         * is a real piece of work. Deleting the promise without answering the
-         * question would just move the surprise to day 3, so the answer says how
-         * it is arbitrated — on day 0, in writing, before anybody starts.
-         */
-        q: {
-          fr: 'Un back-office est-il compris ?',
-          en: 'Is an admin back-office included?',
-          es: '¿Se incluye un back-office?',
-        },
-        a: {
-          fr: 'Ça dépend de ce que vous devez piloter. Un espace d’administration simple entre dans le périmètre ; un véritable outil de gestion est un chantier à part entière. C’est arbitré au jour 0, avec vous, jamais découvert en cours de semaine.',
-          en: 'It depends on what you need to run. A simple admin area is in scope; a full management tool is a project of its own. It is settled on day 0, with you, never discovered mid-week.',
-          es: 'Depende de lo que necesites gestionar. Un área de administración sencilla entra en el alcance; una herramienta de gestión completa es un proyecto aparte. Se decide el día 0, contigo, nunca a mitad de semana.',
         },
       },
       {
@@ -1525,10 +1592,18 @@ const content: Section<LocalizedInput> = {
           en: 'What if I want to change the scope during the week?',
           es: '¿Y si quiero cambiar el alcance durante la semana?',
         },
+        /* ⛔ IT USED TO READ « Ce qui entre compense ce qui sort » (cmu26co1). That
+           is a swap rule, and a swap rule tells a buyer that asking for one thing
+           costs them another — the amputation reflex again, planted at the exact
+           moment they are imagining working with us. What replaces it is what the
+           contract actually says (art. 4.1/4.2, and the contract card says it
+           too): an addition is priced and only happens on a yes. The signed
+           product still lands on Sunday either way, which is the reassurance the
+           old sentence was reaching for without giving anything up. */
         a: {
-          fr: 'Ce qui entre compense ce qui sort. Le périmètre garde la même taille, donc la date ne bouge pas.',
-          en: 'Whatever comes in offsets whatever goes out. The scope keeps the same size, so the date doesn’t move.',
-          es: 'Lo que entra compensa lo que sale. El alcance mantiene el mismo tamaño, así que la fecha no se mueve.',
+          fr: 'Vous le demandez, on le chiffre sous un jour, et c’est fait si vous validez. Le produit défini au départ, lui, est en ligne dimanche soir quoi qu’il arrive.',
+          en: 'You ask, we price it within a day, and it happens if you say yes. The product defined at the start is live on Sunday evening either way.',
+          es: 'Tú lo pides, lo presupuestamos en un día y se hace si lo validas. El producto definido al principio está en línea el domingo por la noche pase lo que pase.',
         },
       },
       {

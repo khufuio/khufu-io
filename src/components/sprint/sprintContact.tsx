@@ -367,12 +367,32 @@ function SprintContactDialog({
         >
           {copy.title}
         </h2>
-        {week && (
-          <p className="mt-2 inline-flex items-center gap-2 rounded-full bg-[var(--color-accent-soft)] px-3 py-1 text-xs font-semibold tracking-wide text-[var(--color-accent-ink)] uppercase">
-            <span aria-hidden className="size-1.5 rounded-full bg-[var(--color-accent)]" />
-            {copy.weekNote.replace('{date}', week)}
-          </p>
-        )}
+        {/*
+         * ⛔ THE WEEK CHIP USED TO SIT HERE AND IT IS GONE (2026-09-15, pass 5).
+         * It read « SEMAINE DU 28 SEPTEMBRE », and Adrien: « on ne comprend pas ce
+         * que l'info fait là, d'autant qu'on s'apprête à choisir une date dans un
+         * calendrier ». He is describing a real contradiction, not a wording
+         * problem: this dialog books a THIRTY-MINUTE SCOPING CALL, and the next
+         * thing the visitor sees is Google offering them slots that have nothing
+         * to do with that date. Two dates, no stated relationship, on the one
+         * screen where a €15k buyer is asking « what am I committing to? » — and a
+         * pill is the most assertive element available, so it read as a booking
+         * already made.
+         *
+         * ⛔ AND IT WAS NOT TURNED INTO AN EXPLAINING SENTENCE, which was the
+         * other option. A sentence explaining why a date is displayed is copy
+         * spent justifying the display of something that should not be displayed;
+         * the modal's own rule is that it answers what the visitor is committing
+         * to, and the week is not part of it. `bookNote` already says the true
+         * answer — thirty minutes, and you leave with a date.
+         *
+         * ⚠️ THE WEEK STILL TRAVELS, exactly as pass 4 established, and removing
+         * the chip is what makes that honest rather than contradictory: it is in
+         * the prefilled WhatsApp message (a channel where we control the framing),
+         * in the callback, and on every analytics event fired from here. Context
+         * in the machinery, never a commitment on screen. ⛔ Do not render `week`
+         * in this dialog again.
+         */}
 
         {/* 1 — THE BRIEFING AND THE MAIN PATH. What the thirty minutes produce
             comes BEFORE the button, because that is the sentence that makes the

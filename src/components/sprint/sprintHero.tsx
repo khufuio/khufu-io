@@ -16,19 +16,22 @@ import type { SprintSlot } from '@/lib/sprintSlots'
  * ONE system — paper ground, one accent, a lot of air — and the dark is spent
  * deliberately, once, on the products section.
  *
- * ⚠️ THE SEQUENCE ENDS ON TRAQIO SINCE 2026-09-15, not on Clokizi — Adrien's
- * call, and the reason is the only one that matters on a first screen: it is the
- * better-looking product. ⛔ It is a DIFFERENT capture from the one on Traqio's
- * own card below (home page here, pricing page there): the same screenshot twice
- * reads as a template rather than as two things.
+ * ⛔ THE HERO CARRIES NO PRODUCT CAPTURE AT ALL SINCE 2026-09-15 (pass 5). The
+ * sequence used to dissolve into a real screenshot of Traqio; Adrien: « l'écran
+ * de produit à la fin n'aide pas à comprendre le process ». It now holds on the
+ * finished system instead — and since there is no image left, the hero's LCP
+ * element is the `<h1>` above. ⛔ Do not reintroduce a capture here to "warm up"
+ * the first screen: it would take LCP back off text and onto an image, and it
+ * would end a demonstration with an illustration, which is what was removed.
  *
- * ⛔ THE HERO SHOWS A WHOLE PRODUCT BEING BUILT AND PUT ONLINE. It used to be a
- * capture of Clokizi, which Adrien took apart on 2026-09-14 (« un truc qui fait
- * direct comprendre l'offre en mode on fast build un truc de fou »), and the
- * first sequence that replaced it drew a single screen — which he then took apart
- * too, on 2026-09-15: « il manque pas l'app et le showcase ? et aussi montrer le
- * côté infra, CD… ». The sequence now delivers an ENSEMBLE and then ships it.
- * See sprintBuildSequence.tsx for the honesty and performance bounds on it.
+ * ⛔ THE HERO SHOWS A WHOLE SYSTEM BEING BUILT AND PUT INTO PRODUCTION. It used
+ * to be a capture of Clokizi, which Adrien took apart on 2026-09-14 (« un truc
+ * qui fait direct comprendre l'offre en mode on fast build un truc de fou »); the
+ * sequence that replaced it drew a single screen, which he took apart too (« il
+ * manque pas l'app et le showcase ? et aussi montrer le côté infra, CD… »); and
+ * the one after that he called « trop pauvre ». It now draws the surfaces, then
+ * the eight things underneath them that make a product a product, then the
+ * go-live. See sprintBuildSequence.tsx for the honesty and performance bounds.
  *
  * ⛔ AND IT EXPLAINS NOTHING ABOUT THE SLOTS. The strip is dates and their state,
  * full stop. Adrien: « ça perd l'avantage des slots ». The "full" badge is a
@@ -38,6 +41,14 @@ import type { SprintSlot } from '@/lib/sprintSlots'
  * page: title → one line → button → SEQUENCE → figures → dates. No screen of this
  * page may be nothing but text at 390×844, and on the first screen the visual is
  * what guarantees it.
+ *
+ * ⛔ THE FIGURE ROW CARRIES TWO ENTRIES SINCE 2026-09-15, not three. « 1 — projet
+ * à la fois, le vôtre » is gone: on a row of what the buyer gets, the one number
+ * about our own capacity read as an apology for the size of the shop, and « 1 »
+ * set in the display face reads as a magnitude before the label is read at all.
+ * The claim it made — you are not queued — is still on the page twice, made
+ * better: the calendar strip under this row, and the comparison matrix's
+ * « Votre place dans la file ». See `hero` in sprintLanding.ts.
  */
 
 export type SprintHeroFigure = { value: React.ReactNode; label: string }
@@ -52,12 +63,20 @@ export function SprintHero({
   slots,
   slotOpenLabel,
   slotHeldLabel,
-  shot,
+  shotLabel,
 }: {
   kicker: string
   title: string
   subtitle: string
-  /** Delay, price, and the one client a week — the only figures this page allows. */
+  /**
+   * The delay and the price — the only two figures this page allows.
+   *
+   * ⛔ THERE WERE THREE UNTIL 2026-09-15 and the third is not coming back: « 1 »,
+   * labelled « projet à la fois — le vôtre ». The full argument sits on `hero` in
+   * sprintLanding.ts. The row is sized from this array's length rather than by a
+   * hard-coded column count, so a figure can be dropped without a layout edit —
+   * but dropping one is a copy decision, never a styling one.
+   */
   figures: SprintHeroFigure[]
   ctaLabel: string
   ctaNote: string
@@ -65,7 +84,13 @@ export function SprintHero({
   slots: SprintSlot[]
   slotOpenLabel: string
   slotHeldLabel: string
-  shot: { src: string; alt: string; domain: string }
+  /**
+   * What the sequence is, in one sentence, for a screen reader. It used to be the
+   * capture's `alt`; with the capture gone it is the hero visual's ONLY
+   * accessible description, so it describes the system being assembled rather
+   * than naming a product.
+   */
+  shotLabel: string
 }) {
   /*
    * ⛔ THE BUTTON NO LONGER NAMES A DATE (2026-09-15, reversing decision
@@ -118,12 +143,15 @@ export function SprintHero({
         {/* The build, shown. Second in the DOM so it lands directly under the
             button on a phone — the first screen is never text alone. */}
         <div className="lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center">
-          <SprintBuildSequence shot={shot} />
+          <SprintBuildSequence label={shotLabel} />
         </div>
 
         {/* The figures and the calendar: two graphic objects, no sentence. */}
         <div className="lg:col-start-1 lg:row-start-2">
-          <dl className="grid grid-cols-3 divide-x divide-[var(--color-line)] border-y border-[var(--color-line)] py-5">
+          <dl
+            className="grid divide-x divide-[var(--color-line)] border-y border-[var(--color-line)] py-5"
+            style={{ gridTemplateColumns: `repeat(${figures.length}, minmax(0, 1fr))` }}
+          >
             {figures.map((figure) => (
               <div key={figure.label} className="px-3 first:pl-0 last:pr-0">
                 <dt className="sr-only">{figure.label}</dt>
