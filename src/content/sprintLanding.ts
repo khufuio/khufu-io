@@ -104,10 +104,15 @@ import { fillLocaleDeep, type LocalizedInput } from '@/i18n/localize'
  * week — holidays, a week actually sold — and the strip simply shows the next
  * Monday instead.
  *
- * ⛔ This is the ONLY lever on the calendar. No "2 places left", no countdown, no
- * week labelled "booked": the page says which weeks are open, it never claims the
- * others are gone. A false claim is verifiable by reloading the page two weeks
- * running, on the one page we point an ad budget at.
+ * ⚠️ IT REMOVES A WEEK; IT DOES NOT MARK ONE FULL. That is `isHeldByRule` (one
+ * Monday in two, by rule) plus `sprintClosedMondays` for a week closed by hand.
+ * Three levers, and this is the only one that makes a date disappear entirely.
+ *
+ * ⛔ AND NONE OF THE THREE MAY GROW INTO A DEVICE. No "2 places left", no
+ * countdown, no week labelled "booked": the page says which weeks are open and
+ * which are taken, never by whom, and never how many are left. A false claim
+ * here is verifiable by reloading the page two weeks running, on the one page we
+ * point an ad budget at.
  */
 export const sprintExcludedMondays: readonly string[] = []
 

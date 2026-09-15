@@ -68,8 +68,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
  *
  * WHAT THE STRUCTURE IS FOR, section by section:
  *   hero        — SHOWS a whole product being built AND put online, plus three
- *                 figures. One sentence, one dated button, the calendar. No
- *                 paragraph, no slot mechanics.
+ *                 figures. One sentence, one button — NEUTRAL, naming no week
+ *                 since 2026-09-15 — and the calendar. No paragraph, no slot
+ *                 mechanics.
  *   system      — where the seven days come from, drawn. It REPLACED the « vous
  *                 parlez au founder qui écrit le code » line (decision cmu1u21i):
  *                 the claim was false and "solo" argues against a $17k sale, but
