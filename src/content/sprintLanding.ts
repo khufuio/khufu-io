@@ -239,9 +239,16 @@ export const sprintCommitmentIcons = [
  * say or imply that a product is AVAILABLE, downloadable, open to the public or
  * being sold when it is not: no store button for Hive TCG, no user numbers, no
  * "launched", no traction. The badge, yes. The distribution promise, never.
- * Traqio's product is still a prelaunch (decision cmu0fqj7) — which is exactly
- * why its non-public surfaces are declared in `soonSurfaces` and labelled as
- * such, rather than sitting silently next to the public ones.
+ *
+ * ⛔ AND NO PRODUCT WEARS A STATE OF PROGRESS — SETTLED 2026-09-15 (decision
+ * cmu39zpr). Traqio used to declare its platform, its SDKs and its packages as
+ * « à venir »; it does not any more, and nothing else may either. Adrien: « on a
+ * dit, pas de "à venir" ou autre, on considère tout comme en prod pour Traqio ».
+ * The reason is what this whole section is FOR: Traqio sits here as PROOF of
+ * what Khufu runs in production, and a surface labelled "coming" turns that
+ * proof back into a promise — it weakens precisely the thing it was shown to
+ * demonstrate. This supersedes the prelaunch nuance cmu0fqj7 put on Traqio's
+ * presentation; the distribution limit above is untouched and still binds.
  */
 
 /**
@@ -266,15 +273,15 @@ export type SprintProduct = {
    * (replaces `shot` and `appShot`). Three, not two: see the Labyrinth entry.
    */
   phoneShots?: readonly string[]
-  /** Surfaces that are PUBLIC. Must match what the product really ships today. */
-  surfaces: readonly SprintSurface[]
   /**
-   * Surfaces that are BUILT BUT NOT PUBLIC YET. Rendered with their own label so
-   * the card can show the real scope of a prelaunch without claiming it is out
-   * (Traqio — decision cmu0fqj7). ⛔ Never move one of these into `surfaces` to
-   * make a card look fuller.
+   * The surfaces the product ships. Must match what it really runs today.
+   *
+   * ⛔ ONE LIST, NO SECOND TIER (decision cmu39zpr). There used to be a
+   * `soonSurfaces` field rendering « … · à venir » chips for Traqio; it is gone,
+   * field, label and all ten locales. A surface either belongs on the card or it
+   * does not — a card that grades its own contents argues against itself.
    */
-  soonSurfaces?: readonly SprintSurface[]
+  surfaces: readonly SprintSurface[]
 }
 
 export const sprintProducts: readonly SprintProduct[] = [
@@ -306,10 +313,13 @@ export const sprintProducts: readonly SprintProduct[] = [
     // set in Roboto — a face from the site's own `system-ui` stack (what Android
     // visitors get); the headless server has only DejaVu, which no visitor sees.
     shot: { image: '/images/sprint/traqio', domain: 'traqio.app' },
-    // ⚠️ The site is public; the platform, the SDKs and the packages are built
-    // and not open yet. Declared, never dressed as live (decision cmu0fqj7).
-    surfaces: ['site'],
-    soonSurfaces: ['web', 'sdk', 'packages'],
+    // ⚠️ FOUR SURFACES AT ONE RANK (decision cmu39zpr, 2026-09-15). The platform,
+    // the SDKs and the packages sit next to the site with no suffix and no
+    // dimmer chip. Adrien: « on considère tout comme en prod pour Traqio ». They
+    // run — that is what the « En production » badge qualifies — and Traqio is on
+    // this page as proof, so grading its own surfaces would turn that proof into
+    // a promise. ⛔ Do not reintroduce a "coming" tier here or anywhere.
+    surfaces: ['web', 'sdk', 'packages', 'site'],
   },
   {
     key: 'hive',
@@ -586,13 +596,6 @@ type Section<T> = {
      * `siteOnly` badge this page used to carry is gone.
      */
     liveLabel: Leaf<T>
-    /**
-     * Suffix on a surface that EXISTS BUT IS NOT PUBLIC — Traqio's platform, its
-     * SDKs and its packages. It is what lets the card show the real scope of a
-     * prelaunch without claiming it is out (decision cmu0fqj7). ⛔ Never drop the
-     * suffix to make a card look fuller.
-     */
-    soonSuffix: Leaf<T>
     /** Taglines for the products that have no `projects.ts` entry to read one from. */
     taglines: { traqio: Leaf<T>; hive: Leaf<T> }
     /** Alt text pattern for a card capture, carrying `{name}`. */
@@ -1148,7 +1151,6 @@ const content: Section<LocalizedInput> = {
   products: {
     title: { fr: 'Quelques exemples.', en: 'A few examples.', es: 'Algunos ejemplos.' },
     liveLabel: { fr: 'En production', en: 'In production', es: 'En producción' },
-    soonSuffix: { fr: 'à venir', en: 'coming', es: 'próximamente' },
     surfaces: {
       web: { fr: 'Plateforme web', en: 'Web platform', es: 'Plataforma web' },
       app: { fr: 'App mobile', en: 'Mobile app', es: 'App móvil' },

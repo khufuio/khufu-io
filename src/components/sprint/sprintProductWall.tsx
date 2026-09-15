@@ -29,10 +29,18 @@ import { PhoneShot, ProductShot } from '@/components/sprint/productShot'
  *
  * ⛔ AND THE LIMIT THAT COMES WITH THAT BADGE IS NOT OPTIONAL: nothing here may
  * say or imply a product is AVAILABLE, downloadable, open or sold when it is not.
- * No store button for Hive TCG, no user counts, no "launched". A surface that
- * exists but is not public is declared in `soonSurfaces` and WEARS ITS SUFFIX —
- * that is how Traqio can show its platform and its SDKs (Adrien: « ne le réduis
- * pas au site vitrine ») while its product is still a prelaunch (cmu0fqj7).
+ * No store button for Hive TCG, no user counts, no "launched".
+ *
+ * ⛔ NO SURFACE WEARS A STATE OF PROGRESS (decision cmu39zpr, 2026-09-15). The
+ * chips under a card were once two-tiered: solid for public surfaces, dashed and
+ * dimmed with a « · à venir » suffix for Traqio's platform, SDKs and packages.
+ * Both tiers are gone, and so is the `soonSurfaces`/`soonSuffix` machinery that
+ * fed them. Adrien: « on a dit, pas de "à venir" ou autre, on considère tout
+ * comme en prod pour Traqio ». The reason is structural to this section: these
+ * cards are PROOF of what Khufu runs in production, and a chip that grades
+ * itself down turns that proof into a promise — it costs exactly the credibility
+ * the card was placed here to buy. Traqio still shows its full scope (« ne le
+ * réduis pas au site vitrine »), now at one single rank.
  *
  * ⚠️ WHY DARK HERE AND NOWHERE ELSE. The hero used to be dark simply because it
  * was a hero, which Adrien called correctly: « c'est pas réfléchi ». Dark is a
@@ -108,7 +116,8 @@ export function SprintProductWall({ locale }: { locale: Locale }) {
 
           {/* The scope, named. This IS the argument of the section, and it costs
               one line. `self-end` keeps the chips on the card's floor so a row of
-              three reads as one band rather than as three ragged ends. */}
+              three reads as one band rather than as three ragged ends.
+              ⛔ ONE STYLE OF CHIP, ONE LIST — see the ledger on cmu39zpr above. */}
           <ul className="flex flex-wrap content-end gap-x-1.5 gap-y-1.5 self-end pt-3">
             {product.surfaces.map((surface) => (
               <li
@@ -116,18 +125,6 @@ export function SprintProductWall({ locale }: { locale: Locale }) {
                 className="rounded-full border border-[rgba(255,255,255,0.16)] px-2.5 py-0.5 text-[11px] tracking-wide text-[color-mix(in_srgb,var(--color-paper)_66%,transparent)]"
               >
                 {c.surfaces[surface][locale]}
-              </li>
-            ))}
-            {/* ⛔ A NON-PUBLIC SURFACE ALWAYS WEARS ITS SUFFIX. Dashed, dimmer, and
-                the word is in the label itself rather than in a legend — a legend
-                is a second thing to read, and a chip read alone would claim the
-                surface is out. */}
-            {product.soonSurfaces?.map((surface) => (
-              <li
-                key={surface}
-                className="rounded-full border border-dashed border-[rgba(255,255,255,0.18)] px-2.5 py-0.5 text-[11px] tracking-wide text-[color-mix(in_srgb,var(--color-paper)_44%,transparent)]"
-              >
-                {c.surfaces[surface][locale]} · {c.soonSuffix[locale]}
               </li>
             ))}
           </ul>
