@@ -17,6 +17,7 @@ import { parseMarkdown, plain, type Block, type Inline } from './markdown'
 const VALIDATED_ROWS = 500
 
 const DATE_COLUMNS = new Set([
+  'offer_presented_on',
   'registered_on',
   'expires_on',
   'contract_signed_on',
@@ -32,7 +33,8 @@ const WIDTHS: Record<string, number> = {
   lead_name: 20,
   lead_company: 26,
   lead_email: 28,
-  deal_type: 12,
+  offer_presented_on: 15,
+  offer_confirmed: 13,
   commission_rate_pct: 10,
   registered_on: 13,
   expires_on: 13,
@@ -87,7 +89,7 @@ const codeValues = (inlines: Inline[]): string[] => inlines.filter((i) => i.code
  * Columns whose allowed values are listed inline in the doc's column table.
  * `status` is not here — its values come from the state-machine table instead.
  */
-const ENUMERATED = new Set(['deal_type', 'currency'])
+const ENUMERATED = new Set(['offer_confirmed', 'currency'])
 
 /** Everything the .md says about the register, keyed for the spreadsheet build. */
 type Doc = {

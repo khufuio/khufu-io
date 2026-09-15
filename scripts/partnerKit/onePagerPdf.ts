@@ -304,12 +304,17 @@ function renderPage(parts: Parts, scale: number): { buffer: Promise<Buffer>; ove
   }
   const x = (): number => columnX[Math.min(cursor.column, 1)]
 
-  /** Height of the first unbreakable chunk of a block — for keep-with-next. */
+  /**
+   * Height `place` will ask for the first unbreakable chunk of a block — for
+   * keep-with-next. Paragraphs and list items are placed whole, so it must be their
+   * full height plus the same spacing the flow below adds; anything less lets a
+   * heading sit alone at a column foot while its first item jumps to the next column.
+   */
   const leadHeight = (block: Block | undefined): number => {
     if (!block) return 0
-    if (block.kind === 'paragraph') return Math.min(measureInlines(doc, block.inlines, columnWidth, body()), size(34))
+    if (block.kind === 'paragraph') return measureInlines(doc, block.inlines, columnWidth, body()) + size(7)
     if (block.kind === 'list' && block.items[0]) {
-      return Math.min(measureInlines(doc, block.items[0], columnWidth - size(12), body()), size(34))
+      return measureInlines(doc, block.items[0], columnWidth - size(12), body()) + size(5)
     }
     if (block.kind === 'table') return size(34)
     return 0
