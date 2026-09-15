@@ -5,8 +5,10 @@
  * nothing here edits content. This script only re-typesets them:
  *
  *   one-pagers            -> one-page branded A4 PDF (what you attach to an email)
- *   referral agreements   -> DOCX (what a lawyer comments and tracks changes on)
- *                            + PDF (what you send to read)
+ *   referral agreements   -> PDF, the reference rendering, through the khufu client
+ *                            document pipeline (hq/docs/tools/client-documents.md)
+ *                            + DOCX, only for a lawyer to annotate — never the rendering
+ *                            a layout is judged on
  *   attribution tracker   -> XLSX (what you type into), CSV stays the source
  *
  * The seven partner emails stay .md on purpose — they are copy-paste text.
@@ -19,7 +21,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { DIST_DIR, PARTNERS_DIR } from './partnerKit/brand'
 import { buildContractDocx } from './partnerKit/contractDocx'
-import { buildDocumentPdf } from './partnerKit/documentPdf'
+import { buildContractPdf, type ContractSpec } from './partnerKit/contractPdf'
 import { buildOnePagerPdf } from './partnerKit/onePagerPdf'
 import { reportUnsupported } from './partnerKit/pdfText'
 import { buildTrackerXlsx } from './partnerKit/trackerXlsx'
@@ -34,18 +36,22 @@ function write(name: string, data: Buffer, detail: string): void {
   console.log(`✓ dist/${name} — ${detail}, ${(size / 1024).toFixed(1)} KB`)
 }
 
-const CONTRACTS = [
+const CONTRACTS: { source: string; out: string; kicker: string; spec: ContractSpec }[] = [
   {
     source: 'contrat-apporteur-affaires-projet-fr.md',
     out: 'contrat-apporteur-affaires-projet-fr',
     kicker: 'Projet de contrat',
-    pageLabel: (current: number, total: number): string => `Page ${current} / ${total}`,
+    spec: {
+      lang: 'fr',
+      type: "Contrat d'apporteur d'affaires",
+      label: "Contrat d'apporteur d'affaires — projet Khufu FZCO",
+    },
   },
   {
     source: 'referral-agreement-draft-en.md',
     out: 'referral-agreement-draft-en',
     kicker: 'Draft agreement',
-    pageLabel: (current: number, total: number): string => `Page ${current} of ${total}`,
+    spec: { lang: 'en', type: 'Referral agreement', label: 'Referral agreement — Khufu FZCO draft' },
   },
 ]
 
@@ -61,11 +67,9 @@ async function main(): Promise<void> {
   for (const contract of CONTRACTS) {
     const markdown = read(contract.source)
     write(`${contract.out}.docx`, await buildContractDocx(markdown, contract.kicker), 'DOCX, reviewable')
-    const { pdf, pages } = await buildDocumentPdf(markdown, {
-      kicker: contract.kicker,
-      pageLabel: contract.pageLabel,
-    })
-    write(`${contract.out}.pdf`, pdf, `${pages} pages A4`)
+    const pdfPath = path.join(DIST_DIR, `${contract.out}.pdf`)
+    const htmlPath = buildContractPdf(markdown, contract.spec, pdfPath)
+    console.log(`✓ dist/${contract.out}.pdf — client-doc-pdf.mjs, HTML at ${htmlPath}`)
   }
 
   write(
