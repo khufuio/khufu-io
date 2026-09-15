@@ -598,7 +598,8 @@ body {
   stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
+  /* ⛔ No `vector-effect: non-scaling-stroke` here: Chrome then measures the
+     dash in screen pixels and ignores `pathLength`, so the line stopped at 60%. */
   stroke-dasharray: 1;
   stroke-dashoffset: 0;
 }
@@ -653,7 +654,8 @@ body {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
+  /* ⛔ No `vector-effect: non-scaling-stroke` here: Chrome then measures the
+     dash in screen pixels and ignores `pathLength`, so the line stopped at 60%. */
   stroke-dasharray: 1;
   stroke-dashoffset: 0;
 }

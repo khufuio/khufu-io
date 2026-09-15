@@ -1089,7 +1089,7 @@ const content: Section<LocalizedInput> = {
           es: 'Lo que se firma se entrega',
         },
         note: {
-          fr: 'une obligation de résultat : le produit fait tout ce que décrit la spécification signée ensemble',
+          fr: 'une obligation de résultat : le produit fait tout ce que décrit la spécification signée ensemble',
           en: 'an obligation of result: the product does everything the specification we signed together describes',
           es: 'una obligación de resultado: el producto hace todo lo que describe la especificación firmada juntos',
         },
@@ -1137,7 +1137,7 @@ const content: Section<LocalizedInput> = {
       {
         title: { fr: 'Vous restez libre', en: 'You stay free', es: 'Sigues siendo libre' },
         note: {
-          fr: 'après la garantie, rien ne vous engage : la suite avec nous n’existe que si vous la signez',
+          fr: 'après la garantie, rien ne vous engage : la suite avec nous n’existe que si vous la signez',
           en: 'after the warranty nothing binds you: anything further with us exists only if you sign it',
           es: 'tras la garantía nada te compromete: lo que siga con nosotros solo existe si lo firmas',
         },
