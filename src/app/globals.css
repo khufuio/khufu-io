@@ -919,3 +919,146 @@ main:has(> [data-flush-footer]:last-child) + footer {
     margin-top: 1rem;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   THE SPRINT V1 NET — one folded e-mail field (components/sprint/sprintCallback.tsx).
+
+   ⚠️ IT IS STYLED HERE RATHER THAN IN UTILITIES because it renders on TWO
+   grounds: the modal's paper and the closing block's ink. A `-dark` modifier per
+   part keeps the two readable without a second component.
+
+   ⛔ AND IT MUST NEVER LOOK LIKE THE PAGE'S MAIN ACTION. The booking button is
+   the filled accent pill; this is a hairline field and an outline button. The
+   moment the two compete visually, the €15k path is arguing with its own net.
+--------------------------------------------------------------------------- */
+
+.sprint-callback > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+/* Safari still paints the disclosure triangle without this. */
+.sprint-callback > summary::-webkit-details-marker {
+  display: none;
+}
+
+.sprint-callback-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-ink-2);
+  text-underline-offset: 4px;
+}
+
+.sprint-callback-summary::after {
+  content: '';
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 1.6px solid currentColor;
+  border-bottom: 1.6px solid currentColor;
+  transform: translateY(-1px) rotate(45deg);
+  transition: transform 160ms ease;
+}
+
+.sprint-callback[open] > .sprint-callback-summary::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+.sprint-callback-summary:hover {
+  text-decoration: underline;
+}
+
+.sprint-callback-summary-dark {
+  color: color-mix(in srgb, var(--color-paper) 78%, transparent);
+}
+
+.sprint-callback-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0.7rem 0.9rem;
+  font-size: 1rem; /* ⛔ Never below 16px: iOS Safari zooms the page on focus. */
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: 9999px;
+}
+
+.sprint-callback-input::placeholder {
+  color: var(--color-muted);
+}
+
+.sprint-callback-input:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.sprint-callback-input-dark {
+  color: var(--color-paper);
+  background: color-mix(in srgb, var(--color-paper) 10%, transparent);
+  border-color: color-mix(in srgb, var(--color-paper) 26%, transparent);
+}
+
+.sprint-callback-input-dark::placeholder {
+  color: color-mix(in srgb, var(--color-paper) 52%, transparent);
+}
+
+.sprint-callback-input-dark:focus-visible {
+  outline-color: var(--color-paper);
+}
+
+.sprint-callback-submit {
+  flex: 0 0 auto;
+  padding: 0.7rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  background: transparent;
+  border: 1px solid var(--color-ink);
+  border-radius: 9999px;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.sprint-callback-submit:hover:not(:disabled) {
+  color: var(--color-paper);
+  background: var(--color-ink);
+}
+
+.sprint-callback-submit:disabled {
+  opacity: 0.6;
+}
+
+.sprint-callback-submit-dark {
+  color: var(--color-paper);
+  border-color: color-mix(in srgb, var(--color-paper) 45%, transparent);
+}
+
+.sprint-callback-submit-dark:hover:not(:disabled) {
+  color: var(--color-ink);
+  background: var(--color-paper);
+}
+
+/* The honeypot: out of the layout and off every assistive surface, but still a
+   real, fillable input for a bot. ⛔ Not `display:none` — some form-fillers skip
+   those, which would defeat the trap. */
+.sprint-callback-trap {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The no-JavaScript swap. Hidden by default; the page's <noscript> block flips
+   this pair so the folded panel offers a mailto instead of a dead form. */
+[data-nojs-only] {
+  display: none;
+}

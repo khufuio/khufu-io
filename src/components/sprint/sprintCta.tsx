@@ -4,6 +4,7 @@ import { buttonClasses } from '@/components/ui/button'
 import { track } from '@/lib/analytics'
 import { campaignProps } from '@/lib/utm'
 import { SPRINT_FORM_ANCHOR } from '@/lib/sprintAnchors'
+import { SPRINT_EVENTS } from '@/lib/sprintContactEvents'
 import { useSprintContact } from '@/components/sprint/sprintContact'
 
 /* ⛔ DO NOT RE-EXPORT `SPRINT_FORM_ANCHOR` FROM THIS FILE. It is imported here,
@@ -26,8 +27,15 @@ import { useSprintContact } from '@/components/sprint/sprintContact'
  *
  * ⚠️ `placement` IS PRESERVED EXACTLY AS IT WAS — it is what makes the repetition
  * measurable (which of the CTAs actually carries the campaign), and renaming one
- * would silently break the comparison with everything already recorded. The
- * modal's own events carry it through, prefixed with `modal:`.
+ * would silently break the comparison with everything already recorded. Every
+ * event fired from inside the modal carries the same `placement` verbatim, plus
+ * its own `surface`, so "which CTA" and "which UI" stay two separate questions
+ * (lib/sprintContactEvents.ts).
+ *
+ * ⚠️ AND THE LOCALE COMES FROM THE CONTEXT, not from a prop. It is `null` only
+ * when there is no provider — the same state in which the click is a plain
+ * anchor jump — so a missing locale in the data is itself the signal that the
+ * degraded path was taken.
  */
 export function SprintCta({
   placement,
@@ -52,7 +60,12 @@ export function SprintCta({
       href={`#${SPRINT_FORM_ANCHOR}`}
       data-cta={placement}
       onClick={(e) => {
-        track('sprint_cta_clicked', { placement, ...campaignProps() })
+        track(SPRINT_EVENTS.ctaClicked, {
+          placement,
+          week: week ?? null,
+          locale: contact?.locale ?? null,
+          ...campaignProps(),
+        })
         // No provider (or no JS) → the anchor does its job untouched.
         if (!contact) return
         e.preventDefault()

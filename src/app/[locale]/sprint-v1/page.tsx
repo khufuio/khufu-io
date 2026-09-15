@@ -30,6 +30,7 @@ import { SprintProductWall } from '@/components/sprint/sprintProductWall'
 import { SprintSystem } from '@/components/sprint/sprintSystem'
 import { SprintContactProvider, type SprintContactCopy } from '@/components/sprint/sprintContact'
 import { SprintBookingLink } from '@/components/sprint/sprintBookingLink'
+import { SprintCallback } from '@/components/sprint/sprintCallback'
 import { SprintTimeline, type SprintTimelineStep } from '@/components/sprint/sprintTimeline'
 
 /**
@@ -83,10 +84,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
  *   audience    — who it is for, in chips.
  *   faq         — the ONE question zone. The « trois questions » block that sat
  *                 on top of it is merged in.
- *   commitments — what the contract says, as cards, immediately before the form:
- *                 the reminder someone who entered mid-page needs in order to
- *                 decide (cmu0jo1w). It re-presents the hero's promise in
- *                 another shape — never the same object twice.
+ *   commitments — what the contract says, as cards, immediately before the
+ *                 closing block: the reminder someone who entered mid-page needs
+ *                 in order to decide (cmu0jo1w). It re-presents the hero's
+ *                 promise in another shape — never the same object twice.
+ *   closing     — the page's last word: the calendar link (direct, no modal) and
+ *                 the folded net. Also the `#start` target.
  *
  * ⛔ ONE OFFER, NOTHING AROUND IT. No delivery guarantee and no 48h prototype;
  * neither comes back without a new decision replacing cmu0exke and cmu0fcvk.
@@ -96,9 +99,23 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
  *
  * ⛔ EVERY CTA OPENS THE CONTACT MODAL (2026-09-15), it does not scroll. Adrien:
  * « un mec qui voit la page défiler va juste vouloir lire… ». The whole page is
- * therefore wrapped in `SprintContactProvider`. ⚠️ The form at the foot STAYS —
- * it is the net for a visitor who scrolled past every button, and it is the
- * no-JavaScript target of `href="#start"`.
+ * therefore wrapped in `SprintContactProvider`.
+ *
+ * ⛔ TWO WAYS TO REACH US, AND THEY ARE NOT INTERCHANGEABLE (2026-09-15, pass 4).
+ * The call is the conversion — at €15k the thing being sold is a conversation,
+ * not an address in a base. But the calendar mechanically excludes people
+ * (10:00–14:00 UTC, never the same day, 14 days out, English-only), so a FOLDED
+ * ONE-FIELD NET sits under it in the modal and in the closing block. ⛔ It is a
+ * callback request, not the « nom / prénom / e-mail / votre projet » form that
+ * was rejected as basique — the whole argument, and the bounds on it, are in
+ * sprintCallback.tsx. ⚠️ The pass before this one deleted every alternative and
+ * left the funnel with nothing to compare a booking against; every contact path
+ * now emits its own event (lib/sprintContactEvents.ts) so the next arbitration
+ * is made on data.
+ *
+ * ⚠️ The closing block is the no-JavaScript target of `href="#start"`, and it
+ * carries BOTH doors for that reason: a real `<a>` to the calendar and the net,
+ * whose form the page's `<noscript>` swaps for a prefilled mailto.
  *
  * ⚠️ AND THE ANCHOR CONSTANTS COME FROM `lib/sprintAnchors.ts`, a module with NO
  * directive. Importing them from the client CTA module is what shipped
@@ -134,6 +151,19 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
     whatsappLabel: c.contact.whatsappLabel[locale],
     close: c.contact.close[locale],
     fallback: c.contact.fallback[locale],
+    callback: {
+      link: c.contact.callback.link[locale],
+      body: c.contact.callback.body[locale],
+      placeholder: c.contact.callback.placeholder[locale],
+      submit: c.contact.callback.submit[locale],
+      sending: c.contact.callback.sending[locale],
+      done: c.contact.callback.done[locale],
+      invalid: c.contact.callback.invalid[locale],
+      failed: c.contact.callback.failed[locale],
+      privacy: c.contact.callback.privacy[locale],
+      fieldLabel: c.contact.callback.fieldLabel[locale],
+      mailLabel: c.contact.callback.mailLabel[locale],
+    },
   }
 
   /*
@@ -220,7 +250,13 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
       <noscript>
         <style
           dangerouslySetInnerHTML={{
-            __html: '[data-reveal],[data-fade]{opacity:1!important;transform:none!important}[data-bar]{transform:scaleX(1)!important}[data-rail-y]{transform:scaleY(1)!important}[data-draw]{stroke-dashoffset:0!important}',
+            /* Two jobs. The reveal animations hide their element until an
+               observer marks it in view, so without JS the page would read
+               blank. And the net's form cannot submit without JS either — the
+               second pair swaps it for the prefilled mailto that sits next to
+               it, so the folded panel is never a dead box. */
+            __html:
+              '[data-reveal],[data-fade]{opacity:1!important;transform:none!important}[data-bar]{transform:scaleX(1)!important}[data-rail-y]{transform:scaleY(1)!important}[data-draw]{stroke-dashoffset:0!important}[data-js-only]{display:none!important}[data-nojs-only]{display:block!important}',
           }}
         />
       </noscript>
@@ -485,6 +521,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
                 <SprintBookingLink
                   href={sprintBookingUrl}
                   label={c.contact.bookLabel[locale]}
+                  locale={locale}
                   week={openSlot?.dateLabel}
                 />
               </div>
@@ -492,6 +529,22 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
             <p className="mt-3 text-sm text-[color-mix(in_srgb,var(--color-paper)_62%,transparent)] text-pretty">
               {c.contact.bookingHours[locale]} · {c.contact.bookingLangNote[locale]}
             </p>
+            {/* ⚠️ THE NET, and this is the one place on the page it has to be
+                reachable WITHOUT JavaScript — `#start` lands here, so a visitor
+                whose modal never opened still finds both doors. It is folded, so
+                the block still reads as one button and a note.
+                ⛔ It is one e-mail field and it stays one: the reasons are in
+                sprintCallback.tsx, and they all stop being true at two. */}
+            <div className="mt-5 border-t border-[color-mix(in_srgb,var(--color-paper)_18%,transparent)] pt-5">
+              <SprintCallback
+                locale={locale}
+                copy={contactCopy.callback}
+                placement="closing"
+                surface="closing"
+                week={openSlot?.dateLabel}
+                tone="dark"
+              />
+            </div>
           </div>
         </Container>
       </section>

@@ -1,5 +1,6 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { site } from '@/content/site'
 import type { Locale } from '@/i18n/config'
 import { track } from '@/lib/analytics'
@@ -70,9 +71,31 @@ export function WhatsAppLink({
   )
 }
 
-/** Floating WhatsApp button (bottom-right), links to wa.me with a prefilled message. */
+/**
+ * Floating WhatsApp button (bottom-right), links to wa.me with a prefilled message.
+ *
+ * ⛔ IT DOES NOT RENDER ON /sprint-v1, and that is a positioning decision, not a
+ * layout tweak (2026-09-15). The same channel helps or cheapens depending purely
+ * on where it sits:
+ *   - A PERSISTENT GREEN BUBBLE is the visual signature of low-ticket commerce.
+ *     On a page selling a €15,000 engagement it sits on top of the one CTA the
+ *     ad budget is paying for, competes with it on every scroll, and quietly
+ *     answers "how much does this cost?" before the page does.
+ *   - THE SAME LINK INSIDE THE CONTACT MODAL is a considered option offered at
+ *     the moment of decision, and in the markets where WhatsApp *is* the
+ *     business channel (es/it/pt/tr/ar are five of our ten locales) it is the
+ *     path that converts. So it stays there — see sprintContact.tsx.
+ * ⛔ Do not "restore" it here for consistency with the other pages. The other
+ * pages are not under ad budget and are not selling this price.
+ */
 export function WhatsAppButton({ locale }: { locale: Locale }) {
+  const pathname = usePathname()
   const url = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(prefill[locale])}`
+
+  /* Matched on the segment rather than the full path: the route is
+     /<locale>/sprint-v1 in ten languages, and a list of ten literals would go
+     stale the day an eleventh locale is added. */
+  if (pathname?.split('/').includes('sprint-v1')) return null
 
   return (
     <a

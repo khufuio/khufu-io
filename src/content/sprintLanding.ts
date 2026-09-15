@@ -34,6 +34,17 @@ import { fillLocaleDeep, type LocalizedInput } from '@/i18n/localize'
  * per-day labels. What it ADDED: the `system` block that explains the seven days
  * and the `contact` copy for the booking modal.
  *
+ * ⚠️ AND PASS 4 (2026-09-15) ADDED 392 CHARACTERS AND REMOVED NONE — 7,249 →
+ * 7,641 — which the rule above requires to be declared rather than slipped in.
+ * All of it is `contact.callback`, the net's eleven strings. The defence, and it
+ * is a real one rather than an excuse: NONE OF IT IS ON SCREEN BY DEFAULT. The
+ * net ships folded inside a `<details>`, so the page a visitor actually reads
+ * gained one nine-word question — « Pas disponible sur ces créneaux ? » — and
+ * every other string appears only after they ask for it. The rule exists to stop
+ * a shop window silting up into a document; copy behind a disclosure does not
+ * silt. ⛔ That defence does NOT extend to the rest of the page: anything that
+ * renders on arrival still has to pay for itself by removing something.
+ *
  * ⚠️ Every figure on this page must be real. Anything not invoiced, contracted
  * or shipped does not belong here — this is the one page with an ad budget
  * pointed at it, so a made-up number is the most expensive kind of mistake.
@@ -605,21 +616,35 @@ type Section<T> = {
    * WhatsApp ou form (ou mail) ? ». A button that scrolls asks the visitor to
    * start reading again at a different altitude; a modal answers the click.
    *
-   * ⛔ THE HIERARCHY IS SETTLED — Adrien, 2026-09-15, closing the question rather
-   * than leaving the options open. THREE PATHS, ONE DOMINANT, nothing else:
-   *   1. « RÉSERVER 20 MIN » — the main path, the most visible thing in the modal,
-   *      carrying the week that was clicked. His reasoning, and it is the part to
-   *      preserve: « à 15 000 €, la conversion qui compte est une conversation,
-   *      pas une adresse e-mail dans une base ; et un rendez-vous à l'agenda est
-   *      exactement le registre premium qu'on vend, là où trois champs anonymes
-   *      font low-cost. »
-   *   2. THE NET, one discreet line straight under it — « Pas dispo pour un
-   *      appel ? Laissez votre e-mail. » One field, the lead is recorded on
-   *      submit. It catches everyone not ready to block twenty minutes, which on
-   *      cold paid traffic is most of them.
-   *   3. WhatsApp, tertiary: a link, never a block.
+   * ⛔ IT IS A BRIEFING, NOT A MENU (2026-09-15, pass 4). The version before this
+   * one was a list of options shown at the exact moment intent peaks, which
+   * spends the intent on a choice. Everything ABOVE the rule now answers the one
+   * question a €15k buyer has — « what am I committing to? »: the week, the
+   * thirty minutes, what comes out of them, the hours, and the one fact they
+   * cannot discover any other way, that the booking page is in English. That
+   * warning is what earns the extra step; without it the modal is a click too
+   * many. Everything BELOW the rule is the answer to « not now », and is quiet.
+   *
+   * ⛔ THREE PATHS, ONE DOMINANT, nothing else:
+   *   1. « RÉSERVER UN APPEL DE 30 MIN » — the main path, the most visible thing
+   *      in the modal, carrying the week that was clicked. The reasoning is the
+   *      part to preserve: « à 15 000 €, la conversion qui compte est une
+   *      conversation, pas une adresse e-mail dans une base ; et un rendez-vous à
+   *      l'agenda est exactement le registre premium qu'on vend, là où trois
+   *      champs anonymes font low-cost. »
+   *   2. THE NET, folded under the rule — ONE e-mail field behind a « pas
+   *      disponible sur ces créneaux ? » disclosure. ⛔ It is a callback request,
+   *      NOT the « nom / prénom / e-mail / votre projet » form that was rejected,
+   *      and the difference is the argument: one field, no repeat of a question
+   *      the booking page already asks, and the promise runs the other way — we
+   *      send slots in their timezone within 24h. It exists because the calendar
+   *      mechanically excludes people (10:00–14:00 UTC, never today, 14 days
+   *      out), not because more leads are nicer.
+   *   3. WhatsApp, tertiary: a link, never a block, and only here — the floating
+   *      site-wide bubble is suppressed on this page (see whatsappButton.tsx).
    * ⛔ NOTHING ELSE MAY BE ADDED. « Au-delà, on ne réduit pas le frein, on ajoute
-   * de l'hésitation. » The direct mailto row was removed for exactly that reason.
+   * de l'hésitation. » A visible mailto row was removed for exactly that reason;
+   * the address now appears only when the net's endpoint fails.
    *
    * ⚠️ WHEN THE BOOKING URL IS NOT CONFIGURED, THE NET BECOMES THE MAIN PATH and
    * is rendered as such. The page may never be left without a working CTA, which
@@ -630,8 +655,6 @@ type Section<T> = {
    * zones and cancellations are a product, not a landing-page feature.
    *
    * ⚠️ The brief is never a toll gate: it comes AFTER the contact is recorded.
-   * And the page keeps its capture at the foot as the net for a visitor who
-   * scrolled past every button.
    */
   contact: {
     title: Leaf<T>
@@ -653,23 +676,70 @@ type Section<T> = {
     close: Leaf<T>
     /** The no-JavaScript route: a plain link to the booking block at the foot of the page. */
     fallback: Leaf<T>
+    /**
+     * THE NET — one folded e-mail field, in the modal and in the closing block.
+     *
+     * ⛔ NEVER ADD A FIELD HERE. The moment this copy names a second input it is
+     * the form Adrien rejected as « basique et pas premium », and every argument
+     * for keeping it stops being true. The name is not asked (the reply asks it),
+     * and « where is your project today? » is not asked (the Google booking page
+     * already requires it — asking twice teaches a funnel it is not listening).
+     *
+     * ⚠️ THE PROMISE RUNS FROM US TO THEM, and the copy has to keep it that way:
+     * not « laissez vos coordonnées et nous reviendrons vers vous » (they give,
+     * they wait) but « je vous envoie des créneaux adaptés à votre fuseau, sous
+     * 24 h ». That inversion is the whole difference in register between a
+     * callback request and a contact form.
+     *
+     * ⛔ AND THE 24h IS A PROMISE SOMEONE HAS TO KEEP. Do not lengthen it to be
+     * safe and do not shorten it to convert — it is the same commitment the rest
+     * of the page makes.
+     */
+    callback: {
+      /** The `<summary>`. A question about THEIR availability, never a field label. */
+      link: Leaf<T>
+      body: Leaf<T>
+      placeholder: Leaf<T>
+      submit: Leaf<T>
+      sending: Leaf<T>
+      done: Leaf<T>
+      invalid: Leaf<T>
+      /** Precedes the address, and only when the endpoint failed. */
+      failed: Leaf<T>
+      privacy: Leaf<T>
+      /** Accessible name of the single input — never rendered visually. */
+      fieldLabel: Leaf<T>
+      /** Introduces the address on the no-JavaScript path. */
+      mailLabel: Leaf<T>
+    }
   }
   /**
    * The foot-of-page booking block — the page's last word, and its no-JavaScript
    * target (`#start`).
    *
-   * ⛔ THERE IS NO HOME-MADE FORM ON THIS PAGE ANY MORE, and that is a decision,
-   * not an omission. Adrien, 2026-09-15, after wiring the real Google appointment
-   * schedule: « AUCUN formulaire maison sur la landing : le CTA ouvre directement
+   * ⛔ NO FORM OF OURS SITS ON THIS PAGE, and that part of Adrien's instruction
+   * stands: « AUCUN formulaire maison sur la landing : le CTA ouvre directement
    * le calendrier. » The booking page already collects first name, last name,
-   * e-mail and a required « Where is your project today? » — everything a form
-   * here would have asked, asked once, on the page that also books the slot.
+   * e-mail and a required « Where is your project today? » — everything a contact
+   * form here would have asked, asked once, on the page that also books the slot.
    *
-   * ⚠️ WHAT THIS COSTS, so that it is a known trade and not a surprise: a visitor
-   * who will not block thirty minutes now has no way to leave an address, and
-   * there is no « e-mail left » event to compare against « call booked ». If the
-   * funnel shows that gap hurting, the one-field capture is the thing to bring
-   * back — it was built and removed, not forgotten.
+   * ⚠️ BUT THE PASS THAT READ THAT AS « NO CAPTURE AT ALL » OVER-CORRECTED, and
+   * this block is where it was repaired (2026-09-15, pass 4). Deleting every
+   * alternative to the call left three things broken at once: the visitor the
+   * calendar mechanically excludes (10:00–14:00 UTC is the middle of the night on
+   * the US west coast, and a slot is never available today) had no door at all;
+   * the ten-locale page pointed every one of them at an English-only scheduler
+   * with no second route; and the funnel had NOTHING to compare « appel réservé »
+   * against, which made the question unanswerable by anything but opinion.
+   *
+   * ⛔ WHAT CAME BACK IS ONE FOLDED E-MAIL FIELD, NOT A FORM — read the bounds on
+   * `contact.callback` above and in sprintCallback.tsx before touching it. It is
+   * folded so the page's first impression is still one button; it asks for one
+   * thing; and it promises something in return.
+   *
+   * ⚠️ AND THIS BLOCK LINKS STRAIGHT TO THE CALENDAR, skipping the modal. A
+   * reader who scrolled the whole page has already been briefed by the page
+   * itself — the extra step is paid once, by the visitor who clicks mid-read.
    */
   closing: {
     title: Leaf<T>
@@ -1451,6 +1521,74 @@ const content: Section<LocalizedInput> = {
       fr: 'Prendre rendez-vous',
       en: 'Book a call',
       es: 'Reservar una cita',
+    },
+    /* ⚠️ THE SUMMARY ASKS ABOUT THEIR CALENDAR, NOT ABOUT THEIR WILLINGNESS.
+       « Pas disponible sur ces créneaux ? » names the real obstacle — 10 h – 14 h
+       UTC is the middle of the night for a good part of the world — where « pas
+       encore prêt ? » would suggest they are hesitating about the offer, which
+       is the last thing to suggest to a buyer at this price.
+       ⛔ Never « Laissez-nous vos coordonnées » in any of the ten locales: that
+       is the sentence that makes this a form again. */
+    callback: {
+      link: {
+        fr: 'Pas disponible sur ces créneaux ?',
+        en: 'None of these times work?',
+        es: '¿No te va bien ninguno de esos horarios?',
+      },
+      /* ⛔ The direction of the promise is load-bearing: WE send, THEY receive.
+         And « votre fuseau » is the concrete reason this exists — do not trade it
+         for a vaguer « on vous recontacte ». */
+      body: {
+        fr: 'Laissez votre e-mail : je vous envoie des créneaux adaptés à votre fuseau horaire, sous 24 h.',
+        en: 'Leave your e-mail and I will send you times that fit your own timezone, within 24 hours.',
+        es: 'Déjanos tu correo y te enviamos horarios que encajen con tu zona horaria, en menos de 24 h.',
+      },
+      placeholder: {
+        fr: 'vous@entreprise.com',
+        en: 'you@company.com',
+        es: 'tu@empresa.com',
+      },
+      /* ⚠️ The button says what the visitor GETS, never « Envoyer » — a verb that
+         describes their effort instead of our answer. */
+      submit: {
+        fr: 'Recevoir des créneaux',
+        en: 'Get available times',
+        es: 'Recibir horarios',
+      },
+      sending: { fr: 'Envoi…', en: 'Sending…', es: 'Enviando…' },
+      done: {
+        fr: 'C’est noté. Vous avez ma réponse sous 24 h.',
+        en: 'Noted. You will have my reply within 24 hours.',
+        es: 'Anotado. Tendrás mi respuesta en menos de 24 h.',
+      },
+      invalid: {
+        fr: 'Cette adresse e-mail ne semble pas valide.',
+        en: 'That e-mail address does not look valid.',
+        es: 'Ese correo no parece válido.',
+      },
+      failed: {
+        fr: 'L’envoi n’a pas abouti. Écrivez-nous directement :',
+        en: 'That did not go through. Write to us directly:',
+        es: 'No se ha podido enviar. Escríbenos directamente:',
+      },
+      /* ⚠️ True as written, and it has to stay true: the address goes to an inbox
+         to be answered, not to a list. There is no CRM and no database behind
+         this field (see api/sprint-callback/route.ts). */
+      privacy: {
+        fr: 'Votre adresse sert à cette réponse, à rien d’autre.',
+        en: 'Your address is used for that reply and nothing else.',
+        es: 'Tu dirección se usa para esa respuesta y nada más.',
+      },
+      fieldLabel: {
+        fr: 'Votre adresse e-mail',
+        en: 'Your e-mail address',
+        es: 'Tu dirección de correo',
+      },
+      mailLabel: {
+        fr: 'Écrivez-nous :',
+        en: 'Write to us:',
+        es: 'Escríbenos:',
+      },
     },
   },
 
