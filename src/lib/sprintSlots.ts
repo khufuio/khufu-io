@@ -1,5 +1,5 @@
 import { localeHrefLang, type Locale } from '@/i18n/config'
-import { sprintExcludedMondays, sprintHeldMondays } from '@/content/sprintLanding'
+import { sprintClosedMondays, sprintExcludedMondays } from '@/content/sprintLanding'
 
 /**
  * The sprint calendar: every sprint starts on a MONDAY, one week is one slot and
@@ -10,26 +10,33 @@ import { sprintExcludedMondays, sprintHeldMondays } from '@/content/sprintLandin
  *
  * ⛔ WHAT MAKES IT HONEST, AND IT IS THE HALF THAT MATTERS.
  *
- * The strip shows four Mondays and two states: open, or full. A week is full
- * when it appears in `sprintHeldMondays`, and those weeks are genuinely held —
- * Adrien blocks them for Khufu's own products, and a week he is building in is
- * exactly as unavailable as a week that was sold (decision cmu1qo9r). So the
- * badge is a fact. What the page never does, and must never start doing: say a
- * CLIENT took the week, show a booking counter, or publish a client count. It
- * says the week is taken, never by whom.
+ * The strip shows four Mondays and two states: open, or full. What the page
+ * never does, and must never start doing: say a CLIENT took the week, show a
+ * booking counter, or publish a client count (decision cmu1qo9r). It says the
+ * week is taken, never by whom.
  *
- * There are two levers and they are not the same thing:
- *   - `sprintHeldMondays` — the week is SHOWN, labelled full.
- *   - `sprintExcludedMondays` — the week is not shown at all (holidays), and the
- *     window slides on to the next Monday instead.
+ * ⚠️ AND WHICH WEEKS ARE TAKEN IS NOW A RULE, NOT A LIST (2026-09-15, pass 4).
+ * Adrien read the live page and found too many weeks open: « je veux environ
+ * une sur deux, avec une règle déterministe et cohérente d'une visite à
+ * l'autre ». `isHeldByRule` below is that rule — a pure function of the Monday
+ * itself, so the same week reads the same way on every visit, from every
+ * machine, for ever. The hand-maintained table it replaces had two defects that
+ * a rule does not: it ran out (every week past 2027-04-05 showed open), and a
+ * week could silently flip from full to open the day somebody edited it, which
+ * is precisely the statement this page must never take back.
+ *
+ * ⛔ THE RULE IS ONLY TRUE IF ADRIEN HOLDS THOSE WEEKS. One week in two is
+ * blocked for Khufu's own products, and a week he is building Traqio or Hive TCG
+ * in is exactly as unavailable to a client as a week that was sold — that is
+ * what makes « Complet » a fact rather than a device. The corollary is
+ * operational, not cosmetic: a week shown full is not opened for a prospect who
+ * asks for it on the grounds that it was "only marketing".
  *
  * ⛔ AND ONE STATE IS FORBIDDEN OUTRIGHT: a strip where every week is full.
  * Adrien, 2026-09-14: « zéro disponibilité affichée = impasse de conversion,
- * c'est le seul état à interdire par le code ». It is not a data rule, because
- * data drifts — `sprintSlots` slides the window forward a Monday at a time until
- * a sellable week is in it, so the near dates roll off the front and a new open
- * one appears at the end. `scripts/checkSprintSlots.ts` proves it holds for
- * every day over several years.
+ * c'est le seul état à interdire par le code ». Under the rule this is true BY
+ * CONSTRUCTION — see `isHeldByRule` for the proof — and
+ * `scripts/checkSprintSlots.ts` re-proves it for every day over three years.
  *
  * ⚠️ Dates are COMPUTED, never written by hand. The landing is statically
  * generated, so it is revalidated hourly (see `revalidate` on the sprint page) —
@@ -43,6 +50,7 @@ import { sprintExcludedMondays, sprintHeldMondays } from '@/content/sprintLandin
  */
 
 const DAY_MS = 86_400_000
+const WEEK_MS = 7 * DAY_MS
 
 /** How many Mondays the page shows at a time. */
 export const BOOKING_WINDOW_WEEKS = 4
@@ -58,6 +66,62 @@ export const BOOKING_WINDOW_WEEKS = 4
  */
 const MIN_LEAD_DAYS = 5
 
+/**
+ * The Monday every week index is counted from. Arbitrary, fixed for ever:
+ * moving it would re-roll which weeks are held, and a week that was full last
+ * month must not be open this month.
+ */
+const EPOCH_MONDAY = Date.UTC(2026, 0, 5)
+
+/** A continuous count of Mondays since `EPOCH_MONDAY` — negative before it. */
+function weekIndex(iso: string): number {
+  return Math.round((Date.parse(`${iso}T00:00:00Z`) - EPOCH_MONDAY) / WEEK_MS)
+}
+
+/**
+ * Is this Monday held? One week in two — and, on screen, exactly two of the four.
+ *
+ * ⚠️ WHY IT IS NOT `week % 2`, WHICH IS WHAT ADRIEN SUGGESTED, AND NOT A HASH
+ * EITHER. Three things had to be true at once and only one shape gives all three.
+ *
+ *   1. ~HALF THE WEEKS OPEN, ON THE STRIP — not just on average. The complaint
+ *      was about what is on screen (« trop de semaines s'affichent
+ *      disponibles »), so a rule that is 50% over a decade but shows three open
+ *      weeks out of four today has not answered it. A pseudo-random draw per
+ *      week does exactly that, which is why the first version of this was
+ *      thrown away.
+ *   2. NO METRONOME. `week % 2` gives open, full, open, full for ever. That is a
+ *      mechanism and it reads as one — Adrien's own instruction on this strip
+ *      (2026-09-14) was that a regular pattern « fait dispositif ». It also
+ *      inherits the ISO calendar's 52/53-week wobble, which doubles a week once
+ *      every few years for a reason nobody can explain.
+ *   3. NEVER ZERO AVAILABILITY, by construction rather than by a test.
+ *
+ * So weeks are held in FORTNIGHTS: two held, two open, rolling. Exactly two of
+ * any four consecutive Mondays are open — so the strip reads the same density
+ * whatever day it is rendered, it can never be full, and it never has to slide.
+ * The arrangement still changes from week to week as the window rolls (full,
+ * open, open, full → open, open, full, full → …), so the visitor sees a diary
+ * and not a comb.
+ *
+ * ⚠️ AND THE FORTNIGHT IS THE HONEST UNIT, which is the argument for it over
+ * single weeks. The badge is only true because Adrien really does block those
+ * weeks for Khufu's own products (decision cmu1qo9r), and nobody builds a
+ * product in isolated single weeks. Two weeks on his own products, two weeks
+ * open to clients, is a rhythm that can actually be kept — which matters,
+ * because everything this strip claims rests on it being kept.
+ *
+ * Pure, and a function of the date alone: no stored state, no draw, no cookie.
+ * Two visitors on two continents see the same calendar, and so does the same
+ * visitor a month later. ⛔ The phase is arbitrary but FROZEN: flipping it, or
+ * moving `EPOCH_MONDAY`, re-rolls the whole calendar and re-opens weeks the page
+ * has already called full.
+ */
+export function isHeldByRule(iso: string): boolean {
+  const fortnight = Math.floor(weekIndex(iso) / 2)
+  return (fortnight & 1) === 0
+}
+
 export type SprintSlot = {
   /** `YYYY-MM-DD`, for the <time datetime> attribute. */
   iso: string
@@ -69,7 +133,7 @@ export type SprintSlot = {
   month: string
   /** Full date without the year — "22 septembre", "September 22". */
   dateLabel: string
-  /** The week is held and shows as full. See `sprintHeldMondays`. */
+  /** The week is held and shows as full. */
   held: boolean
 }
 
@@ -96,10 +160,17 @@ export function nextSprintMondays(count: number, from: Date = new Date()): Date[
 /**
  * How far the window may slide looking for a sellable week before giving up.
  *
- * Holding a year of consecutive Mondays is not a configuration, it is a mistake,
- * and at that point showing the window unchanged is more useful than looping.
+ * Under the rule alone it never slides at all (see `isHeldByRule`). It exists
+ * for `sprintClosedMondays`, the hand list that can still close a week the rule
+ * left open — and closing a year of consecutive Mondays by hand is not a
+ * configuration, it is a mistake.
  */
 const MAX_SLIDE_WEEKS = 52
+
+/** Is this Monday full — by the rule, or because it was closed by hand? */
+export function isHeld(iso: string): boolean {
+  return isHeldByRule(iso) || iso in sprintClosedMondays
+}
 
 /** The booking window, formatted for the visitor's locale. */
 export function sprintSlots(locale: Locale, count = BOOKING_WINDOW_WEEKS, from?: Date): SprintSlot[] {
@@ -114,10 +185,8 @@ export function sprintSlots(locale: Locale, count = BOOKING_WINDOW_WEEKS, from?:
 
   /*
    * Pull enough Mondays to slide over a run of held ones, then take the first
-   * window of `count` that contains a week we can actually sell. Sliding by one
-   * drops the nearest date and brings a new one in at the end, which is exactly
-   * what happens on its own as the J-5 cutoff walks forward — the guard just
-   * makes it true on the first render too, whatever the table says.
+   * window of `count` that contains a week we can actually sell. The rule never
+   * needs the slide; the hand list can.
    */
   const candidates = nextSprintMondays(count + MAX_SLIDE_WEEKS, from).map((date) => {
     const iso = date.toISOString().slice(0, 10)
@@ -127,7 +196,7 @@ export function sprintSlots(locale: Locale, count = BOOKING_WINDOW_WEEKS, from?:
       day: day.format(date),
       month: month.format(date),
       dateLabel: dateLabel.format(date),
-      held: iso in sprintHeldMondays,
+      held: isHeld(iso),
     }
   })
 
@@ -154,16 +223,22 @@ export function pickSellableWindow<T extends { held: boolean }>(candidates: read
   }
   // Every Monday we looked at is held: show the nearest weeks rather than
   // nothing. A blank calendar is worse than a full one, and this state means
-  // somebody mis-edited the table — see MAX_SLIDE_WEEKS.
+  // somebody mis-edited the hand list — see MAX_SLIDE_WEEKS.
   return candidates.slice(0, count)
 }
 
 /**
- * The week the CTA sells: the nearest one that is actually open.
+ * The week the CTA points at: the nearest one that is actually open.
  *
- * Falls back to nothing rather than to a held week — a button offering to book a
- * week the strip right above it calls full is the one mistake this whole file
- * exists to prevent.
+ * ⚠️ IT NO LONGER NAMES A DATE IN A BUTTON LABEL (2026-09-15, pass 4 — Adrien:
+ * « ça présume la date que veut le prospect »). The call being booked is a
+ * 30-minute scoping call, not the sprint itself, so the label stays neutral and
+ * this week travels as CONTEXT instead: the chip in the modal, the prefilled
+ * WhatsApp message, the callback note, the analytics property.
+ *
+ * Falls back to nothing rather than to a held week — carrying a week the strip
+ * right above it calls full is the one mistake this whole file exists to
+ * prevent.
  */
 export function firstOpenSlot(slots: readonly SprintSlot[]): SprintSlot | undefined {
   return slots.find((slot) => !slot.held)

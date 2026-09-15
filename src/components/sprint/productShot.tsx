@@ -30,6 +30,7 @@ export function ProductShot({
   tone = 'light',
   priority = false,
   sizes,
+  smallWidth,
   className,
   children,
 }: {
@@ -43,6 +44,19 @@ export function ProductShot({
   /** The hero's capture only: eager + high priority, it is the LCP element. */
   priority?: boolean
   sizes?: string
+  /**
+   * Widths a phone-sized variant exists at, alongside the 1200px original —
+   * `<src>-720.avif` and so on.
+   *
+   * ⚠️ IT IS THE HERO'S ALONE, AND DELIBERATELY NOT EVERY CAPTURE'S. The hero
+   * is the LCP element on the one page with an ad budget pointed at it
+   * (decision cmu093fb: mobile LCP under 2.5 s), and Lighthouse measured it
+   * downloading 1200 px of image to paint 390 px of screen. Every other capture
+   * on this page is lazy and below the fold, so a second file each would be
+   * twelve more files to keep in step for no measured gain. ⛔ If a capture ever
+   * becomes the LCP element, give it a variant — do not add them by default.
+   */
+  smallWidth?: number
   className?: string
   /**
    * Drawn over the capture, inside the frame. The hero's build sequence is the
@@ -67,8 +81,27 @@ export function ProductShot({
       </div>
       <div className="sprint-shot-canvas">
         <picture>
-          <source srcSet={`${src}.avif`} type="image/avif" />
-          <source srcSet={`${src}.webp`} type="image/webp" />
+          {/* The small variant first, described by width, so a phone fetches the
+              phone-sized file and a desktop the full one. `sizes` is what tells
+              the browser which is which — without it the widths mean nothing. */}
+          <source
+            srcSet={
+              smallWidth
+                ? `${src}-${smallWidth}.avif ${smallWidth}w, ${src}.avif ${SHOT_WIDTH}w`
+                : `${src}.avif`
+            }
+            sizes={smallWidth ? sizes : undefined}
+            type="image/avif"
+          />
+          <source
+            srcSet={
+              smallWidth
+                ? `${src}-${smallWidth}.webp ${smallWidth}w, ${src}.webp ${SHOT_WIDTH}w`
+                : `${src}.webp`
+            }
+            sizes={smallWidth ? sizes : undefined}
+            type="image/webp"
+          />
           <img
             src={`${src}.webp`}
             alt={alt}

@@ -71,3 +71,21 @@ export type SprintContactProps = {
   /** The language the visitor is reading in — the axis the WhatsApp question turns on. */
   locale: string | null
 }
+
+/**
+ * The DOM event the site header uses to open the landing's contact modal.
+ *
+ * ⚠️ WHY A DOM EVENT AND NOT A REACT CONTEXT. The header is rendered by the
+ * shared locale LAYOUT and the modal's provider by the sprint PAGE, so the
+ * header is mounted outside the provider and `useSprintContact()` can only ever
+ * return `null` there. A `window` event is the one channel the two already
+ * share. The provider listens and calls `preventDefault()` to say it handled the
+ * click; nothing listening (every other page, or no JavaScript) leaves the
+ * anchor to do its own job.
+ *
+ * ⛔ NO DIRECTIVE IN THIS FILE — same rule as the rest of it, see the header.
+ */
+export const SPRINT_CONTACT_EVENT = 'khufu:sprint-contact'
+
+/** What the header hands the provider: which CTA fired, and nothing else. */
+export type SprintContactEventDetail = { placement: string }

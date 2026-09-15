@@ -1,67 +1,111 @@
 import type { Locale } from '@/i18n/config'
-import { sprintLanding } from '@/content/sprintLanding'
+import { sprintCommitmentIcons, sprintLanding } from '@/content/sprintLanding'
 
 /**
- * The three contractual commitments, as cards, just before the final CTA.
+ * What the contract says, as cards, just before the final CTA.
  *
  * ⚠️ THIS IS A REMINDER, NOT A REPEAT (khufu HQ decision cmu0jo1w). Adrien
  * overruled the thin band this used to be: « une vraie section en bande avec des
  * cards ou un truc stylisé qui le rappelle c'est jamais mauvais non ? ». At the
  * scale of a landing he is right — a prospect scans and enters mid-page, and
- * whoever reaches the form without having read the hero no longer has the
+ * whoever reaches the decision without having read the hero no longer has the
  * promise in front of them.
  *
  * ⛔ WHICH IS WHY IT MUST NOT LOOK LIKE THE HERO. The hero states the FIGURES
- * (7 days, the price, one client a week) in a hairline row of big numbers. This
- * states what is WRITTEN IN THE CONTRACT — the date, the price, the ownership —
- * as cards with an icon and a contract tag. Same promise, other angle, other
- * shape. The day it becomes the same object as the hero row, it has stopped
- * being a reminder and is a duplicate, which is the failure mode.
+ * (7 days, the price, one project at a time) in a hairline row of big numbers.
+ * This states what is WRITTEN IN THE CONTRACT, as cards with an icon. Same
+ * promise, other angle, other shape. The day it becomes the same object as the
+ * hero row, it has stopped being a reminder and is a duplicate, which is the
+ * failure mode.
  *
  * ⛔ AND THERE IS EXACTLY ONE OF IT. It lives here, next to the decision, and
- * nowhere else — there is no copy of it under the hero any more.
+ * nowhere else.
+ *
+ * ⚠️ THREE THINGS ADRIEN FOUND IN PRODUCTION ON 2026-09-15, all fixed here:
+ *   1. « il manque 2 cartes, la section fait vide » — four cards in a three-wide
+ *      grid left a row with one card and two holes. There are six now, read off
+ *      the real contracts (the sources are listed on `commitments` in
+ *      sprintLanding.ts), and six fills two rows exactly. ⛔ Keep the count a
+ *      multiple of three or change the grid; never ship a ragged row.
+ *   2. « il manque une icône » — and it was not an oversight, it was a latent
+ *      bug: the icons were held in a record looked up through a three-entry
+ *      list of names, so the fourth card silently rendered an empty circle —
+ *      no error anywhere, just a blank disc on a live page. `ICONS` below is
+ *      keyed by name, and WHICH icon each card wears now lives next to the cards
+ *      themselves, in `sprintCommitmentIcons` — so the two lists are read from
+ *      one file and `scripts/checkSprintLocales.ts` fails the recipe the moment
+ *      they fall out of step. Nothing in the type system can tie a component to
+ *      the LENGTH of a copy array, so that check is the guard.
+ *   3. « chaque carte répète "Au contrat" alors que c'est le titre de la
+ *      section » — the tag is gone, copy included.
  *
  * One line per card. cmu0hv4c holds: no paragraph, no over-explaining.
  */
 
 /**
  * 24×24 stroke icons, drawn here so the section costs no request and no library.
- * Keyed by name rather than held in an array — the order of the cards lives in
- * the copy, and a record keeps the icon attached to the item it illustrates.
+ * Keyed by name rather than by position — see defect 2 above. ⛔ The names are
+ * the ones `sprintCommitmentIcons` uses; add an icon here before naming it there.
  */
-const icons: Record<string, React.ReactNode> = {
-  // The date: a calendar with the day marked.
-  date: (
+const ICONS = {
+  /** It is yours from day one: a key. */
+  ownership: (
     <>
-      <rect x="3.5" y="5" width="17" height="15.5" rx="2.5" />
-      <path d="M3.5 10h17M8 3.5v3M16 3.5v3" />
-      <path d="M11 14h2.5" />
+      <circle cx="8" cy="12" r="3.6" />
+      <path d="M11.6 12H20.5M17.8 12v3.2M14.6 12v2.4" />
     </>
   ),
-  // The price: a tag that does not move.
-  price: (
+  /** Nothing renews on its own: the loop, cut. */
+  renewal: (
     <>
-      <path d="M11.3 3.5H20a.5.5 0 0 1 .5.5v8.7a1 1 0 0 1-.3.7l-7.3 7.3a1 1 0 0 1-1.4 0l-7.7-7.7a1 1 0 0 1 0-1.4l7.3-7.3a1 1 0 0 1 .7-.3Z" />
-      <circle cx="16.4" cy="7.6" r="1.3" />
+      <path d="M19.5 12a7.5 7.5 0 0 1-11.6 6.3M4.5 12a7.5 7.5 0 0 1 11.6-6.3" />
+      <path d="M16.6 2.9v3h-3M7.4 21.1v-3h3" />
+      <path d="m4 20 16-16" />
     </>
   ),
-  // The code: it is yours.
-  code: <path d="m8.5 8-4.5 4 4.5 4M15.5 8l4.5 4-4.5 4" />,
-}
-
-const order = ['date', 'price', 'code']
+  /** If the delay is on us: a clock. */
+  delay: (
+    <>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 7.2V12l3.2 2.1" />
+    </>
+  ),
+  /** Confidentiality: a shield, closed. */
+  confidentiality: (
+    <>
+      <path d="M12 3.2 4.8 6v5.6c0 4 2.9 7.3 7.2 8.6 4.3-1.3 7.2-4.6 7.2-8.6V6L12 3.2Z" />
+      <path d="M12 10.4v3.4" />
+      <circle cx="12" cy="16.2" r=".4" />
+    </>
+  ),
+  /** The scope, written and framed before anything starts. */
+  scope: (
+    <>
+      <path d="M7.5 3.5h-4v4M16.5 3.5h4v4M7.5 20.5h-4v-4M16.5 20.5h4v-4" />
+      <path d="M8.2 10h7.6M8.2 14h5" />
+    </>
+  ),
+  /** Five days to check before you accept: a checked box. */
+  acceptance: (
+    <>
+      <rect x="3.5" y="4.5" width="17" height="16" rx="2.5" />
+      <path d="M8 3v3M16 3v3" />
+      <path d="m8.6 13.2 2.2 2.2 4.6-4.6" />
+    </>
+  ),
+} as const
 
 export function SprintCommitments({ locale }: { locale: Locale }) {
   const c = sprintLanding.commitments
 
   return (
-    <ul className="grid gap-4 sm:grid-cols-3 sm:gap-5">
+    <ul className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
       {c.items.map((item, i) => (
         <li
           key={item.title[locale]}
           className="flex flex-col rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white p-6 sm:p-7"
           data-reveal
-          style={{ '--reveal-delay': `${i * 110}ms` } as React.CSSProperties}
+          style={{ '--reveal-delay': `${(i % 3) * 110}ms` } as React.CSSProperties}
         >
           <span
             aria-hidden
@@ -75,19 +119,16 @@ export function SprintCommitments({ locale }: { locale: Locale }) {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              {icons[order[i]]}
+              {ICONS[sprintCommitmentIcons[i]]}
             </svg>
           </span>
 
           <h3 className="mt-5 font-[family-name:var(--font-display)] text-lg font-bold tracking-[-0.01em] text-balance">
             {item.title[locale]}
           </h3>
+          {/* ⛔ No « Au contrat » tag under this: it is the section's own title,
+              and repeating it on every card was the third thing Adrien pulled. */}
           <p className="mt-1.5 flex-1 text-sm/[1.55] text-[var(--color-ink-2)] text-pretty">{item.note[locale]}</p>
-
-          <p className="mt-5 flex items-center gap-2 border-t border-[var(--color-line)] pt-4 text-[10px] font-semibold tracking-[0.14em] text-[var(--color-muted)] uppercase">
-            <span aria-hidden className="size-1.5 rounded-full bg-[var(--color-accent)]" />
-            {c.tag[locale]}
-          </p>
         </li>
       ))}
     </ul>

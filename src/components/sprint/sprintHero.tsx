@@ -16,6 +16,12 @@ import type { SprintSlot } from '@/lib/sprintSlots'
  * ONE system — paper ground, one accent, a lot of air — and the dark is spent
  * deliberately, once, on the products section.
  *
+ * ⚠️ THE SEQUENCE ENDS ON TRAQIO SINCE 2026-09-15, not on Clokizi — Adrien's
+ * call, and the reason is the only one that matters on a first screen: it is the
+ * better-looking product. ⛔ It is a DIFFERENT capture from the one on Traqio's
+ * own card below (home page here, pricing page there): the same screenshot twice
+ * reads as a template rather than as two things.
+ *
  * ⛔ THE HERO SHOWS A WHOLE PRODUCT BEING BUILT AND PUT ONLINE. It used to be a
  * capture of Clokizi, which Adrien took apart on 2026-09-14 (« un truc qui fait
  * direct comprendre l'offre en mode on fast build un truc de fou »), and the
@@ -42,8 +48,6 @@ export function SprintHero({
   subtitle,
   figures,
   ctaLabel,
-  ctaLabelSlot,
-  ctaAvailable,
   ctaNote,
   slots,
   slotOpenLabel,
@@ -56,10 +60,6 @@ export function SprintHero({
   /** Delay, price, and the one client a week — the only figures this page allows. */
   figures: SprintHeroFigure[]
   ctaLabel: string
-  /** Dated variant of the CTA, carrying `{date}` (decision cmu0fugh). */
-  ctaLabelSlot: string
-  /** The state of that week, on its own line. Never inside the button label. */
-  ctaAvailable: string
   ctaNote: string
   /** The booking window — the next Mondays, computed, with their state. */
   slots: SprintSlot[]
@@ -68,15 +68,18 @@ export function SprintHero({
   shot: { src: string; alt: string; domain: string }
 }) {
   /*
-   * The CTA names the week it is selling (decision cmu0fugh) and it names the
-   * ACTION, not the state — Adrien, 2026-09-14: « pas sûr que les CTA du style
-   * "Slot du 21 septembre encore disponible" soit vraiment vendeur ». The week
-   * it points at is the nearest OPEN one, never a held one; it falls back to the
-   * plain label if the window ever comes back with nothing open, because a
-   * button naming no week beats a button naming a week we cannot sell.
+   * ⛔ THE BUTTON NO LONGER NAMES A DATE (2026-09-15, reversing decision
+   * cmu0fugh's dated label). Adrien: « "Réserver la semaine du 5 octobre",
+   * ça présume la date que veut le prospect — et l'appel est un cadrage de
+   * 30 min, pas la réservation du sprint. » The label says what pressing it
+   * books; the week is still CARRIED, into the modal's chip, the prefilled
+   * WhatsApp message and the analytics, where it is context and not a promise.
+   *
+   * It is still the nearest OPEN week, never a held one: a click travelling
+   * with a week the strip right below it calls full is the contradiction the
+   * whole calendar exists to avoid.
    */
   const next = slots.find((slot) => !slot.held)
-  const ctaText = next ? ctaLabelSlot.replace('{date}', next.dateLabel) : ctaLabel
 
   return (
     <section className="sprint-hero relative isolate overflow-hidden">
@@ -100,16 +103,15 @@ export function SprintHero({
           {/* Full width and centred on a phone, inline on a desktop. Adrien on
               the old button: « surtout en bouton align left comme ça ». */}
           <div className="mt-8 text-center sm:text-left">
-            <SprintCta placement="hero" label={ctaText} week={next?.dateLabel} className="w-full sm:w-auto" />
-            {/* Two short lines, never one long one. Joined with a separator
-                this wrapped to three lines at 390px — an orphan "h." on the
-                last — and the wrap count changed when the webfont swapped in,
-                which is a layout shift on the first screen for a cosmetic
-                comma. Measured: it was the page's only CLS contributor. */}
-            {next && (
-              <p className="mt-3 text-sm font-medium text-[var(--color-accent-ink)]">{ctaAvailable}</p>
-            )}
-            <p className="mt-1 text-sm text-[var(--color-muted)]">{ctaNote}</p>
+            <SprintCta placement="hero" label={ctaLabel} week={next?.dateLabel} className="w-full sm:w-auto" />
+            {/* ⛔ « Encore disponible » USED TO SIT HERE and Adrien pulled it
+                (2026-09-15: « je doute du libellé »). « Encore » advertises a
+                countdown this page does not run, and the state it announced was
+                already written on the chips in the strip below — so it bought a
+                third statement of the same fact at the price of the one word
+                that made it a device. What is left is one line, and it is a
+                promise rather than a pressure. */}
+            <p className="mt-3 text-sm text-[var(--color-muted)]">{ctaNote}</p>
           </div>
         </div>
 

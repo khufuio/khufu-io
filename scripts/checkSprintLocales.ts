@@ -7,8 +7,15 @@
  * the fill did not reach, which renders as an empty element on a live page in a
  * language nobody on the team reads. Cheap to check, invisible to catch by eye:
  *   npx tsx scripts/checkSprintLocales.ts
+ *
+ * ⚠️ IT ALSO GUARDS THE ONE LIST THE TYPE SYSTEM CANNOT. Each card of the
+ * contract section wears an icon named in `sprintCommitmentIcons`, one per item,
+ * and nothing in TypeScript ties a component to the LENGTH of a copy array — so
+ * when that section grew from three cards to four, the fourth shipped to
+ * production with an empty circle and no error anywhere. That mismatch is now a
+ * red recipe.
  */
-import { sprintLanding } from '../src/content/sprintLanding'
+import { sprintCommitmentIcons, sprintLanding } from '../src/content/sprintLanding'
 import { locales } from '../src/i18n/config'
 
 const problems: string[] = []
@@ -40,9 +47,26 @@ function walk(node: unknown, path: string): void {
 
 for (const [key, value] of Object.entries(sprintLanding)) walk(value, key)
 
+/* One icon per contract card — see the header note. */
+if (sprintLanding.commitments.items.length !== sprintCommitmentIcons.length) {
+  problems.push(
+    `commitments — ${sprintLanding.commitments.items.length} cards but ${sprintCommitmentIcons.length} icons; ` +
+      'a card without an icon renders an empty circle (sprintCommitments.tsx)',
+  )
+}
+
+/* And the grid is three wide: a count that is not a multiple of three leaves a
+   ragged last row, which is what made the section read as unfinished. */
+if (sprintLanding.commitments.items.length % 3 !== 0) {
+  problems.push(
+    `commitments — ${sprintLanding.commitments.items.length} cards in a three-wide grid leaves a ragged row`,
+  )
+}
+
 if (problems.length) {
   console.error(`✗ ${problems.length} problem(s) across ${locales.length} locales:`)
   for (const problem of problems) console.error(`   ${problem}`)
   process.exit(1)
 }
 console.log(`✓ every leaf resolves in all ${locales.length} locales (${locales.join(', ')})`)
+console.log(`✓ ${sprintLanding.commitments.items.length} contract cards, ${sprintCommitmentIcons.length} icons, full rows`)

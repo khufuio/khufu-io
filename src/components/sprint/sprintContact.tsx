@@ -1,15 +1,19 @@
 'use client'
 
 import { createContext, useCallback, useContext, useEffect, useId, useMemo, useRef, useState } from 'react'
-import { site } from '@/content/site'
 import type { Locale } from '@/i18n/config'
 import { track } from '@/lib/analytics'
 import { campaignProps } from '@/lib/utm'
 import { SPRINT_FORM_ANCHOR } from '@/lib/sprintAnchors'
 import { sprintBookingUrl } from '@/lib/sprintBooking'
-import { SPRINT_EVENTS, type SprintContactPath } from '@/lib/sprintContactEvents'
+import {
+  SPRINT_CONTACT_EVENT,
+  SPRINT_EVENTS,
+  type SprintContactEventDetail,
+  type SprintContactPath,
+} from '@/lib/sprintContactEvents'
 import { SprintCallback, type SprintCallbackCopy } from '@/components/sprint/sprintCallback'
-import { WhatsAppGlyph } from '@/components/layout/whatsappButton'
+import { SprintWhatsappLink } from '@/components/sprint/sprintWhatsappLink'
 
 /**
  * The contact modal every CTA on the Sprint V1 landing opens.
@@ -86,8 +90,7 @@ export type SprintContactCopy = {
   weekNote: string
   bookLabel: string
   bookNote: string
-  bookingLangNote: string
-  bookingHours: string
+  bookingNote: string
   whatsappLabel: string
   close: string
   fallback: string
@@ -128,10 +131,18 @@ const BOOKING_URL = sprintBookingUrl
 export function SprintContactProvider({
   locale,
   copy,
+  week,
   children,
 }: {
   locale: Locale
   copy: SprintContactCopy
+  /**
+   * The week the page is currently selling, for a trigger that has no week of
+   * its own — the site header. Context, never a commitment: it names the chip,
+   * the prefilled WhatsApp message and the analytics property, and no button
+   * label (2026-09-15, see hero.ctaLabel in sprintLanding.ts).
+   */
+  week?: string
   children: React.ReactNode
 }) {
   const [state, setState] = useState<OpenOptions | null>(null)
@@ -192,6 +203,38 @@ export function SprintContactProvider({
   const markChosen = useCallback((path: SprintContactPath) => {
     chosenRef.current = path
   }, [])
+
+  /*
+   * ⚠️ THE SITE HEADER'S CTA OPENS THIS MODAL, AND IT COULD NOT BEFORE.
+   *
+   * ⛔ THE BUG IT FIXES WAS LIVE AND IT KILLED THE PAGE'S MOST VISIBLE BUTTON.
+   * On the landing the header CTA was a `next/link` to `#start`. The first click
+   * scrolled to the closing block and put `#start` in the address bar — and
+   * every click after that did NOTHING AT ALL: the router sees the same URL and
+   * stands down, and the browser does not re-run a hash jump for a hash that has
+   * not changed. So the one permanently-visible button on a page carrying an ad
+   * budget was dead for the whole rest of the visit, and dead on arrival for
+   * anyone landing on a `#start` link. Adrien, 2026-09-15: « le bouton Réserver
+   * un sprint du header ne fait RIEN ». Measured in a browser against production
+   * before the fix: first click 0 → 7642px, second and third click 0 → 0.
+   *
+   * The header is rendered by the shared locale layout, outside this provider,
+   * so it cannot read the context. It dispatches a window event instead; we
+   * answer it here and call `preventDefault()` to say so, which is what tells
+   * the header to swallow the anchor jump. Nothing listening — every other page,
+   * or JavaScript that never ran — leaves it a plain `<a href="#start">`.
+   * ⛔ `scripts/checkSprintHtml.ts` now fails the recipe if the header's CTA
+   * stops rendering with its `data-cta` marker, which is the trace of this path.
+   */
+  useEffect(() => {
+    function onRequest(event: Event): void {
+      const detail = (event as CustomEvent<SprintContactEventDetail>).detail
+      event.preventDefault()
+      open({ placement: detail?.placement ?? 'header', week })
+    }
+    window.addEventListener(SPRINT_CONTACT_EVENT, onRequest)
+    return () => window.removeEventListener(SPRINT_CONTACT_EVENT, onRequest)
+  }, [open, week])
 
   useEffect(() => {
     if (!state) return
@@ -279,19 +322,6 @@ function SprintContactDialog({
   const { placement, week } = options
 
   /*
-   * ⚠️ ONE `wa.me` LINK FOR BOTH DESKTOP AND MOBILE, and this is deliberate.
-   * `https://wa.me/<number>` opens the app on a phone and falls through to
-   * WhatsApp Web on a desktop, on its own. ⛔ Never a `whatsapp://` scheme: it
-   * breaks on desktop, which is where a good share of a LinkedIn audience reads.
-   * The week rides in the prefilled message so the conversation starts already
-   * anchored on a date.
-   */
-  const waText = week
-    ? `${WHATSAPP_PREFILL[locale]} ${copy.weekNote.replace('{date}', week)}`
-    : WHATSAPP_PREFILL[locale]
-  const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(waText)}`
-
-  /*
    * ⚠️ THE URL IS USED EXACTLY AS CONFIGURED — nothing is appended to it. A
    * Google appointment page owns its own parameters, and guessing at one (a
    * month, a duration) is how a booking link starts 404-ing silently. The week
@@ -300,9 +330,13 @@ function SprintContactDialog({
    */
   const bookHref = BOOKING_URL
 
-  function exit(path: 'booking' | 'whatsapp'): void {
+  /* WhatsApp records itself, inside `SprintWhatsappLink`; this is the booking
+     path only. ⛔ Both still call `onChoose`, because a close after a path was
+     taken is not a dismissal and the dismissal event is what justifies the
+     modal's existence (see the header note). */
+  function exit(path: 'booking'): void {
     onChoose(path)
-    track(path === 'booking' ? SPRINT_EVENTS.bookingOpened : SPRINT_EVENTS.whatsappOpened, {
+    track(SPRINT_EVENTS.bookingOpened, {
       placement,
       surface: 'modal',
       week: week ?? null,
@@ -374,7 +408,7 @@ function SprintContactDialog({
                 the reason the step is allowed to exist — do not move it behind
                 the click it is warning about. */}
             <p className="mt-3 text-center text-xs text-[var(--color-muted)] text-pretty">
-              {copy.bookingHours} · {copy.bookingLangNote}
+              {copy.bookingNote}
             </p>
           </div>
         )}
@@ -392,38 +426,20 @@ function SprintContactDialog({
             week={week}
           />
 
+          {/* ⚠️ THE SAME COMPONENT AS THE ONE AT THE FOOT OF THE PAGE. It used to
+              be a link here and nothing there — see sprintWhatsappLink.tsx. */}
           <div className="mt-4">
-            <a
-              href={waHref}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => exit('whatsapp')}
-              className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-ink-2)] underline-offset-4 hover:underline"
-            >
-              <WhatsAppGlyph size={16} className="text-[#25D366]" />
-              {copy.whatsappLabel}
-            </a>
+            <SprintWhatsappLink
+              locale={locale}
+              label={copy.whatsappLabel}
+              weekNote={week ? copy.weekNote.replace('{date}', week) : undefined}
+              placement={placement}
+              surface="modal"
+              onOpen={() => onChoose('whatsapp')}
+            />
           </div>
         </div>
       </div>
     </div>
   )
-}
-
-/**
- * The WhatsApp opener, per locale. Duplicated from whatsappButton.tsx rather than
- * exported from it: that module is the site-wide floating button, this is the
- * landing's own conversation, and the two messages are allowed to diverge.
- */
-const WHATSAPP_PREFILL: Record<Locale, string> = {
-  fr: 'Bonjour Khufu, je veux lancer ma V1 !',
-  en: 'Hi Khufu, I want to launch my V1!',
-  es: '¡Hola Khufu, quiero lanzar mi V1!',
-  de: 'Hallo Khufu, ich möchte meine V1 starten!',
-  it: 'Ciao Khufu, voglio lanciare la mia V1!',
-  pt: 'Olá Khufu, quero lançar a minha V1!',
-  nl: 'Hoi Khufu, ik wil mijn V1 lanceren!',
-  ar: 'مرحباً خوفو، أريد إطلاق نسختي الأولى V1!',
-  pl: 'Cześć Khufu, chcę uruchomić moje V1!',
-  tr: 'Merhaba Khufu, V1’imi başlatmak istiyorum!',
 }

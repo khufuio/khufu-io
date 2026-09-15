@@ -12,9 +12,10 @@ import { campaignProps } from '@/lib/utm'
  * ⛔ NO HEADING, NO EXPLANATION, NO COUNT. Adrien, 2026-09-13: the strip's whole
  * value is the impression it leaves, and commenting the mechanic destroys it.
  *
- * ⛔ A HELD WEEK IS REALLY HELD (decision cmu1qo9r). Only the Mondays listed in
- * `sprintHeldMondays` wear « Complet », and those are weeks Adrien blocks for
- * Khufu's own products — as unavailable to a client as a week that was sold. The
+ * ⛔ A HELD WEEK IS REALLY HELD (decision cmu1qo9r). « Complet » is worn by the
+ * Mondays `isHeldByRule` holds — one week in two, by a rule, not by a draw — and
+ * those are the weeks Adrien blocks for Khufu's own products, as unavailable to
+ * a client as a week that was sold (lib/sprintSlots.ts carries the proof). The
  * badge says the week is taken and never by whom: no client, no counter, no
  * number of sprints. Held chips are not links, because there is nothing to book.
  *

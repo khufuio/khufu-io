@@ -335,12 +335,22 @@ body {
    bezel with a fat pill — a toy phone, and at three cards per row it was mostly
    bezel. The frame's job is to say "this is a phone" and then disappear: a
    hairline bezel, a softer radius, and a pill reduced to a hint. ⛔ Do not thicken
-   it back: the capture is the content, the frame is punctuation. */
+   it back: the capture is the content, the frame is punctuation.
+
+   ⚠️ AND THE RADIUS CAME DOWN AGAIN THE SAME DAY — « les cadres de téléphone sont
+   trop arrondis ». The measurement is the argument: a real phone's corner is
+   roughly 14% of its width, and these frames RENDER AT 80–120px (the overlapping
+   phone on a product card, the pair on a card with no web surface) while the
+   radius was a fixed 1.25rem. That is 25% of the width on the small one — a
+   lozenge, not a phone. 0.75rem lands between 10% and 15% across both sizes,
+   which is the real proportion. ⛔ A radius in rem on an element whose width is
+   fluid is the trap here: re-measure against the rendered width, never against
+   the file. */
 .sprint-phone {
   position: relative;
   overflow: hidden;
   border: 3px solid #1c1c22;
-  border-radius: 1.25rem;
+  border-radius: 0.75rem;
   background: #1c1c22;
   box-shadow:
     0 1px 2px rgba(14, 14, 16, 0.05),
@@ -375,7 +385,8 @@ body {
   aspect-ratio: 560 / 1180;
   object-fit: cover;
   object-position: top center;
-  border-radius: 1rem;
+  /* The screen, inside the bezel: the frame's radius less its border. */
+  border-radius: 0.55rem;
 }
 
 /* ------------------------------------------------------------------ *

@@ -34,8 +34,20 @@ import { fillLocaleDeep, type LocalizedInput } from '@/i18n/localize'
  * per-day labels. What it ADDED: the `system` block that explains the seven days
  * and the `contact` copy for the booking modal.
  *
- * ⚠️ AND PASS 4 (2026-09-15) ADDED 392 CHARACTERS AND REMOVED NONE — 7,249 →
- * 7,641 — which the rule above requires to be declared rather than slipped in.
+ * ⚠️ AND PASS 4 (2026-09-15) RAN IN TWO HALVES; BOTH ARE DECLARED HERE, because
+ * the rule above requires it rather than letting copy creep in unannounced.
+ *
+ * PASS 4b: 7,641 → 7,906, +265 characters ON SCREEN, and this half does NOT hide
+ * behind a disclosure. What it ADDED: two cards in the contract section (Adrien
+ * read the live page — « il manque 2 cartes, la section fait vide » — and four
+ * cards in a three-wide grid left a row with one card and two holes), and eleven
+ * characters on the booking note. What it REMOVED: « Encore disponible » under
+ * the hero button and the dated CTA label in both places it was built (« Réserver
+ * la semaine du {date} »). The trade is deliberate and it is not a wash — a
+ * ragged section reads as unfinished on a page selling a €15k engagement, and the
+ * two lines removed were the page's only two pieces of manufactured urgency.
+ *
+ * PASS 4a ADDED 392 CHARACTERS AND REMOVED NONE — 7,249 → 7,641.
  * All of it is `contact.callback`, the net's eleven strings. The defence, and it
  * is a real one rather than an excuse: NONE OF IT IS ON SCREEN BY DEFAULT. The
  * net ships folded inside a `<details>`, so the page a visitor actually reads
@@ -64,8 +76,8 @@ import { fillLocaleDeep, type LocalizedInput } from '@/i18n/localize'
  *   - RESOLVED 2026-09-14, and the resolution is a fact and not a figure: which
  *     Mondays are taken is now stated, because Adrien holds those weeks for
  *     Khufu's own products and a held week is genuinely unsellable (decision
- *     cmu1qo9r). The dates stay COMPUTED (lib/sprintSlots.ts); the held ones are
- *     listed in `sprintHeldMondays`. ⛔ Still forbidden and not the same thing:
+ *     cmu1qo9r). The dates stay COMPUTED (lib/sprintSlots.ts), and so does which
+ *     of them are held — one week in two, by rule. ⛔ Still forbidden and not the same thing:
  *     saying a CLIENT took a week, a booking counter, a client count.
  *   - PLACEHOLDER: measured first-response time, against the "within 24h" claim
  *   - PLACEHOLDER: share of clients who continue past day 7
@@ -100,64 +112,66 @@ import { fillLocaleDeep, type LocalizedInput } from '@/i18n/localize'
 export const sprintExcludedMondays: readonly string[] = []
 
 /**
- * The weeks that are HELD, and therefore show as « Complet » on the calendar.
+ * Weeks closed BY HAND, on top of the rule — the Monday of each, `YYYY-MM-DD`,
+ * against an internal note that is NEVER rendered.
  *
- * ⚠️ WHY THIS IS TRUE AND NOT A SALES TRICK — read before touching it (khufu HQ
- * decision cmu1qo9r). Adrien holds these weeks for Khufu's OWN products. A week
- * he is building Traqio or Hive TCG in is exactly as unavailable to a client as
- * a week that has been sold, so « complet » is a fact, not a claim. What stays
- * forbidden, and is not what this is: saying a CLIENT took the week, showing a
- * booking counter, or publishing a number of clients. The page says the week is
- * taken. It never says by whom.
+ * ⚠️ WHICH WEEKS ARE FULL IS NO LONGER A LIST (2026-09-15, pass 4). Adrien read
+ * the live page and found too many weeks open: « je veux environ une sur deux,
+ * avec une règle déterministe et cohérente d'une visite à l'autre ». One Monday
+ * in two is now held by `isHeldByRule` in lib/sprintSlots.ts — a pure function
+ * of the date, so a week reads the same on every visit for ever, and the table
+ * can no longer run out or silently re-open a week it once called full.
+ *
+ * ⚠️ WHY THIS IS TRUE AND NOT A SALES TRICK (khufu HQ decision cmu1qo9r).
+ * Adrien holds one week in two for Khufu's OWN products. A week he is building
+ * Traqio or Hive TCG in is exactly as unavailable to a client as a week that has
+ * been sold, so « complet » is a fact, not a claim. What stays forbidden, and is
+ * not what this is: saying a CLIENT took the week, showing a booking counter, or
+ * publishing a number of clients. The page says the week is taken. It never says
+ * by whom.
  *
  * ⛔ THE COROLLARY IS OPERATIONAL, NOT COSMETIC: a week shown as full must stay
  * unavailable in fact. If a prospect asks for one of these weeks, it is not
  * opened for them on the grounds that it was "only marketing" — that is what
- * keeps the statement true over time.
+ * keeps the statement true over time, and it is the condition the rule above
+ * rests on.
  *
- * The key is the Monday, `YYYY-MM-DD`; the value is an internal note that is
- * NEVER rendered. Delete a line to open that week, add one to close it — one
- * line either way, which is the whole point (Adrien does not want a booking tool
- * to maintain, decision cmu0fugh).
- *
- * The distribution is Jarvis's call (cmu0fugh), and Adrien set its shape on
- * 2026-09-14: of the four Mondays on screen, the 1st, 2nd and 4th are held and
- * the 3rd is open. ⚠️ THE GAP IS DELIBERATELY NOT CONTIGUOUS — his reason, and
- * it is the one to preserve if this list is ever regenerated: a real calendar is
- * never "the near ones are gone and then everything is free", so a hole in the
- * middle reads as a schedule and a block at the front reads as a device.
+ * ⛔ THIS LIST ONLY EVER CLOSES MORE. It cannot open a week the rule holds —
+ * that would be the re-opening the rule exists to prevent. Use it for a week
+ * that is genuinely gone and that the rule happened to leave open: a holiday, a
+ * sprint actually sold. One line, which is the whole point (Adrien does not want
+ * a booking tool to maintain, decision cmu0fugh).
  *
  * ⛔ AND THE STRIP CAN NEVER SHOW FOUR FULL WEEKS. Zero availability is a dead
- * end for a page whose only job is conversion, so it is the one state the code
- * forbids: `sprintSlots` slides the window forward until an open week is in it
- * (see lib/sprintSlots.ts). The sequence below already guarantees it — every run
- * of four consecutive Mondays contains at least one open one — and
- * `scripts/checkSprintSlots.ts` proves it for every day over several years. The
- * slide is the belt for the day somebody edits this list by hand.
- *
- * ⚠️ TOP THIS UP. It runs out after 2027-04-05, and past that every week shows
- * as open again. That is honest but it is not the intent.
+ * end for a page whose only job is conversion. The rule alone guarantees it by
+ * construction — never more than two held weeks in a row — and `sprintSlots`
+ * still slides the window forward as a belt for what gets closed here by hand.
+ * `scripts/checkSprintSlots.ts` proves both for every day over three years.
  */
-export const sprintHeldMondays: Readonly<Record<string, string>> = {
-  '2026-09-21': 'own product',
-  '2026-09-28': 'own product',
-  '2026-10-12': 'own product',
-  '2026-10-19': 'own product',
-  '2026-11-02': 'own product',
-  '2026-11-16': 'own product',
-  '2026-11-23': 'own product',
-  '2026-12-07': 'own product',
-  '2026-12-21': 'own product',
-  '2027-01-04': 'own product',
-  '2027-01-11': 'own product',
-  '2027-01-25': 'own product',
-  '2027-02-08': 'own product',
-  '2027-02-15': 'own product',
-  '2027-03-01': 'own product',
-  '2027-03-15': 'own product',
-  '2027-03-22': 'own product',
-  '2027-04-05': 'own product',
-}
+export const sprintClosedMondays: Readonly<Record<string, string>> = {}
+
+/**
+ * Which icon each contract card wears, in the order the cards are written.
+ *
+ * ⚠️ IT LIVES HERE, NEXT TO THE CARDS, AND THAT IS THE FIX. The icons used to be
+ * picked from a three-entry list held in the component, indexed by position —
+ * so when the copy grew to four cards the fourth silently rendered an empty
+ * circle, on a live page, with no error anywhere (Adrien found it on
+ * 2026-09-15: « il manque une icône »). Keeping the two lists in one file makes
+ * the mismatch visible while editing, and `scripts/checkSprintLocales.ts` fails
+ * the recipe if they ever differ in length anyway.
+ *
+ * ⛔ The names must exist in `ICONS` in sprintCommitments.tsx. It is not copy —
+ * nothing here is translated — it is the order of the section.
+ */
+export const sprintCommitmentIcons = [
+  'ownership',
+  'renewal',
+  'delay',
+  'confidentiality',
+  'scope',
+  'acceptance',
+] as const
 
 /**
  * Khufu's own products shown on the page, in FULL SCOPE.
@@ -250,6 +264,10 @@ export const sprintProducts: readonly SprintProduct[] = [
   {
     key: 'traqio',
     name: 'Traqio',
+    // ⚠️ NOT the same screen as the hero, which now ends on Traqio too: the card
+    // shows the pricing page, the hero shows the home page. Two captures of the
+    // same live site read as one product; the same capture twice reads as a
+    // template (2026-09-15).
     shot: { image: '/images/sprint/traqio', domain: 'traqio.app' },
     // ⚠️ The site is public; the platform, the SDKs and the packages are built
     // and not open yet. Declared, never dressed as live (decision cmu0fqj7).
@@ -268,7 +286,22 @@ export const sprintProducts: readonly SprintProduct[] = [
   {
     key: 'labyrinth',
     slug: 'labyrinth',
-    // No web platform, so the card is two phones rather than an empty frame.
+    /*
+     * No web platform, so the card is two phones rather than an empty frame.
+     *
+     * ⚠️ BOTH CAPTURES WERE REPLACED ON 2026-09-15 and the reason is worth
+     * keeping. Adrien: « les captures sont moches, surtout celles de
+     * Labyrinth ». He was right and it was worse than ugly: one file was three
+     * unrelated game scenes stacked into a single frame, and the other was a
+     * gameplay crop with the HUD cut in half by the bottom edge. A capture that
+     * looks accidental argues against the thing it is meant to prove.
+     * ⛔ THESE ARE THE SCREENS THE GAME PUBLISHES ON THE STORES — its own public
+     * surface, and the same rule as every other capture on this page: a real
+     * live surface, never a mockup, never a render. Replace one only with
+     * another store screen or another real app screen, and if neither is
+     * presentable, ship the card without it — an empty frame costs less than a
+     * proof that works against us.
+     */
     appShot: '/images/sprint/labyrinth-app',
     appShot2: '/images/sprint/labyrinth-app-2',
     surfaces: ['app'],
@@ -298,8 +331,9 @@ type Section<T> = {
    * Adrien, 2026-09-13: « sur-explicatif, ça perd l'avantage des slots ».
    *
    * ⛔ AND THE "FULL" BADGE IS A FACT, not a device (decision cmu1qo9r): it is
-   * worn only by the weeks listed in `sprintHeldMondays`, which Adrien holds for
-   * Khufu's own products. The page says a week is taken, never by whom.
+   * worn by the one week in two that `isHeldByRule` holds, which are the weeks
+   * Adrien blocks for Khufu's own products. The page says a week is taken, never
+   * by whom.
    */
   hero: {
     subtitle: Leaf<T>
@@ -315,17 +349,27 @@ type Section<T> = {
      * ⛔ Never write "we only take one client": that is the seller's sentence.
      */
     clientsPerWeek: Leaf<T>
-    ctaLabel: Leaf<T>
     /**
-     * The dated CTA (decision cmu0fugh) — carries `{date}`, and it carries an
-     * ACTION. Adrien, 2026-09-14, on the label it replaces: « pas sûr que les
-     * CTA du style "Slot du 21 septembre encore disponible" soit vraiment
-     * vendeur ». A button says what pressing it does; availability is a state
-     * and belongs next to it, not inside it.
+     * The one button of the first screen.
+     *
+     * ⛔ IT NAMES NO DATE, AND THAT REVERSES decision cmu0fugh's dated label.
+     * Adrien, 2026-09-15: « "Réserver la semaine du 5 octobre" présume la date
+     * que veut le prospect. L'appel est un cadrage de 30 min, pas la réservation
+     * du sprint. » Both halves are right, and the second is the serious one: the
+     * button opened a 30-minute scoping call while announcing a week-long
+     * engagement, so it over-promised on the way in and under-delivered on the
+     * way out. The label now says exactly what pressing it books. The week the
+     * visitor is looking at still travels — into the modal's chip, the prefilled
+     * WhatsApp message and the analytics — as CONTEXT, never as a commitment.
+     *
+     * ⛔ AND THE « Encore disponible » LINE UNDER IT IS GONE (Adrien: « je doute
+     * du libellé »). « Encore » announces a countdown we do not run, which is
+     * the false urgency this page has refused everywhere else; and the state was
+     * already written, truthfully, on the chip in the strip just below. A third
+     * statement of the same fact, in the one word that made it a device, earned
+     * nothing.
      */
-    ctaLabelSlot: Leaf<T>
-    /** The state, on its own hairline next to the button — never in the label. */
-    ctaAvailable: Leaf<T>
+    ctaLabel: Leaf<T>
     /**
      * ⛔ NO PRICE IN THIS PROMISE. It used to read « Périmètre, prix et date sous
      * 24 h », which contradicted the offer itself — Adrien, 2026-09-15: « c'est
@@ -338,9 +382,9 @@ type Section<T> = {
     slotOpen: Leaf<T>
     /**
      * Badge under a held date. ⛔ TRUE BY CONSTRUCTION, never decoration: a week
-     * wears this only if it is in `sprintHeldMondays`, and those are weeks
-     * Adrien holds for Khufu's own products (decision cmu1qo9r). It says the
-     * week is taken and NEVER by whom — no client, no counter, no number.
+     * wears this only if `isHeldByRule` holds it, and those are the weeks Adrien
+     * blocks for Khufu's own products (decision cmu1qo9r). It says the week is
+     * taken and NEVER by whom — no client, no counter, no number.
      */
     slotHeld: Leaf<T>
     /** Alt text of the staged capture. Says what it is, claims nothing about it. */
@@ -409,13 +453,32 @@ type Section<T> = {
    *     the client terminates and is refunded for work not performed.
    *   - confidentiality → annexe 1, art. 7.2 and 7.3: five years past the end of
    *     the contract, non-solicitation for twelve months.
+   *   - scope is frozen → contrat forfait, art. 4.1 and 4.2: the scope is fixed
+   *     at the kickoff; anything added along the way is priced within a day and
+   *     is only executed against the client's written agreement.
+   *   - five days to check → contrat forfait, art. 6.2: delivery is not
+   *     acceptance — the client has five days to verify and to notify their
+   *     acceptance or their reservations.
    * ⛔ Do not add a line here that is not in those files.
    * ⚠️ And it stays SHORT: cmu0hv4c holds — one line per card, no paragraph.
+   *
+   * ⚠️ PASS 4 (2026-09-15) FIXED THREE THINGS ADRIEN FOUND IN PRODUCTION, and
+   * all three were defects rather than opinions:
+   *   1. FOUR CARDS IN A THREE-WIDE GRID. The second row held one card and two
+   *      holes, so the section read as unfinished — « il manque 2 cartes, la
+   *      section fait vide ». The two above were added, from the contracts, and
+   *      six fills two rows exactly. ⛔ Keep the count a multiple of three, or
+   *      change the grid; do not leave a ragged row.
+   *   2. THE FOURTH CARD HAD NO ICON. The icon table was keyed by POSITION
+   *      against a three-entry list, so a fourth item silently rendered an empty
+   *      circle. The icons are named in sprintCommitments.tsx, and
+   *      `scripts/checkSprintLocales.ts` now fails the recipe if this list and
+   *      that one ever fall out of step.
+   *   3. EVERY CARD REPEATED « Au contrat » — which is the section's own title,
+   *      said once more per card. The tag is deleted.
    */
   commitments: {
     title: Leaf<T>
-    /** The hairline tag at the foot of each card. */
-    tag: Leaf<T>
     items: { title: Leaf<T>; note: Leaf<T> }[]
   }
   /** Khufu's own products. Labels only — see the note on `sprintProducts`. */
@@ -663,15 +726,21 @@ type Section<T> = {
     bookLabel: Leaf<T>
     bookNote: Leaf<T>
     /**
-     * ⚠️ THE BOOKING PAGE IS IN ENGLISH ONLY, and the landing says so. Google's
+     * The one line under the booking button — what the slot is, whose clock it
+     * is shown in, and the warning that earns the step.
+     *
+     * ⚠️ THE BOOKING PAGE IS IN ENGLISH ONLY and the landing says so. Google's
      * appointment schedule has a single description field — there is no way to
      * localise it — so a visitor arriving in one of our ten languages would
      * otherwise hit an English page with no warning. The line is short and it is
      * not an apology.
+     *
+     * ⛔ IT NO LONGER PUBLISHES OPENING HOURS IN UTC. « 7 j/7, 10 h – 14 h UTC »
+     * sat here until Adrien read it in production and called it useless
+     * (2026-09-15) — see the note on the copy itself for why he is right, and
+     * for the half that had to survive.
      */
-    bookingLangNote: Leaf<T>
-    /** Availability, said once and said exactly. See `contact.bookingHours`. */
-    bookingHours: Leaf<T>
+    bookingNote: Leaf<T>
     whatsappLabel: Leaf<T>
     close: Leaf<T>
     /** The no-JavaScript route: a plain link to the booking block at the foot of the page. */
@@ -775,19 +844,9 @@ const content: Section<LocalizedInput> = {
       es: 'proyecto a la vez: el tuyo',
     },
     ctaLabel: {
-      fr: 'Réserver mon sprint',
-      en: 'Book my sprint',
-      es: 'Reservar mi sprint',
-    },
-    ctaLabelSlot: {
-      fr: 'Réserver la semaine du {date}',
-      en: 'Book the week of {date}',
-      es: 'Reservar la semana del {date}',
-    },
-    ctaAvailable: {
-      fr: 'Encore disponible',
-      en: 'Still open',
-      es: 'Aún disponible',
+      fr: 'Réserver mon appel de 30 min',
+      en: 'Book my 30-min call',
+      es: 'Reservar mi llamada de 30 min',
     },
     ctaNote: {
       fr: 'Périmètre et date confirmés sous 24 h.',
@@ -797,9 +856,9 @@ const content: Section<LocalizedInput> = {
     slotOpen: { fr: 'Disponible', en: 'Open', es: 'Disponible' },
     slotHeld: { fr: 'Complet', en: 'Full', es: 'Completo' },
     shotAlt: {
-      fr: 'Un produit Khufu en ligne, vu dans un navigateur.',
-      en: 'A Khufu product online, seen in a browser.',
-      es: 'Un producto de Khufu en línea, visto en un navegador.',
+      fr: 'Traqio, un produit Khufu en ligne, vu dans un navigateur.',
+      en: 'Traqio, a Khufu product online, seen in a browser.',
+      es: 'Traqio, un producto de Khufu en línea, visto en un navegador.',
     },
   },
 
@@ -869,7 +928,6 @@ const content: Section<LocalizedInput> = {
       en: 'What the contract says.',
       es: 'Lo que dice el contrato.',
     },
-    tag: { fr: 'Au contrat', en: 'In the contract', es: 'En el contrato' },
     items: [
       {
         title: {
@@ -913,6 +971,35 @@ const content: Section<LocalizedInput> = {
           fr: 'cinq ans après la fin du contrat, non-sollicitation comprise',
           en: 'five years past the end of the contract, non-solicitation included',
           es: 'cinco años tras el fin del contrato, con no captación incluida',
+        },
+      },
+      /* Contrat forfait, art. 4.1 et 4.2 — le périmètre est figé au lancement,
+         toute demande de modification est chiffrée sous un jour et n'est
+         exécutée qu'après accord écrit du Client. */
+      {
+        title: {
+          fr: 'Ce qui est livré est écrit avant de commencer',
+          en: 'What gets delivered is written before we start',
+          es: 'Lo que se entrega se escribe antes de empezar',
+        },
+        note: {
+          fr: 'un ajout en cours de route est chiffré sous un jour, et n’est fait que si vous dites oui',
+          en: 'an addition along the way is priced within a day, and only happens if you say yes',
+          es: 'un añadido sobre la marcha se cotiza en un día y solo se hace si dices que sí',
+        },
+      },
+      /* Contrat forfait, art. 6.2 — cinq jours pour vérifier la conformité et
+         notifier acceptation ou réserves, avant que la recette soit prononcée. */
+      {
+        title: {
+          fr: 'Cinq jours pour vérifier avant d’accepter',
+          en: 'Five days to check before you accept',
+          es: 'Cinco días para comprobar antes de aceptar',
+        },
+        note: {
+          fr: 'la livraison ne vaut pas acceptation : vous testez, puis vous validez ou vous listez ce qui manque',
+          en: 'delivery is not acceptance: you test, then you sign off or list what is missing',
+          es: 'la entrega no es aceptación: pruebas y luego validas o enumeras lo que falta',
         },
       },
     ],
@@ -1497,19 +1584,25 @@ const content: Section<LocalizedInput> = {
       en: 'A 30-minute video call. We scope your project, you leave with a date.',
       es: 'Videollamada de 30 minutos. Encuadramos tu proyecto y te vas con una fecha.',
     },
-    bookingLangNote: {
-      fr: 'La page de réservation est en anglais.',
-      en: 'The booking page is in English.',
-      es: 'La página de reserva está en inglés.',
-    },
-    /* ⚠️ « 7 j/7 », never « en semaine » — the schedule runs every day, and the
-       window is 10:00–14:00 UTC. ⛔ Do not add the 24h notice or the 14-day
-       horizon here: Google's page enforces and displays both, and a second copy
-       on the landing can only drift. */
-    bookingHours: {
-      fr: '7 j/7, 10 h – 14 h UTC',
-      en: '7 days a week, 10:00–14:00 UTC',
-      es: '7 días a la semana, 10:00–14:00 UTC',
+    /* ⚠️ THIS LINE REPLACED « 7 j/7, 10 h – 14 h UTC · La page de réservation est
+       en anglais. », which Adrien read in production and called useless
+       (2026-09-15). He is right about the first half and it was worse than
+       useless: opening hours published in UTC ask the reader to do arithmetic
+       before they know whether to care, and the answer for a good part of the
+       world is "the middle of my night", which is a reason to leave rather than
+       a reason to book. The real availability is on the booking page, in the
+       visitor's own clock.
+       ⛔ WHAT IT KEEPS, AND THAT HALF IS NOT NEGOTIABLE: the page is in English.
+       That is the one thing a visitor cannot discover before landing on it, it
+       is the reason the modal step is allowed to exist at all, and dropping it
+       drops a French, Turkish or Arabic reader onto a scheduler they did not
+       expect. ⛔ And do not restate the 24h notice, the 14-day horizon or the
+       hours: Google enforces and displays all three, in the visitor's timezone,
+       and a second copy here can only drift. */
+    bookingNote: {
+      fr: 'Créneaux de 30 min, affichés dans votre fuseau horaire. La page de réservation est en anglais.',
+      en: '30-minute slots, shown in your own timezone. The booking page is in English.',
+      es: 'Franjas de 30 min, en tu zona horaria. La página de reserva está en inglés.',
     },
     whatsappLabel: {
       fr: 'Ou écrivez-nous sur WhatsApp',
@@ -1607,7 +1700,7 @@ const content: Section<LocalizedInput> = {
 
   midCta: {
     products: { fr: 'Parler de mon produit', en: 'Talk about my product', es: 'Hablar de mi producto' },
-    day7: { fr: 'Réserver mon sprint', en: 'Book my sprint', es: 'Reservar mi sprint' },
+    day7: { fr: 'Cadrer mon projet', en: 'Scope my project', es: 'Encuadrar mi proyecto' },
   },
 
   finalCta: {

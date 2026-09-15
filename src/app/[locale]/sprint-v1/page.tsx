@@ -31,6 +31,7 @@ import { SprintSystem } from '@/components/sprint/sprintSystem'
 import { SprintContactProvider, type SprintContactCopy } from '@/components/sprint/sprintContact'
 import { SprintBookingLink } from '@/components/sprint/sprintBookingLink'
 import { SprintCallback } from '@/components/sprint/sprintCallback'
+import { SprintWhatsappLink } from '@/components/sprint/sprintWhatsappLink'
 import { SprintTimeline, type SprintTimelineStep } from '@/components/sprint/sprintTimeline'
 
 /**
@@ -146,8 +147,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
     weekNote: c.contact.weekNote[locale],
     bookLabel: c.contact.bookLabel[locale],
     bookNote: c.contact.bookNote[locale],
-    bookingLangNote: c.contact.bookingLangNote[locale],
-    bookingHours: c.contact.bookingHours[locale],
+    bookingNote: c.contact.bookingNote[locale],
     whatsappLabel: c.contact.whatsappLabel[locale],
     close: c.contact.close[locale],
     fallback: c.contact.fallback[locale],
@@ -200,10 +200,16 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
    * touching any of this.
    */
   const slots = sprintSlots(locale)
-  /** Every dated CTA sells the nearest OPEN week, never a held one. */
+  /**
+   * The nearest OPEN week — carried by every CTA as CONTEXT.
+   *
+   * ⛔ IT NO LONGER GOES INTO A BUTTON LABEL (2026-09-15). « Réserver la semaine
+   * du 5 octobre » presumed the date the visitor wanted and announced a sprint
+   * where the click books a 30-minute scoping call. It still reaches the modal's
+   * chip, the prefilled WhatsApp message and the analytics, where naming a week
+   * is context and not a commitment.
+   */
   const openSlot = firstOpenSlot(slots)
-  const ctaWithSlot = (fallback: string): string =>
-    openSlot ? c.hero.ctaLabelSlot[locale].replace('{date}', openSlot.dateLabel) : fallback
 
   /*
    * Monday → Sunday as one narrow letter each, for the timeline's week strip on
@@ -240,7 +246,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
        chip, mid-page CTA — reaches the same dialog and carries its own week into
        it. ⚠️ A trigger rendered OUTSIDE this provider silently degrades to the
        `#start` anchor, which is a legitimate state, not a bug. */
-    <SprintContactProvider locale={locale} copy={contactCopy}>
+    <SprintContactProvider locale={locale} copy={contactCopy} week={openSlot?.dateLabel}>
       <SprintLandingView locale={locale} />
       <SprintMotion />
       {/* The reveal animations hide their element until the observer marks it in
@@ -289,17 +295,18 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
           { value: '1', label: c.hero.clientsPerWeek[locale] },
         ]}
         ctaLabel={c.hero.ctaLabel[locale]}
-        ctaLabelSlot={c.hero.ctaLabelSlot[locale]}
-        ctaAvailable={c.hero.ctaAvailable[locale]}
         ctaNote={c.hero.ctaNote[locale]}
         slots={slots}
         slotOpenLabel={c.hero.slotOpen[locale]}
         slotHeldLabel={c.hero.slotHeld[locale]}
-        /* ⚠️ NOT the same capture as any product card below it. The sequence and
-            the first card sat on the identical screenshot, which read as a
-            template rather than as two things. Another screen of the same
-            live product keeps both real and neither repeated. */
-        shot={{ src: '/images/sprint/clokizi-planning', alt: c.hero.shotAlt[locale], domain: 'app.clokizi.com' }}
+        /* ⚠️ TRAQIO SINCE 2026-09-15, on Adrien's call: « passe l'animation sur
+            Traqio, c'est plus beau ». The first screen is the one thing an ad
+            visitor judges before reading a word, so it gets the best-looking
+            product we have online.
+            ⛔ NOT the same capture as Traqio's own card below — this is the home
+            page, the card is the pricing page. The sequence and a card on the
+            identical screenshot read as a template rather than as two things. */
+        shot={{ src: '/images/sprint/traqio-hero', alt: c.hero.shotAlt[locale], domain: 'traqio.app' }}
       />
 
       {/* The work itself — and the one dark section of the page. See the note in
@@ -369,7 +376,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
           <div className="mt-10 text-center sm:text-left">
             <SprintCta
               placement="day7"
-              label={ctaWithSlot(c.midCta.day7[locale])}
+              label={c.midCta.day7[locale]}
               week={openSlot?.dateLabel}
               className="w-full sm:w-auto"
             />
@@ -526,8 +533,17 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
                 />
               </div>
             )}
+            {/* ⛔ « 7 j/7, 10 h – 14 h UTC · La page de réservation est en anglais. »
+                stood here until Adrien read it in production and called it
+                useless (2026-09-15). Half of it was worse than useless: opening
+                hours in UTC ask the reader to do arithmetic before they know
+                whether to care, and for a good part of the world the answer is
+                "the middle of my night" — a reason to leave, not to book. The
+                real availability is on the booking page, in their own clock. The
+                English warning survives because it is the one thing they cannot
+                find out before landing there. */}
             <p className="mt-3 text-sm text-[color-mix(in_srgb,var(--color-paper)_62%,transparent)] text-pretty">
-              {c.contact.bookingHours[locale]} · {c.contact.bookingLangNote[locale]}
+              {c.contact.bookingNote[locale]}
             </p>
             {/* ⚠️ THE NET, and this is the one place on the page it has to be
                 reachable WITHOUT JavaScript — `#start` lands here, so a visitor
@@ -544,6 +560,25 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
                 week={openSlot?.dateLabel}
                 tone="dark"
               />
+              {/* ⚠️ AND WHATSAPP, WHICH WAS MISSING HERE. It was offered inside the
+                  modal and nowhere in this block — Adrien, 2026-09-15: « il est
+                  proposé dans la modale mais absent de la zone de contact en bas :
+                  incohérent ». The gap fell on the wrong visitor: whoever read the
+                  whole page and arrived here had one door fewer than whoever
+                  clicked after two screens. Same component, same `wa.me` link,
+                  same prefilled week — see sprintWhatsappLink.tsx. */}
+              <div className="mt-4">
+                <SprintWhatsappLink
+                  locale={locale}
+                  label={c.contact.whatsappLabel[locale]}
+                  weekNote={
+                    openSlot ? c.contact.weekNote[locale].replace('{date}', openSlot.dateLabel) : undefined
+                  }
+                  placement="closing"
+                  surface="closing"
+                  tone="dark"
+                />
+              </div>
             </div>
           </div>
         </Container>

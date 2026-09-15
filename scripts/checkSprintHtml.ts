@@ -10,10 +10,32 @@
  * server…")}`. Nothing failed: not the type-check, not the lint, not the build.
  * Only the rendered HTML shows it — so the rendered HTML is what gets checked.
  *
- * Three assertions, in order of how badly they burned us:
+ * ⚠️ AND IT BURNED US A SECOND TIME, DIFFERENTLY (2026-09-15). The header's
+ * « Réserver un sprint » was a `next/link` to `#start`: the first click scrolled
+ * to the closing block and wrote `#start` into the address bar, and every click
+ * after that did NOTHING — the router sees the same URL and stands down, and a
+ * browser does not re-run a hash jump for an unchanged hash. Adrien: « le bouton
+ * du header ne fait RIEN ». The first check below could not see it: the href was
+ * present and it resolved. What distinguishes the fixed button from the broken
+ * one is that the fixed one is a plain `<a>` carrying `data-cta="header"`, so
+ * that marker is what gets asserted.
+ *
+ * ⛔ AND THE CENSUS IS THE POINT, not the marker. A CTA that disappears from the
+ * page entirely is as expensive as one that does nothing, and both are invisible
+ * to a type-check, a lint and a build — the whole reason this script exists. So
+ * every CTA the page is supposed to carry is named, counted and resolved.
+ * ⚠️ WHAT IT STILL CANNOT SEE, said plainly rather than implied: the built HTML
+ * does not record whether an anchor was rendered by `next/link` or by hand, so
+ * "clicking it twice works" is not provable here. It is prevented structurally
+ * instead — see the note in siteHeader.tsx — and this census fails the day that
+ * structure is undone, because `data-cta` goes with it.
+ *
+ * Five assertions, in order of how badly they burned us:
  *   1. no client-reference proxy stringified into the markup;
  *   2. every same-page `href="#…"` resolves to an `id` that exists in the page;
- *   3. no empty or placeholder href on the page.
+ *   3. no empty or placeholder href on the page;
+ *   4. every CTA the page owes is present, `data-cta` by `data-cta`;
+ *   5. every one of them has an href that goes somewhere.
  *
  * Run it AFTER `npm run build`:
  *   npx tsx scripts/checkSprintHtml.ts
@@ -47,6 +69,17 @@ function findPages(): { locale: string; file: string }[] {
   }
   return found
 }
+
+/**
+ * Every CTA the page owes, by its `data-cta`.
+ *
+ * ⛔ THESE NAMES ARE THE ANALYTICS `placement` VALUES and they are preserved
+ * verbatim across passes (lib/sprintContactEvents.ts) — renaming one here means
+ * renaming it there, which silently starts a new series. `slot` is not listed:
+ * the open chips in the calendar are the one CTA whose number depends on the
+ * date, and a census cannot assert a count that legitimately changes.
+ */
+const EXPECTED_CTAS = ['header', 'hero', 'products', 'day7', 'closing'] as const
 
 const problems: string[] = []
 const pages = findPages()
@@ -90,6 +123,39 @@ for (const { locale, file } of pages) {
 
   // 3. No empty href anywhere.
   if (/href=""/.test(html)) problems.push(`${locale} — an empty href="" is rendered`)
+
+  /*
+   * 4 & 5. The CTA census.
+   *
+   * ⛔ `header` IS THE ONE THAT MATTERS MOST HERE and it is the newest: it is the
+   * only CTA rendered by the shared layout rather than by the page, so it is the
+   * one a future refactor can drop without touching this page at all — which is
+   * how it was allowed to sit dead in production. The others are counted with it
+   * because the same accident costs the same money wherever it happens.
+   */
+  const ctas = new Map<string, string[]>()
+  for (const match of html.matchAll(/<a\s[^>]*>/g)) {
+    const tag = match[0]
+    const name = /data-cta="([^"]+)"/.exec(tag)?.[1]
+    if (!name) continue
+    const target = /href="([^"]*)"/.exec(tag)?.[1] ?? ''
+    ctas.set(name, [...(ctas.get(name) ?? []), target])
+  }
+
+  for (const expected of EXPECTED_CTAS) {
+    const targets = ctas.get(expected)
+    if (!targets?.length) {
+      problems.push(`${locale} — no CTA carrying data-cta="${expected}" is rendered`)
+      continue
+    }
+    for (const target of targets) {
+      if (!target) {
+        problems.push(`${locale} — the "${expected}" CTA has no href`)
+      } else if (target.startsWith('#') && !ids.has(target.slice(1))) {
+        problems.push(`${locale} — the "${expected}" CTA points at ${target}, which is not in the page`)
+      }
+    }
+  }
 }
 
 if (problems.length) {
@@ -98,3 +164,4 @@ if (problems.length) {
   process.exit(1)
 }
 console.log(`✓ ${pages.length} locales: no client-reference proxy, every in-page anchor resolves, no empty href`)
+console.log(`✓ ${pages.length} locales: all ${EXPECTED_CTAS.length} CTAs present and pointing somewhere (${EXPECTED_CTAS.join(', ')})`)

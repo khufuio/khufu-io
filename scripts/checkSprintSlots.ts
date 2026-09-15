@@ -16,11 +16,26 @@
  *      Mondays — a slide that duplicated or reordered a date would show a
  *      calendar nobody could read.
  *
- * Run it before shipping a change to `sprintHeldMondays`, `sprintSlots` or the
+ * ⚠️ AND SINCE 2026-09-15 IT ALSO PROVES THE RULE ITSELF. Which weeks are full
+ * is no longer a table but `isHeldByRule` — one Monday in two, decided by a pure
+ * function of the date (Adrien: « une règle déterministe et cohérente d'une
+ * visite à l'autre »). Three properties the page leans on are asserted over a
+ * decade of Mondays rather than argued in a comment: EVERY window of four shows
+ * exactly two open weeks — which is the complaint that produced the rule, and an
+ * average of a half would not have answered it — a held week is never followed
+ * by more than one more, and the same Monday always gives the same answer.
+ *
+ * Run it before shipping a change to `isHeldByRule`, `sprintSlots` or the
  * cutoff:
  *   npx tsx scripts/checkSprintSlots.ts
  */
-import { BOOKING_WINDOW_WEEKS, firstOpenSlot, pickSellableWindow, sprintSlots } from '../src/lib/sprintSlots'
+import {
+  BOOKING_WINDOW_WEEKS,
+  firstOpenSlot,
+  isHeldByRule,
+  pickSellableWindow,
+  sprintSlots,
+} from '../src/lib/sprintSlots'
 
 const DAY_MS = 86_400_000
 /** Well past the end of the held list, so the horizon covers it running out too. */
@@ -64,6 +79,65 @@ for (let i = 0; i < DAYS; i += 1) {
 }
 
 /*
+ * ── THE RULE ────────────────────────────────────────────────────────────────
+ * A decade of Mondays, checked for the three properties the strip depends on.
+ * ⛔ The third one is the one that would be a broken promise rather than a bug:
+ * a week shown « Complet » must still read « Complet » on the next visit, which
+ * is exactly what a stored or drawn state cannot guarantee and a pure function
+ * gives for free.
+ */
+const RULE_FIRST = Date.UTC(2026, 0, 5) // a Monday
+const RULE_WEEKS = 52 * 10
+const isos: string[] = Array.from({ length: RULE_WEEKS }, (_, i) =>
+  new Date(RULE_FIRST + i * 7 * DAY_MS).toISOString().slice(0, 10),
+)
+const heldFlags = isos.map((iso) => isHeldByRule(iso))
+
+const heldCount = heldFlags.filter(Boolean).length
+if (heldCount * 2 !== RULE_WEEKS) {
+  problems.push(`isHeldByRule — ${heldCount}/${RULE_WEEKS} weeks held, expected exactly half`)
+}
+
+/* ⛔ THE ONE THAT ANSWERS THE COMPLAINT. « Trop de semaines s'affichent
+   disponibles » is about the strip, not about a long-run average, so the density
+   is asserted on every window the strip could ever show. */
+for (let i = 0; i + BOOKING_WINDOW_WEEKS <= heldFlags.length; i += 1) {
+  const open = heldFlags.slice(i, i + BOOKING_WINDOW_WEEKS).filter((held) => !held).length
+  if (open * 2 !== BOOKING_WINDOW_WEEKS) {
+    problems.push(`isHeldByRule — the window from ${isos[i]} shows ${open}/${BOOKING_WINDOW_WEEKS} open, expected half`)
+    break
+  }
+}
+
+let run = 0
+for (let i = 0; i < heldFlags.length; i += 1) {
+  run = heldFlags[i] ? run + 1 : 0
+  if (run > 2) {
+    problems.push(`isHeldByRule — ${run} held weeks in a row at ${isos[i]}; at most 2 keeps the window sellable`)
+    break
+  }
+}
+
+/* The consequence the page actually needs: no three consecutive Mondays are all
+   held, so a four-week window can never be full and never has to slide. */
+for (let i = 0; i + 3 <= heldFlags.length; i += 1) {
+  if (heldFlags[i] && heldFlags[i + 1] && heldFlags[i + 2]) {
+    problems.push(`isHeldByRule — three full weeks in a row from ${isos[i]}`)
+    break
+  }
+}
+
+/* Stable: same Monday, same answer, however many times it is asked. */
+for (const iso of isos.slice(0, 40)) {
+  if (isHeldByRule(iso) !== isHeldByRule(iso)) problems.push(`isHeldByRule — ${iso} is not deterministic`)
+}
+
+/* And not a metronome: a strict alternation would read as a device rather than
+   as a diary (the reason the rule is not `week % 2` — see lib/sprintSlots.ts). */
+const alternating = heldFlags.every((held, i) => (i === 0 ? true : held !== heldFlags[i - 1]))
+if (alternating) problems.push('isHeldByRule — the pattern is a strict alternation, which reads as a mechanism')
+
+/*
  * The four checks above run on the REAL held list, which today already leaves a
  * gap in every window — so they never make the guard slide. These drive
  * `pickSellableWindow` directly with a held run long enough that it has to, which
@@ -99,4 +173,5 @@ if (problems.length) {
   process.exit(1)
 }
 console.log(`✓ ${DAYS} simulated days: always ${BOOKING_WINDOW_WEEKS} Mondays, always at least one open, cutoff held`)
+console.log(`✓ ${RULE_WEEKS} Mondays of the rule: every window half open, never 3 full in a row, stable, not a metronome`)
 console.log('✓ the window slides past a run of held weeks rather than showing a full strip')

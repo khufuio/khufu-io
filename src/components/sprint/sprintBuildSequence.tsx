@@ -64,6 +64,11 @@ export function SprintBuildSequence({
         domain={shot.domain}
         priority
         sizes="(min-width: 1024px) 46vw, 92vw"
+        /* ⚠️ THE ONLY CAPTURE ON THE PAGE WITH A PHONE-SIZED VARIANT, because it
+           is the only one that is the LCP element. Lighthouse measured a phone
+           pulling the full 1200 px file to paint 390 px of screen; the 720 px
+           file is a third of the bytes. See `smallWidth` in productShot.tsx. */
+        smallWidth={720}
         className="sprint-shot--hero"
       >
         {/* The sequence. `aria-hidden` throughout: it says nothing the alt text
