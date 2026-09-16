@@ -39,13 +39,17 @@ const cdp = flag('cdp', 'http://127.0.0.1:9412')
 const motion = args.includes('--motion')
 
 /**
- * ⚠️ TWO SELECTORS, AND THE SECOND ONE IS EASY TO LOSE. The seven-day stepper is
+ * ⚠️ THREE SELECTORS, AND EACH ONE WAS ONCE MISSING. The seven-day stepper is
  * absolutely positioned at `bottom: -1.1rem`, so it sits OUTSIDE the box of
  * `.sprint-build` and a clip measured on that element alone silently drops it —
- * the one part of the frame that says « seven days ». The clip is the UNION of
- * the two rects, plus a hair of air so the 3px rail is not flush to the crop.
+ * the one part of the frame that says « seven days ». And the browser frame
+ * (`.sprint-shot--hero`) is wider than `.sprint-build` at desktop width: without
+ * it in the union, the frame's right border and its rounded corners were sliced
+ * off (the 2026-09-16 ad review, `cmu4iehk`: « c'est rogné »). The clip is the
+ * UNION of the three rects, plus a hair of air so the 3px rail is not flush to
+ * the crop.
  */
-const SELECTORS = ['.sprint-build', '.sprint-build-steps']
+const SELECTORS = ['.sprint-build', '.sprint-build-steps', '.sprint-shot--hero']
 const PAD = 3
 
 const target = await (await fetch(`${cdp}/json/new?about:blank`, { method: 'PUT' })).json()
@@ -77,6 +81,12 @@ await send('Runtime.enable')
 // The scale is spent ONCE, here. `Page.captureScreenshot`'s own `clip.scale`
 // multiplies with this one, so passing both is a silent 9x at scale 3.
 await send('Emulation.setDeviceMetricsOverride', { width, height: 1100, deviceScaleFactor: scale, mobile: false })
+// ⚠️ SCROLLBARS OFF BEFORE ANYTHING IS MEASURED. `captureBeyondViewport` grows the
+// viewport to the whole page at capture time, which removes the vertical
+// scrollbar, which widens the layout by its 15px — and the centred container
+// slides ~8px right AFTER the clip was measured. Every capture came out with
+// extra air on the left and the frame's right border sliced off (`cmu4iehk`).
+await send('Emulation.setScrollbarsHidden', { hidden: true })
 if (!motion) {
   await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] })
 }
@@ -93,11 +103,16 @@ await new Promise((resolve) => setTimeout(resolve, motion ? 16000 : 6000))
  * Padding the clip out to clear it instead would drag the hero's headline column
  * into the frame. On paper the 1px border does the job the shadow does on
  * screen, so the shadow simply goes.
+ *
+ * ⚠️ THE HERO'S BACKDROP GOES TOO — the drifting grid and the halo. The PAD of
+ * air around the frame otherwise carries a sliver of grid lines, which reads as
+ * a stray edge of another picture once the capture sits on a flyer or an ad.
  */
 await send('Runtime.evaluate', {
   expression: `(() => {
     const style = document.createElement('style')
-    style.textContent = '.sprint-shot--hero{box-shadow:none !important}'
+    style.textContent = '.sprint-shot--hero{box-shadow:none !important}' +
+      '.sprint-hero-grid,.sprint-hero-glow{display:none !important}'
     document.head.appendChild(style)
   })()`,
 })
