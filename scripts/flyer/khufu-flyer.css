@@ -1,0 +1,423 @@
+/* ------------------------------------------------------------------ *
+ * khufu-flyer.css — the ONE stylesheet for every Khufu flyer.
+ *
+ * A flyer is not a document. The house document charter
+ * (hq/docs/tools/khufu-doc.css) dresses contracts and recaps: serif body,
+ * hairlines, no colour but one accent on furniture. A flyer has to be opened,
+ * read at arm's length in 90 seconds and forwarded without embarrassment, so it
+ * borrows the LANDING's identity instead (/sprint-v1): off-white paper, one
+ * near-black ink, one electric indigo, Space Grotesk set tight for display and
+ * Inter for text. The two families print through the same engine
+ * (hq/scripts/client-doc-pdf.mjs) and must never look like each other.
+ *
+ * Content never lives here. Blocks are driven by a JSON content file; this
+ * sheet only knows how each block TYPE looks. A new target = a new JSON file.
+ * ------------------------------------------------------------------ */
+
+/* Full-bleed: the masthead band runs to the paper edge, so the page itself
+   carries no margin and every block pads its own gutter (--gut). */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+:root {
+  --paper: #fbfbf9;
+  --paper-2: #f4f4f0;
+  --ink: #0e0e10;
+  --ink-2: #3a3a40;
+  --muted: #6b6b73;
+  --line: #e6e6e0;
+  --accent: #4c30ff;
+  --accent-ink: #3a1fe0;
+  --accent-soft: #edeaff;
+  --on-dark: #ffffff;
+  --on-dark-2: #a8a8b4;
+
+  /* One gutter for the whole sheet: every band lines up on the same column. */
+  --gut: 15mm;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 210mm;
+  height: 297mm;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 9.1pt;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  /* The sheet is a column: bands stack, and the one marked .grow eats the
+     rounding error so the footer always sits on the bottom edge. */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chrome drops backgrounds when printing unless asked. Without this the whole
+   design — dark masthead, indigo commission band — prints as white paper. */
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.display {
+  font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+}
+
+/* Eyebrow: the landing's short rule + tracked caps. */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  font-size: 7.2pt;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 7mm;
+  height: 1.2px;
+  background: currentColor;
+  flex: none;
+}
+
+/* ---------- band: masthead (dark, full bleed) ---------- */
+
+.masthead {
+  background: var(--ink);
+  color: var(--on-dark);
+  padding: 8mm var(--gut) 6mm;
+}
+
+.masthead .eyebrow {
+  color: #8f7bff;
+}
+
+.wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 11pt;
+  letter-spacing: 0.34em;
+  color: var(--on-dark);
+}
+
+.masthead-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 7mm;
+}
+
+.masthead-tag {
+  font-size: 7.2pt;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-dark-2);
+}
+
+.hero-title {
+  font-size: 33pt;
+  margin: 4mm 0 0;
+  color: var(--on-dark);
+  max-width: 155mm;
+}
+
+.hero-lede {
+  margin: 4.5mm 0 0;
+  font-size: 10.4pt;
+  line-height: 1.4;
+  color: #d6d6de;
+  max-width: 132mm;
+}
+
+/* ---------- band: stat rail ---------- */
+
+.stats {
+  display: flex;
+  margin-top: 7mm;
+  border-top: 1px solid #2a2a30;
+  padding-top: 6mm;
+}
+
+.stat {
+  flex: 1;
+  padding-right: 6mm;
+}
+
+.stat + .stat {
+  border-left: 1px solid #2a2a30;
+  padding-left: 6mm;
+}
+
+.stat-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-size: 19pt;
+  line-height: 1;
+  color: var(--on-dark);
+}
+
+.stat-label {
+  margin-top: 2mm;
+  font-size: 6.8pt;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-dark-2);
+}
+
+/* ---------- generic band on paper ---------- */
+
+.band {
+  padding: 5mm var(--gut) 0;
+}
+
+.band.grow {
+  flex: 1 1 auto;
+}
+
+.band-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: 13pt;
+  margin: 0 0 4mm;
+}
+
+.band-note {
+  margin: 3.5mm 0 0;
+  font-size: 7.8pt;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+/* ---------- block: cards (what is included) ---------- */
+
+.cards {
+  display: flex;
+  gap: 4mm;
+}
+
+.card {
+  flex: 1;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 3mm;
+  padding: 4.5mm 4.5mm 5mm;
+}
+
+.card-rule {
+  width: 9mm;
+  height: 1.6px;
+  background: var(--accent);
+  margin-bottom: 3.2mm;
+}
+
+.card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 9.6pt;
+  letter-spacing: -0.01em;
+  margin: 0 0 2mm;
+}
+
+.card-body {
+  margin: 0;
+  font-size: 8.2pt;
+  line-height: 1.42;
+  color: var(--ink-2);
+}
+
+/* ---------- block: split (for / not for) ---------- */
+
+.split {
+  display: flex;
+  gap: 4mm;
+}
+
+.split-col {
+  flex: 1;
+  border-top: 1.6px solid var(--ink);
+  padding-top: 3mm;
+}
+
+.split-col.is-negative {
+  border-top-color: var(--line);
+}
+
+.split-head {
+  font-size: 7.2pt;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 2.6mm;
+}
+
+.split-col.is-negative .split-head {
+  color: var(--muted);
+}
+
+.split-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 8.2pt;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.split-list li + li {
+  margin-top: 1.8mm;
+}
+
+.split-col.is-negative .split-list {
+  color: var(--muted);
+}
+
+/* ---------- block: callout (the partner's own section) ---------- */
+
+.callout {
+  margin: 5mm var(--gut) 0;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 3mm;
+  padding: 6mm 6.5mm;
+  display: flex;
+  gap: 7mm;
+  align-items: flex-start;
+}
+
+.callout-figure {
+  flex: none;
+  text-align: left;
+  padding-right: 7mm;
+  border-right: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.callout-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  font-size: 40pt;
+  line-height: 0.88;
+}
+
+.callout-caption {
+  margin-top: 1.5mm;
+  font-size: 7pt;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 34mm;
+}
+
+.callout-body {
+  flex: 1;
+}
+
+.callout-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 11pt;
+  letter-spacing: -0.01em;
+  margin: 0 0 2.4mm;
+}
+
+.callout-text {
+  margin: 0;
+  font-size: 8.4pt;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ---------- block: rules (numbered strip) ---------- */
+
+.rules {
+  display: flex;
+  gap: 4mm;
+  margin-top: 1mm;
+}
+
+.rule-item {
+  flex: 1;
+}
+
+.rule-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 8pt;
+  color: var(--accent);
+  margin-bottom: 1.6mm;
+}
+
+.rule-text {
+  margin: 0;
+  font-size: 7.9pt;
+  line-height: 1.38;
+  color: var(--ink-2);
+}
+
+.rule-text b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ---------- band: footer ---------- */
+
+.footer {
+  margin-top: 6mm;
+  border-top: 1px solid var(--line);
+  padding: 4.5mm var(--gut) 7mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8mm;
+}
+
+.footer-cta {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 11.5pt;
+  letter-spacing: -0.015em;
+  margin: 0;
+  max-width: 120mm;
+}
+
+.footer-cta em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.footer-contact {
+  margin: 2.2mm 0 0;
+  font-size: 8.4pt;
+  color: var(--ink-2);
+}
+
+.footer-legal {
+  flex: none;
+  text-align: right;
+  font-size: 6.9pt;
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 62mm;
+}

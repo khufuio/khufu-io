@@ -46,13 +46,15 @@ const SENDER_LINES = [
 ]
 
 const COPY: Record<ContractLang, { status: string; proofnote: string }> = {
+  // No « projet » and no « draft » anywhere: decision cmu3babq settled that this
+  // kit ships without a legal review, so nothing may suggest it is waiting on one.
   fr: {
-    status: 'Projet — relecture juridique',
-    proofnote: 'Projet soumis à relecture juridique — ce document n’engage personne.',
+    status: 'Exemplaire vierge',
+    proofnote: 'Exemplaire vierge — les champs à compléter sont laissés en blanc.',
   },
   en: {
-    status: 'Draft — legal review',
-    proofnote: 'Draft submitted for legal review — this document binds no one.',
+    status: 'Blank counterpart',
+    proofnote: 'Blank counterpart — the fields to complete are left empty.',
   },
 }
 
