@@ -2,7 +2,7 @@
   "name": "khufu-io",
   "private": true,
   "version": "2.0.0",
-  "description": "Khufu.io \u2014 agence produit AI-native. Votre V1 en 1 semaine.",
+  "description": "Khufu.io — agence produit AI-native. Votre V1 en 1 semaine.",
   "author": "Khufu <hello@khufu.io>",
   "scripts": {
     "dev": "next dev",
@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit",
     "check:sprint": "tsx scripts/checkSprintSlots.ts && tsx scripts/checkSprintLocales.ts",
     "check:sprint-html": "tsx scripts/checkSprintHtml.ts",
-    "flyer": "tsx scripts/buildFlyer.ts"
+    "flyer": "tsx scripts/buildFlyer.ts",
+    "capture:hero": "node scripts/captureSprintHero.mjs"
   },
   "dependencies": {
     "next": "^16.0.0",

@@ -35,6 +35,21 @@ export type Block =
   | { type: 'cards'; title: string; items: { title: string; body: string }[]; note?: string }
   | { type: 'split'; title?: string; columns: { head: string; tone?: 'positive' | 'negative'; items: string[] }[] }
   | { type: 'shots'; title?: string; items: Shot[]; note?: string }
+  /**
+   * The product, SHOWN and then named — one picture beside the list of what is
+   * inside it, and a `note` for whatever ranks below the product itself.
+   *
+   * ⚠️ IT EXISTS BECAUSE `cards` LIED BY ITS SHAPE (2026-09-16). The partner
+   * sheet listed the showcase site, the infrastructure and the two weeks of
+   * fixes as three aligned cards under a heading; Adrien read it twice and the
+   * second time named the defect — « on dirait que ça fait comme si on avait que
+   * ça d'inclus ». Three equal cards under an intertitle ARE an exhaustive list,
+   * whatever the heading says, so the product — ninety per cent of the value —
+   * had vanished from what the reader took away. The fix is not a better
+   * heading: it is a form where the product occupies the space and the extras
+   * are demonstrably subordinate, which is `items` versus `note`.
+   */
+  | { type: 'showcase'; image: string; title: string; lede: string; items: string[]; note?: string }
   | { type: 'callout'; value: string; caption: string; title: string; text: string }
   | { type: 'rules'; title: string; items: string[] }
 
@@ -49,7 +64,20 @@ export type Flyer = {
   footer: { cta: string; contact: string; legal: string }
 }
 
-const REQUIRED_BLOCKS: Block['type'][] = ['cards', 'callout', 'rules']
+/**
+ * What a Khufu flyer may not ship without — and it SHRANK on 2026-09-16.
+ *
+ * It used to read `['cards', 'callout', 'rules']`, which was the partner sheet's
+ * own shape mistaken for the template's. Both of the named blocks then left that
+ * sheet on Adrien's instruction: the four commission rules because a flyer has
+ * no business doing the legal work the contract already does (« jte dirais bien
+ * de delete "Ce qui protège votre commission" pour juste décrire ce qu'on
+ * propose »), and the three cards because of the shape defect described on
+ * `showcase` above. A guard that names a block by name fails the sheet that was
+ * just corrected, so it now states the rule that is really about every flyer:
+ * SAY WHAT IS SOLD, and CARRY THE FIGURE. Nothing else is structural.
+ */
+const OFFER_BLOCKS: Block['type'][] = ['showcase', 'cards']
 
 function escapeHtml(value: string): string {
   return value.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c] as string)
@@ -164,6 +192,22 @@ function renderBlock(block: Block, lang: Flyer['lang']): string {
       const title = block.title ? `<h2 class="band-title">${inline(block.title, lang)}</h2>` : ''
       return `<section class="band">${title}<div class="shots">${frames}</div>${note}</section>`
     }
+    case 'showcase': {
+      const items = block.items.map((item) => `<li>${inline(item, lang)}</li>`).join('')
+      const note = block.note ? `<p class="band-note">${inline(block.note, lang)}</p>` : ''
+      // ⚠️ `.grow` lives here now that `rules` has left the partner sheet: the
+      // page is a flex column and SOMETHING has to eat the rounding slack, or the
+      // footer floats away from the bottom edge. This is the tallest band on
+      // paper, so the slack lands as air around the picture rather than as a gap
+      // inside the copy.
+      return (
+        `<section class="band grow showcase"><div class="showcase-row">` +
+        `<figure class="showcase-figure"><img src="${dataUri(block.image)}" alt=""></figure>` +
+        `<div class="showcase-body"><h2 class="band-title">${inline(block.title, lang)}</h2>` +
+        `<p class="showcase-lede">${inline(block.lede, lang)}</p>` +
+        `<ul class="showcase-list">${items}</ul></div></div>${note}</section>`
+      )
+    }
     case 'callout':
       return (
         `<section class="callout"><div class="callout-figure">` +
@@ -193,9 +237,13 @@ function fontFace(family: string, file: string): string {
 
 export function renderFlyer(flyer: Flyer): string {
   const present = new Set(flyer.blocks.map((b) => b.type))
-  const missing = REQUIRED_BLOCKS.filter((t) => !present.has(t))
-  if (missing.length > 0) {
-    throw new Error(`${flyer.id}: a Khufu flyer must carry these blocks — missing ${missing.join(', ')}`)
+  if (!OFFER_BLOCKS.some((t) => present.has(t))) {
+    throw new Error(
+      `${flyer.id}: a Khufu flyer must say what is sold — give it a ${OFFER_BLOCKS.join(' or a ')} block`,
+    )
+  }
+  if (!present.has('callout')) {
+    throw new Error(`${flyer.id}: a Khufu flyer must carry the figure it is offering — the callout block`)
   }
   if (!/5214/.test(flyer.footer.legal)) {
     throw new Error(`${flyer.id}: the footer must show the FZCO trade licence 5214 (decision cmtz6zt9)`)

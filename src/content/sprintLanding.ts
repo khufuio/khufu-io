@@ -468,6 +468,34 @@ type Section<T> = {
     slotHeld: Leaf<T>
     /** Alt text of the staged capture. Says what it is, claims nothing about it. */
     shotAlt: Leaf<T>
+    /**
+     * The address written in the hero frame's address bar.
+     *
+     * ⛔ IT REPLACED A PROGRESS BAR, and that is the whole point (2026-09-16).
+     * The address bar used to hold a pill that filled and turned green — which
+     * made THREE progress indicators stacked on one screen: that pill, the wiring
+     * across the tiles, and the seven-day rail under the frame. Adrien: « ça fait
+     * doublon avec la bar du bas et le stepper en dessous ». It also spent the
+     * one place in the drawing that can make a browser look like a browser on a
+     * fourth copy of a fact already told twice.
+     *
+     * ⛔ FICTIONAL, ALWAYS — never a real domain, ours or a client's. The rule it
+     * has to keep is the old one: an illustration must not sign itself with a
+     * product's name (see the header of sprintBuildSequence.tsx). « votre projet »
+     * is the visitor's, which is the opposite of a signature.
+     *
+     * ⚠️ TRANSLATED, because the visitor has to read it as « my project » in
+     * their own language — an English placeholder on /de is a placeholder from
+     * someone else's site. Keep the shape `https://www.<something>.com`: the
+     * component dims everything up to and including `www.` the way Chrome does,
+     * and a string without that prefix simply loses the effect.
+     *
+     * ⚠️ AR TAKES THE ENGLISH ONE ON PURPOSE. Domain names are Latin-script in
+     * this register, and a romanised Arabic word in an address bar reads as a
+     * typo rather than as a translation. The line is LTR in the markup for the
+     * same reason.
+     */
+    shotUrl: Leaf<T>
   }
   /**
    * WHERE THE SPEED COMES FROM — the block that replaced « vous parlez au founder
@@ -968,6 +996,25 @@ const content: Section<LocalizedInput> = {
       fr: 'Un produit complet qui s’assemble puis passe en production : les écrans, l’app, le site, les comptes, les données, les paiements, les e-mails, les services connectés et l’hébergement.',
       en: 'A complete product assembling itself, then going into production: the screens, the app, the site, accounts, data, payments, e-mails, connected services and hosting.',
       es: 'Un producto completo que se ensambla y pasa a producción: las pantallas, la app, el sitio, las cuentas, los datos, los pagos, los correos, los servicios conectados y el alojamiento.',
+    },
+    /*
+     * ⚠️ THE TEN ARE WRITTEN OUT rather than left to the French fallback: this is
+     * the one string on the page a visitor reads as belonging to THEM, so a
+     * German page showing « votre-projet » would hand it back to us. Each is the
+     * same idea — « your project » — in the locale's own words, Latin script and
+     * `.com` throughout so it stays a credible address everywhere (see the type).
+     */
+    shotUrl: {
+      fr: 'https://www.votre-projet.com',
+      en: 'https://www.your-project.com',
+      es: 'https://www.tu-proyecto.com',
+      de: 'https://www.ihr-projekt.com',
+      it: 'https://www.tuo-progetto.com',
+      pt: 'https://www.seu-projeto.com',
+      nl: 'https://www.jouw-project.com',
+      ar: 'https://www.your-project.com',
+      pl: 'https://www.twoj-projekt.com',
+      tr: 'https://www.projeniz.com',
     },
   },
 

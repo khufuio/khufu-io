@@ -399,6 +399,91 @@ html {
   color: var(--muted);
 }
 
+/* ---------- block: showcase (the product, shown then named) ----------
+ *
+ * ⚠️ THE PICTURE AND THE LIST ARE ONE ARGUMENT, which is why they share a band
+ * instead of stacking. The image is the landing's own hero frame at its FINAL
+ * state — a whole system, lit and live — and the list beside it names the parts
+ * that picture draws. Split them and the reader gets a decoration sitting on top
+ * of an inventory; keep them side by side and the list reads as the caption of
+ * what they are already looking at.
+ *
+ * ⚠️ AND THE HIERARCHY IS THE POINT, not a style. `items` is the PRODUCT and
+ * `.band-note` is what comes on top of it, set small and grey under both
+ * columns. The moment the extras are given the same weight as the product, this
+ * band has reproduced the defect it was built to fix (see `showcase` in
+ * render.ts). ⛔ Never promote the note to a card, a column or a list.
+ *
+ * ⚠️ --showcase-w IS THE PAGE BUDGET. The captured frame is about 1.58:1, so
+ * every millimetre of width costs 0.63mm of height on a sheet that must stay one
+ * recto. Widen it only after cutting copy, and judge it on the printed render.
+ */
+
+.showcase-row {
+  display: flex;
+  gap: 6mm;
+  align-items: flex-start;
+}
+
+.showcase-figure {
+  --showcase-w: 92mm;
+  flex: 0 0 var(--showcase-w);
+  margin: 0;
+}
+
+/* The capture already carries the landing's own browser frame — its border,
+   radius and shadow are in the pixels. ⛔ Do not draw chrome around it again. */
+.showcase-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.showcase-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.showcase-lede {
+  margin: 0;
+  font-size: 8.6pt;
+  line-height: 1.42;
+  color: var(--ink-2);
+}
+
+.showcase-list {
+  margin: 4mm 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.showcase-list li {
+  position: relative;
+  padding-left: 5.4mm;
+  font-size: 8.6pt;
+  line-height: 1.32;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.showcase-list li + li {
+  margin-top: 2.4mm;
+}
+
+/* A tick drawn from two borders: no icon font to embed, and it prints as a
+   vector at any resolution. */
+.showcase-list li::before {
+  content: '';
+  position: absolute;
+  left: 0.4mm;
+  top: 0.9mm;
+  width: 2.6mm;
+  height: 1.3mm;
+  border-left: 1.5px solid var(--accent);
+  border-bottom: 1.5px solid var(--accent);
+  transform: rotate(-45deg);
+}
+
 /* ---------- block: callout (the partner's own section) ---------- */
 
 .callout {
