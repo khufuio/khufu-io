@@ -64,6 +64,7 @@ export function SprintHero({
   slotOpenLabel,
   slotHeldLabel,
   shotLabel,
+  shotUrl,
 }: {
   kicker: string
   title: string
@@ -91,6 +92,12 @@ export function SprintHero({
    * than naming a product.
    */
   shotLabel: string
+  /**
+   * The fictional address written in the sequence's frame — « votre projet », in
+   * the visitor's language. ⛔ Never a real domain, and never a progress bar
+   * again: see `hero.shotUrl` in sprintLanding.ts for what it replaced.
+   */
+  shotUrl: string
 }) {
   /*
    * ⛔ THE BUTTON NO LONGER NAMES A DATE (2026-09-15, reversing decision
@@ -143,7 +150,7 @@ export function SprintHero({
         {/* The build, shown. Second in the DOM so it lands directly under the
             button on a phone — the first screen is never text alone. */}
         <div className="lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center">
-          <SprintBuildSequence label={shotLabel} />
+          <SprintBuildSequence label={shotLabel} url={shotUrl} />
         </div>
 
         {/* The figures and the calendar: two graphic objects, no sentence. */}
