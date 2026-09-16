@@ -480,11 +480,11 @@ export const hireChecklist: LeadMagnet = {
     },
     {
       q: 'How does Khufu answer these questions?',
-      a: `Fixed price agreed before the work starts, and an over-run is the agency's cost. Adrien De Coster writes the code personally on every sprint. The repository sits on your organisation from day one with full history, and every infrastructure account is in your name. If the relationship ended tomorrow, nothing would stop working except further changes.`,
+      a: `Fixed price agreed before the work starts, and an over-run is the agency's cost. One person to talk to, who decides, from the first exchange to the handover. The repository sits on your organisation from day one with full history, and every infrastructure account is in your name. If the relationship ended tomorrow, nothing would stop working except further changes.`,
     },
   ],
   cta: {
     title: 'Ask me these 47 questions',
-    body: `That is a genuine invitation — the list was written to be answered. Sprint V1: a SaaS or mobile app scoped, built and shipped in ${site.v1Days} days for a fixed $${usd}, with the repository yours on day 8.`,
+    body: `That is a genuine invitation — the list was written to be answered. Sprint V1: a SaaS or mobile app scoped, built and shipped in ${site.v1Days} days for a fixed $${usd}, with the repository yours from day one.`,
   },
 }
