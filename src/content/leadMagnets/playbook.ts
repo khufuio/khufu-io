@@ -327,8 +327,18 @@ export const playbook: LeadMagnet = {
       a: 'It is a fixed-price engagement, so an over-run is the agency\'s cost, not a change order. That is precisely why the scope conversation on day 0 is thorough: the incentive to be honest about what fits sits with the person doing the estimating.',
     },
     {
-      q: 'Who actually writes the code?',
-      a: 'Adrien De Coster, the founder, on every sprint — a solo operator with AI tooling rather than a team with handoffs. No account managers, no juniors learning on your project, no work passed to a subcontractor you never meet.',
+      /*
+       * ⛔ THIS QUESTION USED TO BE « Who actually writes the code? » AND THE
+       * ANSWER NAMED A SOLO OPERATOR (decision cmu1u21i). Adrien: « tu dis
+       * "écrit le code", donc faux, pas pertinent avec notre message. Et dire en
+       * gros que je suis solo, c'est pas un argument positif pour 17k USD ».
+       * The landing was swept on 2026-09-14; the lead magnets were not, so the
+       * retired claim survived here. What replaces it keeps the half that is
+       * true and reassuring — one person to talk to, who decides — with no
+       * « solo » and no authorship claim, mirroring sprintLanding.ts.
+       */
+      q: 'Who am I dealing with?',
+      a: 'Adrien De Coster, Khufu’s founder, from the first exchange to the handover. One person to talk to, who decides: no account manager relaying, no change of contact mid-week, no work passed to a subcontractor you never meet.',
     },
     {
       q: 'What stack does a Khufu V1 run on?',
@@ -341,6 +351,6 @@ export const playbook: LeadMagnet = {
   ],
   cta: {
     title: 'Want this run on your product?',
-    body: `Sprint V1: a SaaS or mobile app scoped, built and shipped in ${site.v1Days} days for a fixed $${usd} (€${eur}). One founder, one week, one product — and the repository is yours on day 8.`,
+    body: `Sprint V1: a SaaS or mobile app scoped, built and shipped in ${site.v1Days} days for a fixed $${usd} (€${eur}). One week, one product, one person to talk to — and the repository is yours from day one.`,
   },
 }

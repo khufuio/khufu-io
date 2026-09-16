@@ -2,7 +2,7 @@
   "name": "khufu-io",
   "private": true,
   "version": "2.0.0",
-  "description": "Khufu.io — agence produit AI-native. Votre V1 en 1 semaine.",
+  "description": "Khufu.io \u2014 agence produit AI-native. Votre V1 en 1 semaine.",
   "author": "Khufu <hello@khufu.io>",
   "scripts": {
     "dev": "next dev",
@@ -13,7 +13,8 @@
     "partner-kit": "tsx scripts/buildPartnerKit.ts",
     "typecheck": "tsc --noEmit",
     "check:sprint": "tsx scripts/checkSprintSlots.ts && tsx scripts/checkSprintLocales.ts",
-    "check:sprint-html": "tsx scripts/checkSprintHtml.ts"
+    "check:sprint-html": "tsx scripts/checkSprintHtml.ts",
+    "flyer": "tsx scripts/buildFlyer.ts"
   },
   "dependencies": {
     "next": "^16.0.0",
@@ -28,7 +29,6 @@
     "@types/pdfkit": "^0.17.6",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "docx": "^9.7.1",
     "eslint": "^9.0.0",
     "eslint-config-next": "^16.0.0",
     "exceljs": "^4.4.0",

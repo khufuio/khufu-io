@@ -181,7 +181,7 @@ export const buildVsBuy: LeadMagnet = {
         },
         { h3: 'Use a fixed-price sprint when' },
         {
-          p: `Speed to a real product matters more than anything else, you want the total cost known before you start, and you want to own the result outright. Sprint V1 is $${usd} (€${eur}) for ${site.v1Days} days, one operator, and the repository is yours on day 8.`,
+          p: `Speed to a real product matters more than anything else, you want the total cost known before you start, and you want to own the result outright. Sprint V1 is $${usd} (€${eur}) for ${site.v1Days} days, one person to talk to, and the repository is yours from day one.`,
         },
         { h3: 'Do not use a fixed-price sprint when' },
         {
