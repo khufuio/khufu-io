@@ -213,7 +213,7 @@ export function LeadMagnetLanding({ magnet }: { magnet: LeadMagnet }) {
             <Link href="/en/mentions-legales" className="hover:text-[var(--color-ink)]">
               Legal
             </Link>
-            <Link href="/en/confidentialite" className="hover:text-[var(--color-ink)]">
+            <Link href="/en/privacy" className="hover:text-[var(--color-ink)]">
               Privacy
             </Link>
           </nav>

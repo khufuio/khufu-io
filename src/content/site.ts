@@ -119,7 +119,7 @@ export const routes = {
   about: 'a-propos',
   contact: 'contact',
   legal: 'mentions-legales',
-  privacy: 'confidentialite',
+  privacy: 'privacy',
 } as const
 
 export type RouteKey = keyof typeof routes
