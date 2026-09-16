@@ -129,6 +129,34 @@ html {
   color: var(--on-dark);
 }
 
+/* The brand K beside the lettering: a signature, its cap a touch taller than the
+   wordmark's. The K is CENTRED in its 1024 box, not set on a baseline and not
+   flush left, so the box alone places it wrong — the offsets below were measured
+   on a 600 dpi render: the negative left margin puts the K's stem on the gutter,
+   `top` lifts it onto the lettering's baseline, and the negative block margins
+   keep the box from growing the masthead (the band below would move down). */
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4mm;
+}
+
+.brand-mark {
+  display: inline-block;
+  position: relative;
+  top: -0.65mm;
+  width: 6.5mm;
+  height: 6.5mm;
+  margin: -1.5mm 0 -1.5mm -1.95mm;
+  align-self: center;
+}
+
+.brand-mark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .masthead-top {
   display: flex;
   justify-content: space-between;

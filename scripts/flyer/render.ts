@@ -18,6 +18,8 @@ const HERE = path.dirname(fileURLToPath(import.meta.url))
 const REPO_ROOT = path.resolve(HERE, '..', '..')
 const CSS_FILE = path.join(HERE, 'khufu-flyer.css')
 const FONT_DIR = path.join(REPO_ROOT, 'src', 'assets', 'fonts')
+/** Byte-identical to logos/khufu-k.svg, the file the ad creatives read. */
+const MARK_FILE = path.join(REPO_ROOT, 'public', 'brand', 'khufu-k.svg')
 
 export type Stat = { value: string; label: string }
 
@@ -136,6 +138,25 @@ function dataUri(publicPath: string): string {
   const mime = MIME[path.extname(file).toLowerCase()]
   if (!mime) throw new Error(`${publicPath}: a flyer image must be webp, png, jpg or avif`)
   return `data:${mime};base64,${fs.readFileSync(file).toString('base64')}`
+}
+
+/**
+ * The brand K, inlined as the ad creatives inline it (marketing/ads/lib/brand.mjs,
+ * markSvg): the brand file as is, its internal `.k` class renamed so a host rule
+ * cannot repaint it. Its colour is hard-coded in the file, so nothing here sets one.
+ *
+ * ⚠️ One step further than markSvg: the file carries its own static Bold under the
+ * family name 'Space Grotesk', and once inlined that @font-face joins the HOST
+ * document — where it would compete with the variable face every 700 title uses.
+ * The family is renamed too, so the glyph and its font data stay the brand's own
+ * while the rest of the sheet keeps the face it was set in.
+ */
+function markSvg(): string {
+  return fs
+    .readFileSync(MARK_FILE, 'utf8')
+    .replace(/\.k\b/g, '.khufu-k-glyph')
+    .replace(/class="k"/g, 'class="khufu-k-glyph"')
+    .replace(/'Space Grotesk'/g, "'Khufu K Mark'")
 }
 
 function renderStats(stats: Stat[], lang: Flyer['lang']): string {
@@ -264,7 +285,7 @@ export function renderFlyer(flyer: Flyer): string {
 <style>${css}</style>
 </head><body>
 <header class="masthead">
-  <div class="masthead-top"><span class="wordmark">KHUFU</span><span class="masthead-tag">${inline(flyer.tag, lang)}</span></div>
+  <div class="masthead-top"><span class="brand"><span class="brand-mark" aria-hidden="true">${markSvg()}</span><span class="wordmark">KHUFU</span></span><span class="masthead-tag">${inline(flyer.tag, lang)}</span></div>
   <div class="eyebrow">${inline(hero.eyebrow, lang)}</div>
   <h1 class="display hero-title">${inline(hero.title, lang)}</h1>
   <p class="hero-lede">${inline(hero.lede, lang)}</p>
