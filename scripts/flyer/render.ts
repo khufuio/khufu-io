@@ -48,8 +48,14 @@ export type Block =
    * had vanished from what the reader took away. The fix is not a better
    * heading: it is a form where the product occupies the space and the extras
    * are demonstrably subordinate, which is `items` versus `note`.
+   *
+   * ⚠️ `claim` IS WHAT MAKES THE LIST AN ILLUSTRATION (decision cmu4ie4y). Even a
+   * complete list reads as a CLOSED enumeration — the reader counts what is
+   * missing — so the scope is stated once, affirmatively and larger than the
+   * list (« on fait 100 % de son produit »), and the list only backs it up.
+   * Required, because every showcase has the same failure without it.
    */
-  | { type: 'showcase'; image: string; title: string; lede: string; items: string[]; note?: string }
+  | { type: 'showcase'; image: string; title: string; lede: string; claim: string; items: string[]; note?: string }
   | { type: 'callout'; value: string; caption: string; title: string; text: string }
   | { type: 'rules'; title: string; items: string[] }
 
@@ -195,17 +201,16 @@ function renderBlock(block: Block, lang: Flyer['lang']): string {
     case 'showcase': {
       const items = block.items.map((item) => `<li>${inline(item, lang)}</li>`).join('')
       const note = block.note ? `<p class="band-note">${inline(block.note, lang)}</p>` : ''
-      // ⚠️ `.grow` lives here now that `rules` has left the partner sheet: the
-      // page is a flex column and SOMETHING has to eat the rounding slack, or the
-      // footer floats away from the bottom edge. This is the tallest band on
-      // paper, so the slack lands as air around the picture rather than as a gap
-      // inside the copy.
+      // The list runs full width UNDER the picture row, not beside it: beside
+      // it, ten items outgrow the picture by half its height and leave a hole
+      // under the image — the same unintended gap this band once had below it.
       return (
-        `<section class="band grow showcase"><div class="showcase-row">` +
+        `<section class="band showcase"><div class="showcase-row">` +
         `<figure class="showcase-figure"><img src="${dataUri(block.image)}" alt=""></figure>` +
         `<div class="showcase-body"><h2 class="band-title">${inline(block.title, lang)}</h2>` +
         `<p class="showcase-lede">${inline(block.lede, lang)}</p>` +
-        `<ul class="showcase-list">${items}</ul></div></div>${note}</section>`
+        `<p class="showcase-claim">${inline(block.claim, lang)}</p></div></div>` +
+        `<ul class="showcase-list">${items}</ul>${note}</section>`
       )
     }
     case 'callout':
@@ -224,7 +229,7 @@ function renderBlock(block: Block, lang: Flyer['lang']): string {
             `<p class="rule-text">${inline(text, lang)}</p></div>`,
         )
         .join('')
-      return `<section class="band grow"><h2 class="band-title">${inline(block.title, lang)}</h2><div class="rules">${items}</div></section>`
+      return `<section class="band"><h2 class="band-title">${inline(block.title, lang)}</h2><div class="rules">${items}</div></section>`
     }
   }
 }
