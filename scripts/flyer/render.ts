@@ -21,9 +21,20 @@ const FONT_DIR = path.join(REPO_ROOT, 'src', 'assets', 'fonts')
 
 export type Stat = { value: string; label: string }
 
+/**
+ * One product frame in a `shots` band.
+ *
+ * `image` is a path under public/ — the file is inlined, like the fonts, because
+ * the sheet prints from a scratch directory where a relative src resolves to
+ * nothing. `frame` only picks the chrome drawn around it: a browser bar, or a
+ * phone shell.
+ */
+export type Shot = { image: string; frame: 'browser' | 'phone'; caption: string }
+
 export type Block =
   | { type: 'cards'; title: string; items: { title: string; body: string }[]; note?: string }
   | { type: 'split'; title?: string; columns: { head: string; tone?: 'positive' | 'negative'; items: string[] }[] }
+  | { type: 'shots'; title?: string; items: Shot[]; note?: string }
   | { type: 'callout'; value: string; caption: string; title: string; text: string }
   | { type: 'rules'; title: string; items: string[] }
 
@@ -74,6 +85,25 @@ function inline(value: string, lang: Flyer['lang']): string {
     .replace(/\n/g, '<br>')
 }
 
+const MIME: Record<string, string> = { '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.avif': 'image/avif' }
+
+/**
+ * Inlines an asset from public/ as a data URI.
+ *
+ * ⚠️ PRINT RESOLUTION IS THE THING TO WATCH, and nothing here can check it: a
+ * capture is placed by CSS in millimetres, so the effective DPI is the pixel
+ * width divided by the printed width. The product captures are 1200 px wide
+ * (web) and 560 px (phone), which stay above 300 dpi up to ~100 mm and ~47 mm
+ * respectively. Past that they soften — look at the render, do not trust the
+ * file name.
+ */
+function dataUri(publicPath: string): string {
+  const file = path.join(REPO_ROOT, 'public', publicPath)
+  const mime = MIME[path.extname(file).toLowerCase()]
+  if (!mime) throw new Error(`${publicPath}: a flyer image must be webp, png, jpg or avif`)
+  return `data:${mime};base64,${fs.readFileSync(file).toString('base64')}`
+}
+
 function renderStats(stats: Stat[], lang: Flyer['lang']): string {
   const cells = stats
     .map(
@@ -109,6 +139,30 @@ function renderBlock(block: Block, lang: Flyer['lang']): string {
         .join('')
       const title = block.title ? `<h2 class="band-title">${inline(block.title, lang)}</h2>` : ''
       return `<section class="band">${title}<div class="split">${cols}</div></section>`
+    }
+    case 'shots': {
+      const frames = block.items
+        .map((shot) => {
+          // A browser bar with dots and no address: the sheet shows what a
+          // delivered product LOOKS like, and a real domain would turn the band
+          // into a claim about that product rather than about the work.
+          const chrome =
+            shot.frame === 'browser'
+              ? `<div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-pill"></span></div>`
+              : `<div class="shot-notch"></div>`
+          return (
+            `<figure class="shot shot--${shot.frame}">${chrome}` +
+            `<div class="shot-canvas"><img src="${dataUri(shot.image)}" alt=""></div>` +
+            `<figcaption class="shot-caption">${inline(shot.caption, lang)}</figcaption></figure>`
+          )
+        })
+        .join('')
+      const note = block.note ? `<p class="band-note">${inline(block.note, lang)}</p>` : ''
+      // The title is optional here and usually absent: the captions already say
+      // what each frame is, and a heading that adds nothing to the picture is
+      // the paragraph this band exists to replace.
+      const title = block.title ? `<h2 class="band-title">${inline(block.title, lang)}</h2>` : ''
+      return `<section class="band">${title}<div class="shots">${frames}</div>${note}</section>`
     }
     case 'callout':
       return (
