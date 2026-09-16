@@ -21,9 +21,35 @@ const FONT_DIR = path.join(REPO_ROOT, 'src', 'assets', 'fonts')
 
 export type Stat = { value: string; label: string }
 
+/**
+ * One product frame in a `shots` band.
+ *
+ * `image` is a path under public/ — the file is inlined, like the fonts, because
+ * the sheet prints from a scratch directory where a relative src resolves to
+ * nothing. `frame` only picks the chrome drawn around it: a browser bar, or a
+ * phone shell.
+ */
+export type Shot = { image: string; frame: 'browser' | 'phone'; caption: string }
+
 export type Block =
   | { type: 'cards'; title: string; items: { title: string; body: string }[]; note?: string }
   | { type: 'split'; title?: string; columns: { head: string; tone?: 'positive' | 'negative'; items: string[] }[] }
+  | { type: 'shots'; title?: string; items: Shot[]; note?: string }
+  /**
+   * The product, SHOWN and then named — one picture beside the list of what is
+   * inside it, and a `note` for whatever ranks below the product itself.
+   *
+   * ⚠️ IT EXISTS BECAUSE `cards` LIED BY ITS SHAPE (2026-09-16). The partner
+   * sheet listed the showcase site, the infrastructure and the two weeks of
+   * fixes as three aligned cards under a heading; Adrien read it twice and the
+   * second time named the defect — « on dirait que ça fait comme si on avait que
+   * ça d'inclus ». Three equal cards under an intertitle ARE an exhaustive list,
+   * whatever the heading says, so the product — ninety per cent of the value —
+   * had vanished from what the reader took away. The fix is not a better
+   * heading: it is a form where the product occupies the space and the extras
+   * are demonstrably subordinate, which is `items` versus `note`.
+   */
+  | { type: 'showcase'; image: string; title: string; lede: string; items: string[]; note?: string }
   | { type: 'callout'; value: string; caption: string; title: string; text: string }
   | { type: 'rules'; title: string; items: string[] }
 
@@ -38,7 +64,20 @@ export type Flyer = {
   footer: { cta: string; contact: string; legal: string }
 }
 
-const REQUIRED_BLOCKS: Block['type'][] = ['cards', 'callout', 'rules']
+/**
+ * What a Khufu flyer may not ship without — and it SHRANK on 2026-09-16.
+ *
+ * It used to read `['cards', 'callout', 'rules']`, which was the partner sheet's
+ * own shape mistaken for the template's. Both of the named blocks then left that
+ * sheet on Adrien's instruction: the four commission rules because a flyer has
+ * no business doing the legal work the contract already does (« jte dirais bien
+ * de delete "Ce qui protège votre commission" pour juste décrire ce qu'on
+ * propose »), and the three cards because of the shape defect described on
+ * `showcase` above. A guard that names a block by name fails the sheet that was
+ * just corrected, so it now states the rule that is really about every flyer:
+ * SAY WHAT IS SOLD, and CARRY THE FIGURE. Nothing else is structural.
+ */
+const OFFER_BLOCKS: Block['type'][] = ['showcase', 'cards']
 
 function escapeHtml(value: string): string {
   return value.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c] as string)
@@ -72,6 +111,25 @@ function inline(value: string, lang: Flyer['lang']): string {
     .replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>')
     .replace(/\*([^*]+)\*/g, '<em>$1</em>')
     .replace(/\n/g, '<br>')
+}
+
+const MIME: Record<string, string> = { '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.avif': 'image/avif' }
+
+/**
+ * Inlines an asset from public/ as a data URI.
+ *
+ * ⚠️ PRINT RESOLUTION IS THE THING TO WATCH, and nothing here can check it: a
+ * capture is placed by CSS in millimetres, so the effective DPI is the pixel
+ * width divided by the printed width. The product captures are 1200 px wide
+ * (web) and 560 px (phone), which stay above 300 dpi up to ~100 mm and ~47 mm
+ * respectively. Past that they soften — look at the render, do not trust the
+ * file name.
+ */
+function dataUri(publicPath: string): string {
+  const file = path.join(REPO_ROOT, 'public', publicPath)
+  const mime = MIME[path.extname(file).toLowerCase()]
+  if (!mime) throw new Error(`${publicPath}: a flyer image must be webp, png, jpg or avif`)
+  return `data:${mime};base64,${fs.readFileSync(file).toString('base64')}`
 }
 
 function renderStats(stats: Stat[], lang: Flyer['lang']): string {
@@ -110,6 +168,46 @@ function renderBlock(block: Block, lang: Flyer['lang']): string {
       const title = block.title ? `<h2 class="band-title">${inline(block.title, lang)}</h2>` : ''
       return `<section class="band">${title}<div class="split">${cols}</div></section>`
     }
+    case 'shots': {
+      const frames = block.items
+        .map((shot) => {
+          // A browser bar with dots and no address: the sheet shows what a
+          // delivered product LOOKS like, and a real domain would turn the band
+          // into a claim about that product rather than about the work.
+          const chrome =
+            shot.frame === 'browser'
+              ? `<div class="shot-bar"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-pill"></span></div>`
+              : `<div class="shot-notch"></div>`
+          return (
+            `<figure class="shot shot--${shot.frame}">${chrome}` +
+            `<div class="shot-canvas"><img src="${dataUri(shot.image)}" alt=""></div>` +
+            `<figcaption class="shot-caption">${inline(shot.caption, lang)}</figcaption></figure>`
+          )
+        })
+        .join('')
+      const note = block.note ? `<p class="band-note">${inline(block.note, lang)}</p>` : ''
+      // The title is optional here and usually absent: the captions already say
+      // what each frame is, and a heading that adds nothing to the picture is
+      // the paragraph this band exists to replace.
+      const title = block.title ? `<h2 class="band-title">${inline(block.title, lang)}</h2>` : ''
+      return `<section class="band">${title}<div class="shots">${frames}</div>${note}</section>`
+    }
+    case 'showcase': {
+      const items = block.items.map((item) => `<li>${inline(item, lang)}</li>`).join('')
+      const note = block.note ? `<p class="band-note">${inline(block.note, lang)}</p>` : ''
+      // ⚠️ `.grow` lives here now that `rules` has left the partner sheet: the
+      // page is a flex column and SOMETHING has to eat the rounding slack, or the
+      // footer floats away from the bottom edge. This is the tallest band on
+      // paper, so the slack lands as air around the picture rather than as a gap
+      // inside the copy.
+      return (
+        `<section class="band grow showcase"><div class="showcase-row">` +
+        `<figure class="showcase-figure"><img src="${dataUri(block.image)}" alt=""></figure>` +
+        `<div class="showcase-body"><h2 class="band-title">${inline(block.title, lang)}</h2>` +
+        `<p class="showcase-lede">${inline(block.lede, lang)}</p>` +
+        `<ul class="showcase-list">${items}</ul></div></div>${note}</section>`
+      )
+    }
     case 'callout':
       return (
         `<section class="callout"><div class="callout-figure">` +
@@ -139,9 +237,13 @@ function fontFace(family: string, file: string): string {
 
 export function renderFlyer(flyer: Flyer): string {
   const present = new Set(flyer.blocks.map((b) => b.type))
-  const missing = REQUIRED_BLOCKS.filter((t) => !present.has(t))
-  if (missing.length > 0) {
-    throw new Error(`${flyer.id}: a Khufu flyer must carry these blocks — missing ${missing.join(', ')}`)
+  if (!OFFER_BLOCKS.some((t) => present.has(t))) {
+    throw new Error(
+      `${flyer.id}: a Khufu flyer must say what is sold — give it a ${OFFER_BLOCKS.join(' or a ')} block`,
+    )
+  }
+  if (!present.has('callout')) {
+    throw new Error(`${flyer.id}: a Khufu flyer must carry the figure it is offering — the callout block`)
   }
   if (!/5214/.test(flyer.footer.legal)) {
     throw new Error(`${flyer.id}: the footer must show the FZCO trade licence 5214 (decision cmtz6zt9)`)

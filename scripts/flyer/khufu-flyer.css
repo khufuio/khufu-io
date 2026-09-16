@@ -50,7 +50,12 @@ body {
 
 body {
   width: 210mm;
-  height: 297mm;
+  /* 296mm, not 297. The sheet is a flex column whose .grow band eats the slack,
+     so a full page ends EXACTLY on the paper edge — and a sub-pixel rounding
+     error there tips the footer onto a second page, which fails the build for a
+     sheet that actually fits. One millimetre of slack absorbs the rounding
+     without touching the design; real overflow still fails, as it must. */
+  height: 296mm;
   background: var(--paper);
   color: var(--ink);
   font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
@@ -102,7 +107,7 @@ html {
 .masthead {
   background: var(--ink);
   color: var(--on-dark);
-  padding: 8mm var(--gut) 6mm;
+  padding: 8mm var(--gut) 5mm;
 }
 
 .masthead .eyebrow {
@@ -187,7 +192,7 @@ html {
 /* ---------- generic band on paper ---------- */
 
 .band {
-  padding: 5mm var(--gut) 0;
+  padding: 4.5mm var(--gut) 0;
 }
 
 .band.grow {
@@ -292,10 +297,197 @@ html {
   color: var(--muted);
 }
 
+/* ---------- block: shots (real product frames) ----------
+ *
+ * The one place a flyer carries images. It exists because showing what a
+ * delivered product looks like beats describing it, and on a single recto it
+ * REPLACES paragraph — it never sits on top of one.
+ *
+ * ⚠️ --shot-h IS THE PAGE BUDGET, not a look. The band is the tallest thing on
+ * the sheet after the masthead, so raising it pushes copy onto a second page and
+ * the build fails. Raise it only after cutting text.
+ *
+ * ⚠️ The frames are cropped, never letterboxed: every canvas is the same height
+ * whatever the capture's native ratio, so the band reads as one row. A portrait
+ * phone capture keeps its top, which is where an app screen says what it is.
+ */
+
+.shots {
+  --shot-h: 20mm;
+  display: flex;
+  gap: 4mm;
+  align-items: flex-start;
+}
+
+.shot {
+  margin: 0;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* A phone is narrow on purpose: at the band's height, a wide phone frame stops
+   reading as a phone and the three surfaces stop being distinguishable. */
+.shot--phone {
+  flex: 0 0 20mm;
+}
+
+.shot-bar {
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+  height: 3.6mm;
+  padding: 0 2mm;
+  background: #e9e9e3;
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  border-radius: 1.4mm 1.4mm 0 0;
+}
+
+.shot-dots {
+  display: flex;
+  gap: 0.9mm;
+}
+
+.shot-dots i {
+  width: 1.1mm;
+  height: 1.1mm;
+  border-radius: 50%;
+  background: #c3c3bb;
+}
+
+.shot-pill {
+  flex: 1;
+  height: 1.5mm;
+  border-radius: 1mm;
+  background: #d5d5cd;
+}
+
+.shot-notch {
+  width: 6mm;
+  height: 1.4mm;
+  margin: 0 auto 0.8mm;
+  border-radius: 1mm;
+  background: #c3c3bb;
+}
+
+.shot-canvas {
+  height: var(--shot-h);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0 0 1.4mm 1.4mm;
+  background: #fff;
+}
+
+.shot--phone .shot-canvas {
+  border-radius: 2mm;
+}
+
+.shot-canvas img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.shot-caption {
+  margin-top: 1.8mm;
+  font-size: 6.6pt;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- block: showcase (the product, shown then named) ----------
+ *
+ * ⚠️ THE PICTURE AND THE LIST ARE ONE ARGUMENT, which is why they share a band
+ * instead of stacking. The image is the landing's own hero frame at its FINAL
+ * state — a whole system, lit and live — and the list beside it names the parts
+ * that picture draws. Split them and the reader gets a decoration sitting on top
+ * of an inventory; keep them side by side and the list reads as the caption of
+ * what they are already looking at.
+ *
+ * ⚠️ AND THE HIERARCHY IS THE POINT, not a style. `items` is the PRODUCT and
+ * `.band-note` is what comes on top of it, set small and grey under both
+ * columns. The moment the extras are given the same weight as the product, this
+ * band has reproduced the defect it was built to fix (see `showcase` in
+ * render.ts). ⛔ Never promote the note to a card, a column or a list.
+ *
+ * ⚠️ --showcase-w IS THE PAGE BUDGET. The captured frame is about 1.58:1, so
+ * every millimetre of width costs 0.63mm of height on a sheet that must stay one
+ * recto. Widen it only after cutting copy, and judge it on the printed render.
+ */
+
+.showcase-row {
+  display: flex;
+  gap: 6mm;
+  align-items: flex-start;
+}
+
+.showcase-figure {
+  --showcase-w: 92mm;
+  flex: 0 0 var(--showcase-w);
+  margin: 0;
+}
+
+/* The capture already carries the landing's own browser frame — its border,
+   radius and shadow are in the pixels. ⛔ Do not draw chrome around it again. */
+.showcase-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.showcase-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.showcase-lede {
+  margin: 0;
+  font-size: 8.6pt;
+  line-height: 1.42;
+  color: var(--ink-2);
+}
+
+.showcase-list {
+  margin: 4mm 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.showcase-list li {
+  position: relative;
+  padding-left: 5.4mm;
+  font-size: 8.6pt;
+  line-height: 1.32;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.showcase-list li + li {
+  margin-top: 2.4mm;
+}
+
+/* A tick drawn from two borders: no icon font to embed, and it prints as a
+   vector at any resolution. */
+.showcase-list li::before {
+  content: '';
+  position: absolute;
+  left: 0.4mm;
+  top: 0.9mm;
+  width: 2.6mm;
+  height: 1.3mm;
+  border-left: 1.5px solid var(--accent);
+  border-bottom: 1.5px solid var(--accent);
+  transform: rotate(-45deg);
+}
+
 /* ---------- block: callout (the partner's own section) ---------- */
 
 .callout {
-  margin: 5mm var(--gut) 0;
+  margin: 4mm var(--gut) 0;
   background: var(--accent);
   color: #fff;
   border-radius: 3mm;
@@ -308,6 +500,10 @@ html {
 .callout-figure {
   flex: none;
   text-align: left;
+  /* Sized for an AMOUNT, not a percentage (decision cmu3ckt3): "3 000 €" and
+     "$3,400" are three times wider than "20 %", and the caption below now reads
+     as that number's subtitle rather than as a stray label. */
+  min-width: 44mm;
   padding-right: 7mm;
   border-right: 1px solid rgba(255, 255, 255, 0.28);
 }
@@ -316,8 +512,9 @@ html {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   letter-spacing: -0.04em;
-  font-size: 40pt;
+  font-size: 34pt;
   line-height: 0.88;
+  white-space: nowrap;
 }
 
 .callout-caption {
@@ -327,7 +524,7 @@ html {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.78);
-  max-width: 34mm;
+  max-width: 40mm;
 }
 
 .callout-body {
@@ -384,7 +581,9 @@ html {
 /* ---------- band: footer ---------- */
 
 .footer {
-  margin-top: 6mm;
+  /* 4mm, not 6: the .grow band above already opens the gap, and every
+     millimetre here is one the copy does not get. */
+  margin-top: 4mm;
   border-top: 1px solid var(--line);
   padding: 4.5mm var(--gut) 7mm;
   display: flex;

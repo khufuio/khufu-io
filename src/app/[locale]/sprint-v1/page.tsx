@@ -312,6 +312,9 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
             is drawn end to end, so all it needs is its accessible description.
             `traqio-hero*` was deleted with the <img> that used it. */
         shotLabel={c.hero.shotAlt[locale]}
+        /* The frame's address bar: a fictional, translated « votre projet ». It
+            replaced a progress pill that duplicated the wiring and the day rail. */
+        shotUrl={c.hero.shotUrl[locale]}
       />
 
       {/* The work itself — and the one dark section of the page. See the note in

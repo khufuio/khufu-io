@@ -38,10 +38,13 @@
  *      movement that turns "a page in a week" into "a product in a week", and it
  *      is the reason the whole sequence exists (decision cmu1u21i: show the
  *      system, never the person).
- *   3. IT GOES LIVE — the wiring runs across the tiles, everything turns green,
- *      the address bar lights. The demonstration closes on a working system.
+ *   3. IT GOES LIVE — the wiring runs across the tiles and everything turns
+ *      green. The demonstration closes on a working system.
  *
- * ⛔ NOT ONE WORD TO READ, and the eight tiles are the reason this rule now pays
+ * ⛔ NOT ONE WORD OF COPY TO READ — the address bar is the only exception, and it
+ * is chrome rather than copy: a fictional `https://www.votre-projet.com` that a
+ * visitor recognises as a browser and stops reading. The eight tiles are the
+ * reason this rule now pays
  * for itself twice. Adrien's bound is « lisible en 5 à 7 secondes, sans texte à
  * lire », and a second rule (cmu1qk2g) forbids developer vocabulary in
  * commercial copy — « paiements », never « webhook Stripe ». Icons satisfy both
@@ -51,10 +54,17 @@
  * their meaning to a screen reader, and it is the only place it belongs.
  *
  * ⚠️ IT IS AN ILLUSTRATION AND MUST NEVER BE DRESSED AS A RECORDING. No caption
- * dating it, no client, no « sprint de septembre 2026 », and — since the capture
- * went — no real product domain in the address bar either: the URL is a drawn
- * pill with no text, precisely so that a diagram never signs itself with a
+ * dating it, no client, no « sprint de septembre 2026 », and no real domain in
+ * the address bar either — it carries an invented `votre-projet`, translated per
+ * locale (`hero.shotUrl`), precisely so that a diagram never signs itself with a
  * product's name. It draws the SHAPE of a week.
+ *
+ * ⛔ AND THAT ADDRESS IS NOT A PROGRESS BAR. Until 2026-09-16 the slot held a
+ * pill that filled and turned green at go-live; Adrien caught what that cost:
+ * « ça fait doublon avec la bar du bas et le stepper en dessous ». Three progress
+ * indicators stacked on one screen say the same thing three times, and the third
+ * one spent the single element that could make the frame read as a real browser.
+ * ⛔ Do not animate this slot again.
  *
  * ⚠️ PERFORMANCE, AND THE BUDGET IS HARD (khufu HQ decision cmu093fb — mobile LCP
  * under 2.5 s, CLS under 0.1):
@@ -149,7 +159,18 @@ const SYSTEM: { key: string; icon: React.ReactNode }[] = [
   { key: 'monitoring', icon: <path d="M2.6 12h4.1l2.5-6.2 4 12.4 2.5-6.2h5.7" /> },
 ]
 
-export function SprintBuildSequence({ label }: { label: string }) {
+/**
+ * Splits an address the way Chrome's omnibox greys it: everything up to and
+ * including `www.` is chrome, the rest is the site. A string that does not carry
+ * that prefix simply renders whole — no error, no empty span.
+ */
+function splitUrl(url: string): { scheme: string; host: string } {
+  const match = /^(https?:\/\/(?:www\.)?)(.+)$/.exec(url)
+  return match ? { scheme: match[1], host: match[2] } : { scheme: '', host: url }
+}
+
+export function SprintBuildSequence({ label, url }: { label: string; url: string }) {
+  const { scheme, host } = splitUrl(url)
   return (
     <div className="sprint-build">
       {/*
@@ -173,10 +194,25 @@ export function SprintBuildSequence({ label }: { label: string }) {
             <i />
             <i />
           </span>
-          {/* The address, drawn and wordless — it fills as the product comes up
-              and lights green when it is live. ⛔ Never a real domain here. */}
-          <span className="sprint-build-url">
-            <span className="sprint-build-url-fill" />
+          {/*
+            * The address, written — the same class the six product frames below
+            * use, so all seven frames still read as one browser.
+            *
+            * ⛔ IT IS NOT A PROGRESS BAR ANY MORE, and nothing here may become one
+            * again: this slot held a pill that filled and turned green, which put
+            * a third progress indicator on screen next to the wiring and the
+            * seven-day rail (Adrien, 2026-09-16: « ça fait doublon »). It is now
+            * the one piece of the drawing that behaves like real browser chrome —
+            * static, present from the first frame, read and forgotten.
+            *
+            * ⚠️ `dir="ltr"` IS LOAD-BEARING ON /ar. An address reads
+            * left-to-right in every language; inside an RTL page the span would
+            * otherwise align to the right edge and truncate from the wrong end.
+            * ⛔ Never a real domain — the string comes from `hero.shotUrl`.
+            */}
+          <span className="sprint-shot-url sprint-build-url" dir="ltr">
+            {scheme ? <span className="sprint-build-url-scheme">{scheme}</span> : null}
+            {host}
           </span>
         </div>
 
