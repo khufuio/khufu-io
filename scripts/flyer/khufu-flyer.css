@@ -50,8 +50,8 @@ body {
 
 body {
   width: 210mm;
-  /* 296mm, not 297. The sheet is a flex column whose .grow band eats the slack,
-     so a full page ends EXACTLY on the paper edge — and a sub-pixel rounding
+  /* 296mm, not 297. The sheet is a flex column that spreads its slack, so the
+     footer ends EXACTLY on the paper edge — and a sub-pixel rounding
      error there tips the footer onto a second page, which fails the build for a
      sheet that actually fits. One millimetre of slack absorbs the rounding
      without touching the design; real overflow still fails, as it must. */
@@ -62,10 +62,17 @@ body {
   font-size: 9.1pt;
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
-  /* The sheet is a column: bands stack, and the one marked .grow eats the
-     rounding error so the footer always sits on the bottom edge. */
+  /* ⚠️ THE SLACK IS SPREAD BETWEEN THE BANDS, NEVER GIVEN TO ONE OF THEM.
+     Until pass 4 (2026-09-16) one band carried `flex: 1` to eat it; the band's
+     box then grew while its content stayed at the top, so every spare
+     millimetre of the page landed as a single ~5cm hole under that band —
+     Adrien: « on sent que c'est pas voulu ». `space-between` shares the same
+     slack out across every gap between bands, so what is left over reads as
+     even breathing room and the footer still sits on the bottom edge.
+     ⛔ Do not put a growing band back. */
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Chrome drops backgrounds when printing unless asked. Without this the whole
@@ -193,10 +200,6 @@ html {
 
 .band {
   padding: 4.5mm var(--gut) 0;
-}
-
-.band.grow {
-  flex: 1 1 auto;
 }
 
 .band-title {
@@ -401,12 +404,17 @@ html {
 
 /* ---------- block: showcase (the product, shown then named) ----------
  *
- * ⚠️ THE PICTURE AND THE LIST ARE ONE ARGUMENT, which is why they share a band
- * instead of stacking. The image is the landing's own hero frame at its FINAL
+ * ⚠️ THE PICTURE AND THE LIST ARE ONE ARGUMENT, which is why they share a band. The image is the landing's own hero frame at its FINAL
  * state — a whole system, lit and live — and the list beside it names the parts
  * that picture draws. Split them and the reader gets a decoration sitting on top
  * of an inventory; keep them side by side and the list reads as the caption of
  * what they are already looking at.
+ *
+ * The row beside the picture carries the title, the lede and the CLAIM — the
+ * one affirmative sentence that states the scope (decision cmu4ie4y), set
+ * larger than the list so the list reads as its evidence. The list then runs
+ * full width under the row, in two columns: beside the picture, ten items
+ * outgrew it and left a hole under the image.
  *
  * ⚠️ AND THE HIERARCHY IS THE POINT, not a style. `items` is the PRODUCT and
  * `.band-note` is what comes on top of it, set small and grey under both
@@ -422,7 +430,9 @@ html {
 .showcase-row {
   display: flex;
   gap: 6mm;
-  align-items: flex-start;
+  /* Centred: the text column is the shorter of the two, and centring splits
+     the difference above and below it instead of leaving it all underneath. */
+  align-items: center;
 }
 
 .showcase-figure {
@@ -451,10 +461,29 @@ html {
   color: var(--ink-2);
 }
 
+.showcase-claim {
+  margin: 3.6mm 0 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 12pt;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.showcase-claim b {
+  color: var(--accent);
+}
+
+/* Two columns filled row by row, so items read left-to-right in pairs. */
 .showcase-list {
-  margin: 4mm 0 0;
+  margin: 5mm 0 0;
   padding: 0;
   list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 6mm;
+  row-gap: 2.4mm;
 }
 
 .showcase-list li {
@@ -464,10 +493,6 @@ html {
   line-height: 1.32;
   font-weight: 500;
   color: var(--ink);
-}
-
-.showcase-list li + li {
-  margin-top: 2.4mm;
 }
 
 /* A tick drawn from two borders: no icon font to embed, and it prints as a
@@ -581,7 +606,7 @@ html {
 /* ---------- band: footer ---------- */
 
 .footer {
-  /* 4mm, not 6: the .grow band above already opens the gap, and every
+  /* 4mm, not 6: the spread slack above already opens the gap, and every
      millimetre here is one the copy does not get. */
   margin-top: 4mm;
   border-top: 1px solid var(--line);
