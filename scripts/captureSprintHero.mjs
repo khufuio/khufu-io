@@ -16,6 +16,19 @@
  * with no chance of catching a frame mid-build. `--motion` waits out the real
  * sequence instead, which is how the two are checked against each other.
  *
+ * ⛔ ONE ARTEFACT, TWO CONSUMERS. The partner flyer (`scripts/buildFlyer.ts`) and
+ * the ad creatives (`marketing/ads/lib/brand.mjs`, HERO_SHOT) both read the files
+ * this script writes by default — `public/images/captures/sprint-hero-<lang>.png` —
+ * and nothing else. They used to hold two copies taken at two different times, and
+ * the flyer went on printing the pre-address-bar hero for a day while the ads showed
+ * the current one. A copy is a second truth that silently ages: never duplicate
+ * these files into another folder, point the consumer at them instead. One run with
+ * no `--locale` retakes every language, so both consumers move together.
+ *
+ * ⚠️ ONE FILE PER LANGUAGE: the frame's address bar carries a localised URL
+ * (`votre-projet.com` / `your-project.com`), so an English sheet must never carry
+ * the French capture.
+ *
  * Driving: the CDP endpoint of the host's scratch Chrome (`hq browser ensure
  * --need public`), spoken over a raw WebSocket — Node 22 ships a global one, so
  * this script has no dependency and the repo gains none.
@@ -30,9 +43,18 @@ const flag = (name, fallback) => {
 }
 
 const origin = flag('origin', 'http://127.0.0.1:3000')
-const locale = flag('locale', 'fr')
-const out = path.resolve(flag('out', `sprint-hero-${locale}.png`))
-const scale = Number(flag('scale', '3'))
+const LOCALES = ['fr', 'en']
+const only = flag('locale', undefined)
+const locales = only ? [only] : LOCALES
+/** `{lang}` in `--out` is replaced per locale; the default is the shared artefact. */
+const outFor = (locale) =>
+  path.resolve(flag('out', 'public/images/captures/sprint-hero-{lang}.png').replace('{lang}', locale))
+if (!only && args.some((a) => a.startsWith('--out=')) && !flag('out').includes('{lang}')) {
+  throw new Error('--out must contain {lang} when every locale is captured')
+}
+// 6x of a 528 css px frame = 3168 px, ~440 dpi at the flyer's 92 mm. The ads
+// downsize it themselves, so one print-grade file serves both.
+const scale = Number(flag('scale', '6'))
 const width = Number(flag('width', '1440'))
 const cdp = flag('cdp', 'http://127.0.0.1:9412')
 /** Wait out the real animation instead of forcing its end state — a cross-check. */
@@ -91,54 +113,58 @@ if (!motion) {
   await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] })
 }
 
-await send('Page.navigate', { url: `${origin}/${locale}/sprint-v1` })
-// The sequence runs ~6s; 16 leaves room for a cold dev compile underneath it.
-await new Promise((resolve) => setTimeout(resolve, motion ? 16000 : 6000))
+// Each locale is its own navigation: the injected style below dies with the page.
+for (const locale of locales) {
+  const out = outFor(locale)
+  await send('Page.navigate', { url: `${origin}/${locale}/sprint-v1` })
+  // The sequence runs ~6s; 16 leaves room for a cold dev compile underneath it.
+  await new Promise((resolve) => setTimeout(resolve, motion ? 16000 : 6000))
 
-/*
- * ⚠️ THE FRAME'S DROP SHADOW IS TURNED OFF BEFORE THE CROP, and this is not a
- * cosmetic preference. `.sprint-shot--hero` carries an 80px blur offset 34px
- * down, so a clip taken on the element's own box cuts it mid-gradient and the
- * sheet gets a grey band under the picture that looks like a rendering fault.
- * Padding the clip out to clear it instead would drag the hero's headline column
- * into the frame. On paper the 1px border does the job the shadow does on
- * screen, so the shadow simply goes.
- *
- * ⚠️ THE HERO'S BACKDROP GOES TOO — the drifting grid and the halo. The PAD of
- * air around the frame otherwise carries a sliver of grid lines, which reads as
- * a stray edge of another picture once the capture sits on a flyer or an ad.
- */
-await send('Runtime.evaluate', {
-  expression: `(() => {
-    const style = document.createElement('style')
-    style.textContent = '.sprint-shot--hero{box-shadow:none !important}' +
-      '.sprint-hero-grid,.sprint-hero-glow{display:none !important}'
-    document.head.appendChild(style)
-  })()`,
-})
+  /*
+   * ⚠️ THE FRAME'S DROP SHADOW IS TURNED OFF BEFORE THE CROP, and this is not a
+   * cosmetic preference. `.sprint-shot--hero` carries an 80px blur offset 34px
+   * down, so a clip taken on the element's own box cuts it mid-gradient and the
+   * sheet gets a grey band under the picture that looks like a rendering fault.
+   * Padding the clip out to clear it instead would drag the hero's headline column
+   * into the frame. On paper the 1px border does the job the shadow does on
+   * screen, so the shadow simply goes.
+   *
+   * ⚠️ THE HERO'S BACKDROP GOES TOO — the drifting grid and the halo. The PAD of
+   * air around the frame otherwise carries a sliver of grid lines, which reads as
+   * a stray edge of another picture once the capture sits on a flyer or an ad.
+   */
+  await send('Runtime.evaluate', {
+    expression: `(() => {
+      const style = document.createElement('style')
+      style.textContent = '.sprint-shot--hero{box-shadow:none !important}' +
+        '.sprint-hero-grid,.sprint-hero-glow{display:none !important}'
+      document.head.appendChild(style)
+    })()`,
+  })
 
-const measured = await send('Runtime.evaluate', {
-  expression: `(() => {
-    const els = ${JSON.stringify(SELECTORS)}.map((s) => document.querySelector(s))
-    if (els.some((el) => !el)) return null
-    const rects = els.map((el) => el.getBoundingClientRect())
-    const pad = ${PAD}
-    const left = Math.min(...rects.map((r) => r.left)) - pad
-    const top = Math.min(...rects.map((r) => r.top)) - pad
-    const right = Math.max(...rects.map((r) => r.right)) + pad
-    const bottom = Math.max(...rects.map((r) => r.bottom)) + pad
-    return { x: left, y: top, width: right - left, height: bottom - top }
-  })()`,
-  returnByValue: true,
-})
-const clip = measured.result.value
-if (!clip) throw new Error(`${SELECTORS.join(' / ')} not found on ${origin}/${locale}/sprint-v1`)
+  const measured = await send('Runtime.evaluate', {
+    expression: `(() => {
+      const els = ${JSON.stringify(SELECTORS)}.map((s) => document.querySelector(s))
+      if (els.some((el) => !el)) return null
+      const rects = els.map((el) => el.getBoundingClientRect())
+      const pad = ${PAD}
+      const left = Math.min(...rects.map((r) => r.left)) - pad
+      const top = Math.min(...rects.map((r) => r.top)) - pad
+      const right = Math.max(...rects.map((r) => r.right)) + pad
+      const bottom = Math.max(...rects.map((r) => r.bottom)) + pad
+      return { x: left, y: top, width: right - left, height: bottom - top }
+    })()`,
+    returnByValue: true,
+  })
+  const clip = measured.result.value
+  if (!clip) throw new Error(`${SELECTORS.join(' / ')} not found on ${origin}/${locale}/sprint-v1`)
 
-const shot = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { ...clip, scale: 1 } })
-fs.mkdirSync(path.dirname(out), { recursive: true })
-fs.writeFileSync(out, Buffer.from(shot.data, 'base64'))
-console.log(
-  `${out} — ${Math.round(clip.width)}×${Math.round(clip.height)} css px @${scale}x` +
-    ` = ${Math.round(clip.width * scale)}×${Math.round(clip.height * scale)} px`,
-)
+  const shot = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { ...clip, scale: 1 } })
+  fs.mkdirSync(path.dirname(out), { recursive: true })
+  fs.writeFileSync(out, Buffer.from(shot.data, 'base64'))
+  console.log(
+    `${out} — ${Math.round(clip.width)}×${Math.round(clip.height)} css px @${scale}x` +
+      ` = ${Math.round(clip.width * scale)}×${Math.round(clip.height * scale)} px`,
+  )
+}
 ws.close()
