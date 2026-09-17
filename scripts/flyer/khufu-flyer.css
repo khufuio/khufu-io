@@ -451,8 +451,8 @@ html {
  * band has reproduced the defect it was built to fix (see `showcase` in
  * render.ts). ⛔ Never promote the note to a card, a column or a list.
  *
- * ⚠️ --showcase-w IS THE PAGE BUDGET. The captured frame is about 1.58:1, so
- * every millimetre of width costs 0.63mm of height on a sheet that must stay one
+ * ⚠️ --showcase-w IS THE PAGE BUDGET. The captured frame is about 1.54:1, so
+ * every millimetre of width costs 0.65mm of height on a sheet that must stay one
  * recto. Widen it only after cutting copy, and judge it on the printed render.
  */
 
