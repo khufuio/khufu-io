@@ -15,7 +15,8 @@
     "check:sprint": "tsx scripts/checkSprintSlots.ts && tsx scripts/checkSprintLocales.ts",
     "check:sprint-html": "tsx scripts/checkSprintHtml.ts",
     "flyer": "tsx scripts/buildFlyer.ts",
-    "capture:hero": "node scripts/captureSprintHero.mjs"
+    "capture:hero": "node scripts/captureSprintHero.mjs",
+    "check:sprint-title": "node scripts/checkSprintHeroTitle.mjs"
   },
   "dependencies": {
     "next": "^16.0.0",
