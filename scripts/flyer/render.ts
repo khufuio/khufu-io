@@ -54,8 +54,11 @@ export type Block =
    * ⚠️ `claim` IS WHAT MAKES THE LIST AN ILLUSTRATION (decision cmu4ie4y). Even a
    * complete list reads as a CLOSED enumeration — the reader counts what is
    * missing — so the scope is stated once, affirmatively and larger than the
-   * list (« on fait 100 % de son produit »), and the list only backs it up.
-   * Required, because every showcase has the same failure without it.
+   * list (« on fait 100 % du produit de votre client »), and the list only backs
+   * it up. Required, because every showcase has the same failure without it.
+   * ⛔ It stays GENERIC (decision cmu4re0p): no component, no example, no
+   * « from X to Y » — a named pair BOUNDS the scope and turns the sentence back
+   * into the list it replaces.
    */
   | { type: 'showcase'; image: string; title: string; lede: string; claim: string; items: string[]; note?: string }
   | { type: 'callout'; value: string; caption: string; title: string; text: string }

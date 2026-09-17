@@ -439,8 +439,9 @@ html {
  * what they are already looking at.
  *
  * The row beside the picture carries the title, the lede and the CLAIM — the
- * one affirmative sentence that states the scope (decision cmu4ie4y), set
- * larger than the list so the list reads as its evidence. The list then runs
+ * one affirmative, GENERIC sentence that states the scope (decisions cmu4ie4y,
+ * cmu4re0p), set above the list and below the title so the list reads as its
+ * evidence. The list then runs
  * full width under the row, in two columns: beside the picture, ten items
  * outgrew it and left a hole under the image.
  *
@@ -489,17 +490,24 @@ html {
   color: var(--ink-2);
 }
 
+/* ONE STEP BELOW .band-title, never beside it (decision cmu4re0p). At 12pt/700
+   it sat at the title's own rank, so the sheet showed two headings and no
+   priority. 10pt/600 in ink still outranks the 8.6pt/500 list, and stays
+   clearly under the 13pt/700 title. Ink rather than the all-violet option:
+   a violet sentence swallows the violet « 100 % », and full violet already
+   signals the commission callout further down. */
 .showcase-claim {
-  margin: 3.6mm 0 0;
+  margin: 3.2mm 0 0;
   font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  font-size: 12pt;
-  line-height: 1.22;
-  letter-spacing: -0.015em;
+  font-weight: 600;
+  font-size: 10pt;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
   color: var(--ink);
 }
 
 .showcase-claim b {
+  font-weight: 700;
   color: var(--accent);
 }
 
