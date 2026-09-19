@@ -39,6 +39,12 @@ export type SprintContactPath = 'booking' | 'callback' | 'whatsapp' | 'email'
  */
 export type SprintContactSurface = 'modal' | 'closing'
 
+/*
+ * ⚠️ THREE OF THESE ALSO FEED LINKEDIN, as ONE conversion « un contact a été
+ * pris » (decision cmu7x1yj): bookingOpened, callbackRequested, whatsappOpened.
+ * Each call site fires `trackLinkedInConversion('contact')` next to its `track`
+ * — lib/linkedin.ts holds the reason and the measurement limit.
+ */
 export const SPRINT_EVENTS = {
   /** A CTA was clicked. Fires whether or not the modal then opens (it does not without JS). */
   ctaClicked: 'sprint_cta_clicked',
@@ -46,7 +52,11 @@ export const SPRINT_EVENTS = {
   contactOpened: 'sprint_contact_opened',
   /** The modal was closed without taking any path — the cost of the extra step. */
   contactDismissed: 'sprint_contact_dismissed',
-  /** The Google appointment page was opened. */
+  /**
+   * The Google appointment page was opened. ⚠️ OPENED, NOT BOOKED: the slot is
+   * picked on Google's side and the site never learns whether it was. Count
+   * booked calls in the calendar, never off this event.
+   */
   bookingOpened: 'sprint_booking_opened',
   /** The net was unfolded — demand for it, independent of whether it was completed. */
   callbackRevealed: 'sprint_callback_revealed',

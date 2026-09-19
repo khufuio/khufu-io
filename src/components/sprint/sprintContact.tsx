@@ -347,7 +347,7 @@ function SprintContactDialog({
       locale,
       ...campaignProps(),
     })
-    trackLinkedInConversion('bookingOpened')
+    trackLinkedInConversion('contact')
   }
 
   return (

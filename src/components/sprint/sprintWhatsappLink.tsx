@@ -3,6 +3,7 @@
 import type { Locale } from '@/i18n/config'
 import { track } from '@/lib/analytics'
 import { campaignProps } from '@/lib/utm'
+import { trackLinkedInConversion } from '@/lib/linkedin'
 import { SPRINT_EVENTS, type SprintContactSurface } from '@/lib/sprintContactEvents'
 import { sprintWhatsappHref } from '@/lib/sprintWhatsapp'
 import { WhatsAppGlyph } from '@/components/layout/whatsappButton'
@@ -64,6 +65,7 @@ export function SprintWhatsappLink({
           locale,
           ...campaignProps(),
         })
+        trackLinkedInConversion('contact')
       }}
       className={`inline-flex items-center gap-2 text-sm font-medium underline-offset-4 hover:underline ${
         tone === 'dark'

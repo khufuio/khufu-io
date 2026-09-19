@@ -52,7 +52,7 @@ export function SprintBookingLink({
           locale,
           ...campaignProps(),
         })
-        trackLinkedInConversion('bookingOpened')
+        trackLinkedInConversion('contact')
       }}
       className={buttonClasses('primary', 'lg', 'w-full')}
     >

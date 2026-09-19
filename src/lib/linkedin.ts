@@ -18,14 +18,32 @@ export const LINKEDIN_PARTNER_ID = process.env.NEXT_PUBLIC_LINKEDIN_PARTNER_ID ?
  * site. Each id is created in Campaign Manager (Conversion tracking → "Define
  * with JavaScript event") and pasted into the environment.
  *
- * ⚠️ Each one fires at the SAME point as a PostHog event, so the two tools count
- * the same thing and can be reconciled:
- *   - `checklistLead` ↔ `lead_magnet_submitted` with `magnet: 'hire-checklist'`
- *   - `bookingOpened` ↔ `sprint_booking_opened` (both surfaces: modal + closing)
+ * `contact` — « un contact a été pris » (decision cmu7x1yj): ONE conversion for
+ * the three exits of /sprint-v1, fired at the same point as their PostHog event
+ * so the two tools can be reconciled:
+ *   - `sprint_booking_opened`     (sprintContact.tsx modal, sprintBookingLink.tsx closing)
+ *   - `sprint_callback_requested` (sprintCallback.tsx, only after the server said yes)
+ *   - `sprint_whatsapp_opened`    (sprintWhatsappLink.tsx, modal + closing)
+ *
+ * ⚠️ WHY ONE AND NOT THREE: ~$1,000 at $8-15 a click buys 70-125 clicks, and
+ * LinkedIn needs 15-50 conversions to leave its learning phase. Only the three
+ * exits together have that volume. The campaign OPTIMISES on this; it is JUDGED
+ * on booked calls, which this site cannot see.
+ *
+ * ⚠️ A BOOKING HERE IS THE GOOGLE PAGE OPENING, NOT AN APPOINTMENT. The slot is
+ * picked on Google's side, out of the site's reach, so `sprint_booking_opened`
+ * also counts every visitor who opened the calendar and left. A cost per
+ * conversion read off this number is a cost per contact ATTEMPT — the booked
+ * calls are counted in the Google calendar, not here.
+ *
+ * ⛔ The hire-checklist download is deliberately NOT a LinkedIn conversion any
+ * more: cmu7x1yj took the lead magnets out of the paid funnel. Its env var
+ * (NEXT_PUBLIC_LINKEDIN_CONVERSION_CHECKLIST) stays documented in .env.example
+ * and is read nowhere — wire it back here only if a paid flight points at a
+ * guide again.
  */
 const CONVERSION_IDS = {
-  checklistLead: process.env.NEXT_PUBLIC_LINKEDIN_CONVERSION_CHECKLIST ?? '',
-  bookingOpened: process.env.NEXT_PUBLIC_LINKEDIN_CONVERSION_BOOKING ?? '',
+  contact: process.env.NEXT_PUBLIC_LINKEDIN_CONVERSION_CONTACT ?? '',
 } as const
 
 export type LinkedInConversion = keyof typeof CONVERSION_IDS

@@ -5,6 +5,7 @@ import { site } from '@/content/site'
 import type { Locale } from '@/i18n/config'
 import { track } from '@/lib/analytics'
 import { campaignProps, readUtm } from '@/lib/utm'
+import { trackLinkedInConversion } from '@/lib/linkedin'
 import { SPRINT_EVENTS, type SprintContactSurface } from '@/lib/sprintContactEvents'
 
 /**
@@ -143,6 +144,7 @@ export function SprintCallback({
          thing this instrumentation could do, because it is the number the next
          arbitration is going to be made on. */
       track(SPRINT_EVENTS.callbackRequested, props())
+      trackLinkedInConversion('contact')
     } catch {
       setStatus('failed')
       track(SPRINT_EVENTS.callbackFailed, props())
