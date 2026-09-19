@@ -104,7 +104,7 @@ export function SprintComparison({ locale }: { locale: Locale }) {
       {/* Desktop: a real <table> — a comparison IS tabular data, which is how it
           reads to a screen reader and to the engines that scrape this page. */}
       <div className="hidden overflow-hidden rounded-[var(--radius-xl)] border border-[var(--color-line)] bg-white lg:block">
-        <table className="w-full border-collapse text-left">
+        <table className="w-full border-collapse text-start">
           <thead>
             <tr className="border-b border-[var(--color-line)]">
               <th

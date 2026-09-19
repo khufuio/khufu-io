@@ -61,7 +61,9 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
         <FooterCol title={ui.freeGuides[locale]}>
           {leadMagnets.map((magnet) => (
             <FooterLink key={magnet.slug} href={guidePath(magnet.slug, 'footer')}>
-              {magnet.label}
+              {/* The labels are English on every locale; <bdi> keeps /ar from
+                  reordering « 7-Day Playbook » into « Day Playbook-7 ». */}
+              <bdi>{magnet.label}</bdi>
             </FooterLink>
           ))}
         </FooterCol>

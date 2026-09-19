@@ -51,10 +51,11 @@ export type SprintTimelineStep = {
 
 /**
  * The digits of a day label — "Jours 2–3" → "2–3" — for the mobile calendar
- * tile, which shows the number and lets the weekday carry the word. The labels
- * are authored in French and filled from it for every untranslated locale, so
- * the digits are always ASCII; if a future label somehow carries none, the tile
- * falls back to the whole string rather than rendering empty.
+ * tile, which shows the number and lets the weekday carry the word. Every
+ * locale writes its day labels with ASCII digits and an en dash (ar included,
+ * inside a bidi isolate — see sprintLanding.ts); if a future label somehow
+ * carries none, the tile falls back to the whole string rather than rendering
+ * empty.
  */
 function dayNumbers(day: string): string {
   const digits = day.replace(/[^0-9\u2013-]/g, '').replace(/^-|-$/g, '')
@@ -63,7 +64,6 @@ function dayNumbers(day: string): string {
 
 /** Six equal columns, so the SVG nodes sit exactly on the HTML grid's centres. */
 const COLUMN_WIDTH = 200
-const nodeX = (index: number): number => COLUMN_WIDTH / 2 + index * COLUMN_WIDTH
 
 export function SprintTimeline({
   steps,
@@ -72,6 +72,7 @@ export function SprintTimeline({
   youLabel,
   usLabel,
   weekLetters,
+  rtl,
 }: {
   steps: SprintTimelineStep[]
   /** Annotation over day 0 — e.g. "Périmètre arrêté". */
@@ -84,8 +85,22 @@ export function SprintTimeline({
   usLabel: string
   /** Monday → Sunday, one narrow letter each, localized. Small screens only. */
   weekLetters: string[]
+  /** Right-to-left page (/ar): the schema runs from the right, like the day cards under it. */
+  rtl: boolean
 }) {
   const width = steps.length * COLUMN_WIDTH
+  /*
+   * ⚠️ MIRRORED IN RTL (todo cmu8036u). The SVG is drawn in physical x, but the
+   * grid of day cards under it is HTML and flips with `dir="rtl"`: on /ar the
+   * axis put day 0 on the left while its card sat on the right, so every node
+   * labelled a different day from the card beneath it. Every x below derives
+   * from this function (and the Friday curve is symmetric about its node), so
+   * mirroring here turns the whole schema with the page.
+   */
+  const nodeX = (index: number): number => {
+    const x = COLUMN_WIDTH / 2 + index * COLUMN_WIDTH
+    return rtl ? width - x : x
+  }
   const first = nodeX(0)
   const last = nodeX(steps.length - 1)
   const clockStart = nodeX(1)
@@ -273,7 +288,7 @@ export function SprintTimeline({
           return (
             <li
               key={step.day}
-              className="relative pl-14"
+              className="relative ps-14"
               data-reveal
               style={{ '--reveal-delay': `${i * 90}ms` } as React.CSSProperties}
             >
@@ -283,7 +298,7 @@ export function SprintTimeline({
               {!isDelivery && (
                 <span
                   aria-hidden
-                  className="absolute top-10 -bottom-6 left-[19px] w-px bg-[var(--color-line)]"
+                  className="absolute top-10 -bottom-6 start-[19px] w-px bg-[var(--color-line)]"
                   data-rail-y
                 />
               )}
@@ -292,10 +307,7 @@ export function SprintTimeline({
                   carries the label the text line used to repeat. */}
               <span
                 aria-hidden
-                // A day range is a number, so it stays LTR: in Arabic the bidi
-                // algorithm otherwise flips "2–3" into "3–2".
-                dir="ltr"
-                className={`absolute top-0 left-0 flex size-10 items-center justify-center rounded-[11px] font-[family-name:var(--font-display)] text-sm font-bold ${
+                className={`absolute top-0 start-0 flex size-10 items-center justify-center rounded-[11px] font-[family-name:var(--font-display)] text-sm font-bold ${
                   isDelivery
                     ? 'bg-[var(--color-accent)] text-white'
                     : accent
@@ -303,7 +315,12 @@ export function SprintTimeline({
                       : 'bg-[var(--color-paper-2)] text-[var(--color-muted)]'
                 }`}
               >
-                {dayNumbers(step.day)}
+                {/* A day range is a number, so it stays LTR: in Arabic the bidi
+                    algorithm otherwise flips "2–3" into "3–2". ⚠️ On the digits
+                    only, never on the tile: `start-0` resolves against the
+                    element's OWN direction, so an LTR tile sat on the left of
+                    an RTL row, across the column from its rail. */}
+                <span dir="ltr">{dayNumbers(step.day)}</span>
               </span>
               <p className="text-xs font-semibold tracking-[0.14em] text-[var(--color-muted)] uppercase">
                 <span className="sr-only">{step.day} · </span>
@@ -359,7 +376,7 @@ function Lanes({
       {rows.map((row) => (
         <div
           key={row.label}
-          className={`border-l-2 pl-3 ${row.accent ? 'border-[var(--color-accent)]' : 'border-[var(--color-line)]'}`}
+          className={`border-s-2 ps-3 ${row.accent ? 'border-[var(--color-accent)]' : 'border-[var(--color-line)]'}`}
         >
           <p
             className={`text-[10px] font-semibold tracking-[0.14em] uppercase ${

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { isLocale, localeHrefLang, type Locale } from '@/i18n/config'
+import { dir, isLocale, localeHrefLang, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/getDictionary'
 import { href, site } from '@/content/site'
 import { sprintLanding } from '@/content/sprintLanding'
@@ -351,6 +351,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
               youLabel={c.timeline.youLabel[locale]}
               usLabel={c.timeline.usLabel[locale]}
               weekLetters={weekLetters}
+              rtl={dir(locale) === 'rtl'}
             />
           </div>
           <p className="mt-10 text-sm text-[var(--color-muted)]">{c.timeline.note[locale]}</p>

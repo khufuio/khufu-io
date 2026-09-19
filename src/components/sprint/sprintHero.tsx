@@ -134,7 +134,7 @@ export function SprintHero({
 
           {/* Full width and centred on a phone, inline on a desktop. Adrien on
               the old button: « surtout en bouton align left comme ça ». */}
-          <div className="mt-8 text-center sm:text-left">
+          <div className="mt-8 text-center sm:text-start">
             <SprintCta placement="hero" label={ctaLabel} week={next?.dateLabel} className="w-full sm:w-auto" />
             {/* ⛔ « Encore disponible » USED TO SIT HERE and Adrien pulled it
                 (2026-09-15: « je doute du libellé »). « Encore » advertises a
@@ -160,7 +160,7 @@ export function SprintHero({
             style={{ gridTemplateColumns: `repeat(${figures.length}, minmax(0, 1fr))` }}
           >
             {figures.map((figure) => (
-              <div key={figure.label} className="px-3 first:pl-0 last:pr-0">
+              <div key={figure.label} className="px-3 first:ps-0 last:pe-0">
                 <dt className="sr-only">{figure.label}</dt>
                 <dd>
                   <p className="font-[family-name:var(--font-display)] text-[length:clamp(1.5rem,5.2vw,2.25rem)]/[1.05] font-bold tracking-[-0.03em] whitespace-nowrap">

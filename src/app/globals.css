@@ -1244,13 +1244,17 @@ main:has(> [data-flush-footer]:last-child) + footer {
   list-style: none;
 }
 
-/* Phone: the spine runs down the left, through the nodes. */
+/* Phone: the spine runs down the reading-start side, through the nodes.
+   ⚠️ LOGICAL PROPERTIES throughout this block (`inset-inline-start`,
+   `padding-inline-start`), never `left`: on /ar the text is set right-to-left,
+   and a spine pinned to the physical left ended up on the far side of the
+   column from the words it was meant to string together (todo cmu8036u). */
 .sprint-system-track::before {
   content: '';
   position: absolute;
   top: 1.25rem;
   bottom: 1.25rem;
-  left: 1.25rem;
+  inset-inline-start: 1.25rem;
   width: 2px;
   background: linear-gradient(
     to bottom,
@@ -1261,13 +1265,13 @@ main:has(> [data-flush-footer]:last-child) + footer {
 
 .sprint-system-step {
   position: relative;
-  padding-left: 3.5rem;
+  padding-inline-start: 3.5rem;
 }
 
 .sprint-system-node {
   position: absolute;
   top: 0;
-  left: 0;
+  inset-inline-start: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1301,20 +1305,29 @@ main:has(> [data-flush-footer]:last-child) + footer {
 
   .sprint-system-step {
     position: relative;
-    padding-left: 0;
+    padding-inline-start: 0;
   }
 
   .sprint-system-step:not(:last-child)::after {
     content: '';
     position: absolute;
-    /* From the right edge of this node to the left edge of the next one: the
-       node is 2.5rem wide, the grid gap is 1.5rem. */
+    /* From the trailing edge of this node to the leading edge of the next one:
+       the node is 2.5rem wide, the grid gap is 1.5rem. */
     top: 1.25rem;
-    left: 2.9rem;
+    inset-inline-start: 2.9rem;
     width: calc(100% - 2.9rem + 1.5rem - 0.4rem);
     height: 2px;
     background: linear-gradient(
       to right,
+      color-mix(in srgb, var(--color-accent) 28%, transparent),
+      color-mix(in srgb, var(--color-accent) 14%, transparent)
+    );
+  }
+
+  /* The fade follows the reading direction too: it lightens toward the next step. */
+  [dir='rtl'] .sprint-system-step:not(:last-child)::after {
+    background: linear-gradient(
+      to left,
       color-mix(in srgb, var(--color-accent) 28%, transparent),
       color-mix(in srgb, var(--color-accent) 14%, transparent)
     );
