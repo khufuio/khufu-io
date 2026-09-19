@@ -496,7 +496,7 @@ export const tr: Dictionary = {
     metaTitle: 'Gizlilik politikası',
     metaDescription: 'khufu.io kişisel verilerinizi nasıl toplar ve işler: analitik, iletişim formu, çerezler ve haklarınız.',
     title: 'Gizlilik politikası',
-    updated: 'Son güncelleme: Temmuz 2026',
+    updated: 'Son güncelleme: Eylül 2026',
     sections: [
       {
         heading: 'Veri sorumlusu',
@@ -509,6 +509,10 @@ export const tr: Dictionary = {
       {
         heading: 'Kitle ölçümü',
         body: 'Sitenin kullanımını anlamak için PostHog kullanırız (görüntülenen sayfalar, kullanıcı yolları). Veriler toplu halde işlenir ve yalnızca siteyi iyileştirmeye hizmet eder.',
+      },
+      {
+        heading: 'LinkedIn reklamları',
+        body: 'Kabul ederseniz (AB/AEA/Birleşik Krallık dışında ise reddetmediğiniz sürece) site LinkedIn Insight Tag’i yükler. Bu, LinkedIn’in reklamlarımızın performansını ölçmesini ve içeriklerimizi size LinkedIn’de yeniden göstermesini sağlar. LinkedIn bu durumda ortak veri sorumlusu olarak hareket eder; gizlilik politikasına bakın.',
       },
       {
         heading: 'İletişim formu',

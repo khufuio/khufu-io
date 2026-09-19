@@ -8,16 +8,16 @@ import { CONSENT_EVENT, CONSENT_KEY, REGION_COOKIE, type Consent } from '@/lib/c
 type Copy = { message: string; accept: string; reject: string }
 
 const copy: Record<Locale, Copy> = {
-  fr: { message: 'On utilise des cookies pour mesurer l’audience et améliorer le site.', accept: 'Accepter', reject: 'Refuser' },
-  en: { message: 'We use cookies to measure traffic and improve the site.', accept: 'Accept', reject: 'Decline' },
-  es: { message: 'Usamos cookies para medir la audiencia y mejorar el sitio.', accept: 'Aceptar', reject: 'Rechazar' },
-  de: { message: 'Wir verwenden Cookies, um die Reichweite zu messen und die Website zu verbessern.', accept: 'Akzeptieren', reject: 'Ablehnen' },
-  it: { message: 'Usiamo i cookie per misurare il traffico e migliorare il sito.', accept: 'Accetta', reject: 'Rifiuta' },
-  pt: { message: 'Usamos cookies para medir o tráfego e melhorar o site.', accept: 'Aceitar', reject: 'Recusar' },
-  nl: { message: 'We gebruiken cookies om bezoek te meten en de site te verbeteren.', accept: 'Accepteren', reject: 'Weigeren' },
-  ar: { message: 'نستخدم ملفات تعريف الارتباط لقياس الزيارات وتحسين الموقع.', accept: 'قبول', reject: 'رفض' },
-  pl: { message: 'Używamy plików cookie, aby mierzyć ruch i ulepszać stronę.', accept: 'Akceptuję', reject: 'Odrzuć' },
-  tr: { message: 'Trafiği ölçmek ve siteyi geliştirmek için çerezleri kullanıyoruz.', accept: 'Kabul et', reject: 'Reddet' },
+  fr: { message: 'On utilise des cookies pour mesurer l’audience, améliorer le site et mesurer nos publicités LinkedIn.', accept: 'Accepter', reject: 'Refuser' },
+  en: { message: 'We use cookies to measure traffic, improve the site and measure our LinkedIn ads.', accept: 'Accept', reject: 'Decline' },
+  es: { message: 'Usamos cookies para medir la audiencia, mejorar el sitio y medir nuestros anuncios en LinkedIn.', accept: 'Aceptar', reject: 'Rechazar' },
+  de: { message: 'Wir verwenden Cookies, um die Reichweite zu messen, die Website zu verbessern und unsere LinkedIn-Anzeigen auszuwerten.', accept: 'Akzeptieren', reject: 'Ablehnen' },
+  it: { message: 'Usiamo i cookie per misurare il traffico, migliorare il sito e misurare i nostri annunci su LinkedIn.', accept: 'Accetta', reject: 'Rifiuta' },
+  pt: { message: 'Usamos cookies para medir o tráfego, melhorar o site e medir os nossos anúncios no LinkedIn.', accept: 'Aceitar', reject: 'Recusar' },
+  nl: { message: 'We gebruiken cookies om bezoek te meten, de site te verbeteren en onze LinkedIn-advertenties te meten.', accept: 'Accepteren', reject: 'Weigeren' },
+  ar: { message: 'نستخدم ملفات تعريف الارتباط لقياس الزيارات وتحسين الموقع وقياس إعلاناتنا على LinkedIn.', accept: 'قبول', reject: 'رفض' },
+  pl: { message: 'Używamy plików cookie, aby mierzyć ruch, ulepszać stronę i mierzyć nasze reklamy na LinkedIn.', accept: 'Akceptuję', reject: 'Odrzuć' },
+  tr: { message: 'Trafiği ölçmek, siteyi geliştirmek ve LinkedIn reklamlarımızı ölçmek için çerezleri kullanıyoruz.', accept: 'Kabul et', reject: 'Reddet' },
 }
 
 function readCookie(name: string): string | undefined {
@@ -28,6 +28,8 @@ function readCookie(name: string): string | undefined {
  * Cookie-consent banner. Analytics run by default (opt-out model); this banner is
  * shown ONLY to EU/EEA/UK visitors (REGION_COOKIE stamped by the middleware).
  * "Accepter" keeps PostHog on, "Refuser" actually stops it (opt_out_capturing).
+ * The LinkedIn Insight Tag listens to the same CONSENT_EVENT and, in this
+ * region, only loads on "Accepter" (see lib/linkedin.ts).
  * The choice is stored in localStorage and re-applied on load (see posthogProvider).
  */
 export function CookieBanner({ locale }: { locale: Locale }) {

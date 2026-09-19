@@ -5,6 +5,7 @@ import '../globals.css'
 import { site } from '@/content/site'
 import { PostHogProvider } from '@/components/analytics/posthogProvider'
 import { CookieBanner } from '@/components/layout/cookieBanner'
+import { LinkedInInsightTag } from '@/components/analytics/linkedInInsightTag'
 
 /**
  * Root layout for the lead-magnet landing pages.
@@ -30,6 +31,7 @@ export default function LeadMagnetLayout({ children }: { children: React.ReactNo
           <PostHogProvider>
             {children}
             <CookieBanner locale="en" />
+            <LinkedInInsightTag />
           </PostHogProvider>
         </Suspense>
       </body>

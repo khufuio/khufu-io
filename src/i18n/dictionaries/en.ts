@@ -481,7 +481,7 @@ export const en: Dictionary = {
     metaTitle: 'Privacy policy',
     metaDescription: 'How khufu.io collects and processes your personal data: analytics, contact form, cookies and your rights.',
     title: 'Privacy policy',
-    updated: 'Last updated: July 2026',
+    updated: 'Last updated: September 2026',
     sections: [
       {
         heading: 'Data controller',
@@ -494,6 +494,10 @@ export const en: Dictionary = {
       {
         heading: 'Analytics',
         body: 'We use PostHog to understand how the site is used (page views, journeys). Data is processed in aggregate and used solely to improve the site.',
+      },
+      {
+        heading: 'LinkedIn advertising',
+        body: 'If you accept it (and, outside the EU/EEA/UK, unless you decline it), the site loads the LinkedIn Insight Tag. It lets LinkedIn measure how our ads perform and show you our content again on LinkedIn. LinkedIn then acts as a joint controller; see its privacy policy.',
       },
       {
         heading: 'Contact form',

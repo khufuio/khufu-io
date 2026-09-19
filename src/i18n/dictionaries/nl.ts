@@ -481,7 +481,7 @@ export const nl: Dictionary = {
     metaTitle: 'Privacybeleid',
     metaDescription: 'Hoe khufu.io je persoonsgegevens verzamelt en verwerkt: analytics, contactformulier, cookies en je rechten.',
     title: 'Privacybeleid',
-    updated: 'Laatst bijgewerkt: juli 2026',
+    updated: 'Laatst bijgewerkt: september 2026',
     sections: [
       {
         heading: 'Verwerkingsverantwoordelijke',
@@ -494,6 +494,10 @@ export const nl: Dictionary = {
       {
         heading: 'Publieksmeting',
         body: 'We gebruiken PostHog om te begrijpen hoe de site gebruikt wordt (paginaweergaven, trajecten). De gegevens worden geaggregeerd verwerkt en dienen uitsluitend om de site te verbeteren.',
+      },
+      {
+        heading: 'Adverteren op LinkedIn',
+        body: 'Als u het accepteert (en buiten de EU/EER/het VK, tenzij u het weigert), laadt de site de LinkedIn Insight Tag. Daarmee meet LinkedIn hoe onze advertenties presteren en kan het u onze content opnieuw tonen op LinkedIn. LinkedIn is daarbij gezamenlijk verwerkingsverantwoordelijke; zie het privacybeleid van LinkedIn.',
       },
       {
         heading: 'Contactformulier',

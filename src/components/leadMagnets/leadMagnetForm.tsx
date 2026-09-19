@@ -5,6 +5,7 @@ import { cn } from '@/lib/cn'
 import { track, identifyLead } from '@/lib/analytics'
 import { readInternalSource } from '@/lib/internalSource'
 import { readUtm } from '@/lib/utm'
+import { trackLinkedInConversion } from '@/lib/linkedin'
 import { pdfPath } from '@/content/leadMagnets'
 
 type Status = 'idle' | 'sending' | 'success'
@@ -61,6 +62,9 @@ export function LeadMagnetForm({
     const source = readInternalSource()
     identifyLead(email, { lead_magnet: slug, ...utm, internal_source: source ?? 'direct' })
     track('lead_magnet_submitted', { magnet: slug, placement, ...utm, internal_source: source ?? 'direct' })
+    // Same point as the PostHog event above: the email is given and the PDF is
+    // handed over whatever the endpoint answers, so this IS the conversion.
+    if (slug === 'hire-checklist') trackLinkedInConversion('checklistLead')
 
     try {
       const res = await fetch('/api/lead-magnet', {

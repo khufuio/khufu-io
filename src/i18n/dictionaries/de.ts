@@ -496,7 +496,7 @@ export const de: Dictionary = {
     metaTitle: 'Datenschutzerklärung',
     metaDescription: 'Wie khufu.io deine personenbezogenen Daten erhebt und verarbeitet: Analytics, Kontaktformular, Cookies und deine Rechte.',
     title: 'Datenschutzerklärung',
-    updated: 'Zuletzt aktualisiert: Juli 2026',
+    updated: 'Zuletzt aktualisiert: September 2026',
     sections: [
       {
         heading: 'Verantwortlicher',
@@ -509,6 +509,10 @@ export const de: Dictionary = {
       {
         heading: 'Reichweitenmessung',
         body: 'Wir nutzen PostHog, um die Nutzung der Website zu verstehen (Seitenaufrufe, Nutzerwege). Die Daten werden aggregiert verarbeitet und dienen ausschließlich der Verbesserung der Website.',
+      },
+      {
+        heading: 'Werbung auf LinkedIn',
+        body: 'Wenn Sie zustimmen (und außerhalb von EU/EWR/Vereinigtem Königreich, sofern Sie nicht ablehnen), lädt die Website das LinkedIn Insight Tag. Damit misst LinkedIn die Wirkung unserer Anzeigen und kann Ihnen unsere Inhalte auf LinkedIn erneut zeigen. LinkedIn ist dabei gemeinsam mit uns verantwortlich; siehe dessen Datenschutzrichtlinie.',
       },
       {
         heading: 'Kontaktformular',

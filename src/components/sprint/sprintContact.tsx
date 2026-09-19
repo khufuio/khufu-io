@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useId, useMemo, useR
 import type { Locale } from '@/i18n/config'
 import { track } from '@/lib/analytics'
 import { campaignProps } from '@/lib/utm'
+import { trackLinkedInConversion } from '@/lib/linkedin'
 import { SPRINT_FORM_ANCHOR } from '@/lib/sprintAnchors'
 import { sprintBookingUrl } from '@/lib/sprintBooking'
 import {
@@ -346,6 +347,7 @@ function SprintContactDialog({
       locale,
       ...campaignProps(),
     })
+    trackLinkedInConversion('bookingOpened')
   }
 
   return (

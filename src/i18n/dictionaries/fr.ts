@@ -500,7 +500,7 @@ export const fr = {
     metaTitle: 'Politique de confidentialité',
     metaDescription: 'Comment khufu.io collecte et traite vos données personnelles : analytics, formulaire de contact, cookies et vos droits.',
     title: 'Politique de confidentialité',
-    updated: 'Dernière mise à jour : juillet 2026',
+    updated: 'Dernière mise à jour : septembre 2026',
     sections: [
       {
         heading: 'Responsable du traitement',
@@ -513,6 +513,10 @@ export const fr = {
       {
         heading: 'Mesure d’audience',
         body: 'Nous utilisons PostHog pour comprendre l’usage du site (pages vues, parcours). Les données sont traitées de façon agrégée et servent uniquement à améliorer le site.',
+      },
+      {
+        heading: 'Publicité LinkedIn',
+        body: 'Si vous l’acceptez (et, hors UE/EEE/Royaume-Uni, sauf si vous le refusez), le site charge le LinkedIn Insight Tag. Il permet à LinkedIn de mesurer l’efficacité de nos annonces et de vous montrer à nouveau nos contenus sur LinkedIn. LinkedIn agit alors comme responsable conjoint du traitement ; voir sa politique de confidentialité.',
       },
       {
         heading: 'Formulaire de contact',

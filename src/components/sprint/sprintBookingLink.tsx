@@ -4,6 +4,7 @@ import { buttonClasses } from '@/components/ui/button'
 import type { Locale } from '@/i18n/config'
 import { track } from '@/lib/analytics'
 import { campaignProps } from '@/lib/utm'
+import { trackLinkedInConversion } from '@/lib/linkedin'
 import { SPRINT_EVENTS } from '@/lib/sprintContactEvents'
 
 /**
@@ -43,7 +44,7 @@ export function SprintBookingLink({
       target="_blank"
       rel="noreferrer"
       data-cta="closing"
-      onClick={() =>
+      onClick={() => {
         track(SPRINT_EVENTS.bookingOpened, {
           placement: 'closing',
           surface: 'closing',
@@ -51,7 +52,8 @@ export function SprintBookingLink({
           locale,
           ...campaignProps(),
         })
-      }
+        trackLinkedInConversion('bookingOpened')
+      }}
       className={buttonClasses('primary', 'lg', 'w-full')}
     >
       {label}
