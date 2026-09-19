@@ -17,7 +17,8 @@
     "flyer": "tsx scripts/buildFlyer.ts",
     "capture:hero": "node scripts/captureSprintHero.mjs",
     "check:sprint-title": "node scripts/checkSprintHeroTitle.mjs",
-    "capture:sprint-page": "node scripts/captureSprintPage.mjs"
+    "capture:sprint-page": "node scripts/captureSprintPage.mjs",
+    "check:linkedin": "node scripts/checkLinkedInTag.mjs"
   },
   "dependencies": {
     "next": "^16.0.0",
