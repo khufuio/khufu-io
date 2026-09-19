@@ -11,11 +11,11 @@ import { ar } from './dictionaries/ar'
 import { pl } from './dictionaries/pl'
 import { tr } from './dictionaries/tr'
 
-// Partial: locales without a translated dictionary yet fall back to French.
-const dictionaries: Partial<Record<Locale, Dictionary>> = { fr, en, es, de, it, pt, nl, ar, pl, tr }
+// Every locale has its own dictionary — no French fallback (todo cmu8036u).
+const dictionaries: Record<Locale, Dictionary> = { fr, en, es, de, it, pt, nl, ar, pl, tr }
 
 export function getDictionary(locale: Locale): Dictionary {
-  return dictionaries[locale] ?? fr
+  return dictionaries[locale]
 }
 
 export type { Dictionary }

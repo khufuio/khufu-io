@@ -1,5 +1,5 @@
 import type { Locale } from '@/i18n/config'
-import { fillLocaleDeep, type LocalizedInput } from '@/i18n/localize'
+import type { LocalizedInput } from '@/i18n/localize'
 
 export type LocalizedText = Record<Locale, string>
 
@@ -33,16 +33,14 @@ export type Project = {
   draft?: boolean
 }
 
-// Authoring variant: base languages required, untranslated locales filled from fr.
-// French required, other locales optional (filled from fr, translated later).
-type FrInput = { fr: string } & Partial<Record<Locale, string>>
+// Authoring variant: every locale written out (no fallback).
 
 type ProjectInput = Omit<Project, 'type' | 'tagline' | 'description' | 'challenge' | 'approach' | 'results'> & {
   type: LocalizedInput
   tagline: LocalizedInput
   description: LocalizedInput
-  challenge?: FrInput
-  approach?: FrInput
+  challenge?: LocalizedInput
+  approach?: LocalizedInput
   results?: LocalizedInput[]
 }
 
@@ -486,7 +484,7 @@ const projectsData: ProjectInput[] = [
   },
 ]
 
-export const projects = fillLocaleDeep(projectsData) as unknown as Project[]
+export const projects: Project[] = projectsData
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug)

@@ -1,10 +1,10 @@
 import type { Locale } from '@/i18n/config'
-import { fillLocaleDeep, type LocalizedInput } from '@/i18n/localize'
+import type { LocalizedInput } from '@/i18n/localize'
 import type { RouteKey } from './site'
 
 // Consumer-facing localized type: fully populated for every locale.
 export type L = Record<Locale, string>
-// Authoring type: base languages required, untranslated locales filled from fr.
+// Authoring type: every locale written out (no fallback).
 type LIn = LocalizedInput
 
 export type ComparisonRow = { aspect: L; khufu: L; other: L }
@@ -535,7 +535,7 @@ const comparisonsData: ComparisonInput[] = [
   },
 ]
 
-export const comparisons = fillLocaleDeep(comparisonsData) as unknown as Comparison[]
+export const comparisons: Comparison[] = comparisonsData
 
 // ── Use cases (/cas-d-usage/[slug]) ──────────────────────────────────────────
 const useCasesData: UseCaseInput[] = [
@@ -912,7 +912,7 @@ const useCasesData: UseCaseInput[] = [
   },
 ]
 
-export const useCases = fillLocaleDeep(useCasesData) as unknown as UseCase[]
+export const useCases: UseCase[] = useCasesData
 
 export const getComparison = (slug: string) => comparisons.find((c) => c.slug === slug)
 export const getUseCase = (slug: string) => useCases.find((u) => u.slug === slug)

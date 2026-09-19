@@ -1,5 +1,5 @@
 import type { Locale } from '@/i18n/config'
-import { fillLocaleDeep, type LocalizedInput } from '@/i18n/localize'
+import type { LocalizedInput } from '@/i18n/localize'
 
 export type Testimonial = {
   /** The review text. Original is French (Malt); translated for other locales. */
@@ -14,7 +14,7 @@ export type Testimonial = {
 type TestimonialInput = Omit<Testimonial, 'quote'> & { quote: LocalizedInput }
 
 // Real client reviews (Malt) of Adrien, Khufu's founder. Original wording is
-// French; other locales are translations (untranslated locales fall back to fr).
+// French; other locales are translations.
 const testimonialsData: TestimonialInput[] = [
   {
     quote: {
@@ -69,4 +69,4 @@ const testimonialsData: TestimonialInput[] = [
   },
 ]
 
-export const testimonials = fillLocaleDeep(testimonialsData) as unknown as Testimonial[]
+export const testimonials: Testimonial[] = testimonialsData

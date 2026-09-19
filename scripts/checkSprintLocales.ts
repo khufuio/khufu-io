@@ -2,10 +2,10 @@
  * Asserts the Sprint V1 landing has a non-empty string in ALL TEN locales for
  * every piece of visitor-facing copy.
  *
- * The copy is authored in fr/en/es and `fillLocaleDeep` fills the other seven
- * from French, so a gap here is never a translation that is late — it is a leaf
- * the fill did not reach, which renders as an empty element on a live page in a
- * language nobody on the team reads. Cheap to check, invisible to catch by eye:
+ * Every locale is written out and `LocalizedInput` makes a missing one a type
+ * error, so what this still catches is the EMPTY string — which type-checks and
+ * renders as an empty element on a live page in a language nobody on the team
+ * reads. Cheap to check, invisible to catch by eye:
  *   npx tsx scripts/checkSprintLocales.ts
  *
  * ⚠️ IT ALSO GUARDS THE ONE LIST THE TYPE SYSTEM CANNOT. Each card of the
