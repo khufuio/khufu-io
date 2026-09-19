@@ -16,7 +16,8 @@
     "check:sprint-html": "tsx scripts/checkSprintHtml.ts",
     "flyer": "tsx scripts/buildFlyer.ts",
     "capture:hero": "node scripts/captureSprintHero.mjs",
-    "check:sprint-title": "node scripts/checkSprintHeroTitle.mjs"
+    "check:sprint-title": "node scripts/checkSprintHeroTitle.mjs",
+    "check:linkedin": "node scripts/checkLinkedInTag.mjs"
   },
   "dependencies": {
     "next": "^16.0.0",
