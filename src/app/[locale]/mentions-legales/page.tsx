@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { isLocale, type Locale } from '@/i18n/config'
+import { defaultLocale, isLocale, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/getDictionary'
 import { site } from '@/content/site'
 import { buildMetadata } from '@/lib/metadata'
@@ -8,7 +8,7 @@ import { PageHeader } from '@/components/ui/pageHeader'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
-  const loc: Locale = isLocale(locale) ? locale : 'fr'
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale
   const dict = getDictionary(loc)
   return buildMetadata({
     locale: loc,
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function LegalPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params
-  const locale: Locale = isLocale(raw) ? raw : 'fr'
+  const locale: Locale = isLocale(raw) ? raw : defaultLocale
   const l = getDictionary(locale).legalPage
   const { legal } = site
 

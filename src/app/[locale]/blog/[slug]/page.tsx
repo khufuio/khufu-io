@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { isLocale, type Locale } from '@/i18n/config'
+import { defaultLocale, isLocale, type Locale } from '@/i18n/config'
 import { href, site } from '@/content/site'
 import { buildMetadata } from '@/lib/metadata'
 import { articleSlugs, getArticle, relatedArticles, blogUi, type ArticleBlock } from '@/content/articles'
@@ -24,7 +24,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>
 }): Promise<Metadata> {
   const { locale, slug } = await params
-  const loc: Locale = isLocale(locale) ? locale : 'fr'
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale
   const a = getArticle(loc, slug)
   if (!a) return {}
   return buildMetadata({ locale: loc, routeKey: 'blog', slug, title: a.title, description: a.excerpt })
@@ -68,7 +68,7 @@ export default async function ArticlePage({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale: raw, slug } = await params
-  const locale: Locale = isLocale(raw) ? raw : 'fr'
+  const locale: Locale = isLocale(raw) ? raw : defaultLocale
   const dict = getDictionary(locale)
   const a = getArticle(locale, slug)
   if (!a) notFound()

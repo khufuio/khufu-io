@@ -3,7 +3,7 @@ import { Inter, Space_Grotesk } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import '../globals.css'
-import { isLocale, locales, localeHrefLang, dir, type Locale } from '@/i18n/config'
+import { defaultLocale, isLocale, locales, localeHrefLang, dir, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/getDictionary'
 import { site } from '@/content/site'
 import { PostHogProvider } from '@/components/analytics/posthogProvider'
@@ -37,7 +37,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
-  const loc: Locale = isLocale(locale) ? locale : 'fr'
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale
   const dict = getDictionary(loc)
   const heroDesc = stripPriceTokens(dict.home.heroSubtitle, loc)
 
@@ -54,7 +54,7 @@ export async function generateMetadata({
     description: heroDesc,
     alternates: {
       canonical: `${site.url}/${loc}`,
-      languages: { ...languages, 'x-default': `${site.url}/fr` },
+      languages: { ...languages, 'x-default': `${site.url}/${defaultLocale}` },
     },
     openGraph: {
       type: 'website',

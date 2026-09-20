@@ -2,7 +2,13 @@ export const locales = ['fr', 'en', 'es', 'de', 'it', 'pt', 'nl', 'ar', 'pl', 't
 
 export type Locale = (typeof locales)[number]
 
-export const defaultLocale: Locale = 'fr'
+/**
+ * NOT the language most visitors get — routing negotiates `Accept-Language`
+ * (see proxy.ts). This is the FALLBACK when no supported locale matches, and
+ * the `x-default` hreflang target. English, so a Japanese or Korean visitor
+ * lands on a language they might read rather than on French (decision cmu99n8p).
+ */
+export const defaultLocale: Locale = 'en'
 
 export const localeNames: Record<Locale, string> = {
   fr: 'Français',

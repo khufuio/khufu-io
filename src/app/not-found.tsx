@@ -10,8 +10,10 @@ export default function NotFound() {
         <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 text-center">
           <p className="font-[family-name:var(--font-display)] text-6xl font-bold tracking-[-0.03em]">404</p>
           <p className="mt-4 text-[var(--color-ink-2)]">Cette page n’existe pas.</p>
+          {/* Bare "/" so the proxy negotiates the visitor's language instead of
+              forcing French — same rule as every other locale-less entry point. */}
           <Link
-            href="/fr"
+            href="/"
             className="mt-8 inline-flex h-11 items-center rounded-full bg-[var(--color-accent)] px-6 text-sm font-medium text-white"
           >
             Retour à l’accueil

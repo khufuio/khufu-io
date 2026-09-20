@@ -1,4 +1,4 @@
-import { isLocale, type Locale } from '@/i18n/config'
+import { defaultLocale, isLocale, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/getDictionary'
 import { renderOg, OG_SIZE, OG_CONTENT_TYPE } from '@/lib/ogImage'
 
@@ -16,7 +16,7 @@ export const alt = 'Khufu — Sprint V1'
  */
 export default async function OgImage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const loc: Locale = isLocale(locale) ? locale : 'fr'
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale
   const dict = getDictionary(loc)
 
   return renderOg({

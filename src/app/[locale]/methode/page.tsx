@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { isLocale, type Locale } from '@/i18n/config'
+import { defaultLocale, isLocale, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/getDictionary'
 import { href } from '@/content/site'
 import { buildMetadata } from '@/lib/metadata'
@@ -10,7 +10,7 @@ import { HowToJsonLd } from '@/components/seo/jsonLd'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
-  const loc: Locale = isLocale(locale) ? locale : 'fr'
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale
   const dict = getDictionary(loc)
   return buildMetadata({
     locale: loc,
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function MethodPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params
-  const locale: Locale = isLocale(raw) ? raw : 'fr'
+  const locale: Locale = isLocale(raw) ? raw : defaultLocale
   const dict = getDictionary(locale)
   const m = dict.method
 

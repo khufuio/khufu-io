@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { dir, isLocale, localeHrefLang, type Locale } from '@/i18n/config'
+import { defaultLocale, dir, isLocale, localeHrefLang, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/getDictionary'
 import { href, site } from '@/content/site'
 import { sprintLanding } from '@/content/sprintLanding'
@@ -45,7 +45,7 @@ export const revalidate = 3600
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
-  const loc: Locale = isLocale(locale) ? locale : 'fr'
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale
   const dict = getDictionary(loc)
   return buildMetadata({
     locale: loc,
@@ -132,7 +132,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
  */
 export default async function SprintPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params
-  const locale: Locale = isLocale(raw) ? raw : 'fr'
+  const locale: Locale = isLocale(raw) ? raw : defaultLocale
   const dict = getDictionary(locale)
   const s = dict.sprintPage
   const c = sprintLanding

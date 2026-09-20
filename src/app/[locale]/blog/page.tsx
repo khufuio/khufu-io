@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { isLocale, type Locale } from '@/i18n/config'
+import { defaultLocale, isLocale, type Locale } from '@/i18n/config'
 import { href } from '@/content/site'
 import { buildMetadata } from '@/lib/metadata'
 import { publishedArticles, blogUi } from '@/content/articles'
@@ -12,7 +12,7 @@ import { GuideStrip } from '@/components/leadMagnets/guideStrip'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
-  const loc: Locale = isLocale(locale) ? locale : 'fr'
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale
   return buildMetadata({
     locale: loc,
     routeKey: 'blog',
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params
-  const locale: Locale = isLocale(raw) ? raw : 'fr'
+  const locale: Locale = isLocale(raw) ? raw : defaultLocale
   const dict = getDictionary(locale)
   const posts = publishedArticles(locale)
 

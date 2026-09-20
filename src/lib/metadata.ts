@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { locales, localeHrefLang, type Locale } from '@/i18n/config'
+import { defaultLocale, locales, localeHrefLang, type Locale } from '@/i18n/config'
 import { site, href, type RouteKey } from '@/content/site'
 import type { LeadMagnet } from '@/content/leadMagnets'
 
@@ -32,7 +32,7 @@ export function buildMetadata({
     description,
     alternates: {
       canonical,
-      languages: { ...languages, 'x-default': `${site.url}${href('fr', routeKey, slug)}` },
+      languages: { ...languages, 'x-default': `${site.url}${href(defaultLocale, routeKey, slug)}` },
     },
     openGraph: {
       type: 'website',

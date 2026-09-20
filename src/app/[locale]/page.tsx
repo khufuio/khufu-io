@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { isLocale, type Locale } from '@/i18n/config'
+import { defaultLocale, isLocale, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/getDictionary'
 import { href, site, sprintHref } from '@/content/site'
 import { projects } from '@/content/projects'
@@ -24,7 +24,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
-  const loc = isLocale(locale) ? locale : 'fr'
+  const loc = isLocale(locale) ? locale : defaultLocale
   const dict = getDictionary(loc)
   return {
     title: dict.meta.brandSuffix,
@@ -34,7 +34,7 @@ export async function generateMetadata({
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params
-  const locale: Locale = isLocale(raw) ? raw : 'fr'
+  const locale: Locale = isLocale(raw) ? raw : defaultLocale
   const dict = getDictionary(locale)
   const h = dict.home
   const clients = approvedClients()

@@ -1,4 +1,4 @@
-import { isLocale, type Locale } from '@/i18n/config'
+import { defaultLocale, isLocale, type Locale } from '@/i18n/config'
 import { comparisons, getComparison } from '@/content/geo'
 import { renderOg, OG_SIZE, OG_CONTENT_TYPE } from '@/lib/ogImage'
 
@@ -12,7 +12,7 @@ export function generateStaticParams() {
 
 export default async function OgImage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params
-  const loc: Locale = isLocale(locale) ? locale : 'fr'
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale
   const c = getComparison(slug)
   const labels: Record<Locale, string> = {
     fr: 'Comparatif',

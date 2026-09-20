@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { isLocale, type Locale } from '@/i18n/config'
+import { defaultLocale, isLocale, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/getDictionary'
 import { href, site } from '@/content/site'
 import { comparisons, getComparison } from '@/content/geo'
@@ -21,7 +21,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>
 }): Promise<Metadata> {
   const { locale, slug } = await params
-  const loc: Locale = isLocale(locale) ? locale : 'fr'
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale
   const c = getComparison(slug)
   if (!c) return {}
   return buildMetadata({
@@ -39,7 +39,7 @@ export default async function ComparisonPage({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale: raw, slug } = await params
-  const locale: Locale = isLocale(raw) ? raw : 'fr'
+  const locale: Locale = isLocale(raw) ? raw : defaultLocale
   const dict = getDictionary(locale)
   const c = getComparison(slug)
   if (!c) notFound()

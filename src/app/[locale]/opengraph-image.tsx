@@ -1,5 +1,5 @@
 import { ImageResponse } from 'next/og'
-import { isLocale } from '@/i18n/config'
+import { defaultLocale, isLocale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/getDictionary'
 import { ARABIC, ARABIC_FALLBACK } from '@/lib/ogImage'
 
@@ -9,7 +9,7 @@ export const alt = 'Khufu — Votre V1 en 1 semaine'
 
 export default async function OgImage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const dict = getDictionary(isLocale(locale) ? locale : 'fr')
+  const dict = getDictionary(isLocale(locale) ? locale : defaultLocale)
   // satori can't shape arabic — fall back to a latin brand card (see ogImage.tsx).
   const isArabic = ARABIC.test(dict.home.heroTitle)
   const title = isArabic ? ARABIC_FALLBACK.title : dict.home.heroTitle
