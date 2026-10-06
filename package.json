@@ -18,7 +18,9 @@
     "capture:hero": "node scripts/captureSprintHero.mjs",
     "check:sprint-title": "node scripts/checkSprintHeroTitle.mjs",
     "capture:sprint-page": "node scripts/captureSprintPage.mjs",
-    "check:linkedin": "node scripts/checkLinkedInTag.mjs"
+    "check:linkedin": "node scripts/checkLinkedInTag.mjs",
+    "ads:render": "node scripts/renderMetaAds.mjs",
+    "ads:typecheck": "tsc -p ads/meta-sprint-v1"
   },
   "dependencies": {
     "next": "^16.0.0",
