@@ -7,6 +7,7 @@
  *   PRICE='$17,000' npm run ads:render         # an English-price cut (one currency per creative)
  *   ADS_OUT=/some/dir npm run ads:render       # default: HQ's scratchpad, pass-2 folder
  *   npm run ads:render -- --check [b2 …]       # stills of every scene, both ratios, into $ADS_OUT/check — no video
+ *   FORCE=1 npm run ads:render                 # re-render files that already exist (default: resume)
  *
  * ⚠️ IT BORROWS HQ'S REMOTION, it does not install one. The Remotion toolchain (and the
  * Chrome it drives) already lives in the HQ repo for HQ's motion engine; adding it to
@@ -57,7 +58,7 @@ const BASES = [
 const FORMATS = ['9x16', '4x5']
 const HOOKS = [1, 2, 3]
 /** The hook I would bet on — see the pass-2 report. Marked on the contact sheet. */
-const PICK = 'c1'
+const PICK = 'a1'
 /** The contact sheet's frame: one second in, when every hook's last line has landed. */
 const HOOK_STILL_FRAME = 30
 
@@ -143,8 +144,22 @@ if (process.argv.includes('--css-only')) {
 }
 
 // ---------------------------------------------------------------- remotion
-function remotion(args) {
-  execFileSync(bin, args, { stdio: 'inherit', cwd: hq })
+/**
+ * ⚠️ The host is shared and often loaded: renders sometimes sit on their last two
+ * frames forever (two Chrome tabs that never answer). A normal render takes about
+ * 1.5 min, so every Remotion call is killed at 5 min and retried, and renders run
+ * at concurrency 4 rather than one tab per core.
+ */
+function remotion(args, attempts = 3) {
+  for (let i = 1; ; i++) {
+    try {
+      execFileSync(bin, args, { stdio: 'inherit', cwd: hq, timeout: 5 * 60 * 1000, killSignal: 'SIGKILL' })
+      return
+    } catch (error) {
+      if (i >= attempts) throw error
+      console.error(`\n⚠ remotion ${args[0]} failed or timed out — retrying (${i}/${attempts - 1})`)
+    }
+  }
 }
 const browser = chrome ? ['--browser-executable', chrome] : []
 function bundle(target) {
@@ -187,7 +202,16 @@ for (const base of BASES) {
     const props = JSON.stringify({ price, hook: n })
     for (const format of FORMATS) {
       const file = path.join(out, `${hookId}-${base.id.slice(2)}-${format}.mp4`)
-      remotion(['render', build, `${base.id}-${format}`, file, '--props', props, '--codec', 'h264', '--crf', '22', ...browser])
+      // Resumable: a finished file is kept unless FORCE=1. Rendered under a
+      // temporary name and moved into place at the end, so a file at `file` is
+      // always a complete one, even after a killed render.
+      if (fs.existsSync(file) && !process.env.FORCE) {
+        durations[hookId] = duration(file)
+        continue
+      }
+      const part = file.replace(/\.mp4$/, '.part.mp4')
+      remotion(['render', build, `${base.id}-${format}`, part, '--props', props, '--codec', 'h264', '--crf', '22', '--concurrency', '4', ...browser])
+      fs.renameSync(part, file)
       durations[hookId] = duration(file)
     }
     remotion(['still', build, `${base.id}-9x16`, path.join(hookStills, `${hookId}.png`), '--props', props, '--frame', String(HOOK_STILL_FRAME), ...browser])

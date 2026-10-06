@@ -19,7 +19,7 @@ const BASES = [
 ] as const
 
 const DEFAULTS: AdProps = { price: '15 000 €', hook: 1 }
-const SHEET_DEFAULTS: ContactSheetProps = { price: '15 000 €', pick: 'c1', durations: {} }
+const SHEET_DEFAULTS: ContactSheetProps = { price: '15 000 €', pick: 'a1', durations: {} }
 
 export function Root(): React.ReactElement {
   return (

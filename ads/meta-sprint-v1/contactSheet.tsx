@@ -37,7 +37,7 @@ export function ContactSheet({ price, pick, durations }: ContactSheetProps): Rea
         <Logo size={84} />
         <div>
           <div style={{ fontFamily: FONT.display, fontSize: 54, fontWeight: 700, color: C.ink, letterSpacing: '-0.02em' }}>Sprint V1 · 9 hooks Meta</div>
-          <div style={{ fontSize: 30, color: C.muted, marginTop: 6 }}>Image à 1 s de chaque ouverture (9:16) · prix de la coupe : {price}</div>
+          <div style={{ fontSize: 30, color: C.muted, marginTop: 6 }}>Image à 1 s de chaque ouverture (9:16) · prix de la coupe : <span style={{ whiteSpace: 'nowrap' }}>{price}</span></div>
         </div>
       </div>
       {BASES.map((base) => (
