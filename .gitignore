@@ -80,3 +80,8 @@ yarn-error.log
 
 # TS incremental build info
 *.tsbuildinfo
+
+# Meta ad creatives: generated at render time by scripts/renderMetaAds.mjs.
+ads/meta-sprint-v1/generated/
+ads/meta-sprint-v1/public/generated/
+ads/meta-sprint-v1/.bundle*/

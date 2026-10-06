@@ -20,6 +20,7 @@
     "capture:sprint-page": "node scripts/captureSprintPage.mjs",
     "check:linkedin": "node scripts/checkLinkedInTag.mjs",
     "ads:render": "node scripts/renderMetaAds.mjs",
+    "capture:ad-screens": "node scripts/captureAdScreens.mjs",
     "ads:typecheck": "tsc -p ads/meta-sprint-v1"
   },
   "dependencies": {

@@ -43,7 +43,6 @@ export type Capture = { src: string; w: number; h: number }
 export const CAPTURES = {
   hiveMatch: { src: 'hive/01-match-mid-round.jpg', w: 1320, h: 2868 },
   hiveCollection: { src: 'hive/02-collection-wall.jpg', w: 1320, h: 2868 },
-  hiveBooster: { src: 'hive/04-booster-pack.jpg', w: 1320, h: 2868 },
   hiveHome: { src: 'hive/08-home-story.jpg', w: 1320, h: 2868 },
   labyrinthLevels: { src: 'sprint/labyrinth-app.webp', w: 560, h: 1180 },
   labyrinthRun: { src: 'sprint/labyrinth-app-2.webp', w: 560, h: 1180 },
@@ -51,10 +50,62 @@ export const CAPTURES = {
   clokiziApp: { src: 'sprint/clokizi-app.webp', w: 560, h: 1180 },
   clokiziWeb: { src: 'sprint/clokizi-web.webp', w: 1200, h: 650 },
   herbacrmApp: { src: 'sprint/herbacrm-app.webp', w: 560, h: 1180 },
-  herbacrmWeb: { src: 'sprint/herbacrm-web.webp', w: 1200, h: 650 },
-  traqioWeb: { src: 'sprint/traqio.webp', w: 1200, h: 650 },
-  onestoreWeb: { src: 'sprint/onestore-link.webp', w: 1200, h: 650 },
+  /*
+   * Pass 2. The vitrines are the live French pages, captured whole by
+   * `npm run capture:ad-screens` (1200×650 CSS px at 2×). The dashboards are real
+   * console screens taken by HQ's own QA sessions (hq/scratchpad
+   * traqio-dashboard-templates/gallery-fr.png, osl-ux-campagnes/apres-pro-donnees-1440.png),
+   * re-encoded, never cut.
+   *
+   * ⛔ WHAT WAS DROPPED, AND WHY (cmu0fqj7): pass 1's Traqio capture was its home
+   * hero, « Meta says 40. You got 12. » in display type, and its HerbaCRM web
+   * capture led with a « $11,914 » revenue tile. Both are the products' sample
+   * figures, and both read as khufu results to a viewer who gives the frame one
+   * second. Traqio's /features page and its dashboard gallery carry no figure at
+   * all; HerbaCRM is shown by its vitrine and its app. The English OneStore.link
+   * vitrine gave way to the French one.
+   */
+  traqioSite: { src: 'sprint2/traqio-site.webp', w: 2400, h: 1300 },
+  traqioDashboard: { src: 'sprint2/traqio-dashboard.webp', w: 1440, h: 1000 },
+  herbacrmSite: { src: 'sprint2/herbacrm-site.webp', w: 2400, h: 1300 },
+  onestoreSite: { src: 'sprint2/onestore-site.webp', w: 2400, h: 1300 },
+  onestoreDashboard: { src: 'sprint2/onestore-dashboard.webp', w: 1440, h: 1601 },
 } satisfies Record<string, Capture>
+
+/**
+ * Every base renders in BOTH Meta ratios: 9:16 is the Reels/Stories placement,
+ * 4:5 the feed. Variants rendered in different ratios cannot be compared with one
+ * another, and comparing them is the whole point of the 9 hooks.
+ */
+export const FORMATS = {
+  '9x16': { width: 1080, height: 1920 },
+  '4x5': { width: 1080, height: 1350 },
+} as const
+export type FormatId = keyof typeof FORMATS
+
+/**
+ * The props every composition takes. `hook` picks the opening (1–3); everything
+ * after the hook is identical within a base, so the hooks are what is compared.
+ */
+export type AdProps = { price: string; hook: 1 | 2 | 3 }
+
+/**
+ * Where text may sit. On 9:16 the Reels UI covers roughly the top 14% and the
+ * bottom 20–35% of the frame (account row, caption, CTA button), so nothing that
+ * must be read goes there. The 4:5 feed has no overlay, only a margin.
+ */
+export function useFrame(): { tall: boolean; w: number; h: number; top: number; bottom: number } {
+  const { width, height } = useVideoConfig()
+  const tall = height / width > 1.5
+  return { tall, w: width, h: height, top: tall ? 220 : 70, bottom: tall ? 330 : 70 }
+}
+
+/** The largest width at which a browser frame around `capture` fits in maxW × maxH. */
+export function browserWidthFor(capture: Capture, maxW: number, maxH: number): number {
+  // Height of the frame at width w: bar (5.5% of w) + the capture at its own ratio.
+  const perW = 0.055 + capture.h / capture.w
+  return Math.floor(Math.min(maxW, maxH / perW))
+}
 
 /** 0→1 spring that starts at `delay` frames. */
 export function useEnter(delay = 0, damping = 18): number {
@@ -303,7 +354,9 @@ export function Logo({ size }: { size: number }): React.ReactElement {
  * ⛔ NO DATE (cmu0fugh): the creative runs for weeks, so it says « le prochain slot ».
  * The landing guarantees by construction that at least one week is always open.
  */
-export function OfferCard({ price, scale = 1 }: { price: string; scale?: number }): React.ReactElement {
+export function OfferCard({ price }: { price: string }): React.ReactElement {
+  const { tall } = useFrame()
+  const scale = tall ? 1 : 0.86
   const s = (n: number): number => Math.round(n * scale)
   return (
     <Ground color={C.paper}>
