@@ -13,6 +13,14 @@ import { ButtonLink } from '@/components/ui/button'
 import { CtaBanner } from '@/components/sections/ctaBanner'
 import { JsonLd, BreadcrumbJsonLd } from '@/components/seo/jsonLd'
 
+/**
+ * Every slug comes from static content, so generateStaticParams is exhaustive: anything
+ * else must 404 at routing time. Without this, an unknown slug is rendered on
+ * demand inside the layout's <Suspense>, the shell streams out with a 200 before
+ * the page's notFound() fires, and Google indexes a generic page.
+ */
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }))
 }
