@@ -7,6 +7,8 @@ import { Container } from '@/components/ui/container'
 import { PageHeader } from '@/components/ui/pageHeader'
 import { CtaBanner } from '@/components/sections/ctaBanner'
 import { HowToJsonLd } from '@/components/seo/jsonLd'
+import { sprintLanding } from '@/content/sprintLanding'
+import { sprintRunStepText, sprintRunSteps } from '@/content/sprintRun'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -25,30 +27,54 @@ export default async function MethodPage({ params }: { params: Promise<{ locale:
   const locale: Locale = isLocale(raw) ? raw : defaultLocale
   const dict = getDictionary(locale)
   const m = dict.method
+  /*
+   * The days are NOT authored here: they come from the same source as the
+   * /sprint-v1 timeline (src/content/sprintRun.ts), already written in all ten
+   * locales. Simplest fix for the drift between the two pages, and the only one
+   * that removes its cause — a second copy of the week would drift again.
+   */
+  const steps = sprintRunSteps(locale)
+  const t = sprintLanding.timeline
 
   return (
     <>
       <HowToJsonLd
         name={m.metaTitle}
         description={m.subtitle}
-        steps={m.days.map((d) => ({ name: `${d.day} — ${d.title}`, text: d.body }))}
+        steps={steps.map((d) => ({ name: `${d.day} — ${d.title}`, text: sprintRunStepText(d) }))}
       />
       <PageHeader kicker={m.kicker} title={m.title} subtitle={m.subtitle} />
 
-      {/* Timeline J1 → J7 */}
+      {/* Timeline J0 → J7 */}
       <section>
         <Container className="py-16 sm:py-20">
-          <ol className="relative border-l border-[var(--color-line)]">
-            {m.days.map((d) => (
-              <li key={d.day} className="mb-10 ml-6 last:mb-0">
-                <span className="absolute -left-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-[var(--color-accent)]" aria-hidden>
+          <ol className="relative border-s border-[var(--color-line)]">
+            {steps.map((d) => (
+              <li key={d.day} className="mb-10 ms-6 last:mb-0">
+                <span className="absolute -start-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-[var(--color-accent)]" aria-hidden>
                   <span className="h-2 w-2 rounded-full bg-white" />
                 </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-accent-ink)]">{d.day}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-accent-ink)]">
+                  {d.day} · {d.weekday}
+                </p>
                 <h2 className="mt-1 font-[family-name:var(--font-display)] text-2xl font-bold tracking-[-0.01em]">
                   {d.title}
                 </h2>
-                <p className="mt-2 max-w-2xl text-[var(--color-ink-2)]">{d.body}</p>
+                {d.lanes ? (
+                  // Friday runs on two tracks at once: the client tests while we ship.
+                  <dl className="mt-2 max-w-2xl space-y-1 text-[var(--color-ink-2)]">
+                    <div>
+                      <dt className="inline font-semibold">{t.youLabel[locale]} — </dt>
+                      <dd className="inline">{d.lanes.you}</dd>
+                    </div>
+                    <div>
+                      <dt className="inline font-semibold">{t.usLabel[locale]} — </dt>
+                      <dd className="inline">{d.lanes.us}</dd>
+                    </div>
+                  </dl>
+                ) : (
+                  <p className="mt-2 max-w-2xl text-[var(--color-ink-2)]">{d.body}</p>
+                )}
               </li>
             ))}
           </ol>
