@@ -329,19 +329,6 @@ export const tr: Dictionary = {
     kicker: 'Yöntem',
     title: 'Ayrılmış bir hafta, piyasaya çıkmaya hazır bir ürün.',
     subtitle: 'Pazartesi sabahı 06:00 UTC ile pazar arasında, haftada tek müşteri. Her gün ne olduğunu tam olarak bilirsiniz.',
-    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
-    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
-    // full testing day while the technical work runs, and the weekend applies what
-    // that testing found. /sprint-v1 no longer reuses these days — it authors its
-    // own run in `timeline` (src/content/sprintLanding.ts), so keep the two in step
-    // with each other and with the contract (art. 3.5), not with a nicer story.
-    days: [
-      { day: 'Gün 1', title: 'Başlangıç', body: 'Kapsam 0. günde, pazartesiden önce netleşir: saat 6’dan itibaren ürünü inşa ederiz. Mimari, teknik temel, ilk ekranlar.' },
-      { day: 'Gün 2–3', title: 'Geliştirme', body: 'Ürünün çekirdeğini kurarız: ön yüz, arka uç ve veritabanı. İlk commit’ten itibaren temiz kod ve net mimari.' },
-      { day: 'Gün 4', title: 'Altyapı ve testler', body: 'Altyapı, testler, performans ve güvenlik. Ürünü size göstermeden önce temelleri sağlamlaştırırız.' },
-      { day: 'Gün 5', title: 'Sizin test gününüz', body: 'Cuma günü ürünü gün boyu test edersiniz; biz bu sırada teknik tarafı hallederiz: dağıtım hattı, altyapı, yayına alma.' },
-      { day: 'Gün 6–7', title: 'Düzeltmeler ve yayın', body: 'Cuma günkü geri bildirimlerinizi uygular, tamamlar ve V1’inizi pazar günü sonunda canlıya alırız. Çevrimiçi ya da teslim edilmemiş — tek teslim kriteri bu.' },
-    ],
     qualityTitle: 'Temiz, sürdürülebilir ve performanslı kod',
     qualityBody:
       'Bir kullan-at kod teslim etmiyoruz. Her V1, okunabilir, test edilmiş ve optimize edilmiş kodla net bir mimari üzerine inşa edilir — böylece teknik borç olmadan onu geliştirip ölçekleyebilirsiniz.',

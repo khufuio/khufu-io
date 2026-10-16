@@ -329,19 +329,6 @@ export const ar: Dictionary = {
     kicker: 'المنهجية',
     title: 'أسبوع محجوز، ومنتج جاهز للإطلاق.',
     subtitle: 'من الاثنين عند 06:00 بالتوقيت العالمي إلى الأحد، عميل واحد في الأسبوع. تعرف تمامًا ما يحدث كل يوم.',
-    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
-    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
-    // full testing day while the technical work runs, and the weekend applies what
-    // that testing found. /sprint-v1 no longer reuses these days — it authors its
-    // own run in `timeline` (src/content/sprintLanding.ts), so keep the two in step
-    // with each other and with the contract (art. 3.5), not with a nicer story.
-    days: [
-      { day: 'اليوم 1', title: 'الانطلاق', body: 'النطاق محسوم في اليوم صفر، قبل الاثنين: نبدأ البناء من الساعة 6. البنية المعمارية والأساس التقني والشاشات الأولى.' },
-      { day: 'اليوم 2–3', title: 'التطوير', body: 'نبني قلب المنتج: الواجهة والخلفية وقاعدة البيانات. كود نظيف وبنية واضحة منذ أول commit.' },
-      { day: 'اليوم 4', title: 'البنية التحتية والاختبارات', body: 'البنية التحتية والاختبارات والأداء والأمان. نرسّخ الأساس قبل أن نعرض عليك المنتج.' },
-      { day: 'اليوم 5', title: 'يوم اختبارك', body: 'يوم الجمعة تختبر المنتج طوال اليوم بينما نتولى نحن الجانب التقني: خط النشر، والبنية التحتية، والإطلاق.' },
-      { day: 'اليوم 6–7', title: 'المعالجات والإطلاق', body: 'نطبّق ملاحظاتك من الجمعة، ننهي العمل، وتكون نسختك الأولى في الإنتاج بنهاية الأحد. متصل، أو غير مُسلَّم — هذا هو معيار التسليم الوحيد.' },
-    ],
     qualityTitle: 'كود نظيف وقابل للصيانة وعالي الأداء',
     qualityBody:
       'لا نُسلّم كودًا للرمي. كل نسخة أولى مبنية على هندسة واضحة، بكود مقروء ومُختبَر ومُحسَّن — حتى تتمكّن من تطويرها وتوسيعها دون دَين تقني.',

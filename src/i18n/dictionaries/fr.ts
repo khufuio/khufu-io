@@ -333,19 +333,6 @@ export const fr = {
     kicker: 'La méthode',
     title: 'Une semaine réservée, un produit lançable.',
     subtitle: 'Du lundi 6h00 UTC au dimanche, un seul client par semaine. Vous savez exactement ce qui se passe, chaque jour.',
-    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
-    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
-    // full testing day while the technical work runs, and the weekend applies what
-    // that testing found. /sprint-v1 no longer reuses these days — it authors its
-    // own run in `timeline` (src/content/sprintLanding.ts), so keep the two in step
-    // with each other and with the contract (art. 3.5), not with a nicer story.
-    days: [
-      { day: 'Jour 1', title: 'Lancement', body: 'Le périmètre est arrêté au jour 0, avant le lundi : on attaque le produit dès 6 h. Architecture, socle technique, premiers écrans.' },
-      { day: 'Jour 2–3', title: 'Développement', body: 'On construit le cœur du produit : front, back et base de données. Code propre et architecture claire dès le premier commit.' },
-      { day: 'Jour 4', title: 'Infra & tests', body: 'Mise en place de l’infrastructure, tests, performance et sécurité. On solidifie les fondations avant de vous montrer le produit.' },
-      { day: 'Jour 5', title: 'Votre journée de recette', body: 'Vendredi, vous testez le produit toute la journée pendant qu’on traite le technique : chaîne de déploiement, infrastructure, mise en production.' },
-      { day: 'Jour 6–7', title: 'Correctifs et mise en ligne', body: 'On applique vos retours du vendredi, on finalise, et votre V1 est en production à la fin du dimanche. En ligne, ou pas livré — c’est le seul critère de livraison.' },
-    ],
     qualityTitle: 'Du code propre, maintenable et performant',
     qualityBody:
       'On ne livre pas du jetable. Chaque V1 est construite sur une architecture claire, avec un code lisible, testé et optimisé — pour que vous puissiez la faire évoluer et scaler sans dette technique.',

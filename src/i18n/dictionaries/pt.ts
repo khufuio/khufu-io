@@ -329,19 +329,6 @@ export const pt: Dictionary = {
     kicker: 'O método',
     title: 'Uma semana reservada, um produto lançável.',
     subtitle: 'De segunda-feira às 06:00 UTC a domingo, um só cliente por semana. Sabe exatamente o que acontece, todos os dias.',
-    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
-    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
-    // full testing day while the technical work runs, and the weekend applies what
-    // that testing found. /sprint-v1 no longer reuses these days — it authors its
-    // own run in `timeline` (src/content/sprintLanding.ts), so keep the two in step
-    // with each other and with the contract (art. 3.5), not with a nicer story.
-    days: [
-      { day: 'Dia 1', title: 'Arranque', body: 'O âmbito fica fechado no dia 0, antes da segunda-feira: começamos a construir às 6 h. Arquitetura, base técnica, primeiros ecrãs.' },
-      { day: 'Dia 2–3', title: 'Desenvolvimento', body: 'Construímos o núcleo do produto: front, back e base de dados. Código limpo e arquitetura clara desde o primeiro commit.' },
-      { day: 'Dia 4', title: 'Infra e testes', body: 'Infraestrutura, testes, desempenho e segurança. Consolidamos as fundações antes de lhe mostrar o produto.' },
-      { day: 'Dia 5', title: 'O seu dia de testes', body: 'Na sexta-feira testa o produto o dia todo enquanto tratamos da parte técnica: pipeline de deploy, infraestrutura, entrada em produção.' },
-      { day: 'Dia 6–7', title: 'Correções e lançamento', body: 'Aplicamos o seu feedback de sexta-feira, finalizamos, e a sua V1 está em produção no final de domingo. Online, ou não entregue: é o único critério de entrega.' },
-    ],
     qualityTitle: 'Código limpo, sustentável e de alto desempenho',
     qualityBody:
       'Não entregamos código descartável. Cada V1 é construída sobre uma arquitetura clara, com código legível, testado e otimizado — para que a possa evoluir e escalar sem dívida técnica.',

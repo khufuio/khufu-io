@@ -314,19 +314,6 @@ export const nl: Dictionary = {
     kicker: 'De methode',
     title: 'Eén gereserveerde week, een lanceerbaar product.',
     subtitle: 'Van maandag 06:00 UTC tot zondag, één klant per week. Je weet precies wat er elke dag gebeurt.',
-    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
-    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
-    // full testing day while the technical work runs, and the weekend applies what
-    // that testing found. /sprint-v1 no longer reuses these days — it authors its
-    // own run in `timeline` (src/content/sprintLanding.ts), so keep the two in step
-    // with each other and with the contract (art. 3.5), not with a nicer story.
-    days: [
-      { day: 'Dag 1', title: 'Start', body: 'De scope staat vast op dag 0, vóór de maandag: we bouwen vanaf 6 uur. Architectuur, technische basis, eerste schermen.' },
-      { day: 'Dag 2–3', title: 'Ontwikkeling', body: 'We bouwen de kern van het product: front, back en database. Schone code en een heldere architectuur vanaf de eerste commit.' },
-      { day: 'Dag 4', title: 'Infra & tests', body: 'Infrastructuur, tests, performance en security. We verstevigen het fundament voordat we het product aan je laten zien.' },
-      { day: 'Dag 5', title: 'Jouw testdag', body: 'Op vrijdag test jij het product de hele dag terwijl wij de techniek doen: deploypijplijn, infrastructuur, livegang.' },
-      { day: 'Dag 6–7', title: 'Correcties en livegang', body: 'We verwerken je feedback van vrijdag, ronden af, en je V1 staat aan het eind van zondag live. Online, of niet geleverd — dat is het enige opleveringscriterium.' },
-    ],
     qualityTitle: 'Schone, onderhoudbare en performante code',
     qualityBody:
       'We leveren geen wegwerpcode. Elke V1 is gebouwd op een heldere architectuur, met leesbare, geteste en geoptimaliseerde code — zodat je hem kunt laten evolueren en schalen zonder technische schuld.',
