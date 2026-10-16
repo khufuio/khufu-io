@@ -37,6 +37,17 @@ const nextConfig: NextConfig = {
         destination: '/:locale/privacy',
         permanent: true,
       },
+      /**
+       * The Peach Farmer case study was withdrawn (2026-08-20). Its URL is still
+       * indexed, so it moves onto the work index instead of dropping to a 404.
+       * Explicit 301 rather than `permanent` (308): this is the code asked for,
+       * and the one every crawler reads as a moved page.
+       */
+      {
+        source: `/:locale(${LOCALE_PATTERN})/realisations/peach-farmer`,
+        destination: '/:locale/realisations',
+        statusCode: 301,
+      },
     ]
   },
 

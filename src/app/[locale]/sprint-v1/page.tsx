@@ -33,7 +33,8 @@ import { SprintContactProvider, type SprintContactCopy } from '@/components/spri
 import { SprintBookingLink } from '@/components/sprint/sprintBookingLink'
 import { SprintCallback } from '@/components/sprint/sprintCallback'
 import { SprintWhatsappLink } from '@/components/sprint/sprintWhatsappLink'
-import { SprintTimeline, type SprintTimelineStep } from '@/components/sprint/sprintTimeline'
+import { SprintTimeline } from '@/components/sprint/sprintTimeline'
+import { sprintRunStepText, sprintRunSteps } from '@/content/sprintRun'
 
 /**
  * The hero shows the next Mondays a sprint can start on, and they are computed
@@ -169,31 +170,10 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
   }
 
   /*
-   * The run is authored on this page rather than reused from `method.days`: the
-   * landing's week is calendar-bound (decision cmu0fbad — Monday → Sunday,
-   * Friday is the client's acceptance-testing day and runs alongside our
-   * technical track) and the shared /methode page describes the generic run.
+   * The run comes from the single shared source (src/content/sprintRun.ts),
+   * which /methode reads too — so the two pages cannot tell two different weeks.
    */
-  const timeline: SprintTimelineStep[] = [
-    {
-      day: c.timeline.dayZero.day[locale],
-      weekday: c.timeline.dayZero.weekday[locale],
-      title: c.timeline.dayZero.title[locale],
-      body: c.timeline.dayZero.body[locale],
-      // Day 0 is the client's: their brief, their answers, their signature.
-      // Adrien, 2026-09-14: « ajoute un badge "Vous" au jour 0 ».
-      actor: 'you',
-    },
-    ...c.timeline.days.map((d) => ({
-      day: d.day[locale],
-      weekday: d.weekday[locale],
-      title: d.title[locale],
-      body: d.body?.[locale],
-      lanes: d.lanes ? { you: d.lanes.you[locale], us: d.lanes.us[locale] } : undefined,
-      // Every other day is ours. Friday says so twice, on two tracks.
-      actor: 'us' as const,
-    })),
-  ]
+  const timeline = sprintRunSteps(locale)
 
   /*
    * The booking window, computed at render time (decisions cmu0fugh, cmu1qo9r):
@@ -275,7 +255,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
         description={s.metaDescription}
         steps={timeline.map((t) => ({
           name: `${t.day} — ${t.title}`,
-          text: t.body ?? [t.lanes?.you, t.lanes?.us].filter(Boolean).join(' '),
+          text: sprintRunStepText(t),
         }))}
       />
       <FaqJsonLd items={faqItems} />

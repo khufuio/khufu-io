@@ -329,19 +329,6 @@ export const pl: Dictionary = {
     kicker: 'Metoda',
     title: 'Jeden zarezerwowany tydzień, produkt gotowy do startu.',
     subtitle: 'Od poniedziałku 06:00 UTC do niedzieli, jeden klient na tydzień. Wiesz dokładnie, co dzieje się każdego dnia.',
-    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
-    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
-    // full testing day while the technical work runs, and the weekend applies what
-    // that testing found. /sprint-v1 no longer reuses these days — it authors its
-    // own run in `timeline` (src/content/sprintLanding.ts), so keep the two in step
-    // with each other and with the contract (art. 3.5), not with a nicer story.
-    days: [
-      { day: 'Dzień 1', title: 'Start', body: 'Zakres jest ustalony w dniu 0, przed poniedziałkiem: budujemy od 6 rano. Architektura, fundament techniczny, pierwsze ekrany.' },
-      { day: 'Dzień 2–3', title: 'Development', body: 'Budujemy rdzeń produktu: front, back i bazę danych. Czysty kod i jasna architektura od pierwszego commita.' },
-      { day: 'Dzień 4', title: 'Infra i testy', body: 'Infrastruktura, testy, wydajność i bezpieczeństwo. Wzmacniamy fundamenty, zanim pokażemy Ci produkt.' },
-      { day: 'Dzień 5', title: 'Twój dzień testów', body: 'W piątek testujesz produkt przez cały dzień, a my zajmujemy się techniką: pipeline wdrożeniowy, infrastruktura, wejście na produkcję.' },
-      { day: 'Dzień 6–7', title: 'Poprawki i start', body: 'Wprowadzamy Twoje piątkowe uwagi, finalizujemy, i Twoje V1 jest na produkcji pod koniec niedzieli. Online albo niedostarczony — to jedyne kryterium.' },
-    ],
     qualityTitle: 'Czysty, łatwy w utrzymaniu i wydajny kod',
     qualityBody:
       'Nie dostarczamy kodu na wyrzucenie. Każde V1 stoi na jasnej architekturze, z czytelnym, przetestowanym i zoptymalizowanym kodem — abyś mógł je rozwijać i skalować bez długu technicznego.',

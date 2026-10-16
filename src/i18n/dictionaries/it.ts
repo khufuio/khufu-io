@@ -329,19 +329,6 @@ export const it: Dictionary = {
     kicker: 'Il metodo',
     title: 'Una settimana riservata, un prodotto lanciabile.',
     subtitle: 'Dal lunedì alle 06:00 UTC alla domenica, un solo cliente a settimana. Sai esattamente cosa succede, ogni giorno.',
-    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
-    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
-    // full testing day while the technical work runs, and the weekend applies what
-    // that testing found. /sprint-v1 no longer reuses these days — it authors its
-    // own run in `timeline` (src/content/sprintLanding.ts), so keep the two in step
-    // with each other and with the contract (art. 3.5), not with a nicer story.
-    days: [
-      { day: 'Giorno 1', title: 'Avvio', body: 'L’ambito è chiuso al giorno 0, prima del lunedì: si costruisce dalle 6. Architettura, base tecnica, prime schermate.' },
-      { day: 'Giorno 2–3', title: 'Sviluppo', body: 'Costruiamo il cuore del prodotto: front, back e database. Codice pulito e architettura chiara dal primo commit.' },
-      { day: 'Giorno 4', title: 'Infra e test', body: 'Infrastruttura, test, performance e sicurezza. Consolidiamo le fondamenta prima di mostrarti il prodotto.' },
-      { day: 'Giorno 5', title: 'La tua giornata di collaudo', body: 'Il venerdì provi il prodotto tutto il giorno mentre noi ci occupiamo della parte tecnica: pipeline di deploy, infrastruttura, messa in produzione.' },
-      { day: 'Giorno 6–7', title: 'Correzioni e go-live', body: 'Applichiamo i tuoi riscontri del venerdì, finalizziamo, e la tua V1 è in produzione alla fine della domenica. Online, o non consegnato: è l’unico criterio di consegna.' },
-    ],
     qualityTitle: 'Codice pulito, manutenibile e performante',
     qualityBody:
       'Non consegniamo codice usa e getta. Ogni V1 è costruita su un’architettura chiara, con codice leggibile, testato e ottimizzato — così puoi farla evolvere e scalare senza debito tecnico.',

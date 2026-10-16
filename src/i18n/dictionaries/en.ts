@@ -314,19 +314,6 @@ export const en: Dictionary = {
     kicker: 'The method',
     title: 'One booked week, a launchable product.',
     subtitle: 'From Monday 06:00 UTC to Sunday, one client per week. You know exactly what happens, every day.',
-    // The run, aligned on the settled calendar (khufu HQ decision cmu0fbad):
-    // scoping happens on day 0 BEFORE the Monday, Friday (day 5) is the client's
-    // full testing day while the technical work runs, and the weekend applies what
-    // that testing found. /sprint-v1 no longer reuses these days — it authors its
-    // own run in `timeline` (src/content/sprintLanding.ts), so keep the two in step
-    // with each other and with the contract (art. 3.5), not with a nicer story.
-    days: [
-      { day: 'Day 1', title: 'Kickoff', body: 'The scope is settled on day 0, before the Monday: we start building at 6am. Architecture, technical foundations, first screens.' },
-      { day: 'Day 2–3', title: 'Development', body: 'We build the core of the product: front end, back end and database. Clean code and a clear architecture from the first commit.' },
-      { day: 'Day 4', title: 'Infra & testing', body: 'Infrastructure, tests, performance and security. We solidify the foundations before putting the product in front of you.' },
-      { day: 'Day 5', title: 'Your testing day', body: 'On Friday you test the product all day while we handle the technical side: deployment pipeline, infrastructure, going live.' },
-      { day: 'Day 6–7', title: 'Fixes and go-live', body: 'We apply your Friday feedback, finalise, and your V1 is in production by the end of Sunday. Online, or not delivered — that is the only delivery criterion.' },
-    ],
     qualityTitle: 'Clean, maintainable, performant code',
     qualityBody:
       'We don’t ship throwaway code. Every V1 is built on a clear architecture, with readable, tested and optimised code — so you can evolve and scale it without technical debt.',
