@@ -1,0 +1,77 @@
+name: Indexing (IndexNow + Google)
+
+# Indexing as a step of the CD (decision cmvg4x1e) — the `indexing` job of the
+# OneStoreLink reference (.github/workflows/deploy.yml), copied. The only
+# difference is the trigger: Vercel deploys this site through its Git
+# integration, so there is no "after deploy" step in Actions. Vercel reports
+# each deploy as a GitHub deployment instead, and this runs on its final status
+# — only a SUCCESS of the PRODUCTION environment, against the production origin
+# (CONFIG.origin in scripts/indexing.ts).
+#
+# Vercel creates its GitHub deployments with `ref` = the commit SHA, not a
+# branch, so this run's GITHUB_REF — and the `ref` claim of its OIDC token —
+# carry no branch. See the Google auth step.
+on:
+  deployment_status:
+
+concurrency:
+  # One manifest: two production deploys finishing close together must not race on it.
+  group: indexing
+  cancel-in-progress: false
+
+jobs:
+  indexing:
+    name: Indexing (IndexNow + Google)
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment.environment == 'Production'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Restore the previous run's manifest
+        uses: actions/cache/restore@v5
+        with:
+          path: .indexing/manifest.json
+          key: indexing-manifest-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: indexing-manifest-
+
+      - name: IndexNow — new, changed and removed pages only
+        id: indexnow
+        run: node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/indexing.ts indexnow
+
+      - name: Save the manifest
+        uses: actions/cache/save@v5
+        with:
+          path: .indexing/manifest.json
+          key: indexing-manifest-${{ github.run_id }}-${{ github.run_attempt }}
+
+      # Keyless: GitHub OIDC → GCP Workload Identity Federation → the
+      # gsc-indexing service account (setup: OSL apps/web/scripts/gsc-wif-setup.sh).
+      # ⚠️ The SA's binding must trust THIS run: a deployment_status run of a
+      # Vercel deployment has an empty `ref` claim (GITHUB_REF is empty when the
+      # deployment ref is a SHA), so a binding on `<repo>@refs/heads/<branch>`
+      # rejects it. Until the binding admits it, this step fails red and says so.
+      - name: Google auth (keyless, Workload Identity Federation)
+        id: gcp
+        if: steps.indexnow.outputs.changed != '0'
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: projects/357646499338/locations/global/workloadIdentityPools/github/providers/github
+          service_account: gsc-indexing@khufu-496021.iam.gserviceaccount.com
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/webmasters
+          create_credentials_file: false
+
+      - name: Google — resubmit the sitemap (Search Console)
+        if: steps.indexnow.outputs.changed != '0'
+        run: node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/indexing.ts gsc
+        env:
+          GSC_ACCESS_TOKEN: ${{ steps.gcp.outputs.access_token }}
