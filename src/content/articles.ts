@@ -85,10 +85,6 @@ export const getArticle = (locale: Locale, slug: string): Article | undefined =>
 export const articleSlugs = (): string[] =>
   allPosts.map((p) => p.fr).filter((a) => !a.draft).map((a) => a.slug)
 
-/** Slug + real publication date — for accurate sitemap lastModified. */
-export const articleDatedSlugs = (): { slug: string; date: string }[] =>
-  allPosts.map((p) => p.fr).filter((a) => !a.draft).map((a) => ({ slug: a.slug, date: a.date }))
-
 /** Articles sharing the most tags with `slug` (fallback: most recent), same locale. */
 export const relatedArticles = (locale: Locale, slug: string, n = 3): Article[] => {
   const all = publishedArticles(locale)

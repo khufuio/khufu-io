@@ -91,3 +91,6 @@ ads/meta-sprint-v1/.bundle*/
 !.env.local.enc
 !**/.env.example
 !.env.example
+
+# Indexing manifest (scripts/indexing.ts) — lives in the Actions cache, never committed.
+.indexing/

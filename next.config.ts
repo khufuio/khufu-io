@@ -11,6 +11,16 @@ const LOCALE_PATTERN = locales.join('|')
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+
+  /**
+   * The instant this build's changes go live, for the sitemap's lastmod
+   * (lib/sitemapLastModified.ts). Inlined at compile time, so the sitemap and
+   * /sitemap-sources.json — prerendered in separate workers — read the same
+   * value. Only pages whose sources changed get it; the others keep their date.
+   */
+  env: {
+    SITEMAP_BUILD_TIME: new Date().toISOString(),
+  },
   // Root "/" redirects to the default locale via middleware.
 
   /**
