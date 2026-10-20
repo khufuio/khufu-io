@@ -3,16 +3,22 @@ name: Indexing (IndexNow + Google)
 # Indexing as a step of the CD (decision cmvg4x1e) — the `indexing` job of the
 # OneStoreLink reference (.github/workflows/deploy.yml), copied. The only
 # difference is the trigger: Vercel deploys this site through its Git
-# integration, so there is no "after deploy" step in Actions. Vercel reports
-# each deploy as a GitHub deployment instead, and this runs on its final status
-# — only a SUCCESS of the PRODUCTION environment, against the production origin
-# (CONFIG.origin in scripts/indexing.ts).
+# integration, so there is no "after deploy" step in Actions. This runs on the
+# push to master (the production branch) and first WAITS for Vercel's
+# Production deployment of that commit to succeed, then indexes the production
+# origin (CONFIG.origin in scripts/indexing.ts).
 #
-# Vercel creates its GitHub deployments with `ref` = the commit SHA, not a
-# branch, so this run's GITHUB_REF — and the `ref` claim of its OIDC token —
-# carry no branch. See the Google auth step.
+# Why push and not `deployment_status` (measured 2026-10-20, run 39371317172):
+# Vercel creates its GitHub deployments with `ref` = the commit SHA, so a
+# deployment_status run's OIDC token carries `ref: ""` and
+# `sub: repo:khufuio/khufu-io:ref:` — nothing that tells master from a branch,
+# or Production from Preview — and the workflow file that runs is the deployed
+# BRANCH's own. A Workload Identity binding that admitted it would hand a
+# Search Console token to any branch that gets a preview. A push to master
+# carries `ref: refs/heads/master`, which the binding can pin.
 on:
-  deployment_status:
+  push:
+    branches: [master]
 
 concurrency:
   # One manifest: two production deploys finishing close together must not race on it.
@@ -22,21 +28,49 @@ concurrency:
 jobs:
   indexing:
     name: Indexing (IndexNow + Google)
-    if: >-
-      github.event.deployment_status.state == 'success' &&
-      github.event.deployment.environment == 'Production'
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      deployments: read
       id-token: write
     steps:
+      # Vercel builds in about a minute here; 20 minutes covers a queued build.
+      # A failed or superseded deployment is not an error of this job: what is
+      # live is another commit, indexed by its own run.
+      - name: Wait for Vercel's Production deployment of this commit
+        id: deploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          for _ in $(seq 1 80); do
+            id=$(gh api "repos/$REPO/deployments?sha=$SHA&environment=Production" --jq '.[0].id // empty')
+            if [ -n "$id" ]; then
+              state=$(gh api "repos/$REPO/deployments/$id/statuses" --jq '.[0].state // empty')
+              case "$state" in
+                success) echo "Production deployment $id is live."; echo "live=true" >> "$GITHUB_OUTPUT"; exit 0;;
+                failure|error|inactive)
+                  echo "::notice title=indexing::Production deployment $id of ${SHA:0:7} is $state — nothing to index."
+                  echo "live=false" >> "$GITHUB_OUTPUT"; exit 0;;
+              esac
+            fi
+            sleep 15
+          done
+          echo "::warning title=indexing::no successful Production deployment of ${SHA:0:7} after 20 minutes — not indexed."
+          echo "live=false" >> "$GITHUB_OUTPUT"
+
       - uses: actions/checkout@v6
+        if: steps.deploy.outputs.live == 'true'
 
       - uses: actions/setup-node@v6
+        if: steps.deploy.outputs.live == 'true'
         with:
           node-version: 24
 
       - name: Restore the previous run's manifest
+        if: steps.deploy.outputs.live == 'true'
         uses: actions/cache/restore@v5
         with:
           path: .indexing/manifest.json
@@ -45,9 +79,11 @@ jobs:
 
       - name: IndexNow — new, changed and removed pages only
         id: indexnow
+        if: steps.deploy.outputs.live == 'true'
         run: node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/indexing.ts indexnow
 
       - name: Save the manifest
+        if: steps.deploy.outputs.live == 'true'
         uses: actions/cache/save@v5
         with:
           path: .indexing/manifest.json
@@ -55,16 +91,11 @@ jobs:
 
       # Keyless: GitHub OIDC → GCP Workload Identity Federation → the
       # gsc-indexing service account (setup: OSL apps/web/scripts/gsc-wif-setup.sh).
-      # ⚠️ The SA's binding must trust THIS run. Measured on 2026-10-20 (run
-      # 39371317172): a deployment_status run of a Vercel deployment carries
-      # `ref: ""`, `sub: repo:khufuio/khufu-io:ref:`, event_name
-      # deployment_status, actor vercel[bot] — no branch, and nothing that tells
-      # Production from Preview. A binding on `<repo>@refs/heads/<branch>`
-      # rejects it (403 iam.serviceAccounts.getAccessToken); until the binding
-      # admits it, this step fails red and says so.
+      # Needs the binding `attribute.repo_ref/khufuio/khufu-io@refs/heads/master`
+      # on the SA — this repo's production branch is master, not main.
       - name: Google auth (keyless, Workload Identity Federation)
         id: gcp
-        if: steps.indexnow.outputs.changed != '0'
+        if: steps.deploy.outputs.live == 'true' && steps.indexnow.outputs.changed != '0'
         uses: google-github-actions/auth@v3
         with:
           workload_identity_provider: projects/357646499338/locations/global/workloadIdentityPools/github/providers/github
@@ -74,7 +105,7 @@ jobs:
           create_credentials_file: false
 
       - name: Google — resubmit the sitemap (Search Console)
-        if: steps.indexnow.outputs.changed != '0'
+        if: steps.deploy.outputs.live == 'true' && steps.indexnow.outputs.changed != '0'
         run: node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/indexing.ts gsc
         env:
           GSC_ACCESS_TOKEN: ${{ steps.gcp.outputs.access_token }}
