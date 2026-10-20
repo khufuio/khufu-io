@@ -234,10 +234,18 @@ async function readPrevious(origin: string): Promise<SourcesManifest | null> {
 // node:http(s) rather than fetch: Next patches fetch with its data cache,
 // which on Vercel survives across deployments — a cached previous manifest
 // would carry over dates for pages that have since changed.
-function get(url: string): Promise<{ status: number; body: string }> {
+// Redirects are followed: the apex (khufu.io) answers 308 towards www, and a
+// build whose site.url is the apex must still find the manifest.
+function get(url: string, redirects = 3): Promise<{ status: number; body: string }> {
   const request = url.startsWith('http:') ? httpRequest : httpsRequest
   return new Promise((resolve, reject) => {
     const req = request(url, { headers: { 'User-Agent': 'khufu-sitemap/1.0' }, timeout: 10_000 }, (res) => {
+      const location = res.headers.location
+      if (res.statusCode && res.statusCode >= 300 && res.statusCode < 400 && location && redirects > 0) {
+        res.resume()
+        get(new URL(location, url).href, redirects - 1).then(resolve, reject)
+        return
+      }
       const chunks: Buffer[] = []
       res.on('data', (c: Buffer) => chunks.push(c))
       res.on('end', () => resolve({ status: res.statusCode ?? 0, body: Buffer.concat(chunks).toString('utf8') }))
