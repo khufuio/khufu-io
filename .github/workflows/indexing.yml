@@ -55,10 +55,13 @@ jobs:
 
       # Keyless: GitHub OIDC → GCP Workload Identity Federation → the
       # gsc-indexing service account (setup: OSL apps/web/scripts/gsc-wif-setup.sh).
-      # ⚠️ The SA's binding must trust THIS run: a deployment_status run of a
-      # Vercel deployment has an empty `ref` claim (GITHUB_REF is empty when the
-      # deployment ref is a SHA), so a binding on `<repo>@refs/heads/<branch>`
-      # rejects it. Until the binding admits it, this step fails red and says so.
+      # ⚠️ The SA's binding must trust THIS run. Measured on 2026-10-20 (run
+      # 39371317172): a deployment_status run of a Vercel deployment carries
+      # `ref: ""`, `sub: repo:khufuio/khufu-io:ref:`, event_name
+      # deployment_status, actor vercel[bot] — no branch, and nothing that tells
+      # Production from Preview. A binding on `<repo>@refs/heads/<branch>`
+      # rejects it (403 iam.serviceAccounts.getAccessToken); until the binding
+      # admits it, this step fails red and says so.
       - name: Google auth (keyless, Workload Identity Federation)
         id: gcp
         if: steps.indexnow.outputs.changed != '0'
