@@ -12,8 +12,8 @@
  *
  * Driving: the host's scratch Chrome (`hq browser ensure --need public`) over raw
  * CDP, like checkSprintHeroTitle.mjs. Run against a running server:
- *   npm run capture:sprint-page -- --origin=http://127.0.0.1:3000 --out=<dir> --locales=ar,de,tr
- * Writes `<out>/sprint-<locale>-<width>-<nn>.png`, one tile per `--tile` px (1400). Exits 1 when a page overflows
+ *   npm run capture:sprint-page -- --origin=http://127.0.0.1:3000 --out=<dir> --locales=ar,de,tr [--page=preuve]
+ * Writes `<out>/<sprint|page>-<locale>-<width>-<nn>.png`, one tile per `--tile` px (1400). Exits 1 when a page overflows
  * horizontally or an RTL locale was not served `dir="rtl"`.
  */
 import fs from 'node:fs'
@@ -33,6 +33,9 @@ const WIDTHS = flag('widths', '1440,390').split(',').map(Number)
 /** Tile height in CSS px — about one and a half screens. */
 const TILE = Number(flag('tile', '1400'))
 const RTL = new Set(['ar'])
+/** Route segment under /<locale>/ — `--page=preuve` captures /proof the same way. */
+const PAGE = flag('page', 'sprint-v1')
+const PREFIX = PAGE === 'sprint-v1' ? 'sprint' : PAGE
 
 const target = await (await fetch(`${cdp}/json/new?about:blank`, { method: 'PUT' })).json()
 const ws = new WebSocket(target.webSocketDebuggerUrl)
@@ -89,7 +92,7 @@ for (const locale of LOCALES) {
   for (const width of WIDTHS) {
     const mobile = width < 768
     await send('Emulation.setDeviceMetricsOverride', { width, height: mobile ? 844 : 1000, deviceScaleFactor: 1, mobile })
-    await send('Page.navigate', { url: `${origin}/${locale}/sprint-v1` })
+    await send('Page.navigate', { url: `${origin}/${locale}/${PAGE}` })
     await sleep(4000)
     if (locale === 'ar') await evaluate(ARABIC_STAND_IN)
     const m = await evaluate(`({
@@ -110,7 +113,7 @@ for (const locale of LOCALES) {
         captureBeyondViewport: true,
         clip: { x: 0, y, width, height: Math.min(TILE, m.height - y), scale: 1 },
       })
-      const name = `sprint-${locale}-${width}-${String(++tile).padStart(2, '0')}.png`
+      const name = `${PREFIX}-${locale}-${width}-${String(++tile).padStart(2, '0')}.png`
       fs.writeFileSync(path.join(outDir, name), Buffer.from(shot.data, 'base64'))
     }
     console.log(`${locale} @${width}  lang=${m.lang} dir=${m.dir || 'ltr'} overflow=${m.overflow}px height=${m.height}px → ${tile} tiles`)

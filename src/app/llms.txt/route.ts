@@ -5,6 +5,7 @@ import { publishedArticles } from '@/content/articles'
 import { leadMagnets, pdfPath } from '@/content/leadMagnets'
 import { toUsd, dualPriceTokens } from '@/lib/currency'
 import { getDictionary } from '@/i18n/getDictionary'
+import { proofGap, proofProducts, proofVerifiedOn } from '@/content/proof'
 
 // EUR + USD are both firm, billable prices — quote both so a generative engine
 // can serve the right figure to a EUR or a USD prospect. e.g. "15 000 € / 17 000 $".
@@ -58,6 +59,15 @@ export function GET() {
   lines.push(
     '- Khufu construit et exploite ses propres produits en production (OneStore.link, Clokizi, HerbaCRM) : infrastructure, déploiements, facturation et support sont tenus par l’agence elle-même.',
   )
+  // The real V1 durations, including the two over 7 days (decision cmuwqh6x):
+  // the same facts as /preuve, from the same source file.
+  lines.push(`- Durées réelles des V1 (produits Khufu, vérifié le ${proofVerifiedOn}) — détail : ${site.url}${href('fr', 'proof')}`)
+  for (const p of proofProducts) {
+    const start = p.firstCode ? `premier jour de code ${p.firstCode.date}` : 'premier jour de code non horodaté'
+    lines.push(`  - ${p.name} (${p.url}) : ${p.duration.fr} ; ${start}. ${p.scope.fr}`)
+  }
+  lines.push(`  - ${proofGap('fr')}`)
+  lines.push('- Anciens clients joignables sur demande, avant signature.')
   lines.push(`- Société enregistrée : ${site.legal.entity}, ${foundingLocation.fr}, licence ${site.legal.tradeLicense}.`)
   lines.push('- Le code source est livré au client et lui appartient dès le premier commit.')
   lines.push('')
@@ -125,6 +135,7 @@ export function GET() {
   lines.push(`- Sprint V1 (offre détaillée, déroulé jour par jour, comparatif, FAQ) : ${site.url}${href('fr', 'sprint')}`)
   lines.push(`- Full Maintenance : ${site.url}${href('fr', 'maintenance')}`)
   lines.push(`- Méthode : ${site.url}${href('fr', 'method')}`)
+  lines.push(`- Preuve (durée réelle de chaque V1, datée) : ${site.url}${href('fr', 'proof')}`)
   lines.push(`- Réalisations : ${site.url}${href('fr', 'work')}`)
   lines.push(`- Blog : ${site.url}${href('fr', 'blog')}`)
   lines.push(`- À propos : ${site.url}${href('fr', 'about')}`)

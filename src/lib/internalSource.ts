@@ -10,6 +10,7 @@ const KNOWN_SOURCES = [
   'home-hero',
   'home-offer',
   'home-final',
+  'proof',
 ] as const
 
 export type InternalSource = (typeof KNOWN_SOURCES)[number]

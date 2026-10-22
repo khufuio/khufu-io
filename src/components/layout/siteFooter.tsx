@@ -10,6 +10,7 @@ import { LocaleSwitcher } from './localeSwitcher'
 import { blogUi } from '@/content/articles'
 import { ui } from '@/i18n/ui'
 import { guidePath, leadMagnets } from '@/content/leadMagnets'
+import { proofCopy } from '@/content/proof'
 
 export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const year = 2026 // build-time constant; bump on redeploy
@@ -48,6 +49,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
 
         <FooterCol title={f.columns.company}>
           <FooterLink href={href(locale, 'work')}>{nav.work}</FooterLink>
+          <FooterLink href={href(locale, 'proof')}>{proofCopy.navLabel[locale]}</FooterLink>
           <FooterLink href={href(locale, 'comparisons')}>{dict.geo.comparisonsMetaTitle}</FooterLink>
           <FooterLink href={href(locale, 'useCases')}>{dict.geo.useCasesMetaTitle}</FooterLink>
           <FooterLink href={href(locale, 'blog')}>{blogUi.navLabel[locale]}</FooterLink>

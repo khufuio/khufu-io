@@ -113,6 +113,8 @@ export const routes = {
   remote: 'remote',
   work: 'realisations',
   method: 'methode',
+  // The page DMs, emails and the bio point to (todo cmtt6uhx).
+  proof: 'preuve',
   comparisons: 'comparatifs',
   useCases: 'cas-d-usage',
   blog: 'blog',
