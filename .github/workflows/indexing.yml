@@ -67,7 +67,7 @@ jobs:
       - uses: actions/setup-node@v6
         if: steps.deploy.outputs.live == 'true'
         with:
-          node-version: 24
+          node-version: 24.22.1
 
       - name: Restore the previous run's manifest
         if: steps.deploy.outputs.live == 'true'
