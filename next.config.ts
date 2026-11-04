@@ -68,12 +68,32 @@ const nextConfig: NextConfig = {
     '/brand/k': ['./src/assets/fonts/**'],
   },
 
-  // Reverse-proxy PostHog through our own domain to dodge ad-blockers.
   async rewrites() {
+    return {
+      /**
+       * /adrien is a hand-built static page in public/adrien/. beforeFiles so the
+       * [locale] dynamic route can never catch the bare /adrien.
+       */
+      beforeFiles: [{ source: '/adrien', destination: '/adrien/index.html' }],
+      // Reverse-proxy PostHog through our own domain to dodge ad-blockers.
+      afterFiles: [
+        { source: '/ingest/static/:path*', destination: 'https://us-assets.i.posthog.com/static/:path*' },
+        { source: '/ingest/:path*', destination: 'https://us.i.posthog.com/:path*' },
+        { source: '/ingest/decide', destination: 'https://us.i.posthog.com/decide' },
+      ],
+      fallback: [],
+    }
+  },
+
+  /**
+   * /adrien is a job application page, not SEO content: keep it (and its assets)
+   * out of search indexes. The page also carries a meta robots noindex.
+   */
+  async headers() {
+    const noindex = [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }]
     return [
-      { source: '/ingest/static/:path*', destination: 'https://us-assets.i.posthog.com/static/:path*' },
-      { source: '/ingest/:path*', destination: 'https://us.i.posthog.com/:path*' },
-      { source: '/ingest/decide', destination: 'https://us.i.posthog.com/decide' },
+      { source: '/adrien', headers: noindex },
+      { source: '/adrien/:path*', headers: noindex },
     ]
   },
   // Required for PostHog trailing-slash API requests to work through the proxy.

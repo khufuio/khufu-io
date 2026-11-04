@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!--
+    Khufu ICON — the white K on a full-bleed brandColor (#4c30ff) square. This is what
+    `logoPath` names: every other `logoPath` in the registry is an app icon (a filled
+    square carrying its own ground), and the surfaces that read the field — Jarvis tab
+    strips, BrandChip, ProjectAvatar, the motion lockup — paint it as such. The bare
+    transparent K stays in khufu-k.svg, declared as `brand.documentLogoPath` for paper,
+    where the mark sits alone on white.
+
+    Same glyph as khufu-k.svg (Space Grotesk Bold "K", 1000 upm, scale 0.76), centred
+    on its own bounding box (x 66..622, y 0..700) instead of on the text advance.
+    White on #4c30ff is 6.6:1. Full-bleed, no rx: the surfaces round the corners
+    themselves, as they do for the PNG icons.
+    ⚠️ Plain geometry only — a native renderer (CoreSVG behind expo-image) supports
+    none of <style>, @font-face or dominant-baseline.
+  -->
+  <rect width="1024" height="1024" fill="#4c30ff"/>
+  <path fill="#ffffff" transform="translate(250.56 778) scale(0.76 -0.76)" d="M198 0L66 0L66 700L198 700L198 422L216 422L443 700L612 700L320 355L622 0L448 0L216 284L198 284L198 0Z"/>
+</svg>
