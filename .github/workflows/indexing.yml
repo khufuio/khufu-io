@@ -16,9 +16,24 @@ name: Indexing (IndexNow + Google)
 # BRANCH's own. A Workload Identity binding that admitted it would hand a
 # Search Console token to any branch that gets a preview. A push to master
 # carries `ref: refs/heads/master`, which the binding can pin.
+#
+# Paths = the site's sources, the same list as scripts/vercel-ignore-build.sh (rule cmw2hq69):
+# a push touching only docs/scripts/CI skips the Vercel deploy, so there is nothing new to index
+# and the wait below would just burn 20 minutes before warning. Keep both lists in sync.
 on:
   push:
     branches: [master]
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - package.json
+      - package-lock.json
+      - next.config.ts
+      - postcss.config.mjs
+      - tsconfig.json
+      - .nvmrc
+      - vercel.json
+      - scripts/vercel-ignore-build.sh
 
 concurrency:
   # One manifest: two production deploys finishing close together must not race on it.
