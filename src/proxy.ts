@@ -48,9 +48,6 @@ export function proxy(req: NextRequest) {
     pathname.startsWith('/ingest') ||
     pathname.startsWith('/api') ||
     pathname.startsWith('/brand') ||
-    // /adrien is a static page served from public/adrien/ — never locale-prefixed.
-    pathname === '/adrien' ||
-    pathname.startsWith('/adrien/') ||
     pathname === '/icon' ||
     pathname === '/apple-icon' ||
     PUBLIC_FILE.test(pathname)
@@ -75,5 +72,5 @@ export function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next|ingest|api|brand|adrien|icon|apple-icon|.*\\..*).*)'],
+  matcher: ['/((?!_next|ingest|api|brand|icon|apple-icon|.*\\..*).*)'],
 }
