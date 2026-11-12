@@ -22,7 +22,8 @@
     "check:linkedin": "node scripts/checkLinkedInTag.mjs",
     "ads:render": "node scripts/renderMetaAds.mjs",
     "capture:ad-screens": "node scripts/captureAdScreens.mjs",
-    "ads:typecheck": "tsc -p ads/meta-sprint-v1"
+    "ads:typecheck": "tsc -p ads/meta-sprint-v1",
+    "leads:resellers": "tsx scripts/resellersLeadgen.ts"
   },
   "dependencies": {
     "next": "^16.4.2",
