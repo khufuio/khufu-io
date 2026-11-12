@@ -4,7 +4,7 @@ import type { Article } from '../types'
 export const post: Record<Locale, Article> = {
   fr: {
     slug: 'valider-une-idee-avant-d-investir',
-    title: "Comment valider une idée de produit avant d’investir 15 000 €",
+    title: "Comment valider une idée de produit avant d’investir 11 000 €",
     excerpt:
       "Méthodes de validation à faible coût avant de payer une V1 : interviews, landing, pré-vente, faux bouton. Quels signaux valident vraiment.",
     date: '2026-02-18',
@@ -12,7 +12,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Founder', 'Validation'],
     body: [
       {
-        p: "Avant de dépenser 15 000 € pour une V1, validez votre idée pour moins de 500 € en une à deux semaines. La règle est simple : un signal ne compte que s’il coûte quelque chose à votre prospect — de l’argent, du temps ou une donnée engageante. Un « super idée ! » gratuit ne vaut rien ; une pré-commande payée, un e-mail laissé pour être prévenu au lancement ou un appel réservé valent de l’or. Voici les quatre méthodes qui marchent, et les pièges à éviter.",
+        p: "Avant de dépenser 11 000 € pour une V1, validez votre idée pour moins de 500 € en une à deux semaines. La règle est simple : un signal ne compte que s’il coûte quelque chose à votre prospect — de l’argent, du temps ou une donnée engageante. Un « super idée ! » gratuit ne vaut rien ; une pré-commande payée, un e-mail laissé pour être prévenu au lancement ou un appel réservé valent de l’or. Voici les quatre méthodes qui marchent, et les pièges à éviter.",
       },
       { h2: 'Les interviews problème (5 à 10 suffisent)' },
       {
@@ -54,13 +54,13 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Une fois le signal payant obtenu, vous n’investissez plus dans le vide. C’est le moment de passer à une vraie V1 en production — chez Khufu, un forfait à prix fixe de 15 000 €, livré en 7 jours — pour transformer une demande validée en produit que vos premiers clients peuvent utiliser tout de suite.",
+        p: "Une fois le signal payant obtenu, vous n’investissez plus dans le vide. C’est le moment de passer à une vraie V1 en production — chez Khufu, un forfait à prix fixe de 11 000 €, livré en 7 jours — pour transformer une demande validée en produit que vos premiers clients peuvent utiliser tout de suite.",
       },
     ],
   },
   en: {
     slug: 'valider-une-idee-avant-d-investir',
-    title: 'How to validate a product idea before investing €15,000',
+    title: 'How to validate a product idea before investing €11,000',
     excerpt:
       'Low-cost ways to validate before paying for a V1: interviews, landing page, pre-sales, fake door. Which signals truly validate an idea.',
     date: '2026-02-18',
@@ -68,7 +68,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Founder', 'Validation'],
     body: [
       {
-        p: "Before spending €15,000 on a V1, validate your idea for under €500 in one to two weeks. The rule is simple: a signal only counts if it costs your prospect something — money, time, or a committing piece of data. A free “great idea!” is worthless; a paid pre-order, an email left to be notified at launch, or a booked call are worth gold. Here are the four methods that work, and the traps to avoid.",
+        p: "Before spending €11,000 on a V1, validate your idea for under €500 in one to two weeks. The rule is simple: a signal only counts if it costs your prospect something — money, time, or a committing piece of data. A free “great idea!” is worthless; a paid pre-order, an email left to be notified at launch, or a booked call are worth gold. Here are the four methods that work, and the traps to avoid.",
       },
       { h2: 'Problem interviews (5 to 10 are enough)' },
       {
@@ -109,13 +109,13 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Once you have a paying signal, you are no longer investing blindly. That is the moment to move to a real production V1 — at Khufu, a fixed-price package of €15,000, delivered in 7 days — to turn validated demand into a product your first customers can use right away.",
+        p: "Once you have a paying signal, you are no longer investing blindly. That is the moment to move to a real production V1 — at Khufu, a fixed-price package of €11,000, delivered in 7 days — to turn validated demand into a product your first customers can use right away.",
       },
     ],
   },
   es: {
     slug: 'valider-une-idee-avant-d-investir',
-    title: 'Cómo validar una idea de producto antes de invertir 15 000 €',
+    title: 'Cómo validar una idea de producto antes de invertir 11 000 €',
     excerpt:
       'Métodos de bajo coste para validar antes de pagar una V1: entrevistas, landing, preventa, botón falso. Qué señales validan de verdad.',
     date: '2026-02-18',
@@ -123,7 +123,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Founder', 'Validación'],
     body: [
       {
-        p: "Antes de gastar 15 000 € en una V1, valida tu idea por menos de 500 € en una o dos semanas. La regla es simple: una señal solo cuenta si le cuesta algo a tu prospecto — dinero, tiempo o un dato comprometedor. Un “¡gran idea!” gratis no vale nada; un pedido pagado por adelantado, un correo dejado para avisar en el lanzamiento o una llamada reservada valen oro. Estos son los cuatro métodos que funcionan y las trampas que evitar.",
+        p: "Antes de gastar 11 000 € en una V1, valida tu idea por menos de 500 € en una o dos semanas. La regla es simple: una señal solo cuenta si le cuesta algo a tu prospecto — dinero, tiempo o un dato comprometedor. Un “¡gran idea!” gratis no vale nada; un pedido pagado por adelantado, un correo dejado para avisar en el lanzamiento o una llamada reservada valen oro. Estos son los cuatro métodos que funcionan y las trampas que evitar.",
       },
       { h2: 'Entrevistas de problema (bastan 5 a 10)' },
       {
@@ -164,13 +164,13 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Una vez obtenida la señal de pago, dejas de invertir a ciegas. Es el momento de pasar a una V1 real en producción — en Khufu, un paquete a precio fijo de 15 000 €, entregado en 7 días — para convertir una demanda validada en un producto que tus primeros clientes pueden usar de inmediato.",
+        p: "Una vez obtenida la señal de pago, dejas de invertir a ciegas. Es el momento de pasar a una V1 real en producción — en Khufu, un paquete a precio fijo de 11 000 €, entregado en 7 días — para convertir una demanda validada en un producto que tus primeros clientes pueden usar de inmediato.",
       },
     ],
   },
   de: {
     slug: 'valider-une-idee-avant-d-investir',
-    title: 'Wie du eine Produktidee validierst, bevor du 15.000 € investierst',
+    title: 'Wie du eine Produktidee validierst, bevor du 11.000 € investierst',
     excerpt:
       'Günstige Wege zur Validierung vor der V1: Interviews, Landingpage, Vorverkauf, Fake Door. Welche Signale eine Idee wirklich bestätigen.',
     date: '2026-02-18',
@@ -178,7 +178,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Founder', 'Validierung'],
     body: [
       {
-        p: "Bevor du 15.000 € für eine V1 ausgibst, validiere deine Idee für unter 500 € in ein bis zwei Wochen. Die Regel ist einfach: Ein Signal zählt nur, wenn es deinen Interessenten etwas kostet — Geld, Zeit oder eine verbindliche Angabe. Ein kostenloses „tolle Idee!“ ist wertlos; eine bezahlte Vorbestellung, eine hinterlassene E-Mail für die Startbenachrichtigung oder ein gebuchter Call sind Gold wert. Hier sind die vier Methoden, die funktionieren, und die Fallen, die du meiden solltest.",
+        p: "Bevor du 11.000 € für eine V1 ausgibst, validiere deine Idee für unter 500 € in ein bis zwei Wochen. Die Regel ist einfach: Ein Signal zählt nur, wenn es deinen Interessenten etwas kostet — Geld, Zeit oder eine verbindliche Angabe. Ein kostenloses „tolle Idee!“ ist wertlos; eine bezahlte Vorbestellung, eine hinterlassene E-Mail für die Startbenachrichtigung oder ein gebuchter Call sind Gold wert. Hier sind die vier Methoden, die funktionieren, und die Fallen, die du meiden solltest.",
       },
       { h2: 'Problem-Interviews (5 bis 10 reichen)' },
       {
@@ -219,13 +219,13 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Sobald du ein zahlendes Signal hast, investierst du nicht mehr ins Blaue. Das ist der Moment, zu einer echten Produktions-V1 überzugehen — bei Khufu ein Festpreis-Paket von 15.000 €, geliefert in 7 Tagen — um validierte Nachfrage in ein Produkt zu verwandeln, das deine ersten Kunden sofort nutzen können.",
+        p: "Sobald du ein zahlendes Signal hast, investierst du nicht mehr ins Blaue. Das ist der Moment, zu einer echten Produktions-V1 überzugehen — bei Khufu ein Festpreis-Paket von 11.000 €, geliefert in 7 Tagen — um validierte Nachfrage in ein Produkt zu verwandeln, das deine ersten Kunden sofort nutzen können.",
       },
     ],
   },
   it: {
     slug: 'valider-une-idee-avant-d-investir',
-    title: "Come validare un'idea di prodotto prima di investire 15.000 €",
+    title: "Come validare un'idea di prodotto prima di investire 11.000 €",
     excerpt:
       'Metodi a basso costo per validare prima di pagare una V1: interviste, landing, prevendita, pulsante finto. Quali segnali validano davvero.',
     date: '2026-02-18',
@@ -233,7 +233,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Founder', 'Validazione'],
     body: [
       {
-        p: "Prima di spendere 15.000 € per una V1, valida la tua idea con meno di 500 € in una o due settimane. La regola è semplice: un segnale conta solo se costa qualcosa al tuo potenziale cliente — denaro, tempo o un dato impegnativo. Un “grande idea!” gratuito non vale nulla; un preordine pagato, un’email lasciata per essere avvisati al lancio o una call prenotata valgono oro. Ecco i quattro metodi che funzionano e le trappole da evitare.",
+        p: "Prima di spendere 11.000 € per una V1, valida la tua idea con meno di 500 € in una o due settimane. La regola è semplice: un segnale conta solo se costa qualcosa al tuo potenziale cliente — denaro, tempo o un dato impegnativo. Un “grande idea!” gratuito non vale nulla; un preordine pagato, un’email lasciata per essere avvisati al lancio o una call prenotata valgono oro. Ecco i quattro metodi che funzionano e le trappole da evitare.",
       },
       { h2: 'Le interviste sul problema (5 a 10 bastano)' },
       {
@@ -274,13 +274,13 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Una volta ottenuto il segnale a pagamento, non investi più al buio. È il momento di passare a una vera V1 in produzione — da Khufu, un pacchetto a prezzo fisso di 15.000 €, consegnato in 7 giorni — per trasformare una domanda validata in un prodotto che i tuoi primi clienti possono usare subito.",
+        p: "Una volta ottenuto il segnale a pagamento, non investi più al buio. È il momento di passare a una vera V1 in produzione — da Khufu, un pacchetto a prezzo fisso di 11.000 €, consegnato in 7 giorni — per trasformare una domanda validata in un prodotto che i tuoi primi clienti possono usare subito.",
       },
     ],
   },
   pt: {
     slug: 'valider-une-idee-avant-d-investir',
-    title: 'Como validar uma ideia de produto antes de investir 15 000 €',
+    title: 'Como validar uma ideia de produto antes de investir 11 000 €',
     excerpt:
       'Métodos de baixo custo para validar antes de pagar uma V1: entrevistas, landing, pré-venda, botão falso. Que sinais validam de verdade.',
     date: '2026-02-18',
@@ -288,7 +288,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Founder', 'Validação'],
     body: [
       {
-        p: "Antes de gastar 15 000 € numa V1, valida a tua ideia por menos de 500 € em uma a duas semanas. A regra é simples: um sinal só conta se custar algo ao teu potencial cliente — dinheiro, tempo ou um dado comprometedor. Um “ótima ideia!” grátis não vale nada; uma pré-encomenda paga, um e-mail deixado para ser avisado no lançamento ou uma call agendada valem ouro. Aqui estão os quatro métodos que funcionam e as armadilhas a evitar.",
+        p: "Antes de gastar 11 000 € numa V1, valida a tua ideia por menos de 500 € em uma a duas semanas. A regra é simples: um sinal só conta se custar algo ao teu potencial cliente — dinheiro, tempo ou um dado comprometedor. Um “ótima ideia!” grátis não vale nada; uma pré-encomenda paga, um e-mail deixado para ser avisado no lançamento ou uma call agendada valem ouro. Aqui estão os quatro métodos que funcionam e as armadilhas a evitar.",
       },
       { h2: 'As entrevistas de problema (5 a 10 bastam)' },
       {
@@ -329,13 +329,13 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Uma vez obtido o sinal pago, deixas de investir às cegas. É o momento de passar a uma V1 real em produção — na Khufu, um pacote a preço fixo de 15 000 €, entregue em 7 dias — para transformar uma procura validada num produto que os teus primeiros clientes podem usar de imediato.",
+        p: "Uma vez obtido o sinal pago, deixas de investir às cegas. É o momento de passar a uma V1 real em produção — na Khufu, um pacote a preço fixo de 11 000 €, entregue em 7 dias — para transformar uma procura validada num produto que os teus primeiros clientes podem usar de imediato.",
       },
     ],
   },
   nl: {
     slug: 'valider-une-idee-avant-d-investir',
-    title: 'Hoe je een productidee valideert voordat je 15.000 € investeert',
+    title: 'Hoe je een productidee valideert voordat je 11.000 € investeert',
     excerpt:
       'Goedkope manieren om te valideren voor je een V1 betaalt: interviews, landingspagina, pre-sale, fake door. Welke signalen echt valideren.',
     date: '2026-02-18',
@@ -343,7 +343,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Founder', 'Validatie'],
     body: [
       {
-        p: "Voordat je 15.000 € aan een V1 uitgeeft, valideer je je idee voor minder dan 500 € in een tot twee weken. De regel is simpel: een signaal telt alleen als het je prospect iets kost — geld, tijd of een verbindend gegeven. Een gratis “geweldig idee!” is waardeloos; een betaalde pre-order, een achtergelaten e-mail om bij de lancering te worden gewaarschuwd of een geboekte call zijn goud waard. Hier zijn de vier methoden die werken, en de valkuilen die je moet vermijden.",
+        p: "Voordat je 11.000 € aan een V1 uitgeeft, valideer je je idee voor minder dan 500 € in een tot twee weken. De regel is simpel: een signaal telt alleen als het je prospect iets kost — geld, tijd of een verbindend gegeven. Een gratis “geweldig idee!” is waardeloos; een betaalde pre-order, een achtergelaten e-mail om bij de lancering te worden gewaarschuwd of een geboekte call zijn goud waard. Hier zijn de vier methoden die werken, en de valkuilen die je moet vermijden.",
       },
       { h2: 'Probleeminterviews (5 tot 10 volstaan)' },
       {
@@ -384,13 +384,13 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Zodra je een betalend signaal hebt, investeer je niet langer in het wilde weg. Dat is het moment om naar een echte productie-V1 te gaan — bij Khufu een vaste prijs van 15.000 €, geleverd in 7 dagen — om gevalideerde vraag om te zetten in een product dat je eerste klanten meteen kunnen gebruiken.",
+        p: "Zodra je een betalend signaal hebt, investeer je niet langer in het wilde weg. Dat is het moment om naar een echte productie-V1 te gaan — bij Khufu een vaste prijs van 11.000 €, geleverd in 7 dagen — om gevalideerde vraag om te zetten in een product dat je eerste klanten meteen kunnen gebruiken.",
       },
     ],
   },
   ar: {
     slug: 'valider-une-idee-avant-d-investir',
-    title: 'كيف تتحقق من صحة فكرة منتج قبل استثمار 15,000 €',
+    title: 'كيف تتحقق من صحة فكرة منتج قبل استثمار 11,000 €',
     excerpt:
       'طرق منخفضة التكلفة للتحقق قبل دفع ثمن V1: مقابلات، صفحة هبوط، بيع مسبق، زر وهمي. أي الإشارات تُثبت الفكرة فعلاً.',
     date: '2026-02-18',
@@ -398,7 +398,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Founder', 'التحقق'],
     body: [
       {
-        p: "قبل إنفاق 15,000 € على V1، تحقق من فكرتك بأقل من 500 € خلال أسبوع إلى أسبوعين. القاعدة بسيطة: الإشارة لا تُحتسب إلا إذا كلّفت عميلك المحتمل شيئاً — مالاً أو وقتاً أو بياناً ملزِماً. عبارة “فكرة رائعة!” المجانية لا تساوي شيئاً؛ أما الطلب المسبق المدفوع، أو بريد إلكتروني تُرك للتنبيه عند الإطلاق، أو مكالمة محجوزة فتساوي ذهباً. إليك الطرق الأربع التي تنجح، والفخاخ التي يجب تجنّبها.",
+        p: "قبل إنفاق 11,000 € على V1، تحقق من فكرتك بأقل من 500 € خلال أسبوع إلى أسبوعين. القاعدة بسيطة: الإشارة لا تُحتسب إلا إذا كلّفت عميلك المحتمل شيئاً — مالاً أو وقتاً أو بياناً ملزِماً. عبارة “فكرة رائعة!” المجانية لا تساوي شيئاً؛ أما الطلب المسبق المدفوع، أو بريد إلكتروني تُرك للتنبيه عند الإطلاق، أو مكالمة محجوزة فتساوي ذهباً. إليك الطرق الأربع التي تنجح، والفخاخ التي يجب تجنّبها.",
       },
       { h2: 'مقابلات المشكلة (من 5 إلى 10 تكفي)' },
       {
@@ -439,13 +439,13 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "بمجرد حصولك على إشارة مدفوعة، لم تعد تستثمر في الفراغ. هذه هي لحظة الانتقال إلى V1 حقيقية في الإنتاج — لدى Khufu، باقة بسعر ثابت قدره 15,000 €، تُسلَّم في 7 أيام — لتحويل طلب مُثبَت إلى منتج يستطيع عملاؤك الأوائل استخدامه فوراً.",
+        p: "بمجرد حصولك على إشارة مدفوعة، لم تعد تستثمر في الفراغ. هذه هي لحظة الانتقال إلى V1 حقيقية في الإنتاج — لدى Khufu، باقة بسعر ثابت قدره 11,000 €، تُسلَّم في 7 أيام — لتحويل طلب مُثبَت إلى منتج يستطيع عملاؤك الأوائل استخدامه فوراً.",
       },
     ],
   },
   pl: {
     slug: 'valider-une-idee-avant-d-investir',
-    title: 'Jak zweryfikować pomysł na produkt przed inwestycją 15 000 €',
+    title: 'Jak zweryfikować pomysł na produkt przed inwestycją 11 000 €',
     excerpt:
       'Tanie sposoby weryfikacji przed zapłatą za V1: wywiady, landing, przedsprzedaż, fałszywy przycisk. Które sygnały naprawdę potwierdzają.',
     date: '2026-02-18',
@@ -453,7 +453,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Founder', 'Walidacja'],
     body: [
       {
-        p: "Zanim wydasz 15 000 € na V1, zweryfikuj swój pomysł za mniej niż 500 € w jeden do dwóch tygodni. Zasada jest prosta: sygnał liczy się tylko wtedy, gdy coś kosztuje twojego potencjalnego klienta — pieniądze, czas albo zobowiązującą daną. Darmowe „świetny pomysł!” nie jest warte nic; opłacone przedzamówienie, e-mail zostawiony po to, by dostać powiadomienie o premierze, albo zarezerwowana rozmowa są warte złota. Oto cztery metody, które działają, i pułapki, których należy unikać.",
+        p: "Zanim wydasz 11 000 € na V1, zweryfikuj swój pomysł za mniej niż 500 € w jeden do dwóch tygodni. Zasada jest prosta: sygnał liczy się tylko wtedy, gdy coś kosztuje twojego potencjalnego klienta — pieniądze, czas albo zobowiązującą daną. Darmowe „świetny pomysł!” nie jest warte nic; opłacone przedzamówienie, e-mail zostawiony po to, by dostać powiadomienie o premierze, albo zarezerwowana rozmowa są warte złota. Oto cztery metody, które działają, i pułapki, których należy unikać.",
       },
       { h2: 'Wywiady o problemie (5 do 10 wystarczy)' },
       {
@@ -494,13 +494,13 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Gdy już masz płacący sygnał, nie inwestujesz w próżnię. To moment, by przejść do prawdziwej produkcyjnej V1 — w Khufu pakiet w stałej cenie 15 000 €, dostarczony w 7 dni — aby przekształcić zweryfikowany popyt w produkt, którego twoi pierwsi klienci mogą używać od razu.",
+        p: "Gdy już masz płacący sygnał, nie inwestujesz w próżnię. To moment, by przejść do prawdziwej produkcyjnej V1 — w Khufu pakiet w stałej cenie 11 000 €, dostarczony w 7 dni — aby przekształcić zweryfikowany popyt w produkt, którego twoi pierwsi klienci mogą używać od razu.",
       },
     ],
   },
   tr: {
     slug: 'valider-une-idee-avant-d-investir',
-    title: '15.000 € yatırım yapmadan önce bir ürün fikri nasıl doğrulanır',
+    title: '11.000 € yatırım yapmadan önce bir ürün fikri nasıl doğrulanır',
     excerpt:
       'Bir V1 için ödeme yapmadan önce düşük maliyetli doğrulama yöntemleri: görüşmeler, landing, ön satış, sahte buton. Hangi sinyaller gerçekten doğrular.',
     date: '2026-02-18',
@@ -508,7 +508,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Founder', 'Doğrulama'],
     body: [
       {
-        p: "Bir V1 için 15.000 € harcamadan önce, fikrini bir ila iki hafta içinde 500 €'nin altında doğrula. Kural basit: bir sinyal, ancak potansiyel müşterine bir bedele mal oluyorsa sayılır — para, zaman ya da bağlayıcı bir veri. Bedava bir “harika fikir!” hiçbir şey ifade etmez; ödenmiş bir ön sipariş, lansmanda haberdar edilmek için bırakılmış bir e-posta ya da ayrılmış bir görüşme altın değerindedir. İşte işe yarayan dört yöntem ve kaçınılması gereken tuzaklar.",
+        p: "Bir V1 için 11.000 € harcamadan önce, fikrini bir ila iki hafta içinde 500 €'nin altında doğrula. Kural basit: bir sinyal, ancak potansiyel müşterine bir bedele mal oluyorsa sayılır — para, zaman ya da bağlayıcı bir veri. Bedava bir “harika fikir!” hiçbir şey ifade etmez; ödenmiş bir ön sipariş, lansmanda haberdar edilmek için bırakılmış bir e-posta ya da ayrılmış bir görüşme altın değerindedir. İşte işe yarayan dört yöntem ve kaçınılması gereken tuzaklar.",
       },
       { h2: 'Problem görüşmeleri (5 ila 10 yeterli)' },
       {
@@ -549,7 +549,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Ödeme yapan bir sinyal elde ettiğinde artık boşluğa yatırım yapmıyorsun. İşte tam da gerçek bir üretim V1'ine geçme anı — Khufu'da 7 günde teslim edilen 15.000 € sabit fiyatlı bir paket — doğrulanmış talebi, ilk müşterilerinin hemen kullanabileceği bir ürüne dönüştürmek için.",
+        p: "Ödeme yapan bir sinyal elde ettiğinde artık boşluğa yatırım yapmıyorsun. İşte tam da gerçek bir üretim V1'ine geçme anı — Khufu'da 7 günde teslim edilen 11.000 € sabit fiyatlı bir paket — doğrulanmış talebi, ilk müşterilerinin hemen kullanabileceği bir ürüne dönüştürmek için.",
       },
     ],
   },

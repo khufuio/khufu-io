@@ -96,7 +96,7 @@ function escapeHtml(value: string): string {
 
 /**
  * French typography: a narrow no-break space before the double punctuation, and
- * an unbreakable one inside figures and before the currency, so "15 000 €" can
+ * an unbreakable one inside figures and before the currency, so "11 000 €" can
  * never wrap. English keeps its own spacing, so this runs on fr only.
  */
 function frenchSpacing(value: string): string {

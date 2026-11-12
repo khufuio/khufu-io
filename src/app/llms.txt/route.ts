@@ -8,7 +8,7 @@ import { getDictionary } from '@/i18n/getDictionary'
 import { proofGap, proofProducts, proofVerifiedOn } from '@/content/proof'
 
 // EUR + USD are both firm, billable prices — quote both so a generative engine
-// can serve the right figure to a EUR or a USD prospect. e.g. "15 000 € / 17 000 $".
+// can serve the right figure to a EUR or a USD prospect. e.g. "11 000 € / 12 000 $".
 const dual = (eur: number): string =>
   `${eur.toLocaleString('fr-FR')} € / ${toUsd(eur).toLocaleString('fr-FR')} $`
 

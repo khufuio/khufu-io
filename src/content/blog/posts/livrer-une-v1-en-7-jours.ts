@@ -12,7 +12,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Méthode', 'V1', 'AI-native'],
     body: [
       {
-        p: "Livrer une V1 en production en 7 jours n'est pas un argument marketing : c'est une méthode reproductible. Khufu conçoit, développe et déploie un vrai produit — SaaS web ou app mobile — en une semaine calendaire, pour un forfait fixe de 15 000 €, code source livré. La vitesse ne vient pas d'un tour de magie mais de quatre leviers : un périmètre volontairement serré, une stack éprouvée, un développement assisté par IA à chaque étape, et un déploiement continu dès le premier jour. Voici le déroulé, jour par jour.",
+        p: "Livrer une V1 en production en 7 jours n'est pas un argument marketing : c'est une méthode reproductible. Khufu conçoit, développe et déploie un vrai produit — SaaS web ou app mobile — en une semaine calendaire, pour un forfait fixe de 11 000 €, code source livré. La vitesse ne vient pas d'un tour de magie mais de quatre leviers : un périmètre volontairement serré, une stack éprouvée, un développement assisté par IA à chaque étape, et un déploiement continu dès le premier jour. Voici le déroulé, jour par jour.",
       },
       { h2: 'Jour 0 — le cadrage' },
       {
@@ -58,7 +58,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Method', 'V1', 'AI-native'],
     body: [
       {
-        p: "Shipping a production V1 in 7 days is not a marketing claim: it is a repeatable method. Khufu designs, builds and deploys a real product — web SaaS or mobile app — in one calendar week, for a fixed price of €15,000, with source code handed over. The speed comes from four levers, not magic: a deliberately tight scope, a proven stack, AI-assisted development at every step, and continuous deployment from day one. Here is the day-by-day breakdown.",
+        p: "Shipping a production V1 in 7 days is not a marketing claim: it is a repeatable method. Khufu designs, builds and deploys a real product — web SaaS or mobile app — in one calendar week, for a fixed price of €11,000, with source code handed over. The speed comes from four levers, not magic: a deliberately tight scope, a proven stack, AI-assisted development at every step, and continuous deployment from day one. Here is the day-by-day breakdown.",
       },
       { h2: 'Day 0 — scoping' },
       {
@@ -104,7 +104,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Método', 'V1', 'AI-native'],
     body: [
       {
-        p: "Entregar una V1 en producción en 7 días no es un argumento de marketing: es un método repetible. Khufu diseña, desarrolla y despliega un producto real — SaaS web o app móvil — en una semana natural, por un precio fijo de 15 000 €, con el código fuente entregado. La velocidad no viene de la magia sino de cuatro palancas: un alcance deliberadamente ajustado, un stack probado, desarrollo asistido por IA en cada etapa y despliegue continuo desde el primer día. Este es el desglose, día a día.",
+        p: "Entregar una V1 en producción en 7 días no es un argumento de marketing: es un método repetible. Khufu diseña, desarrolla y despliega un producto real — SaaS web o app móvil — en una semana natural, por un precio fijo de 11 000 €, con el código fuente entregado. La velocidad no viene de la magia sino de cuatro palancas: un alcance deliberadamente ajustado, un stack probado, desarrollo asistido por IA en cada etapa y despliegue continuo desde el primer día. Este es el desglose, día a día.",
       },
       { h2: 'Día 0 — encuadre' },
       {
@@ -150,7 +150,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Methode', 'V1', 'AI-native'],
     body: [
       {
-        p: "Eine Produktions-V1 in 7 Tagen zu liefern ist kein Marketingversprechen, sondern eine wiederholbare Methode. Khufu konzipiert, entwickelt und deployt ein echtes Produkt — Web-SaaS oder Mobile-App — in einer Kalenderwoche, zum Festpreis von 15.000 €, mit Übergabe des Quellcodes. Das Tempo entsteht nicht durch Magie, sondern durch vier Hebel: einen bewusst engen Scope, einen erprobten Stack, KI-gestützte Entwicklung in jedem Schritt und Continuous Deployment ab dem ersten Tag. Hier ist der Ablauf, Tag für Tag.",
+        p: "Eine Produktions-V1 in 7 Tagen zu liefern ist kein Marketingversprechen, sondern eine wiederholbare Methode. Khufu konzipiert, entwickelt und deployt ein echtes Produkt — Web-SaaS oder Mobile-App — in einer Kalenderwoche, zum Festpreis von 11.000 €, mit Übergabe des Quellcodes. Das Tempo entsteht nicht durch Magie, sondern durch vier Hebel: einen bewusst engen Scope, einen erprobten Stack, KI-gestützte Entwicklung in jedem Schritt und Continuous Deployment ab dem ersten Tag. Hier ist der Ablauf, Tag für Tag.",
       },
       { h2: 'Tag 0 — Scoping' },
       {
@@ -196,7 +196,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Metodo', 'V1', 'AI-native'],
     body: [
       {
-        p: "Consegnare una V1 in produzione in 7 giorni non è uno slogan di marketing: è un metodo ripetibile. Khufu progetta, sviluppa e mette online un prodotto vero — SaaS web o app mobile — in una settimana di calendario, per un prezzo fisso di 15.000 €, con il codice sorgente consegnato. La velocità non nasce dalla magia ma da quattro leve: un perimetro volutamente stretto, uno stack collaudato, sviluppo assistito dall'IA in ogni fase e deployment continuo fin dal primo giorno. Ecco il percorso, giorno per giorno.",
+        p: "Consegnare una V1 in produzione in 7 giorni non è uno slogan di marketing: è un metodo ripetibile. Khufu progetta, sviluppa e mette online un prodotto vero — SaaS web o app mobile — in una settimana di calendario, per un prezzo fisso di 11.000 €, con il codice sorgente consegnato. La velocità non nasce dalla magia ma da quattro leve: un perimetro volutamente stretto, uno stack collaudato, sviluppo assistito dall'IA in ogni fase e deployment continuo fin dal primo giorno. Ecco il percorso, giorno per giorno.",
       },
       { h2: 'Giorno 0 — inquadramento' },
       {
@@ -242,7 +242,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Método', 'V1', 'AI-native'],
     body: [
       {
-        p: "Entregar uma V1 em produção em 7 dias não é um argumento de marketing: é um método repetível. A Khufu concebe, desenvolve e coloca online um produto real — SaaS web ou app mobile — numa semana de calendário, por um preço fixo de 15 000 €, com o código-fonte entregue. A velocidade não vem de magia, mas de quatro alavancas: um escopo deliberadamente enxuto, uma stack comprovada, desenvolvimento assistido por IA em cada etapa e deployment contínuo desde o primeiro dia. Aqui está o passo a passo, dia a dia.",
+        p: "Entregar uma V1 em produção em 7 dias não é um argumento de marketing: é um método repetível. A Khufu concebe, desenvolve e coloca online um produto real — SaaS web ou app mobile — numa semana de calendário, por um preço fixo de 11 000 €, com o código-fonte entregue. A velocidade não vem de magia, mas de quatro alavancas: um escopo deliberadamente enxuto, uma stack comprovada, desenvolvimento assistido por IA em cada etapa e deployment contínuo desde o primeiro dia. Aqui está o passo a passo, dia a dia.",
       },
       { h2: 'Dia 0 — enquadramento' },
       {
@@ -288,7 +288,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Methode', 'V1', 'AI-native'],
     body: [
       {
-        p: "Een productie-V1 in 7 dagen opleveren is geen marketingbelofte: het is een herhaalbare methode. Khufu ontwerpt, bouwt en deployt een echt product — web-SaaS of mobiele app — in één kalenderweek, voor een vaste prijs van € 15.000, met overdracht van de broncode. De snelheid komt niet uit magie maar uit vier hefbomen: een bewust strakke scope, een beproefde stack, AI-ondersteunde ontwikkeling in elke stap en continue deployment vanaf dag één. Hier is het verloop, dag voor dag.",
+        p: "Een productie-V1 in 7 dagen opleveren is geen marketingbelofte: het is een herhaalbare methode. Khufu ontwerpt, bouwt en deployt een echt product — web-SaaS of mobiele app — in één kalenderweek, voor een vaste prijs van € 11.000, met overdracht van de broncode. De snelheid komt niet uit magie maar uit vier hefbomen: een bewust strakke scope, een beproefde stack, AI-ondersteunde ontwikkeling in elke stap en continue deployment vanaf dag één. Hier is het verloop, dag voor dag.",
       },
       { h2: 'Dag 0 — scoping' },
       {
@@ -334,7 +334,7 @@ export const post: Record<Locale, Article> = {
     tags: ['منهجية', 'V1', 'AI-native'],
     body: [
       {
-        p: "تسليم نسخة V1 في الإنتاج خلال 7 أيام ليس ادعاءً تسويقيًا، بل منهجية قابلة للتكرار. تصمم Khufu وتطوّر وتنشر منتجًا حقيقيًا — SaaS على الويب أو تطبيق موبايل — في أسبوع تقويمي واحد، بسعر ثابت قدره 15,000 يورو، مع تسليم الكود المصدري. لا تأتي السرعة من السحر بل من أربع ركائز: نطاق ضيق عن قصد، ومجموعة تقنية مُجرّبة، وتطوير مدعوم بالذكاء الاصطناعي في كل خطوة، ونشر مستمر منذ اليوم الأول. إليك التفصيل، يومًا بيوم.",
+        p: "تسليم نسخة V1 في الإنتاج خلال 7 أيام ليس ادعاءً تسويقيًا، بل منهجية قابلة للتكرار. تصمم Khufu وتطوّر وتنشر منتجًا حقيقيًا — SaaS على الويب أو تطبيق موبايل — في أسبوع تقويمي واحد، بسعر ثابت قدره 11,000 يورو، مع تسليم الكود المصدري. لا تأتي السرعة من السحر بل من أربع ركائز: نطاق ضيق عن قصد، ومجموعة تقنية مُجرّبة، وتطوير مدعوم بالذكاء الاصطناعي في كل خطوة، ونشر مستمر منذ اليوم الأول. إليك التفصيل، يومًا بيوم.",
       },
       { h2: 'اليوم 0 — تحديد النطاق' },
       {
@@ -380,7 +380,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Metoda', 'V1', 'AI-native'],
     body: [
       {
-        p: "Dostarczenie produkcyjnej V1 w 7 dni to nie hasło marketingowe, lecz powtarzalna metoda. Khufu projektuje, buduje i wdraża prawdziwy produkt — SaaS webowy lub aplikację mobilną — w jeden tydzień kalendarzowy, za stałą cenę 15 000 €, z przekazaniem kodu źródłowego. Szybkość nie bierze się z magii, lecz z czterech dźwigni: celowo wąskiego zakresu, sprawdzonego stacku, wspomaganego przez AI programowania na każdym etapie i ciągłego wdrażania od pierwszego dnia. Oto przebieg, dzień po dniu.",
+        p: "Dostarczenie produkcyjnej V1 w 7 dni to nie hasło marketingowe, lecz powtarzalna metoda. Khufu projektuje, buduje i wdraża prawdziwy produkt — SaaS webowy lub aplikację mobilną — w jeden tydzień kalendarzowy, za stałą cenę 11 000 €, z przekazaniem kodu źródłowego. Szybkość nie bierze się z magii, lecz z czterech dźwigni: celowo wąskiego zakresu, sprawdzonego stacku, wspomaganego przez AI programowania na każdym etapie i ciągłego wdrażania od pierwszego dnia. Oto przebieg, dzień po dniu.",
       },
       { h2: 'Dzień 0 — określenie zakresu' },
       {
@@ -426,7 +426,7 @@ export const post: Record<Locale, Article> = {
     tags: ['Yöntem', 'V1', 'AI-native'],
     body: [
       {
-        p: "Üretimde bir V1'i 7 günde teslim etmek bir pazarlama iddiası değil, tekrarlanabilir bir yöntemdir. Khufu gerçek bir ürünü — web SaaS ya da mobil uygulama — tek bir takvim haftasında tasarlar, geliştirir ve yayına alır; 15.000 € sabit fiyata, kaynak kodu teslim edilerek. Hız sihirden değil, dört kaldıraçtan gelir: bilinçli olarak dar tutulan bir kapsam, denenmiş bir stack, her adımda yapay zeka destekli geliştirme ve ilk günden itibaren sürekli dağıtım. İşte gün gün akış.",
+        p: "Üretimde bir V1'i 7 günde teslim etmek bir pazarlama iddiası değil, tekrarlanabilir bir yöntemdir. Khufu gerçek bir ürünü — web SaaS ya da mobil uygulama — tek bir takvim haftasında tasarlar, geliştirir ve yayına alır; 11.000 € sabit fiyata, kaynak kodu teslim edilerek. Hız sihirden değil, dört kaldıraçtan gelir: bilinçli olarak dar tutulan bir kapsam, denenmiş bir stack, her adımda yapay zeka destekli geliştirme ve ilk günden itibaren sürekli dağıtım. İşte gün gün akış.",
       },
       { h2: '0. Gün — kapsam belirleme' },
       {

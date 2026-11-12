@@ -16,7 +16,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Le coût réel, au-delà du salaire' },
       {
-        p: "Un développeur full-stack senior coûte 60 000 à 90 000 € par an en salaire chargé, auxquels s'ajoutent le recrutement (2 à 3 mois et souvent 15 à 20 % du salaire en frais), l'équipement, et le temps de montée en charge. Et une seule personne ne suffit pas à couvrir design, back, front et infra. Une V1 externalisée à prix fixe, à 15 000 €, revient à une fraction de ce coût sur les six premiers mois — sans engagement de long terme.",
+        p: "Un développeur full-stack senior coûte 60 000 à 90 000 € par an en salaire chargé, auxquels s'ajoutent le recrutement (2 à 3 mois et souvent 15 à 20 % du salaire en frais), l'équipement, et le temps de montée en charge. Et une seule personne ne suffit pas à couvrir design, back, front et infra. Une V1 externalisée à prix fixe, à 11 000 €, revient à une fraction de ce coût sur les six premiers mois — sans engagement de long terme.",
       },
       {
         ul: [
@@ -50,7 +50,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Chez Khufu, on livre cette V1 prête pour la production en 7 jours, à prix fixe de 15 000 €, code source à vous, sur une stack que n'importe quelle équipe interne peut reprendre. Vous validez d'abord, vous recrutez ensuite — dans le bon ordre.",
+        p: "Chez Khufu, on livre cette V1 prête pour la production en 7 jours, à prix fixe de 11 000 €, code source à vous, sur une stack que n'importe quelle équipe interne peut reprendre. Vous validez d'abord, vous recrutez ensuite — dans le bon ordre.",
       },
     ],
   },
@@ -68,7 +68,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'The real cost, beyond salary' },
       {
-        p: "A senior full-stack developer costs €60,000 to €90,000 a year in fully loaded salary, on top of which come recruiting (2 to 3 months and often 15 to 20% of salary in fees), equipment, and ramp-up time. And a single person cannot cover design, back end, front end and infra. An outsourced fixed-price V1 at €15,000 costs a fraction of that over the first six months, with no long-term commitment.",
+        p: "A senior full-stack developer costs €60,000 to €90,000 a year in fully loaded salary, on top of which come recruiting (2 to 3 months and often 15 to 20% of salary in fees), equipment, and ramp-up time. And a single person cannot cover design, back end, front end and infra. An outsourced fixed-price V1 at €11,000 costs a fraction of that over the first six months, with no long-term commitment.",
       },
       {
         ul: [
@@ -102,7 +102,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "At Khufu, we ship that production-ready V1 in 7 days, at a fixed price of €15,000, source code yours, on a stack any internal team can take over. You validate first, you hire second — in the right order.",
+        p: "At Khufu, we ship that production-ready V1 in 7 days, at a fixed price of €11,000, source code yours, on a stack any internal team can take over. You validate first, you hire second — in the right order.",
       },
     ],
   },
@@ -120,7 +120,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'El coste real, más allá del salario' },
       {
-        p: "Un desarrollador full-stack senior cuesta entre 60.000 y 90.000 € al año de salario con cargas, a lo que se suman la contratación (2 a 3 meses y a menudo un 15 a 20% del salario en gastos), el equipamiento y el tiempo de puesta en marcha. Y una sola persona no basta para cubrir diseño, back, front e infraestructura. Una V1 externalizada a precio fijo, por 15.000 €, cuesta una fracción de eso en los primeros seis meses, sin compromiso a largo plazo.",
+        p: "Un desarrollador full-stack senior cuesta entre 60.000 y 90.000 € al año de salario con cargas, a lo que se suman la contratación (2 a 3 meses y a menudo un 15 a 20% del salario en gastos), el equipamiento y el tiempo de puesta en marcha. Y una sola persona no basta para cubrir diseño, back, front e infraestructura. Una V1 externalizada a precio fijo, por 11.000 €, cuesta una fracción de eso en los primeros seis meses, sin compromiso a largo plazo.",
       },
       {
         ul: [
@@ -154,7 +154,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "En Khufu entregamos esa V1 lista para producción en 7 días, a precio fijo de 15.000 €, con el código fuente para ti, sobre una stack que cualquier equipo interno puede retomar. Primero validas, después contratas, en el orden correcto.",
+        p: "En Khufu entregamos esa V1 lista para producción en 7 días, a precio fijo de 11.000 €, con el código fuente para ti, sobre una stack que cualquier equipo interno puede retomar. Primero validas, después contratas, en el orden correcto.",
       },
     ],
   },
@@ -172,7 +172,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Die echten Kosten, jenseits des Gehalts' },
       {
-        p: "Ein Senior-Full-Stack-Entwickler kostet 60.000 bis 90.000 € pro Jahr an vollen Personalkosten, hinzu kommen Recruiting (2 bis 3 Monate und oft 15 bis 20% des Gehalts an Kosten), Ausstattung und Einarbeitungszeit. Und eine einzige Person deckt nicht Design, Back-End, Front-End und Infrastruktur ab. Eine ausgelagerte Festpreis-V1 zu 15.000 € kostet nur einen Bruchteil davon in den ersten sechs Monaten, ohne langfristige Bindung.",
+        p: "Ein Senior-Full-Stack-Entwickler kostet 60.000 bis 90.000 € pro Jahr an vollen Personalkosten, hinzu kommen Recruiting (2 bis 3 Monate und oft 15 bis 20% des Gehalts an Kosten), Ausstattung und Einarbeitungszeit. Und eine einzige Person deckt nicht Design, Back-End, Front-End und Infrastruktur ab. Eine ausgelagerte Festpreis-V1 zu 11.000 € kostet nur einen Bruchteil davon in den ersten sechs Monaten, ohne langfristige Bindung.",
       },
       {
         ul: [
@@ -206,7 +206,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Bei Khufu liefern wir diese produktionsreife V1 in 7 Tagen, zum Festpreis von 15.000 €, mit dem Quellcode für Sie, auf einem Stack, den jedes interne Team übernehmen kann. Zuerst validieren, dann einstellen — in der richtigen Reihenfolge.",
+        p: "Bei Khufu liefern wir diese produktionsreife V1 in 7 Tagen, zum Festpreis von 11.000 €, mit dem Quellcode für Sie, auf einem Stack, den jedes interne Team übernehmen kann. Zuerst validieren, dann einstellen — in der richtigen Reihenfolge.",
       },
     ],
   },
@@ -224,7 +224,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Il costo reale, oltre lo stipendio' },
       {
-        p: "Uno sviluppatore full-stack senior costa da 60.000 a 90.000 € l'anno di stipendio con oneri, a cui si aggiungono il recruiting (2 o 3 mesi e spesso il 15-20% dello stipendio in spese), l'attrezzatura e il tempo di avviamento. E una sola persona non basta a coprire design, back-end, front-end e infrastruttura. Una V1 esternalizzata a prezzo fisso, a 15.000 €, costa una frazione di tutto ciò nei primi sei mesi, senza impegni a lungo termine.",
+        p: "Uno sviluppatore full-stack senior costa da 60.000 a 90.000 € l'anno di stipendio con oneri, a cui si aggiungono il recruiting (2 o 3 mesi e spesso il 15-20% dello stipendio in spese), l'attrezzatura e il tempo di avviamento. E una sola persona non basta a coprire design, back-end, front-end e infrastruttura. Una V1 esternalizzata a prezzo fisso, a 11.000 €, costa una frazione di tutto ciò nei primi sei mesi, senza impegni a lungo termine.",
       },
       {
         ul: [
@@ -258,7 +258,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "In Khufu consegniamo questa V1 pronta per la produzione in 7 giorni, a prezzo fisso di 15.000 €, con il codice sorgente tuo, su uno stack che qualsiasi team interno può riprendere. Prima validi, poi assumi — nell'ordine giusto.",
+        p: "In Khufu consegniamo questa V1 pronta per la produzione in 7 giorni, a prezzo fisso di 11.000 €, con il codice sorgente tuo, su uno stack che qualsiasi team interno può riprendere. Prima validi, poi assumi — nell'ordine giusto.",
       },
     ],
   },
@@ -276,7 +276,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'O custo real, para além do salário' },
       {
-        p: "Um programador full-stack sénior custa entre 60.000 e 90.000 € por ano em salário com encargos, aos quais se somam o recrutamento (2 a 3 meses e muitas vezes 15 a 20% do salário em custos), o equipamento e o tempo de arranque. E uma só pessoa não chega para cobrir design, back-end, front-end e infraestrutura. Uma V1 externalizada a preço fixo, por 15.000 €, custa uma fração disso nos primeiros seis meses, sem compromisso de longo prazo.",
+        p: "Um programador full-stack sénior custa entre 60.000 e 90.000 € por ano em salário com encargos, aos quais se somam o recrutamento (2 a 3 meses e muitas vezes 15 a 20% do salário em custos), o equipamento e o tempo de arranque. E uma só pessoa não chega para cobrir design, back-end, front-end e infraestrutura. Uma V1 externalizada a preço fixo, por 11.000 €, custa uma fração disso nos primeiros seis meses, sem compromisso de longo prazo.",
       },
       {
         ul: [
@@ -310,7 +310,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Na Khufu entregamos essa V1 pronta para produção em 7 dias, a preço fixo de 15.000 €, com o código-fonte para si, numa stack que qualquer equipa interna pode retomar. Primeiro valida, depois contrata — pela ordem certa.",
+        p: "Na Khufu entregamos essa V1 pronta para produção em 7 dias, a preço fixo de 11.000 €, com o código-fonte para si, numa stack que qualquer equipa interna pode retomar. Primeiro valida, depois contrata — pela ordem certa.",
       },
     ],
   },
@@ -328,7 +328,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'De werkelijke kosten, verder dan het salaris' },
       {
-        p: "Een senior full-stack developer kost €60.000 tot €90.000 per jaar aan brutoloon met lasten, waar nog werving bovenop komt (2 tot 3 maanden en vaak 15 tot 20% van het salaris aan kosten), apparatuur en inwerktijd. En één persoon volstaat niet om design, back-end, front-end en infra te dekken. Een uitbestede V1 met vaste prijs, voor €15.000, kost daar een fractie van in de eerste zes maanden, zonder langetermijnverplichting.",
+        p: "Een senior full-stack developer kost €60.000 tot €90.000 per jaar aan brutoloon met lasten, waar nog werving bovenop komt (2 tot 3 maanden en vaak 15 tot 20% van het salaris aan kosten), apparatuur en inwerktijd. En één persoon volstaat niet om design, back-end, front-end en infra te dekken. Een uitbestede V1 met vaste prijs, voor €11.000, kost daar een fractie van in de eerste zes maanden, zonder langetermijnverplichting.",
       },
       {
         ul: [
@@ -362,7 +362,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Bij Khufu leveren we die productieklare V1 in 7 dagen, tegen een vaste prijs van €15.000, met de broncode voor jou, op een stack die elk intern team kan overnemen. Eerst valideren, dan aanwerven — in de juiste volgorde.",
+        p: "Bij Khufu leveren we die productieklare V1 in 7 dagen, tegen een vaste prijs van €11.000, met de broncode voor jou, op een stack die elk intern team kan overnemen. Eerst valideren, dan aanwerven — in de juiste volgorde.",
       },
     ],
   },
@@ -380,7 +380,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'الكلفة الحقيقية، أبعد من الراتب' },
       {
-        p: "يكلّف مطور full-stack كبير من 60000 إلى 90000 € سنويًا كراتب محمّل بالأعباء، تُضاف إليه كلفة التوظيف (من شهرين إلى ثلاثة أشهر وغالبًا 15 إلى 20% من الراتب رسومًا) والتجهيزات ووقت الاندماج. وشخص واحد لا يكفي لتغطية التصميم والـ back-end والـ front-end والبنية التحتية. أما V1 مُسندة خارجيًا بسعر ثابت قدره 15000 € فتكلّف جزءًا يسيرًا من ذلك خلال الأشهر الستة الأولى، دون التزام طويل الأمد.",
+        p: "يكلّف مطور full-stack كبير من 60000 إلى 90000 € سنويًا كراتب محمّل بالأعباء، تُضاف إليه كلفة التوظيف (من شهرين إلى ثلاثة أشهر وغالبًا 15 إلى 20% من الراتب رسومًا) والتجهيزات ووقت الاندماج. وشخص واحد لا يكفي لتغطية التصميم والـ back-end والـ front-end والبنية التحتية. أما V1 مُسندة خارجيًا بسعر ثابت قدره 11000 € فتكلّف جزءًا يسيرًا من ذلك خلال الأشهر الستة الأولى، دون التزام طويل الأمد.",
       },
       {
         ul: [
@@ -414,7 +414,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "في Khufu نُسلّم هذه V1 الجاهزة للإنتاج خلال 7 أيام، بسعر ثابت قدره 15000 €، والشيفرة المصدرية ملك لك، على منظومة يستطيع أي فريق داخلي استلامها. تتحقق أولًا، ثم توظّف — بالترتيب الصحيح.",
+        p: "في Khufu نُسلّم هذه V1 الجاهزة للإنتاج خلال 7 أيام، بسعر ثابت قدره 11000 €، والشيفرة المصدرية ملك لك، على منظومة يستطيع أي فريق داخلي استلامها. تتحقق أولًا، ثم توظّف — بالترتيب الصحيح.",
       },
     ],
   },
@@ -432,7 +432,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Realny koszt, poza pensją' },
       {
-        p: "Starszy programista full-stack kosztuje od 60 000 do 90 000 € rocznie w pełnym koszcie zatrudnienia, do czego dochodzą rekrutacja (2 do 3 miesięcy, często 15 do 20% pensji w kosztach), sprzęt i czas wdrożenia. A jedna osoba nie pokryje designu, back-endu, front-endu i infrastruktury. Zlecona V1 w stałej cenie 15 000 € kosztuje ułamek tego w pierwszych sześciu miesiącach, bez długoterminowego zobowiązania.",
+        p: "Starszy programista full-stack kosztuje od 60 000 do 90 000 € rocznie w pełnym koszcie zatrudnienia, do czego dochodzą rekrutacja (2 do 3 miesięcy, często 15 do 20% pensji w kosztach), sprzęt i czas wdrożenia. A jedna osoba nie pokryje designu, back-endu, front-endu i infrastruktury. Zlecona V1 w stałej cenie 11 000 € kosztuje ułamek tego w pierwszych sześciu miesiącach, bez długoterminowego zobowiązania.",
       },
       {
         ul: [
@@ -466,7 +466,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "W Khufu dostarczamy taką gotową do produkcji V1 w 7 dni, w stałej cenie 15 000 €, z kodem źródłowym dla Ciebie, na stacku, który przejmie każdy wewnętrzny zespół. Najpierw weryfikujesz, potem zatrudniasz — we właściwej kolejności.",
+        p: "W Khufu dostarczamy taką gotową do produkcji V1 w 7 dni, w stałej cenie 11 000 €, z kodem źródłowym dla Ciebie, na stacku, który przejmie każdy wewnętrzny zespół. Najpierw weryfikujesz, potem zatrudniasz — we właściwej kolejności.",
       },
     ],
   },
@@ -484,7 +484,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Maaşın ötesindeki gerçek maliyet' },
       {
-        p: "Kıdemli bir full-stack geliştirici, tüm yükleriyle birlikte yılda 60.000 ila 90.000 € maliyet çıkarır; buna işe alım (2 ila 3 ay ve çoğu zaman maaşın %15-20'si kadar masraf), donanım ve uyum süresi eklenir. Üstelik tek kişi tasarımı, back-end'i, front-end'i ve altyapıyı tek başına karşılayamaz. 15.000 € sabit fiyatlı dışarıdan bir V1 ise ilk altı ayda bunun küçük bir kesrine, uzun vadeli taahhüt olmadan mal olur.",
+        p: "Kıdemli bir full-stack geliştirici, tüm yükleriyle birlikte yılda 60.000 ila 90.000 € maliyet çıkarır; buna işe alım (2 ila 3 ay ve çoğu zaman maaşın %15-20'si kadar masraf), donanım ve uyum süresi eklenir. Üstelik tek kişi tasarımı, back-end'i, front-end'i ve altyapıyı tek başına karşılayamaz. 11.000 € sabit fiyatlı dışarıdan bir V1 ise ilk altı ayda bunun küçük bir kesrine, uzun vadeli taahhüt olmadan mal olur.",
       },
       {
         ul: [
@@ -518,7 +518,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Khufu'da bu üretime hazır V1'i 7 günde, 15.000 € sabit fiyatla, kaynak kodu sizin olacak şekilde, herhangi bir kurum içi ekibin devralabileceği bir stack üzerinde teslim ediyoruz. Önce doğrularsınız, sonra işe alırsınız — doğru sırayla.",
+        p: "Khufu'da bu üretime hazır V1'i 7 günde, 11.000 € sabit fiyatla, kaynak kodu sizin olacak şekilde, herhangi bir kurum içi ekibin devralabileceği bir stack üzerinde teslim ediyoruz. Önce doğrularsınız, sonra işe alırsınız — doğru sırayla.",
       },
     ],
   },

@@ -38,10 +38,12 @@ export const site = {
   // ⚠️ No cumulative-revenue constant here, deliberately (decided 2026-09-13).
   // A "billed to date" figure only covered the post-Dubai period, so it was not
   // the real number — and a running agency total is a weak argument next to a
-  // single $17k ticket anyway. Khufu's proof is the offer and the references,
+  // single $12k ticket anyway. Khufu's proof is the offer and the references,
   // not activity volume. Do not reintroduce it, or any derivative (projects
   // billed, clients counted, value shipped).
-  v1PriceEUR: 15000,
+  // Sprint V1: 11 000 € / 12 000 $ since 2026-11-12 (todo cmwe30fi, was 15 000 € /
+  // 17 000 $ under cmtt6x3k). Two firm prices, never a conversion.
+  v1PriceEUR: 11000,
   dailyRateEUR: 1200,
   hourlyRateEUR: 200,
   // Both EUR and USD are firm, billable prices (the client picks; we settle in
@@ -50,7 +52,7 @@ export const site = {
   // (Sprint V1, day/hour rate, maintenance tiers 1490/3900). Any EUR amount not
   // listed falls back to a rate conversion in currency.ts (safety net only).
   usdPrices: {
-    15000: 17000,
+    11000: 12000,
     1200: 1400,
     200: 240,
     1490: 1690,

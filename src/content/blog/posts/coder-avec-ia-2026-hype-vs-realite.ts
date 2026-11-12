@@ -47,7 +47,7 @@ export const post: Record<Locale, Article> = {
         p: "La vraie rupture n'est pas « coder sans développeur », c'est « livrer beaucoup plus vite avec le bon développeur ». Le développement AI-native, c'est un ingénieur qui pilote l'IA à chaque étape, garde la main sur les décisions qui comptent, et déploie en continu. Résultat concret : une V1 propre et prête pour la production en jours, pas en mois.",
       },
       {
-        p: "C'est exactement le modèle de Khufu : un vrai produit livré en 7 jours, à prix fixe de 15 000 €, code source à vous. Pas de démo jetable, pas de dette cachée — la vitesse de l'IA, encadrée par le jugement d'un ingénieur.",
+        p: "C'est exactement le modèle de Khufu : un vrai produit livré en 7 jours, à prix fixe de 11 000 €, code source à vous. Pas de démo jetable, pas de dette cachée — la vitesse de l'IA, encadrée par le jugement d'un ingénieur.",
       },
       { h2: "En clair, pour un founder" },
       {
@@ -100,7 +100,7 @@ export const post: Record<Locale, Article> = {
         p: "The real breakthrough is not coding without a developer, it is shipping far faster with the right developer. AI-native development means an engineer steers the AI at every step, keeps control of the decisions that matter, and deploys continuously. Concrete result: a clean, production-ready V1 in days, not months.",
       },
       {
-        p: "That is exactly the Khufu model: a real product delivered in 7 days, at a fixed price of €15,000, with the source code yours to keep. No throwaway demo, no hidden debt — the speed of AI, framed by an engineer's judgment.",
+        p: "That is exactly the Khufu model: a real product delivered in 7 days, at a fixed price of €11,000, with the source code yours to keep. No throwaway demo, no hidden debt — the speed of AI, framed by an engineer's judgment.",
       },
       { h2: "Bottom line, for a founder" },
       {
@@ -153,7 +153,7 @@ export const post: Record<Locale, Article> = {
         p: "La verdadera ruptura no es programar sin desarrollador, es entregar mucho más rápido con el desarrollador adecuado. El desarrollo AI-native es un ingeniero que dirige a la IA en cada paso, mantiene el control de las decisiones que importan y despliega en continuo. Resultado concreto: una V1 limpia y lista para producción en días, no en meses.",
       },
       {
-        p: "Es exactamente el modelo de Khufu: un producto real entregado en 7 días, a precio fijo de 15 000 €, con el código fuente para ti. Sin demo desechable, sin deuda oculta — la velocidad de la IA, enmarcada por el criterio de un ingeniero.",
+        p: "Es exactamente el modelo de Khufu: un producto real entregado en 7 días, a precio fijo de 11 000 €, con el código fuente para ti. Sin demo desechable, sin deuda oculta — la velocidad de la IA, enmarcada por el criterio de un ingeniero.",
       },
       { h2: "En resumen, para un founder" },
       {
@@ -206,7 +206,7 @@ export const post: Record<Locale, Article> = {
         p: "Der wahre Durchbruch ist nicht, ohne Entwickler zu coden, sondern viel schneller mit dem richtigen Entwickler zu liefern. AI-native Entwicklung heißt: ein Ingenieur steuert die KI bei jedem Schritt, behält die Kontrolle über die entscheidenden Dinge und deployt kontinuierlich. Konkretes Ergebnis: eine saubere, produktionsreife V1 in Tagen, nicht in Monaten.",
       },
       {
-        p: "Genau das ist das Modell von Khufu: ein echtes Produkt, geliefert in 7 Tagen, zum Festpreis von 15 000 €, der Quellcode gehört dir. Keine Wegwerf-Demo, keine versteckten Schulden — die Geschwindigkeit der KI, eingerahmt vom Urteil eines Ingenieurs.",
+        p: "Genau das ist das Modell von Khufu: ein echtes Produkt, geliefert in 7 Tagen, zum Festpreis von 11 000 €, der Quellcode gehört dir. Keine Wegwerf-Demo, keine versteckten Schulden — die Geschwindigkeit der KI, eingerahmt vom Urteil eines Ingenieurs.",
       },
       { h2: "Klartext, für einen Founder" },
       {
@@ -259,7 +259,7 @@ export const post: Record<Locale, Article> = {
         p: "La vera rottura non è programmare senza sviluppatore, è consegnare molto più in fretta con lo sviluppatore giusto. Lo sviluppo AI-native è un ingegnere che guida l'IA a ogni passo, mantiene il controllo delle decisioni che contano e rilascia in continuo. Risultato concreto: una V1 pulita e pronta per la produzione in giorni, non in mesi.",
       },
       {
-        p: "È esattamente il modello di Khufu: un prodotto vero consegnato in 7 giorni, a prezzo fisso di 15 000 €, con il codice sorgente tuo. Nessuna demo usa e getta, nessun debito nascosto — la velocità dell'IA, incorniciata dal giudizio di un ingegnere.",
+        p: "È esattamente il modello di Khufu: un prodotto vero consegnato in 7 giorni, a prezzo fisso di 11 000 €, con il codice sorgente tuo. Nessuna demo usa e getta, nessun debito nascosto — la velocità dell'IA, incorniciata dal giudizio di un ingegnere.",
       },
       { h2: "In chiaro, per un founder" },
       {
@@ -312,7 +312,7 @@ export const post: Record<Locale, Article> = {
         p: "A verdadeira rutura não é programar sem programador, é entregar muito mais depressa com o programador certo. O desenvolvimento AI-native é um engenheiro que conduz a IA a cada passo, mantém o controlo das decisões que contam e faz deploy em contínuo. Resultado concreto: uma V1 limpa e pronta para produção em dias, não em meses.",
       },
       {
-        p: "É exatamente o modelo da Khufu: um produto real entregue em 7 dias, a preço fixo de 15 000 €, com o código-fonte teu. Sem demo descartável, sem dívida escondida — a velocidade da IA, enquadrada pelo julgamento de um engenheiro.",
+        p: "É exatamente o modelo da Khufu: um produto real entregue em 7 dias, a preço fixo de 11 000 €, com o código-fonte teu. Sem demo descartável, sem dívida escondida — a velocidade da IA, enquadrada pelo julgamento de um engenheiro.",
       },
       { h2: "Em claro, para um founder" },
       {
@@ -365,7 +365,7 @@ export const post: Record<Locale, Article> = {
         p: "De echte doorbraak is niet coderen zonder ontwikkelaar, maar veel sneller leveren met de juiste ontwikkelaar. AI-native ontwikkeling betekent: een engineer stuurt de AI bij elke stap, houdt de controle over de beslissingen die ertoe doen en deployt continu. Concreet resultaat: een schone, productieklare V1 in dagen, niet in maanden.",
       },
       {
-        p: "Dat is precies het model van Khufu: een echt product geleverd in 7 dagen, tegen een vaste prijs van € 15.000, met de broncode voor jou. Geen wegwerpdemo, geen verborgen schuld — de snelheid van AI, omkaderd door het oordeel van een engineer.",
+        p: "Dat is precies het model van Khufu: een echt product geleverd in 7 dagen, tegen een vaste prijs van € 11.000, met de broncode voor jou. Geen wegwerpdemo, geen verborgen schuld — de snelheid van AI, omkaderd door het oordeel van een engineer.",
       },
       { h2: "Kort gezegd, voor een founder" },
       {
@@ -418,7 +418,7 @@ export const post: Record<Locale, Article> = {
         p: "التحوّل الحقيقي ليس البرمجة بدون مطور، بل التسليم أسرع بكثير مع المطور المناسب. التطوير AI-native يعني مهندساً يقود الذكاء الاصطناعي في كل خطوة، ويحتفظ بالتحكم في القرارات المهمة، وينشر باستمرار. النتيجة الملموسة: نسخة V1 نظيفة وجاهزة للإنتاج خلال أيام، لا أشهر.",
       },
       {
-        p: "هذا بالضبط نموذج Khufu: منتج حقيقي يُسلَّم خلال 7 أيام، بسعر ثابت قدره 15,000 €، مع كود المصدر مِلكاً لك. لا عرض تجريبي يُرمى، ولا دَين خفي — سرعة الذكاء الاصطناعي، مؤطَّرة بحكم مهندس.",
+        p: "هذا بالضبط نموذج Khufu: منتج حقيقي يُسلَّم خلال 7 أيام، بسعر ثابت قدره 11,000 €، مع كود المصدر مِلكاً لك. لا عرض تجريبي يُرمى، ولا دَين خفي — سرعة الذكاء الاصطناعي، مؤطَّرة بحكم مهندس.",
       },
       { h2: "باختصار، لمؤسِّس" },
       {
@@ -471,7 +471,7 @@ export const post: Record<Locale, Article> = {
         p: "Prawdziwy przełom to nie programowanie bez programisty, lecz dostarczanie znacznie szybciej z właściwym programistą. Rozwój AI-native to inżynier, który steruje AI na każdym kroku, zachowuje kontrolę nad decyzjami, które się liczą, i wdraża w sposób ciągły. Konkretny efekt: czysta, gotowa na produkcję V1 w dni, nie w miesiące.",
       },
       {
-        p: "To dokładnie model Khufu: prawdziwy produkt dostarczony w 7 dni, w stałej cenie 15 000 €, z kodem źródłowym dla ciebie. Bez dema na wyrzucenie, bez ukrytego długu — szybkość AI, oprawiona osądem inżyniera.",
+        p: "To dokładnie model Khufu: prawdziwy produkt dostarczony w 7 dni, w stałej cenie 11 000 €, z kodem źródłowym dla ciebie. Bez dema na wyrzucenie, bez ukrytego długu — szybkość AI, oprawiona osądem inżyniera.",
       },
       { h2: "Krótko mówiąc, dla foundera" },
       {
@@ -524,7 +524,7 @@ export const post: Record<Locale, Article> = {
         p: "Asıl kırılma geliştirici olmadan kod yazmak değil, doğru geliştiriciyle çok daha hızlı teslim etmektir. AI-native geliştirme, her adımda yapay zekâyı yöneten, önemli kararların kontrolünü elinde tutan ve sürekli deploy eden bir mühendis demektir. Somut sonuç: aylarca değil, günler içinde temiz ve üretime hazır bir V1.",
       },
       {
-        p: "Bu tam olarak Khufu'nun modelidir: 7 günde teslim edilen gerçek bir ürün, 15.000 € sabit fiyata, kaynak kodu senin. Çöpe atılacak demo yok, gizli borç yok — bir mühendisin muhakemesiyle çerçevelenmiş yapay zekâ hızı.",
+        p: "Bu tam olarak Khufu'nun modelidir: 7 günde teslim edilen gerçek bir ürün, 11.000 € sabit fiyata, kaynak kodu senin. Çöpe atılacak demo yok, gizli borç yok — bir mühendisin muhakemesiyle çerçevelenmiş yapay zekâ hızı.",
       },
       { h2: "Açıkçası, bir founder için" },
       {

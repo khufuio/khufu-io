@@ -43,7 +43,7 @@ export const post: Record<Locale, Article> = {
         p: "Les deux dernières questions décident de la survie. Un bon produit sans canal d'acquisition ne trouve pas ses clients : sachez, avant de coder, d'où viennent vos dix premiers (réseau, communautés, SEO, prospection directe, partenariats). Et fixez une seule métrique de succès à 90 jours — clients payants, revenu récurrent, taux de rétention — pour trancher objectivement entre persévérer et pivoter, plutôt que de vous raconter des histoires.",
       },
       {
-        p: "Une fois ces sept réponses écrites noir sur blanc, le développement devient simple et rapide. C'est exactement le cadrage qu'on fait chez Khufu avant de livrer une V1 en production en 7 jours, à prix fixe de 15 000 € : un périmètre serré, validé en amont, pour construire uniquement ce qui prouve la valeur — et rien d'autre.",
+        p: "Une fois ces sept réponses écrites noir sur blanc, le développement devient simple et rapide. C'est exactement le cadrage qu'on fait chez Khufu avant de livrer une V1 en production en 7 jours, à prix fixe de 11 000 € : un périmètre serré, validé en amont, pour construire uniquement ce qui prouve la valeur — et rien d'autre.",
       },
     ],
   },
@@ -88,7 +88,7 @@ export const post: Record<Locale, Article> = {
         p: "The last two questions decide survival. A good product with no acquisition channel never finds its customers: know, before you code, where your first ten come from (network, communities, SEO, direct outreach, partnerships). And set a single 90-day success metric — paying customers, recurring revenue, retention rate — to decide objectively between persevering and pivoting, instead of telling yourself stories.",
       },
       {
-        p: "Once those seven answers are written down in black and white, development becomes simple and fast. That is exactly the scoping we run at Khufu before shipping a production V1 in 7 days, at a fixed price of 15,000 EUR: a tight scope, validated up front, to build only what proves the value — and nothing else.",
+        p: "Once those seven answers are written down in black and white, development becomes simple and fast. That is exactly the scoping we run at Khufu before shipping a production V1 in 7 days, at a fixed price of 11,000 EUR: a tight scope, validated up front, to build only what proves the value — and nothing else.",
       },
     ],
   },
@@ -133,7 +133,7 @@ export const post: Record<Locale, Article> = {
         p: "Las dos últimas preguntas deciden la supervivencia. Un buen producto sin canal de adquisición nunca encuentra a sus clientes: sabe, antes de programar, de dónde salen tus primeros diez (red de contactos, comunidades, SEO, prospección directa, alianzas). Y fija una única métrica de éxito a 90 días — clientes de pago, ingresos recurrentes, tasa de retención — para decidir con objetividad entre perseverar y pivotar, en lugar de contarte historias.",
       },
       {
-        p: "Una vez escritas esas siete respuestas negro sobre blanco, el desarrollo se vuelve simple y rápido. Es exactamente el encuadre que hacemos en Khufu antes de entregar una V1 en producción en 7 días, a precio fijo de 15.000 EUR: un alcance ajustado, validado de antemano, para construir solo lo que demuestra el valor, y nada más.",
+        p: "Una vez escritas esas siete respuestas negro sobre blanco, el desarrollo se vuelve simple y rápido. Es exactamente el encuadre que hacemos en Khufu antes de entregar una V1 en producción en 7 días, a precio fijo de 11.000 EUR: un alcance ajustado, validado de antemano, para construir solo lo que demuestra el valor, y nada más.",
       },
     ],
   },
@@ -178,7 +178,7 @@ export const post: Record<Locale, Article> = {
         p: "Die letzten beiden Fragen entscheiden über das Überleben. Ein gutes Produkt ohne Akquisekanal findet seine Kunden nie: wisse schon vor dem Programmieren, woher deine ersten zehn kommen (Netzwerk, Communities, SEO, Direktansprache, Partnerschaften). Und lege eine einzige Erfolgskennzahl für 90 Tage fest — zahlende Kunden, wiederkehrender Umsatz, Retention-Rate — um objektiv zwischen Durchhalten und Pivotieren zu entscheiden, statt dir Geschichten zu erzählen.",
       },
       {
-        p: "Sobald diese sieben Antworten schwarz auf weiß feststehen, wird die Entwicklung einfach und schnell. Genau dieses Scoping machen wir bei Khufu, bevor wir eine produktive V1 in 7 Tagen liefern, zum Festpreis von 15.000 EUR: ein enger, vorab validierter Umfang, um nur das zu bauen, was den Wert beweist — und nichts anderes.",
+        p: "Sobald diese sieben Antworten schwarz auf weiß feststehen, wird die Entwicklung einfach und schnell. Genau dieses Scoping machen wir bei Khufu, bevor wir eine produktive V1 in 7 Tagen liefern, zum Festpreis von 11.000 EUR: ein enger, vorab validierter Umfang, um nur das zu bauen, was den Wert beweist — und nichts anderes.",
       },
     ],
   },
@@ -223,7 +223,7 @@ export const post: Record<Locale, Article> = {
         p: "Le ultime due domande decidono la sopravvivenza. Un buon prodotto senza canale di acquisizione non trova mai i suoi clienti: sappi, prima di programmare, da dove arrivano i tuoi primi dieci (rete, community, SEO, contatto diretto, partnership). E fissa una sola metrica di successo a 90 giorni — clienti paganti, ricavi ricorrenti, tasso di retention — per decidere con obiettività tra perseverare e pivotare, invece di raccontarti storie.",
       },
       {
-        p: "Una volta scritte quelle sette risposte nero su bianco, lo sviluppo diventa semplice e veloce. È esattamente l'inquadramento che facciamo in Khufu prima di consegnare una V1 in produzione in 7 giorni, a prezzo fisso di 15.000 EUR: un perimetro stretto, validato in anticipo, per costruire solo ciò che dimostra il valore, e nient'altro.",
+        p: "Una volta scritte quelle sette risposte nero su bianco, lo sviluppo diventa semplice e veloce. È esattamente l'inquadramento che facciamo in Khufu prima di consegnare una V1 in produzione in 7 giorni, a prezzo fisso di 11.000 EUR: un perimetro stretto, validato in anticipo, per costruire solo ciò che dimostra il valore, e nient'altro.",
       },
     ],
   },
@@ -268,7 +268,7 @@ export const post: Record<Locale, Article> = {
         p: "As duas últimas perguntas decidem a sobrevivência. Um bom produto sem canal de aquisição nunca encontra seus clientes: saiba, antes de programar, de onde vêm os seus primeiros dez (rede, comunidades, SEO, prospecção direta, parcerias). E defina uma única métrica de sucesso em 90 dias — clientes pagantes, receita recorrente, taxa de retenção — para decidir com objetividade entre perseverar e pivotar, em vez de contar histórias a si mesmo.",
       },
       {
-        p: "Uma vez escritas essas sete respostas em preto no branco, o desenvolvimento fica simples e rápido. É exatamente o enquadramento que fazemos na Khufu antes de entregar uma V1 em produção em 7 dias, a preço fixo de 15.000 EUR: um escopo enxuto, validado com antecedência, para construir apenas o que prova o valor, e nada mais.",
+        p: "Uma vez escritas essas sete respostas em preto no branco, o desenvolvimento fica simples e rápido. É exatamente o enquadramento que fazemos na Khufu antes de entregar uma V1 em produção em 7 dias, a preço fixo de 11.000 EUR: um escopo enxuto, validado com antecedência, para construir apenas o que prova o valor, e nada mais.",
       },
     ],
   },
@@ -313,7 +313,7 @@ export const post: Record<Locale, Article> = {
         p: "De laatste twee vragen bepalen het overleven. Een goed product zonder acquisitiekanaal vindt zijn klanten nooit: weet, vóór je gaat coderen, waar je eerste tien vandaan komen (netwerk, communities, SEO, directe benadering, partnerschappen). En stel één succesmetric voor 90 dagen vast — betalende klanten, terugkerende omzet, retentiegraad — om objectief te kiezen tussen doorzetten en pivoteren, in plaats van jezelf verhaaltjes te vertellen.",
       },
       {
-        p: "Zodra die zeven antwoorden zwart op wit staan, wordt de ontwikkeling simpel en snel. Dat is precies de scoping die we bij Khufu doen voordat we een V1 in productie leveren in 7 dagen, tegen een vaste prijs van 15.000 EUR: een strakke, vooraf gevalideerde scope, om alleen te bouwen wat de waarde bewijst — en niets anders.",
+        p: "Zodra die zeven antwoorden zwart op wit staan, wordt de ontwikkeling simpel en snel. Dat is precies de scoping die we bij Khufu doen voordat we een V1 in productie leveren in 7 dagen, tegen een vaste prijs van 11.000 EUR: een strakke, vooraf gevalideerde scope, om alleen te bouwen wat de waarde bewijst — en niets anders.",
       },
     ],
   },
@@ -358,7 +358,7 @@ export const post: Record<Locale, Article> = {
         p: "يقرر السؤالان الأخيران البقاء. المنتج الجيد بلا قناة اكتساب لا يجد عملاءه أبدًا: اعرف، قبل البرمجة، من أين يأتي عملاؤك العشرة الأوائل (الشبكة، المجتمعات، SEO، التواصل المباشر، الشراكات). وحدد مقياس نجاح واحدًا لمدة 90 يومًا — عملاء يدفعون، إيراد متكرر، معدل احتفاظ — لتقرر بموضوعية بين المثابرة والتحول، بدل أن تروي لنفسك قصصًا.",
       },
       {
-        p: "بمجرد كتابة هذه الإجابات السبع بالأبيض والأسود، يصبح التطوير بسيطًا وسريعًا. وهذا بالضبط هو التأطير الذي نقوم به في Khufu قبل تسليم V1 في الإنتاج خلال 7 أيام، بسعر ثابت قدره 15,000 EUR: نطاق محكم، مُتحقَّق منه مسبقًا، لبناء ما يثبت القيمة فقط — ولا شيء آخر.",
+        p: "بمجرد كتابة هذه الإجابات السبع بالأبيض والأسود، يصبح التطوير بسيطًا وسريعًا. وهذا بالضبط هو التأطير الذي نقوم به في Khufu قبل تسليم V1 في الإنتاج خلال 7 أيام، بسعر ثابت قدره 11,000 EUR: نطاق محكم، مُتحقَّق منه مسبقًا، لبناء ما يثبت القيمة فقط — ولا شيء آخر.",
       },
     ],
   },
@@ -403,7 +403,7 @@ export const post: Record<Locale, Article> = {
         p: "Ostatnie dwa pytania decydują o przetrwaniu. Dobry produkt bez kanału pozyskiwania nigdy nie znajdzie klientów: wiedz, jeszcze przed pisaniem kodu, skąd przyjdzie Twoich pierwszych dziesięciu (sieć kontaktów, społeczności, SEO, bezpośrednia sprzedaż, partnerstwa). I ustal jedną metrykę sukcesu na 90 dni — płacący klienci, przychód powracający, wskaźnik retencji — by obiektywnie zdecydować między wytrwaniem a pivotem, zamiast opowiadać sobie historyjki.",
       },
       {
-        p: "Gdy te siedem odpowiedzi jest już zapisanych czarno na białym, development staje się prosty i szybki. To dokładnie to kadrowanie robimy w Khufu, zanim dostarczymy produkcyjne V1 w 7 dni, w stałej cenie 15 000 EUR: wąski, wcześniej zwalidowany zakres, by budować tylko to, co dowodzi wartości — i nic więcej.",
+        p: "Gdy te siedem odpowiedzi jest już zapisanych czarno na białym, development staje się prosty i szybki. To dokładnie to kadrowanie robimy w Khufu, zanim dostarczymy produkcyjne V1 w 7 dni, w stałej cenie 11 000 EUR: wąski, wcześniej zwalidowany zakres, by budować tylko to, co dowodzi wartości — i nic więcej.",
       },
     ],
   },
@@ -448,7 +448,7 @@ export const post: Record<Locale, Article> = {
         p: "Son iki soru hayatta kalmaya karar verir. Edinim kanalı olmayan iyi bir ürün müşterilerini asla bulamaz: kod yazmadan önce, ilk on müşterinizin nereden geleceğini bilin (ağ, topluluklar, SEO, doğrudan iletişim, iş birlikleri). Ve 90 gün için tek bir başarı metriği belirleyin — ödeyen müşteriler, yinelenen gelir, elde tutma oranı — kendinize hikâye anlatmak yerine ısrar etmekle yön değiştirmek arasında nesnel karar vermek için.",
       },
       {
-        p: "Bu yedi yanıt siyah beyaz yazıya döküldüğünde, geliştirme basit ve hızlı hale gelir. Bu tam olarak Khufu'da, 15.000 EUR sabit fiyata 7 günde üretimde bir V1 teslim etmeden önce yaptığımız çerçevelemedir: yalnızca değeri kanıtlayanı inşa etmek için önceden doğrulanmış, dar bir kapsam — başka hiçbir şey değil.",
+        p: "Bu yedi yanıt siyah beyaz yazıya döküldüğünde, geliştirme basit ve hızlı hale gelir. Bu tam olarak Khufu'da, 11.000 EUR sabit fiyata 7 günde üretimde bir V1 teslim etmeden önce yaptığımız çerçevelemedir: yalnızca değeri kanıtlayanı inşa etmek için önceden doğrulanmış, dar bir kapsam — başka hiçbir şey değil.",
       },
     ],
   },

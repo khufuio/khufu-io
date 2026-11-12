@@ -47,7 +47,7 @@ import type { LocalizedInput } from '@/i18n/localize'
  * The first pass on this page in a while that pays the ledger instead of owing
  * it. What went, and each one is argued at its own site:
  *   - `hero.clientsPerWeek` — the third hero figure, « 1 », deleted outright;
- *   - the back-office FAQ entry, deleted (a question a [[15000]] buyer does not
+ *   - the back-office FAQ entry, deleted (a question a [[11000]] buyer does not
  *     ask before a scoping call, and the only block on the page whose STRUCTURE
  *     was an arbitration downwards);
  *   - « Et après le jour 7, je fais quoi ? » merged into « Et après la
@@ -76,7 +76,7 @@ import type { LocalizedInput } from '@/i18n/localize'
  * characters on the booking note. What it REMOVED: « Encore disponible » under
  * the hero button and the dated CTA label in both places it was built (« Réserver
  * la semaine du {date} »). The trade is deliberate and it is not a wash — a
- * ragged section reads as unfinished on a page selling a €15k engagement, and the
+ * ragged section reads as unfinished on a page selling a €11k engagement, and the
  * two lines removed were the page's only two pieces of manufactured urgency.
  *
  * PASS 4a ADDED 392 CHARACTERS AND REMOVED NONE — 7,249 → 7,641.
@@ -514,7 +514,7 @@ type Section<T> = {
    * "écrit le code", donc faux, pas pertinent avec notre message. Et dire en gros
    * que je suis solo, c'est pas un argument positif pour 17k USD ». Both halves
    * count. The claim was inaccurate, and "one person" reads as bus factor on a
-   * $17k decision — it argued against the sale.
+   * $12k decision — it argued against the sale.
    *
    * ⚠️ AND WHY SOMETHING HAD TO REPLACE IT rather than simply be deleted: without
    * an explanation, "seven days" reads as bluff. This is that explanation, and
@@ -689,7 +689,7 @@ type Section<T> = {
     /**
      * ⛔ THIS LINE NO LONGER SAYS ANYBODY WRITES THE CODE (decision cmu1u21i).
      * It used to read « Vous parlez au founder qui écrit le code », which was
-     * both inaccurate and a solo-founder argument on a $17k page. What replaced
+     * both inaccurate and a solo-founder argument on a $12k page. What replaced
      * it is the half of the claim that is true AND reassuring: one person to
      * talk to, who decides. No « solo », no authorship claim.
      */
@@ -816,7 +816,7 @@ type Section<T> = {
    * ⛔ IT IS A BRIEFING, NOT A MENU (2026-09-15, pass 4). The version before this
    * one was a list of options shown at the exact moment intent peaks, which
    * spends the intent on a choice. Everything ABOVE the rule now answers the one
-   * question a €15k buyer has — « what am I committing to? »: the week, the
+   * question a €11k buyer has — « what am I committing to? »: the week, the
    * thirty minutes, what comes out of them, the hours, and the one fact they
    * cannot discover any other way, that the booking page is in English. That
    * warning is what earns the extra step; without it the modal is a click too
@@ -825,7 +825,7 @@ type Section<T> = {
    * ⛔ THREE PATHS, ONE DOMINANT, nothing else:
    *   1. « RÉSERVER UN APPEL DE 30 MIN » — the main path, the most visible thing
    *      in the modal, carrying the week that was clicked. The reasoning is the
-   *      part to preserve: « à 15 000 €, la conversion qui compte est une
+   *      part to preserve: « à 11 000 €, la conversion qui compte est une
    *      conversation, pas une adresse e-mail dans une base ; et un rendez-vous à
    *      l'agenda est exactement le registre premium qu'on vend, là où trois
    *      champs anonymes font low-cost. »
@@ -2942,7 +2942,7 @@ const content: Section<LocalizedInput> = {
          * « bah non… on livre tout, faut arrêter de rabaisser l’offre ». He is
          * right and it was the single most expensive sentence on the page: the
          * answer spent three clauses building a feat, then took it back in the
-         * fourth. A buyer at [[15000]] who is told they get "the launchable part,
+         * fourth. A buyer at [[11000]] who is told they get "the launchable part,
          * not the plan" has been handed a reason to negotiate, and a V1 sold as
          * an amputation is an MVP with a premium price on it.
          * ⛔ Day 0 DEFINES the product with the client. It does not cut it down,

@@ -78,7 +78,7 @@ export function WhatsAppLink({
  * layout tweak (2026-09-15). The same channel helps or cheapens depending purely
  * on where it sits:
  *   - A PERSISTENT GREEN BUBBLE is the visual signature of low-ticket commerce.
- *     On a page selling a €15,000 engagement it sits on top of the one CTA the
+ *     On a page selling a €11,000 engagement it sits on top of the one CTA the
  *     ad budget is paying for, competes with it on every scroll, and quietly
  *     answers "how much does this cost?" before the page does.
  *   - THE SAME LINK INSIDE THE CONTACT MODAL is a considered option offered at

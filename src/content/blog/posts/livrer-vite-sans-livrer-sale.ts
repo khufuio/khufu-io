@@ -47,7 +47,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Vite ET propre, concrètement" },
       {
-        p: "Chez Khufu, une V1 est livrée en 7 jours pour un forfait fixe de 15 000 €, sur une stack de production dont le code source vous appartient. La rapidité ne vient pas de raccourcis sur la qualité : elle vient d'un cadrage net, d'une stack maintenable et de l'IA qui absorbe le travail répétitif. Le résultat n'est pas un prototype à réécrire, mais une base sur laquelle on continue de construire — sans dette cachée.",
+        p: "Chez Khufu, une V1 est livrée en 7 jours pour un forfait fixe de 11 000 €, sur une stack de production dont le code source vous appartient. La rapidité ne vient pas de raccourcis sur la qualité : elle vient d'un cadrage net, d'une stack maintenable et de l'IA qui absorbe le travail répétitif. Le résultat n'est pas un prototype à réécrire, mais une base sur laquelle on continue de construire — sans dette cachée.",
       },
     ],
   },
@@ -96,7 +96,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Fast AND clean, concretely" },
       {
-        p: "At Khufu, a V1 is shipped in 7 days for a fixed price of €15,000, on a production stack whose source code is yours. The speed does not come from cutting corners on quality: it comes from sharp framing, a maintainable stack and AI absorbing the repetitive work. The result is not a prototype to rewrite, but a foundation you keep building on — with no hidden debt.",
+        p: "At Khufu, a V1 is shipped in 7 days for a fixed price of €11,000, on a production stack whose source code is yours. The speed does not come from cutting corners on quality: it comes from sharp framing, a maintainable stack and AI absorbing the repetitive work. The result is not a prototype to rewrite, but a foundation you keep building on — with no hidden debt.",
       },
     ],
   },
@@ -145,7 +145,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Rápido Y limpio, en concreto" },
       {
-        p: "En Khufu, una V1 se entrega en 7 días por un precio fijo de 15 000 €, sobre una stack de producción cuyo código fuente es tuyo. La rapidez no viene de recortar en calidad: viene de un encuadre nítido, una stack mantenible y la IA que absorbe el trabajo repetitivo. El resultado no es un prototipo que reescribir, sino una base sobre la que se sigue construyendo — sin deuda oculta.",
+        p: "En Khufu, una V1 se entrega en 7 días por un precio fijo de 11 000 €, sobre una stack de producción cuyo código fuente es tuyo. La rapidez no viene de recortar en calidad: viene de un encuadre nítido, una stack mantenible y la IA que absorbe el trabajo repetitivo. El resultado no es un prototipo que reescribir, sino una base sobre la que se sigue construyendo — sin deuda oculta.",
       },
     ],
   },
@@ -194,7 +194,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Schnell UND sauber, konkret" },
       {
-        p: "Bei Khufu wird eine V1 in 7 Tagen zum Festpreis von 15 000 € geliefert, auf einem Produktions-Stack, dessen Quellcode Ihnen gehört. Die Geschwindigkeit kommt nicht durch Abstriche bei der Qualität: sie kommt aus scharfem Framing, einem wartbaren Stack und KI, die die repetitive Arbeit übernimmt. Das Ergebnis ist kein Prototyp zum Neuschreiben, sondern ein Fundament, auf dem weitergebaut wird — ohne versteckte Schulden.",
+        p: "Bei Khufu wird eine V1 in 7 Tagen zum Festpreis von 11 000 € geliefert, auf einem Produktions-Stack, dessen Quellcode Ihnen gehört. Die Geschwindigkeit kommt nicht durch Abstriche bei der Qualität: sie kommt aus scharfem Framing, einem wartbaren Stack und KI, die die repetitive Arbeit übernimmt. Das Ergebnis ist kein Prototyp zum Neuschreiben, sondern ein Fundament, auf dem weitergebaut wird — ohne versteckte Schulden.",
       },
     ],
   },
@@ -243,7 +243,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Veloce E pulito, in concreto" },
       {
-        p: "In Khufu, una V1 è consegnata in 7 giorni per un prezzo fisso di 15 000 €, su uno stack di produzione il cui codice sorgente è tuo. La rapidità non viene da scorciatoie sulla qualità: viene da un inquadramento netto, uno stack manutenibile e l'IA che assorbe il lavoro ripetitivo. Il risultato non è un prototipo da riscrivere, ma una base su cui si continua a costruire — senza debito nascosto.",
+        p: "In Khufu, una V1 è consegnata in 7 giorni per un prezzo fisso di 11 000 €, su uno stack di produzione il cui codice sorgente è tuo. La rapidità non viene da scorciatoie sulla qualità: viene da un inquadramento netto, uno stack manutenibile e l'IA che assorbe il lavoro ripetitivo. Il risultato non è un prototipo da riscrivere, ma una base su cui si continua a costruire — senza debito nascosto.",
       },
     ],
   },
@@ -292,7 +292,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Rápido E limpo, em concreto" },
       {
-        p: "Na Khufu, uma V1 é entregue em 7 dias por um preço fixo de 15 000 €, sobre uma stack de produção cujo código-fonte é seu. A rapidez não vem de cortar na qualidade: vem de um enquadramento nítido, de uma stack mantível e da IA que absorve o trabalho repetitivo. O resultado não é um protótipo para reescrever, mas uma base sobre a qual se continua a construir — sem dívida oculta.",
+        p: "Na Khufu, uma V1 é entregue em 7 dias por um preço fixo de 11 000 €, sobre uma stack de produção cujo código-fonte é seu. A rapidez não vem de cortar na qualidade: vem de um enquadramento nítido, de uma stack mantível e da IA que absorve o trabalho repetitivo. O resultado não é um protótipo para reescrever, mas uma base sobre a qual se continua a construir — sem dívida oculta.",
       },
     ],
   },
@@ -341,7 +341,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Snel ÉN schoon, concreet" },
       {
-        p: "Bij Khufu wordt een V1 in 7 dagen opgeleverd voor een vaste prijs van € 15.000, op een productie-stack waarvan de broncode van jou is. De snelheid komt niet van bezuinigen op kwaliteit: ze komt van scherpe kadering, een onderhoudbare stack en AI die het repetitieve werk opslokt. Het resultaat is geen prototype om te herschrijven, maar een fundering waarop je blijft bouwen — zonder verborgen schuld.",
+        p: "Bij Khufu wordt een V1 in 7 dagen opgeleverd voor een vaste prijs van € 11.000, op een productie-stack waarvan de broncode van jou is. De snelheid komt niet van bezuinigen op kwaliteit: ze komt van scherpe kadering, een onderhoudbare stack en AI die het repetitieve werk opslokt. Het resultaat is geen prototype om te herschrijven, maar een fundering waarop je blijft bouwen — zonder verborgen schuld.",
       },
     ],
   },
@@ -390,7 +390,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "سريع ونظيف، بشكل ملموس" },
       {
-        p: "في Khufu، تُسلَّم V1 في 7 أيام مقابل سعر ثابت قدره 15,000 €، على stack إنتاجية شيفرتها المصدرية ملك لك. السرعة لا تأتي من اختصارات على حساب الجودة: بل من تأطير واضح، وstack قابلة للصيانة، وذكاء اصطناعي يمتصّ العمل المتكرر. النتيجة ليست نموذجاً أوّلياً لإعادة كتابته، بل أساس تواصل البناء عليه — من دون دَين خفي.",
+        p: "في Khufu، تُسلَّم V1 في 7 أيام مقابل سعر ثابت قدره 11,000 €، على stack إنتاجية شيفرتها المصدرية ملك لك. السرعة لا تأتي من اختصارات على حساب الجودة: بل من تأطير واضح، وstack قابلة للصيانة، وذكاء اصطناعي يمتصّ العمل المتكرر. النتيجة ليست نموذجاً أوّلياً لإعادة كتابته، بل أساس تواصل البناء عليه — من دون دَين خفي.",
       },
     ],
   },
@@ -439,7 +439,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Szybko I czysto, konkretnie" },
       {
-        p: "W Khufu V1 jest dostarczana w 7 dni za stałą cenę 15 000 €, na produkcyjnym stacku, którego kod źródłowy należy do Ciebie. Szybkość nie bierze się z cięcia na jakości: bierze się z ostrego ramowania, utrzymywalnego stacku i AI, które pochłania powtarzalną pracę. Efektem nie jest prototyp do przepisania, lecz fundament, na którym buduje się dalej — bez ukrytego długu.",
+        p: "W Khufu V1 jest dostarczana w 7 dni za stałą cenę 11 000 €, na produkcyjnym stacku, którego kod źródłowy należy do Ciebie. Szybkość nie bierze się z cięcia na jakości: bierze się z ostrego ramowania, utrzymywalnego stacku i AI, które pochłania powtarzalną pracę. Efektem nie jest prototyp do przepisania, lecz fundament, na którym buduje się dalej — bez ukrytego długu.",
       },
     ],
   },
@@ -488,7 +488,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Hem hızlı HEM temiz, somut olarak" },
       {
-        p: "Khufu'da bir V1, kaynak kodu size ait bir üretim stack'i üzerinde, 15.000 € sabit fiyata 7 günde teslim edilir. Hız, kaliteden ödün vermekten gelmez: keskin bir çerçeveleme, bakımı yapılabilir bir stack ve tekrarlayan işi soğuran yapay zekâdan gelir. Sonuç, yeniden yazılacak bir prototip değil, üzerine inşa etmeye devam ettiğiniz bir temeldir — gizli borç olmadan.",
+        p: "Khufu'da bir V1, kaynak kodu size ait bir üretim stack'i üzerinde, 11.000 € sabit fiyata 7 günde teslim edilir. Hız, kaliteden ödün vermekten gelmez: keskin bir çerçeveleme, bakımı yapılabilir bir stack ve tekrarlayan işi soğuran yapay zekâdan gelir. Sonuç, yeniden yazılacak bir prototip değil, üzerine inşa etmeye devam ettiğiniz bir temeldir — gizli borç olmadan.",
       },
     ],
   },

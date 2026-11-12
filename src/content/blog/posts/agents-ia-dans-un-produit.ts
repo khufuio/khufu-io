@@ -41,7 +41,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Comment démarrer petit' },
       {
-        p: 'Commencez par un seul cas d’usage, mesurable, sur une action réversible. Donnez à l’agent un périmètre étroit et des outils précis plutôt qu’une liberté totale. Mesurez le taux de réussite et le coût par tâche avant d’élargir. C’est exactement l’approche d’une V1 : chez Khufu, on intègre une première brique d’agent utile dans un produit prêt pour la production, livré en 7 jours à prix fixe (15 000 €) — de quoi valider la valeur réelle avant d’investir davantage.',
+        p: 'Commencez par un seul cas d’usage, mesurable, sur une action réversible. Donnez à l’agent un périmètre étroit et des outils précis plutôt qu’une liberté totale. Mesurez le taux de réussite et le coût par tâche avant d’élargir. C’est exactement l’approche d’une V1 : chez Khufu, on intègre une première brique d’agent utile dans un produit prêt pour la production, livré en 7 jours à prix fixe (11 000 €) — de quoi valider la valeur réelle avant d’investir davantage.',
       },
     ],
   },
@@ -84,7 +84,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'How to start small' },
       {
-        p: 'Start with a single, measurable use case on a reversible action. Give the agent a narrow scope and precise tools rather than total freedom. Measure the success rate and the cost per task before expanding. That is exactly the V1 approach: at Khufu we ship a first useful agent building block inside a production-ready product, delivered in 7 days at a fixed price (€15,000) — enough to validate real value before investing further.',
+        p: 'Start with a single, measurable use case on a reversible action. Give the agent a narrow scope and precise tools rather than total freedom. Measure the success rate and the cost per task before expanding. That is exactly the V1 approach: at Khufu we ship a first useful agent building block inside a production-ready product, delivered in 7 days at a fixed price (€11,000) — enough to validate real value before investing further.',
       },
     ],
   },
@@ -127,7 +127,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Cómo empezar pequeño' },
       {
-        p: 'Empieza por un solo caso de uso, medible, sobre una acción reversible. Da al agente un alcance estrecho y herramientas precisas en lugar de libertad total. Mide la tasa de éxito y el coste por tarea antes de ampliar. Es exactamente el enfoque de una V1: en Khufu integramos un primer bloque de agente útil dentro de un producto listo para producción, entregado en 7 días a precio fijo (15 000 €), suficiente para validar el valor real antes de invertir más.',
+        p: 'Empieza por un solo caso de uso, medible, sobre una acción reversible. Da al agente un alcance estrecho y herramientas precisas en lugar de libertad total. Mide la tasa de éxito y el coste por tarea antes de ampliar. Es exactamente el enfoque de una V1: en Khufu integramos un primer bloque de agente útil dentro de un producto listo para producción, entregado en 7 días a precio fijo (11 000 €), suficiente para validar el valor real antes de invertir más.',
       },
     ],
   },
@@ -170,7 +170,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Wie man klein anfängt' },
       {
-        p: 'Beginnen Sie mit einem einzigen, messbaren Anwendungsfall bei einer umkehrbaren Aktion. Geben Sie dem Agenten einen engen Rahmen und präzise Werkzeuge statt völliger Freiheit. Messen Sie die Erfolgsquote und die Kosten pro Aufgabe, bevor Sie erweitern. Genau das ist der V1-Ansatz: Bei Khufu integrieren wir einen ersten nützlichen Agenten-Baustein in ein produktionsreifes Produkt, geliefert in 7 Tagen zum Festpreis (15.000 €) — genug, um den echten Mehrwert zu validieren, bevor Sie weiter investieren.',
+        p: 'Beginnen Sie mit einem einzigen, messbaren Anwendungsfall bei einer umkehrbaren Aktion. Geben Sie dem Agenten einen engen Rahmen und präzise Werkzeuge statt völliger Freiheit. Messen Sie die Erfolgsquote und die Kosten pro Aufgabe, bevor Sie erweitern. Genau das ist der V1-Ansatz: Bei Khufu integrieren wir einen ersten nützlichen Agenten-Baustein in ein produktionsreifes Produkt, geliefert in 7 Tagen zum Festpreis (11.000 €) — genug, um den echten Mehrwert zu validieren, bevor Sie weiter investieren.',
       },
     ],
   },
@@ -213,7 +213,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Come partire in piccolo' },
       {
-        p: 'Parti da un solo caso d’uso, misurabile, su un’azione reversibile. Dai all’agente un perimetro stretto e strumenti precisi invece della libertà totale. Misura il tasso di successo e il costo per attività prima di ampliare. È esattamente l’approccio di una V1: in Khufu integriamo un primo blocco di agente utile in un prodotto pronto per la produzione, consegnato in 7 giorni a prezzo fisso (15.000 €), abbastanza per validare il valore reale prima di investire di più.',
+        p: 'Parti da un solo caso d’uso, misurabile, su un’azione reversibile. Dai all’agente un perimetro stretto e strumenti precisi invece della libertà totale. Misura il tasso di successo e il costo per attività prima di ampliare. È esattamente l’approccio di una V1: in Khufu integriamo un primo blocco di agente utile in un prodotto pronto per la produzione, consegnato in 7 giorni a prezzo fisso (11.000 €), abbastanza per validare il valore reale prima di investire di più.',
       },
     ],
   },
@@ -256,7 +256,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Como começar pequeno' },
       {
-        p: 'Comece por um único caso de uso, mensurável, sobre uma ação reversível. Dê ao agente um âmbito estreito e ferramentas precisas em vez de liberdade total. Meça a taxa de sucesso e o custo por tarefa antes de expandir. É exatamente a abordagem de uma V1: na Khufu integramos um primeiro bloco de agente útil num produto pronto para produção, entregue em 7 dias a preço fixo (15 000 €), o suficiente para validar o valor real antes de investir mais.',
+        p: 'Comece por um único caso de uso, mensurável, sobre uma ação reversível. Dê ao agente um âmbito estreito e ferramentas precisas em vez de liberdade total. Meça a taxa de sucesso e o custo por tarefa antes de expandir. É exatamente a abordagem de uma V1: na Khufu integramos um primeiro bloco de agente útil num produto pronto para produção, entregue em 7 dias a preço fixo (11 000 €), o suficiente para validar o valor real antes de investir mais.',
       },
     ],
   },
@@ -299,7 +299,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Hoe je klein begint' },
       {
-        p: 'Begin met één meetbare use case op een omkeerbare actie. Geef de agent een smalle scope en precieze tools in plaats van volledige vrijheid. Meet het slagingspercentage en de kosten per taak voordat je uitbreidt. Dat is precies de V1-aanpak: bij Khufu integreren we een eerste nuttige agent-bouwsteen in een productieklaar product, geleverd in 7 dagen tegen een vaste prijs (€15.000) — genoeg om de echte waarde te valideren voordat je verder investeert.',
+        p: 'Begin met één meetbare use case op een omkeerbare actie. Geef de agent een smalle scope en precieze tools in plaats van volledige vrijheid. Meet het slagingspercentage en de kosten per taak voordat je uitbreidt. Dat is precies de V1-aanpak: bij Khufu integreren we een eerste nuttige agent-bouwsteen in een productieklaar product, geleverd in 7 dagen tegen een vaste prijs (€11.000) — genoeg om de echte waarde te valideren voordat je verder investeert.',
       },
     ],
   },
@@ -342,7 +342,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'كيف تبدأ صغيرًا' },
       {
-        p: 'ابدأ بحالة استخدام واحدة قابلة للقياس على إجراء قابل للتراجع. امنح الوكيل نطاقًا ضيقًا وأدوات دقيقة بدلًا من حرية مطلقة. قِس معدل النجاح والتكلفة لكل مهمة قبل التوسّع. هذا بالضبط نهج الـ V1: في Khufu ندمج أول لبنة وكيل مفيدة داخل منتج جاهز للإنتاج، يُسلَّم في 7 أيام بسعر ثابت (15,000 €) — ما يكفي للتحقق من القيمة الحقيقية قبل الاستثمار أكثر.',
+        p: 'ابدأ بحالة استخدام واحدة قابلة للقياس على إجراء قابل للتراجع. امنح الوكيل نطاقًا ضيقًا وأدوات دقيقة بدلًا من حرية مطلقة. قِس معدل النجاح والتكلفة لكل مهمة قبل التوسّع. هذا بالضبط نهج الـ V1: في Khufu ندمج أول لبنة وكيل مفيدة داخل منتج جاهز للإنتاج، يُسلَّم في 7 أيام بسعر ثابت (11,000 €) — ما يكفي للتحقق من القيمة الحقيقية قبل الاستثمار أكثر.',
       },
     ],
   },
@@ -385,7 +385,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Jak zacząć od małego' },
       {
-        p: 'Zacznij od jednego, mierzalnego przypadku użycia na odwracalnym działaniu. Daj agentowi wąski zakres i precyzyjne narzędzia zamiast pełnej swobody. Zmierz wskaźnik sukcesu i koszt na zadanie, zanim rozszerzysz. To dokładnie podejście V1: w Khufu integrujemy pierwszy użyteczny klocek agenta w produkcie gotowym do produkcji, dostarczonym w 7 dni w stałej cenie (15 000 €) — na tyle, by zweryfikować realną wartość przed dalszą inwestycją.',
+        p: 'Zacznij od jednego, mierzalnego przypadku użycia na odwracalnym działaniu. Daj agentowi wąski zakres i precyzyjne narzędzia zamiast pełnej swobody. Zmierz wskaźnik sukcesu i koszt na zadanie, zanim rozszerzysz. To dokładnie podejście V1: w Khufu integrujemy pierwszy użyteczny klocek agenta w produkcie gotowym do produkcji, dostarczonym w 7 dni w stałej cenie (11 000 €) — na tyle, by zweryfikować realną wartość przed dalszą inwestycją.',
       },
     ],
   },
@@ -428,7 +428,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Nasıl küçük başlanır' },
       {
-        p: 'Geri alınabilir bir eylem üzerinde tek, ölçülebilir bir kullanım senaryosuyla başlayın. Ajana tam özgürlük yerine dar bir kapsam ve kesin araçlar verin. Genişletmeden önce başarı oranını ve görev başına maliyeti ölçün. Bu tam olarak V1 yaklaşımıdır: Khufu’da, üretime hazır bir ürünün içine ilk faydalı ajan yapı taşını entegre ediyoruz, 7 günde sabit fiyatla (15.000 €) teslim ediyoruz — daha fazla yatırım yapmadan önce gerçek değeri doğrulamaya yetecek kadar.',
+        p: 'Geri alınabilir bir eylem üzerinde tek, ölçülebilir bir kullanım senaryosuyla başlayın. Ajana tam özgürlük yerine dar bir kapsam ve kesin araçlar verin. Genişletmeden önce başarı oranını ve görev başına maliyeti ölçün. Bu tam olarak V1 yaklaşımıdır: Khufu’da, üretime hazır bir ürünün içine ilk faydalı ajan yapı taşını entegre ediyoruz, 7 günde sabit fiyatla (11.000 €) teslim ediyoruz — daha fazla yatırım yapmadan önce gerçek değeri doğrulamaya yetecek kadar.',
       },
     ],
   },

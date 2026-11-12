@@ -54,7 +54,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Reporter n’est pas renoncer' },
       {
-        p: 'Chacune de ces fonctionnalités a sa place — plus tard, quand des utilisateurs réels la justifient. Le rôle d’une V1 est de valider le problème et le parcours cœur, pas de tout couvrir. C’est cette discipline de périmètre qui permet de livrer une V1 prête pour la production en 7 jours, à prix fixe de 15 000 €, sur une base que vous ferez évoluer sans dette.',
+        p: 'Chacune de ces fonctionnalités a sa place — plus tard, quand des utilisateurs réels la justifient. Le rôle d’une V1 est de valider le problème et le parcours cœur, pas de tout couvrir. C’est cette discipline de périmètre qui permet de livrer une V1 prête pour la production en 7 jours, à prix fixe de 11 000 €, sur une base que vous ferez évoluer sans dette.',
       },
     ],
   },
@@ -110,7 +110,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Postponing is not giving up' },
       {
-        p: 'Each of these features has its place — later, when real users justify it. The job of a V1 is to validate the problem and the core journey, not to cover everything. It is that scope discipline that lets us ship a production-ready V1 in 7 days, at a fixed price of €15,000, on a foundation you can grow without debt.',
+        p: 'Each of these features has its place — later, when real users justify it. The job of a V1 is to validate the problem and the core journey, not to cover everything. It is that scope discipline that lets us ship a production-ready V1 in 7 days, at a fixed price of €11,000, on a foundation you can grow without debt.',
       },
     ],
   },
@@ -166,7 +166,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Aplazar no es renunciar' },
       {
-        p: 'Cada una de estas funcionalidades tiene su lugar — más tarde, cuando usuarios reales la justifican. El papel de una V1 es validar el problema y el recorrido central, no cubrirlo todo. Es esa disciplina de alcance la que permite entregar una V1 lista para producción en 7 días, a precio fijo de 15 000 €, sobre una base que harás crecer sin deuda.',
+        p: 'Cada una de estas funcionalidades tiene su lugar — más tarde, cuando usuarios reales la justifican. El papel de una V1 es validar el problema y el recorrido central, no cubrirlo todo. Es esa disciplina de alcance la que permite entregar una V1 lista para producción en 7 días, a precio fijo de 11 000 €, sobre una base que harás crecer sin deuda.',
       },
     ],
   },
@@ -222,7 +222,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Verschieben heißt nicht aufgeben' },
       {
-        p: 'Jede dieser Funktionen hat ihren Platz — später, wenn echte Nutzer sie rechtfertigen. Die Aufgabe einer V1 ist es, das Problem und den Kern-Journey zu validieren, nicht alles abzudecken. Genau diese Scope-Disziplin erlaubt es, eine produktionsreife V1 in 7 Tagen zu liefern, zum Festpreis von 15.000 €, auf einer Basis, die Sie ohne Schulden ausbauen.',
+        p: 'Jede dieser Funktionen hat ihren Platz — später, wenn echte Nutzer sie rechtfertigen. Die Aufgabe einer V1 ist es, das Problem und den Kern-Journey zu validieren, nicht alles abzudecken. Genau diese Scope-Disziplin erlaubt es, eine produktionsreife V1 in 7 Tagen zu liefern, zum Festpreis von 11.000 €, auf einer Basis, die Sie ohne Schulden ausbauen.',
       },
     ],
   },
@@ -278,7 +278,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Rimandare non è rinunciare' },
       {
-        p: 'Ognuna di queste funzionalità ha il suo posto — più tardi, quando utenti reali la giustificano. Il ruolo di una V1 è validare il problema e il percorso centrale, non coprire tutto. È questa disciplina di perimetro che permette di consegnare una V1 pronta per la produzione in 7 giorni, a prezzo fisso di 15.000 €, su una base che farai crescere senza debito.',
+        p: 'Ognuna di queste funzionalità ha il suo posto — più tardi, quando utenti reali la giustificano. Il ruolo di una V1 è validare il problema e il percorso centrale, non coprire tutto. È questa disciplina di perimetro che permette di consegnare una V1 pronta per la produzione in 7 giorni, a prezzo fisso di 11.000 €, su una base che farai crescere senza debito.',
       },
     ],
   },
@@ -334,7 +334,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Adiar não é desistir' },
       {
-        p: 'Cada uma destas funcionalidades tem o seu lugar — mais tarde, quando utilizadores reais a justificam. O papel de uma V1 é validar o problema e o percurso central, não cobrir tudo. É essa disciplina de âmbito que permite entregar uma V1 pronta para produção em 7 dias, a preço fixo de 15 000 €, sobre uma base que fará crescer sem dívida.',
+        p: 'Cada uma destas funcionalidades tem o seu lugar — mais tarde, quando utilizadores reais a justificam. O papel de uma V1 é validar o problema e o percurso central, não cobrir tudo. É essa disciplina de âmbito que permite entregar uma V1 pronta para produção em 7 dias, a preço fixo de 11 000 €, sobre uma base que fará crescer sem dívida.',
       },
     ],
   },
@@ -390,7 +390,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Uitstellen is niet opgeven' },
       {
-        p: 'Elk van deze functies heeft zijn plek — later, wanneer echte gebruikers ze rechtvaardigen. De taak van een V1 is het probleem en de kernflow valideren, niet alles afdekken. Juist die scope-discipline maakt het mogelijk om een productieklare V1 in 7 dagen te leveren, tegen een vaste prijs van € 15.000, op een basis die je zonder schuld laat groeien.',
+        p: 'Elk van deze functies heeft zijn plek — later, wanneer echte gebruikers ze rechtvaardigen. De taak van een V1 is het probleem en de kernflow valideren, niet alles afdekken. Juist die scope-discipline maakt het mogelijk om een productieklare V1 in 7 dagen te leveren, tegen een vaste prijs van € 11.000, op een basis die je zonder schuld laat groeien.',
       },
     ],
   },
@@ -446,7 +446,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'التأجيل ليس تخليًا' },
       {
-        p: 'لكل ميزة من هذه الميزات مكانها — لاحقًا، حين يبرّرها مستخدمون حقيقيون. دور V1 هو التحقق من المشكلة والمسار الأساسي، لا تغطية كل شيء. هذا الانضباط في النطاق هو ما يتيح تسليم V1 جاهزة للإنتاج في 7 أيام، بسعر ثابت قدره 15,000 يورو، على قاعدة تُطوّرها دون دين.',
+        p: 'لكل ميزة من هذه الميزات مكانها — لاحقًا، حين يبرّرها مستخدمون حقيقيون. دور V1 هو التحقق من المشكلة والمسار الأساسي، لا تغطية كل شيء. هذا الانضباط في النطاق هو ما يتيح تسليم V1 جاهزة للإنتاج في 7 أيام، بسعر ثابت قدره 11,000 يورو، على قاعدة تُطوّرها دون دين.',
       },
     ],
   },
@@ -502,7 +502,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Odłożyć to nie zrezygnować' },
       {
-        p: 'Każda z tych funkcji ma swoje miejsce — później, gdy uzasadnią ją prawdziwi użytkownicy. Rolą V1 jest zwalidowanie problemu i głównej ścieżki, a nie pokrycie wszystkiego. To właśnie ta dyscyplina zakresu pozwala dostarczyć gotową do produkcji V1 w 7 dni, w stałej cenie 15 000 €, na bazie, którą rozwiniesz bez długu.',
+        p: 'Każda z tych funkcji ma swoje miejsce — później, gdy uzasadnią ją prawdziwi użytkownicy. Rolą V1 jest zwalidowanie problemu i głównej ścieżki, a nie pokrycie wszystkiego. To właśnie ta dyscyplina zakresu pozwala dostarczyć gotową do produkcji V1 w 7 dni, w stałej cenie 11 000 €, na bazie, którą rozwiniesz bez długu.',
       },
     ],
   },
@@ -558,7 +558,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Ertelemek vazgeçmek değildir' },
       {
-        p: 'Bu özelliklerin her birinin bir yeri vardır — daha sonra, gerçek kullanıcılar onu haklı çıkardığında. Bir V1"in görevi sorunu ve çekirdek akışı doğrulamaktır, her şeyi kapsamak değil. Üretime hazır bir V1"i 7 günde, 15.000 € sabit fiyatla, borçsuz büyüteceğiniz bir temel üzerinde teslim etmeyi mümkün kılan işte bu kapsam disiplinidir.',
+        p: 'Bu özelliklerin her birinin bir yeri vardır — daha sonra, gerçek kullanıcılar onu haklı çıkardığında. Bir V1"in görevi sorunu ve çekirdek akışı doğrulamaktır, her şeyi kapsamak değil. Üretime hazır bir V1"i 7 günde, 11.000 € sabit fiyatla, borçsuz büyüteceğiniz bir temel üzerinde teslim etmeyi mümkün kılan işte bu kapsam disiplinidir.',
       },
     ],
   },

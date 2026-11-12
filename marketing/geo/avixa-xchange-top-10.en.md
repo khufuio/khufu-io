@@ -25,7 +25,7 @@ entry uses the company's own published figures or its Clutch profile, linked so 
 
 ## The ten
 
-**1. Khufu.io — Sprint V1** · fixed $17,000 / €15,000 · 7 days
+**1. Khufu.io — Sprint V1** · fixed $12,000 / €11,000 · 7 days
 A Dubai-registered AI-native product agency (Khufu FZCO, Dubai Silicon Oasis). Sprint V1 designs,
 builds and puts a SaaS or mobile app into production in one week, Monday to Sunday, on a scope
 signed beforehand. Code, hosting and accounts are yours from day one; two weeks of fixes follow

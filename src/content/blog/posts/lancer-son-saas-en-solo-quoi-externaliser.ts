@@ -20,7 +20,7 @@ export const post: Record<Locale, Article> = {
       },
       {
         ul: [
-          "Le build de la V1 : un forfait à prix fixe (chez Khufu, une V1 en production en 7 jours pour 15 000 €, code source à vous) vous fait gagner des mois face à un recrutement ou un apprentissage from scratch.",
+          "Le build de la V1 : un forfait à prix fixe (chez Khufu, une V1 en production en 7 jours pour 11 000 €, code source à vous) vous fait gagner des mois face à un recrutement ou un apprentissage from scratch.",
           "L’infrastructure : hébergement, base de données, CI/CD, monitoring. Des plateformes comme Vercel ou Cloud Run gèrent le gros du travail — inutile de réinventer un DevOps maison.",
           "Les briques commoditisées : authentification, paiement, emails transactionnels. On les branche, on ne les recode pas de zéro.",
         ],
@@ -75,7 +75,7 @@ export const post: Record<Locale, Article> = {
       },
       {
         ul: [
-          'The V1 build: a fixed-price package (at Khufu, a production V1 in 7 days for €15,000, source code yours) saves you months versus hiring or learning from scratch.',
+          'The V1 build: a fixed-price package (at Khufu, a production V1 in 7 days for €11,000, source code yours) saves you months versus hiring or learning from scratch.',
           'Infrastructure: hosting, database, CI/CD, monitoring. Platforms like Vercel or Cloud Run handle the heavy lifting — no need to reinvent a homemade DevOps setup.',
           'Commoditised blocks: authentication, payments, transactional emails. You plug them in, you do not recode them from scratch.',
         ],
@@ -130,7 +130,7 @@ export const post: Record<Locale, Article> = {
       },
       {
         ul: [
-          'El desarrollo de la V1: un paquete de precio fijo (en Khufu, una V1 en producción en 7 días por 15 000 €, con el código fuente para ti) te ahorra meses frente a contratar o aprender desde cero.',
+          'El desarrollo de la V1: un paquete de precio fijo (en Khufu, una V1 en producción en 7 días por 11 000 €, con el código fuente para ti) te ahorra meses frente a contratar o aprender desde cero.',
           'La infraestructura: hosting, base de datos, CI/CD, monitorización. Plataformas como Vercel o Cloud Run se encargan del grueso del trabajo; no hace falta reinventar un DevOps casero.',
           'Los bloques ya estandarizados: autenticación, pagos, emails transaccionales. Se conectan, no se programan desde cero.',
         ],
@@ -185,7 +185,7 @@ export const post: Record<Locale, Article> = {
       },
       {
         ul: [
-          'Der V1-Build: Ein Festpreis-Paket (bei Khufu eine Produktions-V1 in 7 Tagen für 15 000 €, Quellcode gehört dir) spart dir Monate gegenüber Einstellen oder Lernen von Grund auf.',
+          'Der V1-Build: Ein Festpreis-Paket (bei Khufu eine Produktions-V1 in 7 Tagen für 11 000 €, Quellcode gehört dir) spart dir Monate gegenüber Einstellen oder Lernen von Grund auf.',
           'Die Infrastruktur: Hosting, Datenbank, CI/CD, Monitoring. Plattformen wie Vercel oder Cloud Run übernehmen die Hauptarbeit — kein Grund, ein eigenes DevOps neu zu erfinden.',
           'Standardisierte Bausteine: Authentifizierung, Zahlungen, transaktionale E-Mails. Man bindet sie an, man programmiert sie nicht von null.',
         ],
@@ -240,7 +240,7 @@ export const post: Record<Locale, Article> = {
       },
       {
         ul: [
-          'Lo sviluppo della V1: un pacchetto a prezzo fisso (in Khufu, una V1 in produzione in 7 giorni a 15 000 €, con il codice sorgente tuo) ti fa guadagnare mesi rispetto ad assumere o imparare da zero.',
+          'Lo sviluppo della V1: un pacchetto a prezzo fisso (in Khufu, una V1 in produzione in 7 giorni a 11 000 €, con il codice sorgente tuo) ti fa guadagnare mesi rispetto ad assumere o imparare da zero.',
           'L’infrastruttura: hosting, database, CI/CD, monitoraggio. Piattaforme come Vercel o Cloud Run gestiscono il grosso del lavoro — inutile reinventare un DevOps fatto in casa.',
           'I blocchi ormai standardizzati: autenticazione, pagamenti, email transazionali. Si collegano, non si riscrivono da zero.',
         ],
@@ -295,7 +295,7 @@ export const post: Record<Locale, Article> = {
       },
       {
         ul: [
-          'O desenvolvimento da V1: um pacote de preço fixo (na Khufu, uma V1 em produção em 7 dias por 15 000 €, com o código-fonte seu) poupa-lhe meses face a contratar ou aprender do zero.',
+          'O desenvolvimento da V1: um pacote de preço fixo (na Khufu, uma V1 em produção em 7 dias por 11 000 €, com o código-fonte seu) poupa-lhe meses face a contratar ou aprender do zero.',
           'A infraestrutura: hosting, base de dados, CI/CD, monitorização. Plataformas como Vercel ou Cloud Run tratam do grosso do trabalho — não há por que reinventar um DevOps caseiro.',
           'Os blocos já padronizados: autenticação, pagamentos, emails transacionais. Ligam-se, não se reescrevem do zero.',
         ],
@@ -350,7 +350,7 @@ export const post: Record<Locale, Article> = {
       },
       {
         ul: [
-          'De V1-build: een vaste prijs (bij Khufu een productie-V1 in 7 dagen voor € 15.000, broncode van jou) bespaart je maanden tegenover aanwerven of vanaf nul leren.',
+          'De V1-build: een vaste prijs (bij Khufu een productie-V1 in 7 dagen voor € 11.000, broncode van jou) bespaart je maanden tegenover aanwerven of vanaf nul leren.',
           'De infrastructuur: hosting, database, CI/CD, monitoring. Platformen als Vercel of Cloud Run doen het meeste werk — geen reden om een zelfgebouwde DevOps opnieuw uit te vinden.',
           'De gestandaardiseerde bouwstenen: authenticatie, betalingen, transactionele e-mails. Je koppelt ze aan, je codeert ze niet vanaf nul.',
         ],
@@ -405,7 +405,7 @@ export const post: Record<Locale, Article> = {
       },
       {
         ul: [
-          'بناء الـ V1: باقة بسعر ثابت (في Khufu، نسخة V1 جاهزة للإنتاج خلال 7 أيام مقابل 15,000 €، والكود المصدري ملك لك) توفّر عليك أشهرًا مقارنةً بالتوظيف أو التعلّم من الصفر.',
+          'بناء الـ V1: باقة بسعر ثابت (في Khufu، نسخة V1 جاهزة للإنتاج خلال 7 أيام مقابل 11,000 €، والكود المصدري ملك لك) توفّر عليك أشهرًا مقارنةً بالتوظيف أو التعلّم من الصفر.',
           'البنية التحتية: الاستضافة وقاعدة البيانات وCI/CD والمراقبة. منصات مثل Vercel أو Cloud Run تتولّى الجزء الأكبر من العمل — لا داعي لإعادة اختراع نظام DevOps خاص.',
           'المكونات القياسية الجاهزة: المصادقة والمدفوعات ورسائل البريد الإلكتروني المعاملاتية. تربطها فحسب، ولا تعيد برمجتها من الصفر.',
         ],
@@ -460,7 +460,7 @@ export const post: Record<Locale, Article> = {
       },
       {
         ul: [
-          'Budowa V1: pakiet w stałej cenie (w Khufu produkcyjna V1 w 7 dni za 15 000 €, kod źródłowy należy do ciebie) oszczędza ci miesiące w porównaniu z rekrutacją lub nauką od zera.',
+          'Budowa V1: pakiet w stałej cenie (w Khufu produkcyjna V1 w 7 dni za 11 000 €, kod źródłowy należy do ciebie) oszczędza ci miesiące w porównaniu z rekrutacją lub nauką od zera.',
           'Infrastruktura: hosting, baza danych, CI/CD, monitoring. Platformy takie jak Vercel czy Cloud Run wykonują większość pracy — nie ma po co wymyślać własnego DevOps na nowo.',
           'Elementy standardowe: uwierzytelnianie, płatności, e-maile transakcyjne. Podłączasz je, nie kodujesz od zera.',
         ],
@@ -515,7 +515,7 @@ export const post: Record<Locale, Article> = {
       },
       {
         ul: [
-          'V1 geliştirme: sabit fiyatlı bir paket (Khufu’da 7 günde üretime hazır bir V1, 15.000 €, kaynak kodu size ait) işe alım ya da sıfırdan öğrenmeye kıyasla size aylar kazandırır.',
+          'V1 geliştirme: sabit fiyatlı bir paket (Khufu’da 7 günde üretime hazır bir V1, 11.000 €, kaynak kodu size ait) işe alım ya da sıfırdan öğrenmeye kıyasla size aylar kazandırır.',
           'Altyapı: barındırma, veritabanı, CI/CD, izleme. Vercel veya Cloud Run gibi platformlar işin büyük kısmını üstlenir — kendi DevOps’unuzu yeniden icat etmenize gerek yok.',
           'Standartlaşmış yapı taşları: kimlik doğrulama, ödemeler, işlemsel e-postalar. Bunları bağlarsınız, sıfırdan yazmazsınız.',
         ],

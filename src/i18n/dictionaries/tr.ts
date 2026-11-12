@@ -218,11 +218,11 @@ export const tr: Dictionary = {
   sprintPage: {
     metaTitle: 'Sprint V1 — ürününüz 7 günde',
     metaDescription:
-      'Khufu’nun Sprint V1’i: 15.000 € sabit fiyatla, 7 günde tasarlanan, geliştirilen ve yayına alınan bir SaaS veya mobil uygulama.',
+      'Khufu’nun Sprint V1’i: 11.000 € sabit fiyatla, 7 günde tasarlanan, geliştirilen ve yayına alınan bir SaaS veya mobil uygulama.',
     kicker: 'Amiral gemisi teklif',
     title: 'V1’iniz 7 günde. Sabit fiyat.',
     subtitle:
-      'Ana teklifimiz: SaaS’ınızı veya mobil uygulamanızı bir haftada tasarlar, geliştirir ve yayına alırız — kapsam önceden belirlenir, 15.000 € her şey dahil.',
+      'Ana teklifimiz: SaaS’ınızı veya mobil uygulamanızı bir haftada tasarlar, geliştirir ve yayına alırız — kapsam önceden belirlenir, 11.000 € her şey dahil.',
     includesTitle: 'Neler dahil',
     processTitle: 'Gün gün akış',
     ctaTitle: 'V1’inizi başlatmaya hazır mısınız?',

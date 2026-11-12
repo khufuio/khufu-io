@@ -222,11 +222,11 @@ export const fr = {
   sprintPage: {
     metaTitle: 'Sprint V1 — votre produit en 7 jours',
     metaDescription:
-      'Le Sprint V1 de Khufu : un SaaS ou une app mobile conçu, développé et mis en production en 7 jours, pour un prix fixe de 15 000 €.',
+      'Le Sprint V1 de Khufu : un SaaS ou une app mobile conçu, développé et mis en production en 7 jours, pour un prix fixe de 11 000 €.',
     kicker: 'Offre phare',
     title: 'Votre V1 en 7 jours. Prix fixe.',
     subtitle:
-      'Notre offre principale : on conçoit, développe et met en production votre SaaS ou votre app mobile en une semaine — périmètre défini à l’avance, 15 000 € tout compris.',
+      'Notre offre principale : on conçoit, développe et met en production votre SaaS ou votre app mobile en une semaine — périmètre défini à l’avance, 11 000 € tout compris.',
     includesTitle: 'Ce qui est inclus',
     processTitle: 'Le déroulé, jour par jour',
     ctaTitle: 'Prêt à lancer votre V1 ?',

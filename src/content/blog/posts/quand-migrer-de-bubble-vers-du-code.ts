@@ -46,7 +46,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Combien de temps, combien ça coûte" },
       {
-        p: "Pour un produit no-code arrivé à maturité, une V1 en vrai code propre et prête pour la production se livre en 7 jours, à prix fixe de 15 000 €, code source inclus. Vous récupérez une base qui scale, sans facture qui grimpe avec vos utilisateurs, et sans réécriture à prévoir dans six mois.",
+        p: "Pour un produit no-code arrivé à maturité, une V1 en vrai code propre et prête pour la production se livre en 7 jours, à prix fixe de 11 000 €, code source inclus. Vous récupérez une base qui scale, sans facture qui grimpe avec vos utilisateurs, et sans réécriture à prévoir dans six mois.",
       },
     ],
   },
@@ -94,7 +94,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'How long, how much it costs' },
       {
-        p: 'For a mature no-code product, a V1 in clean, production-ready real code ships in 7 days, at a fixed price of €15,000, source code included. You get a base that scales, with no bill climbing alongside your users, and no rewrite to plan six months down the line.',
+        p: 'For a mature no-code product, a V1 in clean, production-ready real code ships in 7 days, at a fixed price of €11,000, source code included. You get a base that scales, with no bill climbing alongside your users, and no rewrite to plan six months down the line.',
       },
     ],
   },
@@ -142,7 +142,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Cuánto tiempo, cuánto cuesta' },
       {
-        p: 'Para un producto no-code que ha madurado, una V1 en código real limpio y listo para producción se entrega en 7 días, a un precio fijo de 15.000 €, código fuente incluido. Recuperas una base que escala, sin factura que suba con tus usuarios y sin reescritura prevista dentro de seis meses.',
+        p: 'Para un producto no-code que ha madurado, una V1 en código real limpio y listo para producción se entrega en 7 días, a un precio fijo de 11.000 €, código fuente incluido. Recuperas una base que escala, sin factura que suba con tus usuarios y sin reescritura prevista dentro de seis meses.',
       },
     ],
   },
@@ -190,7 +190,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Wie lange, wie viel es kostet' },
       {
-        p: 'Für ein ausgereiftes No-Code-Produkt wird eine V1 in sauberem, produktionsreifem echtem Code in 7 Tagen geliefert, zum Festpreis von 15.000 €, Quellcode inklusive. Sie erhalten eine skalierbare Basis, ohne mit Ihren Nutzern steigende Rechnung und ohne in sechs Monaten anstehende Neuentwicklung.',
+        p: 'Für ein ausgereiftes No-Code-Produkt wird eine V1 in sauberem, produktionsreifem echtem Code in 7 Tagen geliefert, zum Festpreis von 11.000 €, Quellcode inklusive. Sie erhalten eine skalierbare Basis, ohne mit Ihren Nutzern steigende Rechnung und ohne in sechs Monaten anstehende Neuentwicklung.',
       },
     ],
   },
@@ -238,7 +238,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Quanto tempo, quanto costa' },
       {
-        p: 'Per un prodotto no-code ormai maturo, una V1 in codice vero pulito e pronto per la produzione si consegna in 7 giorni, a prezzo fisso di 15.000 €, codice sorgente incluso. Recuperi una base che scala, senza fattura che sale con i tuoi utenti e senza riscrittura da prevedere tra sei mesi.',
+        p: 'Per un prodotto no-code ormai maturo, una V1 in codice vero pulito e pronto per la produzione si consegna in 7 giorni, a prezzo fisso di 11.000 €, codice sorgente incluso. Recuperi una base che scala, senza fattura che sale con i tuoi utenti e senza riscrittura da prevedere tra sei mesi.',
       },
     ],
   },
@@ -286,7 +286,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Quanto tempo, quanto custa' },
       {
-        p: 'Para um produto no-code já maduro, uma V1 em código real limpo e pronto para produção é entregue em 7 dias, a preço fixo de 15.000 €, código-fonte incluído. Você recupera uma base que escala, sem fatura que sobe com seus usuários e sem reescrita prevista daqui a seis meses.',
+        p: 'Para um produto no-code já maduro, uma V1 em código real limpo e pronto para produção é entregue em 7 dias, a preço fixo de 11.000 €, código-fonte incluído. Você recupera uma base que escala, sem fatura que sobe com seus usuários e sem reescrita prevista daqui a seis meses.',
       },
     ],
   },
@@ -334,7 +334,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Hoelang, hoeveel het kost' },
       {
-        p: 'Voor een volwassen no-code product wordt een V1 in schone, productieklare echte code in 7 dagen geleverd, tegen een vaste prijs van 15.000 €, broncode inbegrepen. Je krijgt een basis die schaalt, zonder factuur die met je gebruikers meestijgt en zonder herschrijving over zes maanden.',
+        p: 'Voor een volwassen no-code product wordt een V1 in schone, productieklare echte code in 7 dagen geleverd, tegen een vaste prijs van 11.000 €, broncode inbegrepen. Je krijgt een basis die schaalt, zonder factuur die met je gebruikers meestijgt en zonder herschrijving over zes maanden.',
       },
     ],
   },
@@ -382,7 +382,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'كم من الوقت، وكم تكلفته' },
       {
-        p: 'بالنسبة لمنتج no-code بلغ نضجه، تُسلَّم V1 بكود حقيقي نظيف وجاهز للإنتاج خلال 7 أيام، بسعر ثابت قدره 15000 يورو، مع الكود المصدري. تحصل على قاعدة قابلة للتوسع، دون فاتورة ترتفع مع مستخدميك، ودون إعادة كتابة متوقعة بعد ستة أشهر.',
+        p: 'بالنسبة لمنتج no-code بلغ نضجه، تُسلَّم V1 بكود حقيقي نظيف وجاهز للإنتاج خلال 7 أيام، بسعر ثابت قدره 11000 يورو، مع الكود المصدري. تحصل على قاعدة قابلة للتوسع، دون فاتورة ترتفع مع مستخدميك، ودون إعادة كتابة متوقعة بعد ستة أشهر.',
       },
     ],
   },
@@ -430,7 +430,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Ile czasu, ile kosztuje' },
       {
-        p: 'Dla dojrzałego produktu no-code V1 w czystym, gotowym do produkcji prawdziwym kodzie dostarczamy w 7 dni, w stałej cenie 15 000 €, z kodem źródłowym. Otrzymujesz bazę, która skaluje się, bez rachunku rosnącego wraz z użytkownikami i bez przepisywania planowanego za pół roku.',
+        p: 'Dla dojrzałego produktu no-code V1 w czystym, gotowym do produkcji prawdziwym kodzie dostarczamy w 7 dni, w stałej cenie 11 000 €, z kodem źródłowym. Otrzymujesz bazę, która skaluje się, bez rachunku rosnącego wraz z użytkownikami i bez przepisywania planowanego za pół roku.',
       },
     ],
   },
@@ -478,7 +478,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Ne kadar sürer, ne kadara mal olur' },
       {
-        p: "Olgunlaşmış bir no-code ürün için temiz, üretime hazır gerçek kodla bir V1, kaynak kodu dahil, 15.000 € sabit fiyata 7 günde teslim edilir. Kullanıcılarınızla birlikte artan bir fatura olmadan ve altı ay sonra planlanacak bir yeniden yazım olmadan, ölçeklenen bir temel elde edersiniz.",
+        p: "Olgunlaşmış bir no-code ürün için temiz, üretime hazır gerçek kodla bir V1, kaynak kodu dahil, 11.000 € sabit fiyata 7 günde teslim edilir. Kullanıcılarınızla birlikte artan bir fatura olmadan ve altı ay sonra planlanacak bir yeniden yazım olmadan, ölçeklenen bir temel elde edersiniz.",
       },
     ],
   },

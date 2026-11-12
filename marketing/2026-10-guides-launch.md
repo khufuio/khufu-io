@@ -171,7 +171,7 @@ Toujours `www.` : l'apex coûte une redirection de plus.
 
 #### LI-3 — build vs buy · EN
 
-> Most founders compare a $17,000 fixed quote with a $600/day freelancer and conclude the freelancer is cheaper.
+> Most founders compare a $12,000 fixed quote with a $600/day freelancer and conclude the freelancer is cheaper.
 >
 > Run it to a realistic 45 days: $27,000. Plus your own hours managing it. Spread over ten weeks instead of one.
 >
@@ -184,7 +184,7 @@ Toujours `www.` : l'apex coûte une redirection de plus.
 
 #### LI-3 — build vs buy · FR
 
-> La plupart des fondateurs comparent un devis fixe de 17 000 $ à un freelance à 600 $/jour, et concluent que le freelance coûte moins cher.
+> La plupart des fondateurs comparent un devis fixe de 12 000 $ à un freelance à 600 $/jour, et concluent que le freelance coûte moins cher.
 >
 > Poussez le calcul jusqu'à 45 jours, un délai réaliste : 27 000 $. Plus vos propres heures à le piloter. Étalés sur dix semaines au lieu d'une.
 >
@@ -195,7 +195,7 @@ Toujours `www.` : l'apex coûte une redirection de plus.
 >
 > Gratuit contre un email.
 
-> Les montants de LI-3 sont ceux de l'encadré du guide (« The comparison people actually make »). C'est un **exemple de calcul** (600 × 45 = 27 000), pas une statistique de marché. 17 000 $ est le prix affiché du Sprint V1.
+> Les montants de LI-3 sont ceux de l'encadré du guide (« The comparison people actually make »). C'est un **exemple de calcul** (600 × 45 = 27 000), pas une statistique de marché. 12 000 $ est le prix affiché du Sprint V1.
 
 #### LI-4 — le playbook · EN
 

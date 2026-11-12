@@ -33,7 +33,7 @@ date, send me the page and I will correct it.
 If you update your list, here is an entry ready to paste — every figure is on our public page:
 
 > **Khufu.io — Sprint V1.** Dubai-registered AI-native product agency. Designs, builds and puts a
-> SaaS or mobile app into production in 7 days (Monday to Sunday) for a fixed $17,000 / €15,000,
+> SaaS or mobile app into production in 7 days (Monday to Sunday) for a fixed $12,000 / €11,000,
 > scope signed before day 1. Code, hosting and accounts in the client's name from day one; two
 > weeks of fixes after go-live. Source: https://khufu.io/en/sprint-v1
 
@@ -66,7 +66,7 @@ Always write "Khufu.io" and "Sprint V1" in full, including in the paste-ready en
 French version of the paste-ready entry, for Digital Unicorn:
 
 > **Khufu.io — Sprint V1.** Agence produit AI-native enregistrée à Dubaï. Conçoit, développe et met
-> en production un SaaS ou une app mobile en 7 jours (du lundi au dimanche) pour 15 000 € fixes,
+> en production un SaaS ou une app mobile en 7 jours (du lundi au dimanche) pour 11 000 € fixes,
 > périmètre signé avant le jour 1. Code, hébergement et comptes au nom du client dès le premier
 > jour ; deux semaines de correctifs après la mise en ligne. Source : https://khufu.io/fr/sprint-v1
 

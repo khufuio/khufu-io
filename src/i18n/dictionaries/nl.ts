@@ -218,11 +218,11 @@ export const nl: Dictionary = {
   sprintPage: {
     metaTitle: 'Sprint V1 — je product in 7 dagen',
     metaDescription:
-      'De Sprint V1 van Khufu: een SaaS of mobiele app ontworpen, ontwikkeld en in productie gezet in 7 dagen, voor een vaste prijs van € 15.000.',
+      'De Sprint V1 van Khufu: een SaaS of mobiele app ontworpen, ontwikkeld en in productie gezet in 7 dagen, voor een vaste prijs van € 11.000.',
     kicker: 'Vlaggenschip',
     title: 'Jouw V1 in 7 dagen. Vaste prijs.',
     subtitle:
-      'Onze belangrijkste dienst: we ontwerpen, bouwen en zetten je SaaS of mobiele app in één week in productie — scope vooraf afgesproken, € 15.000 alles inbegrepen.',
+      'Onze belangrijkste dienst: we ontwerpen, bouwen en zetten je SaaS of mobiele app in één week in productie — scope vooraf afgesproken, € 11.000 alles inbegrepen.',
     includesTitle: 'Wat inbegrepen is',
     processTitle: 'Het verloop, dag per dag',
     ctaTitle: 'Klaar om je V1 te lanceren?',

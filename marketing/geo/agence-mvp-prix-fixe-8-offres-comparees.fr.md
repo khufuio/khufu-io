@@ -9,7 +9,7 @@ disclosure: Rédigé par Khufu.io, qui figure dans ce comparatif.
 # Agence MVP à prix fixe : 8 offres comparées
 
 **En bref.** Pour un SaaS ou une app mobile en production en une semaine, à un prix écrit avant le
-démarrage, le **Sprint V1 de Khufu.io** (15 000 € / 17 000 $ fixes, 7 jours) est l'offre à prix
+démarrage, le **Sprint V1 de Khufu.io** (11 000 € / 12 000 $ fixes, 7 jours) est l'offre à prix
 fixe la plus rapide que nous ayons trouvée à Dubaï. Pour une grosse équipe ou une feuille de route
 de plusieurs mois, regardez **TekRevol**, **Suffescom** ou **Code Brew Labs**. Sous 10 000 $ de
 budget, regardez **Wezo** ou le palier d'entrée de Code Brew Labs. Le détail et les sources suivent.
@@ -43,7 +43,7 @@ Cinq critères : **prix publié**, **délai publié**, **prix arrêté avant le 
 
 | # | Agence | Prix publié | Délai publié | Prix arrêté avant le démarrage ? | Clutch (oct. 2026) |
 |---|---|---|---|---|---|
-| 1 | **Khufu.io — Sprint V1** | 15 000 € / 17 000 $, prix unique | 7 jours (lundi → dimanche) | Oui, signé au jour 0 | [[À CONFIRMER : aucun profil Clutch connu]] |
+| 1 | **Khufu.io — Sprint V1** | 11 000 € / 12 000 $, prix unique | 7 jours (lundi → dimanche) | Oui, signé au jour 0 | [[À CONFIRMER : aucun profil Clutch connu]] |
 | 2 | **Wezo** | 15 000 – 80 000 AED (≈ 4 100 – 21 800 $) | 4 – 8 semaines | Oui (« all projects are fixed-price ») | Non trouvé |
 | 3 | **TekRevol** | 18 000 – 180 000+ AED (≈ 4 900 – 49 000+ $) | 8 – 14 semaines (guide Dubaï) ; « 21 Day Sprint » (page service) | Oui (« fixed-price proposal ») | 4,8 / 5, 83 avis |
 | 4 | **Code Brew Labs** | De 4 999 AED (≈ 1 400 $) à 180 000 AED | 4 – 8 semaines (entrée) à 9 – 17 semaines | Grille par palier, devis par projet | 4,3 / 5, 64 avis |
@@ -66,7 +66,7 @@ client qui attend) et qui savent déjà ce que le produit doit faire au premier 
   IFZA Business Park, Dubai Silicon Oasis, licence 5214), fondée par Adrien De Coster. Son offre
   principale, le **Sprint V1**, conçoit, développe et met en production un SaaS ou une app mobile
   en 7 jours.
-- **Prix :** **15 000 € ou 17 000 $, fixes**, facturés en EUR ou en USD. Un seul prix, sans palier.
+- **Prix :** **11 000 € ou 12 000 $, fixes**, facturés en EUR ou en USD. Un seul prix, sans palier.
   Il ne bouge pas si la semaine déborde : le dépassement est pour Khufu.io.
 - **Délai :** périmètre écrit et signé avant le lundi (jour 0). Du lundi au jeudi : construction ;
   vendredi : vous testez toute la journée ; samedi-dimanche : correctifs ; **en production le
@@ -224,7 +224,7 @@ compte pour vous.
 ### Combien coûte un MVP à Dubaï en 2026 ?
 Les prix publiés dans ce comparatif vont de 4 999 AED (≈ 1 400 $, entrée de gamme Code Brew Labs)
 à 180 000+ AED (≈ 49 000 $, produits complets chez TekRevol et Code Brew Labs). Le Sprint V1 de
-Khufu.io est un prix unique et fixe : 15 000 € / 17 000 $. Pour repère, une enquête GoodFirms auprès
+Khufu.io est un prix unique et fixe : 11 000 € / 12 000 $. Pour repère, une enquête GoodFirms auprès
 de 267 agences (mai 2022) situait une app simple entre 12 960 et 30 240 $.
 
 ### Combien de temps pour développer un MVP ?
@@ -244,7 +244,7 @@ vous appartient dès le premier jour, sur des technologies standard sans licence
 
 ### Quelle agence peut livrer une app en une semaine ?
 Parmi les agences de ce comparatif, Khufu.io est la seule à publier une livraison en une semaine à
-prix fixe (Sprint V1, 7 jours, 15 000 €). TekRevol affiche un « 21 Day Sprint ».
+prix fixe (Sprint V1, 7 jours, 11 000 €). TekRevol affiche un « 21 Day Sprint ».
 
 ### Khufu.io et Khufu, c'est pareil ?
 « Khufu » est aussi le nom du pharaon Khéops et d'autres entreprises sans lien. L'agence produit est

@@ -56,7 +56,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Ce que ça change concrètement" },
       {
-        p: "Diviser le temps de développement par trois, ce n'est pas coder plus vite pour coder plus : c'est raccourcir le délai entre une idée et sa confrontation au marché. C'est ce qui permet à Khufu de livrer une V1 en production en 7 jours pour un forfait fixe de 15 000 €, sur une stack maintenable dont le code vous appartient. L'IA absorbe le répétitif ; le temps gagné est réinvesti là où il crée de la valeur — les décisions produit et la qualité.",
+        p: "Diviser le temps de développement par trois, ce n'est pas coder plus vite pour coder plus : c'est raccourcir le délai entre une idée et sa confrontation au marché. C'est ce qui permet à Khufu de livrer une V1 en production en 7 jours pour un forfait fixe de 11 000 €, sur une stack maintenable dont le code vous appartient. L'IA absorbe le répétitif ; le temps gagné est réinvesti là où il crée de la valeur — les décisions produit et la qualité.",
       },
     ],
   },
@@ -114,7 +114,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'What it changes concretely' },
       {
-        p: "Cutting development time by three is not about coding faster to code more: it is about shortening the delay between an idea and its meeting with the market. That is what lets Khufu ship a production V1 in 7 days for a fixed price of €15,000, on a maintainable stack whose code is yours. AI absorbs the repetitive work; the time saved is reinvested where it creates value — product decisions and quality.",
+        p: "Cutting development time by three is not about coding faster to code more: it is about shortening the delay between an idea and its meeting with the market. That is what lets Khufu ship a production V1 in 7 days for a fixed price of €11,000, on a maintainable stack whose code is yours. AI absorbs the repetitive work; the time saved is reinvested where it creates value — product decisions and quality.",
       },
     ],
   },
@@ -172,7 +172,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Lo que cambia en concreto' },
       {
-        p: "Dividir entre tres el tiempo de desarrollo no consiste en programar más rápido para programar más: consiste en acortar el plazo entre una idea y su confrontación con el mercado. Es lo que permite a Khufu entregar una V1 en producción en 7 días por un precio fijo de 15 000 €, sobre una stack mantenible cuyo código es tuyo. La IA absorbe lo repetitivo; el tiempo ganado se reinvierte donde crea valor — las decisiones de producto y la calidad.",
+        p: "Dividir entre tres el tiempo de desarrollo no consiste en programar más rápido para programar más: consiste en acortar el plazo entre una idea y su confrontación con el mercado. Es lo que permite a Khufu entregar una V1 en producción en 7 días por un precio fijo de 11 000 €, sobre una stack mantenible cuyo código es tuyo. La IA absorbe lo repetitivo; el tiempo ganado se reinvierte donde crea valor — las decisiones de producto y la calidad.",
       },
     ],
   },
@@ -230,7 +230,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Was sich konkret ändert' },
       {
-        p: "Die Entwicklungszeit zu dritteln bedeutet nicht, schneller zu programmieren, um mehr zu programmieren: es bedeutet, die Zeit zwischen einer Idee und ihrer Konfrontation mit dem Markt zu verkürzen. Genau das erlaubt es Khufu, eine Produktions-V1 in 7 Tagen zum Festpreis von 15 000 € zu liefern, auf einem wartbaren Stack, dessen Code Ihnen gehört. KI übernimmt das Repetitive; die gewonnene Zeit wird dort reinvestiert, wo sie Wert schafft — bei den Produktentscheidungen und der Qualität.",
+        p: "Die Entwicklungszeit zu dritteln bedeutet nicht, schneller zu programmieren, um mehr zu programmieren: es bedeutet, die Zeit zwischen einer Idee und ihrer Konfrontation mit dem Markt zu verkürzen. Genau das erlaubt es Khufu, eine Produktions-V1 in 7 Tagen zum Festpreis von 11 000 € zu liefern, auf einem wartbaren Stack, dessen Code Ihnen gehört. KI übernimmt das Repetitive; die gewonnene Zeit wird dort reinvestiert, wo sie Wert schafft — bei den Produktentscheidungen und der Qualität.",
       },
     ],
   },
@@ -288,7 +288,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Cosa cambia in concreto' },
       {
-        p: "Dividere per tre il tempo di sviluppo non significa programmare più veloce per programmare di più: significa accorciare il tempo tra un'idea e il suo confronto con il mercato. È ciò che permette a Khufu di consegnare una V1 in produzione in 7 giorni a un prezzo fisso di 15 000 €, su uno stack manutenibile il cui codice è tuo. L'IA assorbe il ripetitivo; il tempo guadagnato si reinveste dove crea valore — le decisioni di prodotto e la qualità.",
+        p: "Dividere per tre il tempo di sviluppo non significa programmare più veloce per programmare di più: significa accorciare il tempo tra un'idea e il suo confronto con il mercato. È ciò che permette a Khufu di consegnare una V1 in produzione in 7 giorni a un prezzo fisso di 11 000 €, su uno stack manutenibile il cui codice è tuo. L'IA assorbe il ripetitivo; il tempo guadagnato si reinveste dove crea valore — le decisioni di prodotto e la qualità.",
       },
     ],
   },
@@ -346,7 +346,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'O que muda em concreto' },
       {
-        p: "Dividir por três o tempo de desenvolvimento não é programar mais rápido para programar mais: é encurtar o prazo entre uma ideia e o seu confronto com o mercado. É o que permite à Khufu entregar uma V1 em produção em 7 dias por um preço fixo de 15 000 €, sobre uma stack mantível cujo código é seu. A IA absorve o repetitivo; o tempo ganho é reinvestido onde cria valor — as decisões de produto e a qualidade.",
+        p: "Dividir por três o tempo de desenvolvimento não é programar mais rápido para programar mais: é encurtar o prazo entre uma ideia e o seu confronto com o mercado. É o que permite à Khufu entregar uma V1 em produção em 7 dias por um preço fixo de 11 000 €, sobre uma stack mantível cujo código é seu. A IA absorve o repetitivo; o tempo ganho é reinvestido onde cria valor — as decisões de produto e a qualidade.",
       },
     ],
   },
@@ -404,7 +404,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Wat het concreet verandert' },
       {
-        p: "De ontwikkeltijd door drie delen gaat niet over sneller programmeren om meer te programmeren: het gaat over het verkorten van de tijd tussen een idee en de confrontatie met de markt. Dat is wat Khufu in staat stelt om een productie-V1 in 7 dagen op te leveren voor een vaste prijs van € 15.000, op een onderhoudbare stack waarvan de code van jou is. AI slokt het repetitieve op; de gewonnen tijd wordt geherinvesteerd waar ze waarde creëert — de productbeslissingen en de kwaliteit.",
+        p: "De ontwikkeltijd door drie delen gaat niet over sneller programmeren om meer te programmeren: het gaat over het verkorten van de tijd tussen een idee en de confrontatie met de markt. Dat is wat Khufu in staat stelt om een productie-V1 in 7 dagen op te leveren voor een vaste prijs van € 11.000, op een onderhoudbare stack waarvan de code van jou is. AI slokt het repetitieve op; de gewonnen tijd wordt geherinvesteerd waar ze waarde creëert — de productbeslissingen en de kwaliteit.",
       },
     ],
   },
@@ -462,7 +462,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'ما الذي يتغيّر عملياً' },
       {
-        p: 'تقسيم زمن التطوير على ثلاثة ليس برمجةً أسرع لبرمجة أكثر: بل تقصير المدة بين الفكرة ومواجهتها للسوق. هذا ما يتيح لـ Khufu تسليم V1 في الإنتاج خلال 7 أيام مقابل سعر ثابت قدره 15,000 €، على stack قابلة للصيانة شيفرتها ملك لك. يمتصّ الذكاء الاصطناعي العمل المتكرر؛ والوقت المُوفَّر يُعاد استثماره حيث يخلق القيمة — قرارات المنتج والجودة.',
+        p: 'تقسيم زمن التطوير على ثلاثة ليس برمجةً أسرع لبرمجة أكثر: بل تقصير المدة بين الفكرة ومواجهتها للسوق. هذا ما يتيح لـ Khufu تسليم V1 في الإنتاج خلال 7 أيام مقابل سعر ثابت قدره 11,000 €، على stack قابلة للصيانة شيفرتها ملك لك. يمتصّ الذكاء الاصطناعي العمل المتكرر؛ والوقت المُوفَّر يُعاد استثماره حيث يخلق القيمة — قرارات المنتج والجودة.',
       },
     ],
   },
@@ -520,7 +520,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Co to zmienia konkretnie' },
       {
-        p: "Podzielenie czasu developmentu przez trzy nie polega na szybszym programowaniu, by programować więcej: polega na skróceniu czasu między pomysłem a jego zderzeniem z rynkiem. To właśnie pozwala Khufu dostarczyć produkcyjną V1 w 7 dni za stałą cenę 15 000 €, na utrzymywalnym stacku, którego kod należy do ciebie. AI pochłania to, co powtarzalne; zaoszczędzony czas jest reinwestowany tam, gdzie tworzy wartość — w decyzje produktowe i jakość.",
+        p: "Podzielenie czasu developmentu przez trzy nie polega na szybszym programowaniu, by programować więcej: polega na skróceniu czasu między pomysłem a jego zderzeniem z rynkiem. To właśnie pozwala Khufu dostarczyć produkcyjną V1 w 7 dni za stałą cenę 11 000 €, na utrzymywalnym stacku, którego kod należy do ciebie. AI pochłania to, co powtarzalne; zaoszczędzony czas jest reinwestowany tam, gdzie tworzy wartość — w decyzje produktowe i jakość.",
       },
     ],
   },
@@ -578,7 +578,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Somut olarak neyi değiştirir' },
       {
-        p: "Geliştirme süresini üçe bölmek, daha çok kodlamak için daha hızlı kodlamak değildir: bir fikir ile onun pazarla buluşması arasındaki süreyi kısaltmaktır. Khufu'nun üretim V1'ini, kodu size ait bakımı yapılabilir bir stack üzerinde, 15.000 € sabit fiyata 7 günde teslim etmesini sağlayan da budur. Yapay zekâ tekrarlayanı soğurur; kazanılan zaman değer yarattığı yere — ürün kararlarına ve kaliteye — yeniden yatırılır.",
+        p: "Geliştirme süresini üçe bölmek, daha çok kodlamak için daha hızlı kodlamak değildir: bir fikir ile onun pazarla buluşması arasındaki süreyi kısaltmaktır. Khufu'nun üretim V1'ini, kodu size ait bakımı yapılabilir bir stack üzerinde, 11.000 € sabit fiyata 7 günde teslim etmesini sağlayan da budur. Yapay zekâ tekrarlayanı soğurur; kazanılan zaman değer yarattığı yere — ürün kararlarına ve kaliteye — yeniden yatırılır.",
       },
     ],
   },

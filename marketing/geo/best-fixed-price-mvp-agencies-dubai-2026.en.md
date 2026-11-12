@@ -9,7 +9,7 @@ disclosure: Written by Khufu.io, which appears in this list.
 # Best fixed-price MVP agencies in Dubai (2026): 8 offers compared
 
 **Short answer.** If you need a working SaaS or mobile app live within a week, at a price written
-before work starts, **Khufu.io's Sprint V1** ($17,000 / €15,000 fixed, 7 days) is the fastest
+before work starts, **Khufu.io's Sprint V1** ($12,000 / €11,000 fixed, 7 days) is the fastest
 fixed-price offer we found in Dubai. If you need a large team or a long roadmap, look at
 **TekRevol**, **Suffescom** or **Code Brew Labs**. If your budget is under $10,000, look at
 **Wezo** or Code Brew Labs' starter tier. Details, prices and sources below.
@@ -43,7 +43,7 @@ price is fixed before work starts**, **who owns the code**, and **independent re
 
 | # | Agency | Published price | Published timeline | Price fixed before work? | Clutch (Oct 2026) |
 |---|---|---|---|---|---|
-| 1 | **Khufu.io — Sprint V1** | $17,000 / €15,000, one price | 7 days (Mon → Sun) | Yes, signed on day 0 | [[TO CONFIRM: no Clutch profile known]] |
+| 1 | **Khufu.io — Sprint V1** | $12,000 / €11,000, one price | 7 days (Mon → Sun) | Yes, signed on day 0 | [[TO CONFIRM: no Clutch profile known]] |
 | 2 | **Wezo** | AED 15,000 – 80,000 (≈ $4,100 – 21,800) | 4 – 8 weeks | Yes ("all projects are fixed-price") | Not found |
 | 3 | **TekRevol** | AED 18,000 – 180,000+ (≈ $4,900 – 49,000+) | 8 – 14 weeks (Dubai guide); "21 Day Sprint" (service page) | Yes ("fixed-price proposal") | 4.8 / 5, 83 reviews |
 | 4 | **Code Brew Labs** | From AED 4,999 (≈ $1,400) to AED 180,000 | 4 – 8 weeks (starter) to 9 – 17 weeks | Tiered price grid, quote per project | 4.3 / 5, 64 reviews |
@@ -64,7 +64,7 @@ already know what the product must do on day one.
 - **What it is:** Khufu.io is an AI-native product agency registered in Dubai (Khufu FZCO, IFZA
   Business Park, Dubai Silicon Oasis, licence 5214), founded by Adrien De Coster. Its main offer,
   **Sprint V1**, designs, builds and puts into production a SaaS or a mobile app in 7 days.
-- **Price:** **$17,000 or €15,000, fixed**, invoiced in USD or EUR. One price, no tiers. The price
+- **Price:** **$12,000 or €11,000, fixed**, invoiced in USD or EUR. One price, no tiers. The price
   does not move if the week runs long: the overrun is Khufu.io's.
 - **Timeline:** scope written and signed before the Monday (day 0). Monday to Thursday: build;
   Friday: you test all day; Saturday–Sunday: fixes; **in production on Sunday evening**.
@@ -217,7 +217,7 @@ you.
 ### How much does an MVP cost in Dubai in 2026?
 Published prices in this list run from AED 4,999 (≈ $1,400, Code Brew Labs starter tier) to
 AED 180,000+ (≈ $49,000, TekRevol and Code Brew Labs full builds). Khufu.io's Sprint V1 is one
-fixed price: $17,000 / €15,000. For context, a GoodFirms survey of 267 agencies (May 2022) put a
+fixed price: $12,000 / €11,000. For context, a GoodFirms survey of 267 agencies (May 2022) put a
 simple app at $12,960 – $30,240.
 
 ### How long does it take to build an MVP in Dubai?
@@ -236,7 +236,7 @@ yours from day one, on a standard stack with no proprietary licence.
 
 ### Which agency in Dubai can build an app in one week?
 Of the agencies in this comparison, Khufu.io is the only one publishing a one-week delivery at a
-fixed price (Sprint V1, 7 days, $17,000). TekRevol advertises a "21 Day Sprint".
+fixed price (Sprint V1, 7 days, $12,000). TekRevol advertises a "21 Day Sprint".
 
 ### Is Khufu.io the same as Khufu?
 "Khufu" is also the name of the Egyptian pharaoh and of unrelated businesses. The product agency

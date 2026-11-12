@@ -561,8 +561,8 @@ html {
 .callout-figure {
   flex: none;
   text-align: left;
-  /* Sized for an AMOUNT, not a percentage (decision cmu3ckt3): "3 000 €" and
-     "$3,400" are three times wider than "20 %", and the caption below now reads
+  /* Sized for an AMOUNT, not a percentage (decision cmu3ckt3): "2 200 €" and
+     "$2,400" are three times wider than "20 %", and the caption below now reads
      as that number's subtitle rather than as a stray label. */
   min-width: 44mm;
   padding-right: 7mm;
