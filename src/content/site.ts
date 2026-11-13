@@ -124,6 +124,8 @@ export const routes = {
   contact: 'contact',
   legal: 'mentions-legales',
   privacy: 'privacy',
+  // Blind Labyrinth app privacy policy, the store listings' URL (todo cmwectyu).
+  labyrinthPrivacy: 'labyrinth/privacy',
 } as const
 
 export type RouteKey = keyof typeof routes

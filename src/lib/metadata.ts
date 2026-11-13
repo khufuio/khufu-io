@@ -13,18 +13,21 @@ export function buildMetadata({
   slug,
   title,
   description,
+  alternateLocales = locales,
 }: {
   locale: Locale
   routeKey: RouteKey
   slug?: string
   title: string
   description: string
+  /** Locales the page is actually written in — the hreflang set. Defaults to all. */
+  alternateLocales?: readonly Locale[]
 }): Metadata {
   const path = href(locale, routeKey, slug)
   const canonical = `${site.url}${path}`
 
   const languages = Object.fromEntries(
-    locales.map((l) => [localeHrefLang[l], `${site.url}${href(l, routeKey, slug)}`]),
+    alternateLocales.map((l) => [localeHrefLang[l], `${site.url}${href(l, routeKey, slug)}`]),
   )
 
   return {

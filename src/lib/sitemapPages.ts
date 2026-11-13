@@ -5,6 +5,7 @@ import { projects } from '@/content/projects'
 import { comparisons, useCases } from '@/content/geo'
 import { articleSlugs } from '@/content/articles'
 import { leadMagnets } from '@/content/leadMagnets'
+import { labyrinthPrivacyLocales } from '@/content/labyrinthPrivacy'
 import { sprintSlots } from '@/lib/sprintSlots'
 import { computeSources, type SitemapPage, type SourcesManifest } from '@/lib/sitemapLastModified'
 
@@ -16,8 +17,9 @@ import { computeSources, type SitemapPage, type SourcesManifest } from '@/lib/si
  */
 export type SitemapEntry = MetadataRoute.Sitemap[number] & SitemapPage
 
-// Top-level routes that exist for every locale.
-const topRoutes = Object.keys(routes) as RouteKey[]
+// Top-level routes that exist for every locale. The Labyrinth privacy policy is
+// written in three locales only, so it is listed on its own below.
+const topRoutes = (Object.keys(routes) as RouteKey[]).filter((k) => k !== 'labyrinthPrivacy')
 
 // Legal pages are low-value for crawl/ranking — keep them indexable but deprioritized.
 const lowPriorityRoutes = new Set<RouteKey>(['legal', 'privacy'])
@@ -38,10 +40,10 @@ function pages(): SitemapEntry[] {
   // `x-default` must match what the pages themselves declare (see lib/metadata.ts):
   // Google treats sitemap and on-page hreflang as one set, and a missing x-default
   // here made the two disagree on every localized URL.
-  const alt = (key: RouteKey, slug?: string) => ({
+  const alt = (key: RouteKey, slug?: string, written: readonly Locale[] = locales) => ({
     languages: {
       ...Object.fromEntries(
-        locales.map((l) => [localeHrefLang[l], `${site.url}${href(l, key, slug)}`]),
+        written.map((l) => [localeHrefLang[l], `${site.url}${href(l, key, slug)}`]),
       ),
       'x-default': `${site.url}${href(defaultLocale, key, slug)}`,
     },
@@ -52,15 +54,16 @@ function pages(): SitemapEntry[] {
     slug: string | undefined,
     fields: Pick<SitemapEntry, 'changeFrequency' | 'priority'>,
     extra?: (locale: Locale) => string[],
+    written: readonly Locale[] = locales,
   ): void => {
-    for (const locale of locales) {
+    for (const locale of written) {
       entries.push({
         url: `${site.url}${href(locale, key, slug)}`,
         entry: entryFor(key, slug),
         locale,
         extra: extra?.(locale),
         ...fields,
-        alternates: alt(key, slug),
+        alternates: alt(key, slug, written),
       })
     }
   }
@@ -77,6 +80,10 @@ function pages(): SitemapEntry[] {
       key === 'sprint' ? (locale) => [JSON.stringify(sprintSlots(locale))] : undefined,
     )
   }
+
+  // Only the locales it is written in; the others render the English text and
+  // canonicalise to it (app/[locale]/labyrinth/privacy/page.tsx).
+  localized('labyrinthPrivacy', undefined, { changeFrequency: 'monthly', priority: 0.3 }, undefined, labyrinthPrivacyLocales)
 
   for (const p of projects) localized('work', p.slug, { changeFrequency: 'monthly', priority: 0.6 })
 
