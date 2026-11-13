@@ -30,7 +30,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Le calcul réel sur une V1' },
       {
-        p: 'Prenons une V1 de SaaS classique. En régie à 500 €/jour, un devis « 40 à 50 jours » se transforme presque toujours en 60 à 70 jours réels : 30 000 à 35 000 € au lieu des 20 000 à 25 000 € annoncés. Le forfait Khufu, lui, est fixé à 15 000 €, livré en 7 jours, code source inclus. Vous connaissez le montant final avant de signer, et il ne bougera pas.',
+        p: 'Prenons une V1 de SaaS classique. En régie à 500 €/jour, un devis « 40 à 50 jours » se transforme presque toujours en 60 à 70 jours réels : 30 000 à 35 000 € au lieu des 20 000 à 25 000 € annoncés. Le forfait Khufu, lui, est fixé à 11 000 €, livré en 7 jours, code source inclus. Vous connaissez le montant final avant de signer, et il ne bougera pas.',
       },
       {
         quote:
@@ -78,7 +78,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'The real math on a V1' },
       {
-        p: 'Take a typical SaaS V1. At €500/day on time and materials, a quote of 40 to 50 days almost always becomes 60 to 70 actual days: €30,000 to €35,000 instead of the €20,000 to €25,000 announced. The Khufu package, by contrast, is fixed at €15,000, delivered in 7 days, source code included. You know the final amount before you sign, and it will not move.',
+        p: 'Take a typical SaaS V1. At €500/day on time and materials, a quote of 40 to 50 days almost always becomes 60 to 70 actual days: €30,000 to €35,000 instead of the €20,000 to €25,000 announced. The Khufu package, by contrast, is fixed at €11,000, delivered in 7 days, source code included. You know the final amount before you sign, and it will not move.',
       },
       {
         quote:
@@ -126,7 +126,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'El cálculo real en una V1' },
       {
-        p: 'Tomemos una V1 de SaaS típica. A 500 €/día por tiempo, un presupuesto de 40 a 50 días casi siempre se convierte en 60 a 70 días reales: 30 000 a 35 000 € en lugar de los 20 000 a 25 000 € anunciados. El paquete de Khufu, en cambio, está fijado en 15 000 €, entregado en 7 días, código fuente incluido. Conoces el importe final antes de firmar, y no se moverá.',
+        p: 'Tomemos una V1 de SaaS típica. A 500 €/día por tiempo, un presupuesto de 40 a 50 días casi siempre se convierte en 60 a 70 días reales: 30 000 a 35 000 € en lugar de los 20 000 a 25 000 € anunciados. El paquete de Khufu, en cambio, está fijado en 11 000 €, entregado en 7 días, código fuente incluido. Conoces el importe final antes de firmar, y no se moverá.',
       },
       {
         quote:
@@ -174,7 +174,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Die echte Rechnung bei einer V1' },
       {
-        p: 'Nimm eine typische SaaS-V1. Bei 500 €/Tag nach Aufwand wird aus einem Angebot von 40 bis 50 Tagen fast immer 60 bis 70 tatsächliche Tage: 30.000 bis 35.000 € statt der angekündigten 20.000 bis 25.000 €. Das Khufu-Paket dagegen liegt fest bei 15.000 €, geliefert in 7 Tagen, Quellcode inklusive. Du kennst den Endbetrag vor der Unterschrift, und er bewegt sich nicht.',
+        p: 'Nimm eine typische SaaS-V1. Bei 500 €/Tag nach Aufwand wird aus einem Angebot von 40 bis 50 Tagen fast immer 60 bis 70 tatsächliche Tage: 30.000 bis 35.000 € statt der angekündigten 20.000 bis 25.000 €. Das Khufu-Paket dagegen liegt fest bei 11.000 €, geliefert in 7 Tagen, Quellcode inklusive. Du kennst den Endbetrag vor der Unterschrift, und er bewegt sich nicht.',
       },
       {
         quote:
@@ -222,7 +222,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Il calcolo reale su una V1' },
       {
-        p: 'Prendiamo una V1 di SaaS tipica. A 500 €/giorno a consumo, un preventivo di 40-50 giorni diventa quasi sempre 60-70 giorni reali: 30.000-35.000 € invece dei 20.000-25.000 € annunciati. Il pacchetto Khufu, invece, è fissato a 15.000 €, consegnato in 7 giorni, codice sorgente incluso. Conosci l’importo finale prima di firmare, e non si muoverà.',
+        p: 'Prendiamo una V1 di SaaS tipica. A 500 €/giorno a consumo, un preventivo di 40-50 giorni diventa quasi sempre 60-70 giorni reali: 30.000-35.000 € invece dei 20.000-25.000 € annunciati. Il pacchetto Khufu, invece, è fissato a 11.000 €, consegnato in 7 giorni, codice sorgente incluso. Conosci l’importo finale prima di firmare, e non si muoverà.',
       },
       {
         quote:
@@ -270,7 +270,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'A conta real numa V1' },
       {
-        p: 'Toma uma V1 de SaaS típica. A 500 €/dia por tempo, um orçamento de 40 a 50 dias torna-se quase sempre 60 a 70 dias reais: 30 000 a 35 000 € em vez dos 20 000 a 25 000 € anunciados. O pacote Khufu, por sua vez, está fixado em 15 000 €, entregue em 7 dias, código-fonte incluído. Conheces o montante final antes de assinar, e ele não vai mexer.',
+        p: 'Toma uma V1 de SaaS típica. A 500 €/dia por tempo, um orçamento de 40 a 50 dias torna-se quase sempre 60 a 70 dias reais: 30 000 a 35 000 € em vez dos 20 000 a 25 000 € anunciados. O pacote Khufu, por sua vez, está fixado em 11 000 €, entregue em 7 dias, código-fonte incluído. Conheces o montante final antes de assinar, e ele não vai mexer.',
       },
       {
         quote:
@@ -318,7 +318,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'De echte rekensom bij een V1' },
       {
-        p: 'Neem een typische SaaS-V1. Bij € 500/dag op nacalculatie wordt een offerte van 40 tot 50 dagen bijna altijd 60 tot 70 werkelijke dagen: € 30.000 tot € 35.000 in plaats van de aangekondigde € 20.000 tot € 25.000. Het Khufu-pakket daarentegen ligt vast op € 15.000, geleverd in 7 dagen, broncode inbegrepen. Je kent het eindbedrag vóór je tekent, en het beweegt niet.',
+        p: 'Neem een typische SaaS-V1. Bij € 500/dag op nacalculatie wordt een offerte van 40 tot 50 dagen bijna altijd 60 tot 70 werkelijke dagen: € 30.000 tot € 35.000 in plaats van de aangekondigde € 20.000 tot € 25.000. Het Khufu-pakket daarentegen ligt vast op € 11.000, geleverd in 7 dagen, broncode inbegrepen. Je kent het eindbedrag vóór je tekent, en het beweegt niet.',
       },
       {
         quote:
@@ -366,7 +366,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'الحساب الحقيقي على V1' },
       {
-        p: 'لنأخذ V1 نموذجية لمنتج SaaS. بسعر 500 €/يوم بالوقت، غالباً ما يتحوّل عرض من 40 إلى 50 يوماً إلى 60 حتى 70 يوماً فعلياً: أي 30 000 إلى 35 000 € بدلاً من 20 000 إلى 25 000 € المعلنة. أما باقة Khufu فهي محددة عند 15 000 €، تُسلَّم خلال 7 أيام، مع الكود المصدري. تعرف المبلغ النهائي قبل التوقيع، ولن يتغيّر.',
+        p: 'لنأخذ V1 نموذجية لمنتج SaaS. بسعر 500 €/يوم بالوقت، غالباً ما يتحوّل عرض من 40 إلى 50 يوماً إلى 60 حتى 70 يوماً فعلياً: أي 30 000 إلى 35 000 € بدلاً من 20 000 إلى 25 000 € المعلنة. أما باقة Khufu فهي محددة عند 11 000 €، تُسلَّم خلال 7 أيام، مع الكود المصدري. تعرف المبلغ النهائي قبل التوقيع، ولن يتغيّر.',
       },
       {
         quote:
@@ -414,7 +414,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Realny rachunek dla V1' },
       {
-        p: 'Weźmy typową V1 SaaS. Przy 500 €/dzień za czas wycena na 40–50 dni prawie zawsze zamienia się w 60–70 dni rzeczywistych: 30 000 do 35 000 € zamiast zapowiadanych 20 000 do 25 000 €. Pakiet Khufu jest natomiast ustalony na 15 000 €, dostarczony w 7 dni, z kodem źródłowym. Znasz końcową kwotę przed podpisaniem i ona się nie zmieni.',
+        p: 'Weźmy typową V1 SaaS. Przy 500 €/dzień za czas wycena na 40–50 dni prawie zawsze zamienia się w 60–70 dni rzeczywistych: 30 000 do 35 000 € zamiast zapowiadanych 20 000 do 25 000 €. Pakiet Khufu jest natomiast ustalony na 11 000 €, dostarczony w 7 dni, z kodem źródłowym. Znasz końcową kwotę przed podpisaniem i ona się nie zmieni.',
       },
       {
         quote:
@@ -462,7 +462,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Bir V1’de gerçek hesap' },
       {
-        p: 'Tipik bir SaaS V1’i ele alalım. Zaman bazlı 500 €/gün ile, 40-50 günlük bir teklif neredeyse her zaman gerçekte 60-70 güne dönüşür: duyurulan 20 000-25 000 € yerine 30 000-35 000 €. Khufu paketi ise 15 000 €’ya sabittir, 7 günde teslim edilir, kaynak kodu dahil. Nihai tutarı imzadan önce bilirsin ve oynamaz.',
+        p: 'Tipik bir SaaS V1’i ele alalım. Zaman bazlı 500 €/gün ile, 40-50 günlük bir teklif neredeyse her zaman gerçekte 60-70 güne dönüşür: duyurulan 20 000-25 000 € yerine 30 000-35 000 €. Khufu paketi ise 11 000 €’ya sabittir, 7 günde teslim edilir, kaynak kodu dahil. Nihai tutarı imzadan önce bilirsin ve oynamaz.',
       },
       {
         quote:

@@ -33,7 +33,7 @@ import { SPRINT_EVENTS, type SprintContactSurface } from '@/lib/sprintContactEve
  *      can only report its own success rate. See lib/sprintContactEvents.ts.
  *
  * ⚠️ HOW IT STAYS PREMIUM ANYWAY — the three things that make it not-a-form:
- *   - ONE FIELD. No name: at €15k an address is enough to start a conversation,
+ *   - ONE FIELD. No name: at €11k an address is enough to start a conversation,
  *     and the name arrives in the reply. No "your project": the booking page
  *     already asks « Where is your project today? » and asking it twice is how a
  *     funnel teaches people it is not listening.

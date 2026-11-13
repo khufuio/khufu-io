@@ -47,7 +47,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Le bon arbitrage pour une V1' },
       {
-        p: 'Prendre PostgreSQL dès le départ, modéliser proprement, poser les bons index et versionner les migrations : voilà ce qui évite la réécriture à 12 mois. C’est exactement la fondation qu’on met en place dans nos V1 livrées en 7 jours à 15 000 € — Next.js, NestJS, Prisma et Postgres — une base qui vous suit du premier client au passage à l’échelle, sans dette technique cachée.',
+        p: 'Prendre PostgreSQL dès le départ, modéliser proprement, poser les bons index et versionner les migrations : voilà ce qui évite la réécriture à 12 mois. C’est exactement la fondation qu’on met en place dans nos V1 livrées en 7 jours à 11 000 € — Next.js, NestJS, Prisma et Postgres — une base qui vous suit du premier client au passage à l’échelle, sans dette technique cachée.',
       },
     ],
   },
@@ -96,7 +96,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'The right call for a V1' },
       {
-        p: 'Choosing PostgreSQL from day one, modeling cleanly, laying down the right indexes and versioning migrations: that’s what saves you a rewrite at month 12. It’s exactly the foundation we set up in our V1s shipped in 7 days for €15,000 — Next.js, NestJS, Prisma and Postgres — a database that carries you from your first customer to scale, with no hidden technical debt.',
+        p: 'Choosing PostgreSQL from day one, modeling cleanly, laying down the right indexes and versioning migrations: that’s what saves you a rewrite at month 12. It’s exactly the foundation we set up in our V1s shipped in 7 days for €11,000 — Next.js, NestJS, Prisma and Postgres — a database that carries you from your first customer to scale, with no hidden technical debt.',
       },
     ],
   },
@@ -145,7 +145,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'La decisión correcta para una V1' },
       {
-        p: 'Elegir PostgreSQL desde el primer día, modelar con limpieza, poner los índices adecuados y versionar las migraciones: eso es lo que te evita una reescritura al mes 12. Es exactamente la base que montamos en nuestras V1 entregadas en 7 días por 15 000 € —Next.js, NestJS, Prisma y Postgres—, una base que te acompaña desde tu primer cliente hasta el salto de escala, sin deuda técnica oculta.',
+        p: 'Elegir PostgreSQL desde el primer día, modelar con limpieza, poner los índices adecuados y versionar las migraciones: eso es lo que te evita una reescritura al mes 12. Es exactamente la base que montamos en nuestras V1 entregadas en 7 días por 11 000 € —Next.js, NestJS, Prisma y Postgres—, una base que te acompaña desde tu primer cliente hasta el salto de escala, sin deuda técnica oculta.',
       },
     ],
   },
@@ -194,7 +194,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Die richtige Entscheidung für eine V1' },
       {
-        p: 'PostgreSQL von Tag eins wählen, sauber modellieren, die richtigen Indizes setzen und Migrationen versionieren: Das erspart dir das Neuschreiben in Monat 12. Genau dieses Fundament bauen wir in unseren V1s, die wir in 7 Tagen für 15.000 € liefern — Next.js, NestJS, Prisma und Postgres —, eine Datenbank, die dich vom ersten Kunden bis zur Skalierung trägt, ohne versteckte technische Schulden.',
+        p: 'PostgreSQL von Tag eins wählen, sauber modellieren, die richtigen Indizes setzen und Migrationen versionieren: Das erspart dir das Neuschreiben in Monat 12. Genau dieses Fundament bauen wir in unseren V1s, die wir in 7 Tagen für 11.000 € liefern — Next.js, NestJS, Prisma und Postgres —, eine Datenbank, die dich vom ersten Kunden bis zur Skalierung trägt, ohne versteckte technische Schulden.',
       },
     ],
   },
@@ -243,7 +243,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'La scelta giusta per una V1' },
       {
-        p: 'Scegliere PostgreSQL dal primo giorno, modellare in modo pulito, mettere gli indici giusti e versionare le migrazioni: è questo che ti evita una riscrittura al dodicesimo mese. È esattamente la base che mettiamo in piedi nelle nostre V1 consegnate in 7 giorni a 15.000 € — Next.js, NestJS, Prisma e Postgres —, un database che ti accompagna dal primo cliente fino al salto di scala, senza debito tecnico nascosto.',
+        p: 'Scegliere PostgreSQL dal primo giorno, modellare in modo pulito, mettere gli indici giusti e versionare le migrazioni: è questo che ti evita una riscrittura al dodicesimo mese. È esattamente la base che mettiamo in piedi nelle nostre V1 consegnate in 7 giorni a 11.000 € — Next.js, NestJS, Prisma e Postgres —, un database che ti accompagna dal primo cliente fino al salto di scala, senza debito tecnico nascosto.',
       },
     ],
   },
@@ -292,7 +292,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'A decisão certa para uma V1' },
       {
-        p: 'Escolher PostgreSQL desde o primeiro dia, modelar de forma limpa, pôr os índices certos e versionar as migrações: é isso que te evita uma reescrita ao 12.º mês. É exatamente a base que montamos nas nossas V1 entregues em 7 dias por 15.000 € — Next.js, NestJS, Prisma e Postgres —, uma base que te acompanha do primeiro cliente até ao salto de escala, sem dívida técnica escondida.',
+        p: 'Escolher PostgreSQL desde o primeiro dia, modelar de forma limpa, pôr os índices certos e versionar as migrações: é isso que te evita uma reescrita ao 12.º mês. É exatamente a base que montamos nas nossas V1 entregues em 7 dias por 11.000 € — Next.js, NestJS, Prisma e Postgres —, uma base que te acompanha do primeiro cliente até ao salto de escala, sem dívida técnica escondida.',
       },
     ],
   },
@@ -341,7 +341,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'De juiste keuze voor een V1' },
       {
-        p: 'PostgreSQL vanaf dag één kiezen, netjes modelleren, de juiste indexen leggen en migraties versioneren: dat bespaart je een herschrijving in maand 12. Het is precies de basis die we opzetten in onze V1"s, geleverd in 7 dagen voor € 15.000 — Next.js, NestJS, Prisma en Postgres —, een database die je meeneemt van je eerste klant tot de opschaling, zonder verborgen technische schuld.',
+        p: 'PostgreSQL vanaf dag één kiezen, netjes modelleren, de juiste indexen leggen en migraties versioneren: dat bespaart je een herschrijving in maand 12. Het is precies de basis die we opzetten in onze V1"s, geleverd in 7 dagen voor € 11.000 — Next.js, NestJS, Prisma en Postgres —, een database die je meeneemt van je eerste klant tot de opschaling, zonder verborgen technische schuld.',
       },
     ],
   },
@@ -390,7 +390,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'القرار الصحيح لـ V1' },
       {
-        p: 'اختيار PostgreSQL منذ اليوم الأول، والنمذجة النظيفة، ووضع الفهارس الصحيحة، وتأريخ الترحيلات: هذا ما يجنّبك إعادة الكتابة في الشهر الثاني عشر. وهو تماماً الأساس الذي نُرسيه في نُسخ V1 التي نُسلّمها في 7 أيام بسعر 15,000 يورو — Next.js وNestJS وPrisma وPostgres — قاعدة تُرافقك من عميلك الأول حتى الانتقال إلى التوسّع، من دون دَين تقني خفيّ.',
+        p: 'اختيار PostgreSQL منذ اليوم الأول، والنمذجة النظيفة، ووضع الفهارس الصحيحة، وتأريخ الترحيلات: هذا ما يجنّبك إعادة الكتابة في الشهر الثاني عشر. وهو تماماً الأساس الذي نُرسيه في نُسخ V1 التي نُسلّمها في 7 أيام بسعر 11,000 يورو — Next.js وNestJS وPrisma وPostgres — قاعدة تُرافقك من عميلك الأول حتى الانتقال إلى التوسّع، من دون دَين تقني خفيّ.',
       },
     ],
   },
@@ -439,7 +439,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Właściwa decyzja dla V1' },
       {
-        p: 'Wybór PostgreSQL od pierwszego dnia, czyste modelowanie, założenie właściwych indeksów i wersjonowanie migracji: to właśnie oszczędza ci przepisywania w 12. miesiącu. To dokładnie ten fundament, który budujemy w naszych V1 dostarczanych w 7 dni za 15 000 € — Next.js, NestJS, Prisma i Postgres — baza, która prowadzi cię od pierwszego klienta aż po skalowanie, bez ukrytego długu technicznego.',
+        p: 'Wybór PostgreSQL od pierwszego dnia, czyste modelowanie, założenie właściwych indeksów i wersjonowanie migracji: to właśnie oszczędza ci przepisywania w 12. miesiącu. To dokładnie ten fundament, który budujemy w naszych V1 dostarczanych w 7 dni za 11 000 € — Next.js, NestJS, Prisma i Postgres — baza, która prowadzi cię od pierwszego klienta aż po skalowanie, bez ukrytego długu technicznego.',
       },
     ],
   },
@@ -488,7 +488,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Bir V1 için doğru karar' },
       {
-        p: 'İlk günden PostgreSQL’i seçmek, temiz modellemek, doğru indeksleri koymak ve migration’ları versiyonlamak: 12. ayda yeniden yazmaktan sizi kurtaran şey budur. Bu, 7 günde 15.000 €"ya teslim ettiğimiz V1"lerde kurduğumuz temelin ta kendisidir — Next.js, NestJS, Prisma ve Postgres — ilk müşterinizden ölçeğe geçişe kadar sizinle gelen, gizli teknik borcu olmayan bir veritabanı.',
+        p: 'İlk günden PostgreSQL’i seçmek, temiz modellemek, doğru indeksleri koymak ve migration’ları versiyonlamak: 12. ayda yeniden yazmaktan sizi kurtaran şey budur. Bu, 7 günde 11.000 €"ya teslim ettiğimiz V1"lerde kurduğumuz temelin ta kendisidir — Next.js, NestJS, Prisma ve Postgres — ilk müşterinizden ölçeğe geçişe kadar sizinle gelen, gizli teknik borcu olmayan bir veritabanı.',
       },
     ],
   },

@@ -218,11 +218,11 @@ export const it: Dictionary = {
   sprintPage: {
     metaTitle: 'Sprint V1 — il tuo prodotto in 7 giorni',
     metaDescription:
-      'Lo Sprint V1 di Khufu: un SaaS o un’app mobile progettato, sviluppato e messo in produzione in 7 giorni, per un prezzo fisso di 15.000 €.',
+      'Lo Sprint V1 di Khufu: un SaaS o un’app mobile progettato, sviluppato e messo in produzione in 7 giorni, per un prezzo fisso di 11.000 €.',
     kicker: 'Offerta di punta',
     title: 'La tua V1 in 7 giorni. Prezzo fisso.',
     subtitle:
-      'La nostra offerta principale: progettiamo, sviluppiamo e mettiamo in produzione il tuo SaaS o la tua app mobile in una settimana — ambito definito in anticipo, 15.000 € tutto incluso.',
+      'La nostra offerta principale: progettiamo, sviluppiamo e mettiamo in produzione il tuo SaaS o la tua app mobile in una settimana — ambito definito in anticipo, 11.000 € tutto incluso.',
     includesTitle: 'Cosa è incluso',
     processTitle: 'Lo svolgimento, giorno per giorno',
     ctaTitle: 'Pronto a lanciare la tua V1?',

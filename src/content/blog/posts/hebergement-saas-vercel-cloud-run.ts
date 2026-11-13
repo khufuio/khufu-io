@@ -67,7 +67,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Chez Khufu, cette architecture Vercel + Cloud Run est celle qu'on met en production dans nos V1 livrées en 7 jours à 15 000 € : un front-end rapide, une API qui scale, et une facture d'hébergement qui reste alignée sur votre trafic réel.",
+        p: "Chez Khufu, cette architecture Vercel + Cloud Run est celle qu'on met en production dans nos V1 livrées en 7 jours à 11 000 € : un front-end rapide, une API qui scale, et une facture d'hébergement qui reste alignée sur votre trafic réel.",
       },
     ],
   },
@@ -136,7 +136,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "At Khufu, this Vercel + Cloud Run architecture is the one we ship in our V1s delivered in 7 days for €15,000: a fast front-end, an API that scales, and a hosting bill that stays aligned with your real traffic.",
+        p: "At Khufu, this Vercel + Cloud Run architecture is the one we ship in our V1s delivered in 7 days for €11,000: a fast front-end, an API that scales, and a hosting bill that stays aligned with your real traffic.",
       },
     ],
   },
@@ -205,7 +205,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "En Khufu, esta arquitectura Vercel + Cloud Run es la que ponemos en producción en nuestras V1 entregadas en 7 días por 15 000 €: un front-end rápido, una API que escala y una factura de hosting alineada con tu tráfico real.",
+        p: "En Khufu, esta arquitectura Vercel + Cloud Run es la que ponemos en producción en nuestras V1 entregadas en 7 días por 11 000 €: un front-end rápido, una API que escala y una factura de hosting alineada con tu tráfico real.",
       },
     ],
   },
@@ -274,7 +274,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Bei Khufu ist diese Vercel-+-Cloud-Run-Architektur die, die wir in unseren in 7 Tagen für 15 000 € gelieferten V1 in Produktion bringen: ein schnelles Frontend, eine API, die skaliert, und eine Hosting-Rechnung, die sich an deinem realen Traffic orientiert.",
+        p: "Bei Khufu ist diese Vercel-+-Cloud-Run-Architektur die, die wir in unseren in 7 Tagen für 11 000 € gelieferten V1 in Produktion bringen: ein schnelles Frontend, eine API, die skaliert, und eine Hosting-Rechnung, die sich an deinem realen Traffic orientiert.",
       },
     ],
   },
@@ -343,7 +343,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "In Khufu, questa architettura Vercel + Cloud Run è quella che mettiamo in produzione nelle nostre V1 consegnate in 7 giorni a 15 000 €: un front-end veloce, un'API che scala e una fattura di hosting allineata al tuo traffico reale.",
+        p: "In Khufu, questa architettura Vercel + Cloud Run è quella che mettiamo in produzione nelle nostre V1 consegnate in 7 giorni a 11 000 €: un front-end veloce, un'API che scala e una fattura di hosting allineata al tuo traffico reale.",
       },
     ],
   },
@@ -412,7 +412,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Na Khufu, esta arquitetura Vercel + Cloud Run é a que colocamos em produção nas nossas V1 entregues em 7 dias por 15 000 €: um front-end rápido, uma API que escala e uma fatura de hospedagem alinhada com o seu tráfego real.",
+        p: "Na Khufu, esta arquitetura Vercel + Cloud Run é a que colocamos em produção nas nossas V1 entregues em 7 dias por 11 000 €: um front-end rápido, uma API que escala e uma fatura de hospedagem alinhada com o seu tráfego real.",
       },
     ],
   },
@@ -481,7 +481,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Bij Khufu is deze Vercel-+-Cloud-Run-architectuur wat we in productie brengen in onze V1's die we in 7 dagen voor 15 000 € opleveren: een snelle front-end, een API die schaalt, en een hostingrekening die aansluit op je echte verkeer.",
+        p: "Bij Khufu is deze Vercel-+-Cloud-Run-architectuur wat we in productie brengen in onze V1's die we in 7 dagen voor 11 000 € opleveren: een snelle front-end, een API die schaalt, en een hostingrekening die aansluit op je echte verkeer.",
       },
     ],
   },
@@ -550,7 +550,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "في Khufu، معمارية Vercel + Cloud Run هي التي نطلقها في نسخ V1 التي نسلّمها خلال 7 أيام مقابل 15 000 €: واجهة أمامية سريعة، وواجهة خلفية تتوسّع، وفاتورة استضافة تبقى متوافقة مع حركتك الفعلية.",
+        p: "في Khufu، معمارية Vercel + Cloud Run هي التي نطلقها في نسخ V1 التي نسلّمها خلال 7 أيام مقابل 11 000 €: واجهة أمامية سريعة، وواجهة خلفية تتوسّع، وفاتورة استضافة تبقى متوافقة مع حركتك الفعلية.",
       },
     ],
   },
@@ -619,7 +619,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "W Khufu ta architektura Vercel + Cloud Run to ta, którą wdrażamy produkcyjnie w naszych V1 dostarczanych w 7 dni za 15 000 €: szybki front-end, skalujące się API i rachunek za hosting dopasowany do twojego realnego ruchu.",
+        p: "W Khufu ta architektura Vercel + Cloud Run to ta, którą wdrażamy produkcyjnie w naszych V1 dostarczanych w 7 dni za 11 000 €: szybki front-end, skalujące się API i rachunek za hosting dopasowany do twojego realnego ruchu.",
       },
     ],
   },
@@ -688,7 +688,7 @@ export const post: Record<Locale, Article> = {
         ],
       },
       {
-        p: "Khufu'da bu Vercel + Cloud Run mimarisi, 7 günde 15 000 €'ya teslim ettiğimiz V1'lerimizde üretime aldığımız mimaridir: hızlı bir ön yüz, ölçeklenen bir API ve gerçek trafiğinizle uyumlu kalan bir barındırma faturası.",
+        p: "Khufu'da bu Vercel + Cloud Run mimarisi, 7 günde 11 000 €'ya teslim ettiğimiz V1'lerimizde üretime aldığımız mimaridir: hızlı bir ön yüz, ölçeklenen bir API ve gerçek trafiğinizle uyumlu kalan bir barındırma faturası.",
       },
     ],
   },

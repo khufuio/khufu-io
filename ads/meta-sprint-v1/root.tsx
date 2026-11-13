@@ -9,8 +9,8 @@ import { CONTACT_SHEET_HEIGHT, ContactSheet, type ContactSheetProps } from './co
 /**
  * One composition per base × ratio; the hook (1–3) is a prop, so a base's three
  * cuts share every frame after the opening. `price` is a prop because a creative
- * carries ONE currency (decision cmtt6x3k): « 15 000 € » for the French cut,
- * « $17,000 » for an English one — two prices, never a conversion, never both.
+ * carries ONE currency (decision cmtt6x3k): « 11 000 € » for the French cut,
+ * « $12,000 » for an English one — two prices, never a conversion, never both.
  */
 const BASES = [
   { id: 'a-countdown', component: Countdown, frames: COUNTDOWN_FRAMES },
@@ -18,8 +18,8 @@ const BASES = [
   { id: 'c-web-band', component: WebBand, frames: WEB_BAND_FRAMES },
 ] as const
 
-const DEFAULTS: AdProps = { price: '15 000 €', hook: 1 }
-const SHEET_DEFAULTS: ContactSheetProps = { price: '15 000 €', pick: 'a1', durations: {} }
+const DEFAULTS: AdProps = { price: '11 000 €', hook: 1 }
+const SHEET_DEFAULTS: ContactSheetProps = { price: '11 000 €', pick: 'a1', durations: {} }
 
 export function Root(): React.ReactElement {
   return (

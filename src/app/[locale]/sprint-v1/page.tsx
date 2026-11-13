@@ -75,7 +75,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
  *                 mechanics.
  *   system      — where the seven days come from, drawn. It REPLACED the « vous
  *                 parlez au founder qui écrit le code » line (decision cmu1u21i):
- *                 the claim was false and "solo" argues against a $17k sale, but
+ *                 the claim was false and "solo" argues against a $12k sale, but
  *                 deleting it without an explanation leaves "7 days" reading as
  *                 bluff. ⛔ No invented headcount, never autonomous-without-human.
  *   products    — the work itself, in full scope (platform + app + site), and
@@ -106,7 +106,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
  * therefore wrapped in `SprintContactProvider`.
  *
  * ⛔ TWO WAYS TO REACH US, AND THEY ARE NOT INTERCHANGEABLE (2026-09-15, pass 4).
- * The call is the conversion — at €15k the thing being sold is a conversation,
+ * The call is the conversion — at €11k the thing being sold is a conversation,
  * not an address in a base. But the calendar mechanically excludes people
  * (10:00–14:00 UTC, never the same day, 14 days out, English-only), so a FOLDED
  * ONE-FIELD NET sits under it in the modal and in the closing block. ⛔ It is a
@@ -128,7 +128,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
  * `scripts/checkSprintHtml.ts` now fails the recipe if that ever renders again.
  *
  * The site header and footer are kept rather than stripped as on the lead-magnet
- * landings: a €15k decision needs the legal pages and the rest of the company
+ * landings: a €11k decision needs the legal pages and the rest of the company
  * reachable.
  */
 export default async function SprintPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -341,7 +341,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
       {/* WHERE THE SPEED COMES FROM — placed immediately after the week, because
           that is the moment the reader thinks "seven days, really?". It replaced
           the « vous parlez au founder qui écrit le code » line (decision
-          cmu1u21i): that claim was inaccurate AND argued against a $17k sale, but
+          cmu1u21i): that claim was inaccurate AND argued against a $12k sale, but
           removing it with nothing in its place leaves the delay unexplained.
           ⛔ Read the bounds in sprintSystem.tsx before touching it: no invented
           headcount, never autonomous without a human, no developer vocabulary. */}

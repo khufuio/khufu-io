@@ -52,7 +52,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "5. Livrer vite, itérer ensuite" },
       {
-        p: "Une première feature IA n'a pas besoin d'être parfaite : elle doit être en production, utilisée et mesurée. C'est exactement la philosophie de Khufu : une V1 réelle en 7 jours, à prix fixe (15 000 €), fonctionnalité IA comprise. On branche l'API, on cadre les coûts, on mesure la valeur — et on itère sur des faits, pas sur des intuitions.",
+        p: "Une première feature IA n'a pas besoin d'être parfaite : elle doit être en production, utilisée et mesurée. C'est exactement la philosophie de Khufu : une V1 réelle en 7 jours, à prix fixe (11 000 €), fonctionnalité IA comprise. On branche l'API, on cadre les coûts, on mesure la valeur — et on itère sur des faits, pas sur des intuitions.",
       },
     ],
   },
@@ -106,7 +106,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: '5. Ship fast, iterate later' },
       {
-        p: "A first AI feature does not need to be perfect: it needs to be in production, used and measured. That is exactly Khufu's philosophy: a real V1 in 7 days, at a fixed price (€15,000), AI feature included. We wire up the API, control the costs, measure the value — and iterate on facts, not hunches.",
+        p: "A first AI feature does not need to be perfect: it needs to be in production, used and measured. That is exactly Khufu's philosophy: a real V1 in 7 days, at a fixed price (€11,000), AI feature included. We wire up the API, control the costs, measure the value — and iterate on facts, not hunches.",
       },
     ],
   },
@@ -160,7 +160,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: '5. Entregar rápido, iterar después' },
       {
-        p: 'Una primera función de IA no tiene por qué ser perfecta: tiene que estar en producción, usarse y medirse. Es exactamente la filosofía de Khufu: una V1 real en 7 días, a precio fijo (15 000 €), función de IA incluida. Conectamos la API, controlamos los costes, medimos el valor — e iteramos sobre hechos, no sobre intuiciones.',
+        p: 'Una primera función de IA no tiene por qué ser perfecta: tiene que estar en producción, usarse y medirse. Es exactamente la filosofía de Khufu: una V1 real en 7 días, a precio fijo (11 000 €), función de IA incluida. Conectamos la API, controlamos los costes, medimos el valor — e iteramos sobre hechos, no sobre intuiciones.',
       },
     ],
   },
@@ -214,7 +214,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: '5. Schnell liefern, danach iterieren' },
       {
-        p: 'Ein erstes KI-Feature muss nicht perfekt sein: Es muss in Produktion sein, genutzt und gemessen werden. Genau das ist die Philosophie von Khufu: eine echte V1 in 7 Tagen, zum Festpreis (15.000 €), KI-Feature inklusive. Wir binden die API an, steuern die Kosten, messen den Wert — und iterieren auf Fakten, nicht auf Bauchgefühl.',
+        p: 'Ein erstes KI-Feature muss nicht perfekt sein: Es muss in Produktion sein, genutzt und gemessen werden. Genau das ist die Philosophie von Khufu: eine echte V1 in 7 Tagen, zum Festpreis (11.000 €), KI-Feature inklusive. Wir binden die API an, steuern die Kosten, messen den Wert — und iterieren auf Fakten, nicht auf Bauchgefühl.',
       },
     ],
   },
@@ -268,7 +268,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: '5. Consegnare in fretta, iterare dopo' },
       {
-        p: "Una prima funzione IA non deve essere perfetta: deve essere in produzione, usata e misurata. È esattamente la filosofia di Khufu: una V1 reale in 7 giorni, a prezzo fisso (15.000 €), funzione IA inclusa. Colleghiamo l'API, controlliamo i costi, misuriamo il valore — e iteriamo sui fatti, non sulle intuizioni.",
+        p: "Una prima funzione IA non deve essere perfetta: deve essere in produzione, usata e misurata. È esattamente la filosofia di Khufu: una V1 reale in 7 giorni, a prezzo fisso (11.000 €), funzione IA inclusa. Colleghiamo l'API, controlliamo i costi, misuriamo il valore — e iteriamo sui fatti, non sulle intuizioni.",
       },
     ],
   },
@@ -322,7 +322,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: '5. Entregar rápido, iterar depois' },
       {
-        p: 'Uma primeira funcionalidade de IA não precisa de ser perfeita: precisa de estar em produção, ser usada e medida. É exatamente a filosofia da Khufu: uma V1 real em 7 dias, a preço fixo (15 000 €), funcionalidade de IA incluída. Ligamos a API, controlamos os custos, medimos o valor — e iteramos sobre factos, não sobre intuições.',
+        p: 'Uma primeira funcionalidade de IA não precisa de ser perfeita: precisa de estar em produção, ser usada e medida. É exatamente a filosofia da Khufu: uma V1 real em 7 dias, a preço fixo (11 000 €), funcionalidade de IA incluída. Ligamos a API, controlamos os custos, medimos o valor — e iteramos sobre factos, não sobre intuições.',
       },
     ],
   },
@@ -376,7 +376,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: '5. Snel leveren, daarna itereren' },
       {
-        p: 'Een eerste AI-functie hoeft niet perfect te zijn: ze moet in productie zijn, gebruikt en gemeten worden. Dat is precies de filosofie van Khufu: een echte V1 in 7 dagen, tegen een vaste prijs (€15.000), AI-functie inbegrepen. We koppelen de API, beheersen de kosten, meten de waarde — en itereren op feiten, niet op onderbuikgevoel.',
+        p: 'Een eerste AI-functie hoeft niet perfect te zijn: ze moet in productie zijn, gebruikt en gemeten worden. Dat is precies de filosofie van Khufu: een echte V1 in 7 dagen, tegen een vaste prijs (€11.000), AI-functie inbegrepen. We koppelen de API, beheersen de kosten, meten de waarde — en itereren op feiten, niet op onderbuikgevoel.',
       },
     ],
   },
@@ -430,7 +430,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: '5. التسليم بسرعة ثم التكرار' },
       {
-        p: 'لا يلزم أن تكون ميزة الذكاء الاصطناعي الأولى مثالية: يلزم أن تكون في الإنتاج، مُستخدَمة ومُقاسة. هذه تحديدًا فلسفة Khufu: نسخة V1 حقيقية في 7 أيام، بسعر ثابت (15,000 يورو)، تشمل ميزة الذكاء الاصطناعي. نربط API، ونضبط التكاليف، ونقيس القيمة — ونُكرّر بناءً على الحقائق لا على الحدس.',
+        p: 'لا يلزم أن تكون ميزة الذكاء الاصطناعي الأولى مثالية: يلزم أن تكون في الإنتاج، مُستخدَمة ومُقاسة. هذه تحديدًا فلسفة Khufu: نسخة V1 حقيقية في 7 أيام، بسعر ثابت (11,000 يورو)، تشمل ميزة الذكاء الاصطناعي. نربط API، ونضبط التكاليف، ونقيس القيمة — ونُكرّر بناءً على الحقائق لا على الحدس.',
       },
     ],
   },
@@ -484,7 +484,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: '5. Dostarcz szybko, iteruj później' },
       {
-        p: 'Pierwsza funkcja AI nie musi być doskonała: musi być na produkcji, używana i mierzona. To dokładnie filozofia Khufu: prawdziwe V1 w 7 dni, w stałej cenie (15 000 €), z funkcją AI w komplecie. Podłączamy API, kontrolujemy koszty, mierzymy wartość — i iterujemy na faktach, nie na przeczuciach.',
+        p: 'Pierwsza funkcja AI nie musi być doskonała: musi być na produkcji, używana i mierzona. To dokładnie filozofia Khufu: prawdziwe V1 w 7 dni, w stałej cenie (11 000 €), z funkcją AI w komplecie. Podłączamy API, kontrolujemy koszty, mierzymy wartość — i iterujemy na faktach, nie na przeczuciach.',
       },
     ],
   },
@@ -538,7 +538,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: '5. Hızlı teslim edin, sonra yineleyin' },
       {
-        p: "İlk bir yapay zeka özelliğinin kusursuz olması gerekmez: üretimde olması, kullanılması ve ölçülmesi gerekir. Khufu'nun felsefesi tam olarak budur: 7 günde gerçek bir V1, sabit fiyata (15.000 €), yapay zeka özelliği dahil. API'yi bağlarız, maliyetleri kontrol ederiz, değeri ölçeriz — ve sezgilere değil, gerçeklere göre yineleriz.",
+        p: "İlk bir yapay zeka özelliğinin kusursuz olması gerekmez: üretimde olması, kullanılması ve ölçülmesi gerekir. Khufu'nun felsefesi tam olarak budur: 7 günde gerçek bir V1, sabit fiyata (11.000 €), yapay zeka özelliği dahil. API'yi bağlarız, maliyetleri kontrol ederiz, değeri ölçeriz — ve sezgilere değil, gerçeklere göre yineleriz.",
       },
     ],
   },

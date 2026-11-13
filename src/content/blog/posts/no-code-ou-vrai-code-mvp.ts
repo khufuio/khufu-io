@@ -37,14 +37,14 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "La troisième voie : du vrai code, aussi vite que le no-code" },
       {
-        p: "L’argument historique du no-code, c’était la vitesse. Avec le développement AI-native, cet avantage a fondu. Chez Khufu, une V1 réelle — Next.js, NestJS, PostgreSQL, code source à vous — se livre en 7 jours pour un prix fixe de 15 000 €. Vous gardez la vitesse du no-code sans en payer la dette : pas de plafond de volume, des performances maîtrisées, une logique métier illimitée, et un code que vous possédez et pouvez faire évoluer pendant des années. Vous démarrez sur des fondations que des millions de produits en production utilisent déjà.",
+        p: "L’argument historique du no-code, c’était la vitesse. Avec le développement AI-native, cet avantage a fondu. Chez Khufu, une V1 réelle — Next.js, NestJS, PostgreSQL, code source à vous — se livre en 7 jours pour un prix fixe de 11 000 €. Vous gardez la vitesse du no-code sans en payer la dette : pas de plafond de volume, des performances maîtrisées, une logique métier illimitée, et un code que vous possédez et pouvez faire évoluer pendant des années. Vous démarrez sur des fondations que des millions de produits en production utilisent déjà.",
       },
       {
         quote: "Le no-code fait gagner des semaines au démarrage, et en fait perdre des mois le jour où il faut scaler.",
       },
       { h2: "Comment décider en pratique" },
       {
-        p: "Posez-vous une seule question : ce produit doit-il durer ? Si c’est un test jetable pour valider une hypothèse, le no-code fait très bien le travail. Si c’est le socle de votre entreprise — celui qui portera vos utilisateurs, vos revenus et vos données —, partez directement sur du vrai code. Vous n’y perdez plus en vitesse, et vous vous épargnez la réécriture, qui coûte, elle, bien plus que 15 000 €. Le no-code reste un excellent outil — à condition de savoir quand le quitter.",
+        p: "Posez-vous une seule question : ce produit doit-il durer ? Si c’est un test jetable pour valider une hypothèse, le no-code fait très bien le travail. Si c’est le socle de votre entreprise — celui qui portera vos utilisateurs, vos revenus et vos données —, partez directement sur du vrai code. Vous n’y perdez plus en vitesse, et vous vous épargnez la réécriture, qui coûte, elle, bien plus que 11 000 €. Le no-code reste un excellent outil — à condition de savoir quand le quitter.",
       },
     ],
   },
@@ -83,14 +83,14 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "The third way: real code, as fast as no-code" },
       {
-        p: "No-code's historic argument was speed. With AI-native development, that edge has melted away. At Khufu, a real V1 — Next.js, NestJS, PostgreSQL, source code yours — ships in 7 days for a fixed price of €15,000. You keep the speed of no-code without paying its debt: no volume ceiling, performance under control, unlimited business logic, and code you own and can grow for years. You start on foundations that millions of production products already run on.",
+        p: "No-code's historic argument was speed. With AI-native development, that edge has melted away. At Khufu, a real V1 — Next.js, NestJS, PostgreSQL, source code yours — ships in 7 days for a fixed price of €11,000. You keep the speed of no-code without paying its debt: no volume ceiling, performance under control, unlimited business logic, and code you own and can grow for years. You start on foundations that millions of production products already run on.",
       },
       {
         quote: "No-code saves you weeks at the start, and costs you months the day you have to scale.",
       },
       { h2: "How to decide in practice" },
       {
-        p: "Ask yourself one question: does this product need to last? If it is a throwaway test to validate a hypothesis, no-code does the job very well. If it is the foundation of your business — the one that will carry your users, revenue and data — go straight to real code. You no longer lose speed by doing so, and you spare yourself the rewrite, which costs far more than €15,000. No-code stays an excellent tool — as long as you know when to leave it.",
+        p: "Ask yourself one question: does this product need to last? If it is a throwaway test to validate a hypothesis, no-code does the job very well. If it is the foundation of your business — the one that will carry your users, revenue and data — go straight to real code. You no longer lose speed by doing so, and you spare yourself the rewrite, which costs far more than €11,000. No-code stays an excellent tool — as long as you know when to leave it.",
       },
     ],
   },
@@ -129,14 +129,14 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "La tercera vía: código real, tan rápido como el no-code" },
       {
-        p: "El argumento histórico del no-code era la velocidad. Con el desarrollo AI-native, esa ventaja se ha esfumado. En Khufu, una V1 real —Next.js, NestJS, PostgreSQL, código fuente tuyo— se entrega en 7 días por un precio fijo de 15.000 €. Conservas la velocidad del no-code sin pagar su deuda: sin techo de volumen, rendimiento bajo control, lógica de negocio ilimitada y un código que posees y puedes hacer evolucionar durante años. Arrancas sobre unas bases que millones de productos en producción ya utilizan.",
+        p: "El argumento histórico del no-code era la velocidad. Con el desarrollo AI-native, esa ventaja se ha esfumado. En Khufu, una V1 real —Next.js, NestJS, PostgreSQL, código fuente tuyo— se entrega en 7 días por un precio fijo de 11.000 €. Conservas la velocidad del no-code sin pagar su deuda: sin techo de volumen, rendimiento bajo control, lógica de negocio ilimitada y un código que posees y puedes hacer evolucionar durante años. Arrancas sobre unas bases que millones de productos en producción ya utilizan.",
       },
       {
         quote: "El no-code te hace ganar semanas al arrancar, y te hace perder meses el día en que hay que escalar.",
       },
       { h2: "Cómo decidir en la práctica" },
       {
-        p: "Hazte una sola pregunta: ¿este producto debe durar? Si es una prueba desechable para validar una hipótesis, el no-code cumple perfectamente. Si es la base de tu empresa —la que sostendrá a tus usuarios, tus ingresos y tus datos—, ve directo al código real. Ya no pierdes velocidad al hacerlo, y te ahorras la reescritura, que cuesta mucho más de 15.000 €. El no-code sigue siendo una excelente herramienta, siempre que sepas cuándo dejarla.",
+        p: "Hazte una sola pregunta: ¿este producto debe durar? Si es una prueba desechable para validar una hipótesis, el no-code cumple perfectamente. Si es la base de tu empresa —la que sostendrá a tus usuarios, tus ingresos y tus datos—, ve directo al código real. Ya no pierdes velocidad al hacerlo, y te ahorras la reescritura, que cuesta mucho más de 11.000 €. El no-code sigue siendo una excelente herramienta, siempre que sepas cuándo dejarla.",
       },
     ],
   },
@@ -175,14 +175,14 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Der dritte Weg: echter Code, so schnell wie No-Code" },
       {
-        p: "Das historische Argument von No-Code war Geschwindigkeit. Mit AI-native-Entwicklung ist dieser Vorsprung dahingeschmolzen. Bei Khufu wird eine echte V1 – Next.js, NestJS, PostgreSQL, Quellcode gehört Ihnen – in 7 Tagen zum Festpreis von 15.000 € geliefert. Sie behalten die Geschwindigkeit von No-Code, ohne dessen Schulden zu zahlen: keine Volumengrenze, kontrollierte Performance, unbegrenzte Geschäftslogik und Code, der Ihnen gehört und über Jahre weiterentwickelt werden kann. Sie starten auf Fundamenten, die bereits Millionen von Produkten in Produktion nutzen.",
+        p: "Das historische Argument von No-Code war Geschwindigkeit. Mit AI-native-Entwicklung ist dieser Vorsprung dahingeschmolzen. Bei Khufu wird eine echte V1 – Next.js, NestJS, PostgreSQL, Quellcode gehört Ihnen – in 7 Tagen zum Festpreis von 11.000 € geliefert. Sie behalten die Geschwindigkeit von No-Code, ohne dessen Schulden zu zahlen: keine Volumengrenze, kontrollierte Performance, unbegrenzte Geschäftslogik und Code, der Ihnen gehört und über Jahre weiterentwickelt werden kann. Sie starten auf Fundamenten, die bereits Millionen von Produkten in Produktion nutzen.",
       },
       {
         quote: "No-Code spart Ihnen zu Beginn Wochen und kostet Sie Monate an dem Tag, an dem Sie skalieren müssen.",
       },
       { h2: "Wie Sie in der Praxis entscheiden" },
       {
-        p: "Stellen Sie sich eine einzige Frage: Soll dieses Produkt Bestand haben? Ist es ein Wegwerf-Test, um eine Hypothese zu prüfen, erledigt No-Code die Aufgabe hervorragend. Ist es das Fundament Ihres Unternehmens – das Ihre Nutzer, Umsätze und Daten trägt –, gehen Sie direkt auf echten Code. Sie verlieren dadurch keine Geschwindigkeit mehr und ersparen sich das Neuschreiben, das weit mehr kostet als 15.000 €. No-Code bleibt ein hervorragendes Werkzeug – solange Sie wissen, wann Sie es verlassen müssen.",
+        p: "Stellen Sie sich eine einzige Frage: Soll dieses Produkt Bestand haben? Ist es ein Wegwerf-Test, um eine Hypothese zu prüfen, erledigt No-Code die Aufgabe hervorragend. Ist es das Fundament Ihres Unternehmens – das Ihre Nutzer, Umsätze und Daten trägt –, gehen Sie direkt auf echten Code. Sie verlieren dadurch keine Geschwindigkeit mehr und ersparen sich das Neuschreiben, das weit mehr kostet als 11.000 €. No-Code bleibt ein hervorragendes Werkzeug – solange Sie wissen, wann Sie es verlassen müssen.",
       },
     ],
   },
@@ -221,14 +221,14 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "La terza via: codice vero, veloce quanto il no-code" },
       {
-        p: "L’argomento storico del no-code era la velocità. Con lo sviluppo AI-native, quel vantaggio si è dissolto. In Khufu, una V1 vera — Next.js, NestJS, PostgreSQL, codice sorgente tuo — si consegna in 7 giorni a un prezzo fisso di 15.000 €. Mantieni la velocità del no-code senza pagarne il debito: nessun tetto di volume, prestazioni sotto controllo, logica di business illimitata e un codice che possiedi e puoi far evolvere per anni. Parti da fondamenta che milioni di prodotti in produzione già usano.",
+        p: "L’argomento storico del no-code era la velocità. Con lo sviluppo AI-native, quel vantaggio si è dissolto. In Khufu, una V1 vera — Next.js, NestJS, PostgreSQL, codice sorgente tuo — si consegna in 7 giorni a un prezzo fisso di 11.000 €. Mantieni la velocità del no-code senza pagarne il debito: nessun tetto di volume, prestazioni sotto controllo, logica di business illimitata e un codice che possiedi e puoi far evolvere per anni. Parti da fondamenta che milioni di prodotti in produzione già usano.",
       },
       {
         quote: "Il no-code ti fa guadagnare settimane all’inizio e te ne fa perdere mesi il giorno in cui devi scalare.",
       },
       { h2: "Come decidere in pratica" },
       {
-        p: "Poniti una sola domanda: questo prodotto deve durare? Se è un test usa e getta per validare un’ipotesi, il no-code fa benissimo il suo lavoro. Se è la base della tua azienda — quella che reggerà i tuoi utenti, i tuoi ricavi e i tuoi dati —, vai dritto sul codice vero. Non ci perdi più in velocità e ti risparmi la riscrittura, che costa molto più di 15.000 €. Il no-code resta uno strumento eccellente, a patto di sapere quando lasciarlo.",
+        p: "Poniti una sola domanda: questo prodotto deve durare? Se è un test usa e getta per validare un’ipotesi, il no-code fa benissimo il suo lavoro. Se è la base della tua azienda — quella che reggerà i tuoi utenti, i tuoi ricavi e i tuoi dati —, vai dritto sul codice vero. Non ci perdi più in velocità e ti risparmi la riscrittura, che costa molto più di 11.000 €. Il no-code resta uno strumento eccellente, a patto di sapere quando lasciarlo.",
       },
     ],
   },
@@ -267,14 +267,14 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "A terceira via: código real, tão rápido como o no-code" },
       {
-        p: "O argumento histórico do no-code era a velocidade. Com o desenvolvimento AI-native, essa vantagem desapareceu. Na Khufu, uma V1 real — Next.js, NestJS, PostgreSQL, código-fonte seu — é entregue em 7 dias por um preço fixo de 15.000 €. Mantém a velocidade do no-code sem pagar a sua dívida: sem teto de volume, desempenho sob controlo, lógica de negócio ilimitada e um código que possui e pode fazer evoluir durante anos. Arranca sobre bases que milhões de produtos em produção já usam.",
+        p: "O argumento histórico do no-code era a velocidade. Com o desenvolvimento AI-native, essa vantagem desapareceu. Na Khufu, uma V1 real — Next.js, NestJS, PostgreSQL, código-fonte seu — é entregue em 7 dias por um preço fixo de 11.000 €. Mantém a velocidade do no-code sem pagar a sua dívida: sem teto de volume, desempenho sob controlo, lógica de negócio ilimitada e um código que possui e pode fazer evoluir durante anos. Arranca sobre bases que milhões de produtos em produção já usam.",
       },
       {
         quote: "O no-code faz-lhe ganhar semanas no arranque e faz-lhe perder meses no dia em que é preciso escalar.",
       },
       { h2: "Como decidir na prática" },
       {
-        p: "Faça a si próprio uma única pergunta: este produto tem de durar? Se é um teste descartável para validar uma hipótese, o no-code cumpre muito bem. Se é a base da sua empresa — a que vai sustentar os seus utilizadores, as suas receitas e os seus dados —, vá direto ao código real. Já não perde velocidade ao fazê-lo e poupa-se à reescrita, que custa muito mais do que 15.000 €. O no-code continua a ser uma excelente ferramenta, desde que saiba quando a deixar.",
+        p: "Faça a si próprio uma única pergunta: este produto tem de durar? Se é um teste descartável para validar uma hipótese, o no-code cumpre muito bem. Se é a base da sua empresa — a que vai sustentar os seus utilizadores, as suas receitas e os seus dados —, vá direto ao código real. Já não perde velocidade ao fazê-lo e poupa-se à reescrita, que custa muito mais do que 11.000 €. O no-code continua a ser uma excelente ferramenta, desde que saiba quando a deixar.",
       },
     ],
   },
@@ -313,14 +313,14 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "De derde weg: echte code, net zo snel als no-code" },
       {
-        p: "Het historische argument van no-code was snelheid. Met AI-native ontwikkeling is die voorsprong verdampt. Bij Khufu wordt een echte V1 — Next.js, NestJS, PostgreSQL, broncode van jou — in 7 dagen opgeleverd voor een vaste prijs van € 15.000. Je behoudt de snelheid van no-code zonder de schuld ervan te betalen: geen volumeplafond, prestaties onder controle, onbeperkte bedrijfslogica en code die je bezit en jarenlang kunt laten groeien. Je start op fundamenten die miljoenen producten in productie al gebruiken.",
+        p: "Het historische argument van no-code was snelheid. Met AI-native ontwikkeling is die voorsprong verdampt. Bij Khufu wordt een echte V1 — Next.js, NestJS, PostgreSQL, broncode van jou — in 7 dagen opgeleverd voor een vaste prijs van € 11.000. Je behoudt de snelheid van no-code zonder de schuld ervan te betalen: geen volumeplafond, prestaties onder controle, onbeperkte bedrijfslogica en code die je bezit en jarenlang kunt laten groeien. Je start op fundamenten die miljoenen producten in productie al gebruiken.",
       },
       {
         quote: "No-code bespaart je weken bij de start en kost je maanden op de dag dat je moet schalen.",
       },
       { h2: "Hoe beslis je in de praktijk" },
       {
-        p: "Stel jezelf één vraag: moet dit product blijven bestaan? Is het een wegwerptest om een hypothese te valideren, dan doet no-code het uitstekend. Is het de basis van je bedrijf — die je gebruikers, je omzet en je data draagt —, ga dan meteen voor echte code. Je verliest daar geen snelheid meer mee en je bespaart jezelf de herschrijving, die veel meer kost dan € 15.000. No-code blijft een uitstekend gereedschap — zolang je weet wanneer je het moet loslaten.",
+        p: "Stel jezelf één vraag: moet dit product blijven bestaan? Is het een wegwerptest om een hypothese te valideren, dan doet no-code het uitstekend. Is het de basis van je bedrijf — die je gebruikers, je omzet en je data draagt —, ga dan meteen voor echte code. Je verliest daar geen snelheid meer mee en je bespaart jezelf de herschrijving, die veel meer kost dan € 11.000. No-code blijft een uitstekend gereedschap — zolang je weet wanneer je het moet loslaten.",
       },
     ],
   },
@@ -359,14 +359,14 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "الطريق الثالث: كود حقيقي بسرعة الـ no-code" },
       {
-        p: "كانت السرعة هي الحجة التاريخية للـ no-code. ومع التطوير المعتمد على الذكاء الاصطناعي، تلاشت هذه الميزة. في Khufu، تُسلَّم نسخة V1 حقيقية — Next.js، NestJS، PostgreSQL، والشفرة المصدرية ملكك — خلال 7 أيام بسعر ثابت قدره 15 000 €. تحتفظ بسرعة الـ no-code دون دفع ديونه: بلا سقف للحجم، وأداء مُتحكَّم فيه، ومنطق أعمال غير محدود، وكود تملكه ويمكنك تطويره لسنوات. تنطلق من أسس يستخدمها بالفعل ملايين المنتجات في بيئة الإنتاج.",
+        p: "كانت السرعة هي الحجة التاريخية للـ no-code. ومع التطوير المعتمد على الذكاء الاصطناعي، تلاشت هذه الميزة. في Khufu، تُسلَّم نسخة V1 حقيقية — Next.js، NestJS، PostgreSQL، والشفرة المصدرية ملكك — خلال 7 أيام بسعر ثابت قدره 11 000 €. تحتفظ بسرعة الـ no-code دون دفع ديونه: بلا سقف للحجم، وأداء مُتحكَّم فيه، ومنطق أعمال غير محدود، وكود تملكه ويمكنك تطويره لسنوات. تنطلق من أسس يستخدمها بالفعل ملايين المنتجات في بيئة الإنتاج.",
       },
       {
         quote: "الـ no-code يوفّر لك أسابيع في البداية، ويكلّفك أشهراً يوم يتعيّن عليك التوسّع.",
       },
       { h2: "كيف تقرر عملياً" },
       {
-        p: "اطرح على نفسك سؤالاً واحداً: هل يجب أن يدوم هذا المنتج؟ إن كان اختباراً عابراً للتحقق من فرضية، فالـ no-code يؤدي المهمة على أكمل وجه. أما إن كان أساس شركتك — الذي سيحمل مستخدميك وإيراداتك وبياناتك — فابدأ مباشرةً بالكود الحقيقي. لم تعد تخسر السرعة بذلك، وتوفّر على نفسك إعادة الكتابة التي تكلّف أكثر بكثير من 15 000 €. يبقى الـ no-code أداة ممتازة — شرط أن تعرف متى تغادره.",
+        p: "اطرح على نفسك سؤالاً واحداً: هل يجب أن يدوم هذا المنتج؟ إن كان اختباراً عابراً للتحقق من فرضية، فالـ no-code يؤدي المهمة على أكمل وجه. أما إن كان أساس شركتك — الذي سيحمل مستخدميك وإيراداتك وبياناتك — فابدأ مباشرةً بالكود الحقيقي. لم تعد تخسر السرعة بذلك، وتوفّر على نفسك إعادة الكتابة التي تكلّف أكثر بكثير من 11 000 €. يبقى الـ no-code أداة ممتازة — شرط أن تعرف متى تغادره.",
       },
     ],
   },
@@ -405,14 +405,14 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Trzecia droga: prawdziwy kod, tak szybko jak no-code" },
       {
-        p: "Historycznym argumentem no-code była szybkość. Wraz z rozwojem AI-native ta przewaga stopniała. W Khufu prawdziwa V1 — Next.js, NestJS, PostgreSQL, kod źródłowy należący do Ciebie — jest dostarczana w 7 dni za stałą cenę 15 000 €. Zachowujesz szybkość no-code, nie płacąc jego długu: bez pułapu wolumenu, wydajność pod kontrolą, nieograniczona logika biznesowa i kod, który posiadasz i możesz rozwijać przez lata. Startujesz na fundamentach, których używają już miliony produktów na produkcji.",
+        p: "Historycznym argumentem no-code była szybkość. Wraz z rozwojem AI-native ta przewaga stopniała. W Khufu prawdziwa V1 — Next.js, NestJS, PostgreSQL, kod źródłowy należący do Ciebie — jest dostarczana w 7 dni za stałą cenę 11 000 €. Zachowujesz szybkość no-code, nie płacąc jego długu: bez pułapu wolumenu, wydajność pod kontrolą, nieograniczona logika biznesowa i kod, który posiadasz i możesz rozwijać przez lata. Startujesz na fundamentach, których używają już miliony produktów na produkcji.",
       },
       {
         quote: "No-code oszczędza Ci tygodnie na starcie i kosztuje Cię miesiące w dniu, w którym musisz się skalować.",
       },
       { h2: "Jak zdecydować w praktyce" },
       {
-        p: "Zadaj sobie jedno pytanie: czy ten produkt ma przetrwać? Jeśli to jednorazowy test do weryfikacji hipotezy, no-code świetnie wykona zadanie. Jeśli to fundament Twojej firmy — ten, który udźwignie Twoich użytkowników, przychody i dane — od razu postaw na prawdziwy kod. Nie tracisz już na tym szybkości, a oszczędzasz sobie przepisywania, które kosztuje znacznie więcej niż 15 000 €. No-code pozostaje doskonałym narzędziem — pod warunkiem że wiesz, kiedy je porzucić.",
+        p: "Zadaj sobie jedno pytanie: czy ten produkt ma przetrwać? Jeśli to jednorazowy test do weryfikacji hipotezy, no-code świetnie wykona zadanie. Jeśli to fundament Twojej firmy — ten, który udźwignie Twoich użytkowników, przychody i dane — od razu postaw na prawdziwy kod. Nie tracisz już na tym szybkości, a oszczędzasz sobie przepisywania, które kosztuje znacznie więcej niż 11 000 €. No-code pozostaje doskonałym narzędziem — pod warunkiem że wiesz, kiedy je porzucić.",
       },
     ],
   },
@@ -451,14 +451,14 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Üçüncü yol: no-code kadar hızlı gerçek kod" },
       {
-        p: "No-code’un tarihsel argümanı hızdı. AI-native geliştirmeyle bu avantaj eriyip gitti. Khufu’da gerçek bir V1 — Next.js, NestJS, PostgreSQL, kaynak kodu sizin — 7 günde, 15.000 € sabit fiyatla teslim edilir. No-code’un hızını, borcunu ödemeden korursunuz: hacim tavanı yok, kontrol altında performans, sınırsız iş mantığı ve sahip olduğunuz, yıllarca geliştirebileceğiniz bir kod. Milyonlarca üretim ürününün halihazırda kullandığı temeller üzerinde başlarsınız.",
+        p: "No-code’un tarihsel argümanı hızdı. AI-native geliştirmeyle bu avantaj eriyip gitti. Khufu’da gerçek bir V1 — Next.js, NestJS, PostgreSQL, kaynak kodu sizin — 7 günde, 11.000 € sabit fiyatla teslim edilir. No-code’un hızını, borcunu ödemeden korursunuz: hacim tavanı yok, kontrol altında performans, sınırsız iş mantığı ve sahip olduğunuz, yıllarca geliştirebileceğiniz bir kod. Milyonlarca üretim ürününün halihazırda kullandığı temeller üzerinde başlarsınız.",
       },
       {
         quote: "No-code başlangıçta size haftalar kazandırır ve ölçeklenmeniz gereken gün size aylar kaybettirir.",
       },
       { h2: "Pratikte nasıl karar verilir" },
       {
-        p: "Kendinize tek bir soru sorun: bu ürünün kalıcı olması mı gerekiyor? Bir hipotezi doğrulamak için tek kullanımlık bir testse, no-code işi gayet iyi görür. İşinizin temeliyse — kullanıcılarınızı, gelirinizi ve verilerinizi taşıyacak olan — doğrudan gerçek koda gidin. Artık bununla hız kaybetmiyorsunuz ve 15.000 €’dan çok daha pahalıya mal olan yeniden yazımdan kurtuluyorsunuz. No-code, ne zaman bırakacağınızı bildiğiniz sürece mükemmel bir araç olmaya devam eder.",
+        p: "Kendinize tek bir soru sorun: bu ürünün kalıcı olması mı gerekiyor? Bir hipotezi doğrulamak için tek kullanımlık bir testse, no-code işi gayet iyi görür. İşinizin temeliyse — kullanıcılarınızı, gelirinizi ve verilerinizi taşıyacak olan — doğrudan gerçek koda gidin. Artık bununla hız kaybetmiyorsunuz ve 11.000 €’dan çok daha pahalıya mal olan yeniden yazımdan kurtuluyorsunuz. No-code, ne zaman bırakacağınızı bildiğiniz sürece mükemmel bir araç olmaya devam eder.",
       },
     ],
   },

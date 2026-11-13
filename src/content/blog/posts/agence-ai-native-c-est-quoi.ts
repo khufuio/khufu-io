@@ -12,7 +12,7 @@ export const post: Record<Locale, Article> = {
     tags: ['AI-native', 'Coûts'],
     body: [
       {
-        p: "Une agence AI-native est une agence qui utilise l'intelligence artificielle à chaque étape de la production — design, développement, tests, documentation — et pas seulement comme un gadget à la marge. La conséquence directe : là où une agence classique facture 3 à 6 mois de travail, une agence AI-native livre un vrai produit en une semaine. Chez Khufu, cela se traduit par une V1 en production en 7 jours, à prix fixe de 15 000 €.",
+        p: "Une agence AI-native est une agence qui utilise l'intelligence artificielle à chaque étape de la production — design, développement, tests, documentation — et pas seulement comme un gadget à la marge. La conséquence directe : là où une agence classique facture 3 à 6 mois de travail, une agence AI-native livre un vrai produit en une semaine. Chez Khufu, cela se traduit par une V1 en production en 7 jours, à prix fixe de 11 000 €.",
       },
       { h2: "AI-native, ce que ça veut dire concrètement" },
       {
@@ -41,7 +41,7 @@ export const post: Record<Locale, Article> = {
       {
         ul: [
           "Délai : 3 à 6 mois pour une agence classique, contre 7 jours pour une V1 AI-native.",
-          "Prix : 40 000 à 150 000 € au temps passé, contre un forfait fixe de 15 000 €.",
+          "Prix : 40 000 à 150 000 € au temps passé, contre un forfait fixe de 11 000 €.",
           "Risque : le dérapage de périmètre est porté par le client en classique, par le prestataire en prix fixe.",
         ],
       },
@@ -61,7 +61,7 @@ export const post: Record<Locale, Article> = {
     tags: ['AI-native', 'Cost'],
     body: [
       {
-        p: "An AI-native agency uses artificial intelligence at every stage of production — design, development, testing, documentation — and not just as a gimmick on the side. The direct consequence: where a traditional agency bills 3 to 6 months of work, an AI-native agency ships a real product in one week. At Khufu, that means a production V1 in 7 days, at a fixed price of €15,000.",
+        p: "An AI-native agency uses artificial intelligence at every stage of production — design, development, testing, documentation — and not just as a gimmick on the side. The direct consequence: where a traditional agency bills 3 to 6 months of work, an AI-native agency ships a real product in one week. At Khufu, that means a production V1 in 7 days, at a fixed price of €11,000.",
       },
       { h2: "AI-native: what it actually means" },
       {
@@ -90,7 +90,7 @@ export const post: Record<Locale, Article> = {
       {
         ul: [
           "Timeline: 3 to 6 months for a traditional agency, versus 7 days for an AI-native V1.",
-          "Price: €40,000 to €150,000 on time-and-materials, versus a fixed €15,000 package.",
+          "Price: €40,000 to €150,000 on time-and-materials, versus a fixed €11,000 package.",
           "Risk: scope creep is carried by the client in the classic model, by the provider under fixed price.",
         ],
       },
@@ -110,7 +110,7 @@ export const post: Record<Locale, Article> = {
     tags: ['AI-native', 'Costes'],
     body: [
       {
-        p: "Una agencia AI-native es una agencia que usa la inteligencia artificial en cada etapa de la producción — diseño, desarrollo, pruebas, documentación — y no solo como un adorno al margen. La consecuencia directa: donde una agencia clásica factura de 3 a 6 meses de trabajo, una agencia AI-native entrega un producto real en una semana. En Khufu, eso se traduce en una V1 en producción en 7 días, a precio fijo de 15 000 €.",
+        p: "Una agencia AI-native es una agencia que usa la inteligencia artificial en cada etapa de la producción — diseño, desarrollo, pruebas, documentación — y no solo como un adorno al margen. La consecuencia directa: donde una agencia clásica factura de 3 a 6 meses de trabajo, una agencia AI-native entrega un producto real en una semana. En Khufu, eso se traduce en una V1 en producción en 7 días, a precio fijo de 11 000 €.",
       },
       { h2: "AI-native: lo que significa en concreto" },
       {
@@ -139,7 +139,7 @@ export const post: Record<Locale, Article> = {
       {
         ul: [
           "Plazo: de 3 a 6 meses para una agencia clásica, frente a 7 días para una V1 AI-native.",
-          "Precio: de 40 000 a 150 000 € por tiempo empleado, frente a un forfait fijo de 15 000 €.",
+          "Precio: de 40 000 a 150 000 € por tiempo empleado, frente a un forfait fijo de 11 000 €.",
           "Riesgo: la desviación de alcance la asume el cliente en el modelo clásico, y el proveedor con el precio fijo.",
         ],
       },
@@ -159,7 +159,7 @@ export const post: Record<Locale, Article> = {
     tags: ['AI-native', 'Kosten'],
     body: [
       {
-        p: "Eine AI-native Agentur nutzt künstliche Intelligenz in jeder Produktionsphase — Design, Entwicklung, Tests, Dokumentation — und nicht nur als Spielerei am Rand. Die direkte Folge: Wo eine klassische Agentur 3 bis 6 Monate Arbeit abrechnet, liefert eine AI-native Agentur ein echtes Produkt in einer Woche. Bei Khufu bedeutet das eine V1 in Produktion in 7 Tagen, zum Festpreis von 15.000 €.",
+        p: "Eine AI-native Agentur nutzt künstliche Intelligenz in jeder Produktionsphase — Design, Entwicklung, Tests, Dokumentation — und nicht nur als Spielerei am Rand. Die direkte Folge: Wo eine klassische Agentur 3 bis 6 Monate Arbeit abrechnet, liefert eine AI-native Agentur ein echtes Produkt in einer Woche. Bei Khufu bedeutet das eine V1 in Produktion in 7 Tagen, zum Festpreis von 11.000 €.",
       },
       { h2: "AI-native: was es konkret bedeutet" },
       {
@@ -188,7 +188,7 @@ export const post: Record<Locale, Article> = {
       {
         ul: [
           "Zeit: 3 bis 6 Monate bei einer klassischen Agentur, gegenüber 7 Tagen für eine AI-native V1.",
-          "Preis: 40.000 bis 150.000 € nach Aufwand, gegenüber einem Festpaket von 15.000 €.",
+          "Preis: 40.000 bis 150.000 € nach Aufwand, gegenüber einem Festpaket von 11.000 €.",
           "Risiko: Scope Creep trägt im klassischen Modell der Kunde, beim Festpreis der Dienstleister.",
         ],
       },
@@ -208,7 +208,7 @@ export const post: Record<Locale, Article> = {
     tags: ['AI-native', 'Costi'],
     body: [
       {
-        p: "Un'agenzia AI-native è un'agenzia che usa l'intelligenza artificiale in ogni fase della produzione — design, sviluppo, test, documentazione — e non solo come gadget ai margini. La conseguenza diretta: dove un'agenzia classica fattura 3-6 mesi di lavoro, un'agenzia AI-native consegna un prodotto reale in una settimana. Da Khufu, questo si traduce in una V1 in produzione in 7 giorni, a prezzo fisso di 15.000 €.",
+        p: "Un'agenzia AI-native è un'agenzia che usa l'intelligenza artificiale in ogni fase della produzione — design, sviluppo, test, documentazione — e non solo come gadget ai margini. La conseguenza diretta: dove un'agenzia classica fattura 3-6 mesi di lavoro, un'agenzia AI-native consegna un prodotto reale in una settimana. Da Khufu, questo si traduce in una V1 in produzione in 7 giorni, a prezzo fisso di 11.000 €.",
       },
       { h2: "AI-native: cosa significa concretamente" },
       {
@@ -237,7 +237,7 @@ export const post: Record<Locale, Article> = {
       {
         ul: [
           "Tempo: 3-6 mesi per un'agenzia classica, contro 7 giorni per una V1 AI-native.",
-          "Prezzo: da 40.000 a 150.000 € a tempo speso, contro un forfait fisso di 15.000 €.",
+          "Prezzo: da 40.000 a 150.000 € a tempo speso, contro un forfait fisso di 11.000 €.",
           "Rischio: lo sforamento del perimetro è a carico del cliente nel modello classico, del fornitore con il prezzo fisso.",
         ],
       },
@@ -257,7 +257,7 @@ export const post: Record<Locale, Article> = {
     tags: ['AI-native', 'Custos'],
     body: [
       {
-        p: "Uma agência AI-native é uma agência que usa a inteligência artificial em cada etapa da produção — design, desenvolvimento, testes, documentação — e não apenas como um enfeite à margem. A consequência direta: onde uma agência clássica fatura de 3 a 6 meses de trabalho, uma agência AI-native entrega um produto real em uma semana. Na Khufu, isso se traduz em uma V1 em produção em 7 dias, a preço fixo de 15.000 €.",
+        p: "Uma agência AI-native é uma agência que usa a inteligência artificial em cada etapa da produção — design, desenvolvimento, testes, documentação — e não apenas como um enfeite à margem. A consequência direta: onde uma agência clássica fatura de 3 a 6 meses de trabalho, uma agência AI-native entrega um produto real em uma semana. Na Khufu, isso se traduz em uma V1 em produção em 7 dias, a preço fixo de 11.000 €.",
       },
       { h2: "AI-native: o que significa na prática" },
       {
@@ -286,7 +286,7 @@ export const post: Record<Locale, Article> = {
       {
         ul: [
           "Prazo: 3 a 6 meses para uma agência clássica, contra 7 dias para uma V1 AI-native.",
-          "Preço: de 40.000 a 150.000 € por tempo gasto, contra um pacote fixo de 15.000 €.",
+          "Preço: de 40.000 a 150.000 € por tempo gasto, contra um pacote fixo de 11.000 €.",
           "Risco: o desvio de escopo é suportado pelo cliente no modelo clássico, e pelo prestador no preço fixo.",
         ],
       },
@@ -306,7 +306,7 @@ export const post: Record<Locale, Article> = {
     tags: ['AI-native', 'Kosten'],
     body: [
       {
-        p: "Een AI-native bureau is een bureau dat kunstmatige intelligentie in elke fase van de productie inzet — design, ontwikkeling, tests, documentatie — en niet alleen als speeltje aan de zijlijn. Het directe gevolg: waar een klassiek bureau 3 tot 6 maanden werk factureert, levert een AI-native bureau een echt product in één week. Bij Khufu betekent dat een V1 in productie in 7 dagen, tegen een vaste prijs van 15.000 €.",
+        p: "Een AI-native bureau is een bureau dat kunstmatige intelligentie in elke fase van de productie inzet — design, ontwikkeling, tests, documentatie — en niet alleen als speeltje aan de zijlijn. Het directe gevolg: waar een klassiek bureau 3 tot 6 maanden werk factureert, levert een AI-native bureau een echt product in één week. Bij Khufu betekent dat een V1 in productie in 7 dagen, tegen een vaste prijs van 11.000 €.",
       },
       { h2: "AI-native: wat het concreet betekent" },
       {
@@ -335,7 +335,7 @@ export const post: Record<Locale, Article> = {
       {
         ul: [
           "Doorlooptijd: 3 tot 6 maanden voor een klassiek bureau, tegenover 7 dagen voor een AI-native V1.",
-          "Prijs: 40.000 tot 150.000 € op bestede tijd, tegenover een vast pakket van 15.000 €.",
+          "Prijs: 40.000 tot 150.000 € op bestede tijd, tegenover een vast pakket van 11.000 €.",
           "Risico: scope creep wordt in het klassieke model door de klant gedragen, bij vaste prijs door de dienstverlener.",
         ],
       },
@@ -355,7 +355,7 @@ export const post: Record<Locale, Article> = {
     tags: ['AI-native', 'التكاليف'],
     body: [
       {
-        p: "وكالة AI-native هي وكالة تستخدم الذكاء الاصطناعي في كل مرحلة من مراحل الإنتاج — التصميم والتطوير والاختبار والتوثيق — وليس كأداة هامشية فقط. والنتيجة المباشرة: حيث تفوتر الوكالة التقليدية 3 إلى 6 أشهر من العمل، تسلّم وكالة AI-native منتجًا حقيقيًا في أسبوع واحد. لدى Khufu، يترجم ذلك إلى V1 في الإنتاج خلال 7 أيام، بسعر ثابت قدره 15,000 €.",
+        p: "وكالة AI-native هي وكالة تستخدم الذكاء الاصطناعي في كل مرحلة من مراحل الإنتاج — التصميم والتطوير والاختبار والتوثيق — وليس كأداة هامشية فقط. والنتيجة المباشرة: حيث تفوتر الوكالة التقليدية 3 إلى 6 أشهر من العمل، تسلّم وكالة AI-native منتجًا حقيقيًا في أسبوع واحد. لدى Khufu، يترجم ذلك إلى V1 في الإنتاج خلال 7 أيام، بسعر ثابت قدره 11,000 €.",
       },
       { h2: "AI-native: ماذا يعني ذلك عمليًا" },
       {
@@ -384,7 +384,7 @@ export const post: Record<Locale, Article> = {
       {
         ul: [
           "المدة: من 3 إلى 6 أشهر للوكالة التقليدية، مقابل 7 أيام لـ V1 من نوع AI-native.",
-          "السعر: من 40,000 إلى 150,000 € بالوقت المستهلك، مقابل باقة ثابتة قدرها 15,000 €.",
+          "السعر: من 40,000 إلى 150,000 € بالوقت المستهلك، مقابل باقة ثابتة قدرها 11,000 €.",
           "المخاطر: انزلاق النطاق يتحمله العميل في النموذج التقليدي، ويتحمله المزود في السعر الثابت.",
         ],
       },
@@ -404,7 +404,7 @@ export const post: Record<Locale, Article> = {
     tags: ['AI-native', 'Koszty'],
     body: [
       {
-        p: "Agencja AI-native to agencja, która wykorzystuje sztuczną inteligencję na każdym etapie produkcji — design, rozwój, testy, dokumentacja — a nie tylko jako gadżet na marginesie. Bezpośredni skutek: tam gdzie klasyczna agencja fakturuje 3 do 6 miesięcy pracy, agencja AI-native dostarcza prawdziwy produkt w tydzień. W Khufu przekłada się to na V1 na produkcji w 7 dni, za stałą cenę 15 000 €.",
+        p: "Agencja AI-native to agencja, która wykorzystuje sztuczną inteligencję na każdym etapie produkcji — design, rozwój, testy, dokumentacja — a nie tylko jako gadżet na marginesie. Bezpośredni skutek: tam gdzie klasyczna agencja fakturuje 3 do 6 miesięcy pracy, agencja AI-native dostarcza prawdziwy produkt w tydzień. W Khufu przekłada się to na V1 na produkcji w 7 dni, za stałą cenę 11 000 €.",
       },
       { h2: "AI-native: co to oznacza w praktyce" },
       {
@@ -433,7 +433,7 @@ export const post: Record<Locale, Article> = {
       {
         ul: [
           "Termin: 3 do 6 miesięcy dla klasycznej agencji, wobec 7 dni dla V1 AI-native.",
-          "Cena: od 40 000 do 150 000 € za poświęcony czas, wobec stałego pakietu 15 000 €.",
+          "Cena: od 40 000 do 150 000 € za poświęcony czas, wobec stałego pakietu 11 000 €.",
           "Ryzyko: rozrost zakresu ponosi klient w modelu klasycznym, a dostawca przy cenie stałej.",
         ],
       },
@@ -453,7 +453,7 @@ export const post: Record<Locale, Article> = {
     tags: ['AI-native', 'Maliyet'],
     body: [
       {
-        p: "AI-native bir ajans, yapay zekâyı üretimin her aşamasında — tasarım, geliştirme, test, dokümantasyon — kullanan ve onu yalnızca kenarda bir aksesuar olarak görmeyen bir ajanstır. Doğrudan sonuç: klasik bir ajansın 3 ila 6 aylık iş faturaladığı yerde, AI-native bir ajans gerçek bir ürünü bir haftada teslim eder. Khufu'da bu, 7 günde üretimde bir V1 anlamına gelir, 15.000 € sabit fiyatla.",
+        p: "AI-native bir ajans, yapay zekâyı üretimin her aşamasında — tasarım, geliştirme, test, dokümantasyon — kullanan ve onu yalnızca kenarda bir aksesuar olarak görmeyen bir ajanstır. Doğrudan sonuç: klasik bir ajansın 3 ila 6 aylık iş faturaladığı yerde, AI-native bir ajans gerçek bir ürünü bir haftada teslim eder. Khufu'da bu, 7 günde üretimde bir V1 anlamına gelir, 11.000 € sabit fiyatla.",
       },
       { h2: "AI-native: somut olarak ne demek" },
       {
@@ -482,7 +482,7 @@ export const post: Record<Locale, Article> = {
       {
         ul: [
           "Süre: klasik ajans için 3 ila 6 ay, AI-native bir V1 için 7 güne karşı.",
-          "Fiyat: harcanan zamanla 40.000 ila 150.000 €, buna karşı 15.000 € sabit paket.",
+          "Fiyat: harcanan zamanla 40.000 ila 150.000 €, buna karşı 11.000 € sabit paket.",
           "Risk: kapsam kayması klasik modelde müşteri tarafından, sabit fiyatta ise tedarikçi tarafından üstlenilir.",
         ],
       },

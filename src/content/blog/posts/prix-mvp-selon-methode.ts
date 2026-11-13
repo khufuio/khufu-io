@@ -12,7 +12,7 @@ export const post: Record<Locale, Article> = {
     tags: ['MVP', 'Coûts'],
     body: [
       {
-        p: "Le prix d’un MVP va de 3 000 € en no-code à plus de 80 000 € en agence classique, avec un point d’équilibre autour de 15 000 € pour un forfait V1 à prix fixe. Mais le chiffre affiché ne dit rien du coût réel : chaque méthode cache des frais, des risques ou de la dette qui n’apparaissent que plus tard. Voici ce que chaque option coûte vraiment, et laquelle choisir selon votre situation.",
+        p: "Le prix d’un MVP va de 3 000 € en no-code à plus de 80 000 € en agence classique, avec un point d’équilibre autour de 11 000 € pour un forfait V1 à prix fixe. Mais le chiffre affiché ne dit rien du coût réel : chaque méthode cache des frais, des risques ou de la dette qui n’apparaissent que plus tard. Voici ce que chaque option coûte vraiment, et laquelle choisir selon votre situation.",
       },
       { h2: 'Les quatre méthodes et leurs fourchettes' },
       {
@@ -20,7 +20,7 @@ export const post: Record<Locale, Article> = {
           "No-code (Bubble, Webflow, Glide…) : 3 000 – 15 000 €. Le plus rapide et le moins cher pour valider une idée simple.",
           "Freelance : 300 – 700 €/jour, soit 12 000 – 50 000 € pour un MVP. Qualité très variable, dépendance à une seule personne.",
           "Agence classique : 40 000 – 100 000 € sur 3 à 6 mois. Process lourd, devis flous, allers-retours interminables.",
-          "Forfait V1 à prix fixe (Khufu) : 15 000 €, livré en 7 jours, code source à vous.",
+          "Forfait V1 à prix fixe (Khufu) : 11 000 €, livré en 7 jours, code source à vous.",
         ],
       },
       { h2: 'Ce que chaque option cache' },
@@ -48,7 +48,7 @@ export const post: Record<Locale, Article> = {
         ul: [
           "Idée non validée, budget minime : no-code pour tester en quelques jours, en assumant de jeter le prototype ensuite.",
           "Besoin ponctuel et précis, vous savez piloter la technique : un bon freelance peut suffire.",
-          "Produit destiné à grandir, vous voulez du code à vous et une mise sur le marché rapide : un forfait V1 à prix fixe (15 000 €, livré en 7 jours) offre le meilleur rapport vitesse/qualité/risque.",
+          "Produit destiné à grandir, vous voulez du code à vous et une mise sur le marché rapide : un forfait V1 à prix fixe (11 000 €, livré en 7 jours) offre le meilleur rapport vitesse/qualité/risque.",
         ],
       },
       {
@@ -66,7 +66,7 @@ export const post: Record<Locale, Article> = {
     tags: ['MVP', 'Costs'],
     body: [
       {
-        p: 'An MVP costs anywhere from €3,000 with no-code to over €80,000 with a traditional agency, with a sweet spot around €15,000 for a fixed-price V1. But the sticker price tells you nothing about the real cost: every method hides fees, risks or debt that only surface later. Here is what each option truly costs, and which one to pick based on your situation.',
+        p: 'An MVP costs anywhere from €3,000 with no-code to over €80,000 with a traditional agency, with a sweet spot around €11,000 for a fixed-price V1. But the sticker price tells you nothing about the real cost: every method hides fees, risks or debt that only surface later. Here is what each option truly costs, and which one to pick based on your situation.',
       },
       { h2: 'The four methods and their price ranges' },
       {
@@ -74,7 +74,7 @@ export const post: Record<Locale, Article> = {
           'No-code (Bubble, Webflow, Glide…): €3,000 – €15,000. The fastest and cheapest way to validate a simple idea.',
           'Freelance: €300 – €700/day, i.e. €12,000 – €50,000 for an MVP. Highly variable quality, reliance on a single person.',
           'Traditional agency: €40,000 – €100,000 over 3 to 6 months. Heavy process, vague quotes, endless back-and-forth.',
-          'Fixed-price V1 (Khufu): €15,000, delivered in 7 days, source code yours to keep.',
+          'Fixed-price V1 (Khufu): €11,000, delivered in 7 days, source code yours to keep.',
         ],
       },
       { h2: 'What each option hides' },
@@ -102,7 +102,7 @@ export const post: Record<Locale, Article> = {
         ul: [
           'Unvalidated idea, minimal budget: no-code to test within days, accepting you will throw the prototype away afterwards.',
           'A one-off, well-defined need and you can steer the tech: a good freelance may be enough.',
-          'A product meant to grow, you want code you own and a fast time-to-market: a fixed-price V1 (€15,000, delivered in 7 days) offers the best speed/quality/risk ratio.',
+          'A product meant to grow, you want code you own and a fast time-to-market: a fixed-price V1 (€11,000, delivered in 7 days) offers the best speed/quality/risk ratio.',
         ],
       },
       {
@@ -120,7 +120,7 @@ export const post: Record<Locale, Article> = {
     tags: ['MVP', 'Costes'],
     body: [
       {
-        p: 'Un MVP cuesta desde 3.000 € con no-code hasta más de 80.000 € con una agencia clásica, con un punto de equilibrio en torno a los 15.000 € para una V1 a precio fijo. Pero la cifra anunciada no dice nada del coste real: cada método esconde gastos, riesgos o deuda que solo aparecen después. Esto es lo que cuesta de verdad cada opción, y cuál elegir según tu situación.',
+        p: 'Un MVP cuesta desde 3.000 € con no-code hasta más de 80.000 € con una agencia clásica, con un punto de equilibrio en torno a los 11.000 € para una V1 a precio fijo. Pero la cifra anunciada no dice nada del coste real: cada método esconde gastos, riesgos o deuda que solo aparecen después. Esto es lo que cuesta de verdad cada opción, y cuál elegir según tu situación.',
       },
       { h2: 'Los cuatro métodos y sus rangos' },
       {
@@ -128,7 +128,7 @@ export const post: Record<Locale, Article> = {
           'No-code (Bubble, Webflow, Glide…): 3.000 – 15.000 €. Lo más rápido y barato para validar una idea simple.',
           'Freelance: 300 – 700 €/día, es decir 12.000 – 50.000 € por un MVP. Calidad muy variable, dependencia de una sola persona.',
           'Agencia clásica: 40.000 – 100.000 € en 3 a 6 meses. Proceso pesado, presupuestos difusos, idas y venidas interminables.',
-          'V1 a precio fijo (Khufu): 15.000 €, entregada en 7 días, código fuente para ti.',
+          'V1 a precio fijo (Khufu): 11.000 €, entregada en 7 días, código fuente para ti.',
         ],
       },
       { h2: 'Lo que esconde cada opción' },
@@ -156,7 +156,7 @@ export const post: Record<Locale, Article> = {
         ul: [
           'Idea sin validar, presupuesto mínimo: no-code para probar en unos días, asumiendo que luego tirarás el prototipo.',
           'Necesidad puntual y precisa, y sabes dirigir la parte técnica: un buen freelance puede bastar.',
-          'Producto pensado para crecer, quieres código propio y salir rápido al mercado: una V1 a precio fijo (15.000 €, entregada en 7 días) ofrece la mejor relación velocidad/calidad/riesgo.',
+          'Producto pensado para crecer, quieres código propio y salir rápido al mercado: una V1 a precio fijo (11.000 €, entregada en 7 días) ofrece la mejor relación velocidad/calidad/riesgo.',
         ],
       },
       {
@@ -174,7 +174,7 @@ export const post: Record<Locale, Article> = {
     tags: ['MVP', 'Kosten'],
     body: [
       {
-        p: 'Ein MVP kostet zwischen 3.000 € mit No-Code und über 80.000 € bei einer klassischen Agentur, mit einem Sweet Spot um 15.000 € für eine Festpreis-V1. Doch der Angebotspreis sagt nichts über die realen Kosten aus: Jede Methode verbirgt Gebühren, Risiken oder Schulden, die erst später auftauchen. Hier ist, was jede Option wirklich kostet — und welche zu Ihrer Situation passt.',
+        p: 'Ein MVP kostet zwischen 3.000 € mit No-Code und über 80.000 € bei einer klassischen Agentur, mit einem Sweet Spot um 11.000 € für eine Festpreis-V1. Doch der Angebotspreis sagt nichts über die realen Kosten aus: Jede Methode verbirgt Gebühren, Risiken oder Schulden, die erst später auftauchen. Hier ist, was jede Option wirklich kostet — und welche zu Ihrer Situation passt.',
       },
       { h2: 'Die vier Methoden und ihre Preisspannen' },
       {
@@ -182,7 +182,7 @@ export const post: Record<Locale, Article> = {
           'No-Code (Bubble, Webflow, Glide…): 3.000 – 15.000 €. Am schnellsten und günstigsten, um eine einfache Idee zu validieren.',
           'Freelancer: 300 – 700 €/Tag, also 12.000 – 50.000 € für ein MVP. Stark schwankende Qualität, Abhängigkeit von einer Person.',
           'Klassische Agentur: 40.000 – 100.000 € über 3 bis 6 Monate. Schwerfälliger Prozess, vage Angebote, endloses Hin und Her.',
-          'Festpreis-V1 (Khufu): 15.000 €, in 7 Tagen geliefert, Quellcode gehört Ihnen.',
+          'Festpreis-V1 (Khufu): 11.000 €, in 7 Tagen geliefert, Quellcode gehört Ihnen.',
         ],
       },
       { h2: 'Was jede Option verbirgt' },
@@ -210,7 +210,7 @@ export const post: Record<Locale, Article> = {
         ul: [
           'Unvalidierte Idee, minimales Budget: No-Code, um in wenigen Tagen zu testen — mit der Bereitschaft, den Prototyp danach wegzuwerfen.',
           'Punktueller, klar umrissener Bedarf, und Sie können die Technik steuern: ein guter Freelancer kann reichen.',
-          'Ein Produkt, das wachsen soll, Sie wollen eigenen Code und einen schnellen Markteintritt: eine Festpreis-V1 (15.000 €, in 7 Tagen geliefert) bietet das beste Verhältnis aus Tempo, Qualität und Risiko.',
+          'Ein Produkt, das wachsen soll, Sie wollen eigenen Code und einen schnellen Markteintritt: eine Festpreis-V1 (11.000 €, in 7 Tagen geliefert) bietet das beste Verhältnis aus Tempo, Qualität und Risiko.',
         ],
       },
       {
@@ -228,7 +228,7 @@ export const post: Record<Locale, Article> = {
     tags: ['MVP', 'Costi'],
     body: [
       {
-        p: 'Un MVP costa da 3.000 € con il no-code a oltre 80.000 € con un’agenzia classica, con un punto di equilibrio intorno ai 15.000 € per una V1 a prezzo fisso. Ma la cifra dichiarata non dice nulla sul costo reale: ogni metodo nasconde spese, rischi o debito che emergono solo dopo. Ecco quanto costa davvero ciascuna opzione e quale scegliere in base alla tua situazione.',
+        p: 'Un MVP costa da 3.000 € con il no-code a oltre 80.000 € con un’agenzia classica, con un punto di equilibrio intorno ai 11.000 € per una V1 a prezzo fisso. Ma la cifra dichiarata non dice nulla sul costo reale: ogni metodo nasconde spese, rischi o debito che emergono solo dopo. Ecco quanto costa davvero ciascuna opzione e quale scegliere in base alla tua situazione.',
       },
       { h2: 'I quattro metodi e i loro range' },
       {
@@ -236,7 +236,7 @@ export const post: Record<Locale, Article> = {
           'No-code (Bubble, Webflow, Glide…): 3.000 – 15.000 €. Il modo più rapido ed economico per validare un’idea semplice.',
           'Freelance: 300 – 700 €/giorno, ossia 12.000 – 50.000 € per un MVP. Qualità molto variabile, dipendenza da una sola persona.',
           'Agenzia classica: 40.000 – 100.000 € in 3-6 mesi. Processo pesante, preventivi vaghi, botta e risposta infiniti.',
-          'V1 a prezzo fisso (Khufu): 15.000 €, consegnata in 7 giorni, codice sorgente tuo.',
+          'V1 a prezzo fisso (Khufu): 11.000 €, consegnata in 7 giorni, codice sorgente tuo.',
         ],
       },
       { h2: 'Cosa nasconde ogni opzione' },
@@ -264,7 +264,7 @@ export const post: Record<Locale, Article> = {
         ul: [
           'Idea non validata, budget minimo: no-code per testare in pochi giorni, accettando di buttare poi il prototipo.',
           'Esigenza puntuale e precisa, e sai guidare la parte tecnica: un buon freelance può bastare.',
-          'Prodotto destinato a crescere, vuoi codice tuo e un rapido time-to-market: una V1 a prezzo fisso (15.000 €, consegnata in 7 giorni) offre il miglior rapporto velocità/qualità/rischio.',
+          'Prodotto destinato a crescere, vuoi codice tuo e un rapido time-to-market: una V1 a prezzo fisso (11.000 €, consegnata in 7 giorni) offre il miglior rapporto velocità/qualità/rischio.',
         ],
       },
       {
@@ -282,7 +282,7 @@ export const post: Record<Locale, Article> = {
     tags: ['MVP', 'Custos'],
     body: [
       {
-        p: 'Um MVP custa de 3.000 € com no-code a mais de 80.000 € com uma agência clássica, com um ponto de equilíbrio em torno de 15.000 € para uma V1 a preço fixo. Mas o valor anunciado nada diz sobre o custo real: cada método esconde despesas, riscos ou dívida que só aparecem mais tarde. Eis o que cada opção custa de facto, e qual escolher consoante a sua situação.',
+        p: 'Um MVP custa de 3.000 € com no-code a mais de 80.000 € com uma agência clássica, com um ponto de equilíbrio em torno de 11.000 € para uma V1 a preço fixo. Mas o valor anunciado nada diz sobre o custo real: cada método esconde despesas, riscos ou dívida que só aparecem mais tarde. Eis o que cada opção custa de facto, e qual escolher consoante a sua situação.',
       },
       { h2: 'Os quatro métodos e as suas faixas' },
       {
@@ -290,7 +290,7 @@ export const post: Record<Locale, Article> = {
           'No-code (Bubble, Webflow, Glide…): 3.000 – 15.000 €. O mais rápido e barato para validar uma ideia simples.',
           'Freelancer: 300 – 700 €/dia, ou seja 12.000 – 50.000 € por um MVP. Qualidade muito variável, dependência de uma só pessoa.',
           'Agência clássica: 40.000 – 100.000 € em 3 a 6 meses. Processo pesado, orçamentos vagos, idas e vindas intermináveis.',
-          'V1 a preço fixo (Khufu): 15.000 €, entregue em 7 dias, código-fonte é seu.',
+          'V1 a preço fixo (Khufu): 11.000 €, entregue em 7 dias, código-fonte é seu.',
         ],
       },
       { h2: 'O que cada opção esconde' },
@@ -318,7 +318,7 @@ export const post: Record<Locale, Article> = {
         ul: [
           'Ideia não validada, orçamento mínimo: no-code para testar em poucos dias, aceitando deitar fora o protótipo depois.',
           'Necessidade pontual e precisa, e sabe conduzir a parte técnica: um bom freelancer pode bastar.',
-          'Produto destinado a crescer, quer código seu e uma entrada rápida no mercado: uma V1 a preço fixo (15.000 €, entregue em 7 dias) oferece a melhor relação velocidade/qualidade/risco.',
+          'Produto destinado a crescer, quer código seu e uma entrada rápida no mercado: uma V1 a preço fixo (11.000 €, entregue em 7 dias) oferece a melhor relação velocidade/qualidade/risco.',
         ],
       },
       {
@@ -336,7 +336,7 @@ export const post: Record<Locale, Article> = {
     tags: ['MVP', 'Kosten'],
     body: [
       {
-        p: 'Een MVP kost tussen 3.000 € met no-code en meer dan 80.000 € bij een klassiek bureau, met een optimum rond 15.000 € voor een V1 tegen vaste prijs. Maar de geadverteerde prijs zegt niets over de werkelijke kosten: elke methode verbergt kosten, risico’s of schuld die pas later opduiken. Dit is wat elke optie echt kost, en welke je kiest afhankelijk van je situatie.',
+        p: 'Een MVP kost tussen 3.000 € met no-code en meer dan 80.000 € bij een klassiek bureau, met een optimum rond 11.000 € voor een V1 tegen vaste prijs. Maar de geadverteerde prijs zegt niets over de werkelijke kosten: elke methode verbergt kosten, risico’s of schuld die pas later opduiken. Dit is wat elke optie echt kost, en welke je kiest afhankelijk van je situatie.',
       },
       { h2: 'De vier methodes en hun ranges' },
       {
@@ -344,7 +344,7 @@ export const post: Record<Locale, Article> = {
           'No-code (Bubble, Webflow, Glide…): 3.000 – 15.000 €. Het snelst en goedkoopst om een simpel idee te valideren.',
           'Freelancer: 300 – 700 €/dag, oftewel 12.000 – 50.000 € voor een MVP. Sterk wisselende kwaliteit, afhankelijkheid van één persoon.',
           'Klassiek bureau: 40.000 – 100.000 € over 3 tot 6 maanden. Zwaar proces, vage offertes, eindeloos heen en weer.',
-          'V1 tegen vaste prijs (Khufu): 15.000 €, geleverd in 7 dagen, broncode is van jou.',
+          'V1 tegen vaste prijs (Khufu): 11.000 €, geleverd in 7 dagen, broncode is van jou.',
         ],
       },
       { h2: 'Wat elke optie verbergt' },
@@ -372,7 +372,7 @@ export const post: Record<Locale, Article> = {
         ul: [
           'Ongevalideerd idee, minimaal budget: no-code om in enkele dagen te testen, met de aanvaarding dat je het prototype daarna weggooit.',
           'Eenmalige, duidelijk afgebakende behoefte en je kunt de techniek aansturen: een goede freelancer kan volstaan.',
-          'Product dat moet groeien, je wilt eigen code en een snelle time-to-market: een V1 tegen vaste prijs (15.000 €, geleverd in 7 dagen) biedt de beste verhouding snelheid/kwaliteit/risico.',
+          'Product dat moet groeien, je wilt eigen code en een snelle time-to-market: een V1 tegen vaste prijs (11.000 €, geleverd in 7 dagen) biedt de beste verhouding snelheid/kwaliteit/risico.',
         ],
       },
       {
@@ -444,7 +444,7 @@ export const post: Record<Locale, Article> = {
     tags: ['MVP', 'Koszty'],
     body: [
       {
-        p: 'MVP kosztuje od 3 000 € przy no-code do ponad 80 000 € w klasycznej agencji, z punktem równowagi w okolicach 15 000 € dla V1 w stałej cenie. Ale podana kwota nie mówi nic o realnym koszcie: każda metoda ukrywa opłaty, ryzyka lub dług, które ujawniają się dopiero później. Oto ile naprawdę kosztuje każda opcja i którą wybrać w zależności od sytuacji.',
+        p: 'MVP kosztuje od 3 000 € przy no-code do ponad 80 000 € w klasycznej agencji, z punktem równowagi w okolicach 11 000 € dla V1 w stałej cenie. Ale podana kwota nie mówi nic o realnym koszcie: każda metoda ukrywa opłaty, ryzyka lub dług, które ujawniają się dopiero później. Oto ile naprawdę kosztuje każda opcja i którą wybrać w zależności od sytuacji.',
       },
       { h2: 'Cztery metody i ich widełki' },
       {
@@ -452,7 +452,7 @@ export const post: Record<Locale, Article> = {
           'No-code (Bubble, Webflow, Glide…): 3 000 – 15 000 €. Najszybszy i najtańszy sposób na walidację prostego pomysłu.',
           'Freelancer: 300 – 700 €/dzień, czyli 12 000 – 50 000 € za MVP. Bardzo zmienna jakość, zależność od jednej osoby.',
           'Klasyczna agencja: 40 000 – 100 000 € przez 3 do 6 miesięcy. Ciężki proces, niejasne wyceny, nieskończone tam i z powrotem.',
-          'V1 w stałej cenie (Khufu): 15 000 €, dostarczona w 7 dni, kod źródłowy należy do Ciebie.',
+          'V1 w stałej cenie (Khufu): 11 000 €, dostarczona w 7 dni, kod źródłowy należy do Ciebie.',
         ],
       },
       { h2: 'Co ukrywa każda opcja' },
@@ -480,7 +480,7 @@ export const post: Record<Locale, Article> = {
         ul: [
           'Niezwalidowany pomysł, minimalny budżet: no-code, aby przetestować w kilka dni, godząc się na wyrzucenie prototypu później.',
           'Jednorazowa, precyzyjna potrzeba i potrafisz sterować techniką: dobry freelancer może wystarczyć.',
-          'Produkt mający rosnąć, chcesz własny kod i szybkie wejście na rynek: V1 w stałej cenie (15 000 €, dostarczona w 7 dni) oferuje najlepszy stosunek szybkości, jakości i ryzyka.',
+          'Produkt mający rosnąć, chcesz własny kod i szybkie wejście na rynek: V1 w stałej cenie (11 000 €, dostarczona w 7 dni) oferuje najlepszy stosunek szybkości, jakości i ryzyka.',
         ],
       },
       {
@@ -498,7 +498,7 @@ export const post: Record<Locale, Article> = {
     tags: ['MVP', 'Maliyetler'],
     body: [
       {
-        p: 'Bir MVP, no-code ile 3.000 €’dan klasik bir ajansla 80.000 €’nun üzerine kadar değişir; sabit fiyatlı bir V1 için denge noktası 15.000 € civarındadır. Ancak ilan edilen fiyat, gerçek maliyet hakkında hiçbir şey söylemez: her yöntem, yalnızca sonradan ortaya çıkan ücretleri, riskleri veya borçları gizler. İşte her seçeneğin gerçekte ne kadara mal olduğu ve durumunuza göre hangisini seçmelisiniz.',
+        p: 'Bir MVP, no-code ile 3.000 €’dan klasik bir ajansla 80.000 €’nun üzerine kadar değişir; sabit fiyatlı bir V1 için denge noktası 11.000 € civarındadır. Ancak ilan edilen fiyat, gerçek maliyet hakkında hiçbir şey söylemez: her yöntem, yalnızca sonradan ortaya çıkan ücretleri, riskleri veya borçları gizler. İşte her seçeneğin gerçekte ne kadara mal olduğu ve durumunuza göre hangisini seçmelisiniz.',
       },
       { h2: 'Dört yöntem ve fiyat aralıkları' },
       {
@@ -506,7 +506,7 @@ export const post: Record<Locale, Article> = {
           'No-code (Bubble, Webflow, Glide…): 3.000 – 15.000 €. Basit bir fikri doğrulamanın en hızlı ve en ucuz yolu.',
           'Freelance: günlük 300 – 700 €, yani bir MVP için 12.000 – 50.000 €. Çok değişken kalite, tek bir kişiye bağımlılık.',
           'Klasik ajans: 3 ila 6 ay boyunca 40.000 – 100.000 €. Ağır süreç, belirsiz teklifler, biteviye gidip gelmeler.',
-          'Sabit fiyatlı V1 (Khufu): 15.000 €, 7 günde teslim, kaynak kodu sizin.',
+          'Sabit fiyatlı V1 (Khufu): 11.000 €, 7 günde teslim, kaynak kodu sizin.',
         ],
       },
       { h2: 'Her seçeneğin gizlediği' },
@@ -534,7 +534,7 @@ export const post: Record<Locale, Article> = {
         ul: [
           'Doğrulanmamış fikir, asgari bütçe: birkaç günde test etmek için no-code; prototipi sonra atmayı göze alarak.',
           'Tek seferlik, net bir ihtiyaç ve tekniği yönetebiliyorsanız: iyi bir freelance yeterli olabilir.',
-          'Büyümesi hedeflenen bir ürün, size ait kod ve hızlı pazara çıkış istiyorsanız: sabit fiyatlı bir V1 (15.000 €, 7 günde teslim) en iyi hız/kalite/risk oranını sunar.',
+          'Büyümesi hedeflenen bir ürün, size ait kod ve hızlı pazara çıkış istiyorsanız: sabit fiyatlı bir V1 (11.000 €, 7 günde teslim) en iyi hız/kalite/risk oranını sunar.',
         ],
       },
       {

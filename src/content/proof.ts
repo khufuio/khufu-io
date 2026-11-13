@@ -3,7 +3,7 @@ import type { LocalizedInput } from '@/i18n/localize'
 
 /**
  * /preuve — the page every LinkedIn message, email and bio points to. It
- * answers ONE question from a founder about to sign [[15000]]: « vous y arrivez
+ * answers ONE question from a founder about to sign [[11000]]: « vous y arrivez
  * vraiment, en 7 jours ? » (todo cmtt6uhx).
  *
  * ⛔ EVERY FACT ON THIS PAGE HAS ONE OF THREE SOURCES, and nothing else may be

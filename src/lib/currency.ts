@@ -58,7 +58,7 @@ function money(amount: number, currency: Currency, locale: string): string {
 
 /**
  * Format an EUR amount in the target currency, honouring each locale's symbol
- * placement (e.g. "€15,000" in English, "15 000 €" in French). USD resolves to
+ * placement (e.g. "€11,000" in English, "11 000 €" in French). USD resolves to
  * its fixed list price (see toUsd), shown as a plain fixed price — no "≈".
  */
 export function formatMoney(eurAmount: number, currency: Currency, locale = 'en'): string {
@@ -78,7 +78,7 @@ export function stripPriceTokens(text: string, locale = 'en'): string {
 }
 
 /**
- * Replace `[[<eurAmount>]]` price tokens with BOTH currencies ("15 000 € / 17 000 $").
+ * Replace `[[<eurAmount>]]` price tokens with BOTH currencies ("11 000 € / 12 000 $").
  * For machine-readable surfaces (FAQ JSON-LD, llms.txt) where a crawler/LLM can't
  * pick a currency per visitor, so we advertise both firm prices at once.
  */

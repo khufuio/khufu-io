@@ -46,7 +46,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Le cadrage comme contrat' },
       {
-        p: 'Chez Khufu, le doc de cadrage est signé avant le jour 1 et sert de référence tout au long de la semaine. Il fixe ce qui sera livré, et donc ce qui justifie le prix fixe de 15 000 € pour une V1 prête pour la production en 7 jours. Le client sait exactement ce qu’il reçoit ; l’équipe sait exactement quoi construire. Ce contrat clair est ce qui permet de livrer vite, sans mauvaise surprise ni facturation à l’heure.',
+        p: 'Chez Khufu, le doc de cadrage est signé avant le jour 1 et sert de référence tout au long de la semaine. Il fixe ce qui sera livré, et donc ce qui justifie le prix fixe de 11 000 € pour une V1 prête pour la production en 7 jours. Le client sait exactement ce qu’il reçoit ; l’équipe sait exactement quoi construire. Ce contrat clair est ce qui permet de livrer vite, sans mauvaise surprise ni facturation à l’heure.',
       },
     ],
   },
@@ -94,7 +94,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Scoping as a contract' },
       {
-        p: 'At Khufu, the scoping doc is signed before day 1 and serves as the reference throughout the week. It fixes what will be delivered, and therefore what justifies the fixed price of €15,000 for a production-ready V1 in 7 days. The client knows exactly what they get; the team knows exactly what to build. This clear contract is what lets us ship fast, with no nasty surprises and no hourly billing.',
+        p: 'At Khufu, the scoping doc is signed before day 1 and serves as the reference throughout the week. It fixes what will be delivered, and therefore what justifies the fixed price of €11,000 for a production-ready V1 in 7 days. The client knows exactly what they get; the team knows exactly what to build. This clear contract is what lets us ship fast, with no nasty surprises and no hourly billing.',
       },
     ],
   },
@@ -142,7 +142,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'El alcance como contrato' },
       {
-        p: 'En Khufu, el documento de alcance se firma antes del día 1 y sirve de referencia durante toda la semana. Fija lo que se entregará y, por tanto, lo que justifica el precio fijo de 15.000 € por una V1 lista para producción en 7 días. El cliente sabe exactamente lo que recibe; el equipo sabe exactamente qué construir. Este contrato claro es lo que permite entregar rápido, sin sorpresas desagradables ni facturación por horas.',
+        p: 'En Khufu, el documento de alcance se firma antes del día 1 y sirve de referencia durante toda la semana. Fija lo que se entregará y, por tanto, lo que justifica el precio fijo de 11.000 € por una V1 lista para producción en 7 días. El cliente sabe exactamente lo que recibe; el equipo sabe exactamente qué construir. Este contrato claro es lo que permite entregar rápido, sin sorpresas desagradables ni facturación por horas.',
       },
     ],
   },
@@ -190,7 +190,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Scoping als Vertrag' },
       {
-        p: 'Bei Khufu wird das Scoping-Dokument vor Tag 1 unterschrieben und dient die ganze Woche über als Referenz. Es legt fest, was geliefert wird, und damit auch, was den Festpreis von 15.000 € für eine produktionsreife V1 in 7 Tagen rechtfertigt. Der Kunde weiß genau, was er bekommt; das Team weiß genau, was zu bauen ist. Dieser klare Vertrag ist es, der es erlaubt, schnell zu liefern, ohne böse Überraschungen und ohne Abrechnung nach Stunden.',
+        p: 'Bei Khufu wird das Scoping-Dokument vor Tag 1 unterschrieben und dient die ganze Woche über als Referenz. Es legt fest, was geliefert wird, und damit auch, was den Festpreis von 11.000 € für eine produktionsreife V1 in 7 Tagen rechtfertigt. Der Kunde weiß genau, was er bekommt; das Team weiß genau, was zu bauen ist. Dieser klare Vertrag ist es, der es erlaubt, schnell zu liefern, ohne böse Überraschungen und ohne Abrechnung nach Stunden.',
       },
     ],
   },
@@ -238,7 +238,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Lo scoping come contratto' },
       {
-        p: 'In Khufu, il documento di scoping viene firmato prima del giorno 1 e fa da riferimento per tutta la settimana. Fissa ciò che sarà consegnato e quindi ciò che giustifica il prezzo fisso di 15.000 € per una V1 pronta per la produzione in 7 giorni. Il cliente sa esattamente cosa riceve; il team sa esattamente cosa costruire. Questo contratto chiaro è ciò che permette di consegnare in fretta, senza brutte sorprese e senza fatturazione a ore.',
+        p: 'In Khufu, il documento di scoping viene firmato prima del giorno 1 e fa da riferimento per tutta la settimana. Fissa ciò che sarà consegnato e quindi ciò che giustifica il prezzo fisso di 11.000 € per una V1 pronta per la produzione in 7 giorni. Il cliente sa esattamente cosa riceve; il team sa esattamente cosa costruire. Questo contratto chiaro è ciò che permette di consegnare in fretta, senza brutte sorprese e senza fatturazione a ore.',
       },
     ],
   },
@@ -286,7 +286,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'O escopo como contrato' },
       {
-        p: 'Na Khufu, o documento de escopo é assinado antes do dia 1 e serve de referência durante toda a semana. Ele fixa o que será entregue e, portanto, o que justifica o preço fixo de € 15.000 por uma V1 pronta para produção em 7 dias. O cliente sabe exatamente o que recebe; a equipe sabe exatamente o que construir. Esse contrato claro é o que permite entregar rápido, sem surpresas desagradáveis e sem faturamento por hora.',
+        p: 'Na Khufu, o documento de escopo é assinado antes do dia 1 e serve de referência durante toda a semana. Ele fixa o que será entregue e, portanto, o que justifica o preço fixo de € 11.000 por uma V1 pronta para produção em 7 dias. O cliente sabe exatamente o que recebe; a equipe sabe exatamente o que construir. Esse contrato claro é o que permite entregar rápido, sem surpresas desagradáveis e sem faturamento por hora.',
       },
     ],
   },
@@ -334,7 +334,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Scoping als contract' },
       {
-        p: 'Bij Khufu wordt het scopingdocument vóór dag 1 ondertekend en dient het de hele week als referentie. Het legt vast wat er wordt opgeleverd, en dus wat de vaste prijs van € 15.000 voor een productieklare V1 in 7 dagen rechtvaardigt. De klant weet precies wat hij krijgt; het team weet precies wat het moet bouwen. Dit heldere contract maakt het mogelijk om snel te leveren, zonder nare verrassingen en zonder facturatie per uur.',
+        p: 'Bij Khufu wordt het scopingdocument vóór dag 1 ondertekend en dient het de hele week als referentie. Het legt vast wat er wordt opgeleverd, en dus wat de vaste prijs van € 11.000 voor een productieklare V1 in 7 dagen rechtvaardigt. De klant weet precies wat hij krijgt; het team weet precies wat het moet bouwen. Dit heldere contract maakt het mogelijk om snel te leveren, zonder nare verrassingen en zonder facturatie per uur.',
       },
     ],
   },
@@ -382,7 +382,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'النطاق كعقد' },
       {
-        p: 'في Khufu، تُوقَّع وثيقة النطاق قبل اليوم الأول وتظل مرجعاً طوال الأسبوع. تحدّد ما سيُسلَّم، وبالتالي ما يبرّر السعر الثابت البالغ 15,000 يورو مقابل V1 جاهزة للإنتاج في 7 أيام. يعرف العميل بالضبط ما يحصل عليه؛ ويعرف الفريق بالضبط ما يبنيه. هذا العقد الواضح هو ما يتيح التسليم بسرعة، دون مفاجآت سيئة ودون فوترة بالساعة.',
+        p: 'في Khufu، تُوقَّع وثيقة النطاق قبل اليوم الأول وتظل مرجعاً طوال الأسبوع. تحدّد ما سيُسلَّم، وبالتالي ما يبرّر السعر الثابت البالغ 11,000 يورو مقابل V1 جاهزة للإنتاج في 7 أيام. يعرف العميل بالضبط ما يحصل عليه؛ ويعرف الفريق بالضبط ما يبنيه. هذا العقد الواضح هو ما يتيح التسليم بسرعة، دون مفاجآت سيئة ودون فوترة بالساعة.',
       },
     ],
   },
@@ -430,7 +430,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Zakres jako kontrakt' },
       {
-        p: 'W Khufu dokument zakresu jest podpisywany przed dniem 1 i służy jako punkt odniesienia przez cały tydzień. Ustala, co zostanie dostarczone, a więc i to, co uzasadnia stałą cenę 15 000 € za gotową do produkcji V1 w 7 dni. Klient wie dokładnie, co dostaje; zespół wie dokładnie, co zbudować. Ten jasny kontrakt jest tym, co pozwala dostarczać szybko, bez przykrych niespodzianek i bez rozliczania godzinowego.',
+        p: 'W Khufu dokument zakresu jest podpisywany przed dniem 1 i służy jako punkt odniesienia przez cały tydzień. Ustala, co zostanie dostarczone, a więc i to, co uzasadnia stałą cenę 11 000 € za gotową do produkcji V1 w 7 dni. Klient wie dokładnie, co dostaje; zespół wie dokładnie, co zbudować. Ten jasny kontrakt jest tym, co pozwala dostarczać szybko, bez przykrych niespodzianek i bez rozliczania godzinowego.',
       },
     ],
   },
@@ -478,7 +478,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Sözleşme olarak kapsam' },
       {
-        p: 'Khufu’da kapsam belgesi 1. günden önce imzalanır ve hafta boyunca referans olarak kullanılır. Neyin teslim edileceğini, dolayısıyla 7 günde üretime hazır bir V1 için 15.000 € sabit fiyatı neyin gerekçelendirdiğini belirler. Müşteri tam olarak ne aldığını bilir; ekip tam olarak ne inşa edeceğini bilir. Bu net sözleşme, kötü sürprizler olmadan ve saatlik faturalama olmadan hızlı teslim etmeyi mümkün kılan şeydir.',
+        p: 'Khufu’da kapsam belgesi 1. günden önce imzalanır ve hafta boyunca referans olarak kullanılır. Neyin teslim edileceğini, dolayısıyla 7 günde üretime hazır bir V1 için 11.000 € sabit fiyatı neyin gerekçelendirdiğini belirler. Müşteri tam olarak ne aldığını bilir; ekip tam olarak ne inşa edeceğini bilir. Bu net sözleşme, kötü sürprizler olmadan ve saatlik faturalama olmadan hızlı teslim etmeyi mümkün kılan şeydir.',
       },
     ],
   },

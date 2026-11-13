@@ -43,7 +43,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Pour qui le no-code reste un bon choix' },
       {
-        p: "Le no-code garde tout son sens pour valider une idée non validée, monter un outil interne simple, ou lancer une landing page et des formulaires en quelques jours. Le piège, c’est d’y bâtir un produit destiné à grandir. Avec le développement AI-native, l’argument historique de la vitesse a fondu : Khufu livre une V1 en vrai code, prête pour la production et dont le code source vous appartient, en 7 jours pour 15 000 € — la vitesse du no-code, sans la dette.",
+        p: "Le no-code garde tout son sens pour valider une idée non validée, monter un outil interne simple, ou lancer une landing page et des formulaires en quelques jours. Le piège, c’est d’y bâtir un produit destiné à grandir. Avec le développement AI-native, l’argument historique de la vitesse a fondu : Khufu livre une V1 en vrai code, prête pour la production et dont le code source vous appartient, en 7 jours pour 11 000 € — la vitesse du no-code, sans la dette.",
       },
     ],
   },
@@ -88,7 +88,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Who no-code still makes sense for' },
       {
-        p: "No-code keeps all its value for validating an unproven idea, building a simple internal tool, or launching a landing page and forms in a few days. The trap is building a product meant to grow. With AI-native development, the historic speed argument has melted away: Khufu ships a real-code V1, production-ready and with source code you own, in 7 days for €15,000 — the speed of no-code, without the debt.",
+        p: "No-code keeps all its value for validating an unproven idea, building a simple internal tool, or launching a landing page and forms in a few days. The trap is building a product meant to grow. With AI-native development, the historic speed argument has melted away: Khufu ships a real-code V1, production-ready and with source code you own, in 7 days for €11,000 — the speed of no-code, without the debt.",
       },
     ],
   },
@@ -133,7 +133,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Para quién sigue siendo buena opción el no-code' },
       {
-        p: "El no-code conserva todo su sentido para validar una idea sin probar, montar una herramienta interna sencilla o lanzar una landing page y formularios en pocos días. La trampa es construir en él un producto pensado para crecer. Con el desarrollo AI-native, el histórico argumento de la velocidad se ha desvanecido: Khufu entrega una V1 en código real, lista para producción y con el código fuente en tu poder, en 7 días por 15.000 € — la velocidad del no-code, sin la deuda.",
+        p: "El no-code conserva todo su sentido para validar una idea sin probar, montar una herramienta interna sencilla o lanzar una landing page y formularios en pocos días. La trampa es construir en él un producto pensado para crecer. Con el desarrollo AI-native, el histórico argumento de la velocidad se ha desvanecido: Khufu entrega una V1 en código real, lista para producción y con el código fuente en tu poder, en 7 días por 11.000 € — la velocidad del no-code, sin la deuda.",
       },
     ],
   },
@@ -178,7 +178,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Für wen No-Code weiterhin sinnvoll ist' },
       {
-        p: "No-Code behält seinen vollen Sinn, um eine unbestätigte Idee zu validieren, ein einfaches internes Tool zu bauen oder eine Landing Page und Formulare in wenigen Tagen zu starten. Die Falle ist, darin ein Produkt zu bauen, das wachsen soll. Mit AI-native Entwicklung ist das historische Geschwindigkeitsargument dahingeschmolzen: Khufu liefert eine V1 in echtem Code, produktionsreif und mit Quellcode, der dir gehört, in 7 Tagen für 15.000 € — die Geschwindigkeit von No-Code, ohne die Schulden.",
+        p: "No-Code behält seinen vollen Sinn, um eine unbestätigte Idee zu validieren, ein einfaches internes Tool zu bauen oder eine Landing Page und Formulare in wenigen Tagen zu starten. Die Falle ist, darin ein Produkt zu bauen, das wachsen soll. Mit AI-native Entwicklung ist das historische Geschwindigkeitsargument dahingeschmolzen: Khufu liefert eine V1 in echtem Code, produktionsreif und mit Quellcode, der dir gehört, in 7 Tagen für 11.000 € — die Geschwindigkeit von No-Code, ohne die Schulden.",
       },
     ],
   },
@@ -223,7 +223,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Per chi il no-code resta una buona scelta' },
       {
-        p: "Il no-code mantiene tutto il suo senso per validare un’idea non provata, costruire un semplice tool interno o lanciare una landing page e dei form in pochi giorni. La trappola è costruirci un prodotto destinato a crescere. Con lo sviluppo AI-native l’argomento storico della velocità si è dissolto: Khufu consegna una V1 in codice vero, pronta per la produzione e con il codice sorgente tuo, in 7 giorni per 15.000 € — la velocità del no-code, senza il debito.",
+        p: "Il no-code mantiene tutto il suo senso per validare un’idea non provata, costruire un semplice tool interno o lanciare una landing page e dei form in pochi giorni. La trappola è costruirci un prodotto destinato a crescere. Con lo sviluppo AI-native l’argomento storico della velocità si è dissolto: Khufu consegna una V1 in codice vero, pronta per la produzione e con il codice sorgente tuo, in 7 giorni per 11.000 € — la velocità del no-code, senza il debito.",
       },
     ],
   },
@@ -268,7 +268,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Para quem o no-code continua sendo uma boa escolha' },
       {
-        p: "O no-code mantém todo o sentido para validar uma ideia não comprovada, montar uma ferramenta interna simples ou lançar uma landing page e formulários em poucos dias. A armadilha é construir nele um produto destinado a crescer. Com o desenvolvimento AI-native, o histórico argumento da velocidade se dissolveu: a Khufu entrega uma V1 em código real, pronta para produção e com o código-fonte seu, em 7 dias por 15.000 € — a velocidade do no-code, sem a dívida.",
+        p: "O no-code mantém todo o sentido para validar uma ideia não comprovada, montar uma ferramenta interna simples ou lançar uma landing page e formulários em poucos dias. A armadilha é construir nele um produto destinado a crescer. Com o desenvolvimento AI-native, o histórico argumento da velocidade se dissolveu: a Khufu entrega uma V1 em código real, pronta para produção e com o código-fonte seu, em 7 dias por 11.000 € — a velocidade do no-code, sem a dívida.",
       },
     ],
   },
@@ -313,7 +313,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Voor wie no-code een goede keuze blijft' },
       {
-        p: "No-code behoudt al zijn zin om een onbewezen idee te valideren, een eenvoudige interne tool te bouwen of in een paar dagen een landing page en formulieren te lanceren. De valkuil is er een product in bouwen dat moet groeien. Met AI-native ontwikkeling is het historische snelheidsargument weggesmolten: Khufu levert een V1 in echte code, productieklaar en met broncode die van jou is, in 7 dagen voor 15.000 € — de snelheid van no-code, zonder de schuld.",
+        p: "No-code behoudt al zijn zin om een onbewezen idee te valideren, een eenvoudige interne tool te bouwen of in een paar dagen een landing page en formulieren te lanceren. De valkuil is er een product in bouwen dat moet groeien. Met AI-native ontwikkeling is het historische snelheidsargument weggesmolten: Khufu levert een V1 in echte code, productieklaar en met broncode die van jou is, in 7 dagen voor 11.000 € — de snelheid van no-code, zonder de schuld.",
       },
     ],
   },
@@ -358,7 +358,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'لمن يبقى الـ no-code خيارًا جيدًا' },
       {
-        p: "يحتفظ الـ no-code بكامل معناه للتحقق من فكرة غير مثبتة، أو بناء أداة داخلية بسيطة، أو إطلاق landing page ونماذج خلال أيام. الفخ هو أن تبني عليه منتجًا مُعدًّا للنمو. مع التطوير AI-native ذابت حجة السرعة التاريخية: تُسلّم Khufu نسخة V1 بكود حقيقي، جاهزة للإنتاج وكودها المصدري ملكك، خلال 7 أيام مقابل 15000 € — سرعة الـ no-code، دون ديونه.",
+        p: "يحتفظ الـ no-code بكامل معناه للتحقق من فكرة غير مثبتة، أو بناء أداة داخلية بسيطة، أو إطلاق landing page ونماذج خلال أيام. الفخ هو أن تبني عليه منتجًا مُعدًّا للنمو. مع التطوير AI-native ذابت حجة السرعة التاريخية: تُسلّم Khufu نسخة V1 بكود حقيقي، جاهزة للإنتاج وكودها المصدري ملكك، خلال 7 أيام مقابل 11000 € — سرعة الـ no-code، دون ديونه.",
       },
     ],
   },
@@ -403,7 +403,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Dla kogo no-code pozostaje dobrym wyborem' },
       {
-        p: "No-code zachowuje pełny sens do walidacji niesprawdzonego pomysłu, zbudowania prostego narzędzia wewnętrznego czy uruchomienia landing page i formularzy w kilka dni. Pułapką jest budowanie na nim produktu, który ma rosnąć. Dzięki rozwojowi AI-native historyczny argument szybkości się rozpłynął: Khufu dostarcza V1 w prawdziwym kodzie, gotową do produkcji i z kodem źródłowym należącym do ciebie, w 7 dni za 15 000 € — szybkość no-code, bez długu.",
+        p: "No-code zachowuje pełny sens do walidacji niesprawdzonego pomysłu, zbudowania prostego narzędzia wewnętrznego czy uruchomienia landing page i formularzy w kilka dni. Pułapką jest budowanie na nim produktu, który ma rosnąć. Dzięki rozwojowi AI-native historyczny argument szybkości się rozpłynął: Khufu dostarcza V1 w prawdziwym kodzie, gotową do produkcji i z kodem źródłowym należącym do ciebie, w 7 dni za 11 000 € — szybkość no-code, bez długu.",
       },
     ],
   },
@@ -448,7 +448,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'No-code kimin için iyi bir seçim olarak kalıyor' },
       {
-        p: "No-code; kanıtlanmamış bir fikri doğrulamak, basit bir dahili araç kurmak veya birkaç günde bir landing page ile formlar yayınlamak için tüm anlamını korur. Tuzak, üzerine büyümesi beklenen bir ürün inşa etmektir. AI-native geliştirmeyle tarihsel hız argümanı eriyip gitti: Khufu, gerçek kodla, üretime hazır ve kaynak kodu sana ait bir V1’i 7 günde 15.000 € karşılığında teslim eder — no-code’un hızı, borcu olmadan.",
+        p: "No-code; kanıtlanmamış bir fikri doğrulamak, basit bir dahili araç kurmak veya birkaç günde bir landing page ile formlar yayınlamak için tüm anlamını korur. Tuzak, üzerine büyümesi beklenen bir ürün inşa etmektir. AI-native geliştirmeyle tarihsel hız argümanı eriyip gitti: Khufu, gerçek kodla, üretime hazır ve kaynak kodu sana ait bir V1’i 7 günde 11.000 € karşılığında teslim eder — no-code’un hızı, borcu olmadan.",
       },
     ],
   },

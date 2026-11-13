@@ -31,13 +31,13 @@ import { SprintWhatsappLink } from '@/components/sprint/sprintWhatsappLink'
  * A menu at peak intent spends the intent on a choice.
  *
  * ⚠️ SO IT IS A BRIEFING, NOT A MENU. Everything above the rule answers one
- * question, the one a €15k buyer actually has before clicking: « what am I
+ * question, the one a €11k buyer actually has before clicking: « what am I
  * committing to? » — the week they clicked, thirty minutes, what comes out of
  * it, when we are available, and the one thing they cannot discover any other
  * way: THE BOOKING PAGE IS IN ENGLISH. That warning is what earns the step. A
  * French, Turkish or Arabic reader dropped without it onto an English-only
  * Google scheduler is a lead lost to surprise, and it reads sloppy on a page
- * selling a €15,000 engagement. Everything below the rule is the answer to "not now",
+ * selling a €11,000 engagement. Everything below the rule is the answer to "not now",
  * and is deliberately quiet.
  *
  * ⛔ AND THE FOOT OF THE PAGE SKIPS IT. The closing block links straight to the
@@ -51,7 +51,7 @@ import { SprintWhatsappLink } from '@/components/sprint/sprintWhatsappLink'
  * arbitration, not an opinion. ⛔ Do not remove the dismissal event to tidy up.
  *
  * ⛔ THREE PATHS, ONE DOMINANT, AND NO FOURTH:
- *   1. THE CALL — the €15k conversion is a conversation, not an address in a
+ *   1. THE CALL — the €11k conversion is a conversation, not an address in a
  *      base, and a slot in a diary is the register the offer is sold in.
  *   2. THE NET — one folded e-mail field. Read sprintCallback.tsx for why it
  *      exists and why it is not the « nom / prénom / e-mail / votre projet »
@@ -380,7 +380,7 @@ function SprintContactDialog({
          * problem: this dialog books a THIRTY-MINUTE SCOPING CALL, and the next
          * thing the visitor sees is Google offering them slots that have nothing
          * to do with that date. Two dates, no stated relationship, on the one
-         * screen where a €15k buyer is asking « what am I committing to? » — and a
+         * screen where a €11k buyer is asking « what am I committing to? » — and a
          * pill is the most assertive element available, so it read as a booking
          * already made.
          *

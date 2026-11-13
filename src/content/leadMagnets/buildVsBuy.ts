@@ -68,7 +68,7 @@ export const buildVsBuy: LeadMagnet = {
         {
           callout: {
             title: 'The comparison people actually make',
-            body: 'Most founders compare a $17,000 quote against a $600/day freelancer and conclude the freelancer is cheaper. At 45 days — a realistic V1 — that freelancer is $27,000, plus your project management, spread over ten weeks. The quote was never the expensive part.',
+            body: 'Most founders compare a $12,000 quote against a $600/day freelancer and conclude the freelancer is cheaper. At 45 days — a realistic V1 — that freelancer is $27,000, plus your project management, spread over ten weeks. The quote was never the expensive part.',
           },
         },
       ],

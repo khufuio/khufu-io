@@ -57,7 +57,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Transformez la validation en produit, vite' },
       {
-        p: "Une fois ces 10 utilisateurs convaincus, la fenêtre est courte : ils attendent une vraie solution avant de passer à autre chose. C'est là qu'une V1 en production change tout. Chez Khufu, on livre un produit prêt pour la production en 7 jours, à prix fixe de 15 000 €, pour transformer vos premières promesses en usage réel avant que l'élan ne retombe.",
+        p: "Une fois ces 10 utilisateurs convaincus, la fenêtre est courte : ils attendent une vraie solution avant de passer à autre chose. C'est là qu'une V1 en production change tout. Chez Khufu, on livre un produit prêt pour la production en 7 jours, à prix fixe de 11 000 €, pour transformer vos premières promesses en usage réel avant que l'élan ne retombe.",
       },
     ],
   },
@@ -115,7 +115,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Turn validation into a product, fast' },
       {
-        p: "Once those 10 users are convinced, the window is short: they expect a real solution before they move on. This is where a production V1 changes everything. At Khufu we ship a production-ready product in 7 days, at a fixed price of €15,000, to turn your first promises into real usage before the momentum fades.",
+        p: "Once those 10 users are convinced, the window is short: they expect a real solution before they move on. This is where a production V1 changes everything. At Khufu we ship a production-ready product in 7 days, at a fixed price of €11,000, to turn your first promises into real usage before the momentum fades.",
       },
     ],
   },
@@ -173,7 +173,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Convierte la validación en producto, rápido' },
       {
-        p: "Una vez convencidos esos 10 usuarios, la ventana es corta: esperan una solución real antes de pasar a otra cosa. Aquí es donde una V1 en producción lo cambia todo. En Khufu entregamos un producto listo para producción en 7 días, a un precio fijo de 15.000 €, para convertir tus primeras promesas en uso real antes de que el impulso se apague.",
+        p: "Una vez convencidos esos 10 usuarios, la ventana es corta: esperan una solución real antes de pasar a otra cosa. Aquí es donde una V1 en producción lo cambia todo. En Khufu entregamos un producto listo para producción en 7 días, a un precio fijo de 11.000 €, para convertir tus primeras promesas en uso real antes de que el impulso se apague.",
       },
     ],
   },
@@ -231,7 +231,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Verwandle Validierung schnell in ein Produkt' },
       {
-        p: "Sobald diese 10 Nutzer überzeugt sind, ist das Fenster kurz: Sie erwarten eine echte Lösung, bevor sie weiterziehen. Genau hier verändert eine Produktions-V1 alles. Bei Khufu liefern wir in 7 Tagen ein produktionsreifes Produkt zum Festpreis von 15.000 €, um deine ersten Zusagen in echte Nutzung zu verwandeln, bevor der Schwung nachlässt.",
+        p: "Sobald diese 10 Nutzer überzeugt sind, ist das Fenster kurz: Sie erwarten eine echte Lösung, bevor sie weiterziehen. Genau hier verändert eine Produktions-V1 alles. Bei Khufu liefern wir in 7 Tagen ein produktionsreifes Produkt zum Festpreis von 11.000 €, um deine ersten Zusagen in echte Nutzung zu verwandeln, bevor der Schwung nachlässt.",
       },
     ],
   },
@@ -289,7 +289,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Trasforma la validazione in prodotto, in fretta' },
       {
-        p: "Una volta convinti questi 10 utenti, la finestra è breve: si aspettano una soluzione reale prima di passare ad altro. È qui che una V1 in produzione cambia tutto. In Khufu consegniamo un prodotto pronto per la produzione in 7 giorni, a prezzo fisso di 15.000 €, per trasformare le tue prime promesse in utilizzo reale prima che lo slancio svanisca.",
+        p: "Una volta convinti questi 10 utenti, la finestra è breve: si aspettano una soluzione reale prima di passare ad altro. È qui che una V1 in produzione cambia tutto. In Khufu consegniamo un prodotto pronto per la produzione in 7 giorni, a prezzo fisso di 11.000 €, per trasformare le tue prime promesse in utilizzo reale prima che lo slancio svanisca.",
       },
     ],
   },
@@ -347,7 +347,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Transforme a validação em produto, depressa' },
       {
-        p: "Uma vez convencidos esses 10 utilizadores, a janela é curta: esperam uma solução real antes de seguir em frente. É aqui que uma V1 em produção muda tudo. Na Khufu entregamos um produto pronto para produção em 7 dias, a preço fixo de 15.000 €, para transformar as suas primeiras promessas em uso real antes de o impulso desaparecer.",
+        p: "Uma vez convencidos esses 10 utilizadores, a janela é curta: esperam uma solução real antes de seguir em frente. É aqui que uma V1 em produção muda tudo. Na Khufu entregamos um produto pronto para produção em 7 dias, a preço fixo de 11.000 €, para transformar as suas primeiras promessas em uso real antes de o impulso desaparecer.",
       },
     ],
   },
@@ -405,7 +405,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Zet validatie snel om in een product' },
       {
-        p: "Zodra die 10 gebruikers overtuigd zijn, is het venster kort: ze verwachten een echte oplossing voordat ze verdergaan. Hier verandert een productie-V1 alles. Bij Khufu leveren we in 7 dagen een productieklaar product tegen een vaste prijs van 15.000 €, om je eerste toezeggingen om te zetten in echt gebruik voordat het momentum wegebt.",
+        p: "Zodra die 10 gebruikers overtuigd zijn, is het venster kort: ze verwachten een echte oplossing voordat ze verdergaan. Hier verandert een productie-V1 alles. Bij Khufu leveren we in 7 dagen een productieklaar product tegen een vaste prijs van 11.000 €, om je eerste toezeggingen om te zetten in echt gebruik voordat het momentum wegebt.",
       },
     ],
   },
@@ -463,7 +463,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'حوّل التحقّق إلى منتج بسرعة' },
       {
-        p: "بمجرد اقتناع هؤلاء الـ 10 مستخدمين، تكون النافذة ضيقة: يتوقعون حلاً حقيقياً قبل أن ينتقلوا إلى غيرك. هنا تُغيّر V1 جاهزة للإنتاج كل شيء. في Khufu نُسلّم منتجاً جاهزاً للإنتاج خلال 7 أيام بسعر ثابت قدره 15,000 €، لتحويل وعودك الأولى إلى استخدام فعلي قبل أن يتلاشى الزخم.",
+        p: "بمجرد اقتناع هؤلاء الـ 10 مستخدمين، تكون النافذة ضيقة: يتوقعون حلاً حقيقياً قبل أن ينتقلوا إلى غيرك. هنا تُغيّر V1 جاهزة للإنتاج كل شيء. في Khufu نُسلّم منتجاً جاهزاً للإنتاج خلال 7 أيام بسعر ثابت قدره 11,000 €، لتحويل وعودك الأولى إلى استخدام فعلي قبل أن يتلاشى الزخم.",
       },
     ],
   },
@@ -521,7 +521,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Szybko zamień walidację w produkt' },
       {
-        p: "Gdy tych 10 użytkowników jest już przekonanych, okno jest krótkie: oczekują prawdziwego rozwiązania, zanim pójdą dalej. To tutaj produkcyjne V1 zmienia wszystko. W Khufu dostarczamy gotowy do produkcji produkt w 7 dni, w stałej cenie 15 000 €, aby zamienić twoje pierwsze obietnice w realne użycie, zanim zapał opadnie.",
+        p: "Gdy tych 10 użytkowników jest już przekonanych, okno jest krótkie: oczekują prawdziwego rozwiązania, zanim pójdą dalej. To tutaj produkcyjne V1 zmienia wszystko. W Khufu dostarczamy gotowy do produkcji produkt w 7 dni, w stałej cenie 11 000 €, aby zamienić twoje pierwsze obietnice w realne użycie, zanim zapał opadnie.",
       },
     ],
   },
@@ -579,7 +579,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Doğrulamayı hızlıca ürüne dönüştürün' },
       {
-        p: "Bu 10 kullanıcı ikna olduğunda pencere dardır: başka bir şeye geçmeden önce gerçek bir çözüm beklerler. İşte burada üretime hazır bir V1 her şeyi değiştirir. Khufu\'da, ivme sönmeden ilk sözlerinizi gerçek kullanıma dönüştürmek için 7 günde, 15.000 € sabit fiyatla üretime hazır bir ürün teslim ediyoruz.",
+        p: "Bu 10 kullanıcı ikna olduğunda pencere dardır: başka bir şeye geçmeden önce gerçek bir çözüm beklerler. İşte burada üretime hazır bir V1 her şeyi değiştirir. Khufu\'da, ivme sönmeden ilk sözlerinizi gerçek kullanıma dönüştürmek için 7 günde, 11.000 € sabit fiyatla üretime hazır bir ürün teslim ediyoruz.",
       },
     ],
   },

@@ -47,7 +47,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Ce que ça change pour vous' },
       {
-        p: 'Chez Khufu, on livre une V1 prête pour la production en 7 jours, à prix fixe de 15 000 €, sur une base saine que vous pouvez faire évoluer sans tout réécrire. Vous gardez la vitesse d’un MVP sans en hériter la dette : le produit que vous montrez à vos premiers utilisateurs est le même que vous ferez scaler ensuite.',
+        p: 'Chez Khufu, on livre une V1 prête pour la production en 7 jours, à prix fixe de 11 000 €, sur une base saine que vous pouvez faire évoluer sans tout réécrire. Vous gardez la vitesse d’un MVP sans en hériter la dette : le produit que vous montrez à vos premiers utilisateurs est le même que vous ferez scaler ensuite.',
       },
     ],
   },
@@ -96,7 +96,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'What this changes for you' },
       {
-        p: 'At Khufu, we ship a production-ready V1 in 7 days, at a fixed price of €15,000, on a healthy foundation you can grow without rewriting everything. You keep the speed of an MVP without inheriting its debt: the product you show your first users is the same one you will scale later.',
+        p: 'At Khufu, we ship a production-ready V1 in 7 days, at a fixed price of €11,000, on a healthy foundation you can grow without rewriting everything. You keep the speed of an MVP without inheriting its debt: the product you show your first users is the same one you will scale later.',
       },
     ],
   },
@@ -145,7 +145,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Lo que esto cambia para ti' },
       {
-        p: 'En Khufu entregamos una V1 lista para producción en 7 días, a un precio fijo de 15 000 €, sobre una base sana que puedes hacer crecer sin reescribir todo. Conservas la velocidad de un MVP sin heredar su deuda: el producto que muestras a tus primeros usuarios es el mismo que después escalarás.',
+        p: 'En Khufu entregamos una V1 lista para producción en 7 días, a un precio fijo de 11 000 €, sobre una base sana que puedes hacer crecer sin reescribir todo. Conservas la velocidad de un MVP sin heredar su deuda: el producto que muestras a tus primeros usuarios es el mismo que después escalarás.',
       },
     ],
   },
@@ -194,7 +194,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Was das für Sie ändert' },
       {
-        p: 'Bei Khufu liefern wir eine produktionsreife V1 in 7 Tagen, zum Festpreis von 15.000 €, auf einer gesunden Basis, die Sie ohne kompletten Rewrite ausbauen können. Sie behalten die Geschwindigkeit eines MVP, ohne dessen Schulden zu erben: das Produkt, das Sie Ihren ersten Nutzern zeigen, ist dasselbe, das Sie später skalieren.',
+        p: 'Bei Khufu liefern wir eine produktionsreife V1 in 7 Tagen, zum Festpreis von 11.000 €, auf einer gesunden Basis, die Sie ohne kompletten Rewrite ausbauen können. Sie behalten die Geschwindigkeit eines MVP, ohne dessen Schulden zu erben: das Produkt, das Sie Ihren ersten Nutzern zeigen, ist dasselbe, das Sie später skalieren.',
       },
     ],
   },
@@ -243,7 +243,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Cosa cambia per te' },
       {
-        p: 'In Khufu consegniamo una V1 pronta per la produzione in 7 giorni, a prezzo fisso di 15.000 €, su una base sana che puoi far crescere senza riscrivere tutto. Mantieni la velocità di un MVP senza ereditarne il debito: il prodotto che mostri ai tuoi primi utenti è lo stesso che scalerai in seguito.',
+        p: 'In Khufu consegniamo una V1 pronta per la produzione in 7 giorni, a prezzo fisso di 11.000 €, su una base sana che puoi far crescere senza riscrivere tutto. Mantieni la velocità di un MVP senza ereditarne il debito: il prodotto che mostri ai tuoi primi utenti è lo stesso che scalerai in seguito.',
       },
     ],
   },
@@ -292,7 +292,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'O que isto muda para si' },
       {
-        p: 'Na Khufu entregamos uma V1 pronta para produção em 7 dias, a preço fixo de 15 000 €, sobre uma base sã que pode fazer crescer sem reescrever tudo. Mantém a velocidade de um MVP sem herdar a sua dívida: o produto que mostra aos seus primeiros utilizadores é o mesmo que escalará depois.',
+        p: 'Na Khufu entregamos uma V1 pronta para produção em 7 dias, a preço fixo de 11 000 €, sobre uma base sã que pode fazer crescer sem reescrever tudo. Mantém a velocidade de um MVP sem herdar a sua dívida: o produto que mostra aos seus primeiros utilizadores é o mesmo que escalará depois.',
       },
     ],
   },
@@ -341,7 +341,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Wat dit voor jou verandert' },
       {
-        p: 'Bij Khufu leveren we een productieklare V1 in 7 dagen, tegen een vaste prijs van € 15.000, op een gezonde basis die je kunt laten groeien zonder alles te herschrijven. Je houdt de snelheid van een MVP zonder de schuld ervan te erven: het product dat je aan je eerste gebruikers toont, is hetzelfde dat je later opschaalt.',
+        p: 'Bij Khufu leveren we een productieklare V1 in 7 dagen, tegen een vaste prijs van € 11.000, op een gezonde basis die je kunt laten groeien zonder alles te herschrijven. Je houdt de snelheid van een MVP zonder de schuld ervan te erven: het product dat je aan je eerste gebruikers toont, is hetzelfde dat je later opschaalt.',
       },
     ],
   },
@@ -390,7 +390,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'ما الذي يتغيّر بالنسبة لك' },
       {
-        p: 'في Khufu نُسلّم V1 جاهزة للإنتاج في 7 أيام، بسعر ثابت قدره 15,000 يورو، على قاعدة سليمة يمكنك تطويرها دون إعادة كتابة كل شيء. تحتفظ بسرعة الـ MVP دون أن ترث دينه: المنتج الذي تعرضه على أول مستخدميك هو نفسه الذي ستوسّعه لاحقًا.',
+        p: 'في Khufu نُسلّم V1 جاهزة للإنتاج في 7 أيام، بسعر ثابت قدره 11,000 يورو، على قاعدة سليمة يمكنك تطويرها دون إعادة كتابة كل شيء. تحتفظ بسرعة الـ MVP دون أن ترث دينه: المنتج الذي تعرضه على أول مستخدميك هو نفسه الذي ستوسّعه لاحقًا.',
       },
     ],
   },
@@ -439,7 +439,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Co to zmienia dla Ciebie' },
       {
-        p: 'W Khufu dostarczamy gotową do produkcji V1 w 7 dni, w stałej cenie 15 000 €, na zdrowej bazie, którą możesz rozwijać bez przepisywania wszystkiego. Zachowujesz szybkość MVP bez dziedziczenia jego długu: produkt, który pokazujesz pierwszym użytkownikom, to ten sam, który później będziesz skalować.',
+        p: 'W Khufu dostarczamy gotową do produkcji V1 w 7 dni, w stałej cenie 11 000 €, na zdrowej bazie, którą możesz rozwijać bez przepisywania wszystkiego. Zachowujesz szybkość MVP bez dziedziczenia jego długu: produkt, który pokazujesz pierwszym użytkownikom, to ten sam, który później będziesz skalować.',
       },
     ],
   },
@@ -488,7 +488,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Bu senin için ne değiştirir' },
       {
-        p: 'Khufu’da üretime hazır bir V1"i 7 günde, 15.000 € sabit fiyatla, her şeyi yeniden yazmadan büyütebileceğin sağlam bir temel üzerinde teslim ediyoruz. Bir MVP’nin hızını, borcunu miras almadan korursun: ilk kullanıcılarına gösterdiğin ürün, daha sonra ölçekleyeceğin ürünle aynıdır.',
+        p: 'Khufu’da üretime hazır bir V1"i 7 günde, 11.000 € sabit fiyatla, her şeyi yeniden yazmadan büyütebileceğin sağlam bir temel üzerinde teslim ediyoruz. Bir MVP’nin hızını, borcunu miras almadan korursun: ilk kullanıcılarına gösterdiğin ürün, daha sonra ölçekleyeceğin ürünle aynıdır.',
       },
     ],
   },

@@ -28,7 +28,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Jours 6–12 — cadrer et livrer la V1 en 7 jours" },
       {
-        p: "Une fois le problème confirmé, réduisez le périmètre à l’os : les 3 à 5 parcours indispensables pour que le produit tienne une vraie promesse. Tout le reste attend. C’est exactement le format d’un forfait V1 à prix fixe : chez Khufu, une V1 prête pour la production livrée en 7 jours pour 15 000 €, code source à vous. Vous sortez de cette semaine avec un produit en ligne, pas un prototype jetable.",
+        p: "Une fois le problème confirmé, réduisez le périmètre à l’os : les 3 à 5 parcours indispensables pour que le produit tienne une vraie promesse. Tout le reste attend. C’est exactement le format d’un forfait V1 à prix fixe : chez Khufu, une V1 prête pour la production livrée en 7 jours pour 11 000 €, code source à vous. Vous sortez de cette semaine avec un produit en ligne, pas un prototype jetable.",
       },
       { h2: "Jours 13–15 — mettre en ligne et instrumenter" },
       {
@@ -80,7 +80,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Days 6–12 — scope and ship the V1 in 7 days" },
       {
-        p: "Once the problem is confirmed, cut the scope to the bone: the 3 to 5 essential flows the product needs to keep a real promise. Everything else waits. This is exactly what a fixed-price V1 package is built for: at Khufu, a production-ready V1 shipped in 7 days for €15,000, source code yours to keep. You leave that week with a live product, not a throwaway prototype.",
+        p: "Once the problem is confirmed, cut the scope to the bone: the 3 to 5 essential flows the product needs to keep a real promise. Everything else waits. This is exactly what a fixed-price V1 package is built for: at Khufu, a production-ready V1 shipped in 7 days for €11,000, source code yours to keep. You leave that week with a live product, not a throwaway prototype.",
       },
       { h2: "Days 13–15 — launch and instrument" },
       {
@@ -132,7 +132,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Días 6–12 — acotar y entregar la V1 en 7 días" },
       {
-        p: "Una vez confirmado el problema, reduce el alcance al hueso: los 3 a 5 flujos imprescindibles para que el producto cumpla una promesa real. Todo lo demás espera. Es justo el formato de un paquete V1 a precio fijo: en Khufu, una V1 lista para producción entregada en 7 días por 15 000 €, con el código fuente para ti. Sales de esa semana con un producto en línea, no con un prototipo desechable.",
+        p: "Una vez confirmado el problema, reduce el alcance al hueso: los 3 a 5 flujos imprescindibles para que el producto cumpla una promesa real. Todo lo demás espera. Es justo el formato de un paquete V1 a precio fijo: en Khufu, una V1 lista para producción entregada en 7 días por 11 000 €, con el código fuente para ti. Sales de esa semana con un producto en línea, no con un prototipo desechable.",
       },
       { h2: "Días 13–15 — lanzar e instrumentar" },
       {
@@ -184,7 +184,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Tag 6–12 — die V1 zuschneiden und in 7 Tagen liefern" },
       {
-        p: "Sobald das Problem bestätigt ist, kürze den Umfang bis auf den Kern: die 3 bis 5 Abläufe, die das Produkt braucht, um ein echtes Versprechen zu halten. Alles andere wartet. Genau dafür ist ein V1-Paket zum Festpreis gemacht: bei Khufu eine produktionsreife V1, in 7 Tagen geliefert für 15.000 €, Quellcode gehört dir. Du verlässt diese Woche mit einem Live-Produkt, nicht mit einem Wegwerf-Prototyp.",
+        p: "Sobald das Problem bestätigt ist, kürze den Umfang bis auf den Kern: die 3 bis 5 Abläufe, die das Produkt braucht, um ein echtes Versprechen zu halten. Alles andere wartet. Genau dafür ist ein V1-Paket zum Festpreis gemacht: bei Khufu eine produktionsreife V1, in 7 Tagen geliefert für 11.000 €, Quellcode gehört dir. Du verlässt diese Woche mit einem Live-Produkt, nicht mit einem Wegwerf-Prototyp.",
       },
       { h2: "Tag 13–15 — launchen und instrumentieren" },
       {
@@ -236,7 +236,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Giorni 6–12 — definire e consegnare la V1 in 7 giorni" },
       {
-        p: "Una volta confermato il problema, riduci il perimetro all’osso: i 3-5 flussi indispensabili perché il prodotto mantenga una promessa reale. Tutto il resto aspetta. È esattamente il formato di un pacchetto V1 a prezzo fisso: in Khufu, una V1 pronta per la produzione consegnata in 7 giorni a 15.000 €, con il codice sorgente tuo. Esci da quella settimana con un prodotto online, non con un prototipo usa e getta.",
+        p: "Una volta confermato il problema, riduci il perimetro all’osso: i 3-5 flussi indispensabili perché il prodotto mantenga una promessa reale. Tutto il resto aspetta. È esattamente il formato di un pacchetto V1 a prezzo fisso: in Khufu, una V1 pronta per la produzione consegnata in 7 giorni a 11.000 €, con il codice sorgente tuo. Esci da quella settimana con un prodotto online, non con un prototipo usa e getta.",
       },
       { h2: "Giorni 13–15 — mettere online e strumentare" },
       {
@@ -288,7 +288,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Dias 6–12 — delimitar e entregar a V1 em 7 dias" },
       {
-        p: "Uma vez confirmado o problema, reduza o escopo ao osso: os 3 a 5 fluxos indispensáveis para o produto cumprir uma promessa real. Todo o resto espera. É exatamente o formato de um pacote V1 de preço fixo: na Khufu, uma V1 pronta para produção entregue em 7 dias por 15 000 €, com o código-fonte para você. Você sai dessa semana com um produto no ar, não com um protótipo descartável.",
+        p: "Uma vez confirmado o problema, reduza o escopo ao osso: os 3 a 5 fluxos indispensáveis para o produto cumprir uma promessa real. Todo o resto espera. É exatamente o formato de um pacote V1 de preço fixo: na Khufu, uma V1 pronta para produção entregue em 7 dias por 11 000 €, com o código-fonte para você. Você sai dessa semana com um produto no ar, não com um protótipo descartável.",
       },
       { h2: "Dias 13–15 — colocar no ar e instrumentar" },
       {
@@ -340,7 +340,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Dag 6–12 — de V1 afbakenen en in 7 dagen leveren" },
       {
-        p: "Zodra het probleem bevestigd is, snijd de scope tot op het bot: de 3 tot 5 essentiële flows die het product nodig heeft om een echte belofte waar te maken. Al het andere wacht. Dat is precies waarvoor een V1-pakket met vaste prijs is gemaakt: bij Khufu een productieklare V1, geleverd in 7 dagen voor € 15.000, broncode is van jou. Je verlaat die week met een live product, niet met een wegwerpprototype.",
+        p: "Zodra het probleem bevestigd is, snijd de scope tot op het bot: de 3 tot 5 essentiële flows die het product nodig heeft om een echte belofte waar te maken. Al het andere wacht. Dat is precies waarvoor een V1-pakket met vaste prijs is gemaakt: bij Khufu een productieklare V1, geleverd in 7 dagen voor € 11.000, broncode is van jou. Je verlaat die week met een live product, niet met een wegwerpprototype.",
       },
       { h2: "Dag 13–15 — live gaan en meten" },
       {
@@ -392,7 +392,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "الأيام 6–12 — تحديد نطاق الـ V1 وتسليمها في 7 أيام" },
       {
-        p: "بمجرد تأكيد المشكلة، قلّص النطاق إلى الحد الأدنى: المسارات الثلاثة إلى الخمسة الأساسية التي يحتاجها المنتج للوفاء بوعد حقيقي. كل ما عدا ذلك ينتظر. هذا بالضبط ما صُمّم من أجله حزمة V1 بسعر ثابت: في Khufu، منتج V1 جاهز للإنتاج يُسلَّم في 7 أيام مقابل 15,000 €، والكود المصدري ملك لك. تخرج من ذلك الأسبوع بمنتج على الإنترنت، لا بنموذج أولي يُرمى.",
+        p: "بمجرد تأكيد المشكلة، قلّص النطاق إلى الحد الأدنى: المسارات الثلاثة إلى الخمسة الأساسية التي يحتاجها المنتج للوفاء بوعد حقيقي. كل ما عدا ذلك ينتظر. هذا بالضبط ما صُمّم من أجله حزمة V1 بسعر ثابت: في Khufu، منتج V1 جاهز للإنتاج يُسلَّم في 7 أيام مقابل 11,000 €، والكود المصدري ملك لك. تخرج من ذلك الأسبوع بمنتج على الإنترنت، لا بنموذج أولي يُرمى.",
       },
       { h2: "الأيام 13–15 — الإطلاق والقياس" },
       {
@@ -444,7 +444,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Dni 6–12 — określ zakres i dostarcz V1 w 7 dni" },
       {
-        p: "Gdy problem jest potwierdzony, przytnij zakres do kości: 3 do 5 kluczowych ścieżek, których produkt potrzebuje, by dotrzymać realnej obietnicy. Reszta czeka. To dokładnie format pakietu V1 w stałej cenie: w Khufu gotowa do produkcji V1 dostarczona w 7 dni za 15 000 €, kod źródłowy należy do Ciebie. Kończysz ten tydzień z działającym produktem, a nie jednorazowym prototypem.",
+        p: "Gdy problem jest potwierdzony, przytnij zakres do kości: 3 do 5 kluczowych ścieżek, których produkt potrzebuje, by dotrzymać realnej obietnicy. Reszta czeka. To dokładnie format pakietu V1 w stałej cenie: w Khufu gotowa do produkcji V1 dostarczona w 7 dni za 11 000 €, kod źródłowy należy do Ciebie. Kończysz ten tydzień z działającym produktem, a nie jednorazowym prototypem.",
       },
       { h2: "Dni 13–15 — uruchom i mierz" },
       {
@@ -496,7 +496,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Gün 6–12 — V1 kapsamını belirleyin ve 7 günde teslim edin" },
       {
-        p: "Sorun doğrulandığında kapsamı iliğine kadar kesin: ürünün gerçek bir sözü tutması için gereken 3 ila 5 temel akış. Geri kalan her şey bekler. Sabit fiyatlı bir V1 paketinin var oluş nedeni tam olarak budur: Khufu’da, 7 günde teslim edilen üretime hazır bir V1, 15.000 € karşılığında, kaynak kodu size ait. O haftadan çöpe atılacak bir prototiple değil, yayında bir ürünle çıkarsınız.",
+        p: "Sorun doğrulandığında kapsamı iliğine kadar kesin: ürünün gerçek bir sözü tutması için gereken 3 ila 5 temel akış. Geri kalan her şey bekler. Sabit fiyatlı bir V1 paketinin var oluş nedeni tam olarak budur: Khufu’da, 7 günde teslim edilen üretime hazır bir V1, 11.000 € karşılığında, kaynak kodu size ait. O haftadan çöpe atılacak bir prototiple değil, yayında bir ürünle çıkarsınız.",
       },
       { h2: "Gün 13–15 — yayına alın ve ölçümleyin" },
       {

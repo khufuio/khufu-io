@@ -50,7 +50,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Pourquoi ces choix servent la vitesse ET la maintenabilité' },
       {
-        p: "La plupart des équipes opposent les deux : aller vite en accumulant de la dette, ou construire proprement en prenant des mois. La stack Khufu refuse ce compromis. Chaque brique est mainstream, documentée et typée, donc rapide à écrire aujourd'hui et facile à reprendre demain. C'est ce qui permet de livrer une V1 prête pour la production en 7 jours, pour un forfait fixe de 15 000 €, avec un code source qui vous appartient et que n'importe quel développeur peut reprendre — pas un prototype à jeter dans six mois.",
+        p: "La plupart des équipes opposent les deux : aller vite en accumulant de la dette, ou construire proprement en prenant des mois. La stack Khufu refuse ce compromis. Chaque brique est mainstream, documentée et typée, donc rapide à écrire aujourd'hui et facile à reprendre demain. C'est ce qui permet de livrer une V1 prête pour la production en 7 jours, pour un forfait fixe de 11 000 €, avec un code source qui vous appartient et que n'importe quel développeur peut reprendre — pas un prototype à jeter dans six mois.",
       },
     ],
   },
@@ -103,7 +103,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Why these choices serve both speed AND maintainability' },
       {
-        p: "Most teams treat the two as opposites: move fast and pile up debt, or build cleanly and take months. The Khufu stack refuses that trade-off. Every layer is mainstream, documented and typed, so it is fast to write today and easy to hand over tomorrow. That is what lets us ship a production-ready V1 in 7 days, for a fixed price of €15,000, with source code you own and any developer can take over — not a prototype to throw away in six months.",
+        p: "Most teams treat the two as opposites: move fast and pile up debt, or build cleanly and take months. The Khufu stack refuses that trade-off. Every layer is mainstream, documented and typed, so it is fast to write today and easy to hand over tomorrow. That is what lets us ship a production-ready V1 in 7 days, for a fixed price of €11,000, with source code you own and any developer can take over — not a prototype to throw away in six months.",
       },
     ],
   },
@@ -156,7 +156,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Por qué estas decisiones sirven a la velocidad Y a la mantenibilidad' },
       {
-        p: "La mayoría de los equipos las tratan como opuestas: ir rápido acumulando deuda, o construir limpio tardando meses. El stack de Khufu rechaza ese dilema. Cada pieza es mainstream, documentada y tipada, así que es rápida de escribir hoy y fácil de retomar mañana. Eso es lo que permite entregar una V1 lista para producción en 7 días, por un precio fijo de 15 000 €, con un código fuente que es tuyo y que cualquier desarrollador puede retomar, no un prototipo para tirar en seis meses.",
+        p: "La mayoría de los equipos las tratan como opuestas: ir rápido acumulando deuda, o construir limpio tardando meses. El stack de Khufu rechaza ese dilema. Cada pieza es mainstream, documentada y tipada, así que es rápida de escribir hoy y fácil de retomar mañana. Eso es lo que permite entregar una V1 lista para producción en 7 días, por un precio fijo de 11 000 €, con un código fuente que es tuyo y que cualquier desarrollador puede retomar, no un prototipo para tirar en seis meses.",
       },
     ],
   },
@@ -209,7 +209,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Warum diese Entscheidungen Tempo UND Wartbarkeit dienen' },
       {
-        p: "Die meisten Teams behandeln beides als Gegensatz: schnell sein und Schulden anhäufen, oder sauber bauen und Monate brauchen. Der Khufu-Stack lehnt diesen Kompromiss ab. Jeder Baustein ist Mainstream, dokumentiert und typisiert, also heute schnell zu schreiben und morgen leicht zu übergeben. Das lässt uns eine produktionsreife V1 in 7 Tagen liefern, zum Festpreis von 15.000 €, mit Quellcode, der Ihnen gehört und den jeder Entwickler übernehmen kann — kein Prototyp zum Wegwerfen in sechs Monaten.",
+        p: "Die meisten Teams behandeln beides als Gegensatz: schnell sein und Schulden anhäufen, oder sauber bauen und Monate brauchen. Der Khufu-Stack lehnt diesen Kompromiss ab. Jeder Baustein ist Mainstream, dokumentiert und typisiert, also heute schnell zu schreiben und morgen leicht zu übergeben. Das lässt uns eine produktionsreife V1 in 7 Tagen liefern, zum Festpreis von 11.000 €, mit Quellcode, der Ihnen gehört und den jeder Entwickler übernehmen kann — kein Prototyp zum Wegwerfen in sechs Monaten.",
       },
     ],
   },
@@ -262,7 +262,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Perché queste scelte servono alla velocità E alla manutenibilità' },
       {
-        p: "La maggior parte dei team le tratta come opposte: andare veloci accumulando debito, o costruire pulito impiegando mesi. Lo stack di Khufu rifiuta questo compromesso. Ogni mattone è mainstream, documentato e tipizzato, quindi veloce da scrivere oggi e facile da riprendere domani. È ciò che permette di consegnare una V1 pronta per la produzione in 7 giorni, a un prezzo fisso di 15.000 €, con un codice sorgente che è tuo e che qualsiasi sviluppatore può riprendere, non un prototipo da buttare tra sei mesi.",
+        p: "La maggior parte dei team le tratta come opposte: andare veloci accumulando debito, o costruire pulito impiegando mesi. Lo stack di Khufu rifiuta questo compromesso. Ogni mattone è mainstream, documentato e tipizzato, quindi veloce da scrivere oggi e facile da riprendere domani. È ciò che permette di consegnare una V1 pronta per la produzione in 7 giorni, a un prezzo fisso di 11.000 €, con un codice sorgente che è tuo e che qualsiasi sviluppatore può riprendere, non un prototipo da buttare tra sei mesi.",
       },
     ],
   },
@@ -315,7 +315,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Porque estas escolhas servem a velocidade E a manutenibilidade' },
       {
-        p: "A maioria das equipas trata-as como opostas: ir rápido acumulando dívida, ou construir limpo demorando meses. A stack da Khufu recusa esse compromisso. Cada camada é mainstream, documentada e tipada, por isso rápida de escrever hoje e fácil de retomar amanhã. É o que permite entregar uma V1 pronta para produção em 7 dias, por um preço fixo de 15 000 €, com um código-fonte que é teu e que qualquer programador pode retomar, não um protótipo para deitar fora em seis meses.",
+        p: "A maioria das equipas trata-as como opostas: ir rápido acumulando dívida, ou construir limpo demorando meses. A stack da Khufu recusa esse compromisso. Cada camada é mainstream, documentada e tipada, por isso rápida de escrever hoje e fácil de retomar amanhã. É o que permite entregar uma V1 pronta para produção em 7 dias, por um preço fixo de 11 000 €, com um código-fonte que é teu e que qualquer programador pode retomar, não um protótipo para deitar fora em seis meses.",
       },
     ],
   },
@@ -368,7 +368,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Waarom deze keuzes zowel snelheid ALS onderhoudbaarheid dienen' },
       {
-        p: "De meeste teams behandelen de twee als tegenpolen: snel gaan en schuld opstapelen, of netjes bouwen en er maanden over doen. De stack van Khufu weigert die afweging. Elke bouwsteen is mainstream, gedocumenteerd en getypeerd, dus vandaag snel te schrijven en morgen makkelijk over te dragen. Dat is wat ons een productieklare V1 in 7 dagen laat leveren, voor een vaste prijs van € 15.000, met broncode die van jou is en die elke developer kan overnemen — geen prototype om over zes maanden weg te gooien.",
+        p: "De meeste teams behandelen de twee als tegenpolen: snel gaan en schuld opstapelen, of netjes bouwen en er maanden over doen. De stack van Khufu weigert die afweging. Elke bouwsteen is mainstream, gedocumenteerd en getypeerd, dus vandaag snel te schrijven en morgen makkelijk over te dragen. Dat is wat ons een productieklare V1 in 7 dagen laat leveren, voor een vaste prijs van € 11.000, met broncode die van jou is en die elke developer kan overnemen — geen prototype om over zes maanden weg te gooien.",
       },
     ],
   },
@@ -421,7 +421,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'لماذا تخدم هذه الخيارات السرعة وقابلية الصيانة معًا' },
       {
-        p: "تتعامل معظم الفرق مع الأمرين كنقيضين: السرعة مع تكديس الديون، أو البناء النظيف الذي يستغرق أشهرًا. حزمة Khufu ترفض هذه المفاضلة. كل طبقة رائجة وموثَّقة ومُنمَّطة، فهي سريعة الكتابة اليوم وسهلة التسليم غدًا. هذا ما يتيح لنا تسليم V1 جاهزة للإنتاج في 7 أيام، بسعر ثابت قدره 15,000 €، مع كود مصدري تملكه ويمكن لأي مطوّر استلامه — لا نموذجًا أوليًا يُرمى بعد ستة أشهر.",
+        p: "تتعامل معظم الفرق مع الأمرين كنقيضين: السرعة مع تكديس الديون، أو البناء النظيف الذي يستغرق أشهرًا. حزمة Khufu ترفض هذه المفاضلة. كل طبقة رائجة وموثَّقة ومُنمَّطة، فهي سريعة الكتابة اليوم وسهلة التسليم غدًا. هذا ما يتيح لنا تسليم V1 جاهزة للإنتاج في 7 أيام، بسعر ثابت قدره 11,000 €، مع كود مصدري تملكه ويمكن لأي مطوّر استلامه — لا نموذجًا أوليًا يُرمى بعد ستة أشهر.",
       },
     ],
   },
@@ -474,7 +474,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Dlaczego te wybory służą zarówno szybkości, JAK i utrzymywalności' },
       {
-        p: "Większość zespołów traktuje je jako przeciwieństwa: iść szybko i piętrzyć dług, albo budować czysto i tracić miesiące. Stack Khufu odrzuca ten kompromis. Każdy element jest mainstreamowy, udokumentowany i typowany, więc szybki do napisania dziś i łatwy do przekazania jutro. To właśnie pozwala dostarczyć gotową na produkcję V1 w 7 dni, za stałą cenę 15 000 €, z kodem źródłowym, który należy do ciebie i który każdy programista może przejąć — a nie prototyp do wyrzucenia za sześć miesięcy.",
+        p: "Większość zespołów traktuje je jako przeciwieństwa: iść szybko i piętrzyć dług, albo budować czysto i tracić miesiące. Stack Khufu odrzuca ten kompromis. Każdy element jest mainstreamowy, udokumentowany i typowany, więc szybki do napisania dziś i łatwy do przekazania jutro. To właśnie pozwala dostarczyć gotową na produkcję V1 w 7 dni, za stałą cenę 11 000 €, z kodem źródłowym, który należy do ciebie i który każdy programista może przejąć — a nie prototyp do wyrzucenia za sześć miesięcy.",
       },
     ],
   },
@@ -527,7 +527,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Bu seçimler neden hem hıza HEM de sürdürülebilirliğe hizmet eder" },
       {
-        p: "Çoğu ekip ikisini zıt kutuplar gibi ele alır: hızlı gidip borç biriktirmek ya da temiz kurup aylar harcamak. Khufu stack'i bu ödünleşmeyi reddeder. Her katman ana akım, belgelenmiş ve tiplendirilmiştir, dolayısıyla bugün hızlı yazılır ve yarın kolay devredilir. İşte bu, üretime hazır bir V1'i 7 günde, 15.000 € sabit fiyata teslim etmemizi sağlayan şeydir; size ait olan ve herhangi bir geliştiricinin devralabileceği bir kaynak koduyla — altı ay sonra çöpe atılacak bir prototiple değil.",
+        p: "Çoğu ekip ikisini zıt kutuplar gibi ele alır: hızlı gidip borç biriktirmek ya da temiz kurup aylar harcamak. Khufu stack'i bu ödünleşmeyi reddeder. Her katman ana akım, belgelenmiş ve tiplendirilmiştir, dolayısıyla bugün hızlı yazılır ve yarın kolay devredilir. İşte bu, üretime hazır bir V1'i 7 günde, 11.000 € sabit fiyata teslim etmemizi sağlayan şeydir; size ait olan ve herhangi bir geliştiricinin devralabileceği bir kaynak koduyla — altı ay sonra çöpe atılacak bir prototiple değil.",
       },
     ],
   },

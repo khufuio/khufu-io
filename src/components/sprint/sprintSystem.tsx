@@ -8,7 +8,7 @@ import { sprintLanding, sprintProducts } from '@/content/sprintLanding'
  * ⚠️ WHY THE OLD LINE WENT, in Adrien's words (2026-09-14): « tu dis "écrit le
  * code", donc faux, pas pertinent avec notre message. Et dire en gros que je suis
  * solo, c'est pas un argument positif pour 17k USD je trouve. » Both halves
- * count: the claim was inaccurate, and "one person" reads as bus factor on a $17k
+ * count: the claim was inaccurate, and "one person" reads as bus factor on a $12k
  * decision — it argued against the sale it was meant to close.
  *
  * ⚠️ AND WHY SOMETHING HAD TO TAKE ITS PLACE rather than the line simply being

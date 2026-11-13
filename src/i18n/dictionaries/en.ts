@@ -218,11 +218,11 @@ export const en: Dictionary = {
   sprintPage: {
     metaTitle: 'V1 Sprint — your product in 7 days',
     metaDescription:
-      'Khufu’s V1 Sprint: a SaaS or mobile app designed, built and shipped to production in 7 days, for a fixed price of €15,000.',
+      'Khufu’s V1 Sprint: a SaaS or mobile app designed, built and shipped to production in 7 days, for a fixed price of €11,000.',
     kicker: 'Flagship offer',
     title: 'Your V1 in 7 days. Fixed price.',
     subtitle:
-      'Our main offer: we design, build and ship your SaaS or mobile app in one week — scope agreed upfront, €15,000 all-in.',
+      'Our main offer: we design, build and ship your SaaS or mobile app in one week — scope agreed upfront, €11,000 all-in.',
     includesTitle: 'What’s included',
     processTitle: 'The day-by-day breakdown',
     ctaTitle: 'Ready to launch your V1?',

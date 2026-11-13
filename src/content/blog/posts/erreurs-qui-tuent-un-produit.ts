@@ -46,7 +46,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Trop de temps avant le lancement' },
       {
-        p: 'Chaque mois passé à construire dans le silence est un mois sans revenus, sans retours et sans apprentissage. Le marché ne récompense pas le produit le plus complet, mais celui qui apprend le plus vite. C’est toute la logique d’une V1 livrée en production en 7 jours à prix fixe (15 000 € chez Khufu) : sortir un vrai produit rapidement, le confronter à de vrais utilisateurs, puis itérer sur des faits plutôt que sur des suppositions.',
+        p: 'Chaque mois passé à construire dans le silence est un mois sans revenus, sans retours et sans apprentissage. Le marché ne récompense pas le produit le plus complet, mais celui qui apprend le plus vite. C’est toute la logique d’une V1 livrée en production en 7 jours à prix fixe (11 000 € chez Khufu) : sortir un vrai produit rapidement, le confronter à de vrais utilisateurs, puis itérer sur des faits plutôt que sur des suppositions.',
       },
       {
         p: 'Ces cinq erreurs ont un dénominateur commun : construire trop, trop longtemps, sans preuve. Resserrez le périmètre, simplifiez la technique, choisissez une cible, parlez-lui, et lancez vite. Le reste, vous l’apprendrez du marché.',
@@ -97,7 +97,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Too much time before launch' },
       {
-        p: 'Every month spent building in silence is a month without revenue, without feedback and without learning. The market doesn’t reward the most complete product, but the one that learns fastest. That is the whole logic of a V1 shipped to production in 7 days at a fixed price (€15,000 at Khufu): release a real product quickly, put it in front of real users, then iterate on facts rather than assumptions.',
+        p: 'Every month spent building in silence is a month without revenue, without feedback and without learning. The market doesn’t reward the most complete product, but the one that learns fastest. That is the whole logic of a V1 shipped to production in 7 days at a fixed price (€11,000 at Khufu): release a real product quickly, put it in front of real users, then iterate on facts rather than assumptions.',
       },
       {
         p: 'These five mistakes share one common denominator: building too much, for too long, without proof. Tighten the scope, simplify the tech, pick a target, talk to it, and launch fast. The rest, you’ll learn from the market.',
@@ -148,7 +148,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Demasiado tiempo antes del lanzamiento' },
       {
-        p: 'Cada mes construyendo en silencio es un mes sin ingresos, sin feedback y sin aprendizaje. El mercado no premia al producto más completo, sino al que aprende más rápido. Esa es toda la lógica de una V1 entregada en producción en 7 días a precio fijo (15 000 € en Khufu): sacar un producto real rápidamente, ponerlo frente a usuarios reales y luego iterar sobre hechos en lugar de suposiciones.',
+        p: 'Cada mes construyendo en silencio es un mes sin ingresos, sin feedback y sin aprendizaje. El mercado no premia al producto más completo, sino al que aprende más rápido. Esa es toda la lógica de una V1 entregada en producción en 7 días a precio fijo (11 000 € en Khufu): sacar un producto real rápidamente, ponerlo frente a usuarios reales y luego iterar sobre hechos en lugar de suposiciones.',
       },
       {
         p: 'Estos cinco errores comparten un denominador común: construir demasiado, durante demasiado tiempo, sin pruebas. Ajusta el alcance, simplifica la técnica, elige un público, háblale y lanza rápido. El resto lo aprenderás del mercado.',
@@ -199,7 +199,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Zu viel Zeit bis zum Launch' },
       {
-        p: 'Jeder Monat, den man still im Verborgenen baut, ist ein Monat ohne Umsatz, ohne Feedback und ohne Lernen. Der Markt belohnt nicht das vollständigste Produkt, sondern das, das am schnellsten lernt. Genau das ist die Logik einer V1, die in 7 Tagen zum Festpreis in Produktion geht (15 000 € bei Khufu): schnell ein echtes Produkt herausbringen, es echten Nutzern vorsetzen und dann auf Basis von Fakten statt Annahmen iterieren.',
+        p: 'Jeder Monat, den man still im Verborgenen baut, ist ein Monat ohne Umsatz, ohne Feedback und ohne Lernen. Der Markt belohnt nicht das vollständigste Produkt, sondern das, das am schnellsten lernt. Genau das ist die Logik einer V1, die in 7 Tagen zum Festpreis in Produktion geht (11 000 € bei Khufu): schnell ein echtes Produkt herausbringen, es echten Nutzern vorsetzen und dann auf Basis von Fakten statt Annahmen iterieren.',
       },
       {
         p: 'Diese fünf Fehler haben einen gemeinsamen Nenner: zu viel bauen, zu lange, ohne Beweis. Enge den Scope ein, vereinfache die Technik, wähle eine Zielgruppe, sprich mit ihr und launche schnell. Den Rest lernst du vom Markt.',
@@ -250,7 +250,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Troppo tempo prima del lancio' },
       {
-        p: 'Ogni mese passato a costruire in silenzio è un mese senza ricavi, senza feedback e senza apprendimento. Il mercato non premia il prodotto più completo, ma quello che impara più in fretta. È tutta la logica di una V1 messa in produzione in 7 giorni a prezzo fisso (15.000 € da Khufu): far uscire velocemente un prodotto reale, metterlo davanti a utenti reali e poi iterare sui fatti anziché sulle supposizioni.',
+        p: 'Ogni mese passato a costruire in silenzio è un mese senza ricavi, senza feedback e senza apprendimento. Il mercato non premia il prodotto più completo, ma quello che impara più in fretta. È tutta la logica di una V1 messa in produzione in 7 giorni a prezzo fisso (11.000 € da Khufu): far uscire velocemente un prodotto reale, metterlo davanti a utenti reali e poi iterare sui fatti anziché sulle supposizioni.',
       },
       {
         p: 'Questi cinque errori hanno un denominatore comune: costruire troppo, troppo a lungo, senza prove. Restringi lo scope, semplifica la tecnica, scegli un target, parlaci e lancia in fretta. Il resto lo imparerai dal mercato.',
@@ -301,7 +301,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Tempo demais antes do lançamento' },
       {
-        p: 'Cada mês construindo em silêncio é um mês sem receita, sem feedback e sem aprendizado. O mercado não recompensa o produto mais completo, mas o que aprende mais rápido. É toda a lógica de uma V1 colocada em produção em 7 dias por preço fixo (15.000 € na Khufu): lançar um produto real rapidamente, colocá-lo diante de usuários reais e depois iterar sobre fatos em vez de suposições.',
+        p: 'Cada mês construindo em silêncio é um mês sem receita, sem feedback e sem aprendizado. O mercado não recompensa o produto mais completo, mas o que aprende mais rápido. É toda a lógica de uma V1 colocada em produção em 7 dias por preço fixo (11.000 € na Khufu): lançar um produto real rapidamente, colocá-lo diante de usuários reais e depois iterar sobre fatos em vez de suposições.',
       },
       {
         p: 'Esses cinco erros têm um denominador comum: construir demais, por tempo demais, sem prova. Aperte o escopo, simplifique a técnica, escolha um público, fale com ele e lance rápido. O resto, você aprende com o mercado.',
@@ -352,7 +352,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Te veel tijd voor de lancering' },
       {
-        p: 'Elke maand die je in stilte bouwt, is een maand zonder omzet, zonder feedback en zonder leren. De markt beloont niet het meest complete product, maar het product dat het snelst leert. Dat is de hele logica van een V1 die in 7 dagen tegen een vaste prijs in productie gaat (15.000 € bij Khufu): snel een echt product uitbrengen, het aan echte gebruikers voorleggen en dan itereren op feiten in plaats van aannames.',
+        p: 'Elke maand die je in stilte bouwt, is een maand zonder omzet, zonder feedback en zonder leren. De markt beloont niet het meest complete product, maar het product dat het snelst leert. Dat is de hele logica van een V1 die in 7 dagen tegen een vaste prijs in productie gaat (11.000 € bij Khufu): snel een echt product uitbrengen, het aan echte gebruikers voorleggen en dan itereren op feiten in plaats van aannames.',
       },
       {
         p: 'Deze vijf fouten hebben één gemene deler: te veel bouwen, te lang, zonder bewijs. Versmal de scope, vereenvoudig de techniek, kies een doelgroep, praat ermee en lanceer snel. De rest leer je van de markt.',
@@ -403,7 +403,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'وقت طويل جداً قبل الإطلاق' },
       {
-        p: 'كل شهر تقضيه في البناء صامتاً هو شهر بلا إيرادات ولا ملاحظات ولا تعلّم. السوق لا يكافئ المنتج الأكثر اكتمالاً، بل الأسرع تعلّماً. هذا هو منطق نسخة V1 تُطلق في الإنتاج خلال 7 أيام بسعر ثابت (15,000 € لدى Khufu): إخراج منتج حقيقي بسرعة، وعرضه على مستخدمين حقيقيين، ثم التكرار بناءً على وقائع لا على افتراضات.',
+        p: 'كل شهر تقضيه في البناء صامتاً هو شهر بلا إيرادات ولا ملاحظات ولا تعلّم. السوق لا يكافئ المنتج الأكثر اكتمالاً، بل الأسرع تعلّماً. هذا هو منطق نسخة V1 تُطلق في الإنتاج خلال 7 أيام بسعر ثابت (11,000 € لدى Khufu): إخراج منتج حقيقي بسرعة، وعرضه على مستخدمين حقيقيين، ثم التكرار بناءً على وقائع لا على افتراضات.',
       },
       {
         p: 'لهذه الأخطاء الخمسة قاسم مشترك: البناء أكثر مما يجب، ولوقت أطول مما يجب، بلا دليل. ضيّق النطاق، وبسّط التقنية، واختر جمهوراً، وتحدث إليه، وأطلق بسرعة. أما الباقي، فستتعلمه من السوق.',
@@ -454,7 +454,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Zbyt dużo czasu przed premierą' },
       {
-        p: 'Każdy miesiąc budowania w ciszy to miesiąc bez przychodów, bez feedbacku i bez nauki. Rynek nie nagradza najbardziej kompletnego produktu, lecz ten, który uczy się najszybciej. Na tym polega cała logika V1 wdrażanej na produkcję w 7 dni w stałej cenie (15 000 € w Khufu): szybko wypuścić prawdziwy produkt, postawić go przed prawdziwymi użytkownikami, a potem iterować na faktach, a nie na założeniach.',
+        p: 'Każdy miesiąc budowania w ciszy to miesiąc bez przychodów, bez feedbacku i bez nauki. Rynek nie nagradza najbardziej kompletnego produktu, lecz ten, który uczy się najszybciej. Na tym polega cała logika V1 wdrażanej na produkcję w 7 dni w stałej cenie (11 000 € w Khufu): szybko wypuścić prawdziwy produkt, postawić go przed prawdziwymi użytkownikami, a potem iterować na faktach, a nie na założeniach.',
       },
       {
         p: 'Te pięć błędów ma wspólny mianownik: budować za dużo, za długo, bez dowodów. Zawęź zakres, uprość technikę, wybierz grupę docelową, rozmawiaj z nią i wypuść szybko. Reszty nauczysz się od rynku.',
@@ -505,7 +505,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Lansmandan önce çok fazla zaman' },
       {
-        p: 'Sessizce inşa ederek geçirilen her ay, gelirsiz, geri bildirimsiz ve öğrenmesiz bir aydır. Pazar en eksiksiz ürünü değil, en hızlı öğreneni ödüllendirir. 7 günde sabit fiyatla (Khufu’da 15.000 €) canlıya alınan bir V1"in tüm mantığı budur: gerçek bir ürünü hızlıca çıkarmak, onu gerçek kullanıcıların önüne koymak, sonra varsayımlar yerine gerçekler üzerinden yinelemek.',
+        p: 'Sessizce inşa ederek geçirilen her ay, gelirsiz, geri bildirimsiz ve öğrenmesiz bir aydır. Pazar en eksiksiz ürünü değil, en hızlı öğreneni ödüllendirir. 7 günde sabit fiyatla (Khufu’da 11.000 €) canlıya alınan bir V1"in tüm mantığı budur: gerçek bir ürünü hızlıca çıkarmak, onu gerçek kullanıcıların önüne koymak, sonra varsayımlar yerine gerçekler üzerinden yinelemek.',
       },
       {
         p: 'Bu beş hatanın ortak bir paydası var: kanıt olmadan çok fazla, çok uzun süre inşa etmek. Kapsamı daralt, tekniği sadeleştir, bir hedef seç, onunla konuş ve hızlı lanse et. Gerisini pazardan öğrenirsin.',

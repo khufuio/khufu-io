@@ -50,7 +50,7 @@ export function FirmPriceNote({ children, className }: { children: React.ReactNo
 
 /**
  * Renders a string of prose where prices are written as `[[<eurAmount>]]` tokens
- * (e.g. "Fixed price: [[15000]].") — each token becomes a geo-aware <Price>. Lets
+ * (e.g. "Fixed price: [[11000]].") — each token becomes a geo-aware <Price>. Lets
  * copy stay currency-consistent with the headline prices.
  */
 export function PricedText({ text, locale = 'en' }: { text: string; locale?: string }) {

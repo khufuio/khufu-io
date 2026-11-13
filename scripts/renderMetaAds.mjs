@@ -4,7 +4,7 @@
  *
  *   npm run ads:render                         # everything, into $ADS_OUT
  *   npm run ads:render -- a2 c                 # only hook a2 and the three c hooks
- *   PRICE='$17,000' npm run ads:render         # an English-price cut (one currency per creative)
+ *   PRICE='$12,000' npm run ads:render         # an English-price cut (one currency per creative)
  *   ADS_OUT=/some/dir npm run ads:render       # default: HQ's scratchpad, pass-2 folder
  *   npm run ads:render -- --check [b2 …]       # stills of every scene, both ratios, into $ADS_OUT/check — no video
  *   FORCE=1 npm run ads:render                 # re-render files that already exist (default: resume)
@@ -48,7 +48,7 @@ const chrome = [
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
 ].find((p) => p && fs.existsSync(p))
 
-const price = process.env.PRICE ?? '15 000 €'
+const price = process.env.PRICE ?? '11 000 €'
 const out = process.env.ADS_OUT ?? path.join(hq, 'scratchpad', 'khufu-meta-ads-sprint-v1-2026-10-06', 'pass-2')
 const BASES = [
   { letter: 'a', id: 'a-countdown' },

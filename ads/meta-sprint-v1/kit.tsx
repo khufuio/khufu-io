@@ -348,8 +348,8 @@ export function Logo({ size }: { size: number }): React.ReactElement {
 }
 
 /**
- * The closing card: the one offer, in ONE currency (decision cmtt6x3k — 15 000 € and
- * 17 000 $ are two prices, never a conversion, and a creative carries one of them).
+ * The closing card: the one offer, in ONE currency (decision cmtt6x3k, price cmwe30fi — 11 000 € and
+ * 12 000 $ are two prices, never a conversion, and a creative carries one of them).
  *
  * ⛔ NO DATE (cmu0fugh): the creative runs for weeks, so it says « le prochain slot ».
  * The landing guarantees by construction that at least one week is always open.
