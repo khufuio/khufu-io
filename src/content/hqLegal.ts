@@ -43,7 +43,9 @@ export const hqLegal: Record<HqLegalKey, PolicyDoc> = {
         ul: [
           'Meta delivers messages to a webhook we run on Cloudflare. It keeps a message only until Khufu HQ collects it, at most a few minutes, then deletes it. Our address book is held there only as one-way keyed hashes, never as readable phone numbers.',
           'Khufu HQ then stores the conversation on a server operated by Khufu, with backups kept in a private repository.',
-          'Messages are read by Khufu staff to answer clients. They are **never sold, shared, used for advertising, or used to train AI models**.',
+          "Messages are read by Khufu staff to answer clients. Khufu also uses an AI assistant (Anthropic's Claude, under commercial terms that exclude training on our data) to summarise conversations and draft replies; a person approves every reply before it is sent.",
+          'Service providers that process this data on our behalf: Cloudflare (webhook), Hetzner (our server, Germany), GitHub (private backups) and Anthropic (AI assistant).',
+          'Messages are **never sold, shared for advertising, or used to train AI models**.',
         ],
       },
       { h2: 'Sending' },
