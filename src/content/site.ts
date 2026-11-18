@@ -126,6 +126,10 @@ export const routes = {
   privacy: 'privacy',
   // Blind Labyrinth app privacy policy, the store listings' URL (todo cmwectyu).
   labyrinthPrivacy: 'labyrinth/privacy',
+  // Khufu HQ Meta app legal pages, the URLs Meta App Review points to (todo cmwl4koz).
+  hqPrivacy: 'hq/privacy',
+  hqTerms: 'hq/terms',
+  hqDataDeletion: 'hq/data-deletion',
 } as const
 
 export type RouteKey = keyof typeof routes

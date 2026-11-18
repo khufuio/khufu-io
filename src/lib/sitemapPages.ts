@@ -6,6 +6,7 @@ import { comparisons, useCases } from '@/content/geo'
 import { articleSlugs } from '@/content/articles'
 import { leadMagnets } from '@/content/leadMagnets'
 import { labyrinthPrivacyLocales } from '@/content/labyrinthPrivacy'
+import { hqLegalLocales } from '@/content/hqLegal'
 import { sprintSlots } from '@/lib/sprintSlots'
 import { computeSources, type SitemapPage, type SourcesManifest } from '@/lib/sitemapLastModified'
 
@@ -17,9 +18,11 @@ import { computeSources, type SitemapPage, type SourcesManifest } from '@/lib/si
  */
 export type SitemapEntry = MetadataRoute.Sitemap[number] & SitemapPage
 
-// Top-level routes that exist for every locale. The Labyrinth privacy policy is
-// written in three locales only, so it is listed on its own below.
-const topRoutes = (Object.keys(routes) as RouteKey[]).filter((k) => k !== 'labyrinthPrivacy')
+// Top-level routes that exist for every locale. The Labyrinth privacy policy
+// (three locales) and the Khufu HQ legal pages (English only) are listed on
+// their own below.
+const partialLocaleRoutes = new Set<RouteKey>(['labyrinthPrivacy', 'hqPrivacy', 'hqTerms', 'hqDataDeletion'])
+const topRoutes = (Object.keys(routes) as RouteKey[]).filter((k) => !partialLocaleRoutes.has(k))
 
 // Legal pages are low-value for crawl/ranking — keep them indexable but deprioritized.
 const lowPriorityRoutes = new Set<RouteKey>(['legal', 'privacy'])
@@ -84,6 +87,9 @@ function pages(): SitemapEntry[] {
   // Only the locales it is written in; the others render the English text and
   // canonicalise to it (app/[locale]/labyrinth/privacy/page.tsx).
   localized('labyrinthPrivacy', undefined, { changeFrequency: 'monthly', priority: 0.3 }, undefined, labyrinthPrivacyLocales)
+  for (const key of ['hqPrivacy', 'hqTerms', 'hqDataDeletion'] as const) {
+    localized(key, undefined, { changeFrequency: 'monthly', priority: 0.3 }, undefined, hqLegalLocales)
+  }
 
   for (const p of projects) localized('work', p.slug, { changeFrequency: 'monthly', priority: 0.6 })
 

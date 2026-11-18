@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/config'
+import type { PolicyDoc } from '@/content/policyDoc'
 
 /**
  * Privacy policy of the Blind Labyrinth mobile app (todo cmwectyu) — the URL
@@ -11,21 +12,6 @@ import type { Locale } from '@/i18n/config'
  * Written in FR / EN / ES only; every other locale renders the English text
  * (see `labyrinthPrivacyFor`).
  */
-
-export type PolicyBlock =
-  | { h2: string }
-  /** Inline `**bold**` is the only markup. */
-  | { p: string }
-  | { ul: string[] }
-  | { table: { head: string[]; rows: string[][] } }
-
-export type PolicyDoc = {
-  title: string
-  metaTitle: string
-  metaDescription: string
-  updated: string
-  blocks: PolicyBlock[]
-}
 
 export const labyrinthPrivacyLocales = ['fr', 'en', 'es'] as const satisfies readonly Locale[]
 
