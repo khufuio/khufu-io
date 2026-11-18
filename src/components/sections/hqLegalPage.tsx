@@ -12,13 +12,15 @@ import { hqLegal, hqLegalLocales, type HqLegalKey } from '@/content/hqLegal'
 
 export function hqLegalMetadata(key: HqLegalKey): Metadata {
   const doc = hqLegal[key]
-  return buildMetadata({
+  const metadata = buildMetadata({
     locale: 'en',
     routeKey: key,
     title: doc.metaTitle,
     description: doc.metaDescription,
     alternateLocales: hqLegalLocales,
   })
+  // The metaTitle already ends with « · Khufu »: bypass the layout's `%s · Khufu` template.
+  return { ...metadata, title: { absolute: doc.metaTitle } }
 }
 
 export function HqLegalPage({ docKey, locale: raw }: { docKey: HqLegalKey; locale: string }): ReactNode {
