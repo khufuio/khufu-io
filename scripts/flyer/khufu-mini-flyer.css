@@ -17,12 +17,73 @@
   margin: 0;
 }
 
-/* ⚠️ Chrome rounds a non-A4 paper to whole microns (404.88 x 507.12pt for
-   540 x 675 css px), which leaves ~1px of bare page above and below the body.
-   Bare page is white: a white hairline over the ink masthead on every PNG. The
-   page behind the body is therefore painted ink at the top, paper at the bottom. */
-html:has(body.mini) {
-  background: linear-gradient(var(--ink) 50%, var(--paper) 50%);
+/* ---------- themes: one colour edge to edge ----------
+ *
+ * Pass v2 (2026-11-19): the v1 split (ink above, paper below, the hero frame
+ * straddling the seam) cut the visual in two. The page is now ONE colour, dark
+ * or light, chosen per render. Only colours change here — ⛔ never layout.
+ *
+ * ⚠️ Chrome rounds a non-A4 paper to whole microns (404.88 x 507.12pt for
+ * 540 x 675 css px), which leaves ~1px of bare page above and below the body.
+ * Bare page is white, so the page behind the body takes the theme's colour
+ * too, or a hairline shows on the dark PNG. */
+body.mini.theme-dark {
+  --bg: var(--ink);
+  --fg: var(--on-dark);
+  --fg-2: var(--on-dark-2);
+  /* #4c30ff on ink is ~2.6:1 — too faint for text; the landing's light indigo. */
+  --hi: #8f7bff;
+  --rule: #2a2a30;
+}
+
+body.mini.theme-light {
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --fg-2: var(--muted);
+  --hi: var(--accent);
+  --rule: var(--line);
+}
+
+html:has(body.theme-dark) {
+  background: var(--ink);
+}
+
+html:has(body.theme-light) {
+  background: var(--paper);
+}
+
+body.mini,
+.mini .masthead {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.mini .wordmark,
+.mini .hero-title,
+.mini .mini-list li,
+.mini .mini-site {
+  color: var(--fg);
+}
+
+.mini .masthead-tag,
+.mini .mini-price-label,
+.mini .footer-legal {
+  color: var(--fg-2);
+}
+
+.mini .masthead .eyebrow,
+.mini .hero-title em,
+.mini .mini-list b,
+.mini .footer-cta em {
+  color: var(--hi);
+}
+
+.mini .mini-list li::before {
+  border-color: var(--hi);
+}
+
+.mini .mini-footer {
+  border-color: var(--rule);
 }
 
 body.mini {
@@ -71,7 +132,6 @@ body.mini {
 
 .mini .hero-title em {
   font-style: normal;
-  color: #8f7bff;
 }
 
 .mini-price {
@@ -95,12 +155,12 @@ body.mini {
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--on-dark-2);
 }
 
-/* The hero frame straddles the masthead's lower edge: half on ink, half on
-   paper, so it carries the eye from the price to the list. The capture holds
-   its own border and radius — ⛔ no chrome drawn around it. */
+/* The hero frame, whole, never cropped. Its position is the v1 one (it used to
+   straddle the masthead's lower edge); on a one-colour page the overlap is
+   invisible and the layout stays untouched. The capture holds its own border
+   and radius — ⛔ no chrome drawn around it. */
 .mini-figure {
   margin: -120px auto 0;
   width: 300px;
@@ -136,10 +196,6 @@ body.mini {
   height: 5px;
   border-left-width: 2px;
   border-bottom-width: 2px;
-}
-
-.mini .mini-list b {
-  color: var(--accent);
 }
 
 .mini .mini-callout {
@@ -187,8 +243,7 @@ body.mini {
 .mini .mini-site {
   margin-left: 14px;
   padding-left: 14px;
-  border-left: 1px solid var(--line);
-  color: var(--ink);
+  border-left: 1px solid var(--rule);
 }
 
 .mini .footer-legal {

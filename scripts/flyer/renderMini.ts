@@ -39,7 +39,15 @@ export type MiniFlyer = {
   footer: { email: string; site: string; legal: string }
 }
 
-export function renderMiniFlyer(flyer: MiniFlyer): string {
+/**
+ * The page background, one colour edge to edge (pass v2, 2026-11-19). The v1
+ * split — ink above, paper below, the hero frame straddling the seam — cut the
+ * visual in two and was dropped: Adrien asked for one dark and one light page.
+ */
+export type MiniTheme = 'dark' | 'light'
+export const MINI_THEMES: readonly MiniTheme[] = ['dark', 'light']
+
+export function renderMiniFlyer(flyer: MiniFlyer, theme: MiniTheme): string {
   if (flyer.items.length < 3 || flyer.items.length > 4) {
     throw new Error(`${flyer.id}: a mini-flyer carries 3 or 4 items, not ${flyer.items.length}`)
   }
@@ -55,7 +63,7 @@ export function renderMiniFlyer(flyer: MiniFlyer): string {
 <html lang="${lang}"><head><meta charset="utf-8"><title>${escapeHtml(flyer.id)}</title>
 <style>${fonts}</style>
 <style>${css}</style>
-</head><body class="mini">
+</head><body class="mini theme-${theme}">
 <header class="masthead">
   <div class="masthead-top"><span class="brand"><span class="brand-mark" aria-hidden="true">${markSvg()}</span><span class="wordmark">KHUFU</span></span><span class="masthead-tag">${inline(flyer.tag, lang)}</span></div>
   <div class="eyebrow">${inline(flyer.eyebrow, lang)}</div>

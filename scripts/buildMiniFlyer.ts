@@ -1,7 +1,9 @@
 /**
  * Renders ONE Khufu mini-flyer: a content file in, a 4:5 PDF and a 1080x1350 PNG out.
  *
- *   npm run mini-flyer -- <content.json> <out.pdf>     # the PNG lands beside it
+ *   npm run mini-flyer -- <content.json> <out.pdf> [dark|light]   # the PNG lands beside it
+ *
+ * The theme paints the whole page one colour (default: dark).
  *
  * Same house chain as buildFlyer.ts — self-contained HTML printed by headless
  * Chrome through hq/scripts/client-doc-pdf.mjs — called as a module rather than a
@@ -16,7 +18,7 @@ import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { renderMiniFlyer, type MiniFlyer } from './flyer/renderMini'
+import { MINI_THEMES, renderMiniFlyer, type MiniFlyer, type MiniTheme } from './flyer/renderMini'
 
 const HQ_DIR = process.env.HQ_DIR ?? path.join(os.homedir(), 'code/projects/hq')
 const PRINT_MODULE = path.join(HQ_DIR, 'scripts/client-doc-pdf.mjs')
@@ -55,14 +57,14 @@ function pageCount(pdf: string): number {
   return Number(match[1])
 }
 
-async function buildMiniFlyer(contentFile: string, outPdf: string): Promise<void> {
+async function buildMiniFlyer(contentFile: string, outPdf: string, theme: MiniTheme): Promise<void> {
   const flyer = JSON.parse(fs.readFileSync(contentFile, 'utf8')) as MiniFlyer
   const { printDocToPdf } = (await import(pathToFileURL(PRINT_MODULE).href)) as { printDocToPdf: PrintFn }
 
   const work = fs.mkdtempSync(path.join(os.tmpdir(), `khufu-mini-${flyer.id}-`))
   try {
     const htmlFile = path.join(work, `${flyer.id}.html`)
-    fs.writeFileSync(htmlFile, renderMiniFlyer(flyer))
+    fs.writeFileSync(htmlFile, renderMiniFlyer(flyer, theme))
     fs.mkdirSync(path.dirname(outPdf), { recursive: true })
     await printDocToPdf(htmlFile, outPdf, { footer: false, paper: PAPER, margin: NO_MARGIN })
 
@@ -77,18 +79,23 @@ async function buildMiniFlyer(contentFile: string, outPdf: string): Promise<void
       '-x', String(PNG_CROP.x), '-y', String(PNG_CROP.y),
       '-W', String(PNG_SIZE.width), '-H', String(PNG_SIZE.height),
       '-png', '-singlefile', outPdf, pngBase])
-    console.log(`✓ ${path.basename(outPdf)} + ${path.basename(pngBase)}.png — 4:5, 1080x1350`)
+    console.log(`✓ ${path.basename(outPdf)} + ${path.basename(pngBase)}.png — 4:5, 1080x1350, ${theme}`)
   } finally {
     fs.rmSync(work, { recursive: true, force: true })
   }
 }
 
+function isTheme(value: string): value is MiniTheme {
+  return (MINI_THEMES as readonly string[]).includes(value)
+}
+
 const args = process.argv.slice(2)
-if (args.length !== 2) {
-  console.error('usage: npm run mini-flyer -- <content.json> <out.pdf>')
+const theme = args[2] ?? 'dark'
+if (args.length < 2 || args.length > 3 || !isTheme(theme)) {
+  console.error(`usage: npm run mini-flyer -- <content.json> <out.pdf> [${MINI_THEMES.join('|')}]`)
   process.exit(2)
 }
-buildMiniFlyer(path.resolve(args[0]), path.resolve(args[1])).catch((err: unknown) => {
+buildMiniFlyer(path.resolve(args[0]), path.resolve(args[1]), theme).catch((err: unknown) => {
   console.error(err)
   process.exit(1)
 })
