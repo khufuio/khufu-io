@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url'
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
 const REPO_ROOT = path.resolve(HERE, '..', '..')
-const CSS_FILE = path.join(HERE, 'khufu-flyer.css')
+export const CSS_FILE = path.join(HERE, 'khufu-flyer.css')
 const FONT_DIR = path.join(REPO_ROOT, 'src', 'assets', 'fonts')
 /** Byte-identical to logos/khufu-k.svg, the file the ad creatives read. */
 const MARK_FILE = path.join(REPO_ROOT, 'public', 'brand', 'khufu-k.svg')
@@ -90,7 +90,7 @@ export type Flyer = {
  */
 const OFFER_BLOCKS: Block['type'][] = ['showcase', 'cards']
 
-function escapeHtml(value: string): string {
+export function escapeHtml(value: string): string {
   return value.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c] as string)
 }
 
@@ -116,7 +116,7 @@ function frenchSpacing(value: string): string {
  * survives copy-paste into a JSON file; the typographic one is restored here, so
  * a display face and a text face never disagree about the same word.
  */
-function inline(value: string, lang: Flyer['lang']): string {
+export function inline(value: string, lang: Flyer['lang']): string {
   const spaced = (lang === 'fr' ? frenchSpacing(value) : value).replace(/'/g, '\u2019')
   return escapeHtml(spaced)
     .replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>')
@@ -136,7 +136,7 @@ const MIME: Record<string, string> = { '.webp': 'image/webp', '.png': 'image/png
  * respectively. Past that they soften — look at the render, do not trust the
  * file name.
  */
-function dataUri(publicPath: string): string {
+export function dataUri(publicPath: string): string {
   const file = path.join(REPO_ROOT, 'public', publicPath)
   const mime = MIME[path.extname(file).toLowerCase()]
   if (!mime) throw new Error(`${publicPath}: a flyer image must be webp, png, jpg or avif`)
@@ -154,7 +154,7 @@ function dataUri(publicPath: string): string {
  * The family is renamed too, so the glyph and its font data stay the brand's own
  * while the rest of the sheet keeps the face it was set in.
  */
-function markSvg(): string {
+export function markSvg(): string {
   return fs
     .readFileSync(MARK_FILE, 'utf8')
     .replace(/\.k\b/g, '.khufu-k-glyph')
@@ -258,7 +258,7 @@ function renderBlock(block: Block, lang: Flyer['lang']): string {
   }
 }
 
-function fontFace(family: string, file: string): string {
+export function fontFace(family: string, file: string): string {
   const data = fs.readFileSync(path.join(FONT_DIR, file)).toString('base64')
   // Variable faces: one file covers the whole weight range the sheet asks for.
   return `@font-face{font-family:'${family}';font-style:normal;font-weight:100 900;font-display:block;src:url(data:font/woff2;base64,${data}) format('woff2');}`
