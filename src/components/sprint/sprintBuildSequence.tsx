@@ -169,10 +169,28 @@ function splitUrl(url: string): { scheme: string; host: string } {
   return match ? { scheme: match[1], host: match[2] } : { scheme: '', host: url }
 }
 
-export function SprintBuildSequence({ label, url }: { label: string; url: string }) {
+/**
+ * `print` is the flyer's tone (mini-flyer pass v3, 2026-11-19): on a printed or
+ * shared light page the grey frame melted into the paper, so that variant lays
+ * the Khufu indigo on harder — the app bar, the tiles, the chart, the frame's
+ * edge. ⛔ The landing never passes it: the hero on /sprint-v1 is `default`, and
+ * nothing in the `print` rules may leak into it (every one is scoped under
+ * `.sprint-build--print`).
+ */
+export type SprintBuildTone = 'default' | 'print'
+
+export function SprintBuildSequence({
+  label,
+  url,
+  tone = 'default',
+}: {
+  label: string
+  url: string
+  tone?: SprintBuildTone
+}) {
   const { scheme, host } = splitUrl(url)
   return (
-    <div className="sprint-build">
+    <div className={tone === 'print' ? 'sprint-build sprint-build--print' : 'sprint-build'}>
       {/*
        * ⚠️ THE FRAME IS THE PAGE'S SHARED CHROME, reused by class rather than by
        * component. `ProductShot` is built around an <img> and is the object every

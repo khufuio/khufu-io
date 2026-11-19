@@ -157,20 +157,55 @@ body.mini {
   text-transform: uppercase;
 }
 
-/* The hero frame, whole, never cropped. Its position is the v1 one (it used to
-   straddle the masthead's lower edge); on a one-colour page the overlap is
-   invisible and the layout stays untouched. The capture holds its own border
-   and radius — ⛔ no chrome drawn around it. */
-.mini-figure {
-  margin: -120px auto 0;
-  width: 300px;
+/* ---------- the scene: web + app + site, the whole width ----------
+ *
+ * Pass v3 (2026-11-19): the hero frame alone, centred, left two empty bands
+ * (Adrien: « fait vide à gauche et à droite »). The scene now spans the gutter
+ * to gutter: the showcase site behind on the left, the web platform in the
+ * middle, the phone in front on the right — « web + iOS/Android + site ».
+ * All three are transparent captures of the real components (npm run
+ * capture:mockups), shown WHOLE: they overlap, ⛔ nothing is cropped (cmu4iehk).
+ * The drop shadows are what lift them off the light paper.
+ *
+ * Sizes are fixed px (the page is too): the PNGs are 532x345, 364x423 and
+ * 244x514 css px, and each width below keeps its own ratio via height: auto.
+ */
+.mini-scene {
+  position: relative;
+  margin: -120px var(--gut) 0;
+  height: 212px;
 }
 
-.mini-figure img {
+.mini-scene img {
+  position: absolute;
   display: block;
-  width: 100%;
   height: auto;
-  border-radius: 14px;
+}
+
+.mini-scene-site {
+  top: 26px;
+  left: 0;
+  width: 122px;
+  filter: drop-shadow(0 6px 12px rgba(14, 14, 16, 0.14));
+}
+
+/* ⚠️ The overlaps are MEASURED, not eyeballed — an object hidden behind another
+   reads as cropped. The platform covers only the site's right margin (its nav
+   button ends at ~115px), and the phone (x 372) covers only the platform's
+   right margin: the eighth system tile ends at 116 + 0.96 x 266 = 371px. Move
+   one width here and re-check both edges. */
+.mini-scene-web {
+  top: 14px;
+  left: 116px;
+  width: 266px;
+  filter: drop-shadow(0 10px 18px rgba(40, 24, 140, 0.22));
+}
+
+.mini-scene-app {
+  top: 0;
+  right: 0;
+  width: 100px;
+  filter: drop-shadow(0 12px 18px rgba(14, 14, 16, 0.32));
 }
 
 .mini .mini-list {

@@ -3,7 +3,7 @@
  *
  *   npm run mini-flyer -- <content.json> <out.pdf> [dark|light]   # the PNG lands beside it
  *
- * The theme paints the whole page one colour (default: dark).
+ * The theme paints the whole page one colour (default: light — pass v3).
  *
  * Same house chain as buildFlyer.ts — self-contained HTML printed by headless
  * Chrome through hq/scripts/client-doc-pdf.mjs — called as a module rather than a
@@ -18,7 +18,7 @@ import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { MINI_THEMES, renderMiniFlyer, type MiniFlyer, type MiniTheme } from './flyer/renderMini'
+import { DEFAULT_MINI_THEME, MINI_THEMES, renderMiniFlyer, type MiniFlyer, type MiniTheme } from './flyer/renderMini'
 
 const HQ_DIR = process.env.HQ_DIR ?? path.join(os.homedir(), 'code/projects/hq')
 const PRINT_MODULE = path.join(HQ_DIR, 'scripts/client-doc-pdf.mjs')
@@ -90,7 +90,7 @@ function isTheme(value: string): value is MiniTheme {
 }
 
 const args = process.argv.slice(2)
-const theme = args[2] ?? 'dark'
+const theme = args[2] ?? DEFAULT_MINI_THEME
 if (args.length < 2 || args.length > 3 || !isTheme(theme)) {
   console.error(`usage: npm run mini-flyer -- <content.json> <out.pdf> [${MINI_THEMES.join('|')}]`)
   process.exit(2)

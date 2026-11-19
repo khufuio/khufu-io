@@ -30,7 +30,11 @@ export type MiniFlyer = {
   title: string
   /** The fixed price — its own figure, never a conversion of the other locale (cmwe3uf4). */
   price: { value: string; label: string }
-  /** The /sprint-v1 hero final frame, a path under public/ (decision cmu3dn7u). */
+  /**
+   * The /sprint-v1 hero final frame in its `print` tone, a path under public/
+   * (decision cmu3dn7u) — `sprint-hero-print-<lang>.png`, shot by
+   * `npm run capture:mockups`. The app and site beside it are found by `lang`.
+   */
   image: string
   /** 3 or 4 items; the first says the product is built 100 % (cmu4o5km). */
   items: string[]
@@ -46,6 +50,8 @@ export type MiniFlyer = {
  */
 export type MiniTheme = 'dark' | 'light'
 export const MINI_THEMES: readonly MiniTheme[] = ['dark', 'light']
+/** Light since pass v3 (Adrien: « noir c'est bof »); `dark` stays available. */
+export const DEFAULT_MINI_THEME: MiniTheme = 'light'
 
 export function renderMiniFlyer(flyer: MiniFlyer, theme: MiniTheme): string {
   if (flyer.items.length < 3 || flyer.items.length > 4) {
@@ -70,7 +76,11 @@ export function renderMiniFlyer(flyer: MiniFlyer, theme: MiniTheme): string {
   <h1 class="display hero-title">${inline(flyer.title, lang)}</h1>
   <div class="mini-price"><span class="mini-price-value">${inline(flyer.price.value, lang)}</span><span class="mini-price-label">${inline(flyer.price.label, lang)}</span></div>
 </header>
-<figure class="mini-figure"><img src="${dataUri(flyer.image)}" alt=""></figure>
+<figure class="mini-scene">
+  <img class="mini-scene-site" src="${dataUri(`images/captures/sprint-site-${lang}.png`)}" alt="">
+  <img class="mini-scene-web" src="${dataUri(flyer.image)}" alt="">
+  <img class="mini-scene-app" src="${dataUri(`images/captures/sprint-app-${lang}.png`)}" alt="">
+</figure>
 <ul class="showcase-list mini-list">${items}</ul>
 <section class="callout mini-callout"><div class="callout-figure">
   <div class="callout-value">${inline(flyer.referral.value, lang)}</div>

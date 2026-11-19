@@ -1071,6 +1071,457 @@ body {
 }
 
 /* ------------------------------------------------------------------ *
+ * Print mockups: the companion app and the showcase site
+ * (sprintMockups.tsx), shot by `npm run capture:mockups` for the mini-flyer.
+ *
+ * Built FROM the hero's parts — `.sprint-phone`, `.sprint-shot`, the build
+ * tokens, the green live dot — so the three objects read as one kit. Fixed
+ * px sizes, not `cqw`: these are only ever captured at one size and scaled
+ * down as an image, never laid out fluidly on the page.
+ * ------------------------------------------------------------------ */
+/* ⚠️ A thicker bezel and a larger corner than the landing's phone frame, which
+   renders at 80–120px: this one is shot at 240px and SHOWN at ~100px, so its
+   radius is sized for the shown width — ~13 % of it, the real proportion. */
+.sprint-mock-phone {
+  width: 240px;
+  border-width: 5px;
+  border-radius: 32px;
+}
+
+.sprint-mock-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 500px;
+  padding: 14px 14px 10px;
+  border-radius: 27px;
+  background: var(--color-paper);
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+}
+
+.sprint-mock-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+.sprint-mock-status-icons {
+  display: flex;
+  gap: 3px;
+}
+
+.sprint-mock-status-icons i {
+  width: 12px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--color-ink);
+}
+
+.sprint-mock-status-icons i:last-child {
+  width: 18px;
+}
+
+/* The push notification: the one beat that says « it is live and paying ». */
+.sprint-mock-notif {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 24px -14px rgba(14, 14, 16, 0.35);
+}
+
+.sprint-mock-notif-icon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: #16a34a;
+  color: #fff;
+}
+
+.sprint-mock-notif-icon svg {
+  width: 18px;
+}
+
+.sprint-mock-notif-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+  line-height: 1.3;
+  color: var(--color-muted);
+}
+
+.sprint-mock-notif-text b {
+  font-size: 13px;
+  color: var(--color-ink);
+}
+
+.sprint-mock-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+  padding: 0 2px;
+}
+
+.sprint-mock-head b {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+
+.sprint-mock-avatar {
+  width: 28px;
+  height: 28px;
+}
+
+.sprint-mock-kpi {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  height: 78px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.sprint-mock-kpi-num {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.sprint-mock-kpi-up {
+  margin-left: auto;
+  padding: 2px 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.sprint-mock-kpi-spark {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  left: 14px;
+  height: 22px;
+  stroke: #fff;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sprint-mock-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sprint-mock-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 16%, transparent);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.sprint-mock-row-avatar {
+  width: 26px;
+  flex: none;
+}
+
+.sprint-mock-row-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  font-size: 10px;
+  line-height: 1.3;
+  color: var(--color-muted);
+}
+
+.sprint-mock-row-text b {
+  overflow: hidden;
+  font-size: 12px;
+  color: var(--color-ink);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The hero's live light. */
+.sprint-mock-live {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 9999px;
+  background: #16a34a;
+}
+
+.sprint-mock-button {
+  margin-top: auto;
+  padding: 10px;
+  border-radius: 9999px;
+  background: var(--color-ink);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.sprint-mock-tabs {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-line);
+  color: color-mix(in srgb, var(--color-muted) 70%, transparent);
+}
+
+.sprint-mock-tabs svg {
+  width: 20px;
+}
+
+.sprint-mock-tabs svg.is-active {
+  color: var(--color-accent);
+}
+
+/* The showcase site. Portrait, because it stands at the side of the scene;
+   the same indigo-tinted chrome as the hero's `print` tone, so it holds on paper. */
+.sprint-mock-site {
+  width: 360px;
+  border-color: color-mix(in srgb, var(--color-accent) 30%, var(--color-line));
+  border-radius: 18px;
+  box-shadow: none;
+}
+
+.sprint-mock-site .sprint-shot-bar {
+  border-bottom-color: color-mix(in srgb, var(--color-accent) 22%, var(--color-line));
+  background: var(--color-accent-soft);
+}
+
+.sprint-mock-site .sprint-shot-dots i {
+  background: color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+.sprint-mock-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 380px;
+  padding: 16px 20px 20px;
+  background:
+    radial-gradient(120% 60% at 100% 0%, var(--color-accent-soft), transparent 70%),
+    var(--color-paper);
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+}
+
+.sprint-mock-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+}
+
+.sprint-mock-brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.sprint-mock-logo {
+  width: 18px;
+  height: 18px;
+}
+
+.sprint-mock-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-muted);
+}
+
+.sprint-mock-nav-cta {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: var(--color-ink);
+  color: #fff;
+  font-weight: 600;
+}
+
+.sprint-mock-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.sprint-mock-badge {
+  padding: 3px 9px;
+  border-radius: 9999px;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-ink);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sprint-mock-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.sprint-mock-title em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+.sprint-mock-lead {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.sprint-mock-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.sprint-mock-cta {
+  padding: 9px 16px;
+  border-radius: 9999px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sprint-mock-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.sprint-mock-rating .sprint-build-stars {
+  width: 58px;
+}
+
+.sprint-mock-features {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  padding: 12px 14px;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.sprint-mock-feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.sprint-mock-tick {
+  width: 14px;
+  flex: none;
+  color: #16a34a;
+}
+
+/* ---- The hero frame's `print` tone (SprintBuildSequence tone="print") ----
+   On a light flyer the grey frame melted into the paper (Adrien, pass v3). The
+   print tone lays the indigo on harder — brand palette only, no new hue.
+   ⛔ Every rule is scoped under `.sprint-build--print`: the landing's hero
+   never carries that class and must render exactly as before. */
+.sprint-build--print .sprint-shot--hero {
+  border-color: color-mix(in srgb, var(--color-accent) 30%, var(--color-line));
+  box-shadow: none;
+}
+
+.sprint-build--print .sprint-shot-bar {
+  border-bottom-color: color-mix(in srgb, var(--color-accent) 22%, var(--color-line));
+  background: var(--color-accent-soft);
+}
+
+.sprint-build--print .sprint-shot-dots i {
+  background: color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+.sprint-build--print .sprint-build-canvas {
+  background: #fff;
+}
+
+.sprint-build--print .sprint-build-rail {
+  background: var(--color-accent);
+}
+
+.sprint-build--print .sprint-build-logo {
+  background: #fff;
+}
+
+.sprint-build--print .sprint-build-rail-icon {
+  color: #fff;
+}
+
+.sprint-build--print .sprint-build-block,
+.sprint-build--print .sprint-build-tile {
+  border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+.sprint-build--print .sprint-build-block--4 {
+  background: var(--color-accent-soft);
+}
+
+.sprint-build--print .sprint-build-chart-area {
+  fill: color-mix(in srgb, var(--color-accent) 24%, transparent);
+}
+
+.sprint-build--print .sprint-build-chart-line {
+  stroke-width: 2.6;
+}
+
+.sprint-build--print .sprint-build-bars i {
+  background: color-mix(in srgb, var(--color-accent) 70%, transparent);
+}
+
+.sprint-build--print .sprint-build-tile {
+  background: var(--color-accent-soft);
+}
+
+.sprint-build--print .sprint-build-phone,
+.sprint-build--print .sprint-build-site {
+  border-color: var(--color-accent);
+}
+
+/* ------------------------------------------------------------------ *
  * The contact modal (sprintContact.tsx) — the page's conversion surface.
  *
  * ⚠️ IT IS THE ONLY PATH, so it is built for a phone first: the panel is bottom-
