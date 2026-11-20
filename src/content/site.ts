@@ -57,12 +57,14 @@ export const site = {
   // not listed falls back to a rate conversion in currency.ts (safety net only).
   // Full Maintenance tiers dropped by a third with the Sprint and the day rate
   // (decision cmwpk3nb, 2026-11-20): Starter 1490 → 990 €, Growth 3900 → 2600 €.
+  // USD list prices validated by Adrien (decision cmwpkezf): day 880 $, hour 130 $,
+  // Starter 1090 $, Growth 2900 $ — firm, not conversions.
   usdPrices: {
     11000: 12000,
-    800: 880, // USD pending Adrien
-    120: 130, // decided with the EUR rate (cmwpk3ve)
-    990: 1090, // USD pending Adrien
-    2600: 2900, // USD pending Adrien
+    800: 880,
+    120: 130,
+    990: 1090,
+    2600: 2900,
   } as Record<number, number>,
   // Founder's personal profiles (indie-dev brand). Attached to the founder
   // (Person) in structured data, not to the Organization.
