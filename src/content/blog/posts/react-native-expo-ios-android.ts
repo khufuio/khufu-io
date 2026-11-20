@@ -50,7 +50,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Ce que ça change pour votre V1" },
       {
-        p: "Une seule base de code, c’est aussi un seul budget et un seul calendrier. C’est pourquoi Khufu construit ses apps mobiles sur React Native, Expo et NestJS : une V1 réellement publiable sur l’App Store et Google Play, livrée en 7 jours pour un prix fixe de 11 000 €, code source à vous. Vous validez votre marché sur les deux plateformes en même temps, puis vous faites évoluer le produit avec un budget de maintenance mensuel (à partir de 1 490 €/mois) — sans jamais entretenir deux apps en double.",
+        p: "Une seule base de code, c’est aussi un seul budget et un seul calendrier. C’est pourquoi Khufu construit ses apps mobiles sur React Native, Expo et NestJS : une V1 réellement publiable sur l’App Store et Google Play, livrée en 7 jours pour un prix fixe de 11 000 €, code source à vous. Vous validez votre marché sur les deux plateformes en même temps, puis vous faites évoluer le produit avec un budget de maintenance mensuel (à partir de 990 €/mois) — sans jamais entretenir deux apps en double.",
       },
     ],
   },
@@ -102,7 +102,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "What it changes for your V1" },
       {
-        p: "A single codebase also means a single budget and a single timeline. That is why Khufu builds its mobile apps on React Native, Expo and NestJS: a genuinely publishable V1 on the App Store and Google Play, delivered in 7 days for a fixed price of €11,000, source code yours. You validate your market on both platforms at once, then grow the product with a monthly maintenance budget (from €1,490/month) — without ever maintaining two duplicate apps.",
+        p: "A single codebase also means a single budget and a single timeline. That is why Khufu builds its mobile apps on React Native, Expo and NestJS: a genuinely publishable V1 on the App Store and Google Play, delivered in 7 days for a fixed price of €11,000, source code yours. You validate your market on both platforms at once, then grow the product with a monthly maintenance budget (from €990/month) — without ever maintaining two duplicate apps.",
       },
     ],
   },
@@ -154,7 +154,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Lo que cambia para tu V1" },
       {
-        p: "Una sola base de código es también un solo presupuesto y un solo calendario. Por eso Khufu construye sus apps móviles con React Native, Expo y NestJS: una V1 realmente publicable en la App Store y Google Play, entregada en 7 días por un precio fijo de 11.000 €, con el código fuente tuyo. Validas tu mercado en ambas plataformas a la vez y después haces evolucionar el producto con un presupuesto de mantenimiento mensual (desde 1.490 €/mes), sin mantener nunca dos apps duplicadas.",
+        p: "Una sola base de código es también un solo presupuesto y un solo calendario. Por eso Khufu construye sus apps móviles con React Native, Expo y NestJS: una V1 realmente publicable en la App Store y Google Play, entregada en 7 días por un precio fijo de 11.000 €, con el código fuente tuyo. Validas tu mercado en ambas plataformas a la vez y después haces evolucionar el producto con un presupuesto de mantenimiento mensual (desde 990 €/mes), sin mantener nunca dos apps duplicadas.",
       },
     ],
   },
@@ -206,7 +206,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Was es für Ihre V1 ändert" },
       {
-        p: "Eine einzige Codebasis bedeutet auch ein einziges Budget und einen einzigen Zeitplan. Deshalb baut Khufu seine mobilen Apps auf React Native, Expo und NestJS: eine wirklich veröffentlichbare V1 im App Store und bei Google Play, in 7 Tagen geliefert zum Festpreis von 11.000 €, Quellcode gehört Ihnen. Sie validieren Ihren Markt auf beiden Plattformen gleichzeitig und entwickeln das Produkt dann mit einem monatlichen Wartungsbudget weiter (ab 1.490 €/Monat) – ohne jemals zwei doppelte Apps zu pflegen.",
+        p: "Eine einzige Codebasis bedeutet auch ein einziges Budget und einen einzigen Zeitplan. Deshalb baut Khufu seine mobilen Apps auf React Native, Expo und NestJS: eine wirklich veröffentlichbare V1 im App Store und bei Google Play, in 7 Tagen geliefert zum Festpreis von 11.000 €, Quellcode gehört Ihnen. Sie validieren Ihren Markt auf beiden Plattformen gleichzeitig und entwickeln das Produkt dann mit einem monatlichen Wartungsbudget weiter (ab 990 €/Monat) – ohne jemals zwei doppelte Apps zu pflegen.",
       },
     ],
   },
@@ -258,7 +258,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Cosa cambia per la tua V1" },
       {
-        p: "Una sola base di codice è anche un solo budget e un solo calendario. Per questo Khufu costruisce le sue app mobili su React Native, Expo e NestJS: una V1 realmente pubblicabile su App Store e Google Play, consegnata in 7 giorni a un prezzo fisso di 11.000 €, con il codice sorgente tuo. Convalidi il tuo mercato su entrambe le piattaforme contemporaneamente, poi fai evolvere il prodotto con un budget di manutenzione mensile (a partire da 1.490 €/mese), senza mai mantenere due app duplicate.",
+        p: "Una sola base di codice è anche un solo budget e un solo calendario. Per questo Khufu costruisce le sue app mobili su React Native, Expo e NestJS: una V1 realmente pubblicabile su App Store e Google Play, consegnata in 7 giorni a un prezzo fisso di 11.000 €, con il codice sorgente tuo. Convalidi il tuo mercato su entrambe le piattaforme contemporaneamente, poi fai evolvere il prodotto con un budget di manutenzione mensile (a partire da 990 €/mese), senza mai mantenere due app duplicate.",
       },
     ],
   },
@@ -310,7 +310,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "O que muda para a sua V1" },
       {
-        p: "Uma só base de código é também um só orçamento e um só calendário. É por isso que a Khufu constrói as suas apps móveis em React Native, Expo e NestJS: uma V1 realmente publicável na App Store e no Google Play, entregue em 7 dias por um preço fixo de 11.000 €, com o código-fonte seu. Valida o seu mercado nas duas plataformas ao mesmo tempo e depois faz evoluir o produto com um orçamento de manutenção mensal (a partir de 1.490 €/mês), sem nunca manter duas apps duplicadas.",
+        p: "Uma só base de código é também um só orçamento e um só calendário. É por isso que a Khufu constrói as suas apps móveis em React Native, Expo e NestJS: uma V1 realmente publicável na App Store e no Google Play, entregue em 7 dias por um preço fixo de 11.000 €, com o código-fonte seu. Valida o seu mercado nas duas plataformas ao mesmo tempo e depois faz evoluir o produto com um orçamento de manutenção mensal (a partir de 990 €/mês), sem nunca manter duas apps duplicadas.",
       },
     ],
   },
@@ -362,7 +362,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Wat het verandert voor je V1" },
       {
-        p: "Eén codebase betekent ook één budget en één planning. Daarom bouwt Khufu zijn mobiele apps op React Native, Expo en NestJS: een echt publiceerbare V1 in de App Store en Google Play, geleverd in 7 dagen voor een vaste prijs van € 11.000, broncode van jou. Je valideert je markt op beide platforms tegelijk en laat het product daarna groeien met een maandelijks onderhoudsbudget (vanaf € 1.490/maand) — zonder ooit twee dubbele apps te onderhouden.",
+        p: "Eén codebase betekent ook één budget en één planning. Daarom bouwt Khufu zijn mobiele apps op React Native, Expo en NestJS: een echt publiceerbare V1 in de App Store en Google Play, geleverd in 7 dagen voor een vaste prijs van € 11.000, broncode van jou. Je valideert je markt op beide platforms tegelijk en laat het product daarna groeien met een maandelijks onderhoudsbudget (vanaf € 990/maand) — zonder ooit twee dubbele apps te onderhouden.",
       },
     ],
   },
@@ -414,7 +414,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "ما الذي يغيّره هذا لنسخة V1 خاصتك" },
       {
-        p: "قاعدة شفرة واحدة تعني أيضاً ميزانية واحدة وجدولاً زمنياً واحداً. لهذا تبني Khufu تطبيقاتها للموبايل على React Native و Expo و NestJS: نسخة V1 قابلة للنشر فعلاً على App Store و Google Play، تُسلَّم خلال 7 أيام بسعر ثابت قدره 11 000 €، والشفرة المصدرية ملكك. تتحقق من سوقك على المنصتين في آنٍ واحد، ثم تطوّر المنتج بميزانية صيانة شهرية (بدءاً من 1 490 €/الشهر) — دون أن تصون أبداً تطبيقين مكرَّرين.",
+        p: "قاعدة شفرة واحدة تعني أيضاً ميزانية واحدة وجدولاً زمنياً واحداً. لهذا تبني Khufu تطبيقاتها للموبايل على React Native و Expo و NestJS: نسخة V1 قابلة للنشر فعلاً على App Store و Google Play، تُسلَّم خلال 7 أيام بسعر ثابت قدره 11 000 €، والشفرة المصدرية ملكك. تتحقق من سوقك على المنصتين في آنٍ واحد، ثم تطوّر المنتج بميزانية صيانة شهرية (بدءاً من 990 €/الشهر) — دون أن تصون أبداً تطبيقين مكرَّرين.",
       },
     ],
   },
@@ -466,7 +466,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Co to zmienia dla twojej V1" },
       {
-        p: "Jedna baza kodu to także jeden budżet i jeden harmonogram. Dlatego Khufu buduje swoje aplikacje mobilne na React Native, Expo i NestJS: naprawdę gotowa do publikacji V1 w App Store i Google Play, dostarczona w 7 dni za stałą cenę 11 000 €, z kodem źródłowym dla ciebie. Walidujesz swój rynek na obu platformach jednocześnie, a następnie rozwijasz produkt z miesięcznym budżetem na utrzymanie (od 1 490 €/miesiąc) — nigdy nie utrzymując dwóch zduplikowanych aplikacji.",
+        p: "Jedna baza kodu to także jeden budżet i jeden harmonogram. Dlatego Khufu buduje swoje aplikacje mobilne na React Native, Expo i NestJS: naprawdę gotowa do publikacji V1 w App Store i Google Play, dostarczona w 7 dni za stałą cenę 11 000 €, z kodem źródłowym dla ciebie. Walidujesz swój rynek na obu platformach jednocześnie, a następnie rozwijasz produkt z miesięcznym budżetem na utrzymanie (od 990 €/miesiąc) — nigdy nie utrzymując dwóch zduplikowanych aplikacji.",
       },
     ],
   },
@@ -518,7 +518,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "V1 için ne değiştirir" },
       {
-        p: "Tek kod tabanı aynı zamanda tek bütçe ve tek takvim demektir. Bu yüzden Khufu mobil uygulamalarını React Native, Expo ve NestJS üzerine kurar: App Store ve Google Play’de gerçekten yayınlanabilir bir V1, 7 günde 11.000 € sabit fiyatla teslim edilir, kaynak kodu sizindir. Pazarınızı iki platformda aynı anda doğrular, ardından ürünü aylık bir bakım bütçesiyle (aylık 1.490 €’dan başlayan) geliştirirsiniz — hiçbir zaman iki kopya uygulama sürdürmeden.",
+        p: "Tek kod tabanı aynı zamanda tek bütçe ve tek takvim demektir. Bu yüzden Khufu mobil uygulamalarını React Native, Expo ve NestJS üzerine kurar: App Store ve Google Play’de gerçekten yayınlanabilir bir V1, 7 günde 11.000 € sabit fiyatla teslim edilir, kaynak kodu sizindir. Pazarınızı iki platformda aynı anda doğrular, ardından ürünü aylık bir bakım bütçesiyle (aylık 990 €’dan başlayan) geliştirirsiniz — hiçbir zaman iki kopya uygulama sürdürmeden.",
       },
     ],
   },

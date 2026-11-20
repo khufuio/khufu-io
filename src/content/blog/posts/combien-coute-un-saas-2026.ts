@@ -40,7 +40,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Combien budgéter, concrètement' },
       {
-        p: "Pour un SaaS B2B classique (authentification, tableau de bord, paiement, une ou deux fonctionnalités cœur), comptez 11 000 € pour une V1 propre et prête pour la production, sur une stack maintenable (Next.js, NestJS, Prisma, PostgreSQL). Ajoutez ensuite un budget mensuel de maintenance à partir de 1 490 €/mois pour la faire évoluer sans accumuler de dette. Vous savez ainsi ce que vous dépensez du jour 1 au lancement, sans mauvaise surprise.",
+        p: "Pour un SaaS B2B classique (authentification, tableau de bord, paiement, une ou deux fonctionnalités cœur), comptez 11 000 € pour une V1 propre et prête pour la production, sur une stack maintenable (Next.js, NestJS, Prisma, PostgreSQL). Ajoutez ensuite un budget mensuel de maintenance à partir de 990 €/mois pour la faire évoluer sans accumuler de dette. Vous savez ainsi ce que vous dépensez du jour 1 au lancement, sans mauvaise surprise.",
       },
     ],
   },
@@ -82,7 +82,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'How much to budget, concretely' },
       {
-        p: "For a classic B2B SaaS (authentication, dashboard, payment, one or two core features), count on €11,000 for a clean, production-ready V1 on a maintainable stack (Next.js, NestJS, Prisma, PostgreSQL). Then add a monthly maintenance budget from €1,490/month to grow it without accumulating debt. That way you know what you spend from day one to launch, with no bad surprises.",
+        p: "For a classic B2B SaaS (authentication, dashboard, payment, one or two core features), count on €11,000 for a clean, production-ready V1 on a maintainable stack (Next.js, NestJS, Prisma, PostgreSQL). Then add a monthly maintenance budget from €990/month to grow it without accumulating debt. That way you know what you spend from day one to launch, with no bad surprises.",
       },
     ],
   },
@@ -124,7 +124,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Cuánto presupuestar, en concreto' },
       {
-        p: "Para un SaaS B2B clásico (autenticación, panel, pago, una o dos funcionalidades núcleo), cuenta con 11.000 € para una V1 limpia y lista para producción, sobre un stack mantenible (Next.js, NestJS, Prisma, PostgreSQL). Añade después un presupuesto mensual de mantenimiento desde 1.490 €/mes para hacerla evolucionar sin acumular deuda. Así sabes lo que gastas desde el primer día hasta el lanzamiento, sin sorpresas.",
+        p: "Para un SaaS B2B clásico (autenticación, panel, pago, una o dos funcionalidades núcleo), cuenta con 11.000 € para una V1 limpia y lista para producción, sobre un stack mantenible (Next.js, NestJS, Prisma, PostgreSQL). Añade después un presupuesto mensual de mantenimiento desde 990 €/mes para hacerla evolucionar sin acumular deuda. Así sabes lo que gastas desde el primer día hasta el lanzamiento, sin sorpresas.",
       },
     ],
   },
@@ -166,7 +166,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Wie viel konkret einplanen' },
       {
-        p: "Für ein klassisches B2B-SaaS (Authentifizierung, Dashboard, Zahlung, ein bis zwei Kernfunktionen) rechne mit 11.000 € für eine saubere, produktionsreife V1 auf einem wartbaren Stack (Next.js, NestJS, Prisma, PostgreSQL). Ergänze dann ein monatliches Wartungsbudget ab 1.490 €/Monat, um sie ohne neue Schulden weiterzuentwickeln. So weißt du vom ersten Tag bis zum Launch, was du ausgibst — ohne böse Überraschungen.",
+        p: "Für ein klassisches B2B-SaaS (Authentifizierung, Dashboard, Zahlung, ein bis zwei Kernfunktionen) rechne mit 11.000 € für eine saubere, produktionsreife V1 auf einem wartbaren Stack (Next.js, NestJS, Prisma, PostgreSQL). Ergänze dann ein monatliches Wartungsbudget ab 990 €/Monat, um sie ohne neue Schulden weiterzuentwickeln. So weißt du vom ersten Tag bis zum Launch, was du ausgibst — ohne böse Überraschungen.",
       },
     ],
   },
@@ -208,7 +208,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Quanto prevedere, concretamente' },
       {
-        p: "Per un SaaS B2B classico (autenticazione, dashboard, pagamento, una o due funzionalità centrali), conta 11.000 € per una V1 pulita e pronta per la produzione, su uno stack manutenibile (Next.js, NestJS, Prisma, PostgreSQL). Aggiungi poi un budget mensile di manutenzione a partire da 1.490 €/mese per farla evolvere senza accumulare debito. Così sai quanto spendi dal primo giorno al lancio, senza brutte sorprese.",
+        p: "Per un SaaS B2B classico (autenticazione, dashboard, pagamento, una o due funzionalità centrali), conta 11.000 € per una V1 pulita e pronta per la produzione, su uno stack manutenibile (Next.js, NestJS, Prisma, PostgreSQL). Aggiungi poi un budget mensile di manutenzione a partire da 990 €/mese per farla evolvere senza accumulare debito. Così sai quanto spendi dal primo giorno al lancio, senza brutte sorprese.",
       },
     ],
   },
@@ -250,7 +250,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Quanto orçar, concretamente' },
       {
-        p: "Para um SaaS B2B clássico (autenticação, painel, pagamento, uma ou duas funcionalidades centrais), conte com 11.000 € para uma V1 limpa e pronta para produção, sobre um stack sustentável (Next.js, NestJS, Prisma, PostgreSQL). Depois acrescente um orçamento mensal de manutenção a partir de 1.490 €/mês para evoluí-la sem acumular dívida. Assim você sabe quanto gasta do primeiro dia ao lançamento, sem surpresas ruins.",
+        p: "Para um SaaS B2B clássico (autenticação, painel, pagamento, uma ou duas funcionalidades centrais), conte com 11.000 € para uma V1 limpa e pronta para produção, sobre um stack sustentável (Next.js, NestJS, Prisma, PostgreSQL). Depois acrescente um orçamento mensal de manutenção a partir de 990 €/mês para evoluí-la sem acumular dívida. Assim você sabe quanto gasta do primeiro dia ao lançamento, sem surpresas ruins.",
       },
     ],
   },
@@ -292,7 +292,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Hoeveel concreet begroten' },
       {
-        p: "Voor een klassieke B2B-SaaS (authenticatie, dashboard, betaling, één of twee kernfuncties) reken je 11.000 € voor een schone, productieklare V1 op een onderhoudbare stack (Next.js, NestJS, Prisma, PostgreSQL). Voeg daarna een maandelijks onderhoudsbudget toe vanaf 1.490 €/maand om hem te laten groeien zonder schuld op te bouwen. Zo weet je van dag één tot de lancering wat je uitgeeft, zonder nare verrassingen.",
+        p: "Voor een klassieke B2B-SaaS (authenticatie, dashboard, betaling, één of twee kernfuncties) reken je 11.000 € voor een schone, productieklare V1 op een onderhoudbare stack (Next.js, NestJS, Prisma, PostgreSQL). Voeg daarna een maandelijks onderhoudsbudget toe vanaf 990 €/maand om hem te laten groeien zonder schuld op te bouwen. Zo weet je van dag één tot de lancering wat je uitgeeft, zonder nare verrassingen.",
       },
     ],
   },
@@ -376,7 +376,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Ile konkretnie zabudżetować' },
       {
-        p: "Dla klasycznego SaaS B2B (uwierzytelnianie, pulpit, płatność, jedna lub dwie kluczowe funkcje) licz 11 000 € za czystą, gotową do produkcji V1 na łatwym w utrzymaniu stacku (Next.js, NestJS, Prisma, PostgreSQL). Następnie dodaj miesięczny budżet utrzymania od 1 490 €/miesiąc, aby rozwijać go bez narastania długu. Dzięki temu wiesz, ile wydajesz od pierwszego dnia do startu, bez przykrych niespodzianek.",
+        p: "Dla klasycznego SaaS B2B (uwierzytelnianie, pulpit, płatność, jedna lub dwie kluczowe funkcje) licz 11 000 € za czystą, gotową do produkcji V1 na łatwym w utrzymaniu stacku (Next.js, NestJS, Prisma, PostgreSQL). Następnie dodaj miesięczny budżet utrzymania od 990 €/miesiąc, aby rozwijać go bez narastania długu. Dzięki temu wiesz, ile wydajesz od pierwszego dnia do startu, bez przykrych niespodzianek.",
       },
     ],
   },
@@ -418,7 +418,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Somut olarak ne kadar bütçe ayırmalı' },
       {
-        p: "Klasik bir B2B SaaS için (kimlik doğrulama, panel, ödeme, bir veya iki temel özellik), bakımı kolay bir stack üzerinde (Next.js, NestJS, Prisma, PostgreSQL) temiz ve üretime hazır bir V1 için 11.000 € hesapla. Ardından borç biriktirmeden geliştirmek için aylık 1.490 €’dan başlayan bir bakım bütçesi ekle. Böylece ilk günden lansmana kadar ne harcadığını, kötü sürprizler olmadan bilirsin.",
+        p: "Klasik bir B2B SaaS için (kimlik doğrulama, panel, ödeme, bir veya iki temel özellik), bakımı kolay bir stack üzerinde (Next.js, NestJS, Prisma, PostgreSQL) temiz ve üretime hazır bir V1 için 11.000 € hesapla. Ardından borç biriktirmeden geliştirmek için aylık 990 €’dan başlayan bir bakım bütçesi ekle. Böylece ilk günden lansmana kadar ne harcadığını, kötü sürprizler olmadan bilirsin.",
       },
     ],
   },

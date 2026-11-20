@@ -49,7 +49,7 @@ export const ar: Dictionary = {
     stats: [
       { value: `${site.v1Days} أيام`, label: 'من الانطلاق إلى نسخة أولى V1 في الإنتاج' },
       { value: `${eur(site.v1PriceEUR)}`, label: 'سعر مقطوع لـ Sprint V1، نطاق محدَّد مسبقًا' },
-      { value: `${eur(site.dailyRateEUR)}`, label: 'سعر اليوم عن بُعد (100 €/h) لما يأتي لاحقًا' },
+      { value: `${eur(site.dailyRateEUR)}`, label: 'سعر اليوم عن بُعد (120 €/h) لما يأتي لاحقًا' },
       { value: '100 %', label: 'كود مُسلّم ومستضاف وملك لك' },
     ],
 
@@ -145,7 +145,7 @@ export const ar: Dictionary = {
 
   offers: {
     metaTitle: 'العروض والأسعار',
-    metaDescription: `Sprint V1 خلال ${site.v1Days} أيام ابتداءً من ${eur(site.v1PriceEUR)}، وFull Maintenance شهرية، ودعم عن بُعد بـ ${eur(site.dailyRateEUR)}/يوم (100 €/h).`,
+    metaDescription: `Sprint V1 خلال ${site.v1Days} أيام ابتداءً من ${eur(site.v1PriceEUR)}، وFull Maintenance شهرية، ودعم عن بُعد بـ ${eur(site.dailyRateEUR)}/يوم (120 €/h).`,
     title: 'عروض واضحة، وأسعار معروضة.',
     subtitle: 'لا عروض أسعار مطوّلة. تعرف بالضبط ما تدفعه وما تحصل عليه.',
     flagshipBadge: 'عرضنا الرئيسي',
@@ -173,7 +173,7 @@ export const ar: Dictionary = {
       {
         id: 'maintenance',
         name: 'Full Maintenance',
-        priceEur: 1490,
+        priceEur: 990,
         pricePrefix: 'ابتداءً من ',
         priceNote: '/ شهر',
         pitch: 'نُبقي منتجك حيًّا: بنية تحتية ودعم وأيام تطوير مشمولة.',
@@ -192,11 +192,11 @@ export const ar: Dictionary = {
         name: 'Remote',
         priceEur: site.dailyRateEUR,
         priceNote: '/ يوم',
-        pitch: 'دعم كبير الخبرة عن بُعد 100 %، بفوترة بالساعة — [[100]]/h.',
+        pitch: 'دعم كبير الخبرة عن بُعد 100 %، بفوترة بالساعة — [[120]]/h.',
         featured: false,
         features: [
           'عن بُعد 100 %',
-          '[[100]]/h — تفصيل بالساعة',
+          '[[120]]/h — تفصيل بالساعة',
           'تطوير، هندسة معمارية، استشارة',
           'دون التزام بمدة',
         ],
@@ -233,7 +233,7 @@ export const ar: Dictionary = {
   remotePage: {
     metaTitle: 'Remote — دعم منتج بالساعة',
     metaDescription:
-      'دعم كبير الخبرة عن بُعد 100 % لمنتجك: تطوير وهندسة معمارية واستشارة، بفوترة 100 €/h بتفصيل بالساعة.',
+      'دعم كبير الخبرة عن بُعد 100 % لمنتجك: تطوير وهندسة معمارية واستشارة، بفوترة 120 €/h بتفصيل بالساعة.',
     kicker: 'Remote',
     title: 'دعم كبير الخبرة، عن بُعد 100 %.',
     subtitle:
@@ -273,8 +273,8 @@ export const ar: Dictionary = {
       {
         id: 'starter',
         name: 'Starter',
-        price: '1,490 يورو',
-        priceEur: 1490,
+        price: '990 يورو',
+        priceEur: 990,
         priceNote: '/ شهر',
         pitch: 'للحفاظ على منتج مستقر وتطويره.',
         featured: false,
@@ -288,8 +288,8 @@ export const ar: Dictionary = {
       {
         id: 'growth',
         name: 'Growth',
-        price: '3,900 يورو',
-        priceEur: 3900,
+        price: '2,600 يورو',
+        priceEur: 2600,
         priceNote: '/ شهر',
         pitch: 'لمنتج يتطوّر باستمرار.',
         featured: true,
@@ -316,7 +316,7 @@ export const ar: Dictionary = {
       },
     ],
     devNote:
-      'التزام لمدة 6 أشهر. إعداد أدوات التتبّع إلزامي عند الانطلاق: يوم واحد ([[800]]). ساعات التطوير الإضافية تُفوتَر بـ [[100]]/h.',
+      'التزام لمدة 6 أشهر. إعداد أدوات التتبّع إلزامي عند الانطلاق: يوم واحد ([[800]]). ساعات التطوير الإضافية تُفوتَر بـ [[120]]/h.',
     ctaTitle: 'ترغب في تفويض الصيانة؟',
     ctaBody: 'أخبرنا أين وصل منتجك، ونقترح عليك الباقة المناسبة.',
     ctaButton: 'تحدّث إلى Khufu',
@@ -442,11 +442,11 @@ export const ar: Dictionary = {
       },
       {
         q: 'ماذا يحدث بعد تسليم النسخة الأولى؟',
-        a: `يمكنك المتابعة بعرض Full Maintenance (بنية تحتية مُدارة، ودعم باتفاقية مستوى خدمة SLA، وأيام تطوير مشمولة كل شهر) أو بدعم عن بُعد بـ [[${site.dailyRateEUR}]]/يوم ([[100]]/h). الكود المصدري ملك لك في جميع الأحوال.`,
+        a: `يمكنك المتابعة بعرض Full Maintenance (بنية تحتية مُدارة، ودعم باتفاقية مستوى خدمة SLA، وأيام تطوير مشمولة كل شهر) أو بدعم عن بُعد بـ [[${site.dailyRateEUR}]]/يوم ([[120]]/h). الكود المصدري ملك لك في جميع الأحوال.`,
       },
       {
         q: 'ما سعر Khufu للدعم؟',
-        a: `الدعم عن بُعد 100 %، بفوترة [[100]]/h بتفصيل بالساعة (أي [[${site.dailyRateEUR}]]/يوم)، دون التزام بمدة. العمل في الموقع ممكن: أسبوع واحد كحدّ أدنى، +50 % على السعر والمصاريف على عاتق العميل.`,
+        a: `الدعم عن بُعد 100 %، بفوترة [[120]]/h بتفصيل بالساعة (أو [[${site.dailyRateEUR}]]/يوم)، دون التزام بمدة. العمل في الموقع ممكن: أسبوع واحد كحدّ أدنى، +50 % على السعر والمصاريف على عاتق العميل.`,
       },
       {
         q: 'هل يمكن لـ Khufu تطوير تطبيقات جوال وميزات ذكاء اصطناعي؟',

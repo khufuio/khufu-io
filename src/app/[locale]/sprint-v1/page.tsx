@@ -208,7 +208,7 @@ export default async function SprintPage({ params }: { params: Promise<{ locale:
   /*
    * The JSON-LD wants questions and answers only, so the link rides alongside in
    * `faqRows`. ⚠️ And the answers go through `dualPriceTokens` on the way: a
-   * `[[1490]]` marker renders as a price for a visitor but would reach a crawler
+   * `[[990]]` marker renders as a price for a visitor but would reach a crawler
    * verbatim, and a machine-readable surface cannot pick a currency per visitor
    * — so it advertises both, exactly as the home page and llms.txt do.
    */

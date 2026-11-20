@@ -49,7 +49,7 @@ export const tr: Dictionary = {
     stats: [
       { value: `${site.v1Days} gün`, label: 'kickoff’tan canlıdaki V1’e' },
       { value: `${eur(site.v1PriceEUR)}`, label: 'Sprint V1 sabit ücreti, kapsam önceden belirlenir' },
-      { value: `${eur(site.dailyRateEUR)}`, label: 'sonrası için remote günlük ücret (100 €/saat)' },
+      { value: `${eur(site.dailyRateEUR)}`, label: 'sonrası için remote günlük ücret (120 €/saat)' },
       { value: '%100', label: 'kod teslim edildi, barındırıldı, sizin' },
     ],
 
@@ -145,7 +145,7 @@ export const tr: Dictionary = {
 
   offers: {
     metaTitle: 'Hizmetler ve fiyatlar',
-    metaDescription: `${site.v1Days} günde ${eur(site.v1PriceEUR)}’dan başlayan Sprint V1, aylık Full Maintenance ve ${eur(site.dailyRateEUR)}/gün (100 €/saat) remote destek.`,
+    metaDescription: `${site.v1Days} günde ${eur(site.v1PriceEUR)}’dan başlayan Sprint V1, aylık Full Maintenance ve ${eur(site.dailyRateEUR)}/gün (120 €/saat) remote destek.`,
     title: 'Net hizmetler, açık fiyatlar.',
     subtitle: 'Bitmek bilmeyen teklifler yok. Ne ödediğinizi ve ne aldığınızı tam olarak bilirsiniz.',
     flagshipBadge: 'Amiral gemisi teklifimiz',
@@ -173,8 +173,8 @@ export const tr: Dictionary = {
       {
         id: 'maintenance',
         name: 'Full Maintenance',
-        priceEur: 1490,
-        pricePrefix: '1.490 €’dan ',
+        priceEur: 990,
+        pricePrefix: 'başlangıç ',
         priceNote: '/ ay',
         pitch: 'Ürününüzü canlı tutarız: altyapı, destek ve geliştirme günleri dahil.',
         featured: false,
@@ -192,11 +192,11 @@ export const tr: Dictionary = {
         name: 'Remote',
         priceEur: site.dailyRateEUR,
         priceNote: '/ gün',
-        pitch: 'Kıdemli, %100 remote takviye, saatlik faturalanır — [[100]]/saat.',
+        pitch: 'Kıdemli, %100 remote takviye, saatlik faturalanır — [[120]]/saat.',
         featured: false,
         features: [
           '%100 remote',
-          '[[100]]/saat — saatlik ayrıntı',
+          '[[120]]/saat — saatlik ayrıntı',
           'Geliştirme, mimari, danışmanlık',
           'Süre taahhüdü yok',
         ],
@@ -233,7 +233,7 @@ export const tr: Dictionary = {
   remotePage: {
     metaTitle: 'Remote — saatlik ürün takviyesi',
     metaDescription:
-      'Ürününüz için kıdemli, %100 remote bir takviye: geliştirme, mimari ve danışmanlık, saatlik ayrıntıyla 100 €/saat faturalanır.',
+      'Ürününüz için kıdemli, %100 remote bir takviye: geliştirme, mimari ve danışmanlık, saatlik ayrıntıyla 120 €/saat faturalanır.',
     kicker: 'Remote',
     title: 'Kıdemli bir takviye, %100 remote.',
     subtitle:
@@ -273,8 +273,8 @@ export const tr: Dictionary = {
       {
         id: 'starter',
         name: 'Starter',
-        price: '1.490 €',
-        priceEur: 1490,
+        price: '990 €',
+        priceEur: 990,
         priceNote: '/ ay',
         pitch: 'Kararlı bir ürünü çevrimiçi tutmak için.',
         featured: false,
@@ -288,8 +288,8 @@ export const tr: Dictionary = {
       {
         id: 'growth',
         name: 'Growth',
-        price: '3.900 €',
-        priceEur: 3900,
+        price: '2.600 €',
+        priceEur: 2600,
         priceNote: '/ ay',
         pitch: 'Sürekli evrilen bir ürün için.',
         featured: true,
@@ -316,7 +316,7 @@ export const tr: Dictionary = {
       },
     ],
     devNote:
-      '6 ay taahhüt. Başlangıçta takip araçlarının kurulumu zorunlu: 1 gün ([[800]]). Ek geliştirme saatleri [[100]]/saat faturalanır.',
+      '6 ay taahhüt. Başlangıçta takip araçlarının kurulumu zorunlu: 1 gün ([[800]]). Ek geliştirme saatleri [[120]]/saat faturalanır.',
     ctaTitle: 'Bakımı devretmek mi istiyorsunuz?',
     ctaBody: 'Ürününüzün nerede olduğunu anlatın, size uygun paketi önerelim.',
     ctaButton: 'Khufu ile konuş',
@@ -442,11 +442,11 @@ export const tr: Dictionary = {
       },
       {
         q: 'V1 teslim edildikten sonra ne olur?',
-        a: `Full Maintenance teklifiyle (yönetilen altyapı, SLA’lı destek ve her ay dahil geliştirme günleri) ya da [[${site.dailyRateEUR}]]/gün ([[100]]/saat) remote takviyeyle devam edebilirsiniz. Kaynak kodu her durumda sizindir.`,
+        a: `Full Maintenance teklifiyle (yönetilen altyapı, SLA’lı destek ve her ay dahil geliştirme günleri) ya da [[${site.dailyRateEUR}]]/gün ([[120]]/saat) remote takviyeyle devam edebilirsiniz. Kaynak kodu her durumda sizindir.`,
       },
       {
         q: 'Khufu’nun takviye ücreti nedir?',
-        a: `Takviye %100 remote’tur, saatlik ayrıntıyla [[100]]/saat faturalanır (yani [[${site.dailyRateEUR}]]/gün), süre taahhüdü yoktur. Yerinde çalışma mümkün: en az 1 hafta, ücrete +%50 ve masraflar müşteriye ait.`,
+        a: `Takviye %100 remote’tur, saatlik ayrıntıyla [[120]]/saat faturalanır (ya da [[${site.dailyRateEUR}]]/gün), süre taahhüdü yoktur. Yerinde çalışma mümkün: en az 1 hafta, ücrete +%50 ve masraflar müşteriye ait.`,
       },
       {
         q: 'Khufu mobil uygulamalar ve yapay zeka geliştirebilir mi?',

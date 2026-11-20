@@ -49,7 +49,7 @@ export const it: Dictionary = {
     stats: [
       { value: `${site.v1Days} giorni`, label: 'dal kickoff a una V1 in produzione' },
       { value: `${eur(site.v1PriceEUR)}`, label: 'forfait Sprint V1, ambito definito in anticipo' },
-      { value: `${eur(site.dailyRateEUR)}`, label: 'tariffa remota (100 €/h) per il seguito' },
+      { value: `${eur(site.dailyRateEUR)}`, label: 'tariffa remota (120 €/h) per il seguito' },
       { value: '100 %', label: 'codice consegnato, ospitato, tuo' },
     ],
 
@@ -145,7 +145,7 @@ export const it: Dictionary = {
 
   offers: {
     metaTitle: 'Servizi e prezzi',
-    metaDescription: `Sprint V1 in ${site.v1Days} giorni a partire da ${eur(site.v1PriceEUR)}, Full Maintenance mensile e supporto remoto a ${eur(site.dailyRateEUR)}/giorno (100 €/h).`,
+    metaDescription: `Sprint V1 in ${site.v1Days} giorni a partire da ${eur(site.v1PriceEUR)}, Full Maintenance mensile e supporto remoto a ${eur(site.dailyRateEUR)}/giorno (120 €/h).`,
     title: 'Servizi chiari, prezzi in vista.',
     subtitle: 'Niente preventivi infiniti. Sai esattamente cosa paghi e cosa ricevi.',
     flagshipBadge: 'La nostra offerta di punta',
@@ -173,7 +173,7 @@ export const it: Dictionary = {
       {
         id: 'maintenance',
         name: 'Full Maintenance',
-        priceEur: 1490,
+        priceEur: 990,
         pricePrefix: 'da ',
         priceNote: '/ mese',
         pitch: 'Manteniamo vivo il tuo prodotto: infra, supporto e giornate di sviluppo incluse.',
@@ -192,11 +192,11 @@ export const it: Dictionary = {
         name: 'Remote',
         priceEur: site.dailyRateEUR,
         priceNote: '/ giorno',
-        pitch: 'Un rinforzo senior 100 % remoto, fatturato a ore — [[100]]/h.',
+        pitch: 'Un rinforzo senior 100 % remoto, fatturato a ore — [[120]]/h.',
         featured: false,
         features: [
           '100 % remoto',
-          '[[100]]/h — granularità oraria',
+          '[[120]]/h — granularità oraria',
           'Sviluppo, architettura, consulenza',
           'Senza vincoli di durata',
         ],
@@ -233,7 +233,7 @@ export const it: Dictionary = {
   remotePage: {
     metaTitle: 'Remote — rinforzo di prodotto a ore',
     metaDescription:
-      'Un rinforzo senior 100 % remoto per il tuo prodotto: sviluppo, architettura e consulenza, fatturato a 100 €/h con granularità oraria.',
+      'Un rinforzo senior 100 % remoto per il tuo prodotto: sviluppo, architettura e consulenza, fatturato a 120 €/h con granularità oraria.',
     kicker: 'Remote',
     title: 'Un rinforzo senior, 100 % remoto.',
     subtitle:
@@ -273,8 +273,8 @@ export const it: Dictionary = {
       {
         id: 'starter',
         name: 'Starter',
-        price: '1.490 €',
-        priceEur: 1490,
+        price: '990 €',
+        priceEur: 990,
         priceNote: '/ mese',
         pitch: 'Per mantenere un prodotto stabile e farlo evolvere.',
         featured: false,
@@ -288,8 +288,8 @@ export const it: Dictionary = {
       {
         id: 'growth',
         name: 'Growth',
-        price: '3.900 €',
-        priceEur: 3900,
+        price: '2.600 €',
+        priceEur: 2600,
         priceNote: '/ mese',
         pitch: 'Per un prodotto che evolve di continuo.',
         featured: true,
@@ -316,7 +316,7 @@ export const it: Dictionary = {
       },
     ],
     devNote:
-      'Impegno 6 mesi. Configurazione degli strumenti di tracking obbligatoria all’avvio: 1 giorno ([[800]]). Ore di sviluppo aggiuntive fatturate a [[100]]/h.',
+      'Impegno 6 mesi. Configurazione degli strumenti di tracking obbligatoria all’avvio: 1 giorno ([[800]]). Ore di sviluppo aggiuntive fatturate a [[120]]/h.',
     ctaTitle: 'Vuoi delegare la manutenzione?',
     ctaBody: 'Dicci a che punto è il tuo prodotto, ti proponiamo il livello adatto.',
     ctaButton: 'Parla con Khufu',
@@ -442,11 +442,11 @@ export const it: Dictionary = {
       },
       {
         q: 'Cosa succede dopo la consegna della V1?',
-        a: `Puoi continuare con l’offerta Full Maintenance (infra gestita, supporto con SLA e giornate di sviluppo incluse ogni mese) o con il supporto remoto a [[${site.dailyRateEUR}]]/giorno ([[100]]/h). Il codice sorgente ti appartiene in ogni caso.`,
+        a: `Puoi continuare con l’offerta Full Maintenance (infra gestita, supporto con SLA e giornate di sviluppo incluse ogni mese) o con il supporto remoto a [[${site.dailyRateEUR}]]/giorno ([[120]]/h). Il codice sorgente ti appartiene in ogni caso.`,
       },
       {
         q: 'Qual è la tariffa di Khufu come rinforzo?',
-        a: `Il rinforzo è 100 % remoto, fatturato a [[100]]/h con granularità oraria (cioè [[${site.dailyRateEUR}]]/giorno), senza vincoli di durata. È possibile un lavoro on-site: 1 settimana minimo, +50 % sulla tariffa e spese a carico del cliente.`,
+        a: `Il rinforzo è 100 % remoto, fatturato a [[120]]/h con granularità oraria (oppure [[${site.dailyRateEUR}]]/giorno), senza vincoli di durata. È possibile un lavoro on-site: 1 settimana minimo, +50 % sulla tariffa e spese a carico del cliente.`,
       },
       {
         q: 'Khufu può sviluppare app mobile e IA?',

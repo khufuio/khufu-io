@@ -45,21 +45,24 @@ export const site = {
   // 17 000 $ under cmtt6x3k). Two firm prices, never a conversion.
   v1PriceEUR: 11000,
   // Day rate follows the Sprint V1 price (decision cmwpj5st, 2026-11-20): was
-  // 1200 €/day + 200 €/h when the Sprint was 17 k, now 800 €/day = 8 h × 100 €/h.
+  // 1200 €/day + 200 €/h when the Sprint was 17 k, now 800 €/day. A Khufu day is
+  // 7 h, so the hourly rate is 800/7 ≈ 114, rounded up to 120 €/h (decision
+  // cmwpk3ve, replaces the 100 €/h of an 8 h day). The day stays the cheaper unit.
   dailyRateEUR: 800,
-  hourlyRateEUR: 100,
+  hourlyRateEUR: 120,
   // Both EUR and USD are firm, billable prices (the client picks; we settle in
   // AED regardless), so USD is NOT an FX conversion — these are chosen round
   // list prices, keyed by their EUR anchor. Covers every price we display
-  // (Sprint V1, day/hour rate, maintenance tiers 1490/3900). Any EUR amount not
-  // listed falls back to a rate conversion in currency.ts (safety net only).
+  // (Sprint V1, day/hour rate, Full Maintenance tiers 990/2600). Any EUR amount
+  // not listed falls back to a rate conversion in currency.ts (safety net only).
+  // Full Maintenance tiers dropped by a third with the Sprint and the day rate
+  // (decision cmwpk3nb, 2026-11-20): Starter 1490 → 990 €, Growth 3900 → 2600 €.
   usdPrices: {
     11000: 12000,
-    // USD day/hour rates keep the 8 h day and the Sprint ratio (~1.1).
-    800: 880,
-    100: 110,
-    1490: 1690,
-    3900: 4400,
+    800: 880, // USD pending Adrien
+    120: 130, // decided with the EUR rate (cmwpk3ve)
+    990: 1090, // USD pending Adrien
+    2600: 2900, // USD pending Adrien
   } as Record<number, number>,
   // Founder's personal profiles (indie-dev brand). Attached to the founder
   // (Person) in structured data, not to the Organization.

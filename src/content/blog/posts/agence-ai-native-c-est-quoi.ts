@@ -47,7 +47,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "La qualité n'est pas sacrifiée — au contraire" },
       {
-        p: "L'objection habituelle : « plus vite = moins bien ». C'est faux quand l'IA sert à élever le standard, pas à bâcler. Le code repose sur une stack éprouvée et maintenable, les tests sont générés en continu et la documentation suit. Vous récupérez le code source, sans dette technique cachée. La vitesse vient du process, pas de raccourcis sur la qualité. Et pour faire évoluer le produit ensuite, une maintenance mensuelle démarre à 1 490 €/mois.",
+        p: "L'objection habituelle : « plus vite = moins bien ». C'est faux quand l'IA sert à élever le standard, pas à bâcler. Le code repose sur une stack éprouvée et maintenable, les tests sont générés en continu et la documentation suit. Vous récupérez le code source, sans dette technique cachée. La vitesse vient du process, pas de raccourcis sur la qualité. Et pour faire évoluer le produit ensuite, une maintenance mensuelle démarre à 990 €/mois.",
       },
     ],
   },
@@ -96,7 +96,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Quality is not sacrificed — quite the opposite" },
       {
-        p: "The usual objection: “faster = worse.” That is false when AI is used to raise the bar, not to cut corners. The code sits on a proven, maintainable stack, tests are generated continuously and documentation follows. You get the source code, with no hidden technical debt. Speed comes from the process, not from shortcuts on quality. And to grow the product afterwards, monthly maintenance starts at €1,490/month.",
+        p: "The usual objection: “faster = worse.” That is false when AI is used to raise the bar, not to cut corners. The code sits on a proven, maintainable stack, tests are generated continuously and documentation follows. You get the source code, with no hidden technical debt. Speed comes from the process, not from shortcuts on quality. And to grow the product afterwards, monthly maintenance starts at €990/month.",
       },
     ],
   },
@@ -145,7 +145,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "La calidad no se sacrifica — al contrario" },
       {
-        p: "La objeción habitual: « más rápido = peor ». Es falso cuando la IA sirve para elevar el estándar, no para chapucear. El código se apoya en un stack probado y mantenible, las pruebas se generan de forma continua y la documentación sigue el ritmo. Recuperas el código fuente, sin deuda técnica oculta. La velocidad viene del proceso, no de atajos en la calidad. Y para hacer evolucionar el producto después, un mantenimiento mensual arranca en 1 490 €/mes.",
+        p: "La objeción habitual: « más rápido = peor ». Es falso cuando la IA sirve para elevar el estándar, no para chapucear. El código se apoya en un stack probado y mantenible, las pruebas se generan de forma continua y la documentación sigue el ritmo. Recuperas el código fuente, sin deuda técnica oculta. La velocidad viene del proceso, no de atajos en la calidad. Y para hacer evolucionar el producto después, un mantenimiento mensual arranca en 990 €/mes.",
       },
     ],
   },
@@ -194,7 +194,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Qualität wird nicht geopfert — im Gegenteil" },
       {
-        p: "Der übliche Einwand: „schneller = schlechter“. Das ist falsch, wenn KI genutzt wird, um den Standard zu heben, nicht um zu pfuschen. Der Code ruht auf einem bewährten, wartbaren Stack, Tests werden laufend generiert und die Dokumentation zieht mit. Sie erhalten den Quellcode, ohne versteckte technische Schuld. Die Geschwindigkeit kommt aus dem Prozess, nicht aus Abkürzungen bei der Qualität. Und um das Produkt danach weiterzuentwickeln, startet eine monatliche Wartung ab 1.490 €/Monat.",
+        p: "Der übliche Einwand: „schneller = schlechter“. Das ist falsch, wenn KI genutzt wird, um den Standard zu heben, nicht um zu pfuschen. Der Code ruht auf einem bewährten, wartbaren Stack, Tests werden laufend generiert und die Dokumentation zieht mit. Sie erhalten den Quellcode, ohne versteckte technische Schuld. Die Geschwindigkeit kommt aus dem Prozess, nicht aus Abkürzungen bei der Qualität. Und um das Produkt danach weiterzuentwickeln, startet eine monatliche Wartung ab 990 €/Monat.",
       },
     ],
   },
@@ -243,7 +243,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "La qualità non è sacrificata — anzi" },
       {
-        p: "L'obiezione abituale: « più veloce = peggio ». È falso quando l'IA serve a alzare lo standard, non a raffazzonare. Il codice poggia su uno stack collaudato e manutenibile, i test sono generati in continuo e la documentazione segue. Ottieni il codice sorgente, senza debito tecnico nascosto. La velocità viene dal processo, non da scorciatoie sulla qualità. E per far evolvere il prodotto in seguito, una manutenzione mensile parte da 1.490 €/mese.",
+        p: "L'obiezione abituale: « più veloce = peggio ». È falso quando l'IA serve a alzare lo standard, non a raffazzonare. Il codice poggia su uno stack collaudato e manutenibile, i test sono generati in continuo e la documentazione segue. Ottieni il codice sorgente, senza debito tecnico nascosto. La velocità viene dal processo, non da scorciatoie sulla qualità. E per far evolvere il prodotto in seguito, una manutenzione mensile parte da 990 €/mese.",
       },
     ],
   },
@@ -292,7 +292,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "A qualidade não é sacrificada — pelo contrário" },
       {
-        p: "A objeção habitual: « mais rápido = pior ». É falso quando a IA serve para elevar o padrão, não para fazer nas coxas. O código se apoia em um stack testado e sustentável, os testes são gerados de forma contínua e a documentação acompanha. Você recebe o código-fonte, sem dívida técnica oculta. A velocidade vem do processo, não de atalhos na qualidade. E para evoluir o produto depois, uma manutenção mensal começa em 1.490 €/mês.",
+        p: "A objeção habitual: « mais rápido = pior ». É falso quando a IA serve para elevar o padrão, não para fazer nas coxas. O código se apoia em um stack testado e sustentável, os testes são gerados de forma contínua e a documentação acompanha. Você recebe o código-fonte, sem dívida técnica oculta. A velocidade vem do processo, não de atalhos na qualidade. E para evoluir o produto depois, uma manutenção mensal começa em 990 €/mês.",
       },
     ],
   },
@@ -341,7 +341,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "De kwaliteit wordt niet opgeofferd — integendeel" },
       {
-        p: "Het gebruikelijke bezwaar: “sneller = slechter”. Dat is onjuist wanneer AI dient om de lat hoger te leggen, niet om te knoeien. De code rust op een beproefde, onderhoudbare stack, tests worden continu gegenereerd en de documentatie volgt. Je krijgt de broncode, zonder verborgen technische schuld. De snelheid komt uit het proces, niet uit shortcuts op kwaliteit. En om het product daarna te laten groeien, start maandelijks onderhoud vanaf 1.490 €/maand.",
+        p: "Het gebruikelijke bezwaar: “sneller = slechter”. Dat is onjuist wanneer AI dient om de lat hoger te leggen, niet om te knoeien. De code rust op een beproefde, onderhoudbare stack, tests worden continu gegenereerd en de documentatie volgt. Je krijgt de broncode, zonder verborgen technische schuld. De snelheid komt uit het proces, niet uit shortcuts op kwaliteit. En om het product daarna te laten groeien, start maandelijks onderhoud vanaf 990 €/maand.",
       },
     ],
   },
@@ -390,7 +390,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "الجودة لا يُضحّى بها — بل العكس" },
       {
-        p: "الاعتراض المعتاد: « أسرع = أسوأ ». هذا خاطئ عندما يُستخدَم الذكاء الاصطناعي لرفع المعيار، لا للتسرّع. يقوم الكود على منصة مجرَّبة وقابلة للصيانة، وتُولَّد الاختبارات باستمرار، ويواكب التوثيق. تحصل على الشيفرة المصدرية، دون دين تقني خفي. السرعة تأتي من العملية، لا من اختصارات على حساب الجودة. ولتطوير المنتج بعد ذلك، تبدأ الصيانة الشهرية من 1,490 € شهريًا.",
+        p: "الاعتراض المعتاد: « أسرع = أسوأ ». هذا خاطئ عندما يُستخدَم الذكاء الاصطناعي لرفع المعيار، لا للتسرّع. يقوم الكود على منصة مجرَّبة وقابلة للصيانة، وتُولَّد الاختبارات باستمرار، ويواكب التوثيق. تحصل على الشيفرة المصدرية، دون دين تقني خفي. السرعة تأتي من العملية، لا من اختصارات على حساب الجودة. ولتطوير المنتج بعد ذلك، تبدأ الصيانة الشهرية من 990 € شهريًا.",
       },
     ],
   },
@@ -439,7 +439,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Jakość nie jest poświęcana — wręcz przeciwnie" },
       {
-        p: "Typowe zastrzeżenie: „szybciej = gorzej”. To fałsz, gdy SI służy podniesieniu standardu, a nie partaczeniu. Kod opiera się na sprawdzonym, utrzymywalnym stacku, testy są generowane na bieżąco, a dokumentacja nadąża. Otrzymujesz kod źródłowy, bez ukrytego długu technicznego. Prędkość bierze się z procesu, nie ze skrótów na jakości. A żeby rozwijać produkt później, comiesięczne utrzymanie startuje od 1 490 €/miesiąc.",
+        p: "Typowe zastrzeżenie: „szybciej = gorzej”. To fałsz, gdy SI służy podniesieniu standardu, a nie partaczeniu. Kod opiera się na sprawdzonym, utrzymywalnym stacku, testy są generowane na bieżąco, a dokumentacja nadąża. Otrzymujesz kod źródłowy, bez ukrytego długu technicznego. Prędkość bierze się z procesu, nie ze skrótów na jakości. A żeby rozwijać produkt później, comiesięczne utrzymanie startuje od 990 €/miesiąc.",
       },
     ],
   },
@@ -488,7 +488,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Kaliteden ödün verilmez — tam tersine" },
       {
-        p: "Alışılmış itiraz: „daha hızlı = daha kötü”. Yapay zekâ standardı yükseltmek için kullanıldığında, baştan savma yapmak için değil, bu yanlıştır. Kod kanıtlanmış, bakımı yapılabilir bir yığına dayanır, testler sürekli üretilir ve dokümantasyon buna ayak uydurur. Gizli teknik borç olmadan kaynak kodu size kalır. Hız süreçten gelir, kaliteden kısılan yollardan değil. Ve ürünü sonrasında geliştirmek için, aylık bakım 1.490 €/ay'dan başlar.",
+        p: "Alışılmış itiraz: „daha hızlı = daha kötü”. Yapay zekâ standardı yükseltmek için kullanıldığında, baştan savma yapmak için değil, bu yanlıştır. Kod kanıtlanmış, bakımı yapılabilir bir yığına dayanır, testler sürekli üretilir ve dokümantasyon buna ayak uydurur. Gizli teknik borç olmadan kaynak kodu size kalır. Hız süreçten gelir, kaliteden kısılan yollardan değil. Ve ürünü sonrasında geliştirmek için, aylık bakım 990 €/ay'dan başlar.",
       },
     ],
   },

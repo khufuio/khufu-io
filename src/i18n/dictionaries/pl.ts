@@ -49,7 +49,7 @@ export const pl: Dictionary = {
     stats: [
       { value: `${site.v1Days} dni`, label: 'od kickoffu do V1 na produkcji' },
       { value: `${eur(site.v1PriceEUR)}`, label: 'ryczałt Sprint V1, zakres ustalony z góry' },
-      { value: `${eur(site.dailyRateEUR)}`, label: 'stawka dzienna remote (100 €/h) na dalszy ciąg' },
+      { value: `${eur(site.dailyRateEUR)}`, label: 'stawka dzienna remote (120 €/h) na dalszy ciąg' },
       { value: '100 %', label: 'kod dostarczony, hostowany, Twój' },
     ],
 
@@ -145,7 +145,7 @@ export const pl: Dictionary = {
 
   offers: {
     metaTitle: 'Oferta i cennik',
-    metaDescription: `Sprint V1 w ${site.v1Days} dni od ${eur(site.v1PriceEUR)}, miesięczne Full Maintenance i wsparcie remote za ${eur(site.dailyRateEUR)}/dzień (100 €/h).`,
+    metaDescription: `Sprint V1 w ${site.v1Days} dni od ${eur(site.v1PriceEUR)}, miesięczne Full Maintenance i wsparcie remote za ${eur(site.dailyRateEUR)}/dzień (120 €/h).`,
     title: 'Jasna oferta, ceny na widoku.',
     subtitle: 'Żadnych ciągnących się wycen. Wiesz dokładnie, ile płacisz i co dostajesz.',
     flagshipBadge: 'Nasza flagowa oferta',
@@ -173,7 +173,7 @@ export const pl: Dictionary = {
       {
         id: 'maintenance',
         name: 'Full Maintenance',
-        priceEur: 1490,
+        priceEur: 990,
         pricePrefix: 'od ',
         priceNote: '/ miesiąc',
         pitch: 'Utrzymujemy Twój produkt przy życiu: infra, wsparcie i dni deweloperskie w cenie.',
@@ -192,11 +192,11 @@ export const pl: Dictionary = {
         name: 'Remote',
         priceEur: site.dailyRateEUR,
         priceNote: '/ dzień',
-        pitch: 'Senioralne wsparcie w 100 % remote, rozliczane godzinowo — [[100]]/h.',
+        pitch: 'Senioralne wsparcie w 100 % remote, rozliczane godzinowo — [[120]]/h.',
         featured: false,
         features: [
           '100 % remote',
-          '[[100]]/h — rozliczenie co godzinę',
+          '[[120]]/h — rozliczenie co godzinę',
           'Rozwój, architektura, doradztwo',
           'Bez zobowiązania czasowego',
         ],
@@ -233,7 +233,7 @@ export const pl: Dictionary = {
   remotePage: {
     metaTitle: 'Remote — wsparcie produktowe na godziny',
     metaDescription:
-      'Senioralne wsparcie w 100 % remote dla Twojego produktu: rozwój, architektura i doradztwo, rozliczane 100 €/h co godzinę.',
+      'Senioralne wsparcie w 100 % remote dla Twojego produktu: rozwój, architektura i doradztwo, rozliczane 120 €/h co godzinę.',
     kicker: 'Remote',
     title: 'Senioralne wsparcie, w 100 % remote.',
     subtitle:
@@ -273,8 +273,8 @@ export const pl: Dictionary = {
       {
         id: 'starter',
         name: 'Starter',
-        price: '1 490 €',
-        priceEur: 1490,
+        price: '990 €',
+        priceEur: 990,
         priceNote: '/ miesiąc',
         pitch: 'Aby utrzymać stabilny produkt i go rozwijać.',
         featured: false,
@@ -288,8 +288,8 @@ export const pl: Dictionary = {
       {
         id: 'growth',
         name: 'Growth',
-        price: '3 900 €',
-        priceEur: 3900,
+        price: '2 600 €',
+        priceEur: 2600,
         priceNote: '/ miesiąc',
         pitch: 'Dla produktu, który stale się rozwija.',
         featured: true,
@@ -316,7 +316,7 @@ export const pl: Dictionary = {
       },
     ],
     devNote:
-      'Zobowiązanie na 6 miesięcy. Obowiązkowa konfiguracja narzędzi trackingu na starcie: 1 dzień ([[800]]). Dodatkowe godziny dev rozliczane [[100]]/h.',
+      'Zobowiązanie na 6 miesięcy. Obowiązkowa konfiguracja narzędzi trackingu na starcie: 1 dzień ([[800]]). Dodatkowe godziny dev rozliczane [[120]]/h.',
     ctaTitle: 'Chcesz oddać utrzymanie w nasze ręce?',
     ctaBody: 'Powiedz nam, na jakim etapie jest Twój produkt, a zaproponujemy odpowiedni próg.',
     ctaButton: 'Porozmawiaj z Khufu',
@@ -442,11 +442,11 @@ export const pl: Dictionary = {
       },
       {
         q: 'Co dzieje się po dostarczeniu V1?',
-        a: `Możesz kontynuować z ofertą Full Maintenance (zarządzana infra, wsparcie z SLA i dni deweloperskie wliczone co miesiąc) albo w formie wsparcia remote za [[${site.dailyRateEUR}]]/dzień ([[100]]/h). Kod źródłowy w każdym przypadku należy do Ciebie.`,
+        a: `Możesz kontynuować z ofertą Full Maintenance (zarządzana infra, wsparcie z SLA i dni deweloperskie wliczone co miesiąc) albo w formie wsparcia remote za [[${site.dailyRateEUR}]]/dzień ([[120]]/h). Kod źródłowy w każdym przypadku należy do Ciebie.`,
       },
       {
         q: 'Jaka jest stawka Khufu za wsparcie?',
-        a: `Wsparcie jest w 100 % remote, rozliczane [[100]]/h co godzinę (czyli [[${site.dailyRateEUR}]]/dzień), bez zobowiązania czasowego. Praca stacjonarna jest możliwa: minimum 1 tydzień, +50 % do stawki i koszty po stronie klienta.`,
+        a: `Wsparcie jest w 100 % remote, rozliczane [[120]]/h co godzinę (lub [[${site.dailyRateEUR}]]/dzień), bez zobowiązania czasowego. Praca stacjonarna jest możliwa: minimum 1 tydzień, +50 % do stawki i koszty po stronie klienta.`,
       },
       {
         q: 'Czy Khufu może tworzyć aplikacje mobilne i AI?',

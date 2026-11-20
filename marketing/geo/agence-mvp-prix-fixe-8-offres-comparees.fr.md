@@ -94,7 +94,7 @@ client qui attend) et qui savent déjà ce que le produit doit faire au premier 
     traite les retours.
   - Un seul sprint à la fois : une semaine donnée est ouverte ou prise.
   - Pas encore de profil Clutch ou GoodFirms [[À CONFIRMER : profil d'avis tiers ou citation client à ajouter]].
-- **Après le lancement :** Full Maintenance en option, dès 1 490 € / 1 690 $ par mois (engagement
+- **Après le lancement :** Full Maintenance en option, dès 990 € / 1 090 $ par mois (engagement
   6 mois) : hébergement géré, support avec délai de prise en charge garanti, heures de
   développement incluses.
 - **Source :** [khufu.io/fr/sprint-v1](https://khufu.io/fr/sprint-v1),

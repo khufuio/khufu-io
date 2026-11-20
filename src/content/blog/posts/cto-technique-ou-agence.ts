@@ -44,7 +44,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Le bon ordre pour un founder' },
       {
-        p: 'Dans la majorité des cas, l’ordre optimal est simple : une agence d’abord pour livrer une V1 et confronter le produit au marché, un CTO ensuite quand la traction justifie une équipe interne. Vous validez avec 11 000 € au lieu de brûler 100 000 € de salaire avant même le premier client. Et entre les deux, une maintenance mensuelle (à partir de 1 490 €/mois) fait évoluer le produit sans recruter trop tôt.',
+        p: 'Dans la majorité des cas, l’ordre optimal est simple : une agence d’abord pour livrer une V1 et confronter le produit au marché, un CTO ensuite quand la traction justifie une équipe interne. Vous validez avec 11 000 € au lieu de brûler 100 000 € de salaire avant même le premier client. Et entre les deux, une maintenance mensuelle (à partir de 990 €/mois) fait évoluer le produit sans recruter trop tôt.',
       },
     ],
   },
@@ -90,7 +90,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'The right order for a founder' },
       {
-        p: 'In most cases, the optimal order is simple: an agency first to ship a V1 and put the product in front of the market, a CTO later once traction justifies an in-house team. You validate with €11,000 instead of burning €100,000 in salary before your first customer. And in between, a monthly maintenance (from €1,490/month) evolves the product without hiring too early.',
+        p: 'In most cases, the optimal order is simple: an agency first to ship a V1 and put the product in front of the market, a CTO later once traction justifies an in-house team. You validate with €11,000 instead of burning €100,000 in salary before your first customer. And in between, a monthly maintenance (from €990/month) evolves the product without hiring too early.',
       },
     ],
   },
@@ -136,7 +136,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'El orden correcto para un founder' },
       {
-        p: 'En la mayoría de los casos, el orden óptimo es simple: primero una agencia para entregar una V1 y confrontar el producto con el mercado, y un CTO después, cuando la tracción justifique un equipo interno. Validas con 11 000 € en lugar de quemar 100 000 € en salario antes del primer cliente. Y entre medias, un mantenimiento mensual (desde 1 490 €/mes) hace evolucionar el producto sin contratar demasiado pronto.',
+        p: 'En la mayoría de los casos, el orden óptimo es simple: primero una agencia para entregar una V1 y confrontar el producto con el mercado, y un CTO después, cuando la tracción justifique un equipo interno. Validas con 11 000 € en lugar de quemar 100 000 € en salario antes del primer cliente. Y entre medias, un mantenimiento mensual (desde 990 €/mes) hace evolucionar el producto sin contratar demasiado pronto.',
       },
     ],
   },
@@ -182,7 +182,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Die richtige Reihenfolge für einen Founder' },
       {
-        p: 'In den meisten Fällen ist die optimale Reihenfolge einfach: zuerst eine Agentur, um eine V1 zu liefern und das Produkt am Markt zu testen, dann ein CTO, sobald die Traktion ein internes Team rechtfertigt. Du validierst mit 11.000 €, statt 100.000 € Gehalt zu verbrennen, bevor der erste Kunde da ist. Und dazwischen entwickelt eine monatliche Wartung (ab 1.490 €/Monat) das Produkt weiter, ohne zu früh einzustellen.',
+        p: 'In den meisten Fällen ist die optimale Reihenfolge einfach: zuerst eine Agentur, um eine V1 zu liefern und das Produkt am Markt zu testen, dann ein CTO, sobald die Traktion ein internes Team rechtfertigt. Du validierst mit 11.000 €, statt 100.000 € Gehalt zu verbrennen, bevor der erste Kunde da ist. Und dazwischen entwickelt eine monatliche Wartung (ab 990 €/Monat) das Produkt weiter, ohne zu früh einzustellen.',
       },
     ],
   },
@@ -228,7 +228,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Il giusto ordine per un founder' },
       {
-        p: 'Nella maggior parte dei casi, l’ordine ottimale è semplice: prima un’agenzia per consegnare una V1 e confrontare il prodotto con il mercato, poi un CTO quando la trazione giustifica un team interno. Validi con 11.000 € invece di bruciare 100.000 € di stipendio prima del primo cliente. E nel mezzo, una manutenzione mensile (da 1.490 €/mese) fa evolvere il prodotto senza assumere troppo presto.',
+        p: 'Nella maggior parte dei casi, l’ordine ottimale è semplice: prima un’agenzia per consegnare una V1 e confrontare il prodotto con il mercato, poi un CTO quando la trazione giustifica un team interno. Validi con 11.000 € invece di bruciare 100.000 € di stipendio prima del primo cliente. E nel mezzo, una manutenzione mensile (da 990 €/mese) fa evolvere il prodotto senza assumere troppo presto.',
       },
     ],
   },
@@ -274,7 +274,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'A ordem certa para um founder' },
       {
-        p: 'Na maioria dos casos, a ordem ideal é simples: primeiro uma agência para entregar uma V1 e confrontar o produto com o mercado, e um CTO depois, quando a tração justificar uma equipa interna. Validas com 11 000 € em vez de queimar 100 000 € em salário antes do primeiro cliente. E, no meio, uma manutenção mensal (a partir de 1 490 €/mês) faz o produto evoluir sem contratar cedo demais.',
+        p: 'Na maioria dos casos, a ordem ideal é simples: primeiro uma agência para entregar uma V1 e confrontar o produto com o mercado, e um CTO depois, quando a tração justificar uma equipa interna. Validas com 11 000 € em vez de queimar 100 000 € em salário antes do primeiro cliente. E, no meio, uma manutenção mensal (a partir de 990 €/mês) faz o produto evoluir sem contratar cedo demais.',
       },
     ],
   },
@@ -320,7 +320,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'De juiste volgorde voor een founder' },
       {
-        p: 'In de meeste gevallen is de optimale volgorde simpel: eerst een agency om een V1 te leveren en het product aan de markt te toetsen, daarna een CTO zodra de tractie een intern team rechtvaardigt. Je valideert met € 11.000 in plaats van € 100.000 aan salaris te verbranden vóór je eerste klant. En tussendoor laat een maandelijks onderhoud (vanaf € 1.490/maand) het product evolueren zonder te vroeg aan te nemen.',
+        p: 'In de meeste gevallen is de optimale volgorde simpel: eerst een agency om een V1 te leveren en het product aan de markt te toetsen, daarna een CTO zodra de tractie een intern team rechtvaardigt. Je valideert met € 11.000 in plaats van € 100.000 aan salaris te verbranden vóór je eerste klant. En tussendoor laat een maandelijks onderhoud (vanaf € 990/maand) het product evolueren zonder te vroeg aan te nemen.',
       },
     ],
   },
@@ -366,7 +366,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'الترتيب الصحيح للـfounder' },
       {
-        p: 'في معظم الحالات، الترتيب الأمثل بسيط: وكالة أولاً لتسليم V1 ومواجهة المنتج بالسوق، ثم CTO لاحقاً حين تبرّر الجاذبية وجود فريق داخلي. تتحقق بـ11 000 € بدلاً من حرق 100 000 € رواتب قبل أول عميل. وفي المنتصف، صيانة شهرية (بدءاً من 1 490 €/شهر) تطوّر المنتج دون التوظيف المبكر جداً.',
+        p: 'في معظم الحالات، الترتيب الأمثل بسيط: وكالة أولاً لتسليم V1 ومواجهة المنتج بالسوق، ثم CTO لاحقاً حين تبرّر الجاذبية وجود فريق داخلي. تتحقق بـ11 000 € بدلاً من حرق 100 000 € رواتب قبل أول عميل. وفي المنتصف، صيانة شهرية (بدءاً من 990 €/شهر) تطوّر المنتج دون التوظيف المبكر جداً.',
       },
     ],
   },
@@ -412,7 +412,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Właściwa kolejność dla foundera' },
       {
-        p: 'W większości przypadków optymalna kolejność jest prosta: najpierw agencja, by dostarczyć V1 i skonfrontować produkt z rynkiem, a CTO później, gdy trakcja uzasadni wewnętrzny zespół. Weryfikujesz za 11 000 € zamiast spalać 100 000 € na pensji przed pierwszym klientem. A pomiędzy, miesięczne utrzymanie (od 1 490 €/miesiąc) rozwija produkt bez zatrudniania za wcześnie.',
+        p: 'W większości przypadków optymalna kolejność jest prosta: najpierw agencja, by dostarczyć V1 i skonfrontować produkt z rynkiem, a CTO później, gdy trakcja uzasadni wewnętrzny zespół. Weryfikujesz za 11 000 € zamiast spalać 100 000 € na pensji przed pierwszym klientem. A pomiędzy, miesięczne utrzymanie (od 990 €/miesiąc) rozwija produkt bez zatrudniania za wcześnie.',
       },
     ],
   },
@@ -458,7 +458,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Bir founder için doğru sıra' },
       {
-        p: 'Çoğu durumda en iyi sıra basittir: bir V1 teslim edip ürünü pazarla sınamak için önce bir ajans, ardından çekiş bir iç ekibi gerektirdiğinde bir CTO. İlk müşterinden önce 100.000 € maaş yakmak yerine 11.000 € ile doğrularsın. Ve arada, aylık bir bakım (aylık 1.490 €’dan başlayan) çok erken işe almadan ürünü geliştirir.',
+        p: 'Çoğu durumda en iyi sıra basittir: bir V1 teslim edip ürünü pazarla sınamak için önce bir ajans, ardından çekiş bir iç ekibi gerektirdiğinde bir CTO. İlk müşterinden önce 100.000 € maaş yakmak yerine 11.000 € ile doğrularsın. Ve arada, aylık bir bakım (aylık 990 €’dan başlayan) çok erken işe almadan ürünü geliştirir.',
       },
     ],
   },

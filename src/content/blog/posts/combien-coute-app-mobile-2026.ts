@@ -48,7 +48,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Combien prévoir, concrètement" },
       {
-        p: "Pour une app mobile standard (authentification, profil, une ou deux fonctionnalités cœur, notifications, paiement), prévoyez 11 000 € pour une V1 propre en React Native/Expo, publiable sur l’App Store et Google Play. Ajoutez ensuite un budget de maintenance mensuel (à partir de 1 490 €/mois) pour suivre les mises à jour des OS et faire évoluer le produit sans accumuler de dette technique.",
+        p: "Pour une app mobile standard (authentification, profil, une ou deux fonctionnalités cœur, notifications, paiement), prévoyez 11 000 € pour une V1 propre en React Native/Expo, publiable sur l’App Store et Google Play. Ajoutez ensuite un budget de maintenance mensuel (à partir de 990 €/mois) pour suivre les mises à jour des OS et faire évoluer le produit sans accumuler de dette technique.",
       },
     ],
   },
@@ -98,7 +98,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "What to budget, concretely" },
       {
-        p: "For a standard mobile app (authentication, profile, one or two core features, notifications, payment), plan on €11,000 for a clean V1 in React Native/Expo, publishable on the App Store and Google Play. Then add a monthly maintenance budget (from €1,490/month) to keep up with OS updates and grow the product without piling up technical debt.",
+        p: "For a standard mobile app (authentication, profile, one or two core features, notifications, payment), plan on €11,000 for a clean V1 in React Native/Expo, publishable on the App Store and Google Play. Then add a monthly maintenance budget (from €990/month) to keep up with OS updates and grow the product without piling up technical debt.",
       },
     ],
   },
@@ -148,7 +148,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Cuánto prever, en concreto" },
       {
-        p: "Para una app móvil estándar (autenticación, perfil, una o dos funciones principales, notificaciones, pago), prevé 11.000 € para una V1 limpia en React Native/Expo, publicable en la App Store y Google Play. Añade después un presupuesto de mantenimiento mensual (desde 1.490 €/mes) para seguir las actualizaciones de los sistemas operativos y hacer evolucionar el producto sin acumular deuda técnica.",
+        p: "Para una app móvil estándar (autenticación, perfil, una o dos funciones principales, notificaciones, pago), prevé 11.000 € para una V1 limpia en React Native/Expo, publicable en la App Store y Google Play. Añade después un presupuesto de mantenimiento mensual (desde 990 €/mes) para seguir las actualizaciones de los sistemas operativos y hacer evolucionar el producto sin acumular deuda técnica.",
       },
     ],
   },
@@ -198,7 +198,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Was konkret einplanen" },
       {
-        p: "Für eine Standard-App (Authentifizierung, Profil, ein bis zwei Kernfunktionen, Benachrichtigungen, Zahlung) planen Sie 11.000 € für eine saubere V1 in React Native/Expo, veröffentlichbar im App Store und bei Google Play. Ergänzen Sie danach ein monatliches Wartungsbudget (ab 1.490 €/Monat), um mit den OS-Updates Schritt zu halten und das Produkt weiterzuentwickeln, ohne technische Schulden anzuhäufen.",
+        p: "Für eine Standard-App (Authentifizierung, Profil, ein bis zwei Kernfunktionen, Benachrichtigungen, Zahlung) planen Sie 11.000 € für eine saubere V1 in React Native/Expo, veröffentlichbar im App Store und bei Google Play. Ergänzen Sie danach ein monatliches Wartungsbudget (ab 990 €/Monat), um mit den OS-Updates Schritt zu halten und das Produkt weiterzuentwickeln, ohne technische Schulden anzuhäufen.",
       },
     ],
   },
@@ -248,7 +248,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Quanto prevedere, in concreto" },
       {
-        p: "Per un’app mobile standard (autenticazione, profilo, una o due funzionalità chiave, notifiche, pagamento), prevedi 11.000 € per una V1 pulita in React Native/Expo, pubblicabile su App Store e Google Play. Aggiungi poi un budget di manutenzione mensile (a partire da 1.490 €/mese) per seguire gli aggiornamenti dei sistemi operativi e far evolvere il prodotto senza accumulare debito tecnico.",
+        p: "Per un’app mobile standard (autenticazione, profilo, una o due funzionalità chiave, notifiche, pagamento), prevedi 11.000 € per una V1 pulita in React Native/Expo, pubblicabile su App Store e Google Play. Aggiungi poi un budget di manutenzione mensile (a partire da 990 €/mese) per seguire gli aggiornamenti dei sistemi operativi e far evolvere il prodotto senza accumulare debito tecnico.",
       },
     ],
   },
@@ -298,7 +298,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Quanto prever, em concreto" },
       {
-        p: "Para uma app móvel padrão (autenticação, perfil, uma ou duas funcionalidades centrais, notificações, pagamento), preveja 11.000 € para uma V1 limpa em React Native/Expo, publicável na App Store e no Google Play. Acrescente depois um orçamento de manutenção mensal (a partir de 1.490 €/mês) para acompanhar as atualizações dos sistemas operativos e fazer evoluir o produto sem acumular dívida técnica.",
+        p: "Para uma app móvel padrão (autenticação, perfil, uma ou duas funcionalidades centrais, notificações, pagamento), preveja 11.000 € para uma V1 limpa em React Native/Expo, publicável na App Store e no Google Play. Acrescente depois um orçamento de manutenção mensal (a partir de 990 €/mês) para acompanhar as atualizações dos sistemas operativos e fazer evoluir o produto sem acumular dívida técnica.",
       },
     ],
   },
@@ -348,7 +348,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Wat concreet te begroten" },
       {
-        p: "Voor een standaard mobiele app (authenticatie, profiel, een of twee kernfuncties, meldingen, betaling) begroot je € 11.000 voor een nette V1 in React Native/Expo, publiceerbaar in de App Store en Google Play. Voeg daarna een maandelijks onderhoudsbudget toe (vanaf € 1.490/maand) om de OS-updates bij te houden en het product te laten groeien zonder technische schuld op te stapelen.",
+        p: "Voor een standaard mobiele app (authenticatie, profiel, een of twee kernfuncties, meldingen, betaling) begroot je € 11.000 voor een nette V1 in React Native/Expo, publiceerbaar in de App Store en Google Play. Voeg daarna een maandelijks onderhoudsbudget toe (vanaf € 990/maand) om de OS-updates bij te houden en het product te laten groeien zonder technische schuld op te stapelen.",
       },
     ],
   },
@@ -398,7 +398,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "كم يجب أن ترصد، عملياً" },
       {
-        p: "لتطبيق موبايل قياسي (مصادقة، ملف شخصي، ميزة أو ميزتان أساسيتان، إشعارات، دفع)، ارصد 11 000 € لنسخة V1 نظيفة بـ React Native/Expo، قابلة للنشر على App Store و Google Play. ثم أضف ميزانية صيانة شهرية (بدءاً من 1 490 €/الشهر) لمواكبة تحديثات أنظمة التشغيل وتطوير المنتج دون تراكم الديون التقنية.",
+        p: "لتطبيق موبايل قياسي (مصادقة، ملف شخصي، ميزة أو ميزتان أساسيتان، إشعارات، دفع)، ارصد 11 000 € لنسخة V1 نظيفة بـ React Native/Expo، قابلة للنشر على App Store و Google Play. ثم أضف ميزانية صيانة شهرية (بدءاً من 990 €/الشهر) لمواكبة تحديثات أنظمة التشغيل وتطوير المنتج دون تراكم الديون التقنية.",
       },
     ],
   },
@@ -448,7 +448,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Ile przewidzieć, konkretnie" },
       {
-        p: "Dla standardowej aplikacji mobilnej (uwierzytelnianie, profil, jedna lub dwie kluczowe funkcje, powiadomienia, płatność) przewidź 11 000 € na czystą wersję V1 w React Native/Expo, gotową do publikacji w App Store i Google Play. Następnie dodaj miesięczny budżet na utrzymanie (od 1 490 €/miesiąc), aby nadążać za aktualizacjami systemów i rozwijać produkt bez narastania długu technicznego.",
+        p: "Dla standardowej aplikacji mobilnej (uwierzytelnianie, profil, jedna lub dwie kluczowe funkcje, powiadomienia, płatność) przewidź 11 000 € na czystą wersję V1 w React Native/Expo, gotową do publikacji w App Store i Google Play. Następnie dodaj miesięczny budżet na utrzymanie (od 990 €/miesiąc), aby nadążać za aktualizacjami systemów i rozwijać produkt bez narastania długu technicznego.",
       },
     ],
   },
@@ -498,7 +498,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: "Somut olarak ne kadar öngörmeli" },
       {
-        p: "Standart bir mobil uygulama için (kimlik doğrulama, profil, bir ya da iki temel özellik, bildirimler, ödeme), React Native/Expo ile App Store ve Google Play’de yayınlanabilir temiz bir V1 için 11.000 € öngörün. Ardından, işletim sistemi güncellemelerine ayak uydurmak ve teknik borç biriktirmeden ürünü geliştirmek için aylık bir bakım bütçesi (aylık 1.490 €’dan başlayan) ekleyin.",
+        p: "Standart bir mobil uygulama için (kimlik doğrulama, profil, bir ya da iki temel özellik, bildirimler, ödeme), React Native/Expo ile App Store ve Google Play’de yayınlanabilir temiz bir V1 için 11.000 € öngörün. Ardından, işletim sistemi güncellemelerine ayak uydurmak ve teknik borç biriktirmeden ürünü geliştirmek için aylık bir bakım bütçesi (aylık 990 €’dan başlayan) ekleyin.",
       },
     ],
   },

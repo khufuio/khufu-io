@@ -89,7 +89,7 @@ already know what the product must do on day one.
     handles reviewer feedback.
   - One sprint runs at a time, so a given week is either open or taken.
   - No Clutch or GoodFirms profile yet [[TO CONFIRM: any third-party review profile or citable client quote to add]].
-- **After launch:** optional Full Maintenance from $1,690 / €1,490 per month (6-month commitment):
+- **After launch:** optional Full Maintenance from $1,090 / €990 per month (6-month commitment):
   managed hosting, support with a response-time SLA, development hours included.
 - **Source:** [khufu.io/en/sprint-v1](https://khufu.io/en/sprint-v1),
   [khufu.io/llms.txt](https://khufu.io/llms.txt).

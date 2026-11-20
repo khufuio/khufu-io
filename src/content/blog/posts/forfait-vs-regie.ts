@@ -46,7 +46,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Notre parti pris' },
       {
-        p: 'Pour lancer une V1 et confronter un produit au marché, le périmètre doit justement être fixe : c’est ce qui rend le forfait à la fois possible et protecteur. La régie a du sens plus tard, quand le produit vit et que vous gérez son évolution en interne — ou via une maintenance mensuelle cadrée (à partir de 1 490 €/mois). Le bon réflexe : forfait pour construire, régie ou maintenance pour faire évoluer.',
+        p: 'Pour lancer une V1 et confronter un produit au marché, le périmètre doit justement être fixe : c’est ce qui rend le forfait à la fois possible et protecteur. La régie a du sens plus tard, quand le produit vit et que vous gérez son évolution en interne — ou via une maintenance mensuelle cadrée (à partir de 990 €/mois). Le bon réflexe : forfait pour construire, régie ou maintenance pour faire évoluer.',
       },
     ],
   },
@@ -94,7 +94,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Our take' },
       {
-        p: 'To launch a V1 and put a product in front of the market, the scope needs to be fixed — which is exactly what makes a fixed price both possible and protective. Time and materials makes sense later, once the product is live and you manage its evolution in-house — or through a scoped monthly maintenance (from €1,490/month). The rule of thumb: fixed price to build, time and materials or maintenance to evolve.',
+        p: 'To launch a V1 and put a product in front of the market, the scope needs to be fixed — which is exactly what makes a fixed price both possible and protective. Time and materials makes sense later, once the product is live and you manage its evolution in-house — or through a scoped monthly maintenance (from €990/month). The rule of thumb: fixed price to build, time and materials or maintenance to evolve.',
       },
     ],
   },
@@ -142,7 +142,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Nuestra postura' },
       {
-        p: 'Para lanzar una V1 y confrontar un producto con el mercado, el alcance debe ser fijo: es justo lo que hace que el precio fijo sea posible y protector. La facturación por tiempo tiene sentido más adelante, cuando el producto ya vive y gestionas su evolución internamente, o mediante un mantenimiento mensual acotado (desde 1 490 €/mes). La regla práctica: precio fijo para construir, por tiempo o mantenimiento para evolucionar.',
+        p: 'Para lanzar una V1 y confrontar un producto con el mercado, el alcance debe ser fijo: es justo lo que hace que el precio fijo sea posible y protector. La facturación por tiempo tiene sentido más adelante, cuando el producto ya vive y gestionas su evolución internamente, o mediante un mantenimiento mensual acotado (desde 990 €/mes). La regla práctica: precio fijo para construir, por tiempo o mantenimiento para evolucionar.',
       },
     ],
   },
@@ -190,7 +190,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Unsere Haltung' },
       {
-        p: 'Um eine V1 zu starten und ein Produkt am Markt zu testen, muss der Umfang gerade fest sein — genau das macht den Festpreis möglich und schützend. Abrechnung nach Aufwand ergibt später Sinn, wenn das Produkt lebt und du seine Weiterentwicklung intern steuerst — oder über eine klar umrissene monatliche Wartung (ab 1.490 €/Monat). Die Faustregel: Festpreis zum Bauen, Aufwand oder Wartung zum Weiterentwickeln.',
+        p: 'Um eine V1 zu starten und ein Produkt am Markt zu testen, muss der Umfang gerade fest sein — genau das macht den Festpreis möglich und schützend. Abrechnung nach Aufwand ergibt später Sinn, wenn das Produkt lebt und du seine Weiterentwicklung intern steuerst — oder über eine klar umrissene monatliche Wartung (ab 990 €/Monat). Die Faustregel: Festpreis zum Bauen, Aufwand oder Wartung zum Weiterentwickeln.',
       },
     ],
   },
@@ -238,7 +238,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'La nostra posizione' },
       {
-        p: 'Per lanciare una V1 e confrontare un prodotto con il mercato, il perimetro deve essere proprio fisso: è esattamente ciò che rende il prezzo fisso possibile e protettivo. La fatturazione a consumo ha senso più avanti, quando il prodotto è vivo e ne gestisci l’evoluzione internamente — o tramite una manutenzione mensile ben definita (da 1.490 €/mese). La regola pratica: prezzo fisso per costruire, a consumo o manutenzione per far evolvere.',
+        p: 'Per lanciare una V1 e confrontare un prodotto con il mercato, il perimetro deve essere proprio fisso: è esattamente ciò che rende il prezzo fisso possibile e protettivo. La fatturazione a consumo ha senso più avanti, quando il prodotto è vivo e ne gestisci l’evoluzione internamente — o tramite una manutenzione mensile ben definita (da 990 €/mese). La regola pratica: prezzo fisso per costruire, a consumo o manutenzione per far evolvere.',
       },
     ],
   },
@@ -286,7 +286,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'A nossa posição' },
       {
-        p: 'Para lançar uma V1 e confrontar um produto com o mercado, o âmbito precisa mesmo de ser fixo: é exatamente o que torna o preço fixo possível e protetor. A faturação por tempo faz sentido mais tarde, quando o produto está vivo e geres a sua evolução internamente — ou através de uma manutenção mensal bem definida (a partir de 1 490 €/mês). A regra prática: preço fixo para construir, por tempo ou manutenção para evoluir.',
+        p: 'Para lançar uma V1 e confrontar um produto com o mercado, o âmbito precisa mesmo de ser fixo: é exatamente o que torna o preço fixo possível e protetor. A faturação por tempo faz sentido mais tarde, quando o produto está vivo e geres a sua evolução internamente — ou através de uma manutenção mensal bem definida (a partir de 990 €/mês). A regra prática: preço fixo para construir, por tempo ou manutenção para evoluir.',
       },
     ],
   },
@@ -334,7 +334,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Ons standpunt' },
       {
-        p: 'Om een V1 te lanceren en een product aan de markt te toetsen, moet de scope juist vast zijn — precies wat een vaste prijs zowel mogelijk als beschermend maakt. Nacalculatie is later zinvol, wanneer het product leeft en je de evolutie intern beheert — of via een duidelijk afgebakend maandelijks onderhoud (vanaf € 1.490/maand). De vuistregel: vaste prijs om te bouwen, nacalculatie of onderhoud om te laten evolueren.',
+        p: 'Om een V1 te lanceren en een product aan de markt te toetsen, moet de scope juist vast zijn — precies wat een vaste prijs zowel mogelijk als beschermend maakt. Nacalculatie is later zinvol, wanneer het product leeft en je de evolutie intern beheert — of via een duidelijk afgebakend maandelijks onderhoud (vanaf € 990/maand). De vuistregel: vaste prijs om te bouwen, nacalculatie of onderhoud om te laten evolueren.',
       },
     ],
   },
@@ -382,7 +382,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'موقفنا' },
       {
-        p: 'لإطلاق V1 ومواجهة المنتج بالسوق، يجب أن يكون النطاق ثابتاً بالضبط: وهذا تحديداً ما يجعل السعر الثابت ممكناً وحامياً. أما العمل بالوقت فيصبح منطقياً لاحقاً، حين يصبح المنتج حياً وتدير تطوّره داخلياً — أو عبر صيانة شهرية محددة (بدءاً من 1 490 €/شهر). القاعدة العملية: السعر الثابت للبناء، والعمل بالوقت أو الصيانة للتطوير.',
+        p: 'لإطلاق V1 ومواجهة المنتج بالسوق، يجب أن يكون النطاق ثابتاً بالضبط: وهذا تحديداً ما يجعل السعر الثابت ممكناً وحامياً. أما العمل بالوقت فيصبح منطقياً لاحقاً، حين يصبح المنتج حياً وتدير تطوّره داخلياً — أو عبر صيانة شهرية محددة (بدءاً من 990 €/شهر). القاعدة العملية: السعر الثابت للبناء، والعمل بالوقت أو الصيانة للتطوير.',
       },
     ],
   },
@@ -430,7 +430,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Nasze stanowisko' },
       {
-        p: 'Aby wystartować z V1 i skonfrontować produkt z rynkiem, zakres musi być właśnie stały — to dokładnie sprawia, że stała cena jest zarazem możliwa i chroniąca. Rozliczenie za czas ma sens później, gdy produkt żyje i zarządzasz jego rozwojem wewnętrznie — albo przez jasno określone miesięczne utrzymanie (od 1 490 €/miesiąc). Zasada praktyczna: stała cena, by budować, za czas lub utrzymanie, by rozwijać.',
+        p: 'Aby wystartować z V1 i skonfrontować produkt z rynkiem, zakres musi być właśnie stały — to dokładnie sprawia, że stała cena jest zarazem możliwa i chroniąca. Rozliczenie za czas ma sens później, gdy produkt żyje i zarządzasz jego rozwojem wewnętrznie — albo przez jasno określone miesięczne utrzymanie (od 990 €/miesiąc). Zasada praktyczna: stała cena, by budować, za czas lub utrzymanie, by rozwijać.',
       },
     ],
   },
@@ -478,7 +478,7 @@ export const post: Record<Locale, Article> = {
       },
       { h2: 'Bizim duruşumuz' },
       {
-        p: 'Bir V1’i piyasaya çıkarıp ürünü pazarla sınamak için kapsamın tam da sabit olması gerekir — sabit fiyatı hem mümkün hem koruyucu kılan da budur. Zaman bazlı faturalama daha sonra, ürün canlıyken ve gelişimini şirket içinde yönetirken — ya da net tanımlı aylık bakımla (aylık 1 490 €’dan başlayan) — anlam kazanır. Pratik kural: inşa etmek için sabit fiyat, geliştirmek için zaman bazlı ya da bakım.',
+        p: 'Bir V1’i piyasaya çıkarıp ürünü pazarla sınamak için kapsamın tam da sabit olması gerekir — sabit fiyatı hem mümkün hem koruyucu kılan da budur. Zaman bazlı faturalama daha sonra, ürün canlıyken ve gelişimini şirket içinde yönetirken — ya da net tanımlı aylık bakımla (aylık 990 €’dan başlayan) — anlam kazanır. Pratik kural: inşa etmek için sabit fiyat, geliştirmek için zaman bazlı ya da bakım.',
       },
     ],
   },
