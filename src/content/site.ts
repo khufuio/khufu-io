@@ -44,8 +44,10 @@ export const site = {
   // Sprint V1: 11 000 € / 12 000 $ since 2026-11-12 (todo cmwe30fi, was 15 000 € /
   // 17 000 $ under cmtt6x3k). Two firm prices, never a conversion.
   v1PriceEUR: 11000,
-  dailyRateEUR: 1200,
-  hourlyRateEUR: 200,
+  // Day rate follows the Sprint V1 price (decision cmwpj5st, 2026-11-20): was
+  // 1200 €/day + 200 €/h when the Sprint was 17 k, now 800 €/day = 8 h × 100 €/h.
+  dailyRateEUR: 800,
+  hourlyRateEUR: 100,
   // Both EUR and USD are firm, billable prices (the client picks; we settle in
   // AED regardless), so USD is NOT an FX conversion — these are chosen round
   // list prices, keyed by their EUR anchor. Covers every price we display
@@ -53,8 +55,9 @@ export const site = {
   // listed falls back to a rate conversion in currency.ts (safety net only).
   usdPrices: {
     11000: 12000,
-    1200: 1400,
-    200: 240,
+    // USD day/hour rates keep the 8 h day and the Sprint ratio (~1.1).
+    800: 880,
+    100: 110,
     1490: 1690,
     3900: 4400,
   } as Record<number, number>,

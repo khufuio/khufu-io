@@ -53,7 +53,7 @@ export const fr = {
     stats: [
       { value: `${site.v1Days} jours`, label: 'du kickoff à la V1 en production' },
       { value: `${eur(site.v1PriceEUR)} €`, label: 'forfait Sprint V1, périmètre défini à l’avance' },
-      { value: `${eur(site.dailyRateEUR)} €`, label: 'TJM remote (200 €/h) pour la suite' },
+      { value: `${eur(site.dailyRateEUR)} €`, label: 'TJM remote (100 €/h) pour la suite' },
       { value: '100 %', label: 'code livré, hébergé, à vous' },
     ],
 
@@ -149,7 +149,7 @@ export const fr = {
 
   offers: {
     metaTitle: 'Offres & tarifs',
-    metaDescription: `Sprint V1 en ${site.v1Days} jours à partir de ${eur(site.v1PriceEUR)} €, Full Maintenance mensuelle, et renfort remote à ${eur(site.dailyRateEUR)} €/jour (200 €/h).`,
+    metaDescription: `Sprint V1 en ${site.v1Days} jours à partir de ${eur(site.v1PriceEUR)} €, Full Maintenance mensuelle, et renfort remote à ${eur(site.dailyRateEUR)} €/jour (100 €/h).`,
     title: 'Des offres nettes, des prix affichés.',
     subtitle: 'Pas de devis à rallonge. Vous savez ce que vous payez et ce que vous recevez.',
     flagshipBadge: 'Notre offre phare',
@@ -196,11 +196,11 @@ export const fr = {
         name: 'Remote',
         priceEur: site.dailyRateEUR,
         priceNote: '/ jour',
-        pitch: 'Un renfort senior 100 % remote, facturé à l’heure — [[200]]/h.',
+        pitch: 'Un renfort senior 100 % remote, facturé à l’heure — [[100]]/h.',
         featured: false,
         features: [
           '100 % remote',
-          '[[200]]/h — granularité horaire',
+          '[[100]]/h — granularité horaire',
           'Développement, architecture, conseil',
           'Sans engagement de durée',
         ],
@@ -237,7 +237,7 @@ export const fr = {
   remotePage: {
     metaTitle: 'Remote — renfort produit à l’heure',
     metaDescription:
-      'Un renfort senior 100 % remote pour votre produit : développement, architecture et conseil, facturé 200 €/h en granularité horaire.',
+      'Un renfort senior 100 % remote pour votre produit : développement, architecture et conseil, facturé 100 €/h en granularité horaire.',
     kicker: 'Remote',
     title: 'Un renfort senior, 100 % remote.',
     subtitle:
@@ -320,7 +320,7 @@ export const fr = {
       },
     ],
     devNote:
-      'Engagement 6 mois. Mise en place des outils de tracking obligatoire au démarrage : 1 jour ([[1200]]). Heures de dev supplémentaires facturées [[200]]/h.',
+      'Engagement 6 mois. Mise en place des outils de tracking obligatoire au démarrage : 1 jour ([[800]]). Heures de dev supplémentaires facturées [[100]]/h.',
     ctaTitle: 'Envie de déléguer la maintenance ?',
     ctaBody: 'Dites-nous où en est votre produit, on vous propose le palier adapté.',
     ctaButton: 'Parler à Khufu',
@@ -446,11 +446,11 @@ export const fr = {
       },
       {
         q: 'Que se passe-t-il après la livraison de la V1 ?',
-        a: `Vous pouvez continuer avec l’offre Full Maintenance (infra managée, support avec SLA et jours de dev inclus chaque mois) ou en renfort remote à [[${site.dailyRateEUR}]]/jour ([[200]]/h). Le code source vous appartient dans tous les cas.`,
+        a: `Vous pouvez continuer avec l’offre Full Maintenance (infra managée, support avec SLA et jours de dev inclus chaque mois) ou en renfort remote à [[${site.dailyRateEUR}]]/jour ([[100]]/h). Le code source vous appartient dans tous les cas.`,
       },
       {
         q: 'Quel est le tarif de Khufu en renfort ?',
-        a: `Le renfort est 100 % remote, facturé [[200]]/h en granularité horaire (soit [[${site.dailyRateEUR}]]/jour), sans engagement de durée. Une régie sur site est possible : 1 semaine minimum, +50 % sur le tarif et frais à la charge du client.`,
+        a: `Le renfort est 100 % remote, facturé [[100]]/h en granularité horaire (soit [[${site.dailyRateEUR}]]/jour), sans engagement de durée. Une régie sur site est possible : 1 semaine minimum, +50 % sur le tarif et frais à la charge du client.`,
       },
       {
         q: 'Khufu peut-il développer des applications mobiles et de l’IA ?',

@@ -49,7 +49,7 @@ export const pt: Dictionary = {
     stats: [
       { value: `${site.v1Days} dias`, label: 'do kickoff a uma V1 em produção' },
       { value: `${eur(site.v1PriceEUR)}`, label: 'valor fixo Sprint V1, âmbito definido à partida' },
-      { value: `${eur(site.dailyRateEUR)}`, label: 'valor/dia remoto (200 €/h) para o que vem a seguir' },
+      { value: `${eur(site.dailyRateEUR)}`, label: 'valor/dia remoto (100 €/h) para o que vem a seguir' },
       { value: '100 %', label: 'código entregue, alojado, seu' },
     ],
 
@@ -145,7 +145,7 @@ export const pt: Dictionary = {
 
   offers: {
     metaTitle: 'Serviços e preços',
-    metaDescription: `Sprint V1 em ${site.v1Days} dias a partir de ${eur(site.v1PriceEUR)}, Full Maintenance mensal e reforço remoto a ${eur(site.dailyRateEUR)}/dia (200 €/h).`,
+    metaDescription: `Sprint V1 em ${site.v1Days} dias a partir de ${eur(site.v1PriceEUR)}, Full Maintenance mensal e reforço remoto a ${eur(site.dailyRateEUR)}/dia (100 €/h).`,
     title: 'Serviços claros, preços à vista.',
     subtitle: 'Sem orçamentos intermináveis. Sabe exatamente o que paga e o que recebe.',
     flagshipBadge: 'A nossa oferta de referência',
@@ -192,11 +192,11 @@ export const pt: Dictionary = {
         name: 'Remote',
         priceEur: site.dailyRateEUR,
         priceNote: '/ dia',
-        pitch: 'Um reforço sénior 100 % remoto, faturado à hora — [[200]]/h.',
+        pitch: 'Um reforço sénior 100 % remoto, faturado à hora — [[100]]/h.',
         featured: false,
         features: [
           '100 % remoto',
-          '[[200]]/h — granularidade horária',
+          '[[100]]/h — granularidade horária',
           'Desenvolvimento, arquitetura, consultoria',
           'Sem compromisso de duração',
         ],
@@ -233,7 +233,7 @@ export const pt: Dictionary = {
   remotePage: {
     metaTitle: 'Remote — reforço de produto à hora',
     metaDescription:
-      'Um reforço sénior 100 % remoto para o seu produto: desenvolvimento, arquitetura e consultoria, faturado a 200 €/h com granularidade horária.',
+      'Um reforço sénior 100 % remoto para o seu produto: desenvolvimento, arquitetura e consultoria, faturado a 100 €/h com granularidade horária.',
     kicker: 'Remote',
     title: 'Um reforço sénior, 100 % remoto.',
     subtitle:
@@ -316,7 +316,7 @@ export const pt: Dictionary = {
       },
     ],
     devNote:
-      'Compromisso de 6 meses. Configuração obrigatória das ferramentas de tracking no arranque: 1 dia ([[1200]]). Horas de dev adicionais faturadas a [[200]]/h.',
+      'Compromisso de 6 meses. Configuração obrigatória das ferramentas de tracking no arranque: 1 dia ([[800]]). Horas de dev adicionais faturadas a [[100]]/h.',
     ctaTitle: 'Quer delegar a manutenção?',
     ctaBody: 'Diga-nos em que ponto está o seu produto e propomos-lhe o plano adequado.',
     ctaButton: 'Falar com a Khufu',
@@ -442,11 +442,11 @@ export const pt: Dictionary = {
       },
       {
         q: 'O que acontece depois da entrega da V1?',
-        a: `Pode continuar com a oferta Full Maintenance (infra gerida, suporte com SLA e dias de dev incluídos todos os meses) ou em reforço remoto a [[${site.dailyRateEUR}]]/dia ([[200]]/h). O código-fonte é seu em qualquer caso.`,
+        a: `Pode continuar com a oferta Full Maintenance (infra gerida, suporte com SLA e dias de dev incluídos todos os meses) ou em reforço remoto a [[${site.dailyRateEUR}]]/dia ([[100]]/h). O código-fonte é seu em qualquer caso.`,
       },
       {
         q: 'Qual é o valor da Khufu em reforço?',
-        a: `O reforço é 100 % remoto, faturado a [[200]]/h com granularidade horária (ou seja, [[${site.dailyRateEUR}]]/dia), sem compromisso de duração. Um trabalho presencial é possível: 1 semana mínimo, +50 % sobre o valor e despesas a cargo do cliente.`,
+        a: `O reforço é 100 % remoto, faturado a [[100]]/h com granularidade horária (ou seja, [[${site.dailyRateEUR}]]/dia), sem compromisso de duração. Um trabalho presencial é possível: 1 semana mínimo, +50 % sobre o valor e despesas a cargo do cliente.`,
       },
       {
         q: 'A Khufu pode desenvolver aplicações móveis e IA?',

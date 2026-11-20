@@ -49,7 +49,7 @@ export const nl: Dictionary = {
     stats: [
       { value: `${site.v1Days} dagen`, label: 'van kickoff tot een V1 in productie' },
       { value: `${eur(site.v1PriceEUR)}`, label: 'vaste prijs Sprint V1, scope vooraf afgesproken' },
-      { value: `${eur(site.dailyRateEUR)}`, label: 'remote dagtarief (200 €/h) voor wat daarna komt' },
+      { value: `${eur(site.dailyRateEUR)}`, label: 'remote dagtarief (100 €/h) voor wat daarna komt' },
       { value: '100 %', label: 'code opgeleverd, gehost, van jou' },
     ],
 
@@ -145,7 +145,7 @@ export const nl: Dictionary = {
 
   offers: {
     metaTitle: 'Diensten & prijzen',
-    metaDescription: `Sprint V1 in ${site.v1Days} dagen vanaf ${eur(site.v1PriceEUR)}, maandelijkse Full Maintenance en remote versterking à ${eur(site.dailyRateEUR)}/dag (200 €/h).`,
+    metaDescription: `Sprint V1 in ${site.v1Days} dagen vanaf ${eur(site.v1PriceEUR)}, maandelijkse Full Maintenance en remote versterking à ${eur(site.dailyRateEUR)}/dag (100 €/h).`,
     title: 'Heldere diensten, prijzen zichtbaar.',
     subtitle: 'Geen eindeloze offertes. Je weet precies wat je betaalt en wat je krijgt.',
     flagshipBadge: 'Ons vlaggenschip',
@@ -192,11 +192,11 @@ export const nl: Dictionary = {
         name: 'Remote',
         priceEur: site.dailyRateEUR,
         priceNote: '/ dag',
-        pitch: 'Senior slagkracht, 100 % remote, per uur gefactureerd — [[200]]/h.',
+        pitch: 'Senior slagkracht, 100 % remote, per uur gefactureerd — [[100]]/h.',
         featured: false,
         features: [
           '100 % remote',
-          '[[200]]/h — per uur nauwkeurig',
+          '[[100]]/h — per uur nauwkeurig',
           'Ontwikkeling, architectuur, advies',
           'Geen contractduur',
         ],
@@ -233,7 +233,7 @@ export const nl: Dictionary = {
   remotePage: {
     metaTitle: 'Remote — productversterking per uur',
     metaDescription:
-      'Een senior, 100 % remote versterking voor je product: ontwikkeling, architectuur en advies, gefactureerd tegen 200 €/h met uurnauwkeurigheid.',
+      'Een senior, 100 % remote versterking voor je product: ontwikkeling, architectuur en advies, gefactureerd tegen 100 €/h met uurnauwkeurigheid.',
     kicker: 'Remote',
     title: 'Een senior versterking, 100 % remote.',
     subtitle:
@@ -301,7 +301,7 @@ export const nl: Dictionary = {
       },
     ],
     devNote:
-      'Verbintenis van 6 maanden. Verplichte setup van tracking-tools bij de kickoff: 1 dag ([[1200]]). Extra dev-uren gefactureerd tegen [[200]]/h.',
+      'Verbintenis van 6 maanden. Verplichte setup van tracking-tools bij de kickoff: 1 dag ([[800]]). Extra dev-uren gefactureerd tegen [[100]]/h.',
     ctaTitle: 'Onderhoud uit handen geven?',
     ctaBody: 'Vertel ons waar je product staat, wij stellen het juiste niveau voor.',
     ctaButton: 'Praat met Khufu',
@@ -427,11 +427,11 @@ export const nl: Dictionary = {
       },
       {
         q: 'Wat gebeurt er na de oplevering van de V1?',
-        a: `Je kunt verder met Full Maintenance (beheerde infra, support met SLA en dev-dagen inbegrepen elke maand) of met remote versterking à [[${site.dailyRateEUR}]]/dag ([[200]]/h). De broncode is hoe dan ook van jou.`,
+        a: `Je kunt verder met Full Maintenance (beheerde infra, support met SLA en dev-dagen inbegrepen elke maand) of met remote versterking à [[${site.dailyRateEUR}]]/dag ([[100]]/h). De broncode is hoe dan ook van jou.`,
       },
       {
         q: 'Wat is het tarief van Khufu voor versterking?',
-        a: `De versterking is 100 % remote, gefactureerd tegen [[200]]/h met uurnauwkeurigheid (oftewel [[${site.dailyRateEUR}]]/dag), zonder contractduur. Werken op locatie is mogelijk: minimaal 1 week, +50 % op het tarief en onkosten voor rekening van de klant.`,
+        a: `De versterking is 100 % remote, gefactureerd tegen [[100]]/h met uurnauwkeurigheid (oftewel [[${site.dailyRateEUR}]]/dag), zonder contractduur. Werken op locatie is mogelijk: minimaal 1 week, +50 % op het tarief en onkosten voor rekening van de klant.`,
       },
       {
         q: 'Kan Khufu mobiele apps en AI ontwikkelen?',

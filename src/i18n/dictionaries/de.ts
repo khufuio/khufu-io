@@ -49,7 +49,7 @@ export const de: Dictionary = {
     stats: [
       { value: `${site.v1Days} Tage`, label: 'vom Kickoff bis zur V1 in Produktion' },
       { value: `${eur(site.v1PriceEUR)}`, label: 'Sprint-V1-Festpreis, Umfang vorab definiert' },
-      { value: `${eur(site.dailyRateEUR)}`, label: 'Remote-Tagessatz (200 €/h) für alles Weitere' },
+      { value: `${eur(site.dailyRateEUR)}`, label: 'Remote-Tagessatz (100 €/h) für alles Weitere' },
       { value: '100 %', label: 'Code geliefert, gehostet, dir gehörend' },
     ],
 
@@ -145,7 +145,7 @@ export const de: Dictionary = {
 
   offers: {
     metaTitle: 'Angebote & Preise',
-    metaDescription: `Sprint V1 in ${site.v1Days} Tagen ab ${eur(site.v1PriceEUR)}, monatliche Full Maintenance und Remote-Unterstützung zu ${eur(site.dailyRateEUR)}/Tag (200 €/h).`,
+    metaDescription: `Sprint V1 in ${site.v1Days} Tagen ab ${eur(site.v1PriceEUR)}, monatliche Full Maintenance und Remote-Unterstützung zu ${eur(site.dailyRateEUR)}/Tag (100 €/h).`,
     title: 'Klare Angebote, Preise offen ausgewiesen.',
     subtitle: 'Keine endlosen Angebote. Du weißt genau, was du zahlst und was du bekommst.',
     flagshipBadge: 'Unser Flaggschiff-Angebot',
@@ -192,11 +192,11 @@ export const de: Dictionary = {
         name: 'Remote',
         priceEur: site.dailyRateEUR,
         priceNote: '/ Tag',
-        pitch: 'Senior-Verstärkung, 100 % remote, stundenweise abgerechnet — [[200]]/h.',
+        pitch: 'Senior-Verstärkung, 100 % remote, stundenweise abgerechnet — [[100]]/h.',
         featured: false,
         features: [
           '100 % remote',
-          '[[200]]/h — stundengenaue Abrechnung',
+          '[[100]]/h — stundengenaue Abrechnung',
           'Entwicklung, Architektur, Beratung',
           'Ohne Mindestlaufzeit',
         ],
@@ -233,7 +233,7 @@ export const de: Dictionary = {
   remotePage: {
     metaTitle: 'Remote — Produktverstärkung stundenweise',
     metaDescription:
-      'Eine Senior-Verstärkung, 100 % remote, für dein Produkt: Entwicklung, Architektur und Beratung, abgerechnet zu 200 €/h stundengenau.',
+      'Eine Senior-Verstärkung, 100 % remote, für dein Produkt: Entwicklung, Architektur und Beratung, abgerechnet zu 100 €/h stundengenau.',
     kicker: 'Remote',
     title: 'Eine Senior-Verstärkung, 100 % remote.',
     subtitle:
@@ -316,7 +316,7 @@ export const de: Dictionary = {
       },
     ],
     devNote:
-      'Laufzeit 6 Monate. Verpflichtende Einrichtung der Tracking-Tools zum Start: 1 Tag ([[1200]]). Zusätzliche Dev-Stunden werden mit [[200]]/h abgerechnet.',
+      'Laufzeit 6 Monate. Verpflichtende Einrichtung der Tracking-Tools zum Start: 1 Tag ([[800]]). Zusätzliche Dev-Stunden werden mit [[100]]/h abgerechnet.',
     ctaTitle: 'Lust, die Wartung abzugeben?',
     ctaBody: 'Sag uns, wo dein Produkt steht, wir schlagen dir die passende Stufe vor.',
     ctaButton: 'Mit Khufu sprechen',
@@ -442,11 +442,11 @@ export const de: Dictionary = {
       },
       {
         q: 'Was passiert nach der Lieferung der V1?',
-        a: `Du kannst mit Full Maintenance weitermachen (Managed Infra, Support mit SLA und jeden Monat inklusive Dev-Tage) oder mit Remote-Verstärkung zu [[${site.dailyRateEUR}]]/Tag ([[200]]/h). Der Quellcode gehört in jedem Fall dir.`,
+        a: `Du kannst mit Full Maintenance weitermachen (Managed Infra, Support mit SLA und jeden Monat inklusive Dev-Tage) oder mit Remote-Verstärkung zu [[${site.dailyRateEUR}]]/Tag ([[100]]/h). Der Quellcode gehört in jedem Fall dir.`,
       },
       {
         q: 'Wie hoch ist der Satz von Khufu für Verstärkung?',
-        a: `Die Verstärkung ist 100 % remote, abgerechnet zu [[200]]/h stundengenau (also [[${site.dailyRateEUR}]]/Tag), ohne Mindestlaufzeit. Ein Einsatz vor Ort ist möglich: mindestens 1 Woche, +50 % auf den Satz und Spesen zulasten des Kunden.`,
+        a: `Die Verstärkung ist 100 % remote, abgerechnet zu [[100]]/h stundengenau (also [[${site.dailyRateEUR}]]/Tag), ohne Mindestlaufzeit. Ein Einsatz vor Ort ist möglich: mindestens 1 Woche, +50 % auf den Satz und Spesen zulasten des Kunden.`,
       },
       {
         q: 'Kann Khufu Mobile-Apps und KI entwickeln?',

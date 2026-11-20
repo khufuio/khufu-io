@@ -49,7 +49,7 @@ export const es: Dictionary = {
     stats: [
       { value: `${site.v1Days} días`, label: 'del kickoff a una V1 en producción' },
       { value: `${eur(site.v1PriceEUR)}`, label: 'precio cerrado Sprint V1, alcance acordado' },
-      { value: `${eur(site.dailyRateEUR)}`, label: 'tarifa remota (200 €/h) para lo que viene después' },
+      { value: `${eur(site.dailyRateEUR)}`, label: 'tarifa remota (100 €/h) para lo que viene después' },
       { value: '100 %', label: 'código entregado, alojado, tuyo' },
     ],
 
@@ -145,7 +145,7 @@ export const es: Dictionary = {
 
   offers: {
     metaTitle: 'Servicios y precios',
-    metaDescription: `Sprint V1 en ${site.v1Days} días por ${eur(site.v1PriceEUR)}, Full Maintenance mensual y refuerzo remoto a ${eur(site.dailyRateEUR)}/día (200 €/h).`,
+    metaDescription: `Sprint V1 en ${site.v1Days} días por ${eur(site.v1PriceEUR)}, Full Maintenance mensual y refuerzo remoto a ${eur(site.dailyRateEUR)}/día (100 €/h).`,
     title: 'Servicios claros, precios a la vista.',
     subtitle: 'Sin presupuestos interminables. Sabes exactamente qué pagas y qué recibes.',
     flagshipBadge: 'Nuestra oferta estrella',
@@ -192,11 +192,11 @@ export const es: Dictionary = {
         name: 'Remote',
         priceEur: site.dailyRateEUR,
         priceNote: '/ día',
-        pitch: 'Refuerzo senior 100 % remoto, facturado por horas — [[200]]/h.',
+        pitch: 'Refuerzo senior 100 % remoto, facturado por horas — [[100]]/h.',
         featured: false,
         features: [
           '100 % remoto',
-          '[[200]]/h — granularidad horaria',
+          '[[100]]/h — granularidad horaria',
           'Desarrollo, arquitectura, consultoría',
           'Sin permanencia',
         ],
@@ -233,7 +233,7 @@ export const es: Dictionary = {
   remotePage: {
     metaTitle: 'Remote — refuerzo de producto por horas',
     metaDescription:
-      'Un refuerzo senior 100 % remoto para tu producto: desarrollo, arquitectura y consultoría, facturado a 200 €/h con granularidad horaria.',
+      'Un refuerzo senior 100 % remoto para tu producto: desarrollo, arquitectura y consultoría, facturado a 100 €/h con granularidad horaria.',
     kicker: 'Remote',
     title: 'Un refuerzo senior, 100 % remoto.',
     subtitle:
@@ -301,7 +301,7 @@ export const es: Dictionary = {
       },
     ],
     devNote:
-      'Compromiso de 6 meses. Configuración obligatoria de las herramientas de tracking al inicio: 1 día ([[1200]]). Horas de desarrollo adicionales facturadas a [[200]]/h.',
+      'Compromiso de 6 meses. Configuración obligatoria de las herramientas de tracking al inicio: 1 día ([[800]]). Horas de desarrollo adicionales facturadas a [[100]]/h.',
     ctaTitle: '¿Quieres delegar el mantenimiento?',
     ctaBody: 'Cuéntanos en qué punto está tu producto y te proponemos el plan adecuado.',
     ctaButton: 'Habla con Khufu',
@@ -427,11 +427,11 @@ export const es: Dictionary = {
       },
       {
         q: '¿Qué pasa después de entregar la V1?',
-        a: `Puedes continuar con Full Maintenance (infra gestionada, soporte con SLA y días de desarrollo incluidos cada mes) o con refuerzo remoto a [[${site.dailyRateEUR}]]/día ([[200]]/h). El código fuente es tuyo en cualquier caso.`,
+        a: `Puedes continuar con Full Maintenance (infra gestionada, soporte con SLA y días de desarrollo incluidos cada mes) o con refuerzo remoto a [[${site.dailyRateEUR}]]/día ([[100]]/h). El código fuente es tuyo en cualquier caso.`,
       },
       {
         q: '¿Cuál es la tarifa de refuerzo de Khufu?',
-        a: `El refuerzo es 100 % remoto, facturado a [[200]]/h con granularidad horaria (es decir, [[${site.dailyRateEUR}]]/día), sin permanencia. El trabajo presencial es posible: 1 semana mínimo, +50 % sobre la tarifa y gastos a cargo del cliente.`,
+        a: `El refuerzo es 100 % remoto, facturado a [[100]]/h con granularidad horaria (es decir, [[${site.dailyRateEUR}]]/día), sin permanencia. El trabajo presencial es posible: 1 semana mínimo, +50 % sobre la tarifa y gastos a cargo del cliente.`,
       },
       {
         q: '¿Khufu puede desarrollar apps móviles y funciones de IA?',
