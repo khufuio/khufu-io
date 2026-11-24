@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import posthog from 'posthog-js'
 import type { Locale } from '@/i18n/config'
 import { CONSENT_EVENT, CONSENT_KEY, REGION_COOKIE, type Consent } from '@/lib/consent'
+import { traqioOptOut } from '@/lib/traqio'
 
 type Copy = { message: string; accept: string; reject: string }
 
@@ -49,8 +50,10 @@ export function CookieBanner({ locale }: { locale: Locale }) {
     localStorage.setItem(CONSENT_KEY, consent)
     window.dispatchEvent(new CustomEvent(CONSENT_EVENT, { detail: consent }))
     // Genuinely gate analytics on the choice — no tracking call on refusal.
-    if (consent === 'denied') posthog.opt_out_capturing()
-    else posthog.opt_in_capturing()
+    if (consent === 'denied') {
+      posthog.opt_out_capturing()
+      traqioOptOut()
+    } else posthog.opt_in_capturing()
     setVisible(false)
   }
 

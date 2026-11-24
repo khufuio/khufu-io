@@ -3,7 +3,7 @@
 // Behaviour: analytics runs BY DEFAULT (opt-out model). The banner is shown only
 // to EU/EEA/UK visitors (where an analytics banner is expected); elsewhere we
 // never show it and just track. "Refuser" genuinely stops PostHog
-// (opt_out_capturing); "Accepter" keeps it on. The choice is stored in
+// (opt_out_capturing) and Traqio (forgetMe); "Accepter" keeps them on. The choice is stored in
 // localStorage under CONSENT_KEY and re-applied on every load.
 export type Consent = 'granted' | 'denied'
 

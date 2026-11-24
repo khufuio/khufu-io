@@ -3,6 +3,7 @@
 import posthog from 'posthog-js'
 import { PostHogProvider as PHProvider } from 'posthog-js/react'
 import { CONSENT_KEY } from '@/lib/consent'
+import { initTraqio } from '@/lib/traqio'
 
 // Inlined at build time. Note when testing a local `next build`: Turbopack only
 // substitutes the literal for vars present in the real process env, not for ones
@@ -51,6 +52,10 @@ function initPostHog(): void {
 }
 
 initPostHog()
+// Traqio runs beside PostHog (comparison, todo traqio cmwr3tlr). Same module-scope
+// reason: init before any effect, so the landing page view and the first
+// track() calls are never dropped.
+initTraqio()
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   if (!KEY) return <>{children}</>

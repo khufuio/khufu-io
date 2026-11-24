@@ -28,6 +28,7 @@
     "leads:resellers": "tsx scripts/resellersLeadgen.ts"
   },
   "dependencies": {
+    "@traqio/web": "^0.4.0",
     "next": "^16.4.5",
     "posthog-js": "^1.200.0",
     "react": "^19.3.1",
