@@ -16,6 +16,13 @@ import { CONSENT_KEY } from '@/lib/consent'
  */
 const KEY = process.env.NEXT_PUBLIC_TRAQIO_WEB_KEY || 'tq_web__1LgXgaP1IBTnOFcuflIkOYZrhhPy-r5'
 
+/**
+ * First-party path, rewritten to https://api.traqio.app in next.config.ts — the
+ * same treatment PostHog gets (`/ingest`), so an ad-blocker that lets one through
+ * lets the other through too. Absolute, built from the page's own origin.
+ */
+const PROXY_PATH = '/tq'
+
 let started = false
 
 /**
@@ -28,7 +35,7 @@ export function initTraqio(): void {
   if (typeof window === 'undefined' || started || !KEY) return
   if (localStorage.getItem(CONSENT_KEY) === 'denied') return
   started = true
-  Traqio.init({ sdkKey: KEY, analytics: true })
+  void Traqio.init({ sdkKey: KEY, analytics: true, endpoint: `${window.location.origin}${PROXY_PATH}` })
 }
 
 /** Mirror of a PostHog custom event — same name, same props. No-op until started. */

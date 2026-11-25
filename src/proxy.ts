@@ -42,10 +42,11 @@ function withGeoCookies(req: NextRequest, res: NextResponse): NextResponse {
 export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl
 
-  // Skip API, Next internals, the PostHog proxy, metadata routes, and static files.
+  // Skip API, Next internals, the PostHog and Traqio proxies, metadata routes, and static files.
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/ingest') ||
+    pathname.startsWith('/tq/') ||
     pathname.startsWith('/api') ||
     pathname.startsWith('/brand') ||
     pathname === '/icon' ||
@@ -72,5 +73,5 @@ export function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next|ingest|api|brand|icon|apple-icon|.*\\..*).*)'],
+  matcher: ['/((?!_next|ingest|tq/|api|brand|icon|apple-icon|.*\\..*).*)'],
 }

@@ -68,9 +68,14 @@ const nextConfig: NextConfig = {
     '/brand/k': ['./src/assets/fonts/**'],
   },
 
-  // Reverse-proxy PostHog through our own domain to dodge ad-blockers.
+  // Reverse-proxy PostHog AND Traqio through our own domain to dodge ad-blockers.
+  // Both sinks must sit behind the same first-party proxy, or the PostHog/Traqio
+  // comparison (todo traqio cmwr3tlr) measures ad-blockers instead of the tools.
+  // Traqio's ingest checks the browser's Origin (forwarded as-is by the rewrite)
+  // and reads the visitor's country off the first X-Forwarded-For entry.
   async rewrites() {
     return [
+      { source: '/tq/:path*', destination: 'https://api.traqio.app/:path*' },
       { source: '/ingest/static/:path*', destination: 'https://us-assets.i.posthog.com/static/:path*' },
       { source: '/ingest/:path*', destination: 'https://us.i.posthog.com/:path*' },
       { source: '/ingest/decide', destination: 'https://us.i.posthog.com/decide' },
