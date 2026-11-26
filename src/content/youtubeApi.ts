@@ -4,7 +4,7 @@ import { site } from './site'
 /**
  * « YouTube API Services » disclosure required by the YouTube API Services
  * audit for the « Khufu HQ Channels » OAuth client (todo cmwwexn0): privacy
- * section and legal-notice clause.
+ * section, legal-notice clause and the footer line pointing to the section.
  *
  * Kept in its own file rather than in the 10 page dictionaries so the whole
  * disclosure stays reviewable in one place. Paragraphs use the policy
@@ -23,6 +23,7 @@ type YoutubeCopy = {
   heading: string
   privacy: string[]
   legal: string
+  footer: string
 }
 
 const { terms, googlePrivacy, revoke } = ytLinks
@@ -38,6 +39,7 @@ export const youtubeApiCopy: Record<Locale, YoutubeCopy> = {
       `Deletion: OAuth tokens are deleted as soon as access is revoked or the channel is disconnected. Other stored data is deleted on request, or within 30 days of revocation at the latest. To request deletion, email [${email}](mailto:${email}).`,
     ],
     legal: `This service uses YouTube API Services. By using it, you agree to be bound by the [YouTube Terms of Service](${terms}). See also the [Google Privacy Policy](${googlePrivacy}).`,
+    footer: 'Uses YouTube API Services',
   },
   fr: {
     heading: 'Services d’API YouTube',
@@ -48,6 +50,7 @@ export const youtubeApiCopy: Record<Locale, YoutubeCopy> = {
       `Suppression : les jetons OAuth sont supprimés dès la révocation de l’accès ou la déconnexion de la chaîne. Les autres données conservées sont supprimées sur demande, ou au plus tard 30 jours après la révocation. Pour demander leur suppression, écrivez à [${email}](mailto:${email}).`,
     ],
     legal: `Ce service utilise les services d’API YouTube (YouTube API Services). En l’utilisant, vous acceptez d’être lié par les [Conditions d’utilisation de YouTube](${terms}). Voir aussi les [Règles de confidentialité de Google](${googlePrivacy}).`,
+    footer: 'Utilise les services d’API YouTube',
   },
   es: {
     heading: 'Servicios de API de YouTube',
@@ -58,6 +61,7 @@ export const youtubeApiCopy: Record<Locale, YoutubeCopy> = {
       `Eliminación: los tokens OAuth se eliminan en cuanto se revoca el acceso o se desconecta el canal. El resto de datos almacenados se elimina a petición, o como máximo 30 días después de la revocación. Para solicitar la eliminación, escribe a [${email}](mailto:${email}).`,
     ],
     legal: `Este servicio utiliza los Servicios de API de YouTube (YouTube API Services). Al usarlo, aceptas quedar vinculado por los [Términos de Servicio de YouTube](${terms}). Consulta también la [Política de Privacidad de Google](${googlePrivacy}).`,
+    footer: 'Usa los Servicios de API de YouTube',
   },
   de: {
     heading: 'YouTube-API-Dienste',
@@ -68,6 +72,7 @@ export const youtubeApiCopy: Record<Locale, YoutubeCopy> = {
       `Löschung: OAuth-Tokens werden gelöscht, sobald der Zugriff widerrufen oder der Kanal getrennt wird. Andere gespeicherte Daten werden auf Anfrage gelöscht, spätestens jedoch 30 Tage nach dem Widerruf. Löschanfragen bitte an [${email}](mailto:${email}).`,
     ],
     legal: `Dieser Dienst nutzt die YouTube-API-Dienste (YouTube API Services). Durch die Nutzung erklären Sie sich mit den [YouTube-Nutzungsbedingungen](${terms}) einverstanden. Siehe auch die [Google-Datenschutzerklärung](${googlePrivacy}).`,
+    footer: 'Nutzt die YouTube-API-Dienste',
   },
   it: {
     heading: 'Servizi API di YouTube',
@@ -78,6 +83,7 @@ export const youtubeApiCopy: Record<Locale, YoutubeCopy> = {
       `Cancellazione: i token OAuth vengono eliminati non appena l’accesso viene revocato o il canale scollegato. Gli altri dati conservati vengono eliminati su richiesta, o al più tardi entro 30 giorni dalla revoca. Per richiedere la cancellazione, scrivi a [${email}](mailto:${email}).`,
     ],
     legal: `Questo servizio utilizza i Servizi API di YouTube (YouTube API Services). Utilizzandolo, accetti di essere vincolato dai [Termini di servizio di YouTube](${terms}). Vedi anche le [Norme sulla privacy di Google](${googlePrivacy}).`,
+    footer: 'Utilizza i Servizi API di YouTube',
   },
   pt: {
     heading: 'Serviços de API do YouTube',
@@ -88,6 +94,7 @@ export const youtubeApiCopy: Record<Locale, YoutubeCopy> = {
       `Eliminação: os tokens OAuth são eliminados assim que o acesso é revogado ou o canal desligado. Os restantes dados armazenados são eliminados mediante pedido, ou no máximo 30 dias após a revogação. Para pedir a eliminação, escreva para [${email}](mailto:${email}).`,
     ],
     legal: `Este serviço utiliza os Serviços de API do YouTube (YouTube API Services). Ao utilizá-lo, concorda em ficar vinculado aos [Termos de Serviço do YouTube](${terms}). Consulte também a [Política de Privacidade da Google](${googlePrivacy}).`,
+    footer: 'Utiliza os Serviços de API do YouTube',
   },
   nl: {
     heading: 'YouTube API-services',
@@ -98,6 +105,7 @@ export const youtubeApiCopy: Record<Locale, YoutubeCopy> = {
       `Verwijdering: OAuth-tokens worden verwijderd zodra de toegang wordt ingetrokken of het kanaal wordt ontkoppeld. Overige opgeslagen gegevens worden op verzoek verwijderd, of uiterlijk 30 dagen na intrekking. Verwijderingsverzoeken kun je sturen naar [${email}](mailto:${email}).`,
     ],
     legal: `Deze dienst gebruikt YouTube API-services (YouTube API Services). Door de dienst te gebruiken, ga je akkoord met de [Servicevoorwaarden van YouTube](${terms}). Zie ook het [Privacybeleid van Google](${googlePrivacy}).`,
+    footer: 'Gebruikt YouTube API-services',
   },
   ar: {
     heading: 'خدمات YouTube API',
@@ -108,6 +116,7 @@ export const youtubeApiCopy: Record<Locale, YoutubeCopy> = {
       `الحذف: تُحذف رموز OAuth فور إلغاء الوصول أو فصل القناة. وتُحذف البيانات المخزنة الأخرى عند الطلب، أو خلال 30 يومًا من الإلغاء كحد أقصى. لطلب الحذف، راسلنا على [${email}](mailto:${email}).`,
     ],
     legal: `تستخدم هذه الخدمة خدمات YouTube API. باستخدامها، فإنك توافق على الالتزام [بشروط خدمة YouTube](${terms}). راجع أيضًا [سياسة خصوصية Google](${googlePrivacy}).`,
+    footer: 'يستخدم خدمات YouTube API',
   },
   pl: {
     heading: 'Usługi API YouTube',
@@ -118,6 +127,7 @@ export const youtubeApiCopy: Record<Locale, YoutubeCopy> = {
       `Usuwanie: tokeny OAuth są usuwane natychmiast po cofnięciu dostępu lub odłączeniu kanału. Pozostałe przechowywane dane są usuwane na żądanie, najpóźniej w ciągu 30 dni od cofnięcia dostępu. Aby poprosić o usunięcie, napisz na [${email}](mailto:${email}).`,
     ],
     legal: `Ta usługa korzysta z usług API YouTube (YouTube API Services). Korzystając z niej, zgadzasz się przestrzegać [Warunków korzystania z usługi YouTube](${terms}). Zobacz też [Politykę prywatności Google](${googlePrivacy}).`,
+    footer: 'Korzysta z usług API YouTube',
   },
   tr: {
     heading: 'YouTube API Hizmetleri',
@@ -128,5 +138,6 @@ export const youtubeApiCopy: Record<Locale, YoutubeCopy> = {
       `Silme: OAuth belirteçleri, erişim iptal edildiğinde veya kanal bağlantısı kesildiğinde hemen silinir. Diğer saklanan veriler talep üzerine, en geç iptalden itibaren 30 gün içinde silinir. Silme talebi için [${email}](mailto:${email}) adresine yazın.`,
     ],
     legal: `Bu hizmet YouTube API Hizmetlerini (YouTube API Services) kullanır. Hizmeti kullanarak [YouTube Hizmet Şartları](${terms}) ile bağlı olmayı kabul edersiniz. Ayrıca bkz. [Google Gizlilik Politikası](${googlePrivacy}).`,
+    footer: 'YouTube API Hizmetlerini kullanır',
   },
 }

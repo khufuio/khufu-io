@@ -1,7 +1,7 @@
 /**
  * Evidence for the Google YouTube API Services audit (todo cmwwexn0): the
- * privacy policy's YouTube section, the homepage footer with the Privacy link,
- * and the legal notice as a PDF.
+ * privacy policy's YouTube section, the homepage footer with the Privacy link
+ * and the « Uses YouTube API Services » line, and the legal notice as a PDF.
  *
  * The host's scratch Chrome is headless (no address bar), so each capture gets
  * a caption band at the top carrying the page URL. `--label-origin` is the
@@ -105,7 +105,7 @@ await evaluate(`(() => {
 await sleep(400)
 await shot('privacy-policy-youtube-section.png')
 
-// 2. Homepage, scrolled so the footer (Privacy link) is in view.
+// 2. Homepage, scrolled so the footer (Privacy link + YouTube line) is in view.
 const homePath = `/${locale}`
 await open(homePath)
 await caption(homePath)
