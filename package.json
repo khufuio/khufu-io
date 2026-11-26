@@ -20,6 +20,7 @@
     "capture:hero": "node scripts/captureSprintHero.mjs",
     "check:sprint-title": "node scripts/checkSprintHeroTitle.mjs",
     "capture:sprint-page": "node scripts/captureSprintPage.mjs",
+    "capture:youtube-audit": "node scripts/captureYoutubeAudit.mjs",
     "check:linkedin": "node scripts/checkLinkedInTag.mjs",
     "check:traqio": "node scripts/checkTraqio.mjs",
     "ads:render": "node scripts/renderMetaAds.mjs",
