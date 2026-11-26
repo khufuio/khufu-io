@@ -4,6 +4,8 @@ import { getDictionary } from '@/i18n/getDictionary'
 import { buildMetadata } from '@/lib/metadata'
 import { Container } from '@/components/ui/container'
 import { PageHeader } from '@/components/ui/pageHeader'
+import { PolicyBlocks } from '@/components/ui/policyBlocks'
+import { youtubeAnchor, youtubeApiCopy } from '@/content/youtubeApi'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -21,6 +23,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
   const { locale: raw } = await params
   const locale: Locale = isLocale(raw) ? raw : defaultLocale
   const p = getDictionary(locale).privacyPage
+  const yt = youtubeApiCopy[locale]
 
   return (
     <>
@@ -34,6 +37,13 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
                 <p className="mt-3 text-[var(--color-ink-2)] text-pretty">{s.body}</p>
               </div>
             ))}
+            {/* Linked from the footer « Uses YouTube API Services » line (todo cmwwexn0). */}
+            <div id={youtubeAnchor} className="scroll-mt-24">
+              <h2 className="text-lg font-semibold">{yt.heading}</h2>
+              <div className="mt-3">
+                <PolicyBlocks blocks={yt.privacy.map((text) => ({ p: text }))} />
+              </div>
+            </div>
           </div>
         </Container>
       </section>

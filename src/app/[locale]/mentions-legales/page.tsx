@@ -5,6 +5,8 @@ import { site } from '@/content/site'
 import { buildMetadata } from '@/lib/metadata'
 import { Container } from '@/components/ui/container'
 import { PageHeader } from '@/components/ui/pageHeader'
+import { PolicyBlocks } from '@/components/ui/policyBlocks'
+import { youtubeApiCopy } from '@/content/youtubeApi'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -23,6 +25,7 @@ export default async function LegalPage({ params }: { params: Promise<{ locale: 
   const locale: Locale = isLocale(raw) ? raw : defaultLocale
   const l = getDictionary(locale).legalPage
   const { legal } = site
+  const yt = youtubeApiCopy[locale]
 
   const rows: { label: string; value: React.ReactNode }[] = [
     { label: l.editorLabel, value: legal.entity },
@@ -64,6 +67,13 @@ export default async function LegalPage({ params }: { params: Promise<{ locale: 
           <div className="mt-12 max-w-2xl">
             <h2 className="text-lg font-semibold">{l.ipTitle}</h2>
             <p className="mt-3 text-[var(--color-ink-2)]">{l.ipBody}</p>
+          </div>
+
+          <div className="mt-12 max-w-2xl">
+            <h2 className="text-lg font-semibold">{yt.heading}</h2>
+            <div className="mt-3">
+              <PolicyBlocks blocks={[{ p: yt.legal }]} />
+            </div>
           </div>
         </Container>
       </section>
