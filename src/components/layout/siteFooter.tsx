@@ -11,7 +11,6 @@ import { blogUi } from '@/content/articles'
 import { ui } from '@/i18n/ui'
 import { guidePath, leadMagnets } from '@/content/leadMagnets'
 import { proofCopy } from '@/content/proof'
-import { youtubeAnchor, youtubeApiCopy } from '@/content/youtubeApi'
 
 export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const year = 2026 // build-time constant; bump on redeploy
@@ -74,16 +73,6 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
         <FooterCol title={f.columns.legal}>
           <FooterLink href={href(locale, 'legal')}>{f.legal.mentions}</FooterLink>
           <FooterLink href={href(locale, 'privacy')}>{f.legal.privacy}</FooterLink>
-          {/* Plain text, no YouTube logo (branding guidelines); required by the
-              YouTube API Services audit next to the Privacy link (todo cmwwexn0). */}
-          <li>
-            <Link
-              href={`${href(locale, 'privacy')}#${youtubeAnchor}`}
-              className="text-xs text-[var(--color-muted)] transition-colors hover:text-[var(--color-ink)]"
-            >
-              {youtubeApiCopy[locale].footer}
-            </Link>
-          </li>
         </FooterCol>
       </Container>
 
