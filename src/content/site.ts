@@ -12,7 +12,7 @@ const whatsappRaw = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '+971 50 365 1761
  */
 export const site = {
   name: 'Khufu',
-  legalName: 'Khufu',
+  legalName: 'KHUFU FZCO',
   domain: 'khufu.io',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://khufu.io',
   email: 'hello@khufu.io',
