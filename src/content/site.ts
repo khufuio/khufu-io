@@ -24,7 +24,11 @@ export const site = {
   // Legal (for mentions légales / privacy pages)
   legal: {
     entity: 'Khufu FZCO',
-    address: 'A2, IFZA Business Park, Dubai Silicon Oasis, Dubai, 341041, United Arab Emirates',
+    // Exact spelling and address of the trade licence. Meta Business
+    // Verification refused the business because the legal name was not on the
+    // site (todo cmwyd7h6): keep both verbatim, untranslated, on every page.
+    licenceName: 'KHUFU FZCO',
+    address: 'DSO-IFZA, IFZA Properties, Dubai Silicon Oasis, Dubai, United Arab Emirates',
     tradeLicense: '5214',
     publicationDirector: 'Adrien De Coster',
     host: {

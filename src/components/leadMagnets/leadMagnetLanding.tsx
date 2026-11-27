@@ -200,9 +200,15 @@ export function LeadMagnetLanding({ magnet }: { magnet: LeadMagnet }) {
 
       <footer className="border-t border-[var(--color-line)]">
         <Container className="flex flex-col gap-3 py-8 text-sm text-[var(--color-muted)] sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {new Date().getFullYear()} {site.legal.entity} · Dubai, UAE
-          </p>
+          <div className="flex flex-col gap-1">
+            <p>
+              © {new Date().getFullYear()} {site.legal.entity} · Dubai, UAE
+            </p>
+            {/* Legal name + licence address (Meta Business Verification, todo cmwyd7h6). */}
+            <p className="text-xs">
+              {site.legal.licenceName} — {site.legal.address}
+            </p>
+          </div>
           <nav className="flex flex-wrap gap-x-5 gap-y-2">
             <a href={`mailto:${site.email}`} className="hover:text-[var(--color-ink)]">
               {site.email}

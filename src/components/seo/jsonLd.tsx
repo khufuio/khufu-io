@@ -41,9 +41,9 @@ export function OrganizationJsonLd({ locale }: { locale: Locale }) {
         },
         address: {
           '@type': 'PostalAddress',
-          streetAddress: 'A2, IFZA Business Park, Dubai Silicon Oasis',
+          // Trade-licence address (no postal code on the licence).
+          streetAddress: 'DSO-IFZA, IFZA Properties, Dubai Silicon Oasis',
           addressLocality: 'Dubai',
-          postalCode: '341041',
           addressCountry: 'AE',
         },
         telephone: `+${site.whatsapp}`,

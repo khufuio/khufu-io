@@ -88,9 +88,19 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
       </Container>
 
       <Container className="flex flex-col items-start justify-between gap-4 border-t border-[var(--color-line)] py-6 text-xs text-[var(--color-muted)] sm:flex-row sm:items-center">
-        <p>
-          © {year} {site.name}. {f.rights}
-        </p>
+        <div className="flex flex-col gap-1">
+          <p>
+            © {year} {site.name}. {f.rights}
+          </p>
+          {/* Legal name + licence address, server-rendered plain text on every
+              page (Meta Business Verification, todo cmwyd7h6). Not translated. */}
+          <p>
+            {/* <bdi> keeps /ar from reordering the Latin address. */}
+            <bdi>
+              {site.legal.licenceName} — {site.legal.address}
+            </bdi>
+          </p>
+        </div>
         <div className="flex items-center gap-4">
           <LocaleSwitcher current={locale} />
           <p>{site.domain}</p>
