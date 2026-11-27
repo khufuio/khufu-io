@@ -97,7 +97,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
           <p>
             {/* <bdi> keeps /ar from reordering the Latin address. */}
             <bdi>
-              {site.legal.licenceName} — {site.legal.address}
+              {`${site.legal.licenceName} — ${site.legal.address}`}
             </bdi>
           </p>
         </div>

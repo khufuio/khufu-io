@@ -206,7 +206,7 @@ export function LeadMagnetLanding({ magnet }: { magnet: LeadMagnet }) {
             </p>
             {/* Legal name + licence address (Meta Business Verification, todo cmwyd7h6). */}
             <p className="text-xs">
-              {site.legal.licenceName} — {site.legal.address}
+              {`${site.legal.licenceName} — ${site.legal.address}`}
             </p>
           </div>
           <nav className="flex flex-wrap gap-x-5 gap-y-2">
